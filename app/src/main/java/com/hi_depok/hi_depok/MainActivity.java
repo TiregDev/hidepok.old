@@ -65,8 +65,13 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    public void linkContent(View view){
+    public void linkSikepok(View view){
         Intent intent = new Intent(MainActivity.this, sikepok.class);
+        startActivity(intent);
+    }
+
+    public void linkkapok (View view){
+        Intent intent = new Intent(MainActivity.this, kapok.class);
         startActivity(intent);
     }
 
