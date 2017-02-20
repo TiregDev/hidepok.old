@@ -38,7 +38,7 @@
             android:layout_weight="1.65">
 
             <TextView
-                android:text="Kenal Depoks"
+                android:text="Kenal Depok"
                 android:textSize="30sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
