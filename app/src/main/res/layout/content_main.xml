@@ -241,6 +241,7 @@
                     android:paddingBottom="18dp"
                     android:paddingTop="17dp"
                     android:drawablePadding="10dp"
+                    android:onClick="linkabout"
                     android:paddingLeft="15dp" />
             </LinearLayout>
         </RelativeLayout>

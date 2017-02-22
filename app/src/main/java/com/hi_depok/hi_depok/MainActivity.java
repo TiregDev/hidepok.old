@@ -90,6 +90,10 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    public void linkabout (View view){
+        Intent intent = new Intent(MainActivity.this, about.class);
+        startActivity(intent);
+    }
    // private boolean backPressedToExitOnce;
 
     @Override
@@ -155,7 +159,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.ucok){
             startActivity(new Intent (getApplicationContext(), ucok.class));
         } else if (id == R.id.about){
-
+            startActivity(new Intent (getApplicationContext(), about.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
