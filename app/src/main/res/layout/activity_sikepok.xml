@@ -56,45 +56,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageButton
-                    android:layout_width="56dp"
+                <android.support.design.widget.TabLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:srcCompat="@drawable/diagnosa"
-                    android:background="@android:color/transparent"
-                    android:id="@+id/imageButton2"
-                    android:scaleType="centerInside"
-                    android:scaleX="0.8"
-                    android:scaleY="0.8"
-                    android:layout_weight="0.30" />
+                    android:layout_weight="0.30">
 
-                <ImageButton
-                    android:layout_width="84dp"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/hospital"
-                    android:background="@android:color/transparent"
-                    android:id="@+id/imageButton"
-                    android:scaleType="centerInside"
-                    android:layout_weight="0.30" />
+                    <android.support.design.widget.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:icon="@drawable/diagnosa" />
 
-                <ImageButton
-                    android:layout_width="67dp"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    app:srcCompat="@drawable/panicbutton"
-                    android:id="@+id/imageButton3"
-                    android:scaleType="centerInside"
-                    android:scaleX="0.8"
-                    android:scaleY="0.8"
-                    android:layout_weight="0.30" />
+                    <android.support.design.widget.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tabItem"
+                        android:icon="@drawable/hospital" />
 
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@mipmap/ic_action_play_circle_filled"
-                    android:id="@+id/imageButton4"
-                    android:layout_weight="1.46"
-                    android:background="@android:color/transparent"
-                    android:paddingTop="5dp" />
+                    <android.support.design.widget.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:icon="@drawable/panicbutton" />
+
+                    <android.support.design.widget.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:icon="@drawable/play" />
+                </android.support.design.widget.TabLayout>
+
             </LinearLayout>
 
         </RelativeLayout>

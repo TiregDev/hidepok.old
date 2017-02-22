@@ -160,6 +160,7 @@
                     android:textColor="#515050"
                     android:background="@drawable/shape2"
                     android:layout_weight="1"
+                    android:onClick="linkkadepok"
                     android:drawableLeft="@mipmap/kadepok"
                     android:layout_marginLeft="10dp" />
             </LinearLayout>

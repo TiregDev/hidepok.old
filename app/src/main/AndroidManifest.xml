@@ -26,7 +26,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".sikepok" />
-        <activity android:name=".kapok"></activity>
+        <activity android:name=".kapok" />
+        <activity android:name=".kadepok"></activity>
     </application>
 
 </manifest>

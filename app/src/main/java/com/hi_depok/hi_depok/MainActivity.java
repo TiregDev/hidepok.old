@@ -75,6 +75,11 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    public void linkkadepok (View view){
+        Intent intent = new Intent(MainActivity.this, kadepok.class);
+        startActivity(intent);
+    }
+
    // private boolean backPressedToExitOnce;
 
     @Override
