@@ -60,8 +60,7 @@
                 <ImageButton
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    app:srcCompat="@drawable/trans1"
-                    android:background="@drawable/trans1"
+                    app:srcCompat="@drawable/diagnosa"
                     android:id="@+id/imageButton2"
                     android:scaleType="centerInside"
                     android:scaleX="0.8"
