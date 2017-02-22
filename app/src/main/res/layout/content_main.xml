@@ -186,6 +186,7 @@
                     android:textAllCaps="false"
                     android:background="@drawable/shape2"
                     android:layout_weight="1"
+                    android:onClick="linklapok"
                     android:drawableLeft="@mipmap/lapok" />
 
                 <Button
@@ -223,6 +224,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/ucok"
                     android:layout_weight="0.69"
+                    android:onClick="linkucok"
                     android:drawableLeft="@mipmap/ucok" />
 
                 <Button

@@ -80,6 +80,16 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    public void linklapok (View view){
+        Intent intent = new Intent(MainActivity.this, lapok.class);
+        startActivity(intent);
+    }
+
+    public void linkucok (View view){
+        Intent intent = new Intent(MainActivity.this, ucok.class);
+        startActivity(intent);
+    }
+
    // private boolean backPressedToExitOnce;
 
     @Override
@@ -135,15 +145,15 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.login) {
 
         } else if (id == R.id.sikepok) {
-
+            startActivity(new Intent (getApplicationContext(), sikepok.class));
         } else if (id == R.id.kadepok) {
-
+            startActivity(new Intent (getApplicationContext(), kadepok.class));
         } else if (id == R.id.lapok) {
-
+            startActivity(new Intent (getApplicationContext(), lapok.class));
         } else if (id == R.id.kapok){
-
+            startActivity(new Intent (getApplicationContext(), kapok.class));
         } else if (id == R.id.ucok){
-
+            startActivity(new Intent (getApplicationContext(), ucok.class));
         } else if (id == R.id.about){
 
         }

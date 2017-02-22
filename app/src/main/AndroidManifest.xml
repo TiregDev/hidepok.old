@@ -27,7 +27,9 @@
         </activity>
         <activity android:name=".sikepok" />
         <activity android:name=".kapok" />
-        <activity android:name=".kadepok"></activity>
+        <activity android:name=".kadepok" />
+        <activity android:name=".lapok" />
+        <activity android:name=".ucok"></activity>
     </application>
 
 </manifest>
