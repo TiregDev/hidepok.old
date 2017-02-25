@@ -33,7 +33,7 @@ public class kapok extends AppCompatActivity {
         String text;
         text = "<html>" +
                 "<head>" +
-                "<style type=\"text/css\"> .text{color:#7f8c8d;background-color:transparent;}" +
+                "<style type=\"text/css\"> .text{color:#b7b7b7;background-color:transparent;}" +
                 "</style>" +
                 "</head>" +
                 "<body>" +

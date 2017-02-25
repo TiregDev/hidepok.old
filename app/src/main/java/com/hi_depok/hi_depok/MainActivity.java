@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.profile) {
 
         } else if (id == R.id.login) {
-
+            startActivity(new Intent (getApplicationContext(), login.class));
         } else if (id == R.id.sikepok) {
             startActivity(new Intent (getApplicationContext(), sikepok.class));
         } else if (id == R.id.kadepok) {
