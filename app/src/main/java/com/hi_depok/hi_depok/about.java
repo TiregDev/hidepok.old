@@ -19,7 +19,7 @@ public class about extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        
+
         WebView view = (WebView) findViewById(R.id.textContent);
         view.setBackgroundColor(0);
         view.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
