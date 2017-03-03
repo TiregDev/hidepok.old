@@ -7,6 +7,11 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -22,6 +27,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment1;
+import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment2;
+import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment3;
 import com.mikepenz.crossfadedrawerlayout.view.CrossfadeDrawerLayout;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -44,11 +52,14 @@ public class MainActivity extends AppCompatActivity {
     private static long back_pressed;
     private Drawer result;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
 
         PrimaryDrawerItem home =   new PrimaryDrawerItem()
                 .withName("Home")
@@ -319,5 +330,7 @@ public class MainActivity extends AppCompatActivity {
         }
         back_pressed = System.currentTimeMillis();
     }
+
+
 
 }
