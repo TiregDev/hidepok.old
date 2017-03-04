@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.hi_depok.hi_depok"
-        minSdkVersion 14
+        minSdkVersion 17
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -28,7 +28,7 @@ dependencies {
     compile 'com.android.support:design:25.1.0'
     compile 'com.google.firebase:firebase-database:10.0.0'
     compile 'com.google.firebase:firebase-auth:10.0.0'
-    compile 'com.google.android.gms:play-services-auth:10.0.0'
+    compile 'com.google.android.gms:play-services-auth:10.0.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.gustavofao:MaterialTabs:1.3.1'

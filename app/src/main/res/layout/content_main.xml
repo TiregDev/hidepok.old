@@ -12,7 +12,6 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_main"
-    android:background="@drawable/bg"
     tools:context="com.hi_depok.hi_depok.MainActivity">
 
     <LinearLayout
@@ -20,32 +19,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2.7">
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_marginTop="35dp"
             android:layout_weight="2">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:elevation="0dp">
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/logo2"
+                    android:contentDescription="@string/app_name"
                     android:id="@+id/imageView2"
                     android:layout_weight="0.5" />
 
@@ -56,7 +47,7 @@
                     android:layout_weight="0.5">
 
                     <TextView
-                        android:text="Hi-Depok"
+                        android:text="@string/app_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView"
@@ -64,41 +55,35 @@
                         android:textStyle="normal|bold"
                         android:textColor="#6B92CB"
                         android:gravity="bottom|center_vertical|center_horizontal"
-                        android:layout_weight="0.18" />
+                        android:paddingTop="25dp" />
 
                     <TextView
-                        android:text="We Share We Care"
+                        android:text="@string/tag_app_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView2"
                         android:textSize="20sp"
                         android:textStyle="normal|italic"
-                        android:layout_weight="0.1"
                         android:textColor="#F6981A"
-                        android:paddingLeft="0dp"
                         android:gravity="top|center_vertical|center_horizontal" />
 
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:id="@+id/wv"
                         android:textColor="#b7b7b7"
                         android:alpha="0.7"
                         android:textAllCaps="false"
                         android:fontFamily="sans-serif-condensed"
                         android:background="@drawable/shape2"
-                        android:text="Watch Video"
+                        android:text="@string/video"
                         android:minHeight="0dp"
-                        android:drawableLeft="@drawable/ic_action_play_circle_filled"
+                        android:drawableStart="@drawable/ic_action_play_circle_filled"
                         android:textSize="14sp"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
                         android:layout_gravity="center_horizontal|fill" />
 
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.1"></LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
@@ -116,7 +101,6 @@
                 android:id="@+id/textView3"
                 android:textColor="#b7b7b7"
                 android:text="Pilih modul yang ingin dijalankan!"
-                android:layout_weight="0.01"
                 android:gravity="bottom" />
 
         </RelativeLayout>
@@ -137,9 +121,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.01"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true">
 
                 <Button
@@ -153,7 +135,7 @@
                     android:alpha="0.7"
                     android:background="@drawable/shape2"
                     android:onClick="linkSikepok"
-                    android:drawableLeft="@mipmap/sikepok" />
+                    android:drawableStart="@mipmap/sikepok" />
 
                 <Button
                     android:text="KaDepok"
@@ -166,8 +148,8 @@
                     android:background="@drawable/shape2"
                     android:layout_weight="1"
                     android:onClick="linkkadepok"
-                    android:drawableLeft="@mipmap/kadepok"
-                    android:layout_marginLeft="10dp" />
+                    android:drawableStart="@mipmap/kadepok"
+                    android:layout_marginStart="10dp" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -179,8 +161,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.01">
+                android:layout_height="wrap_content">
 
                 <Button
                     android:text="Lapok"
@@ -193,7 +174,7 @@
                     android:background="@drawable/shape2"
                     android:layout_weight="1"
                     android:onClick="linklapok"
-                    android:drawableLeft="@mipmap/lapok" />
+                    android:drawableStart="@mipmap/lapok" />
 
                 <Button
                     android:text="Kapok"
@@ -205,9 +186,9 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/kapok"
                     android:layout_weight="1"
-                    android:drawableLeft="@mipmap/kapok"
+                    android:drawableStart="@mipmap/kapok"
                     android:onClick="linkkapok"
-                    android:layout_marginLeft="10dp" />
+                    android:layout_marginStart="10dp" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -219,8 +200,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.01">
+                android:layout_height="wrap_content">
 
                 <Button
                     android:text="Ucok"
@@ -233,7 +213,7 @@
                     android:id="@+id/ucok"
                     android:layout_weight="0.69"
                     android:onClick="linkucok"
-                    android:drawableLeft="@mipmap/ucok" />
+                    android:drawableStart="@mipmap/ucok" />
 
                 <Button
                     android:text="About"
@@ -245,13 +225,14 @@
                     android:id="@+id/about"
                     android:layout_weight="0.7"
                     android:background="@drawable/shape2"
-                    android:drawableLeft="@drawable/ic_action_info"
-                    android:layout_marginLeft="10dp"
+                    android:drawableStart="@drawable/ic_action_info"
+                    android:layout_marginStart="10dp"
                     android:paddingBottom="18dp"
                     android:paddingTop="17dp"
                     android:drawablePadding="10dp"
                     android:onClick="linkabout"
-                    android:paddingLeft="15dp" />
+                    android:paddingEnd="5dp"
+                    android:paddingStart="15dp" />
             </LinearLayout>
         </RelativeLayout>
 

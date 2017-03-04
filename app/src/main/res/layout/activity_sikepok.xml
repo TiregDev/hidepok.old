@@ -9,7 +9,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg2"
     tools:context="com.hi_depok.hi_depok.sikepok">
 
     <LinearLayout
@@ -17,7 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
         <RelativeLayout
@@ -28,9 +26,9 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/sikepok"
                 app:srcCompat="@drawable/sikepok2"
-                android:id="@+id/imageView4"
-                android:elevation="0dp" />
+                android:id="@+id/imageView4"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -39,7 +37,7 @@
             android:layout_weight="1.65">
 
             <TextView
-                android:text="Sistem Informasi\nKesehatan Depok"
+                android:text="@string/sikepok"
                 android:textSize="30sp"
                 android:textColor="#b7b7b7"
                 android:layout_width="match_parent"
@@ -54,12 +52,13 @@
             android:layout_weight="1.999">
 
             <LinearLayout
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <android.support.design.widget.TabLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.30">
 
@@ -96,7 +95,7 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:text="Diagnosa"
+                android:text="@string/desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
@@ -115,7 +114,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
         </RelativeLayout>
 
@@ -125,25 +123,18 @@
             android:layout_weight="2">
 
             <Button
-                android:text="Next"
+                android:text="@string/button_next"
                 android:layout_width="match_parent"
                 android:background="@drawable/shape2"
                 android:alpha="0.7"
                 android:layout_height="wrap_content"
                 android:id="@+id/button"
-                android:layout_weight="1"
                 android:textStyle="bold"
                 android:textColor="#fff"
                 android:gravity="center" />
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2.12">
-
-        </RelativeLayout>
     </LinearLayout>
 
 </RelativeLayout>

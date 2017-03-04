@@ -11,6 +11,14 @@
         <item name="android:textColorPrimary">@color/primary_text_material_light</item>
     </style>
 
+    <style name="Background" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg2</item>
+    </style>
+
+    <style name="Background_main" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

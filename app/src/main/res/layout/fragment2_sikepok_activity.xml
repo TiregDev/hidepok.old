@@ -10,7 +10,7 @@
         android:gravity="center_vertical">
 
         <TextView
-            android:text="Diagnosa"
+            android:text="@string/desc"
             android:textColor="#b7b7b7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,7 +29,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
     </RelativeLayout>
 
@@ -39,13 +38,12 @@
         android:layout_weight="2">
 
         <Button
-            android:text="Next"
+            android:text="@string/button_next"
             android:layout_width="match_parent"
             android:background="@drawable/shape2"
             android:alpha="0.7"
             android:layout_height="wrap_content"
             android:id="@+id/button"
-            android:layout_weight="1"
             android:textStyle="bold"
             android:textColor="#fff"
             android:gravity="center" />

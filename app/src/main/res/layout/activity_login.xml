@@ -9,7 +9,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg2"
     tools:context="com.hi_depok.hi_depok.login">
 
     <!-- Login progress -->
@@ -24,7 +23,7 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="3.2">
 
         <LinearLayout
@@ -47,7 +46,6 @@
                     android:textColorHint="#fff"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:textColorLink="#fff" />
 
             </android.support.design.widget.TextInputLayout>
@@ -68,8 +66,7 @@
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -83,7 +80,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:text="or login with"
+                android:text="Or Login With"
                 android:textColor="#b7b7b7"
                 android:textSize="8pt"
                 android:layout_width="match_parent"
@@ -94,10 +91,10 @@
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/action_sign_in"
                 app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal"
                 android:id="@+id/imageButton6"
-                android:background="@android:color/transparent"
-                android:layout_alignParentTop="true" />
+                android:background="@android:color/transparent" />
 
         </LinearLayout>
     </ScrollView>
