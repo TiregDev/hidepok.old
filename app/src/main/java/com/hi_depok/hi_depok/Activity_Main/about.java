@@ -1,5 +1,6 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v4.app.NavUtils;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
@@ -42,6 +44,11 @@ public class about extends AppCompatActivity {
                 "</body>" +
                 "</html>";
         view.loadData(text, "text/html", "utf-8");
+    }
+
+    public void about_home(View view){
+        Intent intent = new Intent(about.this, MainActivity.class);
+        startActivity(intent);
     }
 
 }

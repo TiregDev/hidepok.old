@@ -1,46 +1,7 @@
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<shape xmlns:android="http://schemas.android.com/apk/res/android" >-->
-    <!--<stroke android:width="2dp"-->
-        <!--android:color="#ffffff"/>-->
-    <!--<gradient-->
-        <!--android:angle="225"-->
-        <!---->
-        <!--android:startColor="#ffffff"-->
-        <!--android:endColor="#ffffff"/>-->
-    <!--<corners-->
-        <!--android:bottomLeftRadius="7dp"-->
-        <!--android:bottomRightRadius="7dp"-->
-        <!--android:topLeftRadius="7dp"-->
-        <!--android:topRightRadius="7dp" />-->
-<!--</shape>-->
-
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <!--<item android:state_pressed="true" >-->
-        <!--<shape>-->
-            <!--<solid-->
-                <!--android:color="#1E669B" />-->
-            <!--<stroke-->
-                <!--android:width="2dp"-->
-                <!--android:color="#1B5E91" />-->
-            <!--<corners-->
-                <!--android:radius="6dp" />-->
-            <!--<padding-->
-                <!--android:left="10dp"-->
-                <!--android:top="10dp"-->
-                <!--android:right="10dp"-->
-                <!--android:bottom="10dp" />-->
-        <!--</shape>-->
-    <!--</item>-->
 
     <item>
         <layer-list>
-            <!--<item android:left="5dp" android:top="5dp">-->
-                <!--<shape>-->
-                    <!--<corners android:radius="45dp" />-->
-                    <!--&lt;!&ndash;<solid android:color="#999999" />&ndash;&gt;-->
-                <!--</shape>-->
-            <!--</item>-->
             <item android:bottom="2dp" android:right="2dp">
                 <shape>
                     <gradient android:angle="270"

@@ -70,11 +70,10 @@
         </activity>
         <activity
             android:name=".Activity_Main.about"
-            android:label="About" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Activity_Main.login"
-            android:theme="@style/Background_main"
-            android:label="@string/title_activity_login"></activity>
+            android:theme="@style/Background_main"></activity>
     </application>
 
 </manifest>

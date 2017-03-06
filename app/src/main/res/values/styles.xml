@@ -19,6 +19,10 @@
         <item name="android:windowBackground">@drawable/bg</item>
     </style>
 
+    <style name="Background_login" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_login</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
