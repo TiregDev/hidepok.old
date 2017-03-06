@@ -1,6 +1,5 @@
 package com.hi_depok.hi_depok.fragment_sikepok_activity;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,20 +8,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;
 
 /**
- * Created by Muhammad63 on 3/2/2017.
+ * Created by Muhammad63 on 3/4/2017.
  */
 
-public class fragment3 extends Fragment {
+public class fragment3 extends Fragment{
+
+    public static fragment3 newInstance() {
+
+        Bundle args = new Bundle();
+
+        fragment3 fragment = new fragment3();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment3_sikepok_activity, container, false);
-
+        View  v = inflater.inflate(R.layout.sikepok_fragment1_activity, null);
         WebView view = (WebView) v.findViewById(R.id.textContent);
         view.setBackgroundColor(0);
         view.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
@@ -43,8 +50,6 @@ public class fragment3 extends Fragment {
                 "</body>" +
                 "</html>";
         view.loadData(text, "text/html", "utf-8");
-
-
         return v;
     }
 }
