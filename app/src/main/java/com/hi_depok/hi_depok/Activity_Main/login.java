@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -95,6 +96,11 @@ public class login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+    }
+
+    public void linkprofile(View view){
+        Intent intent = new Intent(login.this, profile.class);
+        startActivity(intent);
     }
 
     private void populateAutoComplete() {
