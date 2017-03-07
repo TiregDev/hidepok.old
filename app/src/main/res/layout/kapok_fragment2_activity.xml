@@ -34,25 +34,23 @@
             android:layout_alignParentStart="true" />
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_weight="2.95">
+        android:layout_weight="2.95"
+        android:gravity="center_horizontal">
 
         <Button
-            android:text="@string/button_next"
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_gravity="center_horizontal"
+            android:textAlignment="gravity"
             android:gravity="center"
-            android:background="@drawable/shape2"
             android:alpha="0.7"
-            android:id="@+id/button"
-            android:textStyle="bold"
+            android:background="@drawable/shape2"
+            android:text="@string/button_next"
             android:textColor="#fff" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

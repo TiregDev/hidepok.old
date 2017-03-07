@@ -29,7 +29,7 @@ public class fragment3 extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View  v = inflater.inflate(R.layout.sikepok_fragment1_activity, null);
+        View  v = inflater.inflate(R.layout.kadepok_fragment3_activity, null);
         WebView view = (WebView) v.findViewById(R.id.textContent);
         view.setBackgroundColor(0);
         view.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);

@@ -178,7 +178,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case 1:
-                        Toast.makeText(getApplicationContext(), "Profile pressed", Toast.LENGTH_SHORT).show();
+                        Intent intent1 = new Intent(MainActivity.this, profile.class);
+                        startActivity(intent1);
                         break;
                     case 2:
                         Intent intent2 = new Intent(MainActivity.this, login.class);

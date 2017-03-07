@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".Activity_Main.SplashScreen"
             android:noHistory="true"
@@ -75,8 +75,12 @@
             android:name=".Activity_Main.login"
             android:theme="@style/Background_main" />
         <activity
+            android:name=".Activity_Main.setprofile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Activity_Main.profile"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activity_Main.changepass"></activity>
     </application>
 
 </manifest>
