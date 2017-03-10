@@ -49,6 +49,7 @@
             android:alpha="0.7"
             android:background="@drawable/shape2"
             android:text="@string/button_next"
+            android:onClick="diagnosa"
             android:textColor="#fff" />
 
     </RelativeLayout>

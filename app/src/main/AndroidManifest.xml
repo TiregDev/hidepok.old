@@ -70,6 +70,7 @@
         </activity>
         <activity
             android:name=".Activity_Main.about"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity_Main.login"
@@ -80,7 +81,11 @@
         <activity
             android:name=".Activity_Main.profile"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity_Main.changepass"></activity>
+        <activity
+            android:name=".Activity_Main.changepass"
+            android:noHistory="true" />
+        <activity android:name=".Sikepok_Diagnosa.sikepok_diagnosa" />
+        <activity android:name=".Sikepok_RS.sikepok_rs"></activity>
     </application>
 
 </manifest>

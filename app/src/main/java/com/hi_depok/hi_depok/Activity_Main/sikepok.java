@@ -1,5 +1,6 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.Sikepok_Diagnosa.sikepok_diagnosa;
 import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment2;
 import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment3;
@@ -138,5 +140,11 @@ public class sikepok extends AppCompatActivity implements View.OnClickListener{
         public int getCount() {
             return 4;
         }
+    }
+
+    //fragment1 fragment1;
+    public void diagnosa(View v){
+        Intent intent = new Intent(sikepok.this, sikepok_diagnosa.class);
+        startActivity(intent);
     }
 }

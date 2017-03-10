@@ -1,5 +1,6 @@
 package com.hi_depok.hi_depok.fragment_sikepok_activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,7 +10,13 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import com.hi_depok.hi_depok.Activity_Main.MainActivity;
+import com.hi_depok.hi_depok.Activity_Main.kapok;
+import com.hi_depok.hi_depok.Activity_Main.sikepok;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.Sikepok_Diagnosa.sikepok_diagnosa;
+
+import static com.hi_depok.hi_depok.R.id.diagnosa;
 
 /**
  * Created by Muhammad63 on 3/4/2017.
@@ -52,4 +59,6 @@ public class fragment1 extends Fragment{
         view.loadData(text, "text/html", "utf-8");
         return v;
     }
+
+
 }
