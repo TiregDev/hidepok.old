@@ -7,8 +7,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_marginTop="100dp">
+        android:layout_height="250dp"
+        android:layout_marginTop="150dp">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             tools:layout_editor_absoluteY="6dp">
 
             <TableRow
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="2">
 
@@ -26,19 +26,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/sikepok2" />
+                    android:src="@drawable/rumah_sakit" />
 
                 <ImageView
+                    android:id="@+id/imageView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/kapok2" />
+                    android:src="@drawable/form" />
 
             </TableRow>
 
             <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:weightSum="2">
 
                 <TextView
@@ -65,31 +67,33 @@
             <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
                 android:weightSum="3">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/sikepok2" />
+                    android:src="@drawable/apotek" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/kapok2" />
+                    android:src="@drawable/klinik" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/kapok2" />
+                    android:src="@drawable/forum_2" />
 
             </TableRow>
 
             <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:weightSum="3">
 
                 <TextView

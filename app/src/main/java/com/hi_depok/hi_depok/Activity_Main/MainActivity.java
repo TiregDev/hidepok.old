@@ -125,6 +125,15 @@ public class MainActivity extends AppCompatActivity {
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withIcon(R.drawable.ucok_bw)
                 .withIdentifier(7);
+        SecondaryDrawerItem fokopok =    new SecondaryDrawerItem()
+                .withName("Fokopok")
+                .withSelectable(false)
+                .withTextColor(Color.WHITE)
+                .withSelectedTextColor(Color.parseColor("#4f71de"))
+                .withIconColor(Color.rgb(158,158,158))
+                .withSelectedColor(Color.parseColor("#202020"))
+                .withIcon(R.drawable.fokopok_bw)
+                .withIdentifier(8);
         PrimaryDrawerItem about =    new PrimaryDrawerItem()
                 .withName("About")
                 .withSelectable(false)
@@ -133,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 .withIconColor(Color.rgb(158,158,158))
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withIcon(R.drawable.ic_action_info4)
-                .withIdentifier(8);
+                .withIdentifier(9);
 
 
         // Create the AccountHeader
@@ -172,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
                         lapok,
                         kapok,
                         ucok,
+                        fokopok,
                         new DividerDrawerItem(),
                         about)
                 .withShowDrawerOnFirstLaunch(true)
@@ -213,8 +223,12 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent7);
                         break;
                     case 8:
-                        Intent intent8 = new Intent(MainActivity.this, about.class);
+                        Intent intent8 = new Intent(MainActivity.this, fokopok.class);
                         startActivity(intent8);
+                        break;
+                    case 9:
+                        Intent intent9 = new Intent(MainActivity.this, about.class);
+                        startActivity(intent9);
                         break;
                 }
                 return true;
@@ -270,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
         Button bt5 = (Button)findViewById(R.id.ucok);
         bt5.setTypeface(tf);
 
-        Button bt6 = (Button)findViewById(R.id.about);
+        Button bt6 = (Button)findViewById(R.id.fokopok);
         bt6.setTypeface(tf);
 
         Button bt7 = (Button)findViewById(R.id.wv);
@@ -302,8 +316,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void linkabout (View view){
-        Intent intent = new Intent(MainActivity.this, about.class);
+    public void linkfokopok (View view){
+        Intent intent = new Intent(MainActivity.this, fokopok.class);
         startActivity(intent);
     }
 

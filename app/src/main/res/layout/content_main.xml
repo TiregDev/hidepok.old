@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/app_bar_main"
-    tools:context="com.hi_depok.hi_depok.Activity_Main.MainActivity">
+    tools:context="com.hi_depok.hi_depok.Activity_Main.MainActivity"
+    tools:showIn="@layout/app_bar_main">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -28,63 +27,63 @@
             android:layout_weight="1.8">
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/imageView2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/logo"
+                    android:layout_weight="0.49"
                     android:contentDescription="@string/app_name"
-                    android:id="@+id/imageView2"
-                    android:layout_weight="0.49" />
+                    android:src="@drawable/logo" />
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_weight="0.5"
                     android:gravity="center"
-                    android:layout_weight="0.5">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:text="@string/app_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:id="@+id/textView"
-                        android:textSize="36sp"
-                        android:textStyle="normal|bold"
-                        android:textColor="#6B92CB"
-                        android:gravity="center"
-                        android:layout_gravity="center_vertical"
-                        android:paddingTop="15dp" />
-
-                    <TextView
-                        android:text="@string/tag_app_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:paddingTop="15dp"
+                        android:text="@string/app_name"
+                        android:textColor="#6B92CB"
+                        android:textSize="36sp"
+                        android:textStyle="normal|bold" />
+
+                    <TextView
                         android:id="@+id/textView2"
-                        android:textSize="20sp"
-                        android:textStyle="normal|italic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|center_vertical|center_horizontal"
+                        android:text="@string/tag_app_name"
                         android:textColor="#F6981A"
-                        android:gravity="top|center_vertical|center_horizontal" />
+                        android:textSize="20sp"
+                        android:textStyle="normal|italic" />
 
                     <Button
+                        android:id="@+id/wv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/wv"
-                        android:textColor="#b7b7b7"
-                        android:alpha="0.7"
-                        android:textAllCaps="false"
-                        android:fontFamily="sans-serif-condensed"
-                        android:background="@drawable/shape2"
-                        android:text="@string/video"
-                        android:minHeight="0dp"
-                        android:drawableStart="@drawable/ic_action_play_circle_filled"
-                        android:textSize="14sp"
+                        android:layout_gravity="center_horizontal|fill"
                         android:layout_marginEnd="5dp"
-                        android:layout_gravity="center_horizontal|fill" />
+                        android:layout_marginTop="10dp"
+                        android:alpha="0.7"
+                        android:background="@drawable/shape2"
+                        android:drawableStart="@drawable/ic_action_play_circle_filled"
+                        android:fontFamily="sans-serif-condensed"
+                        android:minHeight="0dp"
+                        android:text="@string/video"
+                        android:textAllCaps="false"
+                        android:textColor="#b7b7b7"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -98,12 +97,12 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/textView3"
-                android:textColor="#b7b7b7"
+                android:gravity="bottom"
                 android:text="Pilih modul yang ingin dijalankan!"
-                android:gravity="bottom" />
+                android:textColor="#b7b7b7" />
 
         </RelativeLayout>
 
@@ -120,38 +119,38 @@
             android:layout_weight="2.5">
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true">
+                android:orientation="horizontal">
 
                 <Button
-                    android:text="SiKepok"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/sikepok"
-                    android:layout_weight="1"
-                    android:textAllCaps="false"
-                    android:textColor="#b7b7b7"
-                    android:alpha="0.7"
-                    android:background="@drawable/shape2"
-                    android:onClick="linkSikepok"
-                    android:drawableStart="@mipmap/sikepok" />
-
-                <Button
-                    android:text="KaDepok"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/kadepok"
-                    android:textAllCaps="false"
-                    android:textColor="#b7b7b7"
+                    android:layout_weight="1"
                     android:alpha="0.7"
                     android:background="@drawable/shape2"
+                    android:drawableStart="@mipmap/sikepok"
+                    android:onClick="linkSikepok"
+                    android:text="SiKepok"
+                    android:textAllCaps="false"
+                    android:textColor="#b7b7b7" />
+
+                <Button
+                    android:id="@+id/kadepok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:onClick="linkkadepok"
+                    android:alpha="0.7"
+                    android:background="@drawable/shape2"
                     android:drawableStart="@mipmap/kadepok"
-                    android:layout_marginStart="10dp" />
+                    android:onClick="linkkadepok"
+                    android:text="KaDepok"
+                    android:textAllCaps="false"
+                    android:textColor="#b7b7b7" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -161,36 +160,36 @@
             android:layout_weight="2.5">
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <Button
-                    android:text="Lapok"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/lapok"
-                    android:textColor="#b7b7b7"
-                    android:alpha="0.7"
-                    android:textAllCaps="false"
-                    android:background="@drawable/shape2"
-                    android:layout_weight="1"
-                    android:onClick="linklapok"
-                    android:drawableStart="@mipmap/lapok" />
-
-                <Button
-                    android:text="Kapok"
-                    android:textColor="#b7b7b7"
-                    android:alpha="0.7"
-                    android:textAllCaps="false"
-                    android:background="@drawable/shape2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/kapok"
                     android:layout_weight="1"
+                    android:alpha="0.7"
+                    android:background="@drawable/shape2"
+                    android:drawableStart="@mipmap/lapok"
+                    android:onClick="linklapok"
+                    android:text="Lapok"
+                    android:textAllCaps="false"
+                    android:textColor="#b7b7b7" />
+
+                <Button
+                    android:id="@+id/kapok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:alpha="0.7"
+                    android:background="@drawable/shape2"
                     android:drawableStart="@mipmap/kapok"
                     android:onClick="linkkapok"
-                    android:layout_marginStart="10dp" />
+                    android:text="Kapok"
+                    android:textAllCaps="false"
+                    android:textColor="#b7b7b7" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -200,41 +199,38 @@
             android:layout_weight="2.2">
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <Button
-                    android:text="Ucok"
-                    android:layout_width="wrap_content"
-                    android:textColor="#b7b7b7"
-                    android:alpha="0.7"
-                    android:textAllCaps="false"
-                    android:background="@drawable/shape2"
-                    android:layout_height="wrap_content"
                     android:id="@+id/ucok"
-                    android:layout_weight="0.69"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="10dp"
+                    android:alpha="0.7"
+                    android:background="@drawable/shape2"
+                    android:drawableStart="@mipmap/ucok"
                     android:onClick="linkucok"
-                    android:drawableStart="@mipmap/ucok" />
+                    android:text="Ucok"
+                    android:textAllCaps="false"
+                    android:textColor="#b7b7b7" />
 
                 <Button
-                    android:text="About"
-                    android:layout_width="wrap_content"
-                    android:textColor="#b7b7b7"
+                    android:id="@+id/fokopok"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:alpha="0.7"
-                    android:layout_height="wrap_content"
-                    android:textAllCaps="false"
-                    android:id="@+id/about"
-                    android:layout_weight="0.7"
                     android:background="@drawable/shape2"
-                    android:drawableStart="@drawable/ic_action_info"
-                    android:layout_marginStart="10dp"
-                    android:paddingBottom="18dp"
-                    android:paddingTop="17dp"
-                    android:drawablePadding="10dp"
-                    android:onClick="linkabout"
-                    android:paddingEnd="5dp"
-                    android:paddingStart="15dp" />
+                    android:drawableStart="@drawable/fokopok_2"
+                    android:onClick="linkfokopok"
+                    android:text="Fokopok"
+                    android:textAllCaps="false"
+                    android:textColor="#b7b7b7" />
+
             </LinearLayout>
         </RelativeLayout>
 

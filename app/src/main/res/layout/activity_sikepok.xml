@@ -51,7 +51,7 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:src="@drawable/hospital" />
+            android:src="@drawable/rumah_sakit" />
 
         <ImageView
             android:id="@+id/pb"

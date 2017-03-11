@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.Sikepok_Diagnosa.sikepok_diagnosa;
+import com.hi_depok.hi_depok.Sikepok_RS.sikepok_rs;
 import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment2;
 import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment3;
@@ -145,6 +146,11 @@ public class sikepok extends AppCompatActivity implements View.OnClickListener{
     //fragment1 fragment1;
     public void diagnosa(View v){
         Intent intent = new Intent(sikepok.this, sikepok_diagnosa.class);
+        startActivity(intent);
+    }
+
+    public void rumah_sakit(View v){
+        Intent intent = new Intent(sikepok.this, sikepok_rs.class);
         startActivity(intent);
     }
 }

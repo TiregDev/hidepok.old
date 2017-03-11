@@ -43,7 +43,7 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:src="@drawable/ic_action_donate" />
+            android:src="@drawable/donate_2" />
 
         <ImageView
             android:id="@+id/cherish"
@@ -51,7 +51,7 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:src="@drawable/ic_action_cherish" />
+            android:src="@drawable/cherish_us" />
 
         <ImageView
             android:id="@+id/volunteer"
@@ -59,7 +59,7 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:src="@drawable/ic_action_volunteer" />
+            android:src="@drawable/volunteer" />
 
         <ImageView
             android:id="@+id/play"
