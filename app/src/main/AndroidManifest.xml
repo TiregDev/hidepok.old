@@ -88,7 +88,8 @@
         <activity android:name=".Sikepok_RS.sikepok_rs" />
         <activity
             android:name=".Activity_Main.fokopok"
-            android:theme="@style/Background"/>
+            android:theme="@style/Background" />
+        <activity android:name=".Ucok.detail"></activity>
     </application>
 
 </manifest>

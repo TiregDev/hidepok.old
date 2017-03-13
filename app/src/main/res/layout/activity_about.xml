@@ -14,6 +14,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:layout_marginStart="10dp"
             android:onClick="about_home"
             android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
 

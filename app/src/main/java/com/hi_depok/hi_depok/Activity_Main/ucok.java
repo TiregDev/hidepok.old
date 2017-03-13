@@ -1,5 +1,6 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.Sikepok_RS.sikepok_rs;
+import com.hi_depok.hi_depok.Ucok.ListContent;
+import com.hi_depok.hi_depok.Ucok.RecyclerViewAdapter;
 import com.hi_depok.hi_depok.fragment_ucok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_ucok_activity.fragment2;
 import com.hi_depok.hi_depok.fragment_ucok_activity.fragment3;
@@ -125,5 +129,10 @@ public class ucok extends AppCompatActivity implements View.OnClickListener{
         public int getCount() {
             return 3;
         }
+    }
+
+    public void linkSiUKM(View v){
+        Intent intent = new Intent(ucok.this, ListContent.class);
+        startActivity(intent);
     }
 }
