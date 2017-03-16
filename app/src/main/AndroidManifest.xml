@@ -89,7 +89,8 @@
         <activity
             android:name=".Activity_Main.fokopok"
             android:theme="@style/Background" />
-        <activity android:name=".Ucok.detail"></activity>
+        <activity android:name=".Ucok.ucok_content" />
+        <activity android:name=".Ucok.UcokDetailActivity"></activity>
     </application>
 
 </manifest>

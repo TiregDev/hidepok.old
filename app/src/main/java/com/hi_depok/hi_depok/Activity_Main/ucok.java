@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.Sikepok_RS.sikepok_rs;
-import com.hi_depok.hi_depok.Ucok.ListContent;
+import com.hi_depok.hi_depok.Ucok.ucok_content;
 import com.hi_depok.hi_depok.Ucok.RecyclerViewAdapter;
 import com.hi_depok.hi_depok.fragment_ucok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_ucok_activity.fragment2;
@@ -132,7 +132,8 @@ public class ucok extends AppCompatActivity implements View.OnClickListener{
     }
 
     public void linkSiUKM(View v){
-        Intent intent = new Intent(ucok.this, ListContent.class);
+        Intent intent = new Intent(ucok.this, ucok_content.class);
         startActivity(intent);
     }
+
 }

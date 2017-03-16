@@ -37,7 +37,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         holder.list_title.setText(itemList.get(position).getTitle());
         holder.list_desc.setText(itemList.get(position).getDesc());
         holder.list_price.setText(itemList.get(position).getPrice());
-        holder.avatar.setImageResource(itemList.get(position).getAvatar());
+        holder.list_avatar.setImageResource(itemList.get(position).getAvatar());
     }
 
     @Override
