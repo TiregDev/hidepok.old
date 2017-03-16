@@ -83,14 +83,6 @@
 
     </LinearLayout>
 
-    <!--<View-->
-    <!--android:id="@+id/list"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="1dp"-->
-    <!--android:layout_below="@+id/dropdown"-->
-    <!--android:background="#fff"/>-->
-
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"

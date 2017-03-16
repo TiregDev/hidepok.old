@@ -1,5 +1,6 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
@@ -14,7 +15,9 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hi_depok.hi_depok.Lapok.lapok_content;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.Ucok.ucok_content;
 import com.hi_depok.hi_depok.fragment_lapok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_lapok_activity.fragment2;
 import com.hi_depok.hi_depok.fragment_lapok_activity.fragment3;
@@ -125,5 +128,10 @@ public class lapok extends AppCompatActivity implements View.OnClickListener{
         public int getCount() {
             return 3;
         }
+    }
+
+    public void linkforum(View v){
+        Intent intent = new Intent(lapok.this, lapok_content.class);
+        startActivity(intent);
     }
 }
