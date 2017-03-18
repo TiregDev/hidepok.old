@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detail_anak"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="2dp">
+
+    <Button
+        android:id="@+id/close"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:drawable/ic_menu_close_clear_cancel"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/dp_detail_anak"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/close"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter"
+        app:srcCompat="@mipmap/ic_person_white_36dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/dp_detail_anak">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp">
+
+            <TextView
+                android:id="@+id/textnamaanak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:text="Nama"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/:nama_anak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textnamaanak"
+                android:layout_alignBottom="@+id/textnamaanak"
+                android:layout_alignStart="@+id/:ttl"
+                android:layout_weight="1"
+                android:text=":"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/nama_anak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/:nama_anak"
+                android:layout_alignBottom="@+id/:nama_anak"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@+id/:nama_anak"
+                android:layout_weight="1"
+                android:text="Muhammad Fahrezi"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/textttl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textnamaanak"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="TTL"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/:ttl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/textjk"
+                android:layout_alignStart="@+id/:jk"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text=":"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/ttl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/:ttl"
+                android:layout_alignBottom="@+id/:ttl"
+                android:layout_alignStart="@+id/jk"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="Jakarta, 5 Januari 2004"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/textjk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textttl"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="Jenis Kelamin"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/:jk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textjk"
+                android:layout_alignBottom="@+id/textjk"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/textjk"
+                android:layout_weight="1"
+                android:text=":"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/jk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/:jk"
+                android:layout_alignBottom="@+id/:jk"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/:jk"
+                android:layout_weight="1"
+                android:text="Laki-Laki"
+                android:textColor="#fff" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

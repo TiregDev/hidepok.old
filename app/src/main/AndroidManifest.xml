@@ -6,6 +6,13 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -21,7 +28,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -84,8 +90,6 @@
         <activity
             android:name=".Activity_Main.changepass"
             android:noHistory="true" />
-        <activity android:name=".Sikepok_Diagnosa.sikepok_diagnosa" />
-        <activity android:name=".Sikepok_RS.sikepok_rs" />
         <activity
             android:name=".Activity_Main.fokopok"
             android:theme="@style/Background" />
@@ -93,6 +97,86 @@
         <activity android:name=".Ucok.UcokDetailActivity" />
         <activity android:name=".Lapok.lapok_content" />
         <activity android:name=".fokopok.fokopok_content"></activity>
+        <activity android:name=".Sikepok_Diagnosa.Anggota_badan_badan"/>
+        <activity android:name=".Sikepok_Diagnosa.Apotik1"/>
+        <activity android:name=".Sikepok_Diagnosa.Deskripsi"/>
+        <activity android:name=".Sikepok_Diagnosa.Diagnosa"/>
+        <activity android:name=".Sikepok_Diagnosa.Ensiklopedia"/>
+        <activity android:name=".Sikepok_Diagnosa.Lokasi"/>
+        <activity android:name=".Sikepok_Diagnosa.Sugesti"/>
+        <activity android:name=".Sikepok_Diagnosa.SikepokDiagnosa"/>
+        <activity
+            android:name=".Sikepok_Panic.PanicActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Sikepok_Panic.MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".Sikepok_Panic.PanicActivity">
+        </activity>
+        <activity
+            android:name=".Sikepok_Panic.DetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".Sikepok_Panic.MenuActivity">
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".Sikepok_Panic.MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
+        <activity
+            android:name=".Activity_Main.WelcomeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name=".Sikepok_Panic.ListActivity"
+            android:parentActivityName=".Sikepok_Panic.MenuActivity">
+        </activity>
+        <activity
+            android:name=".Sikepok_Panic.PilihanLainActivity"
+            android:parentActivityName=".Sikepok_Panic.MenuActivity">
+        </activity>
+        <activity
+            android:name=".Sikepok_Panic.admin_main"/>
+        <activity android:name=".Lapok.fragment.DescriptionForm"></activity>
+        <activity android:name=".Kadepok_Donasi.kadepok_donasi" />
+        <activity android:name=".Kadepok_Volunteer.kadepok_volunteer" />
+        <activity android:name=".Kadepok_Donasi.kadepok_donasi_panti" />
+        <activity android:name=".Kadepok_Donasi.kadepok_donasi_form" />
+        <activity android:name=".Kadepok_Donasi.kadepok_donasi_verify" />
+        <activity android:name=".Kadepok_Donasi.kadepok_donasi_upload" />
+        <activity android:name=".Kadepok_Cherish.kadepok_cherish" />
+        <activity android:name=".Kadepok_Cherish.kadepok_cherish_panti" />
+        <activity android:name=".Sikepok_RS.deskripsiApotek" />
+        <activity android:name=".Sikepok_RS.deskripsi_klinik" />
+        <activity android:name=".Sikepok_RS.regis_pasien_baru" />
+        <activity android:name=".Sikepok_RS.regis_pasien_lama" />
+        <activity android:name=".Sikepok_RS.regis_berobat" />
+        <activity android:name=".Sikepok_RS.ketentuan" />
+        <activity android:name=".Sikepok_RS.detail_post" />
+        <activity android:name=".Sikepok_RS.detail_post_saya" />
+        <activity android:name=".Sikepok_RS.post_saya" />
+        <activity
+            android:name=".Sikepok_RS.list_diskusi"
+            android:label="@string/title_activity_list_diskusi"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Sikepok_RS.klinik" />
+        <activity android:name=".Sikepok_RS.apotek" />
+        <activity android:name=".Sikepok_RS.registrasi" />
+        <activity android:name=".Sikepok_RS.forum" />
+        <activity android:name=".Sikepok_RS.rs_terdekat" />
+        <activity android:name=".Sikepok_RS.daftar_rs" />
+        <activity
+            android:name=".Sikepok_RS.menu_rs"
+            android:label="@string/title_activity_menu_rs"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sikepok_RS.RSActivity"
+            android:theme="@style/Background_main">
+        </activity>
+
     </application>
 
 </manifest>

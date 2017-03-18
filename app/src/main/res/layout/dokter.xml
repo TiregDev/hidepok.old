@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Spinner
+            android:id="@+id/spinner_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="10dp"
+            android:entries="@array/jadwal"
+            android:spinnerMode="dropdown" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/spinner_1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:weightSum="2"
+                    android:padding="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/linearLayout6"
+                    android:background="@drawable/border_style">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="132dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/hadi" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2">
+
+                        <TextView
+                            style="@style/tulisanPutih"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/namaDokter" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/spesialis"
+                            android:textColor="@color/putih" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:weightSum="2"
+                    android:padding="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/border_style">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="132dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/hadi" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2">
+
+                        <TextView
+                            style="@style/tulisanPutih"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/namaDokter" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/spesialis"
+                            android:textColor="@color/putih" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:weightSum="2"
+                    android:padding="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/border_style">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="132dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/hadi" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2">
+
+                        <TextView
+                            style="@style/tulisanPutih"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/namaDokter" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/spesialis"
+                            android:textColor="@color/putih" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:weightSum="2"
+                    android:padding="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/border_style">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="132dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/hadi" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2">
+
+                        <TextView
+                            style="@style/tulisanPutih"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/namaDokter" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/spesialis"
+                            android:textColor="@color/putih" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:weightSum="2"
+                    android:padding="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/border_style">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="132dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/hadi" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2">
+
+                        <TextView
+                            style="@style/tulisanPutih"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/namaDokter" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/spesialis"
+                            android:textColor="@color/putih" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:weightSum="2"
+                    android:padding="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/border_style">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="132dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/hadi" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2">
+
+                        <TextView
+                            style="@style/tulisanPutih"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/namaDokter" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/spesialis"
+                            android:textColor="@color/putih" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:weightSum="2"
+                    android:padding="10dp"
+                    android:layout_marginBottom="50dp"
+                    android:background="@drawable/border_style">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="132dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/hadi" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2">
+
+                        <TextView
+                            style="@style/tulisanPutih"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/namaDokter" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/spesialis"
+                            android:textColor="@color/putih" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</LinearLayout>

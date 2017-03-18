@@ -21,7 +21,8 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:src="@drawable/camera" />
+            android:src="@drawable/camera"
+            android:onClick="process"/>
 
         <ImageView
             android:id="@+id/forum"

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hi_depok.hi_depok.Sikepok_Diagnosa.Diagnosa">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="5"
+            android:backgroundTint="@color/colorPrimary"
+            android:onClick="back"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_keyboard_arrow_left_white_24dp" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+
+            android:text="Diagnosa"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="left"
+        android:text="Kenali Penyakitmu"
+        android:textColor="@color/putih"
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"/>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        />
+
+</LinearLayout>

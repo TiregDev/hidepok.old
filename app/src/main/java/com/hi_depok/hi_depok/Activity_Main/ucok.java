@@ -10,15 +10,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Sikepok_RS.sikepok_rs;
 import com.hi_depok.hi_depok.Ucok.ucok_content;
-import com.hi_depok.hi_depok.Ucok.RecyclerViewAdapter;
 import com.hi_depok.hi_depok.fragment_ucok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_ucok_activity.fragment2;
 import com.hi_depok.hi_depok.fragment_ucok_activity.fragment3;

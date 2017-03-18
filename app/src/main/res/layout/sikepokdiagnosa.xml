@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hi_depok.hi_depok.Sikepok_Diagnosa.SikepokDiagnosa">
+
+    <ImageView
+        android:id="@+id/dokter"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="60dp"
+        app:srcCompat="@drawable/doctor_01"
+        tools:layout_editor_absoluteX="78dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Kenali Gejala Penyakitmu"
+        android:textColor="#fff"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/diagnosa"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/ensiklopedia"
+                android:layout_gravity="center_vertical"
+
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:onClick="diagnosa"
+                android:scaleType="fitCenter"
+                android:scaleX="0.7"
+                android:scaleY="0.7"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.409"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/ensiklopedia"
+                app:srcCompat="@drawable/diagnosa" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/diagnosa"
+                android:layout_alignRight="@+id/diagnosa"
+                android:layout_below="@+id/diagnosa"
+
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Diagnosa"
+                android:textColor="#fff"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/ensiklopedia"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:onClick="ensiklopedia"
+                android:scaleType="fitXY"
+                android:scaleX="0.6"
+                android:scaleY="0.7"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:srcCompat="@drawable/book_01" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ensiklopedia"
+                android:layout_alignRight="@+id/ensiklopedia"
+                android:layout_below="@+id/ensiklopedia"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Ensiklopedia"
+                android:textColor="#fff"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton8"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/cantik"
+                android:onClick="lokasi"
+                android:scaleType="fitXY"
+                android:scaleX="0.8"
+                android:scaleY="1"
+                app:srcCompat="@drawable/loka" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ensiklopedia"
+                android:layout_alignRight="@+id/ensiklopedia"
+                android:layout_below="@+id/ensiklopedia"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Lokasi"
+                android:textColor="#fff"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

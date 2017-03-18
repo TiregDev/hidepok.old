@@ -10,14 +10,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Sikepok_Diagnosa.sikepok_diagnosa;
-import com.hi_depok.hi_depok.Sikepok_RS.sikepok_rs;
+import com.hi_depok.hi_depok.Sikepok_Panic.PanicActivity;
+import com.hi_depok.hi_depok.Sikepok_Diagnosa.*;
+import com.hi_depok.hi_depok.Sikepok_RS.*;
 import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment2;
 import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment3;
@@ -145,12 +144,17 @@ public class sikepok extends AppCompatActivity implements View.OnClickListener{
 
     //fragment1 fragment1;
     public void diagnosa(View v){
-        Intent intent = new Intent(sikepok.this, sikepok_diagnosa.class);
+        Intent intent = new Intent(sikepok.this, SikepokDiagnosa.class);
         startActivity(intent);
     }
 
     public void rumah_sakit(View v){
-        Intent intent = new Intent(sikepok.this, sikepok_rs.class);
+        Intent intent = new Intent(sikepok.this, RSActivity.class);
+        startActivity(intent);
+    }
+
+    public void panic(View v){
+        Intent intent = new Intent(sikepok.this, PanicActivity.class);
         startActivity(intent);
     }
 }

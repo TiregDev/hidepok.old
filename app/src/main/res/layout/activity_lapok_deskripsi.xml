@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#303030"
+    android:gravity="top">
+
+    <TextView
+        android:id="@+id/labelJudul"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JUDUL LAPORAN"
+        android:textColor="#fdfdfd"
+        android:textSize="10pt"/>
+
+    <EditText
+        android:id="@+id/entry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelJudul"
+        android:textColor="#fdfdfd"/>
+
+    <TextView
+        android:id="@+id/labelKategori"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/entry"
+        android:text="KATEGORI LAPORAN"
+        android:textColor="#fdfdfd"
+        android:textSize="10pt"/>
+
+    <Spinner
+        android:id="@+id/spinKategori"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/labelKategori"/>
+
+    <TextView
+        android:id="@+id/labelWaktu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinKategori"
+        android:text="TANGGAL DAN WAKTU LAPORAN"
+        android:textColor="#fdfdfd"
+        android:textSize="10pt"/>
+
+    <TextView
+        android:id="@+id/labelPerubahanWaktu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelWaktu"
+        android:gravity="right"
+        android:text="TANGGAL DAN WAKTU LAPORAN"
+        android:textColor="#fdfdfd"
+        android:textSize="8pt"/>
+    <TextView
+        android:id="@+id/labelDeskripsi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelPerubahanWaktu"
+        android:text="DESKRIPSI"
+        android:textColor="#fdfdfd"
+        android:textSize="10pt"/>
+    <EditText
+        android:id="@+id/entryDeskripsi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/labelDeskripsi"
+        android:textColor="#fdfdfd"/>
+    <Button
+        android:id="@+id/btnSubmitLaporan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/entryDeskripsi"
+        android:text="LAPORKAN!"
+        android:onClick="writeMessage"/>
+    <Button
+        android:id="@+id/btnReadLaporan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnSubmitLaporan"
+        android:text="LIHAT HASIL"
+        android:onClick="readMessage"/>
+    <TextView
+        android:id="@+id/labelCoba1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnReadLaporan"
+        android:text="HASIL"
+        android:textColor="#fdfdfd"
+        android:textSize="10pt"/>
+
+
+</RelativeLayout>

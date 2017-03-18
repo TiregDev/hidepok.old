@@ -1,5 +1,6 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,9 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hi_depok.hi_depok.Kadepok_Cherish.kadepok_cherish;
+import com.hi_depok.hi_depok.Kadepok_Donasi.kadepok_donasi;
+import com.hi_depok.hi_depok.Kadepok_Volunteer.kadepok_volunteer;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment2;
@@ -138,5 +142,19 @@ public class kadepok extends AppCompatActivity implements View.OnClickListener{
         public int getCount() {
             return 4;
         }
+    }
+    public void donasi(View v) {
+        Intent intent = new Intent(kadepok.this, kadepok_donasi.class);
+        startActivity(intent);
+    }
+
+    public void cherish(View v) {
+        Intent intent = new Intent(kadepok.this, kadepok_cherish.class);
+        startActivity(intent);
+    }
+
+    public void volunteer(View v) {
+        Intent intent = new Intent(kadepok.this, kadepok_volunteer.class);
+        startActivity(intent);
     }
 }
