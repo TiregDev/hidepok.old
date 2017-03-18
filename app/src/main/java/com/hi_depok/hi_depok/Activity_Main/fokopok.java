@@ -1,5 +1,6 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.fokopok.fokopok_content;
 import com.hi_depok.hi_depok.fragment_kapok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_kapok_activity.fragment2;
 
@@ -112,5 +114,9 @@ public class fokopok extends AppCompatActivity implements View.OnClickListener {
         public int getCount() {
             return 2;
         }
+    }
+    public void linkcontent(View v){
+        Intent intent = new Intent(fokopok.this, fokopok_content.class);
+        startActivity(intent);
     }
 }

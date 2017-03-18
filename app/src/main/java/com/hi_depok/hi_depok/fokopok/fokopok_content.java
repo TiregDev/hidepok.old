@@ -32,7 +32,8 @@ public class fokopok_content extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fokopok_content);
-        ContentAdapter adapter = new ContentAdapter(fokopok_content.this);
+        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -81,7 +82,7 @@ public class fokopok_content extends AppCompatActivity {
     /**
      * Adapter to display recycler view.
      */
-    public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
+    public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         // Set numbers of Card in RecyclerView.
         private static final int LENGTH = 18;
 
