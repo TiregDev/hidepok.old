@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.Sikepok_RS.sikepok_rs;
+import com.hi_depok.hi_depok.Ucok.danus_activity;
 import com.hi_depok.hi_depok.Ucok.ucok_content;
 import com.hi_depok.hi_depok.Ucok.RecyclerViewAdapter;
 import com.hi_depok.hi_depok.fragment_ucok_activity.fragment1;
@@ -136,4 +137,8 @@ public class ucok extends AppCompatActivity implements View.OnClickListener{
         startActivity(intent);
     }
 
+    public void link_danus(View v){
+        Intent intent = new Intent(ucok.this, danus_activity.class);
+        startActivity(intent);
+    }
 }

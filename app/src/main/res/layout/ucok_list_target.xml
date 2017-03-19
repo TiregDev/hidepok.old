@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:layout_gravity="center"
+    android:layout_marginBottom="5dp"
+    app:cardBackgroundColor="@android:color/transparent"
+    android:background="#303030">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="#303030"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/harike"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9"
+            android:text="Hari ke-1"
+            android:textColor="#fff"/>
+
+        <EditText
+            android:id="@+id/input_pendapatan"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:paddingLeft="5dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1.3"
+            android:textColorHint="#b7b7b7"
+            android:textSize="16sp"
+            android:background="@drawable/shape_edittext"
+            android:hint="contoh: 50000"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/simpan"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="0.8"
+            android:text="Simpan"
+            android:textColor="#303030"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

@@ -92,7 +92,14 @@
         <activity android:name=".Ucok.ucok_content" />
         <activity android:name=".Ucok.UcokDetailActivity" />
         <activity android:name=".Lapok.lapok_content" />
-        <activity android:name=".fokopok.fokopok_content"></activity>
+        <activity android:name=".fokopok.fokopok_content" />
+        <activity android:name=".Ucok.danus_activity" />
+        <activity android:name=".Ucok.ucok_listusaha" />
+        <activity android:name=".Ucok.hasil_calculate" />
+        <activity android:name=".Ucok.detail_danus" />
+        <activity
+            android:name=".Ucok.detail_target"
+            android:parentActivityName=".Ucok.danus_activity"/>
     </application>
 
 </manifest>

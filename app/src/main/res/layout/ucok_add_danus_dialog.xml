@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:padding="15dp">
+
+    <EditText
+        android:id="@+id/nama_target"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nama Target"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:text="contoh: Bakti Sosial"
+        android:textSize="10sp"
+        android:id="@+id/contoh"
+        android:layout_marginTop="-5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:paddingLeft="5dp"
+            android:text="dd/mm/yyyy"
+            android:textSize="18sp"
+            android:id="@+id/gantitanggal"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:text="Mulai Target"
+            android:textAllCaps="false"
+            android:textColor="#303030"
+            android:onClick="mulai"
+            android:id="@+id/date"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/deskripsi"
+        android:layout_width="match_parent"
+        android:gravity="top"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:hint="Deskripsi (Optional)"
+        android:inputType="textMultiLine" />
+
+
+</LinearLayout>

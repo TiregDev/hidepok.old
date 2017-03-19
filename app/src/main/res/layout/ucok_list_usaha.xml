@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/title_usaha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/article_titles"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:textColor="#fff"
+        android:text="Title"/>
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_usaha"
+        android:paddingLeft="10dp"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:ellipsize="end"
+        android:textColor="#fff"
+        android:singleLine="true"
+        android:textSize="@dimen/slide_desc"
+        android:text="Deskripsi"/>
+
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#b7b7b7"
+       android:layout_below="@+id/desc"
+       android:layout_marginTop="10dp"/>
+
+</RelativeLayout>
