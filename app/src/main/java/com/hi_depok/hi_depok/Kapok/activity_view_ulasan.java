@@ -21,7 +21,7 @@ public class activity_view_ulasan extends AppCompatActivity {
     ListView list;
     String [] titles;
     String [] description;
-    int [] imgs = {R.drawable.facebook, R.drawable.instagram, R.drawable.twitter, R.drawable.google};
+    int [] imgs = {R.drawable.favorite, R.drawable.like, R.drawable.like_list, R.drawable.common_google_signin_btn_icon_dark};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

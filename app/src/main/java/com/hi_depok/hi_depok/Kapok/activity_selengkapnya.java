@@ -21,7 +21,7 @@ import com.hi_depok.hi_depok.R;
 public class activity_selengkapnya extends AppCompatActivity {
     ViewPager viewPager;
 
-    Integer[] imageId = {R.drawable.kuliner, R.drawable.rm, R.drawable.lm};
+    Integer[] imageId = {R.drawable.ucok_image_4, R.drawable.ucok_image_2, R.drawable.ucok_image_5};
     int currentPage = 0;
     Timer timer;
     final long DELAY_MS = 500;

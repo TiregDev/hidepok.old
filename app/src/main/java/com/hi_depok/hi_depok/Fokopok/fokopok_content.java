@@ -1,131 +1,130 @@
-package com.hi_depok.hi_depok.Fokopok;
+package com.hi_depok.hi_depok.fokopok;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.content.pm.ActivityInfo;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.fokopok;
 import com.hi_depok.hi_depok.R;
 
-public class fokopok_content extends AppCompatActivity {
-    RecyclerView recyclerView;
+public class fokopok_content extends AppCompatActivity implements View.OnClickListener {
+    ViewPager pager;
+    FokopokContent adapter;
+    View strip;
+    ImageView komunitas, home, profil;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fokopok_content);
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
-        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        pager = (ViewPager) findViewById(R.id.pager);
+        komunitas = (ImageView) findViewById(R.id.komunitas);
+        home = (ImageView) findViewById(R.id.home);
+        profil = (ImageView) findViewById(R.id.profil);
+        strip = findViewById(R.id.strip);
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        adapter = new FokopokContent(getSupportFragmentManager());
+        pager.setAdapter(adapter);
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                switch (position) {
+                    case 0:
+                        strip.setTranslationX(positionOffsetPixels / 3);
+                        break;
+                    case 1:
+                        strip.setTranslationX(strip.getWidth() + positionOffsetPixels / 3);
+                        break;
+                    case 2:
+                        strip.setTranslationX(strip.getWidth() * 2 + positionOffsetPixels / 3);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        komunitas.setOnClickListener(this);
+        home.setOnClickListener(this);
+        profil.setOnClickListener(this);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-
-        public ImageView picture;
-        public ImageView avatar;
-        public TextView username;
-        public TextView time;
-        public TextView title;
-        public TextView description;
-
-        public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.fokopok_item_list, parent, false));
-
-            picture = (ImageView) itemView.findViewById(R.id.card_image);
-            avatar = (ImageView) itemView.findViewById(R.id.avatar);
-            username = (TextView) itemView.findViewById(R.id.username);
-            time = (TextView) itemView.findViewById(R.id.time);
-            title    = (TextView) itemView.findViewById(R.id.card_title);
-            description = (TextView) itemView.findViewById(R.id.card_text);
-            ImageButton button = (ImageButton)itemView.findViewById(R.id.like);
-            button.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(v.getContext(), ("Anda telah menyukai content ini"),
-                            Toast.LENGTH_LONG).show();
-                }
-            });
-
-            ImageButton favoriteImageButton =
-                    (ImageButton) itemView.findViewById(R.id.comment_button);
-            favoriteImageButton.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(v.getContext(), ("Anda telah memilih comment"),
-                            Toast.LENGTH_LONG).show();
-                }
-            });
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.komunitas:
+                pager.setCurrentItem(0);
+                break;
+            case R.id.home:
+                pager.setCurrentItem(1);
+                break;
+            case R.id.profil:
+                pager.setCurrentItem(2);
+                break;
+            default:
+                break;
         }
     }
 
-    /**
-     * Adapter to display recycler view.
-     */
-    public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-        // Set numbers of Card in RecyclerView.
-        private static final int LENGTH = 18;
+    class FokopokContent extends FragmentPagerAdapter {
+        com.hi_depok.hi_depok.fokopok.fragment_content.fragment1 fragment1;
+        com.hi_depok.hi_depok.fokopok.fragment_content.fragment2 fragment2;
+        com.hi_depok.hi_depok.fokopok.fragment_content.fragment3 fragment3;
 
-        private final String mPlaces;
-        private final String mPlaceDesc;
-        private final Drawable mPlacePictures;
-        private final Drawable mAvatar;
-        private final String mUsername;
-        private final String mTime;
-
-
-        public ContentAdapter(Context context) {
-            Resources resources = context.getResources();
-            mPlaces = "Computer Student Club";
-            mPlaceDesc = "Kompetisi Networking di PNJ";
-            mAvatar = resources.getDrawable(R.drawable.profile);
-            mUsername = "Fajar Zakaria";
-            mTime = "Feb 8, 2017 at 17.00 WIB";
-//            TypedArray a = resources.obtainTypedArray(R.array.places_picture);
-            mPlacePictures = resources.getDrawable(R.drawable.image_fokopok_1);
-//            for (int i = 0; i < mPlacePictures.length; i++) {
-//                mPlacePictures[i] = a.getDrawable(i);
-//            }
-//            a.recycle();
+        public FokopokContent(FragmentManager fm) {
+            super(fm);
+            fragment1 = com.hi_depok.hi_depok.fokopok.fragment_content.fragment1.newInstance();
+            fragment2 = com.hi_depok.hi_depok.fokopok.fragment_content.fragment2.newInstance();
+            fragment3 = com.hi_depok.hi_depok.fokopok.fragment_content.fragment3.newInstance();
         }
 
         @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return fragment1;
+                case 1:
+                    return fragment2;
+                case 2:
+                    return fragment3;
+                default:
+                    return fragment1;
+            }
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.avatar.setImageDrawable(mAvatar);
-            holder.username.setText(mUsername);
-            holder.time.setText(mTime);
-            holder.title.setText(mPlaces);
-            holder.description.setText(mPlaceDesc);
-            holder.picture.setImageDrawable(mPlacePictures);
+        public int getCount() {
+            return 3;
         }
+    }
 
-        @Override
-        public int getItemCount() {
-            return LENGTH;
-        }
+    public void link_message(View v){
+        Intent intent = new Intent(fokopok_content.this, message.class);
+        startActivity(intent);
     }
 
     public void fokopok_activity(View v){
         Intent intent = new Intent(fokopok_content.this, fokopok.class);
         startActivity(intent);
     }
-}
 
+}

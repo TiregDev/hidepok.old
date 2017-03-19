@@ -30,9 +30,8 @@
             android:id="@+id/join"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="5dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:clickable="true"
             android:onClick="join"
@@ -65,7 +64,7 @@
             android:layout_marginRight="5dp"
             android:background="#fff"
             android:layout_gravity="center"
-            android:src="@drawable/next" />
+            android:src="@drawable/spinner" />
 
         <Spinner
             android:id="@+id/pilihan"
@@ -85,7 +84,7 @@
             android:layout_marginRight="10dp"
             android:background="#fff"
             android:layout_gravity="center"
-            android:src="@drawable/next" />
+            android:src="@drawable/spinner" />
     </LinearLayout>
 
     <LinearLayout

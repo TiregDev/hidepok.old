@@ -12,7 +12,7 @@ public class UcokDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ucok_detail);
+        setContentView(R.layout.ucok_detail_siumkm);
     }
 
     public void ucok_content_siukm(View v){

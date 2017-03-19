@@ -38,11 +38,11 @@ public class KapokActivity extends Activity implements AdapterView.OnItemSelecte
             "Kuliner", "Wisata"
     };
     int[] gridViewImageId = {
-            R.drawable.wisata, R.drawable.kuliner,
-            R.drawable.kuliner, R.drawable.wisata,
-            R.drawable.kuliner, R.drawable.wisata,
-            R.drawable.kuliner, R.drawable.wisata,
-            R.drawable.kuliner, R.drawable.wisata
+            R.drawable.wisata, R.drawable.ucok_image_4,
+            R.drawable.ucok_image_4, R.drawable.wisata,
+            R.drawable.ucok_image_4, R.drawable.wisata,
+            R.drawable.ucok_image_4, R.drawable.wisata,
+            R.drawable.ucok_image_4, R.drawable.wisata
     };
 
     @Override
