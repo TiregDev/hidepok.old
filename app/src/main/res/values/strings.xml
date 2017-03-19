@@ -130,4 +130,13 @@
     <string name="komen">2</string>
     <string name="komentator">Hadi Nur Salam</string>
     <string name="title_activity_list_diskusi">list_diskusi</string>
+
+    <string name="button_lengkap">Selengkapnya</string>
+    <string name="button_close">Tutup</string>
+    <string name="err_msg_name">Masukkan Nama Anda</string>
+    <string name="err_msg_required">valid input required</string>
+    <string name="err_msg_alamat">masukkan alamat anda</string>
+    <string name="err_msg_email">Masukkan Email yang benar</string>
+    <string name="err_msg_pj">masukkan nama penanggung jawab</string>
+    <string name="err_msg_telp">masukkan nomor telepon anda</string>
 </resources>

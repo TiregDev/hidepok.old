@@ -41,11 +41,11 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAlignment="gravity"
+            android:gravity="center"
             android:alpha="0.7"
             android:background="@drawable/shape2"
-            android:gravity="center"
             android:text="@string/button_next"
-            android:textAlignment="gravity"
             android:onClick="cherish"
             android:textColor="#fff" />
 

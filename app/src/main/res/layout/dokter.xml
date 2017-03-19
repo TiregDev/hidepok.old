@@ -43,7 +43,7 @@
                     android:background="@drawable/border_style">
 
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/hidepok_logo"
                         android:layout_width="132dp"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/hadi" />
@@ -69,7 +69,7 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:text="@string/spesialis"
-                            android:textColor="@color/putih" />
+                            android:textColor="@color/white" />
 
                     </LinearLayout>
 
@@ -84,7 +84,7 @@
                     android:background="@drawable/border_style">
 
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/hidepok_logo"
                         android:layout_width="132dp"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/hadi" />
@@ -110,7 +110,7 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:text="@string/spesialis"
-                            android:textColor="@color/putih" />
+                            android:textColor="@color/white" />
 
                     </LinearLayout>
 
@@ -125,7 +125,7 @@
                     android:background="@drawable/border_style">
 
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/hidepok_logo"
                         android:layout_width="132dp"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/hadi" />
@@ -151,7 +151,7 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:text="@string/spesialis"
-                            android:textColor="@color/putih" />
+                            android:textColor="@color/white" />
 
                     </LinearLayout>
 
@@ -166,7 +166,7 @@
                     android:background="@drawable/border_style">
 
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/hidepok_logo"
                         android:layout_width="132dp"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/hadi" />
@@ -192,7 +192,7 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:text="@string/spesialis"
-                            android:textColor="@color/putih" />
+                            android:textColor="@color/white" />
 
                     </LinearLayout>
 
@@ -207,7 +207,7 @@
                     android:background="@drawable/border_style">
 
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/hidepok_logo"
                         android:layout_width="132dp"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/hadi" />
@@ -233,7 +233,7 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:text="@string/spesialis"
-                            android:textColor="@color/putih" />
+                            android:textColor="@color/white" />
 
                     </LinearLayout>
 
@@ -248,7 +248,7 @@
                     android:background="@drawable/border_style">
 
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/hidepok_logo"
                         android:layout_width="132dp"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/hadi" />
@@ -274,7 +274,7 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:text="@string/spesialis"
-                            android:textColor="@color/putih" />
+                            android:textColor="@color/white" />
 
                     </LinearLayout>
 
@@ -289,7 +289,7 @@
                     android:background="@drawable/border_style">
 
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/hidepok_logo"
                         android:layout_width="132dp"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/hadi" />
@@ -315,7 +315,7 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:text="@string/spesialis"
-                            android:textColor="@color/putih" />
+                            android:textColor="@color/white" />
 
                     </LinearLayout>
 

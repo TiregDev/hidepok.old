@@ -4,6 +4,7 @@ package com.hi_depok.hi_depok.Lapok.fragment;
  * Created by Muhammad63 on 3/18/2017.
  */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hi_depok.hi_depok.Lapok.lapok_content;
 import com.hi_depok.hi_depok.R;
 
 import java.io.BufferedReader;
@@ -88,6 +90,8 @@ public class DescriptionForm extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Intent moveForum = new Intent(getBaseContext(), lapok_content.class);
+        startActivity(moveForum);
     }
 
     public void readMessage(View view){

@@ -37,7 +37,6 @@ public class ListActivity extends AppCompatActivity {
     String JSON_ID = "id";
     String JSON_NAME = "nama";
     String JSON_DESKRIPSI = "deskripsi";
-    String JSON_FOTO = "foto";
     JsonArrayRequest jsonArrayRequest ;
     List<GetDataAdapter> GetDataAdapter1;
     RequestQueue requestQueue ;

@@ -6,15 +6,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,6 +53,7 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
     double getlongitude;
     private Toolbar toolbar;
     protected static final int REQUEST_CHECK_SETTINGS = 0x1;
+    protected static final String TAG = "PanicActivity";
     GoogleApiClient mGoogleApiClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,10 +96,7 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
         return super.onOptionsItemSelected(item);
     }
 
-    public void btnMenuClicked (View view) {
-        Intent intent = new Intent(PanicActivity.this, MenuActivity.class);
-        startActivity(intent);
-    }
+
     public void mapsClicked (View view) {
         Intent intent = new Intent(PanicActivity.this, MapsActivity.class);
         startActivity(intent);
@@ -130,20 +131,28 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
         dialog.show();
         dialog.setMessage("Sistem sedang mencari ambulan terdekat dari tempat anda, mohon bersabar :)");
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            /*if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Snackbar snackbar = Snackbar
+                    .make(findViewById(android.R.id.content), "Lokasi anda belum di hidupkan!", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("HIDUPKAN", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            displayLocationSettingsRequest(getBaseContext());
+                        }
 
-                ActivityCompat.requestPermissions( this, new String[] {  android.Manifest.permission.ACCESS_COARSE_LOCATION  },
-                        LocationService.MY_PERMISSION_ACCESS_COARSE_LOCATION );
-            }*/
+                    });
+            snackbar.show();
+            return;
+        }
         if (locationManager
                 .isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             locationManager.requestLocationUpdates(
-                    LocationManager.GPS_PROVIDER, 10000,
+                    LocationManager.GPS_PROVIDER, 30000,
                     1, this);
         } else if (locationManager
                 .isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
             locationManager.requestLocationUpdates(
-                    LocationManager.NETWORK_PROVIDER, 10000,
+                    LocationManager.NETWORK_PROVIDER, 30000,
                     1, this);
         }
         else {
@@ -151,16 +160,56 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
 
             //Toast.makeText(getApplicationContext(), "Enable Your Location First!", Toast.LENGTH_LONG).show();
             Snackbar snackbar = Snackbar
-                    .make(findViewById(android.R.id.content), "Lokasi anda belum di hidupkan!", Snackbar.LENGTH_INDEFINITE)
+                    .make(findViewById(android.R.id.content), "Hidupkan Lokasi!", Snackbar.LENGTH_INDEFINITE)
                     .setAction("HIDUPKAN", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            settingRequest();
+                            displayLocationSettingsRequest(getBaseContext());
                         }
 
                     });
             snackbar.show();
         }
+    }
+    private void displayLocationSettingsRequest(Context context) {
+        GoogleApiClient googleApiClient = new GoogleApiClient.Builder(context)
+                .addApi(LocationServices.API).build();
+        googleApiClient.connect();
+
+        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(10000);
+        locationRequest.setFastestInterval(10000 / 2);
+
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(locationRequest);
+        builder.setAlwaysShow(true);
+
+        PendingResult<LocationSettingsResult> result = LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build());
+        result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+            @Override
+            public void onResult(LocationSettingsResult result) {
+                final Status status = result.getStatus();
+                switch (status.getStatusCode()) {
+                    case LocationSettingsStatusCodes.SUCCESS:
+                        Log.i(TAG, "All location settings are satisfied.");
+                        break;
+                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                        Log.i(TAG, "Location settings are not satisfied. Show the user a dialog to upgrade location settings ");
+
+                        try {
+                            // Show the dialog by calling startResolutionForResult(), and check the result
+                            // in onActivityResult().
+                            status.startResolutionForResult(PanicActivity.this, REQUEST_CHECK_SETTINGS);
+                        } catch (IntentSender.SendIntentException e) {
+                            Log.i(TAG, "PendingIntent unable to execute request.");
+                        }
+                        break;
+                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                        Log.i(TAG, "Location settings are inadequate, and cannot be fixed here. Dialog not created.");
+                        break;
+                }
+            }
+        });
     }
     public void settingRequest()
     {

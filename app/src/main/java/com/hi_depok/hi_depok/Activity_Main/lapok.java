@@ -1,8 +1,12 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -10,17 +14,18 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.hi_depok.hi_depok.Lapok.fragment.DescriptionForm;
 import com.hi_depok.hi_depok.Lapok.lapok_content;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Ucok.ucok_content;
 import com.hi_depok.hi_depok.fragment_lapok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_lapok_activity.fragment2;
 import com.hi_depok.hi_depok.fragment_lapok_activity.fragment3;
+
+import java.io.File;
 
 public class lapok extends AppCompatActivity implements View.OnClickListener{
 
@@ -28,6 +33,7 @@ public class lapok extends AppCompatActivity implements View.OnClickListener{
     LapokPager adapter;
     View strip;
     ImageView camera,forum, play;
+    File imageFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,5 +139,39 @@ public class lapok extends AppCompatActivity implements View.OnClickListener{
     public void linkforum(View v){
         Intent intent = new Intent(lapok.this, lapok_content.class);
         startActivity(intent);
+    }
+    public void camera(View v){
+        Intent intentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        imageFile = new File(Environment
+                .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                "test.jpg");
+        Uri tempuri = Uri.fromFile(imageFile);
+        intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, tempuri);
+        intentCamera.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+
+        startActivityForResult(intentCamera, 0);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0) {
+            switch (resultCode) {
+                case Activity.RESULT_OK:
+                    if (imageFile.exists()) {
+                        Toast.makeText(getApplicationContext(), "The file was save at " + imageFile.getAbsolutePath(),
+                                Toast.LENGTH_LONG).show();
+                        Intent intentDeskripsi = new Intent(lapok.this, DescriptionForm.class);
+                        startActivity(intentDeskripsi);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "There was an error ", Toast.LENGTH_LONG).show();
+                    }
+                    break;
+                case Activity.RESULT_CANCELED:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

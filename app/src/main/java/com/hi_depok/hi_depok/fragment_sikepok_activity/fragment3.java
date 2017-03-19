@@ -43,9 +43,9 @@ public class fragment3 extends Fragment{
                 "</head>" +
                 "<body>" +
                 "<p align=\"justify\" class=\"text\">";
-        text+= "Pada modul ini anda dapat membeli sayur2an, buah2an, dll. Anda juga dapat memotong rambut " +
-                "anda untuk terlihat lebih tampan, teruntuk anda kaum perempuan lebih baik anda menggunakan " +
-                "kerudung jika tidak mau silahkan botakkan rambut anda, agar tidak ada laki2 yang melihat rambut anda. Thanks";
+        text+= "Penanganan Gawat Darurat (PGD): Merupakan fasilitas pertolongan pertama yang " +
+                "memungkinkan pengguna untuk mengontak ambulans terdekat dari lokasi kejadian dengan " +
+                "cara yang sederhana. Dilengkapi dengan informasi penyedia ambulans, tukang urut, bidan, dan khitan.";
         text+= "</p>" +
                 "</body>" +
                 "</html>";

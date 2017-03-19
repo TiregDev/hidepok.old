@@ -10,14 +10,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hi_depok.hi_depok.Kadepok_Cherish.kadepok_cherish;
-import com.hi_depok.hi_depok.Kadepok_Donasi.kadepok_donasi;
-import com.hi_depok.hi_depok.Kadepok_Volunteer.kadepok_volunteer;
+import com.hi_depok.hi_depok.Kadepok.kadepok_cherish_content;
+import com.hi_depok.hi_depok.Kadepok.kadepok_donasi_content;
+import com.hi_depok.hi_depok.Kadepok.kadepok_volunteer_content;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment2;
@@ -143,18 +141,19 @@ public class kadepok extends AppCompatActivity implements View.OnClickListener{
             return 4;
         }
     }
+
     public void donasi(View v) {
-        Intent intent = new Intent(kadepok.this, kadepok_donasi.class);
+        Intent intent = new Intent(kadepok.this, kadepok_donasi_content.class);
         startActivity(intent);
     }
 
     public void cherish(View v) {
-        Intent intent = new Intent(kadepok.this, kadepok_cherish.class);
+        Intent intent = new Intent(kadepok.this, kadepok_cherish_content.class);
         startActivity(intent);
     }
 
     public void volunteer(View v) {
-        Intent intent = new Intent(kadepok.this, kadepok_volunteer.class);
+        Intent intent = new Intent(kadepok.this, kadepok_volunteer_content.class);
         startActivity(intent);
     }
 }

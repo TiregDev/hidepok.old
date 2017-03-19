@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="gravity"
             android:gravity="center"
+            android:onClick="gotoFokopok"
             android:alpha="0.7"
             android:background="@drawable/shape2"
             android:text="@string/button_next"

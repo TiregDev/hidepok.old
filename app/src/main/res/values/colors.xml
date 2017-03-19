@@ -4,8 +4,7 @@
     <color name="colorPrimaryDark">#fff</color>
     <color name="colorAccent">#3e50b4</color>
     <color name="primary_text_material_light">#8c8c8c</color>
-    <color name="cantik">#303030</color>
-    <color name="white">#FFFFFF</color>
+    <color name="background">#303030</color>
     <color name="dark_grey">#424242</color>
     <color name="medium_grey">#9E9E9E</color>
     <color name="button_grey">#757575</color>
@@ -23,7 +22,7 @@
     <color name="dot_active_screen3">#3a67e0</color>
 
     <color name="abuAbu">#b7b7b7</color>
-    <color name="putih">#fff</color>
+    <color name="white">#fff</color>
     <color name="orange">#f8981d</color>
     <color name="hitamMuda">#FF232323</color>
     <color name="hitam">#000</color>

@@ -1,14 +1,16 @@
 package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.support.v7.widget.Toolbar;
+
 import com.hi_depok.hi_depok.R;
 
-public class Diagnosa extends Activity {
+public class Diagnosa extends AppCompatActivity {
     ListView list;
     String[] itemname = {
             "Kepala",
@@ -35,7 +37,8 @@ public class Diagnosa extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnosa);
-
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         CustomListAdapter adapter = new CustomListAdapter(this, itemname, imgid);
         list = (ListView) findViewById(R.id.list);
         list.setAdapter(adapter);
@@ -78,9 +81,5 @@ public class Diagnosa extends Activity {
             }
         });
 
-    }
-    public void back (View view){
-        Intent contoh = new Intent(Diagnosa.this, SikepokDiagnosa.class);
-        startActivity(contoh);
     }
 }

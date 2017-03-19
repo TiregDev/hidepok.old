@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
@@ -18,7 +18,6 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
@@ -28,6 +27,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -95,29 +95,43 @@
             android:theme="@style/Background" />
         <activity android:name=".Ucok.ucok_content" />
         <activity android:name=".Ucok.UcokDetailActivity" />
-        <activity android:name=".Lapok.lapok_content" />
-        <activity android:name=".fokopok.fokopok_content"></activity>
-        <activity android:name=".Sikepok_Diagnosa.Anggota_badan_badan"/>
-        <activity android:name=".Sikepok_Diagnosa.Apotik1"/>
-        <activity android:name=".Sikepok_Diagnosa.Deskripsi"/>
-        <activity android:name=".Sikepok_Diagnosa.Diagnosa"/>
-        <activity android:name=".Sikepok_Diagnosa.Ensiklopedia"/>
-        <activity android:name=".Sikepok_Diagnosa.Lokasi"/>
-        <activity android:name=".Sikepok_Diagnosa.Sugesti"/>
-        <activity android:name=".Sikepok_Diagnosa.SikepokDiagnosa"/>
+        <activity android:name=".Fokopok.fokopok_content" />
         <activity
-            android:name=".Sikepok_Panic.PanicActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".Sikepok_Diagnosa.Anggota_badan_badan"
+            android:label="Kepala"
+            android:parentActivityName=".Sikepok_Diagnosa.Diagnosa" />
+        <activity
+            android:name=".Sikepok_Diagnosa.Apotik1"
+            android:label="Apotek"
+            android:parentActivityName=".Sikepok_Diagnosa.Lokasi" />
+        <activity
+            android:name=".Sikepok_Diagnosa.Deskripsi"
+            android:label="Mata Katarak"
+            android:parentActivityName=".Sikepok_Diagnosa.SikepokDiagnosa" />
+        <activity
+            android:name=".Sikepok_Diagnosa.Diagnosa"
+            android:label="Diagnosa"
+            android:parentActivityName=".Sikepok_Diagnosa.SikepokDiagnosa" />
+        <activity
+            android:name=".Sikepok_Diagnosa.Ensiklopedia"
+            android:label="Ensiklopedia"
+            android:parentActivityName=".Sikepok_Diagnosa.SikepokDiagnosa" />
+        <activity
+            android:name=".Sikepok_Diagnosa.Lokasi"
+            android:label="Lokasi"
+            android:parentActivityName=".Sikepok_Diagnosa.SikepokDiagnosa" />
+        <activity
+            android:name=".Sikepok_Diagnosa.Sugesti"
+            android:label="Sugesti"
+            android:parentActivityName=".Sikepok_Diagnosa.Anggota_badan_badan" />
+        <activity android:name=".Sikepok_Diagnosa.SikepokDiagnosa" />
+        <activity android:name=".Sikepok_Panic.PanicActivity" />
         <activity
             android:name=".Sikepok_Panic.MenuActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".Sikepok_Panic.PanicActivity">
-        </activity>
+            android:parentActivityName=".Sikepok_Panic.PanicActivity" />
         <activity
             android:name=".Sikepok_Panic.DetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".Sikepok_Panic.MenuActivity">
-        </activity>
+            android:parentActivityName=".Sikepok_Panic.MenuActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -125,30 +139,31 @@
 
         <activity
             android:name=".Sikepok_Panic.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         <activity
             android:name=".Activity_Main.WelcomeActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Sikepok_Panic.ListActivity"
-            android:parentActivityName=".Sikepok_Panic.MenuActivity">
-        </activity>
+            android:parentActivityName=".Sikepok_Panic.PilihanLainActivity"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Sikepok_Panic.PilihanLainActivity"
-            android:parentActivityName=".Sikepok_Panic.MenuActivity">
-        </activity>
-        <activity
-            android:name=".Sikepok_Panic.admin_main"/>
-        <activity android:name=".Lapok.fragment.DescriptionForm"></activity>
-        <activity android:name=".Kadepok_Donasi.kadepok_donasi" />
-        <activity android:name=".Kadepok_Volunteer.kadepok_volunteer" />
+            android:parentActivityName=".Sikepok_Panic.PanicActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Sikepok_Panic.admin_main" />
+        <activity android:name=".Lapok.fragment.DescriptionForm" />
+        <activity android:name=".Lapok.lapok_content" />
         <activity android:name=".Kadepok_Donasi.kadepok_donasi_panti" />
         <activity android:name=".Kadepok_Donasi.kadepok_donasi_form" />
         <activity android:name=".Kadepok_Donasi.kadepok_donasi_verify" />
         <activity android:name=".Kadepok_Donasi.kadepok_donasi_upload" />
-        <activity android:name=".Kadepok_Cherish.kadepok_cherish" />
         <activity android:name=".Kadepok_Cherish.kadepok_cherish_panti" />
+        <activity android:name=".Kadepok.kadepok_donasi_content" />
+        <activity android:name=".Kadepok.kadepok_cherish_content" />
+        <activity android:name=".Kadepok.kadepok_volunteer_content" />
+        <activity android:name=".Kadepok_Cherish.kadepok_cherish_detail_anak" />
+        <activity android:name=".Kadepok_Cherish.kadepok_cherish_detail_event"></activity>
         <activity android:name=".Sikepok_RS.deskripsiApotek" />
         <activity android:name=".Sikepok_RS.deskripsi_klinik" />
         <activity android:name=".Sikepok_RS.regis_pasien_baru" />
@@ -161,7 +176,7 @@
         <activity
             android:name=".Sikepok_RS.list_diskusi"
             android:label="@string/title_activity_list_diskusi"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Sikepok_RS.klinik" />
         <activity android:name=".Sikepok_RS.apotek" />
         <activity android:name=".Sikepok_RS.registrasi" />
@@ -174,9 +189,20 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Sikepok_RS.RSActivity"
-            android:theme="@style/Background_main">
+            android:theme="@style/Background_main" />
+        <activity android:name=".Kapok.join_kapok">
+            <uses-permission android:name="android.permission.VIBRATE" />
         </activity>
+        <activity android:name=".Kapok.activity_selengkapnya" />
+        <activity android:name=".Kapok.activity_view_ulasan" />
+        <activity android:name=".Kapok.KapokActivity" />
+        <activity android:name=".Fokopok_Admin.FokopokLogin" />
+        <activity
+            android:name=".Fokopok_Admin.FokopokHome"
+            android:label="FOKOPOK"
+            android:parentActivityName=".Fokopok_Admin.FokopokLogin">
 
+        </activity>
     </application>
 
 </manifest>

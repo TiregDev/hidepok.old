@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import com.hi_depok.hi_depok.R;
 
@@ -20,6 +21,8 @@ public class Lokasi extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lokasi);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         pager = (ViewPager) findViewById(R.id.pager);
         strip = (findViewById(R.id.strip));
 
@@ -97,9 +100,5 @@ public class Lokasi extends AppCompatActivity implements View.OnClickListener{
         public int getCount() {
             return 3;
         }
-    }
-    public void back (View view){
-        Intent contoh = new Intent(Lokasi.this, SikepokDiagnosa.class);
-        startActivity(contoh);
     }
 }

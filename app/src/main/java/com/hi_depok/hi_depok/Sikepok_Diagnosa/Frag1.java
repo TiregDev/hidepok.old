@@ -3,13 +3,11 @@ package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import com.hi_depok.hi_depok.R;
 
 public class Frag1 extends Fragment {

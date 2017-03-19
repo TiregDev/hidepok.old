@@ -28,15 +28,8 @@ public class ItemObject {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public int getPhotoId() {
         return photoId;
     }
 
-    public void setPhotoId(int photoId) {
-        this.photoId = photoId;
-    }
 }

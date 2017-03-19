@@ -38,15 +38,8 @@ public class ItemObject {
         return price;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
     public int getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(int avatar) {
-        this.avatar = avatar;
-    }
 }

@@ -1,7 +1,11 @@
 package com.hi_depok.hi_depok.Lapok;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -10,13 +14,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.hi_depok.hi_depok.Activity_Main.lapok;
+import com.hi_depok.hi_depok.Lapok.fragment.DescriptionForm;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.fragment_lapok_activity.fragment1;
-import com.hi_depok.hi_depok.fragment_lapok_activity.fragment2;
-import com.hi_depok.hi_depok.fragment_lapok_activity.fragment3;
+
+import java.io.File;
+
+import static java.security.AccessController.getContext;
 
 public class lapok_content extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,6 +29,7 @@ public class lapok_content extends AppCompatActivity implements View.OnClickList
     Content adapter;
     View strip;
     ImageView report, forum, notif;
+    File imageFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +65,11 @@ public class lapok_content extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onPageSelected(int position) {
-
+                switch (position){
+                    case 0:
+                        kekamera();
+                        break;
+                }
             }
 
             @Override
@@ -112,7 +122,7 @@ public class lapok_content extends AppCompatActivity implements View.OnClickList
                 case 2:
                     return fragment3;
                 default:
-                    return fragment1;
+                    return fragment2;
             }
         }
 
@@ -122,4 +132,38 @@ public class lapok_content extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    public void kekamera (){
+        Intent intentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        imageFile = new File(Environment
+                .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                "test.jpg");
+        Uri tempuri = Uri.fromFile(imageFile);
+        intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, tempuri);
+        intentCamera.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+
+        startActivityForResult(intentCamera, 0);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0) {
+            switch (resultCode) {
+                case Activity.RESULT_OK:
+                    if (imageFile.exists()) {
+                        Toast.makeText(getApplicationContext(), "The file was save at " + imageFile.getAbsolutePath(),
+                                Toast.LENGTH_LONG).show();
+                        Intent intentDeskripsi = new Intent(getApplicationContext(), DescriptionForm.class);
+                        startActivity(intentDeskripsi);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "There was an error ", Toast.LENGTH_LONG).show();
+                    }
+                    break;
+                case Activity.RESULT_CANCELED:
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 }

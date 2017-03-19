@@ -111,12 +111,10 @@ public class RSActivity extends AppCompatActivity {
 
                                                      @Override
                                                      public void onMenuOpened() {
-                                                         //Toast.makeText(RSActivity.this, "Menu Opend", Toast.LENGTH_SHORT).show();
                                                      }
 
                                                      @Override
                                                      public void onMenuClosed() {
-                                                         //Toast.makeText(RSActivity.this, "Menu Closed", Toast.LENGTH_SHORT).show();
                                                      }
                                                  }
         );

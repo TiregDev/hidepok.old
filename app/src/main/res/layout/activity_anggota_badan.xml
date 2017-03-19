@@ -6,44 +6,19 @@
     android:layout_height="match_parent"
     tools:context="com.hi_depok.hi_depok.Sikepok_Diagnosa.Anggota_badan_badan" >
 
-    <LinearLayout
-        android:id="@+id/atas"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.29"
-        android:orientation="horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="5"
-            android:background="@color/colorPrimary"
-            android:backgroundTint="@color/colorPrimary"
-            android:onClick="back"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/ic_keyboard_arrow_left_white_24dp" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:text="Kepala"
-            android:textColor="#fff"
-            android:textSize="20dp" />
-
-    </LinearLayout>
-<ScrollView
+    <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_below="@+id/atas"
-    android:layout_above="@+id/buttonn">
+    android:layout_above="@+id/buttonn"
+        android:layout_below="@+id/toolbar">
 
 <RelativeLayout
     android:layout_width="match_parent"
@@ -64,7 +39,7 @@
             android:id="@+id/expandableButton1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/putih"
+            android:background="@color/white"
             android:drawableRight="@android:drawable/arrow_down_float"
             android:onClick="expandableButton1"
             android:paddingRight="10dp"
@@ -77,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/expandableButton1"
-            android:background="@color/putih"
+            android:background="@color/white"
             app:ael_duration="400"
             app:ael_expanded="false"
             app:ael_interpolator="bounce"
@@ -119,8 +94,8 @@
             android:onClick="expandableButton2"
             android:paddingRight="10dp"
             android:text="Telinga"
-            android:textColor="@color/putih"
-            android:drawableTint="@color/putih" />
+            android:textColor="@color/white"
+            android:drawableTint="@color/white" />
 
 
 
@@ -141,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="androidCheckBoxClicked"
                 android:text="Telinga berlubang"
-                android:textColor="@color/putih"/>
+                android:textColor="@color/white"/>
             <CheckBox
                 android:id="@+id/checkBox5"
                 android:layout_width="wrap_content"
@@ -149,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="androidCheckBoxClicked"
                 android:text="Telinga aja"
-                android:textColor="@color/putih"/>
+                android:textColor="@color/white"/>
             <CheckBox
                 android:id="@+id/checkBox6"
                 android:layout_width="wrap_content"
@@ -157,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="androidCheckBoxClicked"
                 android:text="Mata hati"
-                android:textColor="@color/putih"/>
+                android:textColor="@color/white"/>
             <CheckBox
                 android:id="@+id/checkBox7"
                 android:layout_width="wrap_content"
@@ -165,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="androidCheckBoxClicked"
                 android:text="Mata berseri"
-                android:textColor="@color/putih"/>
+                android:textColor="@color/white"/>
         </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
         <Button
@@ -173,7 +148,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/expandableLayout2"
-            android:background="@color/putih"
+            android:background="@color/white"
             android:drawableRight="@android:drawable/arrow_down_float"
             android:drawableTint="#066da1"
             android:onClick="expandableButton3"
@@ -186,7 +161,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/expandableButton3"
-            android:background="@color/putih"
+            android:background="@color/white"
             app:ael_duration="400"
             app:ael_expanded="false"
             app:ael_interpolator="bounce"
@@ -248,7 +223,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="androidCheckBoxClicked"
                 android:text="Hidung bernanah"
-                android:textColor="@color/putih"/>
+                android:textColor="@color/white"/>
             <CheckBox
                 android:id="@+id/checkBox12"
                 android:layout_width="wrap_content"
@@ -256,7 +231,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="androidCheckBoxClicked"
                 android:text="Mata hati"
-                android:textColor="@color/putih"/>
+                android:textColor="@color/white"/>
             <CheckBox
                 android:id="@+id/checkBox13"
                 android:layout_width="wrap_content"
@@ -264,7 +239,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="androidCheckBoxClicked"
                 android:text="Mata berseri"
-                android:textColor="@color/putih"/>
+                android:textColor="@color/white"/>
         </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
     </LinearLayout>
 

@@ -45,6 +45,7 @@
             android:gravity="center"
             android:alpha="0.7"
             android:background="@drawable/shape2"
+            android:onClick="kapokGo"
             android:text="@string/button_next"
             android:textColor="#fff" />
 

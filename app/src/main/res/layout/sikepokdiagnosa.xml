@@ -132,7 +132,7 @@
                 android:id="@+id/imageButton8"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="@color/cantik"
+                android:background="@color/background"
                 android:onClick="lokasi"
                 android:scaleType="fitXY"
                 android:scaleX="0.8"

@@ -3,9 +3,11 @@ package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -23,6 +25,8 @@ public class Ensiklopedia extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ensiklopedia);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listView=(ListView)findViewById(R.id.list_view);
         editText=(EditText)findViewById(R.id.editText);
         initList();
@@ -58,15 +62,15 @@ public class Ensiklopedia extends AppCompatActivity {
         listItems=new ArrayList<>(Arrays.asList(items));
         adapter=new ArrayAdapter<String>(this, R.layout.item_ensiklopedia, R.id.textView, listItems);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent contoh = new Intent(Ensiklopedia.this, Deskripsi.class);
+                startActivity(contoh);
+            }
+        });
 
     }
-    public void back (View view){
-        Intent contoh = new Intent(Ensiklopedia.this, SikepokDiagnosa.class);
-        startActivity(contoh);
-    }
-    public void deskripsi (View view){
-        Intent contoh = new Intent(Ensiklopedia.this, Deskripsi.class);
-        startActivity(contoh);
-    }
+
 }
 

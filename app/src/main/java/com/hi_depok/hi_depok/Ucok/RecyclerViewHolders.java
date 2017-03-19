@@ -32,7 +32,6 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder{
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, UcokDetailActivity.class);
-                //intent.putExtra(detail.EXTRA_POSITION, getAdapterPosition());
                 context.startActivity(intent);
             }
         });

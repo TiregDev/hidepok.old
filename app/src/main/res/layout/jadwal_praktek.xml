@@ -59,17 +59,17 @@
                 android:layout_height="match_parent"
                 android:weightSum="3">
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Senin"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Dr. Muhammad"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="09.00 - 13.00"
                     android:layout_weight="1"/>
@@ -79,17 +79,17 @@
                 android:layout_height="match_parent"
                 android:weightSum="3">
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Senin"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Dr. Setia"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="14.00 - 17.00"
                     android:layout_weight="1"/>
@@ -100,17 +100,17 @@
                 android:layout_height="match_parent"
                 android:weightSum="3">
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Selasa"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Dr. Setia"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="09.00 - 13.00"
                     android:layout_weight="1"/>
@@ -121,17 +121,17 @@
                 android:layout_height="match_parent"
                 android:weightSum="3">
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Rabu"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Dr. Setia"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="14.00 - 17.00"
                     android:layout_weight="1"/>
@@ -141,17 +141,17 @@
                 android:layout_height="match_parent"
                 android:weightSum="3">
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Rabu"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Dr. Setia"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="14.00 - 17.00"
                     android:layout_weight="1"/>
@@ -162,17 +162,17 @@
                 android:layout_height="match_parent"
                 android:weightSum="3">
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Kamis"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="-"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="-"
                     android:layout_weight="1"/>
@@ -182,17 +182,17 @@
                 android:layout_height="match_parent"
                 android:weightSum="3">
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Jumat"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Dr. Setia"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="14.00 - 17.00"
                     android:layout_weight="1"/>
@@ -202,17 +202,17 @@
                 android:layout_height="match_parent"
                 android:weightSum="3">
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Jumat"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="Dr. Setia"
                     android:layout_weight="1"/>
                 <TextView
-                    android:textColor="@color/putih"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="14.00 - 17.00"
                     android:layout_weight="1"/>

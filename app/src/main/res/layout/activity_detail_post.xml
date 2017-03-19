@@ -237,7 +237,7 @@
                             android:layout_height="wrap_content"
                             android:text="Dari:"
                             android:gravity="center"
-                            android:textColor="@color/putih"
+                            android:textColor="@color/white"
                             />
                         <TextView
                             android:id="@+id/textView8"
@@ -400,7 +400,7 @@
                             android:layout_height="wrap_content"
                             android:text="Dari:"
                             android:gravity="center"
-                            android:textColor="@color/putih"
+                            android:textColor="@color/white"
                             />
                         <TextView
                             android:id="@+id/textView8"
@@ -563,7 +563,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:hint="Tulis komentar ..."
-                                android:textColor="@color/putih"/>
+                                android:textColor="@color/white"/>
 
                         </LinearLayout>
 

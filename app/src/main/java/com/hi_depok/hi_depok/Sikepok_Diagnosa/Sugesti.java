@@ -3,11 +3,9 @@ package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,11 +16,12 @@ public class Sugesti extends AppCompatActivity {
     ArrayList<String> listItems;
     ArrayAdapter<String> adapter;
     ListView listView;
-    EditText editText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sugesti);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listView=(ListView)findViewById(R.id.list);
         initList();
     }

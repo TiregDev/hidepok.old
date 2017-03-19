@@ -1,41 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.hi_depok.hi_depok.Sikepok_Diagnosa.Sugesti">
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="33dp"
-        android:layout_weight="0.10"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="5"
-            android:background="@color/colorPrimary"
-            android:backgroundTint="@color/colorPrimary"
-            android:onClick="back"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/ic_keyboard_arrow_left_white_24dp" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:text="Sugesti"
-            android:textColor="#fff"
-            android:textSize="20dp" />
-
-    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_below="@+id/toolbar">
 
     <ListView
         android:id="@+id/list"
@@ -51,3 +34,4 @@
         android:text="Button"
         android:onClick="deskripsi"/>
 </LinearLayout>
+    </RelativeLayout>

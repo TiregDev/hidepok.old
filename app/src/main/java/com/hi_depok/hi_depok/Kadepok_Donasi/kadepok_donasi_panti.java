@@ -11,40 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 
-import com.hi_depok.hi_depok.Kadepok_Cherish.kadepok_cherish;
-import com.hi_depok.hi_depok.Kadepok_Volunteer.kadepok_volunteer;
+import com.hi_depok.hi_depok.Kadepok.fragment.fragment1;
 import com.hi_depok.hi_depok.R;
 
 public class kadepok_donasi_panti extends AppCompatActivity {
     public Button btn_donate;
-    private ImageView btn_cherish, btn_volunteer;
-    private ImageButton btn_kadepok_notifikasi;
+    private ImageView btn_kadepok_notifikasi;
     private PopupWindow popup_notifikasi;
     public Button close;
-
-    public void gotocherish() {
-        btn_cherish = (ImageView)findViewById(R.id.btn_cherish);
-        btn_cherish.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent cherish = new Intent(kadepok_donasi_panti.this, kadepok_cherish.class);
-                startActivity(cherish);
-            }
-        });
-    }
-
-    public void gotovolunteer() {
-        btn_volunteer = (ImageView)findViewById(R.id.btn_volunteer);
-        btn_volunteer.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent cherish = new Intent(kadepok_donasi_panti.this, kadepok_volunteer.class);
-                startActivity(cherish);
-            }
-        });
-    }
 
     private void initiatepopup() {
         try {
@@ -88,7 +65,7 @@ public class kadepok_donasi_panti extends AppCompatActivity {
     }
 
     public void back_profile(View view) {
-        Intent intent = new Intent(kadepok_donasi_panti.this, kadepok_donasi.class);
+        Intent intent = new Intent(kadepok_donasi_panti.this, fragment1.class);
         startActivity(intent);
     }
 
@@ -98,10 +75,8 @@ public class kadepok_donasi_panti extends AppCompatActivity {
         setContentView(R.layout.kadepok_donasi_panti);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         init();
-        gotocherish();
-        gotovolunteer();
 
-        btn_kadepok_notifikasi = (ImageButton)findViewById(R.id.btn_kadepok_notifikasi);
+        btn_kadepok_notifikasi = (ImageView)findViewById(R.id.btn_kadepok_notifikasi);
         btn_kadepok_notifikasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

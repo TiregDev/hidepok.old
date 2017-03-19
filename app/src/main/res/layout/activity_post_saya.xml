@@ -50,7 +50,7 @@
             android:layout_marginBottom="10dp"
             android:textSize="10dp"
             android:text="Berikut adalah semua post yang pernah anda kirimkan dalam layanan forum ini. Klik untuk melihat detail."
-            android:textColor="@color/putih" />
+            android:textColor="@color/white" />
 
 
         <LinearLayout

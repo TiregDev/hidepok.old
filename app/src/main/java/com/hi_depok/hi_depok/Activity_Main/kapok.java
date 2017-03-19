@@ -1,5 +1,6 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
@@ -9,11 +10,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hi_depok.hi_depok.Kapok.KapokActivity;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.fragment_kapok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_kapok_activity.fragment2;
@@ -112,5 +112,9 @@ public class kapok extends AppCompatActivity implements View.OnClickListener{
         public int getCount() {
             return 2;
         }
+    }
+    public void kapokGo(View v){
+        Intent intent = new Intent(kapok.this, KapokActivity.class);
+        startActivity(intent);
     }
 }

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#303030"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/popup_element">
+
+        <LinearLayout
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:text="Nama Tempat" />
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:src="@drawable/wisata" />
+
+
+            <RatingBar
+                android:id="@+id/rating"
+                android:theme="@style/RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:numStars="5"
+                android:rating="5.0"
+                android:scaleX="0.4"
+                android:scaleY="0.4" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/maps"/>
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jarak dari lokasi"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textColor="#fff"
+                android:textSize="15sp"
+                android:text="Deskripsi"/>
+
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:paddingTop="10dp"
+                   android:layout_height="wrap_content"
+                   android:paddingBottom="10dp"
+                   android:textColor="#fff"
+                   android:textSize="15sp"
+                   android:text="Lorem ipsum dolor sit amet, cu eos dolor adolescens, ex nec error virtute assentior, pri ut paulo definitionem. Vel ea dico dolores volutpat, ut per laboramus sententiae. Simul tibique reprimique ea mea. "/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="0.74"
+                android:layout_height="40dp"
+                android:text="Jam Operasional"
+                android:textColor="#fff"
+                android:textSize="15sp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:textColor="#fff"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="07.00"
+                    android:textColor="#fff"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="s/d"
+                    android:textColor="#fff"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="16.00"
+                    android:textColor="#fff"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1.41"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat "
+                    android:textColor="#fff"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="2"
+                    android:text=":"
+                    android:textColor="#fff"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:gravity="right"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="Jl. Cempaka Indah No.01 Depok "
+                    android:textColor="#fff"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+
+
+     <LinearLayout
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="20dp"
+     android:layout_gravity="center_horizontal"
+     android:orientation="horizontal">
+       <Button
+        android:layout_weight="1"
+        android:id="@+id/close"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:alpha="0.7"
+        android:background="@drawable/shape2"
+        android:gravity="center"
+        android:onClick="Tutup"
+        android:textSize="14dp"
+        android:layout_marginRight="30dp"
+        android:text="@string/button_close"
+        android:textAlignment="gravity"
+        android:textColor="#fff" />
+         <Button
+             android:layout_weight="1"
+             android:id="@+id/next"
+             android:layout_width="wrap_content"
+             android:layout_height="50dp"
+             android:alpha="0.7"
+             android:background="@drawable/shape2"
+             android:gravity="center"
+             android:onClick="Lanjut"
+             android:textSize="14dp"
+             android:text="@string/button_lengkap"
+             android:textAlignment="gravity"
+             android:textColor="#fff" />
+
+ </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

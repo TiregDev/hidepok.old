@@ -9,7 +9,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import com.hi_depok.hi_depok.R;
 
 public class DataParser {
 

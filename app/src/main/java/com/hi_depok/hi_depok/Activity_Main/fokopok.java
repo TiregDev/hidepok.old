@@ -10,15 +10,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hi_depok.hi_depok.Fokopok_Admin.FokopokLogin;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.fokopok.fokopok_content;
-import com.hi_depok.hi_depok.fragment_kapok_activity.fragment1;
-import com.hi_depok.hi_depok.fragment_kapok_activity.fragment2;
+import com.hi_depok.hi_depok.Fokopok.fokopok_content;
 
 public class fokopok extends AppCompatActivity implements View.OnClickListener {
 
@@ -117,6 +114,10 @@ public class fokopok extends AppCompatActivity implements View.OnClickListener {
     }
     public void linkcontent(View v){
         Intent intent = new Intent(fokopok.this, fokopok_content.class);
+        startActivity(intent);
+    }
+    public void gotoFokopok(View v){
+        Intent intent = new Intent(fokopok.this, FokopokLogin.class);
         startActivity(intent);
     }
 }

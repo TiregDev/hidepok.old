@@ -18,17 +18,9 @@ import android.widget.Toast;
 
 import com.hi_depok.hi_depok.R;
 import com.mikepenz.crossfadedrawerlayout.view.CrossfadeDrawerLayout;
-import com.mikepenz.materialdrawer.AccountHeader;
-import com.mikepenz.materialdrawer.AccountHeaderBuilder;
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.MiniDrawer;
+import com.mikepenz.materialdrawer.*;
 import com.mikepenz.materialdrawer.interfaces.ICrossfader;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-import com.mikepenz.materialdrawer.model.SectionDrawerItem;
+import com.mikepenz.materialdrawer.model.*;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.util.DrawerUIUtils;
@@ -50,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-
 
         PrimaryDrawerItem home =   new PrimaryDrawerItem()
                 .withName("Home")
@@ -162,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
 
         result = new DrawerBuilder()
                 .withActivity(this)
-//                .withToolbar(toolbar)
                 .withHasStableIds(true)
                 .withAccountHeader(headerResult)
                 .withDrawerLayout(R.layout.crossfade_layout)

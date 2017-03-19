@@ -6,7 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:colorBackground">@color/cardview_light_background</item>
+        <item name="android:windowBackground">@color/cardview_light_background</item>
         <item name="android:colorForeground">@color/foreground_material_light</item>
         <item name="android:textColorPrimary">@color/primary_text_material_light</item>
     </style>
@@ -26,12 +26,13 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/cardview_light_background</item>
+        <item name="android:colorForeground">@color/foreground_material_light</item>
+        <item name="android:textColorPrimary">@color/primary_text_material_light</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark" />
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
@@ -42,12 +43,12 @@
     <style name="HiDepok.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="HiDepokContent" parent="AppTheme" />
+
     <style name="tulisanPutih">
-        <item name="android:textColor">@color/putih</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16dp</item>
     </style>
-
     <style name="tulisanAbu2">
         <item name="android:textColor">@color/abuAbu</item>
     </style>
@@ -57,7 +58,7 @@
     </style>
 
     <style name="paragrafBiasa">
-        <item name="android:textColor">@color/putih</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="buttonStyle">
@@ -78,5 +79,9 @@
     <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="RatingBar" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">#FFD700</item>
+        <item name="colorControlActivated">#FFD700</item>
+    </style>
 
 </resources>

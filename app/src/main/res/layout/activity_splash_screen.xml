@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/app_name"
         app:srcCompat="@drawable/logo"
-        android:id="@+id/imageView3"
+        android:id="@+id/hidepok_logo"
         android:scaleType="centerInside"
         android:scaleX="0.6"
         android:scaleY="0.6"

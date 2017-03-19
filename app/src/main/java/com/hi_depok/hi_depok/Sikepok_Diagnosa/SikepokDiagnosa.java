@@ -14,7 +14,7 @@ public class SikepokDiagnosa extends AppCompatActivity {
         setContentView(R.layout.sikepokdiagnosa);
     }
 
-    public void diagnosa (View della){
+    public void diagnosa (View view){
         Intent contoh = new Intent(SikepokDiagnosa.this, Diagnosa.class);
         startActivity(contoh);
     }

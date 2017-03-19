@@ -1,23 +1,14 @@
 package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 
-import android.app.ExpandableListActivity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ExpandableListAdapter;
-import android.widget.SimpleExpandableListAdapter;
 import android.widget.Toast;
 
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 import com.hi_depok.hi_depok.R;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -25,13 +16,14 @@ import java.util.Map;
  */
 public class Anggota_badan_badan extends AppCompatActivity {
 
-    private ExpandableListAdapter mAdapterView;
     ExpandableRelativeLayout expandableLayout1, expandableLayout2, expandableLayout3, expandableLayout4, expandableLayout5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anggota_badan);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void expandableButton1(View view) {
@@ -64,10 +56,6 @@ public class Anggota_badan_badan extends AppCompatActivity {
     }
     public void sugesti (View view){
         Intent contoh = new Intent(Anggota_badan_badan.this, Sugesti.class);
-        startActivity(contoh);
-    }
-    public void back (View view){
-        Intent contoh = new Intent(Anggota_badan_badan.this, Diagnosa.class);
         startActivity(contoh);
     }
 }

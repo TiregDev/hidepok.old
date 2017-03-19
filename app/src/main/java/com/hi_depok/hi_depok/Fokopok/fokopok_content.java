@@ -1,9 +1,8 @@
-package com.hi_depok.hi_depok.fokopok;
+package com.hi_depok.hi_depok.Fokopok;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,13 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.fokopok;
-import com.hi_depok.hi_depok.Lapok.fragment.fragment2;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Ucok.ItemObject;
-import com.hi_depok.hi_depok.Ucok.RecyclerViewHolders;
-import com.hi_depok.hi_depok.Ucok.UcokDetailActivity;
-
-import java.util.List;
 
 public class fokopok_content extends AppCompatActivity {
     RecyclerView recyclerView;

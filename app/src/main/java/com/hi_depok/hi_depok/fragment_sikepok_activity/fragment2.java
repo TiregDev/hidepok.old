@@ -43,9 +43,11 @@ public class fragment2 extends Fragment{
                 "</head>" +
                 "<body>" +
                 "<p align=\"justify\" class=\"text\">";
-        text+= "Pada modul ini anda dapat membeli sayur2an, buah2an, dll. Anda juga dapat memotong rambut " +
-                "anda untuk terlihat lebih tampan, teruntuk anda kaum perempuan lebih baik anda menggunakan " +
-                "kerudung jika tidak mau silahkan botakkan rambut anda, agar tidak ada laki2 yang melihat rambut anda. Thanks";
+        text+= "Pengguna dapat melihat seluruh informasi tentang rumah sakit, klinik, apotik dan " +
+                "pukesmas. Informasi yang tersedia antara lain mengenai informasi umum, jadwal " +
+                "praktek, fasilitas, daftar dokter dan juga lokasi. Khusus untuk fasilitas info " +
+                "rumah sakit, aplikasi ini juga menyediakan akses untuk perdaftaran secara online. " +
+                "Dilengkapi juga dengan forum untuk berbagi informasi mengenai kesehatan.";
         text+= "</p>" +
                 "</body>" +
                 "</html>";

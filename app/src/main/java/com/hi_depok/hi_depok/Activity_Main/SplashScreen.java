@@ -4,7 +4,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-//import android.app.Activity;
 import android.content.Intent;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,7 +11,6 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 
 import com.hi_depok.hi_depok.R;
-//import android.os.Bundle;
 
 
 public class SplashScreen extends AppCompatActivity {
@@ -26,17 +24,17 @@ public class SplashScreen extends AppCompatActivity {
         }
         setContentView(R.layout.activity_splash_screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        ImageView iv = (ImageView)findViewById(R.id.imageView3);
+        ImageView iv = (ImageView)findViewById(R.id.hidepok_logo);
         AlphaAnimation animation1 = new AlphaAnimation(0.0f, 1.0f);
-        animation1.setDuration(1500);
-        animation1.setStartOffset(1500);
+        animation1.setDuration(1000);
+        animation1.setStartOffset(1000);
 
         iv.startAnimation(animation1);
 
         Thread timerThread = new Thread(){
             public void run(){
                 try{
-                    sleep(4000);
+                    sleep(3000);
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }finally{
