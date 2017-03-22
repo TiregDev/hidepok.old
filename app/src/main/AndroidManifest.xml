@@ -127,9 +127,12 @@
         <activity
             android:name=".Sikepok_Diagnosa.SikepokDiagnosa"
             android:theme="@style/Background_main"/>
-        <activity android:name=".Sikepok_Panic.PanicActivity" />
+        <activity android:name=".Sikepok_Panic.PanicActivity"
+            android:theme="@style/Background_PanicButton"
+            android:parentActivityName=".Activity_Main.sikepok"/>
         <activity
             android:name=".Sikepok_Panic.MenuActivity"
+            android:label="Tempat Sehat"
             android:parentActivityName=".Sikepok_Panic.PanicActivity" />
         <activity
             android:name=".Sikepok_Panic.DetailActivity"
