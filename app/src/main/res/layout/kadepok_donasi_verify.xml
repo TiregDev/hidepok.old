@@ -84,8 +84,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:text="Jumlah Donasi"
-            android:textColor="#fff" />
+            android:text="Jumlah Donasi" />
 
         <TextView
             android:id="@+id/TextNama"
@@ -95,8 +94,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:text="Nama Donatur"
-            android:textColor="#fff" />
+            android:text="Nama Donatur" />
 
         <TextView
             android:id="@+id/:Panti"
@@ -105,8 +103,7 @@
             android:layout_above="@+id/TextNama"
             android:layout_alignStart="@+id/:Nama"
             android:layout_weight="1"
-            android:text=":"
-            android:textColor="#fff" />
+            android:text=":" />
 
         <TextView
             android:id="@+id/:Nama"
@@ -115,8 +112,7 @@
             android:layout_above="@+id/TextDonasi"
             android:layout_alignStart="@+id/:Donasi"
             android:layout_weight="1"
-            android:text=":"
-            android:textColor="#fff" />
+            android:text=":" />
 
         <TextView
             android:id="@+id/:Donasi"
@@ -127,8 +123,7 @@
             android:layout_marginStart="11dp"
             android:layout_toEndOf="@+id/TextDonasi"
             android:layout_weight="1"
-            android:text=":"
-            android:textColor="#fff" />
+            android:text=":" />
 
         <TextView
             android:id="@+id/TextPanti"
@@ -137,8 +132,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:text="Nama Panti"
-            android:textColor="#fff" />
+            android:text="Nama Panti" />
 
         <TextView
             android:id="@+id/Panti"
@@ -149,8 +143,7 @@
             android:layout_marginStart="19dp"
             android:layout_toEndOf="@+id/:Panti"
             android:layout_weight="1"
-            android:text="Darul Ilmi"
-            android:textColor="#fff" />
+            android:text="Darul Ilmi" />
 
         <TextView
             android:id="@+id/Nama"
@@ -160,8 +153,7 @@
             android:layout_alignBottom="@+id/:Nama"
             android:layout_alignStart="@+id/Panti"
             android:layout_weight="1"
-            android:text="021-87717878"
-            android:textColor="#fff" />
+            android:text="021-87717878" />
 
         <TextView
             android:id="@+id/Donasi"
@@ -171,8 +163,7 @@
             android:layout_alignBottom="@+id/:Donasi"
             android:layout_alignStart="@+id/Nama"
             android:layout_weight="1"
-            android:text="Rp 5.000.000;"
-            android:textColor="#fff" />
+            android:text="Rp 5.000.000;" />
 
     </RelativeLayout>
 

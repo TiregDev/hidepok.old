@@ -43,9 +43,8 @@ public class fragment3 extends Fragment{
                 "</head>" +
                 "<body>" +
                 "<p align=\"justify\" class=\"text\">";
-        text+= "Pengguna dapat melihat detail informasi seluruh panti asuhan yang berada di Kota " +
-                "Depok baik dari data anak hingga kondisi terkini panti asuhan yang telah " +
-                "dikelompokkan berdasarkan kecamatan";
+        text+= "Pengguna dapat mendaftar sebagai relawan sesuai dengan skill yang dimiliki dan " +
+                "diminati oleh pengguna baik secara perorangan maupun kelompok.";
         text+= "</p>" +
                 "</body>" +
                 "</html>";

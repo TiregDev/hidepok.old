@@ -1,10 +1,9 @@
-package com.hi_depok.hi_depok.Kadepok_Donasi;
+package com.hi_depok.hi_depok.Kadepok_Volunteer;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,16 +15,17 @@ import android.widget.PopupWindow;
 import com.hi_depok.hi_depok.Activity_Main.kadepok;
 import com.hi_depok.hi_depok.R;
 
-public class kadepok_donasi_verify extends AppCompatActivity {
-    private Button verifikasi;
+import static java.security.AccessController.getContext;
+
+public class kadepok_volunteer_form extends AppCompatActivity {
+    public Button btn_volunteer;
     private PopupWindow popupWindow;
     public Button close;
 
-    private void initiatepopup() {
+    public void verify_volunteer() {
         try {
 
-
-            LayoutInflater layoutInflater = (LayoutInflater)kadepok_donasi_verify.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater layoutInflater = (LayoutInflater)kadepok_volunteer_form.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View layout = layoutInflater.inflate(R.layout.kadepok_donasi_popup, (ViewGroup)findViewById(R.id.rl_custom_layout));
 
             popupWindow = new PopupWindow(layout, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, true);
@@ -43,32 +43,21 @@ public class kadepok_donasi_verify extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             popupWindow.dismiss();
-            Intent verify = new Intent(kadepok_donasi_verify.this, kadepok.class);
+            Intent verify = new Intent(kadepok_volunteer_form.this, kadepok.class);
             startActivity(verify);
         }
     };
 
-/*    public void init() {
-        verifikasi = (Button)findViewById(R.id.verifikasi);
-        verifikasi.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent verify = new Intent(kadepok_donasi_verify.this, kadepok_donasi_upload.class);
-                startActivity(verify);
-            }
-        });
-    }*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kadepok_donasi_verify);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setContentView(R.layout.kadepok_volunteer_form);
 
-        verifikasi = (Button)findViewById(R.id.verifikasi);
-        verifikasi.setOnClickListener(new View.OnClickListener() {
+        btn_volunteer = (Button)findViewById(R.id.btn_volunteer);
+        btn_volunteer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initiatepopup();
+                verify_volunteer();
             }
         });
     }

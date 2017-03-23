@@ -13,13 +13,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hi_depok.hi_depok.Kadepok.kadepok_cherish_content;
-import com.hi_depok.hi_depok.Kadepok.kadepok_donasi_content;
-import com.hi_depok.hi_depok.Kadepok.kadepok_volunteer_content;
+import com.hi_depok.hi_depok.Kadepok.kadepok_content;
+import com.hi_depok.hi_depok.Kadepok_Volunteer.kadepok_volunteer_form;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment1;
-import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment2;
-import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment3;
 import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment4;
 
 public class kadepok extends AppCompatActivity implements View.OnClickListener{
@@ -27,7 +24,7 @@ public class kadepok extends AppCompatActivity implements View.OnClickListener{
     ViewPager pager;
     KadepokPager adapter;
     View strip;
-    ImageView donate, cherish, volunteer, play;
+    ImageView donate, volunteer, play;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +32,6 @@ public class kadepok extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_kadepok);
         pager = (ViewPager) findViewById(R.id.pager);
         donate = (ImageView) findViewById(R.id.donate);
-        cherish = (ImageView) findViewById(R.id.cherish);
         volunteer = (ImageView) findViewById(R.id.volunteer);
         play = (ImageView) findViewById(R.id.play);
         strip = findViewById(R.id.strip);
@@ -53,16 +49,13 @@ public class kadepok extends AppCompatActivity implements View.OnClickListener{
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 switch (position) {
                     case 0:
-                        strip.setTranslationX(positionOffsetPixels / 4);
+                        strip.setTranslationX(positionOffsetPixels / 3);
                         break;
                     case 1:
-                        strip.setTranslationX(strip.getWidth() + positionOffsetPixels / 4);
+                        strip.setTranslationX(strip.getWidth() + positionOffsetPixels / 3);
                         break;
                     case 2:
-                        strip.setTranslationX(strip.getWidth() * 2 + positionOffsetPixels / 4);
-                        break;
-                    case 3:
-                        strip.setTranslationX(strip.getWidth() * 3 + positionOffsetPixels / 4);
+                        strip.setTranslationX(strip.getWidth() * 2 + positionOffsetPixels / 3);
                         break;
                     default:
                         break;
@@ -81,7 +74,6 @@ public class kadepok extends AppCompatActivity implements View.OnClickListener{
         });
 
         donate.setOnClickListener(this);
-        cherish.setOnClickListener(this);
         volunteer.setOnClickListener(this);
         play.setOnClickListener(this);
     }
@@ -91,9 +83,6 @@ public class kadepok extends AppCompatActivity implements View.OnClickListener{
         switch (view.getId()){
             case R.id.donate:
                 pager.setCurrentItem(0);
-                break;
-            case R.id.cherish:
-                pager.setCurrentItem(1);
                 break;
             case R.id.volunteer:
                 pager.setCurrentItem(2);
@@ -108,14 +97,12 @@ public class kadepok extends AppCompatActivity implements View.OnClickListener{
 
     class KadepokPager extends FragmentPagerAdapter {
         fragment1 fragment1;
-        fragment2 fragment2;
-        fragment3 fragment3;
+        com.hi_depok.hi_depok.fragment_kadepok_activity.fragment3 fragment3;
         fragment4 fragment4;
 
         public KadepokPager(FragmentManager fm) {
             super(fm);
             fragment1 = com.hi_depok.hi_depok.fragment_kadepok_activity.fragment1.newInstance();
-            fragment2 = com.hi_depok.hi_depok.fragment_kadepok_activity.fragment2.newInstance();
             fragment3 = com.hi_depok.hi_depok.fragment_kadepok_activity.fragment3.newInstance();
             fragment4 = com.hi_depok.hi_depok.fragment_kadepok_activity.fragment4.newInstance();
         }
@@ -126,10 +113,8 @@ public class kadepok extends AppCompatActivity implements View.OnClickListener{
                 case 0:
                     return fragment1;
                 case 1:
-                    return fragment2;
-                case 2:
                     return fragment3;
-                case 3:
+                case 2:
                     return fragment4;
                 default:
                     return fragment1;
@@ -143,17 +128,12 @@ public class kadepok extends AppCompatActivity implements View.OnClickListener{
     }
 
     public void donasi(View v) {
-        Intent intent = new Intent(kadepok.this, kadepok_donasi_content.class);
-        startActivity(intent);
-    }
-
-    public void cherish(View v) {
-        Intent intent = new Intent(kadepok.this, kadepok_cherish_content.class);
+        Intent intent = new Intent(kadepok.this, kadepok_content.class);
         startActivity(intent);
     }
 
     public void volunteer(View v) {
-        Intent intent = new Intent(kadepok.this, kadepok_volunteer_content.class);
+        Intent intent = new Intent(kadepok.this, kadepok_volunteer_form.class);
         startActivity(intent);
     }
 }

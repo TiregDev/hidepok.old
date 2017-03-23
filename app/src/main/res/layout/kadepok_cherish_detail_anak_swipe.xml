@@ -17,8 +17,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:text="Nama"
-        android:textSize="15dp"
-        android:textColor="#fff" />
+        android:textSize="15dp" />
 
     <TextView
         android:id="@+id/ttl"
@@ -27,8 +26,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="TTL"
-        android:textSize="15dp"
-        android:textColor="#fff" />
+        android:textSize="15dp" />
 
     <TextView
         android:id="@+id/jk"
@@ -37,7 +35,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="Jenis Kelamin"
-        android:textSize="15dp"
-        android:textColor="#fff" />
+        android:textSize="15dp" />
 
 </LinearLayout>

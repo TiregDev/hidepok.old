@@ -165,16 +165,14 @@
         <activity android:name=".Lapok.fragment.DescriptionForm" />
         <activity android:name=".Lapok.lapok_content" />
 
-        <activity android:name=".Kadepok_Donasi.kadepok_donasi_panti" />
-        <activity android:name=".Kadepok_Donasi.kadepok_donasi_form" />
         <activity android:name=".Kadepok_Donasi.kadepok_donasi_verify" />
         <activity android:name=".Kadepok_Donasi.kadepok_donasi_upload" />
-        <activity android:name=".Kadepok_Cherish.kadepok_cherish_panti" />
-        <activity android:name=".Kadepok.kadepok_donasi_content" />
-        <activity android:name=".Kadepok.kadepok_cherish_content" />
-        <activity android:name=".Kadepok.kadepok_volunteer_content" />
         <activity android:name=".Kadepok_Cherish.kadepok_cherish_detail_anak" />
-        <activity android:name=".Kadepok_Cherish.kadepok_cherish_detail_event"></activity>
+        <activity android:name=".Kadepok_Cherish.kadepok_cherish_detail_event" />
+        <activity android:name=".Kadepok.kadepok_content" />
+        <activity android:name=".Kadepok.KadepokDetailActivity" />
+
+        <activity android:name=".Kadepok_Volunteer.kadepok_volunteer_form"></activity>
         <activity android:name=".Sikepok_RS.deskripsiApotek" />
         <activity android:name=".Sikepok_RS.deskripsi_klinik" />
         <activity android:name=".Sikepok_RS.regis_pasien_baru" />

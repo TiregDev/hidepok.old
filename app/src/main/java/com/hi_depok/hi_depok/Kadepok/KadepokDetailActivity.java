@@ -1,37 +1,40 @@
 package com.hi_depok.hi_depok.Kadepok;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
+import com.hi_depok.hi_depok.Kadepok_Donasi.kadepok_donasi_upload;
 import com.hi_depok.hi_depok.R;
 
-public class kadepok_cherish_content extends AppCompatActivity implements View.OnClickListener {
-
+public class KadepokDetailActivity extends AppCompatActivity implements View.OnClickListener {
     ViewPager pager;
     Content adapter;
     View strip;
-    ImageView donasi, cherish, volunteer;
+    TextView deskripsi, donasi, cherish;
     private ImageView btn_kadepok_notifikasi;
     private PopupWindow popup_notifikasi;
     public Button close;
 
     private void initiatepopup() {
         try {
-            LayoutInflater layoutInflater = (LayoutInflater)kadepok_cherish_content.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater layoutInflater = (LayoutInflater)KadepokDetailActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View layout = layoutInflater.inflate(R.layout.kadepok_notifikasi, (ViewGroup)findViewById(R.id.kadepok_notifikasi));
 
             popup_notifikasi = new PopupWindow(layout, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, true);
@@ -39,6 +42,14 @@ public class kadepok_cherish_content extends AppCompatActivity implements View.O
 
             close = (Button)layout.findViewById(R.id.close);
             close.setOnClickListener(cancel_button_click_listener);
+
+            Button notif = (Button)layout.findViewById(R.id.notif);
+            notif.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent notif = new Intent(KadepokDetailActivity.this, kadepok_donasi_upload.class);
+                    startActivity(notif);
+                }
+            });
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,22 +66,20 @@ public class kadepok_cherish_content extends AppCompatActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kadepok_fragment_content);
+        setContentView(R.layout.kadepok_detail_panti);
         pager = (ViewPager) findViewById(R.id.pager);
-        donasi = (ImageView) findViewById(R.id.donasi);
-        cherish = (ImageView) findViewById(R.id.cherish);
-        volunteer = (ImageView) findViewById(R.id.volunteer);
-        strip = findViewById(R.id.strip);
+        deskripsi = (TextView) findViewById(R.id.deskripsi_panti);
+        donasi = (TextView) findViewById(R.id.donasi_panti);
+        cherish = (TextView) findViewById(R.id.cherish_us);
+        strip = findViewById(R.id.strip);setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        btn_kadepok_notifikasi = (ImageView) findViewById(R.id.btn_kadepok_notifikasi);
+        btn_kadepok_notifikasi = (ImageView)findViewById(R.id.btn_kadepok_notifikasi);
         btn_kadepok_notifikasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 initiatepopup();
             }
         });
-
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         adapter = new Content(getSupportFragmentManager());
         pager.setAdapter(adapter);
@@ -103,11 +112,11 @@ public class kadepok_cherish_content extends AppCompatActivity implements View.O
             }
         });
 
+        deskripsi.setOnClickListener(this);
         donasi.setOnClickListener(this);
         cherish.setOnClickListener(this);
-        volunteer.setOnClickListener(this);
 
-        pager.setCurrentItem(1, false);
+        pager.setCurrentItem(0, false);
     }
 
     @Override
@@ -116,9 +125,9 @@ public class kadepok_cherish_content extends AppCompatActivity implements View.O
             case R.id.donasi:
                 pager.setCurrentItem(0);
                 break;
-            case R.id.cherish:
-                pager.setCurrentItem(1);
-                break;
+//            case R.id.cherish:
+//                pager.setCurrentItem(1);
+//                break;
             case R.id.volunteer:
                 pager.setCurrentItem(2);
                 break;
@@ -149,7 +158,7 @@ public class kadepok_cherish_content extends AppCompatActivity implements View.O
                 case 2:
                     return fragment3;
                 default:
-                    return fragment2;
+                    return fragment1;
             }
         }
 
@@ -160,5 +169,4 @@ public class kadepok_cherish_content extends AppCompatActivity implements View.O
 
 
     }
-
 }

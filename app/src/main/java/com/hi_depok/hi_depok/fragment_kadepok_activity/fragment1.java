@@ -43,9 +43,10 @@ public class fragment1 extends Fragment{
                 "</head>" +
                 "<body>" +
                 "<p align=\"justify\" class=\"text\">";
-        text+= "Pengguna dapat melakukan donasi sesuai dengan jumlah nominal serta panti asuhan " +
-                "pilihan atau anak asuh tertentu yang diinginkan dalam panti asuhan pilihan yang " +
-                "telah dikelompokkan berdasarkan kecamatan.";
+        text+= "Pengguna dapat melihat detail informasi seluruh panti asuhan yang berada di Kota " +
+                "Depok baik dari data anak hingga kondisi terkini panti asuhan yang telah " +
+                "dikelompokkan berdasarkan kecamatan serta dapat juga melakukan donasi kepada panti " +
+                "asuhan tersebut";
         text+= "</p>" +
                 "</body>" +
                 "</html>";

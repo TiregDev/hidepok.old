@@ -1,22 +1,16 @@
 package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Ucok.RecyclerViewAdapter_listusaha;
-import com.hi_depok.hi_depok.Ucok.itemObject_listusaha;
-import com.hi_depok.hi_depok.Ucok.ucok_listusaha;
 
 public class Sugesti extends AppCompatActivity {
     private LinearLayoutManager lLayout;
