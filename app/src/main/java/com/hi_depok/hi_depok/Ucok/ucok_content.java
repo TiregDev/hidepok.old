@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,6 +35,8 @@ public class ucok_content extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ucok_recycler_view);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         List<ItemObject> rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(ucok_content.this);
 
@@ -130,8 +133,4 @@ public class ucok_content extends AppCompatActivity {
         return allItems;
     }
 
-    public void ucok_home(View v){
-        Intent intent = new Intent(ucok_content.this, ucok.class);
-        startActivity(intent);
-    }
 }

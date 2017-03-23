@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.hi_depok.hi_depok.R;
@@ -19,6 +20,8 @@ public class hasil_calculate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ucok_hasil_calculate);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         List<itemObject_listdanus> rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(hasil_calculate.this);
 
@@ -40,8 +43,4 @@ public class hasil_calculate extends AppCompatActivity {
         return allItems;
     }
 
-    public void ucok_start_danus(View v){
-        Intent intent = new Intent(hasil_calculate.this, danus_activity.class);
-        startActivity(intent);
-    }
 }

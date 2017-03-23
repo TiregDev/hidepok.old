@@ -27,7 +27,6 @@
     <style name="Background_PanicButton" parent="AppTheme.NoActionBar">
         <item name="android:colorBackground">@color/cardview_dark_background</item>
         <item name="android:windowBackground">@drawable/bg</item>
-        <item name="android:textColor">@color/white</item>
         <item name="colorAccent">@color/white</item>
     </style>
 

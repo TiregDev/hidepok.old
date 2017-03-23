@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,8 @@ public class danus_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ucok_danus_activity);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         List<itemObject_listusaha> rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(getBaseContext());
 
@@ -45,11 +48,6 @@ public class danus_activity extends AppCompatActivity {
         allItems.add(new itemObject_listusaha("Studi Banding", R.string.item_desc));
         allItems.add(new itemObject_listusaha("Kabir", R.string.item_desc));
         return allItems;
-    }
-
-    public void danus_activity(View v) {
-        Intent intent = new Intent(danus_activity.this, ucok.class);
-        startActivity(intent);
     }
 
     private void progresscalculate(){

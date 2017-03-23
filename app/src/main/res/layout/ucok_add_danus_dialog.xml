@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
+        android:paddingStart="5dp"
         android:text="contoh: Bakti Sosial"
         android:textSize="10sp"
         android:id="@+id/contoh"
@@ -30,7 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
             android:text="dd/mm/yyyy"
             android:textSize="18sp"
             android:id="@+id/gantitanggal"

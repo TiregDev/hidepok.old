@@ -5,57 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:background="@color/colorPrimary">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:onClick="link_hasil_calculate"
-                android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Dana Usaha"
-                android:textColor="#fff"
-                android:textSize="20dp" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="10">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:onClick="link_addusaha"
-                android:gravity="center"
-                android:text="Add"
-                android:textColor="#fff"
-                android:textSize="12dp" />
-
-        </RelativeLayout>
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -64,7 +20,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -87,7 +43,7 @@
                     android:gravity="center"
                     android:text="Lemper Meler"
                     android:textColor="#fff"
-                    android:textSize="30dp" />
+                    android:textSize="30sp" />
 
                 <RatingBar
                     android:id="@+id/ratingBar"
@@ -138,7 +94,7 @@
                     android:padding="10dp"
                     android:text="@string/desc"
                     android:textColor="#b7b7b7"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -160,7 +116,7 @@
                     android:padding="10dp"
                     android:text="Alamat dan Contact"
                     android:textColor="#b7b7b7"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
