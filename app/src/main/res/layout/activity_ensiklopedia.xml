@@ -10,32 +10,18 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_below="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="search"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="-174dp"
-        tools:layout_editor_absoluteY="94dp" />
 
-    <ListView
-        android:id="@+id/list_view"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_ensiklopedia"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/editText"
-        android:layout_marginTop="15dp" />
-
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="10dp"
+        android:scrollbars="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"/>
 
 </RelativeLayout>
-
-
-
-

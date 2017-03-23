@@ -110,7 +110,7 @@
             android:parentActivityName=".Sikepok_Diagnosa.SikepokDiagnosa" />
         <activity
             android:name=".Sikepok_Diagnosa.Diagnosa"
-            android:label="Kenali Penyakitmu"
+            android:label="Diagnosa"
             android:parentActivityName=".Sikepok_Diagnosa.SikepokDiagnosa" />
         <activity
             android:name=".Sikepok_Diagnosa.Ensiklopedia"
