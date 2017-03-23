@@ -55,6 +55,13 @@ public class MenuActivity extends AppCompatActivity {
         // Set Tabs inside Toolbar
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+//        tabs.getTabAt(0).setIcon(R.drawable.panic_ambulance);
+//        tabs.getTabAt(1).setIcon(R.drawable.panic_bidan);
+//        tabs.getTabAt(2).setIcon(R.drawable.panic_pijat);
+//        tabs.getTabAt(3).setIcon(R.drawable.panic_sunat);
+//        for (int i = 0; i < tabs.getTabCount(); i++) {
+//            tabs.getTabAt(i).setIcon(R.drawable.ic_action_home4);
+//        }
         // Create Navigation drawer and inlfate layout
         /*NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
@@ -97,9 +104,10 @@ public class MenuActivity extends AppCompatActivity {
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new ListContentFragment(), "List");
-        adapter.addFragment(new TileContentFragment(), "Tile");
-        adapter.addFragment(new CardContentFragment(), "Card");
+        adapter.addFragment(new AmbulanceFragment(), "Ambulans");
+        adapter.addFragment(new BidanFragment(), "Bidan");
+        adapter.addFragment(new TukangUrutFragment(), "Pijat");
+        adapter.addFragment(new KhitanFragment(), "Khitan");
         viewPager.setAdapter(adapter);
     }
 

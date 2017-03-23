@@ -48,8 +48,7 @@
             android:id="@+id/text2"
             android:textColor="#ffff"
             android:layout_marginLeft="10dp"
-            android:text="TextView"
-            />
+            android:text="TextView"/>
 
     </LinearLayout>
 

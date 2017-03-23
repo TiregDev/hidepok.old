@@ -116,4 +116,43 @@
         <item>Google Description</item>
     </string-array>
 
+
+
+
+<!-- String Array For Panic Button-->
+    <string-array name="panic_nama">
+        <item>Saman</item>
+        <item>Sasori</item>
+        <item>Sancai</item>
+        <item>Saepul</item>
+        <item>Sanusi</item>
+        <item>Sasuke</item>
+    </string-array>
+
+    <string-array name="panic_deskripsi">
+        <item>Beji Timur, Depok</item>
+        <item>Beji Barat, Depok</item>
+        <item>Beji Utara, Depok</item>
+        <item>Beji Selatan, Depok</item>
+        <item>Beji Tenggara, Depok</item>
+        <item>Beji Aja, Depok</item>
+    </string-array>
+
+    <array name="panic_foto">
+        <item>@drawable/a</item>
+        <item>@drawable/b</item>
+        <item>@drawable/c</item>
+        <item>@drawable/d</item>
+        <item>@drawable/e</item>
+        <item>@drawable/f</item>
+    </array>
+
+    <string-array name="panic_jarak">
+        <item>1200m</item>
+        <item>1300m</item>
+        <item>1400m</item>
+        <item>1500m</item>
+        <item>1600m</item>
+        <item>1700m</item>
+    </string-array>
 </resources>

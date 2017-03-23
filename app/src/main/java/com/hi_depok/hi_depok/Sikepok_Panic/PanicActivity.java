@@ -12,6 +12,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -45,6 +46,7 @@ import com.hi_depok.hi_depok.R;
 public class PanicActivity extends AppCompatActivity implements LocationListener{
     int clickcount = 0;
     TextView notice1;
+    TextView notice2;
     TextView latlon;
     TextView address;
     ProgressDialog dialog;
@@ -59,46 +61,62 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_panicbutton);
-        toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
-        setSupportActionBar(toolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
-
+//        toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
+//        setSupportActionBar(toolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Snackbar.make(v, "Hello Snackbar!",
+//                        Snackbar.LENGTH_LONG).show();
+                Intent intent = new Intent(PanicActivity.this, MenuActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+//        return true;
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        else if (id == R.id.action_more) {
-            Intent intent = new Intent(PanicActivity.this, PilihanLainActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        else if (id == R.id.action_about) {
-            Intent intent = new Intent(PanicActivity.this, MenuActivity.class);
-            startActivity(intent);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//        else if (id == R.id.action_more) {
+//            Intent intent = new Intent(PanicActivity.this, PilihanLainActivity.class);
+//            startActivity(intent);
+//            return true;
+//        }
+//        else if (id == R.id.action_about) {
+//            Intent intent = new Intent(PanicActivity.this, MenuActivity.class);
+//            startActivity(intent);
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
     public void mapsClicked (View view) {
         Intent intent = new Intent(PanicActivity.this, MapsActivity.class);
+        startActivity(intent);
+    }
+    public void cancelbuttonClicked (View view) {
+        Toast.makeText(getBaseContext(), "Pesanan Dibatalkan", Toast.LENGTH_SHORT).show();
+        Intent intent = getIntent();
+        finish();
         startActivity(intent);
     }
     public void panicbuttonClicked(View view) {
@@ -113,6 +131,12 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
             Snackbar.make(findViewById(android.R.id.content), "Kamu menekan 2 kali..", Snackbar.LENGTH_INDEFINITE).show();
         } else {
             clickcount = 0;
+            findViewById(R.id.imageButton).setVisibility(View.GONE);
+            findViewById(R.id.imageCancelButton).setVisibility(View.VISIBLE);
+            notice1 = (TextView)findViewById(R.id.txtNotice1);
+            notice1.setText("Menunggu Konfirmasi");
+            notice2 = (TextView)findViewById(R.id.txtNotice2);
+            notice2.setText("Tekan [X] untuk membatalkan");
             Snackbar snackbar = Snackbar
                     .make(findViewById(android.R.id.content), "Kamu sedang dalam bahaya, apa kamu ingin memesan ambulan?", Snackbar.LENGTH_INDEFINITE)
                     .setAction("YA", new View.OnClickListener() {
@@ -261,6 +285,8 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
         getlongitude = location.getLongitude();
         if (getlatitude != 0 && getlongitude != 0){
             notice1.setText("Location Detail: ");
+            findViewById(R.id.layoutBtn).setVisibility(View.GONE);
+            findViewById(R.id.layoutMaps).setVisibility(View.VISIBLE);
             findViewById(R.id.txtNotice2).setVisibility(View.INVISIBLE);
             findViewById(R.id.layoutDirections).setVisibility(View.VISIBLE);
             try {
@@ -298,7 +324,7 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
                 e.printStackTrace(); // getFromLocation() may sometimes fail
             }
             dialog.dismiss();
-            Snackbar.make(findViewById(android.R.id.content), "Selamat! kami menemukan ambulan yang tersedia..", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(findViewById(android.R.id.content), "Selamat! kami menemukan ambulan yang tersedia..", Snackbar.LENGTH_INDEFINITE).show();
 
         }
     }
@@ -308,12 +334,11 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
         final EditText formMessage = (EditText) alertLayout.findViewById(R.id.form_message);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(PanicActivity.this);
-        alert.setTitle("Pesan Tambahan (optional)");
         // this is set the view from XML inside AlertDialog
         alert.setView(alertLayout);
         // disallow cancel of AlertDialog on click of back button and outside touch
         alert.setCancelable(false);
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        alert.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -324,7 +349,7 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
             }
         });
 
-        alert.setPositiveButton("Send", new DialogInterface.OnClickListener() {
+        alert.setPositiveButton("Kirim", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {

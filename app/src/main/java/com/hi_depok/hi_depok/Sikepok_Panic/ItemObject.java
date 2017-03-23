@@ -7,13 +7,15 @@ package com.hi_depok.hi_depok.Sikepok_Panic;
 public class ItemObject {
 
     private String name;
+    private String jarak;
     private String address;
     private int photoId;
 
-    public ItemObject(String name, String address, int photoId) {
+    public ItemObject(String name, String jarak, String address, int photoId) {
         this.name = name;
         this.address = address;
         this.photoId = photoId;
+        this.jarak = jarak;
     }
 
     public String getName() {
@@ -22,6 +24,10 @@ public class ItemObject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setJarak(String jarak) {
+        this.jarak = jarak;
     }
 
     public String getAddress() {

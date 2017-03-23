@@ -27,11 +27,24 @@
         android:layout_height="@dimen/avator_size"
         android:scaleType="centerCrop"
         tools:src="@drawable/a_avator" />
+    <TextView
+        android:id="@+id/list_jarak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/list_avatar"
+        android:layout_marginLeft="3dp"
+        android:textColor="@color/white"
+        android:ellipsize="end"
+        android:scaleType="centerCrop"
+        tools:text="1024m"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="11sp" />
 
     <TextView
         android:id="@+id/list_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginLeft="@dimen/md_keylines"
         android:layout_toRightOf="@+id/list_avatar"
         tools:text="@string/item_title"
@@ -45,10 +58,19 @@
         android:layout_below="@+id/list_title"
         android:layout_marginLeft="@dimen/md_keylines"
         android:layout_toRightOf="@+id/list_avatar"
-        android:textColor="@color/medium_grey"
+        android:textColor="@color/white"
         android:ellipsize="end"
         android:singleLine="true"
         tools:text="@string/item_desc"
         android:textAppearance="?attr/textAppearanceListItem"
         android:textSize="@dimen/list_body" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/white"
+        android:background="#b7b7b7"
+        android:layout_below="@+id/list_desc"
+        android:layout_toEndOf="@+id/list_avatar"/>
 </RelativeLayout>

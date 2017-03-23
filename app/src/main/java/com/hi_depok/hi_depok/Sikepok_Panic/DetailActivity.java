@@ -46,20 +46,20 @@ public class DetailActivity extends AppCompatActivity {
 
         int postion = getIntent().getIntExtra(EXTRA_POSITION, 0);
         Resources resources = getResources();
-        String[] places = resources.getStringArray(R.array.places);
+        String[] places = resources.getStringArray(R.array.panic_nama);
         collapsingToolbar.setTitle(places[postion % places.length]);
 
         String[] placeDetails = resources.getStringArray(R.array.place_details);
         TextView placeDetail = (TextView) findViewById(R.id.place_detail);
         placeDetail.setText(placeDetails[postion % placeDetails.length]);
 
-        String[] placeLocations = resources.getStringArray(R.array.place_locations);
+        String[] placeLocations = resources.getStringArray(R.array.panic_deskripsi);
         TextView placeLocation =  (TextView) findViewById(R.id.place_location);
         placeLocation.setText(placeLocations[postion % placeLocations.length]);
 
         TypedArray placePictures = resources.obtainTypedArray(R.array.places_picture2);
-        ImageView placePicutre = (ImageView) findViewById(R.id.image);
-        placePicutre.setImageDrawable(placePictures.getDrawable(postion % placePictures.length()));
+        ImageView placePicture = (ImageView) findViewById(R.id.image);
+        placePicture.setImageDrawable(placePictures.getDrawable(postion % placePictures.length()));
 
         placePictures.recycle();
     }

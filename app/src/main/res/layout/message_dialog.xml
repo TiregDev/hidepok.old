@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,24 +8,27 @@
     android:padding="15dp"
     android:weightSum="1">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="155dp"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:layout_weight="0.26"
+        android:layout_height="wrap_content"
         android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/imgAmbulan"
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/ambulance1_01" />
 
         <EditText
             android:id="@+id/form_message"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.73"
-            android:ems="10"
+            android:layout_height="150dp"
             android:gravity="top"
-            android:hint="Tulis disini..."
+            android:layout_below="@id/imgAmbulan"
+            android:hint="Pesan tambahan (optional)"
             android:inputType="textMultiLine" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

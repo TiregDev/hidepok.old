@@ -4,28 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:onClick="ucok_start_danus"
-            android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
-
-        <TextView
-            android:id="@+id/about"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Dana Usaha"
-            android:textColor="#fff"
-            android:textSize="20dp" />
-
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -35,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
             android:textColor="#fff"
             android:text="Target anda Rp 100000 dalam waktu 7 Hari \nSistem memberikan rekomendasi untuk menjalankan dana usaha dengan ketepatan tertinggi yang berada pada daftar teratas"/>
 
@@ -48,7 +33,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -60,7 +45,6 @@
                     android:id="@+id/rekomen_danus"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/dropdown"
                     android:scrollbars="vertical" />
 
             </RelativeLayout>

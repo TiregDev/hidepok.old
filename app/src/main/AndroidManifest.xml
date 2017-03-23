@@ -93,8 +93,12 @@
         <activity
             android:name=".Activity_Main.fokopok"
             android:theme="@style/Background" />
-        <activity android:name=".Ucok.ucok_content" />
-        <activity android:name=".Ucok.UcokDetailActivity" />
+        <activity android:name=".Ucok.ucok_content"
+            android:parentActivityName=".Activity_Main.ucok"
+            android:label="Sistem Informasi UMKM"/>
+        <activity android:name=".Ucok.UcokDetailActivity"
+            android:parentActivityName=".Ucok.ucok_content"
+            android:label="Sistem Informasi UMKM"/>
         <activity android:name=".fokopok.fokopok_content" />
         <activity
             android:name=".Sikepok_Diagnosa.Anggota_badan_badan"
@@ -127,9 +131,13 @@
         <activity
             android:name=".Sikepok_Diagnosa.SikepokDiagnosa"
             android:theme="@style/Background_main"/>
-        <activity android:name=".Sikepok_Panic.PanicActivity" />
+        <activity android:name=".Sikepok_Panic.PanicActivity"
+            android:parentActivityName=".Activity_Main.sikepok"
+            android:theme="@style/Background_PanicButton">
+            </activity>
         <activity
             android:name=".Sikepok_Panic.MenuActivity"
+            android:label="Tempat Sehat"
             android:parentActivityName=".Sikepok_Panic.PanicActivity" />
         <activity
             android:name=".Sikepok_Panic.DetailActivity"
@@ -208,10 +216,15 @@
         </activity>
 
         <!--<activity android:name=".fokopok.fokopok_content" />-->
-        <activity android:name=".Ucok.danus_activity" />
-        <activity android:name=".Ucok.ucok_listusaha" />
-        <activity android:name=".Ucok.hasil_calculate" />
-        <activity android:name=".Ucok.detail_danus" />
+        <activity android:name=".Ucok.danus_activity"
+            android:parentActivityName=".Activity_Main.ucok"
+            android:label="Riwayat Dana Usaha"/>
+        <activity android:name=".Ucok.hasil_calculate"
+            android:parentActivityName=".Ucok.danus_activity"
+            android:label="Rekomendasi Dana Usaha"/>
+        <activity android:name=".Ucok.detail_danus"
+            android:parentActivityName=".Ucok.hasil_calculate"
+            android:label="Detail"/>
         <activity
             android:name=".Ucok.detail_target"
             android:parentActivityName=".Ucok.danus_activity" />

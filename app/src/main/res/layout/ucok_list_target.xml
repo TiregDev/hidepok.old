@@ -32,7 +32,7 @@
             android:id="@+id/input_pendapatan"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
             android:layout_gravity="center"
             android:layout_marginEnd="5dp"
             android:layout_weight="1.3"
