@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.PopupWindow;
 
+import com.hi_depok.hi_depok.Activity_Main.kadepok;
 import com.hi_depok.hi_depok.R;
 
 public class kadepok_donasi_verify extends AppCompatActivity {
@@ -42,7 +43,7 @@ public class kadepok_donasi_verify extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             popupWindow.dismiss();
-            Intent verify = new Intent(kadepok_donasi_verify.this, kadepok_donasi_upload.class);
+            Intent verify = new Intent(kadepok_donasi_verify.this, kadepok.class);
             startActivity(verify);
         }
     };

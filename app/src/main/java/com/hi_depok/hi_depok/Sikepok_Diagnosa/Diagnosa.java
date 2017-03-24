@@ -1,20 +1,15 @@
 package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.support.v7.widget.Toolbar;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.fokopok.RecyclerViewAdapter_message;
-import com.hi_depok.hi_depok.fokopok.itemObject_message;
-import com.hi_depok.hi_depok.fokopok.message;
+import com.hi_depok.hi_depok.fokopok.fragment_content.itemObject_komunitas;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Diagnosa extends AppCompatActivity {
@@ -24,13 +19,27 @@ public class Diagnosa extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnosa);
-//        List<itemObject_message> rowListItem = getAllItemList();
-//        lLayout = new LinearLayoutManager(Diagnosa.this);
-//
-//        RecyclerView rView = (RecyclerView)findViewById(R.id.list_diagnosa);
-//        rView.setLayoutManager(lLayout);
-//
-//        RecyclerViewAdapter_message rcAdapter = new RecyclerViewAdapter_message(Diagnosa.this, rowListItem);
-//        rView.setAdapter(rcAdapter);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        List<itemObject_diagnosa> rowListItem2 = getAllItemList();
+        lLayout = new LinearLayoutManager(this);
+
+        RecyclerView rView = (RecyclerView)findViewById(R.id.list_diagnosa);
+        rView.setLayoutManager(lLayout);
+
+        RecyclerViewAdapter_diagnosa rcAdapter = new RecyclerViewAdapter_diagnosa(this, rowListItem2);
+        rView.setAdapter(rcAdapter);
+    }
+
+    private List<itemObject_diagnosa> getAllItemList(){
+        List<itemObject_diagnosa> allItems = new ArrayList<>();
+        allItems.add(new itemObject_diagnosa("Kepala", R.drawable.kepala));
+        allItems.add(new itemObject_diagnosa("Dada", R.drawable.dada));
+        allItems.add(new itemObject_diagnosa("Punggung", R.drawable.punggung));
+        allItems.add(new itemObject_diagnosa("Perut", R.drawable.perut));
+        allItems.add(new itemObject_diagnosa("Tangan", R.drawable.tangan));
+        allItems.add(new itemObject_diagnosa("Kaki", R.drawable.kaki));
+
+        return allItems;
     }
 }

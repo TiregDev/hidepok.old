@@ -13,12 +13,21 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
+    <TextView
+        android:id="@+id/kata"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pilih gejala yang Anda alami"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentStart="true" />
 
     <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_above="@+id/buttonn"
-        android:layout_below="@+id/toolbar">
+    android:layout_below="@+id/kata">
 
 <RelativeLayout
     android:layout_width="match_parent"
@@ -41,11 +50,11 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:drawableRight="@android:drawable/arrow_down_float"
+            android:drawableTint="#303030"
             android:onClick="expandableButton1"
             android:paddingRight="10dp"
             android:text="Mata"
-            android:textColor="#066da1"
-            android:drawableTint="#066da1"/>
+            android:textColor="#066da1" />
 
         <com.github.aakira.expandablelayout.ExpandableRelativeLayout
             android:id="@+id/expandableLayout1"
@@ -95,7 +104,7 @@
             android:paddingRight="10dp"
             android:text="Telinga"
             android:textColor="@color/white"
-            android:drawableTint="@color/white" />
+            android:drawableTint="#303030" />
 
 
 
@@ -150,7 +159,7 @@
             android:layout_below="@+id/expandableLayout2"
             android:background="@color/white"
             android:drawableRight="@android:drawable/arrow_down_float"
-            android:drawableTint="#066da1"
+            android:drawableTint="#303030"
             android:onClick="expandableButton3"
             android:paddingRight="10dp"
             android:text="Mulut"
@@ -200,6 +209,7 @@
             android:layout_below="@+id/expandableLayout3"
             android:background="#066da1"
             android:drawableRight="@android:drawable/arrow_down_float"
+            android:drawableTint="#303030"
             android:onClick="expandableButton4"
             android:paddingRight="10dp"
             android:text="Hidung"
@@ -260,9 +270,10 @@
 
         <Button
             android:id="@+id/button"
+            android:background="@drawable/shape_bg_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:text="Lihat Sugesti Penyakit"
             android:onClick="sugesti"
             />
     </LinearLayout>

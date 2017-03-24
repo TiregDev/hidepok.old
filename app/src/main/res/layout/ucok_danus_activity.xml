@@ -4,30 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:onClick="danus_activity"
-            android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
-
-        <TextView
-            android:id="@+id/danus"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:paddingEnd="20dp"
-            android:text="Dana Usaha"
-            android:textColor="#fff"
-            android:textSize="20dp" />
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/main_content"
@@ -44,11 +27,12 @@
         <android.support.design.widget.FloatingActionButton
             android:layout_width="54dp"
             android:layout_height="54dp"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="bottom|end"
             android:onClick="danus_calculate"
+            android:background="@color/colorPrimary"
             android:src="@drawable/add"
             android:layout_marginBottom="40dp"
-            android:layout_marginRight="30dp" />
+            android:layout_marginEnd="30dp" />
 
     </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>

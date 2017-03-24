@@ -3,6 +3,9 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+    dataBinding {
+        enabled true
+    }
     defaultConfig {
         applicationId "com.hi_depok.hi_depok"
         minSdkVersion 17
@@ -46,6 +49,7 @@ dependencies {
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.github.aakira:expandable-layout:1.4.2@aar'
     compile 'com.github.Hitomis:CircleMenu:v1.0.0'
+    compile 'com.github.wrdlbrnft:sorted-list-adapter:0.1.0.5'
     testCompile 'junit:junit:4.12'
 }
 

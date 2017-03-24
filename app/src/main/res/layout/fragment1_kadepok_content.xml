@@ -3,33 +3,164 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/Pilih_Kecamatan"
-        android:layout_marginBottom="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:animationCache="false"
-        android:background="#fff"
-        android:focusable="true"
-        android:popupBackground="#fff" />
-
-    <GridView
-        android:id="@+id/gridview"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/spinner"
-        android:layout_centerVertical="true"
-        android:columnWidth="90dp"
-        android:gravity="center"
-        android:horizontalSpacing="10dp"
-        android:numColumns="auto_fit"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="10dp" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tlpn_panti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textView30"
+                android:layout_alignStart="@+id/pengurus_panti"
+                android:text="021-8766765" />
+
+            <TextView
+                android:id="@+id/pengurus_panti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textView29"
+                android:layout_centerHorizontal="true"
+                android:text="KH. Darul" />
+
+            <TextView
+                android:id="@+id/text_jmlh_anak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/text_telepon"
+                android:layout_below="@+id/text_telepon"
+                android:layout_marginTop="20dp"
+                android:text="Jumlah Anak Panti" />
+
+            <TextView
+                android:id="@+id/desc_panti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/text_alamat_panti"
+                android:layout_marginTop="40dp"
+                android:text="@string/item_desc" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/text_jmlh_anak"
+                android:layout_alignStart="@+id/textView29"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/desc_panti"
+                android:layout_alignBaseline="@+id/text_thn_berdiri"
+                android:layout_alignStart="@+id/textView31"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/text_thn_berdiri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/text_jmlh_anak"
+                android:layout_below="@+id/text_jmlh_anak"
+                android:layout_marginTop="28dp"
+                android:text="Tahun Berdiri" />
+
+            <TextView
+                android:id="@+id/text_alamat_panti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/text_thn_berdiri"
+                android:layout_below="@+id/text_thn_berdiri"
+                android:layout_marginTop="28dp"
+                android:text="Alamat Panti" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/jmlh_anak_panti"
+                android:layout_alignLeft="@+id/jmlh_anak_panti"
+                android:layout_marginLeft="30dp"
+                android:text="Anak" />
+
+            <TextView
+                android:id="@+id/thn_berdiri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/desc_panti"
+                android:layout_alignBaseline="@+id/text_thn_berdiri"
+                android:layout_alignStart="@+id/jmlh_anak_panti"
+                android:text="2003" />
+
+            <TextView
+                android:id="@+id/text_pengurus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="Nama Pengurus" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/text_jmlh_anak"
+                android:layout_alignBottom="@+id/text_jmlh_anak"
+                android:layout_alignStart="@+id/textView30"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/text_telepon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/text_pengurus"
+                android:layout_below="@+id/text_pengurus"
+                android:layout_marginTop="18dp"
+                android:text="No. Telepon" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/text_jmlh_anak"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/jmlh_anak_panti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textView31"
+                android:layout_alignStart="@+id/tlpn_panti"
+                android:text="55" />
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:layout_alignBaseline="@+id/text_alamat_panti"
+                android:layout_alignBottom="@+id/text_alamat_panti"
+                android:layout_alignStart="@+id/textView32" />
+
+            <TextView
+                android:id="@+id/alamat_panti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/text_alamat_panti"
+                android:layout_alignStart="@+id/thn_berdiri"
+                android:text="Jl. Beji, Beji, Depok, Jawa Barat" />
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

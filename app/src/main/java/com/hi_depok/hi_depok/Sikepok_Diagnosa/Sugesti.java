@@ -1,17 +1,19 @@
 package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
+
 import com.hi_depok.hi_depok.R;
 
 public class Sugesti extends AppCompatActivity {
+    private LinearLayoutManager lLayout;
     String[] items;
     ArrayList<String> listItems;
     ArrayAdapter<String> adapter;
@@ -22,23 +24,22 @@ public class Sugesti extends AppCompatActivity {
         setContentView(R.layout.activity_sugesti);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        listView=(ListView)findViewById(R.id.list);
-        initList();
+        List<itemObject_listsugesti> rowListItem3 = getAllItemList();
+        lLayout = new LinearLayoutManager(this);
+
+        RecyclerView rView = (RecyclerView)findViewById(R.id.list_sugesti);
+        rView.setLayoutManager(lLayout);
+
+        RecyclerViewAdapter_listsugesti rcAdapter = new RecyclerViewAdapter_listsugesti(this, rowListItem3);
+        rView.setAdapter(rcAdapter);
     }
 
-    public void initList(){
-        items=new String[]{"Mata Katarak", "Jidat", "Hidung", "Mulut", "telinga"};
-        listItems=new ArrayList<>(Arrays.asList(items));
-        adapter=new ArrayAdapter<String>(this, R.layout.item_sugesti, R.id.textView16, listItems);
-        listView.setAdapter(adapter);
-    }
-    public void back (View view){
-        Intent contoh = new Intent(Sugesti.this, Anggota_badan_badan.class);
-        startActivity(contoh);
-    }
-    public void deskripsi (View view){
-        Intent contoh = new Intent(Sugesti.this, Deskripsi.class);
-        startActivity(contoh);
+    public List<itemObject_listsugesti> getAllItemList() {
+        List<itemObject_listsugesti> allItems = new ArrayList<>();
+        allItems.add(new itemObject_listsugesti("Mata Katarak"));
+        allItems.add(new itemObject_listsugesti("Mata Merah"));
+        allItems.add(new itemObject_listsugesti("Mata Kabur"));
+        return allItems;
     }
 }
 
