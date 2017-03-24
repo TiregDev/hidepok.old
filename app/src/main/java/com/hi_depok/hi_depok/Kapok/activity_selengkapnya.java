@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,13 +17,17 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.hi_depok.hi_depok.R;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import com.hi_depok.hi_depok.R;
 public class activity_selengkapnya extends AppCompatActivity {
     ViewPager viewPager;
+    private LinearLayoutManager lLayout;
 
-    Integer[] imageId = {R.drawable.ucok_image_4, R.drawable.ucok_image_2, R.drawable.ucok_image_5};
+    Integer[] imageId = {R.drawable.asia, R.drawable.ucok_image_2, R.drawable.ucok_image_5};
     int currentPage = 0;
     Timer timer;
     final long DELAY_MS = 500;
@@ -32,7 +38,6 @@ public class activity_selengkapnya extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         TextView lengkap;
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_selengkapnya);
 
 
@@ -57,6 +62,12 @@ public class activity_selengkapnya extends AppCompatActivity {
         viewPager = (ViewPager)findViewById(R.id.view_pager);
         PagerAdapter adapter = new slideshow_foto(activity_selengkapnya.this, imageId);
         viewPager.setAdapter(adapter);
+        viewPager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(activity_selengkapnya.this, activity_view_ulasan.class));
+            }
+        });
 
 
         final Handler handler = new Handler();
@@ -79,10 +90,27 @@ public class activity_selengkapnya extends AppCompatActivity {
             }
         }, 500, 3000);
 
+        //recycle ulasan
+        List<ItemObjectViewUlasan> rowListItem = getAllItemList();
+        lLayout = new LinearLayoutManager(activity_selengkapnya.this);
 
+        RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
+        rView.setLayoutManager(lLayout);
+
+        CustomAdapterViewUlasan rcAdapter = new CustomAdapterViewUlasan(activity_selengkapnya.this, rowListItem);
+        rView.setAdapter(rcAdapter);
 
 
     }
+    //ulasan
+    private List<ItemObjectViewUlasan> getAllItemList(){
+        List<ItemObjectViewUlasan> allItems = new ArrayList<>();
+        allItems.add(new ItemObjectViewUlasan("Kadek Pandu", "12-01-2016 20:01:56", "Makanannya enak dan murah", R.drawable.profile));
+        allItems.add(new ItemObjectViewUlasan("Fajar Zakaria", "12-01-2016 21:01:56", "Tempatnya nyaman dan bersih", R.drawable.profile));
+        allItems.add(new ItemObjectViewUlasan("Tegar Hidayat", "13-01-2016 08:02:00", "makannya muuaannntebbb!!!!", R.drawable.profile));
+        return allItems;
+    }
+    //popup
     private PopupWindow pwindo;
 
     private void initiatepopup() {

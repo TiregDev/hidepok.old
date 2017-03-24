@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:padding="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar"
+            android:layout_width="80dp"
+            android:padding="10dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile" />
+
+        <RatingBar
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#fff"
+            android:numStars="5"
+            android:scaleX="0.3"
+            android:scaleY="0.3"
+            android:rating="5"
+            android:layout_gravity="left"
+            android:theme="@style/RatingBar"
+            android:layout_alignParentTop="true" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/avatar"
+            android:text="Kadek Pandu"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAppearance="?attr/textAppearanceListItem"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/waktu"
+            android:layout_height="wrap_content"
+            android:text="waktu"
+            android:gravity="right"
+            android:textSize="10sp"
+            android:layout_toRightOf="@+id/avatar"
+            android:layout_below="@+id/title"/>
+        <TextView
+            android:id="@+id/komentar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rumah makannya bagus, makanannya murah dan enak."
+            android:layout_below="@+id/waktu"
+            android:layout_toRightOf="@id/avatar"
+            android:textSize="14sp"
+            android:layout_marginTop="5dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>

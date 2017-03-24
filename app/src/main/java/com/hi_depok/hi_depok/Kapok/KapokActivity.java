@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,39 +13,37 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.hi_depok.hi_depok.R;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class KapokActivity extends Activity implements AdapterView.OnItemSelectedListener  {
     private Button temukan;
     private RadioGroup sort;
     private RadioButton urut;
     ImageView join;
-
-
-    GridView androidGridView;
-
-    String[] gridViewString = {
+    //array recycleview menu sort
+    ArrayList<String> namalogo = new ArrayList<>(Arrays.asList(
             "Wisata", "Warung Pancong Pak Kumis & Mang Dadang",
             "Bebek & Ayam Goreng Pak Endut", "Wisata",
             "Talaga Seafood Restaurant", "Kolam Renang Tirta Sari",
             "Waroeng SS Spesial Sambal", "Wisata",
-            "Kuliner", "Wisata"
-    };
-    int[] gridViewImageId = {
+            "Kuliner", "Wisata"));
+    ArrayList<Integer> gambarlogo = new ArrayList<>(Arrays.asList(
             R.drawable.wisata, R.drawable.ucok_image_4,
             R.drawable.ucok_image_4, R.drawable.wisata,
             R.drawable.ucok_image_4, R.drawable.wisata,
             R.drawable.ucok_image_4, R.drawable.wisata,
-            R.drawable.ucok_image_4, R.drawable.wisata
-    };
+            R.drawable.ucok_image_4, R.drawable.wisata));
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,9 @@ public class KapokActivity extends Activity implements AdapterView.OnItemSelecte
 
         Spinner pilihan = (Spinner) findViewById(R.id.pilihan);
         Spinner camat = (Spinner) findViewById(R.id.camat);
-
+        sort=(RadioGroup)findViewById(R.id.sort);
+        temukan=(Button)findViewById(R.id.temukan);
+        ImageView join = (ImageView) findViewById(R.id.join);
 
         // Spinner click listener
         pilihan.setOnItemSelectedListener(this);
@@ -89,9 +91,6 @@ public class KapokActivity extends Activity implements AdapterView.OnItemSelecte
 
         camat.setAdapter(camatAdapter);
 
-        sort=(RadioGroup)findViewById(R.id.sort);
-
-        temukan=(Button)findViewById(R.id.temukan);
 
         temukan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,20 +100,7 @@ public class KapokActivity extends Activity implements AdapterView.OnItemSelecte
             }
         });
 
-
-
-        grid_menu adapterViewAndroid = new grid_menu(KapokActivity.this, gridViewString, gridViewImageId);
-        androidGridView=(GridView)findViewById(R.id.grid_view_image_text);
-        androidGridView.setAdapter(adapterViewAndroid);
-        androidGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                initiatepopup();
-            }
-        });
-
-        ImageView join = (ImageView) findViewById(R.id.join);
-
+        //join
         join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,16 +108,26 @@ public class KapokActivity extends Activity implements AdapterView.OnItemSelecte
             }
         });
 
-    }
 
+        //recycleview
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        // set a GridLayoutManager with 2 number of columns , horizontal gravity and false value for reverseLayout to show the items from start to end
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+        recyclerView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
+        //  call the constructor of CustomAdapter to send the reference and data to Adapter
+        CustomAdapterMenuSort customAdapter = new CustomAdapterMenuSort(KapokActivity.this, namalogo,gambarlogo);
+        recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
+}
+
+    //popup
     private PopupWindow pwindo;
 
-    private void initiatepopup() {
+    public void initiatepopup() {
         try {
             LayoutInflater inflater = (LayoutInflater) KapokActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.popup_layout, (ViewGroup) findViewById(R.id.popup_element));
 
-            pwindo = new PopupWindow(layout, 430, 660, true);
+            pwindo = new PopupWindow(layout, 450, 750, true);
             pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
             Button selengkapnya = (Button) layout.findViewById(R.id.next);

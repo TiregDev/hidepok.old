@@ -24,14 +24,15 @@
             android:layout_weight="1"
             android:text="Kenal Depok"
             android:textColor="#fff"
-            android:textSize="20dp" />
+            android:textSize="16dp" />
 
         <ImageView
             android:id="@+id/join"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="5dp"
+            android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:clickable="true"
             android:onClick="join"
@@ -97,11 +98,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="14sp"
             android:gravity="center"
             android:text="Urutkan dari   :"
             android:textColor="#fff"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <RadioGroup
             android:id="@+id/sort"
@@ -117,7 +118,7 @@
                 android:text="Rating"
                 android:textColor="#fff"
                 android:textColorLink="@color/colorPrimary"
-                android:textSize="16dp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/jarak"
@@ -127,33 +128,33 @@
                 android:text="Terdekat"
                 android:textColorLink="@color/colorPrimary"
                 android:textColor="#fff"
-                android:textSize="16dp" />
+                android:textSize="14sp" />
         </RadioGroup>
     </LinearLayout>
 
     <Button
         android:id="@+id/temukan"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="33dp"
         android:alpha="0.7"
         android:background="@drawable/shape2"
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:onClick="temukan"
+        android:layout_marginBottom="12dp"
         android:textSize="14dp"
         android:text="@string/button_next"
         android:textAlignment="gravity"
         android:textColor="#fff" />
 
-    <GridView
-        android:id="@+id/grid_view_image_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:columnWidth="90dp"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:background="#fff"
-        android:gravity="center"
-        android:numColumns="2" />
+        android:paddingTop="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

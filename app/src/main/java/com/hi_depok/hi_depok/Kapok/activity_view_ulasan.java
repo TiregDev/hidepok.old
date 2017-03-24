@@ -1,70 +1,55 @@
 package com.hi_depok.hi_depok.Kapok;
 
-import android.content.Context;
-import android.content.res.Resources;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
 import com.hi_depok.hi_depok.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by User on 3/17/2017.
  */
 
 public class activity_view_ulasan extends AppCompatActivity {
 
-    ListView list;
-    String [] titles;
-    String [] description;
-    int [] imgs = {R.drawable.favorite, R.drawable.like, R.drawable.like_list, R.drawable.common_google_signin_btn_icon_dark};
+    private LinearLayoutManager lLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_view_ulasan);
 
-        Resources res = getResources();
+        List<ItemObjectViewUlasan> rowListItem = getAllItemList();
+        lLayout = new LinearLayoutManager(activity_view_ulasan.this);
 
-        titles = res.getStringArray(R.array.titles);
-        description = res.getStringArray(R.array.description);
+        RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
+        rView.setLayoutManager(lLayout);
 
-        list = (ListView) findViewById(R.id.list1);
-        MyAdapter adapter = new MyAdapter(this, titles, imgs, description);
-        list.setAdapter(adapter);
-    }
-    class MyAdapter extends ArrayAdapter<String> {
+        CustomAdapterViewUlasan rcAdapter = new CustomAdapterViewUlasan(activity_view_ulasan.this, rowListItem);
+        rView.setAdapter(rcAdapter);
 
-        Context context;
-        int [] imgs;
-        String myTitles[];
-        String myDescription[];
-
-        MyAdapter(Context c,String []titles,int[] imgs,String[]description) {
-            super(c, R.layout.row, R.id.text1, titles);
-            this.context = c;
-            this.imgs = imgs;
-            this.myDescription = description;
-            this.myTitles = titles;
-        }
-
-        @Override
-        public View getView (int position, View convertView, ViewGroup parent){
-            LayoutInflater layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = layoutInflater.inflate(R.layout.row, parent, false);
-            ImageView myImages = (ImageView) row.findViewById(R.id.icon);
-            TextView myTitle = (TextView) row.findViewById(R.id.text1);
-            TextView myDescription = (TextView) row.findViewById(R.id.text2);
-            myImages.setImageResource(imgs[position]);
-            myTitle.setText(titles[position]);
-            myDescription.setText(description[position]);
-            return row;
-        }
 
     }
+
+    private List<ItemObjectViewUlasan> getAllItemList(){
+        List<ItemObjectViewUlasan> allItems = new ArrayList<>();
+        allItems.add(new ItemObjectViewUlasan("Kadek Pandu", "12-01-2016 20:01:56", "Makanannya enak dan murah", R.drawable.profile));
+        allItems.add(new ItemObjectViewUlasan("Fajar Zakaria", "12-01-2016 21:01:56", "Tempatnya nyaman dan bersih", R.drawable.profile));
+        allItems.add(new ItemObjectViewUlasan("Tegar Hidayat", "13-01-2016 08:02:00", "makannya muuaannntebbb!!!!", R.drawable.profile));
+        allItems.add(new ItemObjectViewUlasan("Jihada Amalia ", "14-02-2016 10:01:47", "Fasilitasnya lengkap.....", R.drawable.profile));
+        allItems.add(new ItemObjectViewUlasan("Retno Widianti", "15-01-2016 20:34:15", "Topmarkotop gan, lanjutkan!!", R.drawable.profile));
+        allItems.add(new ItemObjectViewUlasan("Fatimah Rosmaningsih", "16-01-2016 20:56:23", "Pelayanannya terbaik!!", R.drawable.profile));
+        allItems.add(new ItemObjectViewUlasan("Ilham Al Fajri", "17-01-2016 20:45:33", "Parkirannya luas", R.drawable.profile));
+        allItems.add(new ItemObjectViewUlasan("Toriq Wahid", "18-01-2016 20:22:44", "harga minumannya lumayan tapi enak", R.drawable.profile));
+        allItems.add(new ItemObjectViewUlasan("Alian Rakhul", "19-01-2016 15:55:34", "Berkelas rasa makannya", R.drawable.profile));
+        allItems.add(new ItemObjectViewUlasan("Hadi Nur Salam", "19-01-2016 20:39:55", "Harga kaki 5 rasa bintang 5", R.drawable.profile));
+
+        return allItems;
+    }
+
 }

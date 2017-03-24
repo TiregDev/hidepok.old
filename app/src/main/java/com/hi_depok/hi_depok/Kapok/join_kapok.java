@@ -2,15 +2,19 @@ package com.hi_depok.hi_depok.Kapok;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Vibrator;
+import android.provider.MediaStore;
 import android.support.design.widget.TextInputLayout;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
@@ -21,17 +25,22 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.hi_depok.hi_depok.R;
 
-public class join_kapok extends Activity implements AdapterView.OnItemSelectedListener {
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
+public class join_kapok extends Activity implements AdapterView.OnItemSelectedListener {
+    private static int RESULT_LOAD_IMAGE = 1;
     private Vibrator vib;
     Animation animShake;
-    private EditText nama, alamat, pj, email,telepon ;
-    private TextInputLayout layout_nama, layout_alamat, layout_pj,layout_email, layout_telp;
+    private EditText nama, alamat, pj, email, telepon;
+    private TextInputLayout layout_nama, layout_alamat, layout_pj, layout_email, layout_telp;
     private Button selesai;
+    private static final int PICK_IMAGE = 100;
+    Uri imageUri;
+    File imageFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +59,7 @@ public class join_kapok extends Activity implements AdapterView.OnItemSelectedLi
         telepon = (EditText) findViewById(R.id.telepon);
         selesai = (Button) findViewById(R.id.selesai);
 
-        animShake = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.design_fab_out);
+        animShake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.design_fab_out);
         vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         selesai.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +108,6 @@ public class join_kapok extends Activity implements AdapterView.OnItemSelectedLi
         camat.setAdapter(camatAdapter);
 
         ImageView foto = (ImageView) findViewById(R.id.foto);
-
         foto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,7 +115,9 @@ public class join_kapok extends Activity implements AdapterView.OnItemSelectedLi
             }
         });
 
+
     }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String item = parent.getItemAtPosition(position).toString();
@@ -119,6 +129,7 @@ public class join_kapok extends Activity implements AdapterView.OnItemSelectedLi
     public void onNothingSelected(AdapterView<?> arg0) {
 
     }
+
     /**
      * Validating form
      */
@@ -210,6 +221,7 @@ public class join_kapok extends Activity implements AdapterView.OnItemSelectedLi
         layout_pj.setErrorEnabled(false);
         return true;
     }
+
     private boolean cektelepon() {
         if (telepon.getText().toString().trim().isEmpty()) {
 
@@ -228,9 +240,37 @@ public class join_kapok extends Activity implements AdapterView.OnItemSelectedLi
         try {
             LayoutInflater inflater = (LayoutInflater) join_kapok.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.popup_upload_image, (ViewGroup) findViewById(R.id.popup_element));
-            pwindo = new PopupWindow(layout, 300,200, true);
+            pwindo = new PopupWindow(layout, 300, 200, true);
             pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
+
+
+            //ambil foto
+           Button ambil = (Button) layout.findViewById(R.id.ambil);
+            ambil.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                    imageFile = new File(Environment
+                            .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                            "test.jpg");
+                    Uri tempuri = Uri.fromFile(imageFile);
+                    intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, tempuri);
+                    intentCamera.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+                    startActivityForResult(intentCamera, 0);
+                }
+            });
+           Button pilih = (Button) layout.findViewById(R.id.pilih);
+            pilih.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // Create the Intent for Image Gallery.
+                    Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                    // Start new activity with the LOAD_IMAGE_RESULTS to handle back the results when image is picked from the Image Gallery.
+                    startActivityForResult(i, RESULT_LOAD_IMAGE);
+                }
+            });
 
             Button close = (Button) layout.findViewById(R.id.tutup);
             close.setOnClickListener(cancel_button_click_listener);
@@ -239,6 +279,7 @@ public class join_kapok extends Activity implements AdapterView.OnItemSelectedLi
         }
 
     }
+
     private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -247,4 +288,29 @@ public class join_kapok extends Activity implements AdapterView.OnItemSelectedLi
     };
 
 
+
+    //ambilgallery
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+            ImageView imageView = (ImageView) findViewById(R.id.foto);
+            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+        }
+
+
+    }
 }
