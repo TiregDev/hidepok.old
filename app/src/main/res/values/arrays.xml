@@ -155,4 +155,62 @@
         <item>1600m</item>
         <item>1700m</item>
     </string-array>
+
+    <!-- String array for RS Module -->
+    <array name="FOTORS">
+        <item>@drawable/rskeluarga</item>
+        <item>@drawable/rskeluarga</item>
+        <item>@drawable/rskeluarga</item>
+        <item>@drawable/rskeluarga</item>
+        <item>@drawable/rskeluarga</item>
+
+    </array>
+    <string-array name="NAMARS">
+        <item >RS Mitra Keluarga</item>
+        <item >RS Medika</item>
+        <item >RS Ahmad Muchtar</item>
+        <item >RSUD Depok</item>
+        <item >RS TNI</item>
+    </string-array>
+
+    <string-array name="ALAMATRS">
+        <item >Jl. Merdeka No.1</item>
+        <item >Jl. Merdeka No.2</item>
+        <item >Jl. Merdeka No.3</item>
+        <item >Jl. Merdeka No.4</item>
+        <item >Jl. Merdeka No.5</item>
+    </string-array>
+
+    <string-array name="JARAKRS">
+        <item >67</item>
+        <item >10</item>
+        <item >2</item>
+        <item >5</item>
+        <item >6</item>
+    </string-array>
+
+
+    <array name="FOTODOKTER">
+        <item>@drawable/muhammad</item>
+        <item>@drawable/febby</item>
+        <item>@drawable/indah</item>
+        <item>@drawable/febby</item>
+        <item>@drawable/indah</item>
+
+    </array>
+    <string-array name="NAMADOKTER">
+        <item >Dr. Muhammad</item>
+        <item >Dr. Febby Haryono</item>
+        <item >Dr. Indah Kusuma</item>
+        <item >Dr. Febby Haryono</item>
+        <item >Dr. Indah Kusuma</item>
+    </string-array>
+
+    <string-array name="SPESIALIS">
+        <item >Jl. Merdeka No.1</item>
+        <item >Jl. Merdeka No.2</item>
+        <item >Jl. Merdeka No.3</item>
+        <item >Jl. Merdeka No.4</item>
+        <item >Jl. Merdeka No.5</item>
+    </string-array>
 </resources>

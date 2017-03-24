@@ -175,13 +175,20 @@
         <activity android:name=".Kadepok_Volunteer.kadepok_volunteer_form"></activity>
         <activity android:name=".Sikepok_RS.deskripsiApotek" />
         <activity android:name=".Sikepok_RS.deskripsi_klinik" />
-        <activity android:name=".Sikepok_RS.regis_pasien_baru" />
-        <activity android:name=".Sikepok_RS.regis_pasien_lama" />
-        <activity android:name=".Sikepok_RS.regis_berobat" />
-        <activity android:name=".Sikepok_RS.ketentuan" />
-        <activity android:name=".Sikepok_RS.detail_post" />
-        <activity android:name=".Sikepok_RS.detail_post_saya" />
-        <activity android:name=".Sikepok_RS.post_saya" />
+        <activity android:name=".Sikepok_RS.regis_pasien_baru"
+            android:parentActivityName=".Sikepok_RS.registrasi"/>
+        <activity android:name=".Sikepok_RS.regis_pasien_lama"
+            android:parentActivityName=".Sikepok_RS.registrasi"/>
+        <activity android:name=".Sikepok_RS.regis_berobat"
+            android:parentActivityName=".Sikepok_RS.registrasi"/>
+        <activity android:name=".Sikepok_RS.ketentuan"
+            android:parentActivityName=".Sikepok_RS.registrasi"/>
+        <activity android:name=".Sikepok_RS.detail_post"
+            android:parentActivityName=".Sikepok_RS.forum"/>
+        <activity android:name=".Sikepok_RS.detail_post_saya"
+            android:parentActivityName=".Sikepok_RS.forum"/>
+        <activity android:name=".Sikepok_RS.post_saya"
+            android:parentActivityName=".Sikepok_RS.forum"/>
         <activity
             android:name=".Sikepok_RS.list_diskusi"
             android:label="@string/title_activity_list_diskusi"
@@ -189,7 +196,8 @@
         <activity android:name=".Sikepok_RS.klinik" />
         <activity android:name=".Sikepok_RS.apotek" />
         <activity android:name=".Sikepok_RS.registrasi" />
-        <activity android:name=".Sikepok_RS.forum" />
+        <activity android:name=".Sikepok_RS.forum"
+            android:parentActivityName=".Sikepok_RS.RSActivity"/>
         <activity android:name=".Sikepok_RS.rs_terdekat" />
         <activity android:name=".Sikepok_RS.daftar_rs" />
         <activity
