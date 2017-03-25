@@ -11,6 +11,7 @@
 
         <TextView
             android:text="@string/desc"
+            android:layout_marginStart="8dp"
             android:textColor="#b7b7b7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,8 +46,10 @@
             android:gravity="center"
             android:alpha="0.7"
             android:background="@drawable/shape2"
-            android:text="@string/button_next"
-            android:textColor="#fff" />
+            android:text="LIHAT"
+            android:textColor="#fff"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 

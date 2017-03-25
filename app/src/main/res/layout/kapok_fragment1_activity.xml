@@ -10,7 +10,8 @@
         android:gravity="center_vertical">
 
         <TextView
-            android:text="@string/desc"
+            android:text="@string/kapok_frag1"
+            android:layout_marginStart="8dp"
             android:textColor="#b7b7b7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

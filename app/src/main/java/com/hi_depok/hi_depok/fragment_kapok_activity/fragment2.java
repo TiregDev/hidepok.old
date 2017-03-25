@@ -42,9 +42,7 @@ public class fragment2 extends Fragment{
                 "</head>" +
                 "<body>" +
                 "<p align=\"justify\" class=\"text\">";
-        text+= "Pada modul ini anda dapat membeli sayur2an, buah2an, dll. Anda juga dapat memotong rambut " +
-                "anda untuk terlihat lebih tampan, teruntuk anda kaum perempuan lebih baik anda menggunakan " +
-                "kerudung jika tidak mau silahkan botakkan rambut anda, agar tidak ada laki2 yang melihat rambut anda. Thanks";
+        text+= "Video ini akan memberikan anda tutorial dalam cara menggunakan modul Kapok ini secara singkat dan menarik dengan gaya motion graphics";
         text+= "</p>" +
                 "</body>" +
                 "</html>";

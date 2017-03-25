@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -23,6 +26,7 @@ import android.widget.Toast;
 import com.hi_depok.hi_depok.Activity_Main.kadepok;
 import com.hi_depok.hi_depok.Kadepok_Donasi.kadepok_donasi_upload;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.Sikepok_Diagnosa.Deskripsi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,14 +76,9 @@ public class kadepok_content extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kadepok_recycler_view);
-
-        btn_kadepok_notifikasi = (ImageView)findViewById(R.id.btn_kadepok_notifikasi);
-        btn_kadepok_notifikasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initiatepopup();
-            }
-        });
+        //getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         List<ItemObject> rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(kadepok_content.this);
@@ -156,6 +155,30 @@ public class kadepok_content extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+
+            case android.R.id.home:
+                // todo: goto back activity from here
+                kadepok_content.this.finish();
+                return true;
+            case R.id.action_notif:
+                initiatepopup();
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_kadepok, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
 
     private List<ItemObject> getAllItemList(){
         List<ItemObject> allItems = new ArrayList<>();
@@ -171,10 +194,5 @@ public class kadepok_content extends AppCompatActivity {
         allItems.add(new ItemObject("Muhammadiyah", "Jl. H. Ahmad, Sawangan, Depok, Jawa Barat","021-8799876", R.drawable.e));
 
         return allItems;
-    }
-
-    public void kadepok_home(View v){
-        Intent intent = new Intent(kadepok_content.this, kadepok.class);
-        startActivity(intent);
     }
 }

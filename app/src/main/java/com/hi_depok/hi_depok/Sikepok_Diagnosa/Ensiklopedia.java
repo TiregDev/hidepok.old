@@ -64,6 +64,19 @@ public class Ensiklopedia extends AppCompatActivity implements SearchView.OnQuer
 
         return true;
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+
+                Ensiklopedia.this.finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     public boolean onQueryTextChange(String query) {

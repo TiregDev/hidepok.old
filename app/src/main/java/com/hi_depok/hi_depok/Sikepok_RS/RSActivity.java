@@ -23,7 +23,6 @@ public class RSActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rs);
 
         circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
-
         circleMenu.setMainMenu(Color.parseColor("#CDCDCD"), R.drawable.icon_menu, R.drawable.icon_cancel);
         circleMenu.addSubMenu(Color.parseColor("#258CFF"), R.drawable.icon_rs)
 //                .addSubMenu(Color.parseColor("#30A400"), R.drawable.icon_klinik)

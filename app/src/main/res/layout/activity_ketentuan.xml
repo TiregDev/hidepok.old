@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme" />
-        </RelativeLayout>
-
+        android:layout_below="@+id/toolbar3">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -81,10 +74,9 @@
 
                 <TextView
                     style="@style/tulisanPutih"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_weight="1"
                     android:text="@string/ketentuan2" />
 
             </LinearLayout>
@@ -105,10 +97,9 @@
 
                 <TextView
                     style="@style/tulisanPutih"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_weight="1"
                     android:text="@string/ketentuan3" />
 
             </LinearLayout>
@@ -129,10 +120,9 @@
 
                 <TextView
                     style="@style/tulisanPutih"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_weight="1"
                     android:text="@string/ketentuan4" />
 
             </LinearLayout>
@@ -153,10 +143,9 @@
 
                 <TextView
                     style="@style/tulisanPutih"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_weight="1"
                     android:text="@string/ketentuan5" />
 
             </LinearLayout>
@@ -177,10 +166,9 @@
 
                 <TextView
                     style="@style/tulisanPutih"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_weight="1"
                     android:text="@string/ketentuan6" />
 
             </LinearLayout>
@@ -201,14 +189,13 @@
 
                 <TextView
                     style="@style/tulisanPutih"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_weight="1"
                     android:text="@string/ketentuan7" />
 
             </LinearLayout>
 
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</RelativeLayout>

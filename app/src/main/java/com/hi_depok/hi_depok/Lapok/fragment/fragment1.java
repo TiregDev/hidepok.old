@@ -32,11 +32,11 @@ public class fragment1 extends Fragment {
         return fragment;
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View  v = inflater.inflate(R.layout.fragment1_lapok_content, null);
-        return v;
-    }
+//    @Nullable
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        View  v = inflater.inflate(R.layout.fragment1_lapok_content, null);
+//        return v;
+//    }
 
 }

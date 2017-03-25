@@ -36,6 +36,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.hi_depok.hi_depok.R;
 
 /**
@@ -70,9 +72,10 @@ public class dokter extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, daftar_rs.class);
-//                    intent.putExtra(DetailActivity.EXTRA_POSITION, getAdapterPosition());
-                    context.startActivity(intent);
+//                    Intent intent = new Intent(context, daftar_rs.class);
+//                   intent.putExtra(DetailActivity.EXTRA_POSITION, getAdapterPosition());
+//                    context.startActivity(intent);
+                    Toast.makeText(context,"Dokter telah dipilih",Toast.LENGTH_SHORT).show();
                 }
             });
 

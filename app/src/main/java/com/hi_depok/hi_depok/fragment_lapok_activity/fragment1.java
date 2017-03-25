@@ -43,7 +43,7 @@ public class fragment1 extends Fragment{
                 "</head>" +
                 "<body>" +
                 "<p align=\"justify\" class=\"text\">";
-        text+= "Fasilitas untuk melaporkan kejadian atau situasi di sekitar user secara real time " +
+        text+= "Fasilitas untuk melaporkan kejadian atau situasi di sekitar anda secara real time " +
                 "agar mendapatkan penanganan lebih lanjut.";
         text+= "</p>" +
                 "</body>" +

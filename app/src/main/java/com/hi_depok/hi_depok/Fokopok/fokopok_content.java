@@ -8,6 +8,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -24,6 +27,8 @@ public class fokopok_content extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fokopok_content);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         pager = (ViewPager) findViewById(R.id.pager);
         komunitas = (ImageView) findViewById(R.id.komunitas);
         home = (ImageView) findViewById(R.id.home);
@@ -67,7 +72,34 @@ public class fokopok_content extends AppCompatActivity implements View.OnClickLi
         home.setOnClickListener(this);
         profil.setOnClickListener(this);
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_new_msg:
+                // todo: goto back activity from here
 
+                startActivity(new Intent(getBaseContext(), message.class));
+                return true;
+            case android.R.id.home:
+                // todo: goto back activity from here
+
+                fokopok_content.this.finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_fokopok, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

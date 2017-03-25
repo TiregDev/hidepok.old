@@ -20,6 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/textView30"
                 android:layout_alignStart="@+id/pengurus_panti"
+                android:textColor="#fff"
                 android:text="021-8766765" />
 
             <TextView
@@ -28,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/textView29"
                 android:layout_centerHorizontal="true"
+                android:textColor="#fff"
                 android:text="KH. Darul" />
 
             <TextView
@@ -37,6 +39,7 @@
                 android:layout_alignStart="@+id/text_telepon"
                 android:layout_below="@+id/text_telepon"
                 android:layout_marginTop="20dp"
+                android:textColor="#fff"
                 android:text="Jumlah Anak Panti" />
 
             <TextView
@@ -46,6 +49,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/text_alamat_panti"
                 android:layout_marginTop="40dp"
+                android:textColor="#fff"
                 android:text="@string/item_desc" />
 
             <TextView
@@ -54,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/text_jmlh_anak"
                 android:layout_alignStart="@+id/textView29"
+                android:textColor="#fff"
                 android:text=":" />
 
             <TextView
@@ -72,6 +77,7 @@
                 android:layout_alignStart="@+id/text_jmlh_anak"
                 android:layout_below="@+id/text_jmlh_anak"
                 android:layout_marginTop="28dp"
+                android:textColor="#fff"
                 android:text="Tahun Berdiri" />
 
             <TextView
@@ -81,6 +87,7 @@
                 android:layout_alignStart="@+id/text_thn_berdiri"
                 android:layout_below="@+id/text_thn_berdiri"
                 android:layout_marginTop="28dp"
+                android:textColor="#fff"
                 android:text="Alamat Panti" />
 
             <TextView
@@ -90,6 +97,7 @@
                 android:layout_alignBaseline="@+id/jmlh_anak_panti"
                 android:layout_alignLeft="@+id/jmlh_anak_panti"
                 android:layout_marginLeft="30dp"
+                android:textColor="#fff"
                 android:text="Anak" />
 
             <TextView
@@ -99,6 +107,7 @@
                 android:layout_above="@+id/desc_panti"
                 android:layout_alignBaseline="@+id/text_thn_berdiri"
                 android:layout_alignStart="@+id/jmlh_anak_panti"
+                android:textColor="#fff"
                 android:text="2003" />
 
             <TextView
@@ -107,6 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:textColor="#fff"
                 android:text="Nama Pengurus" />
 
             <TextView
@@ -116,6 +126,7 @@
                 android:layout_alignBaseline="@+id/text_jmlh_anak"
                 android:layout_alignBottom="@+id/text_jmlh_anak"
                 android:layout_alignStart="@+id/textView30"
+                android:textColor="#fff"
                 android:text=":" />
 
             <TextView
@@ -125,6 +136,7 @@
                 android:layout_alignStart="@+id/text_pengurus"
                 android:layout_below="@+id/text_pengurus"
                 android:layout_marginTop="18dp"
+                android:textColor="#fff"
                 android:text="No. Telepon" />
 
             <TextView
@@ -134,6 +146,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/text_jmlh_anak"
+                android:textColor="#fff"
                 android:text=":" />
 
             <TextView
@@ -142,12 +155,14 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/textView31"
                 android:layout_alignStart="@+id/tlpn_panti"
+                android:textColor="#fff"
                 android:text="55" />
 
             <TextView
                 android:id="@+id/textView41"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#fff"
                 android:text=":"
                 android:layout_alignBaseline="@+id/text_alamat_panti"
                 android:layout_alignBottom="@+id/text_alamat_panti"
@@ -159,6 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/text_alamat_panti"
                 android:layout_alignStart="@+id/thn_berdiri"
+                android:textColor="#fff"
                 android:text="Jl. Beji, Beji, Depok, Jawa Barat" />
         </RelativeLayout>
     </ScrollView>

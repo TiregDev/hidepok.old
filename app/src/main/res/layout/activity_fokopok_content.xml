@@ -104,31 +104,13 @@
             android:layout_height="50dp"
             android:background="@color/colorPrimary">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:onClick="fokopok_activity"
-                android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
-
-            <TextView
-                android:id="@+id/fokopok"
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:paddingEnd="20dp"
-                android:text="FOKOPOK"
-                android:textColor="#fff"
-                android:textSize="20dp" />
-
-            <ImageView
-                android:id="@+id/set"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_alignParentEnd="true"
-                android:onClick="link_message"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/mail" />
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme" /> />
 
         </RelativeLayout>
 

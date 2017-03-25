@@ -44,7 +44,7 @@ public class fragment1 extends Fragment{
                 "<body>" +
                 "<p align=\"justify\" class=\"text\">";
         text+= "Pengguna dapat melihat informasi tentang data UMKM yang ada di Depok, seperti nama " +
-                "UMKM, alamat, contact, harga serta barang dagang apa yang di jual.";
+                "UMKM, alamat, kontak, harga serta barang dagang apa yang di jual.";
         text+= "</p>" +
                 "</body>" +
                 "</html>";

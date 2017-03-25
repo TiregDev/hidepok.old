@@ -24,9 +24,9 @@
     <string name="fokopok">Forum Komunitas Depok</string>
     <string name="kapok">Kenal Depok</string>
     <string name="desc">Deskripsi</string>
-    <string name="button_next">Next</string>
+    <string name="button_next">Selanjutnya</string>
     <string name="video">Watch Video</string>
-    <string name="copyright">© [name] [publication year]: e.g.  © XYZ Press and contributors 2017</string>
+    <string name="copyright">© Copyright  2016 TiregDev</string>
     <string name="item_desc">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
         Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,
@@ -139,4 +139,16 @@
     <string name="err_msg_email">Masukkan Email yang benar</string>
     <string name="err_msg_pj">masukkan nama penanggung jawab</string>
     <string name="err_msg_telp">masukkan nomor telepon anda</string>
+
+    <string name="sikepok_frag1">Diagnosa dan Ensiklopedi</string>
+    <string name="sikepok_frag2">Sistem Informasi RS Depok</string>
+    <string name="sikepok_frag3">Panic Button</string>
+    <string name="kadepok_frag1">Donasi dan Cherish Us</string>
+    <string name="kadepok_frag2">Volunteer</string>
+    <string name="lapok_frag1">Lapor</string>
+    <string name="lapok_frag2">Forum</string>
+    <string name="kapok_frag1">Telusuri Kota Depok</string>
+    <string name="ucok_frag1">Sistem Informasi UMKM</string>
+    <string name="ucok_frag2">Sistem Rekomendasi Dana Usaha</string>
+    <string name="fokopok_frag1">Komunitas dan Forum se-Depok</string>
 </resources>

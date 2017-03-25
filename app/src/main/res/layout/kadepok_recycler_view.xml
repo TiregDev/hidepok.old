@@ -8,44 +8,24 @@
     android:background="?android:attr/selectableItemBackground">
 
     <RelativeLayout
-        android:id="@+id/toolbar"
+        android:id="@+id/r_toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary">
-
-        <ImageView
-            android:id="@+id/btn_kadepok_notifikasi"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
-            app:srcCompat="@android:drawable/ic_popup_reminder" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:onClick="ucok_home"
-            android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
-
-        <TextView
-            android:id="@+id/about"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:paddingEnd="20dp"
-            android:text="Kasihi Depok"
-            android:textColor="#fff"
-            android:textSize="20dp" />
-
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/dropdown"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/r_toolbar"
         android:orientation="horizontal"
         android:padding="10dp"
         android:weightSum="2">

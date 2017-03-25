@@ -102,32 +102,25 @@
         <activity android:name=".fokopok.fokopok_content" />
         <activity
             android:name=".Sikepok_Diagnosa.Anggota_badan_badan"
-            android:label="Kepala"
-            android:parentActivityName=".Sikepok_Diagnosa.Diagnosa" />
+            android:label="Kepala" />
         <activity
             android:name=".Sikepok_Diagnosa.Apotik1"
-            android:label="Apotek"
-            android:parentActivityName=".Sikepok_Diagnosa.Lokasi" />
+            android:label="Apotek" />
         <activity
             android:name=".Sikepok_Diagnosa.Deskripsi"
-            android:label="Mata Katarak"
-            android:parentActivityName=".Sikepok_Diagnosa.SikepokDiagnosa" />
+            android:label="Mata Katarak" />
         <activity
             android:name=".Sikepok_Diagnosa.Diagnosa"
-            android:label="Diagnosa"
-            android:parentActivityName=".Sikepok_Diagnosa.SikepokDiagnosa" />
+            android:label="Diagnosa" />
         <activity
             android:name=".Sikepok_Diagnosa.Ensiklopedia"
-            android:label="Ensiklopedia"
-            android:parentActivityName=".Sikepok_Diagnosa.SikepokDiagnosa" />
+            android:label="Ensiklopedia" />
         <activity
             android:name=".Sikepok_Diagnosa.Lokasi"
-            android:label="Lokasi"
-            android:parentActivityName=".Sikepok_Diagnosa.SikepokDiagnosa" />
+            android:label="Lokasi" />
         <activity
             android:name=".Sikepok_Diagnosa.Sugesti"
-            android:label="Sugesti"
-            android:parentActivityName=".Sikepok_Diagnosa.Anggota_badan_badan" />
+            android:label="Sugesti" />
         <activity
             android:name=".Sikepok_Diagnosa.SikepokDiagnosa"
             android:theme="@style/Background_main"/>
@@ -137,11 +130,9 @@
             </activity>
         <activity
             android:name=".Sikepok_Panic.MenuActivity"
-            android:label="Tempat Sehat"
-            android:parentActivityName=".Sikepok_Panic.PanicActivity" />
+            android:label="Tempat Sehat"/>
         <activity
-            android:name=".Sikepok_Panic.DetailActivity"
-            android:parentActivityName=".Sikepok_Panic.MenuActivity" />
+            android:name=".Sikepok_Panic.DetailActivity"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -155,11 +146,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Sikepok_Panic.ListActivity"
-            android:parentActivityName=".Sikepok_Panic.PilihanLainActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Sikepok_Panic.PilihanLainActivity"
-            android:parentActivityName=".Sikepok_Panic.PanicActivity"
             android:theme="@style/AppTheme" />
         <activity android:name=".Sikepok_Panic.admin_main" />
         <activity android:name=".Lapok.fragment.DescriptionForm" />
@@ -170,40 +159,46 @@
         <activity android:name=".Kadepok_Cherish.kadepok_cherish_detail_anak" />
         <activity android:name=".Kadepok_Cherish.kadepok_cherish_detail_event" />
         <activity android:name=".Kadepok.kadepok_content" />
-        <activity android:name=".Kadepok.KadepokDetailActivity" />
+        <activity android:name=".Kadepok.KadepokDetailActivity"
+            android:windowSoftInputMode="adjustResize"/>
 
         <activity android:name=".Kadepok_Volunteer.kadepok_volunteer_form"></activity>
-        <activity android:name=".Sikepok_RS.deskripsiApotek" />
-        <activity android:name=".Sikepok_RS.deskripsi_klinik" />
+        <activity android:name=".Sikepok_RS.deskripsiApotek"
+            android:label="Deskripsi Apotek"/>
+        <activity android:name=".Sikepok_RS.deskripsi_klinik"
+            android:label="Deskripsi Klinik"/>
         <activity android:name=".Sikepok_RS.regis_pasien_baru"
-            android:parentActivityName=".Sikepok_RS.registrasi"/>
+            android:label="Registrasi Pasien Baru"/>
         <activity android:name=".Sikepok_RS.regis_pasien_lama"
-            android:parentActivityName=".Sikepok_RS.registrasi"/>
+            android:label="Registrasi Pasien Lama"/>
         <activity android:name=".Sikepok_RS.regis_berobat"
-            android:parentActivityName=".Sikepok_RS.registrasi"/>
+            android:label="Registrasi Berobat"/>
         <activity android:name=".Sikepok_RS.ketentuan"
-            android:parentActivityName=".Sikepok_RS.registrasi"/>
+            android:label="Ketentuan"/>
         <activity android:name=".Sikepok_RS.detail_post"
-            android:parentActivityName=".Sikepok_RS.forum"/>
+            android:label="Detail Post"/>
         <activity android:name=".Sikepok_RS.detail_post_saya"
-            android:parentActivityName=".Sikepok_RS.forum"/>
+            android:label="Detail Post Saya"/>
         <activity android:name=".Sikepok_RS.post_saya"
-            android:parentActivityName=".Sikepok_RS.forum"/>
+            android:label="Post Saya"/>
         <activity
             android:name=".Sikepok_RS.list_diskusi"
-            android:label="@string/title_activity_list_diskusi"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Sikepok_RS.klinik" />
-        <activity android:name=".Sikepok_RS.apotek" />
-        <activity android:name=".Sikepok_RS.registrasi" />
+            android:label="Daftar Diskusi" />
+        <activity android:name=".Sikepok_RS.klinik"
+            android:label="Klinik"/>
+        <activity android:name=".Sikepok_RS.apotek"
+            android:label="Apotek"/>
+        <activity android:name=".Sikepok_RS.registrasi"
+            android:label="Registrasi"/>
         <activity android:name=".Sikepok_RS.forum"
-            android:parentActivityName=".Sikepok_RS.RSActivity"/>
-        <activity android:name=".Sikepok_RS.rs_terdekat" />
-        <activity android:name=".Sikepok_RS.daftar_rs" />
+            android:label="Forum"/>
+        <activity android:name=".Sikepok_RS.rs_terdekat"
+            android:label="RS Terdekat"/>
+        <activity android:name=".Sikepok_RS.daftar_rs"
+            android:label="Daftar RS"/>
         <activity
             android:name=".Sikepok_RS.menu_rs"
-            android:label="@string/title_activity_menu_rs"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="Menu Rumah Sakit" />
         <activity
             android:name=".Sikepok_RS.RSActivity"
             android:theme="@style/Background_main" />

@@ -9,8 +9,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import android.view.ViewGroup;
@@ -18,10 +21,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.Kadepok_Donasi.kadepok_donasi_upload;
 import com.hi_depok.hi_depok.R;
+
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 public class KadepokDetailActivity extends AppCompatActivity implements View.OnClickListener {
     ViewPager pager;
@@ -67,20 +74,23 @@ public class KadepokDetailActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kadepok_detail_panti);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         pager = (ViewPager) findViewById(R.id.pager);
         deskripsi = (TextView) findViewById(R.id.deskripsi_panti);
         donasi = (TextView) findViewById(R.id.donasi_panti);
         cherish = (TextView) findViewById(R.id.cherish_us);
+        final RelativeLayout rl = (RelativeLayout)findViewById(R.id.detailpanti);
         strip = findViewById(R.id.strip);setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        btn_kadepok_notifikasi = (ImageView)findViewById(R.id.btn_kadepok_notifikasi);
-        btn_kadepok_notifikasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initiatepopup();
-            }
-        });
-
+//        KeyboardVisibilityEvent.setEventListener(
+//                this,
+//                new KeyboardVisibilityEventListener() {
+//                    @Override
+//                    public void onVisibilityChanged(boolean isOpen) {
+//                        rl.setVisibility(View.GONE);
+//                    }
+//                });
         adapter = new Content(getSupportFragmentManager());
         pager.setAdapter(adapter);
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -116,19 +126,43 @@ public class KadepokDetailActivity extends AppCompatActivity implements View.OnC
         donasi.setOnClickListener(this);
         cherish.setOnClickListener(this);
 
-        pager.setCurrentItem(0, false);
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_kadepok, menu);
 
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_notif:
+                // todo: goto back activity from here
+
+                initiatepopup();
+                return true;
+
+            case android.R.id.home:
+                // todo: goto back activity from here
+
+                KadepokDetailActivity.this.finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.donasi:
+            case R.id.deskripsi_panti:
                 pager.setCurrentItem(0);
                 break;
-//            case R.id.cherish:
-//                pager.setCurrentItem(1);
-//                break;
-            case R.id.volunteer:
+            case R.id.donasi_panti:
+                pager.setCurrentItem(1);
+                break;
+            case R.id.cherish_us:
                 pager.setCurrentItem(2);
                 break;
             default:
@@ -169,4 +203,6 @@ public class KadepokDetailActivity extends AppCompatActivity implements View.OnC
 
 
     }
+
+
 }

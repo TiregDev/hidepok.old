@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme" />
-        </RelativeLayout>
+        android:layout_below="@+id/toolbar3">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,9 +72,9 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <RelativeLayout
+                        <View
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"></RelativeLayout>
+                            android:layout_height="match_parent" />
 
                     </LinearLayout>
 
@@ -103,11 +98,11 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/shape3"></LinearLayout>
+                android:background="@drawable/shape3" />
 
             <TextView
                 style="@style/tulisanPutih"
@@ -409,17 +404,17 @@
                     android:layout_height="30dp"
                     android:background="@drawable/shape3"
                     android:onClick="ke_post_terbaru"
-                    android:text="See More"
+                    android:text="Lihat Yang Lain"
                     android:textColor="#000"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
-            <LinearLayout
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/shape3"></LinearLayout>
+                android:background="@drawable/shape3" />
 
             <TextView
                 style="@style/tulisanPutih"
@@ -727,7 +722,7 @@
                     android:layout_height="30dp"
                     android:background="@drawable/shape3"
                     android:onClick="ke_post_saya"
-                    android:text="See More"
+                    android:text="Lihat Yang Lain"
                     android:textColor="#000"
                     android:textStyle="bold" />
 
@@ -735,5 +730,5 @@
 
 
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</RelativeLayout>

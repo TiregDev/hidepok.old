@@ -43,10 +43,10 @@ public class fragment2 extends Fragment{
                 "</head>" +
                 "<body>" +
                 "<p align=\"justify\" class=\"text\">";
-        text+= "Pengguna dapat melihat seluruh informasi tentang rumah sakit, klinik, apotik dan " +
-                "pukesmas. Informasi yang tersedia antara lain mengenai informasi umum, jadwal " +
-                "praktek, fasilitas, daftar dokter dan juga lokasi. Khusus untuk fasilitas info " +
-                "rumah sakit, aplikasi ini juga menyediakan akses untuk perdaftaran secara online. " +
+        text+= "Pengguna dapat melihat informasi tentang RS yang ada di Depok. " +
+                "Informasi yang tersedia antara lain mengenai informasi umum, jadwal " +
+                "praktek, fasilitas, daftar dokter dan juga lokasi. " +
+                "Aplikasi ini juga menyediakan akses untuk perdaftaran secara online. " +
                 "Dilengkapi juga dengan forum untuk berbagi informasi mengenai kesehatan.";
         text+= "</p>" +
                 "</body>" +

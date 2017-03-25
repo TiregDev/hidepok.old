@@ -17,6 +17,7 @@ import com.hi_depok.hi_depok.Kadepok.kadepok_content;
 import com.hi_depok.hi_depok.Kadepok_Volunteer.kadepok_volunteer_form;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment1;
+import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment3;
 import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment4;
 
 public class kadepok extends AppCompatActivity implements View.OnClickListener{
@@ -85,10 +86,10 @@ public class kadepok extends AppCompatActivity implements View.OnClickListener{
                 pager.setCurrentItem(0);
                 break;
             case R.id.volunteer:
-                pager.setCurrentItem(2);
+                pager.setCurrentItem(1);
                 break;
             case R.id.play:
-                pager.setCurrentItem(3);
+                pager.setCurrentItem(2);
                 break;
             default:
                 break;
@@ -97,7 +98,7 @@ public class kadepok extends AppCompatActivity implements View.OnClickListener{
 
     class KadepokPager extends FragmentPagerAdapter {
         fragment1 fragment1;
-        com.hi_depok.hi_depok.fragment_kadepok_activity.fragment3 fragment3;
+        fragment3 fragment3;
         fragment4 fragment4;
 
         public KadepokPager(FragmentManager fm) {
@@ -123,7 +124,7 @@ public class kadepok extends AppCompatActivity implements View.OnClickListener{
 
         @Override
         public int getCount() {
-            return 4;
+            return 3;
         }
     }
 

@@ -17,6 +17,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:text="Nama"
+        android:textColor="#fff"
         android:textSize="15dp" />
 
     <TextView
@@ -26,6 +27,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="TTL"
+        android:textColor="#fff"
         android:textSize="15dp" />
 
     <TextView
@@ -35,6 +37,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="Jenis Kelamin"
+        android:textColor="#fff"
         android:textSize="15dp" />
 
 </LinearLayout>

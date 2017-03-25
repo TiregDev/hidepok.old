@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
@@ -33,7 +34,19 @@ public class Sugesti extends AppCompatActivity {
         RecyclerViewAdapter_listsugesti rcAdapter = new RecyclerViewAdapter_listsugesti(this, rowListItem3);
         rView.setAdapter(rcAdapter);
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
 
+                Sugesti.this.finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     public List<itemObject_listsugesti> getAllItemList() {
         List<itemObject_listsugesti> allItems = new ArrayList<>();
         allItems.add(new itemObject_listsugesti("Mata Katarak"));

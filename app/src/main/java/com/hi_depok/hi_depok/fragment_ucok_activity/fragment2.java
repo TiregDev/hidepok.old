@@ -45,7 +45,7 @@ public class fragment2 extends Fragment{
                 "<p align=\"justify\" class=\"text\">";
         text+= "Pengguna dapat menginputkan target keuangan dan waktu sesuai keinginan, lalu sistem " +
                 "akan memberikan rekomendasi yang tepat kepada  pengguna untuk menjalankan usaha agar " +
-                "mencapai target yang diinginkan. setelah itu, pengguna dapat mengelola hasil pendapatan nya.";
+                "mencapai target yang diinginkan dan pengguna dapat mengelola hasil pendapatannya.";
         text+= "</p>" +
                 "</body>" +
                 "</html>";

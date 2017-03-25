@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hi_depok.hi_depok.Sikepok_Diagnosa.Anggota_badan_badan" >
+    tools:context="com.hi_depok.hi_depok.Sikepok_Diagnosa.Anggota_badan_badan">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -13,268 +13,285 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
+
     <TextView
         android:id="@+id/kata"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pilih gejala yang Anda alami"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/toolbar"
-        android:layout_alignParentStart="true" />
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Pilih gejala yang anda alami"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="15sp" />
 
     <ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_above="@+id/buttonn"
-    android:layout_below="@+id/kata">
-
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
-    <LinearLayout
-        android:id="@+id/el"
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/kata">
 
-
-        <Button
-            android:id="@+id/expandableButton1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:drawableRight="@android:drawable/arrow_down_float"
-            android:drawableTint="#303030"
-            android:onClick="expandableButton1"
-            android:paddingRight="10dp"
-            android:text="Mata"
-            android:textColor="#066da1" />
-
-        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
-            android:id="@+id/expandableLayout1"
+        <RelativeLayout
+            android:id="@+id/drop"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/expandableButton1"
-            android:background="@color/white"
-            app:ael_duration="400"
-            app:ael_expanded="false"
-            app:ael_interpolator="bounce"
-            app:ael_orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <CheckBox
-                android:id="@+id/checkBox1"
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:id="@+id/el"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="androidCheckBoxClicked"
-                android:text="Mata bernanah"
-                android:textColor="#066da1"/>
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_below="@+id/checkBox1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="androidCheckBoxClicked"
-                android:text="Mata hati"
-                android:textColor="#066da1"/>
-            <CheckBox
-                android:id="@+id/checkBox3"
-                android:layout_below="@+id/checkBox2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="androidCheckBoxClicked"
-                android:text="Mata berseri"
-            android:textColor="#066da1"/>
-        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical"
+                android:padding="10dp">
 
 
-        <Button
-            android:id="@+id/expandableButton2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/expandableLayout1"
-            android:background="#066da1"
-            android:drawableRight="@android:drawable/arrow_down_float"
-            android:onClick="expandableButton2"
-            android:paddingRight="10dp"
-            android:text="Telinga"
-            android:textColor="@color/white"
-            android:drawableTint="#303030" />
+                <Button
+                    android:id="@+id/expandableButton1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:drawableTint="#303030"
+                    android:gravity="start|center_vertical"
+                    android:onClick="expandableButton1"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:text="Mata"
+                    android:textColor="#066da1" />
+
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/expandableLayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/expandableButton1"
+                    android:background="@color/white"
+                    app:ael_duration="400"
+                    app:ael_expanded="false"
+                    app:ael_interpolator="bounce"
+                    app:ael_orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/checkBox1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="androidCheckBoxClicked"
+                        android:text="Mata bernanah"
+                        android:textColor="#066da1" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/checkBox1"
+                        android:onClick="androidCheckBoxClicked"
+                        android:text="Mata hati"
+                        android:textColor="#066da1" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/checkBox2"
+                        android:onClick="androidCheckBoxClicked"
+                        android:text="Mata berseri"
+                        android:textColor="#066da1" />
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
 
-
-        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
-            android:id="@+id/expandableLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/expandableButton2"
-            android:background="#066da1"
-            app:ael_duration="400"
-            app:ael_expanded="false"
-            app:ael_interpolator="bounce"
-            app:ael_orientation="vertical">
-
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="androidCheckBoxClicked"
-                android:text="Telinga berlubang"
-                android:textColor="@color/white"/>
-            <CheckBox
-                android:id="@+id/checkBox5"
-                android:layout_width="wrap_content"
-                android:layout_below="@id/checkBox4"
-                android:layout_height="wrap_content"
-                android:onClick="androidCheckBoxClicked"
-                android:text="Telinga aja"
-                android:textColor="@color/white"/>
-            <CheckBox
-                android:id="@+id/checkBox6"
-                android:layout_width="wrap_content"
-                android:layout_below="@id/checkBox5"
-                android:layout_height="wrap_content"
-                android:onClick="androidCheckBoxClicked"
-                android:text="Mata hati"
-                android:textColor="@color/white"/>
-            <CheckBox
-                android:id="@+id/checkBox7"
-                android:layout_width="wrap_content"
-                android:layout_below="@id/checkBox6"
-                android:layout_height="wrap_content"
-                android:onClick="androidCheckBoxClicked"
-                android:text="Mata berseri"
-                android:textColor="@color/white"/>
-        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
-
-        <Button
-            android:id="@+id/expandableButton3"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/expandableLayout2"
-            android:background="@color/white"
-            android:drawableRight="@android:drawable/arrow_down_float"
-            android:drawableTint="#303030"
-            android:onClick="expandableButton3"
-            android:paddingRight="10dp"
-            android:text="Mulut"
-            android:textColor="#066da1" />
-
-        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
-            android:id="@+id/expandableLayout3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/expandableButton3"
-            android:background="@color/white"
-            app:ael_duration="400"
-            app:ael_expanded="false"
-            app:ael_interpolator="bounce"
-            app:ael_orientation="vertical">
-
-            <CheckBox
-                android:id="@+id/checkBox8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="androidCheckBoxClicked"
-                android:text="Mulut bernanah"
-                android:textColor="#066da1"/>
-            <CheckBox
-                android:id="@+id/checkBox9"
-                android:layout_width="wrap_content"
-                android:layout_below="@id/checkBox8"
-                android:layout_height="wrap_content"
-                android:onClick="androidCheckBoxClicked"
-                android:text="Mulut pedez"
-                android:textColor="#066da1"/>
-            <CheckBox
-                android:id="@+id/checkBox10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/checkBox9"
-                android:onClick="androidCheckBoxClicked"
-                android:text="Mulut bawel"
-            android:textColor="#066da1"/>
-        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                <Button
+                    android:id="@+id/expandableButton2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/expandableLayout1"
+                    android:background="#066da1"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:drawableTint="#303030"
+                    android:gravity="start|center_vertical"
+                    android:onClick="expandableButton2"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:text="Telinga"
+                    android:textColor="@color/white" />
 
 
-        <Button
-            android:id="@+id/expandableButton4"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/expandableLayout3"
-            android:background="#066da1"
-            android:drawableRight="@android:drawable/arrow_down_float"
-            android:drawableTint="#303030"
-            android:onClick="expandableButton4"
-            android:paddingRight="10dp"
-            android:text="Hidung"
-            android:textColor="#fff" />
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/expandableLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/expandableButton2"
+                    android:background="#066da1"
+                    app:ael_duration="400"
+                    app:ael_expanded="false"
+                    app:ael_interpolator="bounce"
+                    app:ael_orientation="vertical">
 
-        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
-            android:id="@+id/expandableLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/expandableButton4"
-            android:background="#066da1"
-            app:ael_duration="400"
-            app:ael_expanded="false"
-            app:ael_interpolator="bounce"
-            app:ael_orientation="vertical">
+                    <CheckBox
+                        android:id="@+id/checkBox4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="androidCheckBoxClicked"
+                        android:text="Telinga berlubang"
+                        android:textColor="@color/white" />
 
-            <CheckBox
-                android:id="@+id/checkBox11"
-                android:layout_below="@+id/expandableLayout4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="androidCheckBoxClicked"
-                android:text="Hidung bernanah"
-                android:textColor="@color/white"/>
-            <CheckBox
-                android:id="@+id/checkBox12"
-                android:layout_width="wrap_content"
-                android:layout_below="@id/checkBox11"
-                android:layout_height="wrap_content"
-                android:onClick="androidCheckBoxClicked"
-                android:text="Mata hati"
-                android:textColor="@color/white"/>
-            <CheckBox
-                android:id="@+id/checkBox13"
-                android:layout_width="wrap_content"
-                android:layout_below="@id/checkBox12"
-                android:layout_height="wrap_content"
-                android:onClick="androidCheckBoxClicked"
-                android:text="Mata berseri"
-                android:textColor="@color/white"/>
-        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
-    </LinearLayout>
+                    <CheckBox
+                        android:id="@+id/checkBox5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/checkBox4"
+                        android:onClick="androidCheckBoxClicked"
+                        android:text="Telinga aja"
+                        android:textColor="@color/white" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/checkBox5"
+                        android:onClick="androidCheckBoxClicked"
+                        android:text="Mata hati"
+                        android:textColor="@color/white" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/checkBox6"
+                        android:onClick="androidCheckBoxClicked"
+                        android:text="Mata berseri"
+                        android:textColor="@color/white" />
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+                <Button
+                    android:id="@+id/expandableButton3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/expandableLayout2"
+                    android:background="@color/white"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:drawableTint="#303030"
+                    android:gravity="start|center_vertical"
+                    android:onClick="expandableButton3"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:text="Mulut"
+                    android:textColor="#066da1" />
+
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/expandableLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/expandableButton3"
+                    android:background="@color/white"
+                    app:ael_duration="400"
+                    app:ael_expanded="false"
+                    app:ael_interpolator="bounce"
+                    app:ael_orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/checkBox8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="androidCheckBoxClicked"
+                        android:text="Mulut bernanah"
+                        android:textColor="#066da1" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/checkBox8"
+                        android:onClick="androidCheckBoxClicked"
+                        android:text="Mulut pedez"
+                        android:textColor="#066da1" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/checkBox9"
+                        android:onClick="androidCheckBoxClicked"
+                        android:text="Mulut bawel"
+                        android:textColor="#066da1" />
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
 
+                <Button
+                    android:id="@+id/expandableButton4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/expandableLayout3"
+                    android:background="#066da1"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:drawableTint="#303030"
+                    android:gravity="start|center_vertical"
+                    android:onClick="expandableButton4"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:text="Hidung"
+                    android:textColor="#fff" />
 
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/expandableLayout4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/expandableButton4"
+                    android:background="#066da1"
+                    app:ael_duration="400"
+                    app:ael_expanded="false"
+                    app:ael_interpolator="bounce"
+                    app:ael_orientation="vertical">
 
-</RelativeLayout>
-</ScrollView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:id="@+id/buttonn"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.29"
-        android:orientation="vertical"
+                    <CheckBox
+                        android:id="@+id/checkBox11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/expandableLayout4"
+                        android:onClick="androidCheckBoxClicked"
+                        android:text="Hidung bernanah"
+                        android:textColor="@color/white" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/checkBox11"
+                        android:onClick="androidCheckBoxClicked"
+                        android:text="Mata hati"
+                        android:textColor="@color/white" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/checkBox12"
+                        android:onClick="androidCheckBoxClicked"
+                        android:text="Mata berseri"
+                        android:textColor="@color/white" />
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <Button
-            android:id="@+id/button"
-            android:background="@drawable/shape_bg_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Lihat Sugesti Penyakit"
-            android:onClick="sugesti"
-            />
-    </LinearLayout>
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="end"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="20dp"
+        android:onClick="sugesti"
+        android:src="@drawable/right_arrow"
+        app:backgroundTint="@color/colorAccent"
+        app:elevation="8dp"
+        app:fabSize="normal"
+        app:layout_anchor="@id/scroll"
+        app:layout_anchorGravity="bottom|right|end"
+        app:pressedTranslationZ="12dp"
+        app:rippleColor="@android:color/transparent" />
 </RelativeLayout>

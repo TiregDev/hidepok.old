@@ -23,9 +23,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:background="@color/colorPrimary"
             android:orientation="horizontal">
 
@@ -43,6 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:paddingStart="15dp"
                 android:gravity="center"
                 android:text="Klinik"
                 android:textColor="@color/white" />
@@ -60,7 +58,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="5dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="-1dp"
             android:weightSum="3"
             android:orientation="horizontal">
 
@@ -77,7 +76,7 @@
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.55"></android.support.v4.view.ViewPager>
+            android:layout_weight="1.55"/>
     </LinearLayout>
 
 </RelativeLayout>

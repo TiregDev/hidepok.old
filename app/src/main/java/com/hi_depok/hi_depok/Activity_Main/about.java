@@ -31,9 +31,9 @@ public class about extends AppCompatActivity {
                 "</head>" +
                 "<body>" +
                 "<p align=\"justify\" class=\"text\">";
-        text+= "Pada modul ini anda dapat membeli sayur2an, buah2an, dll. Anda juga dapat memotong rambut " +
-                "anda untuk terlihat lebih tampan, teruntuk anda kaum perempuan lebih baik anda menggunakan " +
-                "kerudung jika tidak mau silahkan botakkan rambut anda, agar tidak ada laki2 yang melihat rambut anda. Thx";
+        text+= "Hi-Depok merupakan wujud peningkatan pelayanan pemerintah Kota Depok kepada warganya. " +
+                "Aplikasi ini dapat membantu warga Kota Depok dalam berbagai aspek pelayanan seperti pelayanan " +
+                "kesehatan, keamanan, sosial dan juga kebutuhan akan informasi.";
         text+= "</p>" +
                 "</body>" +
                 "</html>";

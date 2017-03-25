@@ -10,33 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary">
-
-        <ImageView
-            android:id="@+id/btn_kadepok_notifikasi"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
-            app:srcCompat="@android:drawable/ic_popup_reminder" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:onClick="ucok_content_siukm"
-            android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
-
-        <TextView
-            android:id="@+id/about"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Kasihi Depok"
-            android:textColor="#fff"
-            android:textSize="20dp" />
-
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
     </RelativeLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,6 +27,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/detailpanti"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="7dp">
@@ -62,6 +46,7 @@
                 android:layout_below="@+id/list_avatar"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
+                android:textColor="#fff"
                 android:text="Panti Asuhan Darul Ilmi"
                 android:textSize="30dp" />
 

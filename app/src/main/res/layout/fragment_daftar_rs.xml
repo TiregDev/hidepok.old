@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -13,81 +12,74 @@
         android:onClick="ke_menu_rs"
         android:orientation="horizontal"
         android:padding="5dp"
-        android:textColor="#b7b7b7"
-        android:weightSum="3">
+        android:textColor="#b7b7b7">
 
-        <RelativeLayout
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp">
+        <ImageView
+            android:id="@+id/gambarRS"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="10dp"
+            app:srcCompat="@drawable/rskeluarga" />
 
-            <ImageView
-                android:id="@+id/gambarRS"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/rskeluarga" />
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/namaRS"
+            style="@style/tulisanPutih"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/gambarRS"
+            android:text="@string/namaRS" />
+
+        <TextView
+            android:id="@+id/alamatRS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_below="@+id/namaRS"
+            android:layout_toEndOf="@+id/gambarRS"
+            android:text="@string/alamat"
+            android:textColor="@color/white" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
             android:orientation="vertical"
-            android:weightSum="2">
+            android:padding="5dp">
 
-            <TextView
-                android:id="@+id/namaRS"
-                style="@style/tulisanPutih"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:srcCompat="@drawable/white_car" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="@string/namaRS" />
+                android:gravity="center">
 
-            <TextView
-                android:id="@+id/alamatRS"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="@string/alamat"
-                android:textColor="@color/white" />
+                <TextView
+                    android:id="@+id/jarak1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/jarak1"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:weightSum="2">
+    </RelativeLayout>
 
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/white_car" />
-
-            <TextView
-                android:id="@+id/jarak1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/jarak1"
-                android:textColor="@color/white" />
-
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

@@ -72,6 +72,19 @@ public class forum extends AppCompatActivity {
         }
         return super.onCreateOptionsMenu(menu);
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+
+                forum.this.finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     public void ke_detail_post (View view){
         Intent next = new Intent(forum.this, detail_post.class);

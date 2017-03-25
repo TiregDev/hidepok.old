@@ -3,10 +3,12 @@ package com.hi_depok.hi_depok.Kadepok.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.hi_depok.hi_depok.Kadepok_Donasi.kadepok_donasi_verify;
@@ -16,7 +18,7 @@ import com.hi_depok.hi_depok.R;
  * Created by Muhammad63 on 3/16/2017.
  */
 
-public class fragment2 extends Fragment {
+public class fragment2 extends DialogFragment {
 
     public static com.hi_depok.hi_depok.Kadepok.fragment.fragment2 newInstance() {
         Bundle args = new Bundle();
@@ -31,6 +33,7 @@ public class fragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View  v = inflater.inflate(R.layout.fragment2_kadepok_content, null);
+//        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         donate = (Button)v.findViewById(R.id.donate);
         donate.setOnClickListener(new View.OnClickListener() {

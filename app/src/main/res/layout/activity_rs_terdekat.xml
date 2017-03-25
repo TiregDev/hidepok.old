@@ -47,64 +47,55 @@
                 style="@style/tulisanPutih"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center"
                 android:text="Rumah Sakit terdekat dari lokasi anda"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 style="@style/tulisanAbu2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center"
                 android:text="Click untuk melihat informasi lainnya"
-                android:textSize="14dp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:weightSum="4"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="4">
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <LinearLayout
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/recyView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-
-                </LinearLayout>
+                    android:layout_height="match_parent" />
 
             </ScrollView>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:layout_weight="3">
+                android:layout_weight="3"
+                android:gravity="center_vertical">
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:background="@color/orange"
+                    android:background="@drawable/shape3"
                     android:onClick="ke_daftar_rs"
                     android:paddingLeft="16dp"
+                    android:layout_marginTop="10dp"
                     android:paddingRight="16dp"
                     android:text="Cari Rumah Sakit Lain"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textStyle="bold" />
             </RelativeLayout>
 
