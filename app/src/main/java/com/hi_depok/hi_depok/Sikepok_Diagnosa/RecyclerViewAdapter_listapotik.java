@@ -26,7 +26,7 @@ public class RecyclerViewAdapter_listapotik extends RecyclerView.Adapter<Recycle
     @Override
     public RecyclerViewHolders_listapotik onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_lokasi_list, null);
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokdiagnosa_lokasi_list, null);
         RecyclerViewHolders_listapotik rcv = new RecyclerViewHolders_listapotik(layoutView);
         return rcv;
     }

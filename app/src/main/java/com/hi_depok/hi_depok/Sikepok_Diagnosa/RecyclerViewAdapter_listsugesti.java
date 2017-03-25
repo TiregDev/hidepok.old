@@ -24,7 +24,7 @@ public class RecyclerViewAdapter_listsugesti extends RecyclerView.Adapter<Recycl
     @Override
     public RecyclerViewHolders_listsugesti onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_sugesti_list, null);
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokdiagnosa_sugesti_list, null);
         RecyclerViewHolders_listsugesti rcv = new RecyclerViewHolders_listsugesti(layoutView);
         return rcv;
     }

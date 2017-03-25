@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:text="Ingin Bergabung?"
                 android:textColor="#fff"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -32,7 +32,6 @@
             android:id="@+id/layout_nama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:textColorHint="#fff"
             android:textColorLink="@color/colorPrimaryDark">
@@ -125,7 +124,6 @@
             android:id="@+id/layout_pj"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:textColorHint="#fff"
             android:textColorLink="@color/colorPrimaryDark">

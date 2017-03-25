@@ -14,7 +14,7 @@ public class regis_pasien_baru extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_regis_pasien_baru);
+        setContentView(R.layout.sikepokrs_regis_pasien_baru);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar3));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

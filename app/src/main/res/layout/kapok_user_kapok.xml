@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,38 +6,20 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="#303030"
-    tools:context="com.hi_depok.hi_depok.Kapok.KapokActivity"
-    >
+    tools:context="com.hi_depok.hi_depok.Kapok.KapokActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal">
-
-
-        <TextView
-            android:layout_width="239dp"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:text="Kenal Depok"
-            android:textColor="#fff"
-            android:textSize="16dp" />
-
-        <ImageView
-            android:id="@+id/join"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:onClick="join"
-            android:src="@drawable/add_partner" />
-
-    </LinearLayout>
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

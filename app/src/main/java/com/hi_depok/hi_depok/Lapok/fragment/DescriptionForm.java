@@ -41,7 +41,7 @@ public class DescriptionForm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lapok_deskripsi);
+        setContentView(R.layout.lapok_deskripsi);
 
         entryJudul = (EditText) findViewById(R.id.entry);
         entryDeskripsi = (EditText) findViewById(R.id.entryDeskripsi);

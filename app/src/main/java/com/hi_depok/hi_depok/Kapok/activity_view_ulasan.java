@@ -22,7 +22,7 @@ public class activity_view_ulasan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_ulasan);
+        setContentView(R.layout.kapok_view_ulasan);
 
         List<ItemObjectViewUlasan> rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(activity_view_ulasan.this);

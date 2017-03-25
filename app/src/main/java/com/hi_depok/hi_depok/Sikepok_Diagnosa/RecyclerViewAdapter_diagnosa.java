@@ -26,7 +26,7 @@ public class RecyclerViewAdapter_diagnosa extends RecyclerView.Adapter<RecyclerV
     @Override
     public RecyclerViewHolder_diagnosa onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_diagnosa_list, null);
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokdiagnosa_diagnosa_list, null);
         RecyclerViewHolder_diagnosa rcv = new RecyclerViewHolder_diagnosa(layoutView);
         return rcv;
     }

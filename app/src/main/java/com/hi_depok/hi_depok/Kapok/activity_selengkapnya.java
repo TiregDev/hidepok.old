@@ -38,7 +38,7 @@ public class activity_selengkapnya extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         TextView lengkap;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_selengkapnya);
+        setContentView(R.layout.kapok_selengkapnya);
 
 
         lengkap = (TextView) findViewById(R.id.ulasan);
@@ -116,7 +116,7 @@ public class activity_selengkapnya extends AppCompatActivity {
     private void initiatepopup() {
         try {
             LayoutInflater inflater = (LayoutInflater) activity_selengkapnya.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = inflater.inflate(R.layout.popup_ulasan, (ViewGroup) findViewById(R.id.popup_element));
+            View layout = inflater.inflate(R.layout.kapok_popup_ulasan, (ViewGroup) findViewById(R.id.popup_element));
             pwindo = new PopupWindow(layout, 450,300, true);
             pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
 

@@ -27,9 +27,6 @@ import android.widget.TextView;
 import com.hi_depok.hi_depok.Kadepok_Donasi.kadepok_donasi_upload;
 import com.hi_depok.hi_depok.R;
 
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
-
 public class KadepokDetailActivity extends AppCompatActivity implements View.OnClickListener {
     ViewPager pager;
     Content adapter;
@@ -80,17 +77,7 @@ public class KadepokDetailActivity extends AppCompatActivity implements View.OnC
         deskripsi = (TextView) findViewById(R.id.deskripsi_panti);
         donasi = (TextView) findViewById(R.id.donasi_panti);
         cherish = (TextView) findViewById(R.id.cherish_us);
-        final RelativeLayout rl = (RelativeLayout)findViewById(R.id.detailpanti);
         strip = findViewById(R.id.strip);setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-//        KeyboardVisibilityEvent.setEventListener(
-//                this,
-//                new KeyboardVisibilityEventListener() {
-//                    @Override
-//                    public void onVisibilityChanged(boolean isOpen) {
-//                        rl.setVisibility(View.GONE);
-//                    }
-//                });
         adapter = new Content(getSupportFragmentManager());
         pager.setAdapter(adapter);
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

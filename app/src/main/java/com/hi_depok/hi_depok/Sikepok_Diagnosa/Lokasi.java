@@ -1,6 +1,5 @@
 package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -10,22 +9,28 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+
 import com.hi_depok.hi_depok.R;
 
 public class Lokasi extends AppCompatActivity implements View.OnClickListener{
     ViewPager pager;
     LokasiPager adapter;
     View strip;
+    TextView apotek, klinik, puskesmas;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lokasi);
+        setContentView(R.layout.sikepokdiagnosa_lokasi);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         pager = (ViewPager) findViewById(R.id.pager);
         strip = (findViewById(R.id.strip));
+        apotek = (TextView) findViewById(R.id.textView3);
+        klinik = (TextView) findViewById(R.id.textView2);
+        puskesmas = (TextView) findViewById(R.id.textView1);
 
         adapter = new LokasiPager(getSupportFragmentManager());
         pager.setAdapter(adapter);
@@ -58,6 +63,11 @@ public class Lokasi extends AppCompatActivity implements View.OnClickListener{
 
             }
         });
+
+        apotek.setOnClickListener(this);
+        klinik.setOnClickListener(this);
+        puskesmas.setOnClickListener(this);
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

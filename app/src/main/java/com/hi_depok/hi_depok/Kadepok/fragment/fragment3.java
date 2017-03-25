@@ -30,7 +30,7 @@ public class fragment3 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View  v = inflater.inflate(R.layout.fragment3_kadepok_content, null);
+        View  v = inflater.inflate(R.layout.kadepok_fragment3_kadepok_content, null);
 
         btn_daftar_anak = (Button)v.findViewById(R.id.btn_daftar_anak);
         btn_daftar_anak.setOnClickListener(new View.OnClickListener() {

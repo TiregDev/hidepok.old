@@ -20,20 +20,16 @@ package com.hi_depok.hi_depok.Sikepok_RS;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,7 +60,7 @@ public class dokter extends Fragment {
         public TextView namaDokter;
         public TextView spesialisasi;
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.fragment_dokter, parent, false));
+            super(inflater.inflate(R.layout.sikepokrs_fragment_dokter, parent, false));
             fotoDokter = (ImageView) itemView.findViewById(R.id.fotoDokter);
             namaDokter = (TextView) itemView.findViewById(R.id.namaDokter);
             spesialisasi = (TextView) itemView.findViewById(R.id.spesialisasiDokter);

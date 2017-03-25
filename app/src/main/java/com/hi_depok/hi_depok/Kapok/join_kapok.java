@@ -45,7 +45,7 @@ public class join_kapok extends Activity implements AdapterView.OnItemSelectedLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_join_kapok);
+        setContentView(R.layout.kapok_join_kapok);
 
         layout_nama = (TextInputLayout) findViewById(R.id.layout_nama);
         layout_alamat = (TextInputLayout) findViewById(R.id.layout_alamat);
@@ -239,7 +239,7 @@ public class join_kapok extends Activity implements AdapterView.OnItemSelectedLi
     private void initiatepopup() {
         try {
             LayoutInflater inflater = (LayoutInflater) join_kapok.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = inflater.inflate(R.layout.popup_upload_image, (ViewGroup) findViewById(R.id.popup_element));
+            View layout = inflater.inflate(R.layout.kapok_popup_upload_image, (ViewGroup) findViewById(R.id.popup_element));
             pwindo = new PopupWindow(layout, 300, 200, true);
             pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
 

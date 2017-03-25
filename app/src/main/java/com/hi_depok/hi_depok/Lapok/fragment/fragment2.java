@@ -2,7 +2,6 @@
 
 package com.hi_depok.hi_depok.Lapok.fragment;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -19,16 +18,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
 
-import com.hi_depok.hi_depok.Lapok.lapok_content;
 import com.hi_depok.hi_depok.R;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -52,7 +46,7 @@ public class fragment2 extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(
-                R.layout.fragment2_lapok_content, container, false);
+                R.layout.lapok_fragment2_lapok_content, container, false);
         ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);

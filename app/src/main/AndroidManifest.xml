@@ -160,7 +160,7 @@
         <activity android:name=".Kadepok_Cherish.kadepok_cherish_detail_event" />
         <activity android:name=".Kadepok.kadepok_content" />
         <activity android:name=".Kadepok.KadepokDetailActivity"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustPan"/>
 
         <activity android:name=".Kadepok_Volunteer.kadepok_volunteer_form"></activity>
         <activity android:name=".Sikepok_RS.deskripsiApotek"

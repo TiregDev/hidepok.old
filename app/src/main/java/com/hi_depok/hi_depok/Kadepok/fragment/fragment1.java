@@ -25,7 +25,7 @@ public class fragment1 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View  v = inflater.inflate(R.layout.fragment1_kadepok_content, null);
+        View  v = inflater.inflate(R.layout.kadepok_fragment1_kadepok_content, null);
 
         return v;
     }

@@ -21,7 +21,7 @@ public class diskusi_terpopuler extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.diskusi_terbaru, null);
+        View view = inflater.inflate(R.layout.sikepokrs_diskusi_terbaru, null);
 
         LinearLayout asal = (LinearLayout) view.findViewById(R.id.link_ke_sana);
 

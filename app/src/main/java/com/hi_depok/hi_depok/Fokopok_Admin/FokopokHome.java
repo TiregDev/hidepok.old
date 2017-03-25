@@ -1,7 +1,6 @@
 package com.hi_depok.hi_depok.Fokopok_Admin;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +24,7 @@ public class FokopokHome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fokopok_home);
+        setContentView(R.layout.fokopok_home);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar2));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_view);

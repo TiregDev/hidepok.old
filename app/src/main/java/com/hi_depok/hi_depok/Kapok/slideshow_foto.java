@@ -22,7 +22,7 @@ public class slideshow_foto extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position){
         LayoutInflater inflater = ((Activity)activity).getLayoutInflater();
-        View v = inflater.inflate(R.layout.swip, container, false);
+        View v = inflater.inflate(R.layout.kapok_swip, container, false);
         ImageView img = (ImageView)v.findViewById(R.id.imageView);
         img.setImageResource(imagesArray[position]);
         ((ViewPager)container).addView(v);

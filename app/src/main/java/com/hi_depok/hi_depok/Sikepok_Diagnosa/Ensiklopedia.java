@@ -1,6 +1,5 @@
 package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 
-import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,17 +7,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.hi_depok.hi_depok.R;
@@ -28,7 +20,7 @@ public class Ensiklopedia extends AppCompatActivity implements SearchView.OnQuer
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ensiklopedia);
+        setContentView(R.layout.sikepokdiagnosa_ensiklopedia);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         List<itemObject_listensi> rowListItem3 = getAllItemList();

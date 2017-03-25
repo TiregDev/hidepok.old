@@ -20,7 +20,7 @@ public class RSActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rs);
+        setContentView(R.layout.sikepokrs_rs);
 
         circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
         circleMenu.setMainMenu(Color.parseColor("#CDCDCD"), R.drawable.icon_menu, R.drawable.icon_cancel);

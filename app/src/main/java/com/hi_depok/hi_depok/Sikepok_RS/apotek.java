@@ -11,7 +11,7 @@ public class apotek extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_apotek);
+        setContentView(R.layout.sikepokrs_apotek);
     }
 
     public void ke_deskripsi_apotik (View view){

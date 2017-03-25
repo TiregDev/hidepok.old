@@ -18,7 +18,7 @@ public class jadwal_praktek extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.jadwal_praktek, container, false);
+        return inflater.inflate(R.layout.sikepokrs_jadwal_praktek, container, false);
 
     }
 

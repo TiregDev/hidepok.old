@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.fokopok.fragment_content.itemObject_komunitas;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ public class Diagnosa extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diagnosa);
+        setContentView(R.layout.sikepokdiagnosa_diagnosa);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         List<itemObject_diagnosa> rowListItem2 = getAllItemList();

@@ -26,7 +26,7 @@ public class CustomAdapterViewUlasan extends RecyclerView.Adapter<RecycleViewHol
     @Override
     public RecycleViewHolderViewUlasan onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_view_ulasan_isi, null);
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.kapok_view_ulasan_isi, null);
         RecycleViewHolderViewUlasan rcv = new RecycleViewHolderViewUlasan(layoutView);
         return rcv;
 

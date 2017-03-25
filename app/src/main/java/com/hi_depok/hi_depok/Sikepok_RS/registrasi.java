@@ -11,7 +11,7 @@ public class registrasi extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrasi);
+        setContentView(R.layout.sikepokrs_registrasi);
     }
 
     public void ke_pasien_baru(View view){

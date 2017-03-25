@@ -49,7 +49,7 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+        setContentView(R.layout.sikepokpanic_panic_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        List<ItemObject> rowListItem = getAllItemList();
 

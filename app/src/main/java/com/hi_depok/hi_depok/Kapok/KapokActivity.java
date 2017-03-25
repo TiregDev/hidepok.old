@@ -4,10 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,13 +23,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+import com.hi_depok.hi_depok.Kadepok.KadepokDetailActivity;
 import com.hi_depok.hi_depok.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class KapokActivity extends Activity implements AdapterView.OnItemSelectedListener  {
+public class KapokActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
     private Button temukan;
     private RadioGroup sort;
     private RadioButton urut;
@@ -48,13 +53,14 @@ public class KapokActivity extends Activity implements AdapterView.OnItemSelecte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_kapok);
+        setContentView(R.layout.kapok_user_kapok);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Spinner pilihan = (Spinner) findViewById(R.id.pilihan);
         Spinner camat = (Spinner) findViewById(R.id.camat);
         sort=(RadioGroup)findViewById(R.id.sort);
         temukan=(Button)findViewById(R.id.temukan);
-        ImageView join = (ImageView) findViewById(R.id.join);
 
         // Spinner click listener
         pilihan.setOnItemSelectedListener(this);
@@ -101,12 +107,6 @@ public class KapokActivity extends Activity implements AdapterView.OnItemSelecte
         });
 
         //join
-        join.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(KapokActivity.this, join_kapok.class));
-            }
-        });
 
 
         //recycleview
@@ -125,7 +125,7 @@ public class KapokActivity extends Activity implements AdapterView.OnItemSelecte
     public void initiatepopup() {
         try {
             LayoutInflater inflater = (LayoutInflater) KapokActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = inflater.inflate(R.layout.popup_layout, (ViewGroup) findViewById(R.id.popup_element));
+            View layout = inflater.inflate(R.layout.kapok_popup_layout, (ViewGroup) findViewById(R.id.popup_element));
 
             pwindo = new PopupWindow(layout, 450, 750, true);
             pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
@@ -163,6 +163,31 @@ public class KapokActivity extends Activity implements AdapterView.OnItemSelecte
 
     }
     //button join
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_kapok, menu);
 
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_join:
+                // todo: goto back activity from here
+
+                startActivity(new Intent(KapokActivity.this, join_kapok.class));
+                return true;
+
+            case android.R.id.home:
+                // todo: goto back activity from here
+
+                KapokActivity.this.finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 }

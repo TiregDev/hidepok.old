@@ -9,6 +9,6 @@ public class deskripsi_klinik extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deskripsi_klinik);
+        setContentView(R.layout.sikepokrs_deskripsi_klinik);
     }
 }

@@ -22,7 +22,7 @@ public class Sugesti extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sugesti);
+        setContentView(R.layout.sikepokdiagnosa_sugesti);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         List<itemObject_listsugesti> rowListItem3 = getAllItemList();

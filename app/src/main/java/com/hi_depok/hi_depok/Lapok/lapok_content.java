@@ -22,8 +22,6 @@ import com.hi_depok.hi_depok.R;
 
 import java.io.File;
 
-import static java.security.AccessController.getContext;
-
 public class lapok_content extends AppCompatActivity implements View.OnClickListener {
 
     ViewPager pager;
@@ -35,7 +33,7 @@ public class lapok_content extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lapok_content);
+        setContentView(R.layout.lapok_content);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         pager = (ViewPager) findViewById(R.id.pager);

@@ -32,7 +32,7 @@ public class CustomAdapterView extends RecyclerView.Adapter<RecycleViewHolderVie
     @Override
     public RecycleViewHolderViewUlasan onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_selengkapnya, null);
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.kapok_selengkapnya, null);
         RecycleViewHolderViewUlasan vs = new RecycleViewHolderViewUlasan(layoutView);
         return vs;
 

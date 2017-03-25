@@ -12,7 +12,7 @@ public class klinik extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_klinik);
+        setContentView(R.layout.sikepokrs_klinik);
     }
 
     public void ke_deskripsi_klinik (View view){

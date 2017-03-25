@@ -22,7 +22,7 @@ public class Anggota_badan_badan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anggota_badan);
+        setContentView(R.layout.sikepokdiagnosa_anggota_badan);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

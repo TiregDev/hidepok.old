@@ -11,7 +11,7 @@ public class PilihanLainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pilihan_lain);
+        setContentView(R.layout.sikepokpanic_pilihan_lain);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     public void menuBidanClick (View view) {

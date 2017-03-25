@@ -1,19 +1,14 @@
 package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 
-import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Ucok.RecyclerViewAdapter_listdanus;
-import com.hi_depok.hi_depok.Ucok.hasil_calculate;
-import com.hi_depok.hi_depok.Ucok.itemObject_listdanus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +27,7 @@ public class Frag1 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.activity_frag1, null);
+        View v = inflater.inflate(R.layout.sikepokdiagnosa_frag1, null);
 
         List<itemObject_listapotik> rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(getContext());

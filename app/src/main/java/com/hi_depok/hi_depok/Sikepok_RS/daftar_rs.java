@@ -25,14 +25,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Sikepok_Panic.MenuActivity;
 
 public class daftar_rs extends AppCompatActivity {
     private SearchView searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daftar_rs);
+        setContentView(R.layout.sikepokrs_daftar_rs);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar3));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyView);
@@ -114,7 +113,7 @@ public class daftar_rs extends AppCompatActivity {
         public TextView jarak1;
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.fragment_daftar_rs, parent, false));
+            super(inflater.inflate(R.layout.sikepokrs_fragment_daftar_rs, parent, false));
             gambarRS = (ImageView) itemView.findViewById(R.id.gambarRS);
             namaRS = (TextView) itemView.findViewById(R.id.namaRS);
             alamat = (TextView) itemView.findViewById(R.id.alamatRS);

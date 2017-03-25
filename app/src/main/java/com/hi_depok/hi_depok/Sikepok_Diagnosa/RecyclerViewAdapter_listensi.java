@@ -25,7 +25,7 @@ public class RecyclerViewAdapter_listensi extends RecyclerView.Adapter<RecyclerV
     @Override
     public RecyclerViewHolders_listensi onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_ensiklopedia_list, null);
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokdiagnosa_ensiklopedia_list, null);
         RecyclerViewHolders_listensi rcv = new RecyclerViewHolders_listensi(layoutView);
         return rcv;
     }

@@ -11,7 +11,7 @@ public class FokopokLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fokopok_login);
+        setContentView(R.layout.fokopok_login);
     }
     public void nextTime(View v){
         Intent intent = new Intent(FokopokLogin.this, FokopokHome.class);
