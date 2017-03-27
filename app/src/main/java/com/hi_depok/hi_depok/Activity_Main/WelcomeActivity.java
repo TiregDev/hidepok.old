@@ -58,7 +58,11 @@ public class WelcomeActivity extends AppCompatActivity {
         layouts = new int[]{
                 R.layout.slide_screen1,
                 R.layout.slide_screen2,
-                R.layout.slide_screen3};
+                R.layout.slide_screen3,
+                R.layout.slide_screen4,
+                R.layout.slide_screen5,
+                R.layout.slide_screen6,
+                R.layout.slide_screen7};
 
         // adding bottom dots
         addBottomDots(0);
@@ -118,7 +122,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+        startActivity(new Intent(WelcomeActivity.this, login.class));
         finish();
     }
 

@@ -61,14 +61,14 @@ public class MainActivity extends AppCompatActivity {
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withIcon(R.drawable.ic_action_person4)
                 .withIdentifier(1);
-        PrimaryDrawerItem login = new PrimaryDrawerItem()
-                .withName("Login")
+        PrimaryDrawerItem logout = new PrimaryDrawerItem()
+                .withName("Logout")
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
                 .withIconColor(Color.rgb(158,158,158))
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withSelectable(false)
-                .withIcon(R.drawable.ic_action_input4)
+                .withIcon(R.drawable.ic_action_exit_to_app)
                 .withIdentifier(2);
         SecondaryDrawerItem sikepok =    new SecondaryDrawerItem()
                 .withName("Sikepok")
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                 .addDrawerItems(
                         home,
                         profile,
-                        login,
+                        logout,
                         new SectionDrawerItem().withName(R.string.modul).withTextColor(Color.parseColor("#b7b7b7")),
                         sikepok,
                         kadepok,

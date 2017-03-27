@@ -98,7 +98,7 @@ public class login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
     }
 
     public void linkprofile(View view){
-        Intent intent = new Intent(login.this, profile.class);
+        Intent intent = new Intent(login.this, MainActivity.class);
         startActivity(intent);
     }
 

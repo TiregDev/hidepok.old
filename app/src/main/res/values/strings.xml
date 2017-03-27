@@ -54,12 +54,20 @@
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
-    <string name="slide_1_title">Daily Workout</string>
-    <string name="slide_1_desc">Set your daily workout routine by the help of trainer</string>
-    <string name="slide_2_title">Meditation Techniques </string>
-    <string name="slide_2_desc">Learn about the different meditation techniques and practice them</string>
-    <string name="slide_3_title">Diet Chart</string>
-    <string name="slide_3_desc">Make your diet chart by the help of health experts</string>
+    <string name="slide_1_title">Hi-Depok</string>
+    <string name="slide_1_desc">Aplikasi ini dapat membantu warga Depok dalam berbagai aspek dengan didukung oleh beberapa modul. Pelajari lebih lanjut!</string>
+    <string name="slide_2_title">SIKEPOK</string>
+    <string name="slide_2_desc">Sikepok atau Sistem informasi kesehatan Depok, merupakan modul yang membantu anda dalam aspek kesehatan</string>
+    <string name="slide_3_title">KADEPOK</string>
+    <string name="slide_3_desc">KaDepok atau Kasihi Depok, merupakan modul yang mengajak anda untuk berbagai kepada seluruh panti asuhan yang ada di Depok</string>
+    <string name="slide_4_title">LAPOK</string>
+    <string name="slide_4_desc">Lapok atau Lapor Depok, merupakan modul yang dapat membantu anda untuk melaporkan kejadian yang ada disekitar anda untuk dapat diproses lebih lanjut</string>
+    <string name="slide_5_title">KAPOK</string>
+    <string name="slide_5_desc">KAPOK atau Kenal Depok, merupakan modul yang membantu anda untuk menemukan berbagai macam tempat yang ada di kota Depok </string>
+    <string name="slide_6_title">UCOK</string>
+    <string name="slide_6_desc">Ucok atau Usaha Mikro, Kecil, dan Menengah Depok, merupakan modul yang dapat membantu anda untuk menemukan UMKM dan membantu anda untuk menjadi agen usaha </string>
+    <string name="slide_7_title">FOKOPOK</string>
+    <string name="slide_7_desc">Fokopok atau Forum Komunitas Depok, merupakan modul yang dapat membantu anda menemukan, berkomunikasi, dan berbagi berbagai macam informasi dari seluruh komunitas yang ada di Depok</string>
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
 
