@@ -16,11 +16,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.PopupWindow;
 
-import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Activity_Main.kadepok;
 import com.hi_depok.hi_depok.R;
 
-public class kadepok_donasi_verify extends BaseActivity {
+public class kadepok_donasi_verify extends AppCompatActivity {
     private Button verifikasi;
     private PopupWindow popupWindow;
     public Button close;

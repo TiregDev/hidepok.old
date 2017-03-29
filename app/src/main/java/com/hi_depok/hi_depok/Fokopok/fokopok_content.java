@@ -6,7 +6,6 @@ import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,15 +13,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Activity_Main.fokopok;
 import com.hi_depok.hi_depok.R;
 
-public class fokopok_content extends BaseActivity implements View.OnClickListener {
+public class fokopok_content extends AppCompatActivity implements View.OnClickListener {
     ViewPager pager;
     FokopokContent adapter;
     View strip;
@@ -33,18 +30,11 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fokopok_content);
-<<<<<<< HEAD
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
-=======
-        super.onCreateDrawer();
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
->>>>>>> origin/master
         }
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         pager = (ViewPager) findViewById(R.id.pager);
@@ -53,8 +43,6 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
         strip = findViewById(R.id.strip);
         komunitas_text = (TextView) findViewById(R.id.komunitas_text);
         home_text = (TextView) findViewById(R.id.home_text);
-
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         adapter = new FokopokContent(getSupportFragmentManager());
         pager.setAdapter(adapter);

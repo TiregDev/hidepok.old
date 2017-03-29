@@ -6,9 +6,6 @@ android {
     dataBinding {
         enabled true
     }
-    dataBinding {
-        enabled true
-    }
     defaultConfig {
         applicationId "com.hi_depok.hi_depok"
         minSdkVersion 17
@@ -53,6 +50,7 @@ dependencies {
     compile 'com.github.aakira:expandable-layout:1.4.2@aar'
     compile 'com.github.Hitomis:CircleMenu:v1.0.0'
     compile 'com.github.wrdlbrnft:sorted-list-adapter:0.1.0.5'
+    compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
     testCompile 'junit:junit:4.12'
 }
 

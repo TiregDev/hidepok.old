@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,7 +25,6 @@ import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Activity_Main.kadepok;
 import com.hi_depok.hi_depok.Kadepok_Donasi.kadepok_donasi_upload;
 import com.hi_depok.hi_depok.R;
@@ -35,7 +33,7 @@ import com.hi_depok.hi_depok.Sikepok_Diagnosa.Deskripsi;
 import java.util.ArrayList;
 import java.util.List;
 
-public class kadepok_content extends BaseActivity {
+public class kadepok_content extends AppCompatActivity {
     private LinearLayoutManager lLayout;
     private Spinner kecamatan;
     private ImageView btn_kadepok_notifikasi;
@@ -81,16 +79,9 @@ public class kadepok_content extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kadepok_recycler_view);
-        super.onCreateDrawer();
         // Making notification bar transparent
-
-//        if (Build.VERSION.SDK_INT >= 21) {
-//            //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-//        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));

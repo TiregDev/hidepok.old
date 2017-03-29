@@ -18,14 +18,13 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-public class activity_selengkapnya extends BaseActivity {
+public class activity_selengkapnya extends AppCompatActivity {
     ViewPager viewPager;
     private LinearLayoutManager lLayout;
 
@@ -41,7 +40,6 @@ public class activity_selengkapnya extends BaseActivity {
         TextView lengkap;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kapok_selengkapnya);
-        super.onCreateDrawer();
 
 
         lengkap = (TextView) findViewById(R.id.ulasan);

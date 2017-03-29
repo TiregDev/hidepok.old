@@ -13,6 +13,12 @@
         <!--android:orderInCategory="100"-->
         <!--app:showAsAction="never" />-->
     <item
+        android:id="@+id/action_edit"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:orderInCategory="200"
+        android:title="@string/action_more"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_new_msg"
         android:layout_alignParentLeft="true"
         android:icon="@drawable/icon_email"

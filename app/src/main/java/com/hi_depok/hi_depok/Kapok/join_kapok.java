@@ -13,12 +13,10 @@ import android.os.Environment;
 import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.support.design.widget.TextInputLayout;
-import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
@@ -29,14 +27,13 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 
-import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class join_kapok extends BaseActivity implements AdapterView.OnItemSelectedListener {
+public class join_kapok extends Activity implements AdapterView.OnItemSelectedListener {
     private static int RESULT_LOAD_IMAGE = 1;
     private Vibrator vib;
     Animation animShake;
@@ -51,16 +48,8 @@ public class join_kapok extends BaseActivity implements AdapterView.OnItemSelect
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kapok_join_kapok);
-<<<<<<< HEAD
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
-=======
-        super.onCreateDrawer();
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
->>>>>>> origin/master
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
