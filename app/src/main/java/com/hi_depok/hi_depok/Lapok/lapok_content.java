@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Lapok.fragment.DescriptionForm;
@@ -28,7 +29,8 @@ public class lapok_content extends AppCompatActivity implements View.OnClickList
     ViewPager pager;
     Content adapter;
     View strip;
-    ImageView report, forum, notif;
+    ImageView report, forum;
+    TextView report_text, forum_text;
     File imageFile;
 
     @Override
@@ -44,8 +46,9 @@ public class lapok_content extends AppCompatActivity implements View.OnClickList
         pager = (ViewPager) findViewById(R.id.pager);
         report = (ImageView) findViewById(R.id.report);
         forum = (ImageView) findViewById(R.id.forum);
-        notif = (ImageView) findViewById(R.id.notif);
         strip = findViewById(R.id.strip);
+        report_text = (TextView) findViewById(R.id.report_text);
+        forum_text = (TextView) findViewById(R.id.forum_text);
 
         adapter = new Content(getSupportFragmentManager());
         pager.setAdapter(adapter);
@@ -55,13 +58,10 @@ public class lapok_content extends AppCompatActivity implements View.OnClickList
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 switch (position) {
                     case 0:
-                        strip.setTranslationX(positionOffsetPixels / 3);
+                        strip.setTranslationX(positionOffsetPixels / 2);
                         break;
                     case 1:
-                        strip.setTranslationX(strip.getWidth() + positionOffsetPixels / 3);
-                        break;
-                    case 2:
-                        strip.setTranslationX(strip.getWidth() * 2 + positionOffsetPixels / 3);
+                        strip.setTranslationX(strip.getWidth() + positionOffsetPixels / 2);
                         break;
                     default:
                         break;
@@ -85,7 +85,8 @@ public class lapok_content extends AppCompatActivity implements View.OnClickList
 
         report.setOnClickListener(this);
         forum.setOnClickListener(this);
-        notif.setOnClickListener(this);
+        report_text.setOnClickListener(this);
+        forum_text.setOnClickListener(this);
     }
 
     @Override
@@ -97,8 +98,11 @@ public class lapok_content extends AppCompatActivity implements View.OnClickList
             case R.id.forum:
                 pager.setCurrentItem(1);
                 break;
-            case R.id.notif:
-                pager.setCurrentItem(2);
+            case R.id.report_text:
+                pager.setCurrentItem(0);
+                break;
+            case R.id.forum_text:
+                pager.setCurrentItem(1);
                 break;
             default:
                 break;
@@ -108,13 +112,11 @@ public class lapok_content extends AppCompatActivity implements View.OnClickList
     class Content extends FragmentPagerAdapter {
         com.hi_depok.hi_depok.Lapok.fragment.fragment1 fragment1;
         com.hi_depok.hi_depok.Lapok.fragment.fragment2 fragment2;
-        com.hi_depok.hi_depok.Lapok.fragment.fragment3 fragment3;
 
         public Content(FragmentManager fm) {
             super(fm);
             fragment1 = com.hi_depok.hi_depok.Lapok.fragment.fragment1.newInstance();
             fragment2 = com.hi_depok.hi_depok.Lapok.fragment.fragment2.newInstance();
-            fragment3 = com.hi_depok.hi_depok.Lapok.fragment.fragment3.newInstance();
         }
 
         @Override
@@ -124,8 +126,6 @@ public class lapok_content extends AppCompatActivity implements View.OnClickList
                     return fragment1;
                 case 1:
                     return fragment2;
-                case 2:
-                    return fragment3;
                 default:
                     return fragment2;
             }
@@ -133,7 +133,7 @@ public class lapok_content extends AppCompatActivity implements View.OnClickList
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
     }
 

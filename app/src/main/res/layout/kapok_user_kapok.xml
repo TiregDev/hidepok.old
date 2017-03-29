@@ -130,7 +130,7 @@
         android:gravity="center"
         android:onClick="temukan"
         android:padding="10dp"
-        android:text="@string/button_next"
+        android:text="TEMUKAN"
         android:textColor="#fff"
         android:textSize="14sp" />
 

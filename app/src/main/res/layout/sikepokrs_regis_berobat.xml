@@ -78,7 +78,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
                     android:entries="@array/dokter"
-                    android:spinnerMode="dropdown"></Spinner>
+                    android:spinnerMode="dropdown"/>
             </LinearLayout>
 
             <Button
@@ -89,7 +89,7 @@
                 android:background="@drawable/shape3"
                 android:text="Kirim"
                 android:onClick="kirim_data"
-                android:textColor="#000"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
 

@@ -405,7 +405,7 @@
                     android:background="@drawable/shape3"
                     android:onClick="ke_post_terbaru"
                     android:text="Lihat Yang Lain"
-                    android:textColor="#000"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -723,7 +723,7 @@
                     android:background="@drawable/shape3"
                     android:onClick="ke_post_saya"
                     android:text="Lihat Yang Lain"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textStyle="bold" />
 
             </LinearLayout>

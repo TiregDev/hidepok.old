@@ -13,7 +13,7 @@
         android:layout_marginBottom="20dp"
         android:background="#303030"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="2">
 
         <ImageView
             android:id="@+id/report"
@@ -32,13 +32,6 @@
             android:layout_weight="1"
             android:src="@drawable/forum" />
 
-        <ImageView
-            android:id="@+id/notif"
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:src="@drawable/ic_menu_white_24dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -50,9 +43,10 @@
         android:background="#303030"
         android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="2">
 
         <TextView
+            android:id="@+id/report_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -61,19 +55,12 @@
             android:textColor="#fff" />
 
         <TextView
+            android:id="@+id/forum_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Forum"
-            android:textColor="#fff" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Notifikasi"
             android:textColor="#fff" />
 
     </LinearLayout>
@@ -84,7 +71,7 @@
         android:layout_alignParentBottom="true"
         android:background="#302929"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="2">
 
         <View
             android:id="@+id/strip"

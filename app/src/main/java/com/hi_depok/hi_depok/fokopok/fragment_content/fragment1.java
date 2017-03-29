@@ -9,11 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hi_depok.hi_depok.Lapok.fragment.fragment3;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.fokopok.RecyclerViewAdapter_message;
-import com.hi_depok.hi_depok.fokopok.itemObject_message;
-import com.hi_depok.hi_depok.fokopok.message;
 
 import java.util.ArrayList;
 import java.util.List;
