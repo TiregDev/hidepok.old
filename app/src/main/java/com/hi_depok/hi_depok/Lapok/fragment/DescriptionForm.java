@@ -31,7 +31,7 @@ import java.util.Calendar;
 public class DescriptionForm extends AppCompatActivity {
 
     EditText entryJudul, entryDeskripsi;
-    TextView perubahanWaktuLabel, coba;
+    TextView perubahanWaktuLabel;
     Spinner spinner;
     ArrayAdapter<CharSequence> adapter;
     Calendar dateAndTime = Calendar.getInstance();
@@ -45,8 +45,8 @@ public class DescriptionForm extends AppCompatActivity {
 
         entryJudul = (EditText) findViewById(R.id.entry);
         entryDeskripsi = (EditText) findViewById(R.id.entryDeskripsi);
-        coba = (TextView) findViewById(R.id.labelCoba1);
-        coba.setVisibility(View.GONE);
+//        coba = (TextView) findViewById(R.id.labelCoba1);
+//        coba.setVisibility(View.GONE);
 
         spinner = (Spinner) findViewById(R.id.spinKategori);
         adapter = ArrayAdapter.createFromResource(this, R.array.places,
@@ -94,23 +94,23 @@ public class DescriptionForm extends AppCompatActivity {
         startActivity(moveForum);
     }
 
-    public void readMessage(View view){
-        try {
-            String Message;
-            FileInputStream fileInputStream = openFileInput("hello_file");
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            StringBuffer stringBuffer = new StringBuffer();
-            while ((Message = bufferedReader.readLine()) != null){
-                stringBuffer.append(Message + "\n");
-                coba.setText(stringBuffer.toString());
-                coba.setVisibility(View.VISIBLE);
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void readMessage(View view){
+//        try {
+//            String Message;
+//            FileInputStream fileInputStream = openFileInput("hello_file");
+//            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+//            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+//            StringBuffer stringBuffer = new StringBuffer();
+//            while ((Message = bufferedReader.readLine()) != null){
+//                stringBuffer.append(Message + "\n");
+//                coba.setText(stringBuffer.toString());
+//                coba.setVisibility(View.VISIBLE);
+//            }
+//
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
