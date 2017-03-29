@@ -25,6 +25,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,9 +66,16 @@ public class PanicActivity extends BaseActivity implements LocationListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sikepokpanic_panicbutton);
+<<<<<<< HEAD
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
+=======
         super.onCreateDrawer();
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+>>>>>>> origin/master
             checkLocationPermission();
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -413,6 +422,10 @@ public class PanicActivity extends BaseActivity implements LocationListener{
         });
         AlertDialog dialog = alert.create();
         dialog.show();
+        Button buttonPositive = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        buttonPositive.setTextColor(ContextCompat.getColor(this, R.color.abuAbu));
+        Button buttonNegative = dialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+        buttonNegative.setTextColor(ContextCompat.getColor(this, R.color.abuAbu));
     }
     @Override
     public void onStatusChanged(String s, int i, Bundle bundle) {

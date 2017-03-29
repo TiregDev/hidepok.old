@@ -149,6 +149,7 @@
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:scaleType="center"
+                    android:onClick="toMaps"
                     app:srcCompat="@drawable/maps_small" />
 
                 <TextView

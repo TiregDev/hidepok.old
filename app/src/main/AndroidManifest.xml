@@ -76,13 +76,13 @@
         </activity>
         <activity
             android:name=".Activity_Main.about"
-            android:label="Tentang"
             android:noHistory="true"
+            android:label="Tentang"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity_Main.login"
             android:theme="@style/Background_main"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".Activity_Main.setprofile"
             android:label="Pengaturan Profil"
@@ -98,16 +98,13 @@
         <activity
             android:name=".Activity_Main.fokopok"
             android:theme="@style/Background" />
-        <activity
-            android:name=".Ucok.ucok_content"
-            android:label="Sistem Informasi UMKM"
-            android:parentActivityName=".Activity_Main.ucok" />
-        <activity
-            android:name=".Ucok.UcokDetailActivity"
-            android:label="Sistem Informasi UMKM"
-            android:parentActivityName=".Ucok.ucok_content" />
-        <activity android:name=".fokopok.fokopok_content"
-            android:label="FOKOPOK"/>
+        <activity android:name=".Ucok.ucok_content"
+            android:parentActivityName=".Activity_Main.ucok"
+            android:label="Sistem Informasi UMKM"/>
+        <activity android:name=".Ucok.UcokDetailActivity"
+            android:parentActivityName=".Ucok.ucok_content"
+            android:label="Sistem Informasi UMKM"/>
+        <activity android:name=".fokopok.fokopok_content" />
         <activity
             android:name=".Sikepok_Diagnosa.Anggota_badan_badan"
             android:label="Kepala" />
@@ -131,15 +128,16 @@
             android:label="Sugesti" />
         <activity
             android:name=".Sikepok_Diagnosa.SikepokDiagnosa"
-            android:theme="@style/Background_main" />
-        <activity
-            android:name=".Sikepok_Panic.PanicActivity"
+            android:theme="@style/Background_main"/>
+        <activity android:name=".Sikepok_Panic.PanicActivity"
             android:parentActivityName=".Activity_Main.sikepok"
-            android:theme="@style/Background_PanicButton"></activity>
+            android:theme="@style/Background_PanicButton">
+            </activity>
         <activity
             android:name=".Sikepok_Panic.MenuActivity"
-            android:label="Tempat Sehat" />
-        <activity android:name=".Sikepok_Panic.DetailActivity" />
+            android:label="Tempat Sehat"/>
+        <activity
+            android:name=".Sikepok_Panic.DetailActivity"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -151,121 +149,91 @@
         <activity
             android:name=".Activity_Main.WelcomeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".Sikepok_Panic.ListActivity"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".Sikepok_Panic.PilihanLainActivity"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".Sikepok_Panic.admin_main" />
-        <activity android:name=".Lapok.fragment.DescriptionForm"
-            android:label="Lapor Depok"/>
-        <activity android:name=".Lapok.lapok_content"
-            android:label="Lapor Depok"/>
-        <activity
-            android:name=".Kadepok_Donasi.kadepok_donasi_verify"
-            android:label="Verifikasi Donasi" />
-        <activity
-            android:name=".Kadepok_Donasi.kadepok_donasi_upload"
-            android:label="Unggah Bukti Donasi" />
-        <activity
-            android:name=".Kadepok_Cherish.kadepok_cherish_detail_anak"
-            android:label="Detail Anak" />
-        <activity
-            android:name=".Kadepok_Cherish.kadepok_cherish_detail_event"
-            android:label="Detail Event" />
-        <activity
-            android:name=".Kadepok.kadepok_content"
-            android:label="Daftar Panti Asuhan" />
-        <activity
-            android:name=".Kadepok.KadepokDetailActivity"
-            android:label="Detail Panti Asuhan"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".Kadepok_Volunteer.kadepok_volunteer_form"
-            android:label="Volunteer" />
-        <activity
-            android:name=".Sikepok_RS.deskripsiApotek"
-            android:label="Deskripsi Apotek" />
-        <activity
-            android:name=".Sikepok_RS.deskripsi_klinik"
-            android:label="Deskripsi Klinik" />
-        <activity
-            android:name=".Sikepok_RS.regis_pasien_baru"
-            android:label="Registrasi Pasien Baru" />
-        <activity
-            android:name=".Sikepok_RS.regis_pasien_lama"
-            android:label="Registrasi Pasien Lama" />
-        <activity
-            android:name=".Sikepok_RS.regis_berobat"
-            android:label="Registrasi Berobat" />
-        <activity
-            android:name=".Sikepok_RS.ketentuan"
-            android:label="Ketentuan" />
-        <activity
-            android:name=".Sikepok_RS.detail_post"
-            android:label="Detail Post" />
-        <activity
-            android:name=".Sikepok_RS.detail_post_saya"
-            android:label="Detail Post Saya" />
-        <activity
-            android:name=".Sikepok_RS.post_saya"
-            android:label="Post Saya" />
+
+        <activity android:name=".Lapok.fragment.DescriptionForm" />
+        <activity android:name=".Lapok.lapok_content" />
+
+        <activity android:name=".Kadepok_Donasi.kadepok_donasi_verify"
+            android:label="Verifikasi Donasi"/>
+        <activity android:name=".Kadepok_Donasi.kadepok_donasi_upload"
+            android:label="Unggah Bukti Donasi"/>
+        <activity android:name=".Kadepok_Cherish.kadepok_cherish_detail_anak"
+            android:label="Detail Anak"/>
+        <activity android:name=".Kadepok_Cherish.kadepok_cherish_detail_event"
+            android:label="Detail Event"/>
+        <activity android:name=".Kadepok.kadepok_content" android:label="Daftar Panti Asuhan"/>
+        <activity android:name=".Kadepok.KadepokDetailActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:label="Detail Panti Asuhan"/>
+
+        <activity android:name=".Kadepok_Volunteer.kadepok_volunteer_form"
+            android:label="Volunteer"/>
+        <activity android:name=".Sikepok_RS.deskripsiApotek"
+            android:label="Deskripsi Apotek"/>
+        <activity android:name=".Sikepok_RS.deskripsi_klinik"
+            android:label="Deskripsi Klinik"/>
+        <activity android:name=".Sikepok_RS.regis_pasien_baru"
+            android:label="Registrasi Pasien Baru"/>
+        <activity android:name=".Sikepok_RS.regis_pasien_lama"
+            android:label="Registrasi Pasien Lama"/>
+        <activity android:name=".Sikepok_RS.regis_berobat"
+            android:label="Registrasi Berobat"/>
+        <activity android:name=".Sikepok_RS.ketentuan"
+            android:label="Ketentuan"/>
+        <activity android:name=".Sikepok_RS.detail_post"
+            android:label="Detail Post"/>
+        <activity android:name=".Sikepok_RS.detail_post_saya"
+            android:label="Detail Post Saya"/>
+        <activity android:name=".Sikepok_RS.post_saya"
+            android:label="Post Saya"/>
         <activity
             android:name=".Sikepok_RS.list_diskusi"
             android:label="Daftar Diskusi" />
-        <activity
-            android:name=".Sikepok_RS.klinik"
-            android:label="Klinik" />
-        <activity
-            android:name=".Sikepok_RS.apotek"
-            android:label="Apotek" />
-        <activity
-            android:name=".Sikepok_RS.registrasi"
-            android:label="Registrasi" />
-        <activity
-            android:name=".Sikepok_RS.forum"
-            android:label="Forum" />
-        <activity
-            android:name=".Sikepok_RS.rs_terdekat"
-            android:label="RS Terdekat" />
-        <activity
-            android:name=".Sikepok_RS.daftar_rs"
-            android:label="Daftar RS" />
+        <activity android:name=".Sikepok_RS.klinik"
+            android:label="Klinik"/>
+        <activity android:name=".Sikepok_RS.apotek"
+            android:label="Apotek"/>
+        <activity android:name=".Sikepok_RS.registrasi"
+            android:label="Registrasi"/>
+        <activity android:name=".Sikepok_RS.forum"
+            android:label="Forum"/>
+        <activity android:name=".Sikepok_RS.rs_terdekat"
+            android:label="RS Terdekat"/>
+        <activity android:name=".Sikepok_RS.daftar_rs"
+            android:label="Daftar RS"/>
         <activity
             android:name=".Sikepok_RS.menu_rs"
             android:label="Menu Rumah Sakit" />
         <activity
+            android:name=".Sikepok_RS.info_dokter"
+            android:label="Info Dokter" />
+        <activity
             android:name=".Sikepok_RS.RSActivity"
             android:theme="@style/Background_main" />
 
-        <!-- <activity android:name=".fokopok.fokopok_content" /> -->
-        <activity
-            android:name=".Ucok.danus_activity"
-            android:label="Riwayat Dana Usaha"
-            android:parentActivityName=".Activity_Main.ucok" />
-        <activity
-            android:name=".Ucok.hasil_calculate"
-            android:label="Rekomendasi Dana Usaha"
-            android:parentActivityName=".Ucok.danus_activity" />
-        <activity
-            android:name=".Ucok.detail_danus"
-            android:label="Detail"
-            android:parentActivityName=".Ucok.hasil_calculate" />
+        <!--<activity android:name=".fokopok.fokopok_content" />-->
+        <activity android:name=".Ucok.danus_activity"
+            android:parentActivityName=".Activity_Main.ucok"
+            android:label="Riwayat Dana Usaha"/>
+        <activity android:name=".Ucok.hasil_calculate"
+            android:parentActivityName=".Ucok.danus_activity"
+            android:label="Rekomendasi Dana Usaha"/>
+        <activity android:name=".Ucok.detail_danus"
+            android:parentActivityName=".Ucok.hasil_calculate"
+            android:label="Detail"/>
         <activity
             android:name=".Ucok.detail_target"
             android:parentActivityName=".Ucok.danus_activity" />
-        <activity android:name=".fokopok.message"
-            android:label="Pesan Masuk"/>
+        <activity android:name=".fokopok.message"></activity>
+
         <activity android:name=".Kapok.activity_selengkapnya" />
         <activity android:name=".Kapok.join_kapok" />
-        <activity
-            android:name=".Kapok.KapokActivity"
-            android:label="Telusuri Kota Depok" />
+        <activity android:name=".Kapok.KapokActivity"
+            android:label="Telusuri Kota Depok"/>
         <activity android:name=".Kapok.activity_view_ulasan" />
-        <activity
-            android:name=".Sikepok_RS.info_dokter"
-            android:label="Informasi Dokter"/>
+
+
+
     </application>
 
 </manifest>

@@ -127,7 +127,7 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
         //  call the constructor of CustomAdapter to send the reference and data to Adapter
         CustomAdapterMenuSort customAdapter = new CustomAdapterMenuSort(KapokActivity.this, namalogo,gambarlogo);
         recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
-}
+    }
 
     //popup
     private PopupWindow pwindo;

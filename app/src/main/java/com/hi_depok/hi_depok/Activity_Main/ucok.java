@@ -1,16 +1,20 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.hi_depok.hi_depok.R;
@@ -33,8 +37,10 @@ public class ucok extends BaseActivity implements View.OnClickListener{
         setContentView(R.layout.activity_ucok);
         super.onCreateDrawer();
         // Making notification bar transparent
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         pager = (ViewPager) findViewById(R.id.pager);
@@ -140,5 +146,21 @@ public class ucok extends BaseActivity implements View.OnClickListener{
     public void link_danus(View v){
         Intent intent = new Intent(ucok.this, danus_activity.class);
         startActivity(intent);
+    }
+    public void goToYoutube(View v){
+        String id = "TiregDev";
+        try {
+
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + id));
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
+        } catch (ActivityNotFoundException e) {
+
+            // youtube is not installed.Will be opened in other available apps
+
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtube.com/watch?v=" + id));
+            startActivity(i);
+        }
     }
 }

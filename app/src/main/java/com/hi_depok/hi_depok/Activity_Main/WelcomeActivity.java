@@ -19,7 +19,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Sikepok_Panic.PreferenceManager;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -61,10 +60,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 R.layout.slide_screen1,
                 R.layout.slide_screen2,
                 R.layout.slide_screen3,
-                R.layout.slide_screen4,
-                R.layout.slide_screen5,
-                R.layout.slide_screen6,
-                R.layout.slide_screen7};
+                R.layout.slide_screen4};
 
         // adding bottom dots
         addBottomDots(0);
