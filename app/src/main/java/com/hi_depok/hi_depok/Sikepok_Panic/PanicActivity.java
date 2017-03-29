@@ -41,10 +41,12 @@ import com.google.android.gms.location.LocationSettingsStatusCodes;
 
 import java.util.List;
 import java.util.Locale;
+
+import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 
 
-public class PanicActivity extends AppCompatActivity implements LocationListener{
+public class PanicActivity extends BaseActivity implements LocationListener{
     int clickcount = 0;
     TextView notice1;
     TextView notice2;
@@ -62,6 +64,7 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sikepokpanic_panicbutton);
+        super.onCreateDrawer();
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
             checkLocationPermission();

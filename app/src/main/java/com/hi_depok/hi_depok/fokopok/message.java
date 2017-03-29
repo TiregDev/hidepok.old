@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.Ucok.ItemObject;
 import com.hi_depok.hi_depok.Ucok.RecyclerViewAdapter;
@@ -17,13 +18,14 @@ import com.hi_depok.hi_depok.Ucok.ucok_content;
 import java.util.ArrayList;
 import java.util.List;
 
-public class message extends AppCompatActivity {
+public class message extends BaseActivity {
     private LinearLayoutManager lLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fokopok_message);
+        super.onCreateDrawer();
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
