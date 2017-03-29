@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ import android.view.View.OnClickListener;
 
 import com.hi_depok.hi_depok.Activity_Main.MainActivity;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.Sikepok_Panic.MapsActivity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -43,8 +45,10 @@ public class detail_danus extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ucok_detail_danus);
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
@@ -139,7 +143,10 @@ public class detail_danus extends AppCompatActivity {
                 formatdate.format(date)
         );
     }
-
+    public void toMaps(View v){
+        Intent intent = new Intent(getBaseContext(), MapsActivity.class);
+        startActivity(intent);
+    }
     private void settingTanggal(){
         new DatePickerDialog(detail_danus.this, d,
                 dateAndTime.get(Calendar.YEAR),

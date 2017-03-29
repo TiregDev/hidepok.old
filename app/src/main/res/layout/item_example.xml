@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.hi_depok.hi_depok.Sikepok_Panic.SearchFunction.ExampleAdapter.Listener" />
+
+        <variable
+            name="model"
+            type="com.hi_depok.hi_depok.Sikepok_Panic.SearchFunction.ExampleModel"/>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{view -> listener.onExampleModelClicked(model)}"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@{model.text}"/>
+
+    </FrameLayout>
+
+</layout>

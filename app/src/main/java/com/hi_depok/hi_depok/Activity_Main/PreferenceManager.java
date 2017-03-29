@@ -1,4 +1,4 @@
-package com.hi_depok.hi_depok.Sikepok_Panic;
+package com.hi_depok.hi_depok.Activity_Main;
 
 import android.content.Context;
 import android.content.SharedPreferences;
