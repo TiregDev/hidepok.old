@@ -1,26 +1,38 @@
+
 package com.hi_depok.hi_depok.Kadepok_Volunteer;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.PopupWindow;
+        import android.content.Context;
+        import android.content.Intent;
+        import android.content.pm.ActivityInfo;
+        import android.os.Build;
+        import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.support.v7.widget.Toolbar;
+        import android.view.Gravity;
+        import android.view.LayoutInflater;
+        import android.view.MenuItem;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.view.WindowManager;
+        import android.widget.AdapterView;
+        import android.widget.ArrayAdapter;
+        import android.widget.Button;
+        import android.widget.PopupWindow;
+        import android.widget.Spinner;
+        import android.widget.Toast;
 
-import com.hi_depok.hi_depok.Activity_Main.kadepok;
-import com.hi_depok.hi_depok.R;
+        import com.hi_depok.hi_depok.Activity_Main.kadepok;
+        import com.hi_depok.hi_depok.R;
 
-import static java.security.AccessController.getContext;
+        import static java.security.AccessController.getContext;
 
 public class kadepok_volunteer_form extends AppCompatActivity {
     public Button btn_volunteer;
+    private Spinner jenis_volunteer_spinner;
     private PopupWindow popupWindow;
     public Button close;
+
+    private static final String[]jenis = {"Jenis Volunteer", "Guru Matematika", "Guru Fisika", "Guru Bahasa Inggris", "Guru Bahasa Indonesia"};
 
     public void verify_volunteer() {
         try {
@@ -52,7 +64,12 @@ public class kadepok_volunteer_form extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kadepok_volunteer_form);
-
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        }
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btn_volunteer = (Button)findViewById(R.id.btn_volunteer);
         btn_volunteer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,5 +77,56 @@ public class kadepok_volunteer_form extends AppCompatActivity {
                 verify_volunteer();
             }
         });
+
+        /*-------------------------- START SPINER CATEGORY --------------------------------------- */
+        jenis_volunteer_spinner = (Spinner)findViewById(R.id.jenis_volunter_spinner);
+        ArrayAdapter<String> adapter_camat = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item,jenis);
+
+        adapter_camat.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        jenis_volunteer_spinner.setAdapter(adapter_camat);
+        jenis_volunteer_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 1:
+                        Toast.makeText(getApplicationContext(), ("Anda telah memilih Guru Matematika"),
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        Toast.makeText(getApplicationContext(), ("Anda telah memilih Guru Fisika"),
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                    case 3:
+                        Toast.makeText(getApplicationContext(), ("Anda telah memilih Guru Bahasa Inggris"),
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                    case 4:
+                        Toast.makeText(getApplicationContext(), ("Anda telah memilih Guru Bahasa Indonesia"),
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //NULL
+            }
+        });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+
+                kadepok_volunteer_form.this.finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
+

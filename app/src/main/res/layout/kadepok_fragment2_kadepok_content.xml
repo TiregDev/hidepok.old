@@ -7,6 +7,10 @@
     android:orientation="vertical"
     android:weightSum="1">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -135,19 +139,16 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_weight="1">
+                android:gravity="center">
 
                 <Button
                     android:id="@+id/donate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="14dp"
-                    android:layout_marginRight="50dp"
                     android:layout_marginTop="20dp"
                     android:alpha="0.7"
-                    android:background="@drawable/shape2"
+                    android:background="@drawable/shape3"
                     android:gravity="center"
                     android:text="Donasi"
                     android:textAlignment="gravity"
@@ -155,5 +156,6 @@
             </RelativeLayout>
 
         </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

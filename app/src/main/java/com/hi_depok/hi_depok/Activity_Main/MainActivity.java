@@ -36,15 +36,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow(); // in Activity's onCreate() for instance
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        // Making notification bar transparent
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         PrimaryDrawerItem home =   new PrimaryDrawerItem()
-                .withName("Home")
+                .withName("Beranda")
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
                 .withIconColor(Color.rgb(158,158,158))
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 .withSelectable(false)
                 .withIdentifier(0);
         PrimaryDrawerItem profile =    new PrimaryDrawerItem()
-                .withName("Profile")
+                .withName("Profil")
                 .withSelectable(false)
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 .withIcon(R.drawable.ic_action_person4)
                 .withIdentifier(1);
         PrimaryDrawerItem logout = new PrimaryDrawerItem()
-                .withName("Logout")
+                .withName("Keluar")
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
                 .withIconColor(Color.rgb(158,158,158))
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                 .withIcon(R.drawable.fokopok_bw)
                 .withIdentifier(8);
         PrimaryDrawerItem about =    new PrimaryDrawerItem()
-                .withName("About")
+                .withName("Tentang")
                 .withSelectable(false)
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))

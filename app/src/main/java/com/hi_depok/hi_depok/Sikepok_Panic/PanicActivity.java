@@ -1,20 +1,24 @@
 package com.hi_depok.hi_depok.Sikepok_Panic;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -58,6 +62,11 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sikepokpanic_panicbutton);
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            checkLocationPermission();
+        }
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 //        toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
 //        setSupportActionBar(toolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -85,6 +94,37 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
             return;
         }
 
+    }
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    public boolean checkLocationPermission(){
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Asking user if explanation is needed
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+                //Prompt the user once explanation has been shown
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        MY_PERMISSIONS_REQUEST_LOCATION);
+
+
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        MY_PERMISSIONS_REQUEST_LOCATION);
+            }
+            return false;
+        } else {
+            return true;
+        }
     }
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
@@ -148,7 +188,7 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
             notice2 = (TextView)findViewById(R.id.txtNotice2);
             notice2.setText("Tekan [X] untuk membatalkan");
             Snackbar snackbar = Snackbar
-                    .make(findViewById(android.R.id.content), "Kamu sedang dalam bahaya, apa kamu ingin memesan ambulan?", Snackbar.LENGTH_INDEFINITE)
+                    .make(findViewById(android.R.id.content), "Konfirmasi pemesanan ambulans?", Snackbar.LENGTH_INDEFINITE)
                     .setAction("YA", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -163,7 +203,7 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
     private void orderAmbulance(){
         dialog = new ProgressDialog(PanicActivity.this);
         dialog.show();
-        dialog.setMessage("Sistem sedang mencari ambulan terdekat dari tempat anda, mohon bersabar :)");
+        dialog.setMessage("Sistem sedang mencari ambulans terdekat dari tempat anda..");
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Snackbar snackbar = Snackbar
@@ -294,11 +334,12 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
         getlatitude = location.getLatitude();
         getlongitude = location.getLongitude();
         if (getlatitude != 0 && getlongitude != 0){
-            notice1.setText("Location Detail: ");
+            notice1.setText("Rincian Ambulans:");
             findViewById(R.id.layoutBtn).setVisibility(View.GONE);
             findViewById(R.id.layoutMaps).setVisibility(View.VISIBLE);
-            findViewById(R.id.txtNotice2).setVisibility(View.INVISIBLE);
+            findViewById(R.id.txtNotice2).setVisibility(View.GONE);
             findViewById(R.id.layoutDirections).setVisibility(View.VISIBLE);
+            findViewById(R.id.layoutDetail).setVisibility(View.VISIBLE);
             try {
 
                 Geocoder geo = new Geocoder(this.getApplicationContext(), Locale.getDefault());
@@ -308,7 +349,7 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
                 }
                 else {
                     if (addresses.size() > 0) {
-                        latlon.setText("Lokasi Ambulan: \n" + addresses.get(0).getFeatureName() + ", " + addresses.get(0).getLocality() +", " + addresses.get(0).getAdminArea() + ", " + addresses.get(0).getCountryName());
+                        latlon.setText("Lokasi Ambulans: \n" + addresses.get(0).getFeatureName() + ", " + addresses.get(0).getLocality() +", " + addresses.get(0).getAdminArea() + ", " + addresses.get(0).getCountryName());
                         //Toast.makeText(getApplicationContext(), "Address:- " + addresses.get(0).getFeatureName() + addresses.get(0).getAdminArea() + addresses.get(0).getLocality(), Toast.LENGTH_LONG).show();
                     }
                 }
@@ -348,7 +389,7 @@ public class PanicActivity extends AppCompatActivity implements LocationListener
         alert.setView(alertLayout);
         // disallow cancel of AlertDialog on click of back button and outside touch
         alert.setCancelable(false);
-        alert.setNegativeButton("Skip", new DialogInterface.OnClickListener() {
+        alert.setNegativeButton("Lewati", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {

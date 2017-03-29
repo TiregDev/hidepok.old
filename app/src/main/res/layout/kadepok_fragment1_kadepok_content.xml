@@ -40,7 +40,7 @@
                 android:layout_below="@+id/text_telepon"
                 android:layout_marginTop="20dp"
                 android:textColor="#fff"
-                android:text="Jumlah Anak Panti" />
+                android:text="Jumlah Anak " />
 
             <TextView
                 android:id="@+id/desc_panti"
@@ -68,6 +68,7 @@
                 android:layout_above="@+id/desc_panti"
                 android:layout_alignBaseline="@+id/text_thn_berdiri"
                 android:layout_alignStart="@+id/textView31"
+                android:textColor="#fff"
                 android:text=":" />
 
             <TextView
@@ -117,7 +118,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:textColor="#fff"
-                android:text="Nama Pengurus" />
+                android:text="Pengurus" />
 
             <TextView
                 android:id="@+id/textView31"

@@ -102,8 +102,53 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:textSize="18sp"
             android:text="Tekan 3x tombol panic!" />
 
+        <LinearLayout
+            android:id="@+id/layoutDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:visibility="gone">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:src="@drawable/profile" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="Muhammad Hafidz"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="RSUD Depok"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ambulance1_01" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layoutDirections"
@@ -137,9 +182,9 @@
                     android:id="@+id/latlong"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
                     android:layout_weight="1"
                     android:padding="5dp"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <View
@@ -152,9 +197,9 @@
                     android:id="@+id/address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
                     android:layout_weight="1"
                     android:padding="5dp"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <View
@@ -200,11 +245,11 @@
                 <TextView
                     android:id="@+id/txtJarak"
                     android:layout_width="match_parent"
-                    android:textColor="@color/white"
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:text="1200m"
                     android:textAlignment="center"
+                    android:textColor="@color/white"
                     android:textSize="15sp" />
 
                 <View
@@ -223,6 +268,7 @@
 
 
         </LinearLayout>
+
 
     </LinearLayout>
 

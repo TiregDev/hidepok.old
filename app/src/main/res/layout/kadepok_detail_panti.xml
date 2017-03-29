@@ -20,7 +20,6 @@
     </RelativeLayout>
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,6 +29,7 @@
             android:id="@+id/detailpanti"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/primary"
             android:paddingBottom="7dp">
 
             <ImageView
@@ -46,9 +46,9 @@
                 android:layout_below="@+id/list_avatar"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:textColor="#fff"
                 android:text="Panti Asuhan Darul Ilmi"
-                android:textSize="30dp" />
+                android:textColor="#fff"
+                android:textSize="20sp" />
 
 
             <ImageView
@@ -80,7 +80,7 @@
                 android:layout_height="50dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginBottom="2dp"
-                android:background="#303030"
+                android:background="@color/primary"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:weightSum="3">
@@ -89,7 +89,7 @@
                     android:id="@+id/deskripsi_panti"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.01"
                     android:gravity="center"
                     android:text="Deskripsi"
                     android:textColor="#fff" />

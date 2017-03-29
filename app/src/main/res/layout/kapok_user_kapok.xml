@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#303030"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#303030"
     tools:context="com.hi_depok.hi_depok.Kapok.KapokActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary">
+        android:layout_height="wrap_content">
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -19,71 +19,77 @@
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
+
+        <LinearLayout
+            android:id="@+id/dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="2">
+
+            <Spinner
+                android:id="@+id/camat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_bg_spinner" />
+
+            <Spinner
+                android:id="@+id/pilihan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_bg_spinner" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dropdown_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:weightSum="2">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:padding="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/spinner" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="-50dp"
+                android:padding="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/spinner" />
+
+        </LinearLayout>
     </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#303030"
-        android:orientation="horizontal">
-
-        <Spinner
-            android:id="@+id/camat"
-            android:layout_width="match_parent"
-            android:layout_height="39dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="#fff"
-            android:spinnerMode="dropdown" />
-
-        <ImageView
-            android:layout_width="30dp"
-            android:paddingRight="5dp"
-            android:layout_height="39dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:background="#fff"
-            android:layout_gravity="center"
-            android:src="@drawable/spinner" />
-
-        <Spinner
-            android:id="@+id/pilihan"
-            android:layout_width="match_parent"
-            android:layout_height="39dp"
-            android:background="#fff"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1" />
-        <ImageView
-            android:layout_width="30dp"
-            android:paddingRight="5dp"
-            android:layout_height="39dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:background="#fff"
-            android:layout_gravity="center"
-            android:src="@drawable/spinner" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:background="#303030"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="14sp"
+            android:layout_marginStart="14sp"
             android:gravity="center"
             android:text="Urutkan dari   :"
             android:textColor="#fff"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
         <RadioGroup
             android:id="@+id/sort"
@@ -105,37 +111,37 @@
                 android:id="@+id/jarak"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:text="Terdekat"
-                android:textColorLink="@color/colorPrimary"
                 android:textColor="#fff"
+                android:textColorLink="@color/colorPrimary"
                 android:textSize="14sp" />
         </RadioGroup>
     </LinearLayout>
 
     <Button
         android:id="@+id/temukan"
-        android:layout_width="70dp"
-        android:layout_height="33dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="10dp"
         android:alpha="0.7"
         android:background="@drawable/shape2"
-        android:layout_marginTop="10dp"
         android:gravity="center"
         android:onClick="temukan"
-        android:layout_marginBottom="12dp"
-        android:textSize="14dp"
+        android:padding="10dp"
         android:text="@string/button_next"
-        android:textAlignment="gravity"
-        android:textColor="#fff" />
+        android:textColor="#fff"
+        android:textSize="14sp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="#fff"
-        android:paddingTop="20dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:paddingTop="20dp" />
 
 
 </LinearLayout>

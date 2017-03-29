@@ -5,35 +5,16 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/btn_kadepok_notifikasi"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
-            app:srcCompat="@android:drawable/ic_popup_reminder" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:onClick="ucok_content_siukm"
-            android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
-
-        <TextView
-            android:id="@+id/about"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Kasihi Depok"
-            android:textColor="#fff"
-            android:textSize="20dp" />
-
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
     </RelativeLayout>
 
     <ScrollView
@@ -44,25 +25,43 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="1">
+            android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/jenis_volunter_spinner"
+            <LinearLayout
+                android:id="@+id/dropdown"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:background="#fff"
-                android:focusable="true"
-                android:keepScreenOn="false"
-                android:popupBackground="#fff" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <Spinner
+                    android:id="@+id/jenis_volunter_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/shape_bg_spinner" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dropdown_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-55dp"
+                android:gravity="end">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="25dp"
+                    android:src="@drawable/spinner" />
+
+            </LinearLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
                 android:layout_weight="1">
 
                 <EditText
@@ -175,39 +174,29 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_weight="1">
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp">
 
                 <Button
                     android:id="@+id/upload_cv"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginRight="50dp"
-                    android:layout_weight="1"
-                    android:alpha="0.7"
-                    android:background="@drawable/shape2"
+                    android:background="@drawable/shape3"
                     android:gravity="center"
                     android:text="Upload CV"
-                    android:textAlignment="gravity"
-                    android:textColor="#fff" />
+                    android:textColor="#fff"
+                    android:textStyle="bold"/>
 
                 <Button
                     android:id="@+id/btn_volunteer"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
                     android:layout_below="@+id/upload_cv"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="14dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="20dp"
-                    android:alpha="0.7"
-                    android:background="@drawable/shape2"
-                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/shape3"
                     android:text="Daftar"
-                    android:textAlignment="gravity"
-                    android:textColor="#fff" />
+                    android:textColor="#fff"
+                    android:textStyle="bold"/>
             </RelativeLayout>
 
         </LinearLayout>

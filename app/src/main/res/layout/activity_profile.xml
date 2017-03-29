@@ -38,7 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Profile"
+                    android:text="Profil"
                     android:textColor="#fff"
                     android:textSize="20dp" />
 
@@ -108,9 +108,9 @@
             android:layout_height="36dp"
             android:layout_weight="1"
             android:gravity="center|center_vertical"
-            android:text="My Profile"
+            android:text="Profil Saya"
             android:textColor="#fff"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/history"
@@ -118,9 +118,9 @@
             android:layout_height="36dp"
             android:layout_weight="1"
             android:gravity="center|center_vertical"
-            android:text="History"
+            android:text="Jejak"
             android:textColor="#fff"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout

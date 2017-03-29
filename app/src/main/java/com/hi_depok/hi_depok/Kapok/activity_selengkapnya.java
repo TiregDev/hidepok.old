@@ -2,6 +2,7 @@ package com.hi_depok.hi_depok.Kapok;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
@@ -119,7 +120,8 @@ public class activity_selengkapnya extends AppCompatActivity {
             View layout = inflater.inflate(R.layout.kapok_popup_ulasan, (ViewGroup) findViewById(R.id.popup_element));
             pwindo = new PopupWindow(layout, 450,300, true);
             pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
-
+            pwindo.setOutsideTouchable(true);
+            pwindo.setFocusable(true);
 
             ImageView close = (ImageView) layout.findViewById(R.id.close);
             close.setOnClickListener(cancel_button_click_listener);

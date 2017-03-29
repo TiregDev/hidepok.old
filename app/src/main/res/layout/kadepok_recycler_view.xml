@@ -27,15 +27,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/r_toolbar"
         android:orientation="horizontal"
-        android:padding="10dp"
-        android:weightSum="2">
+        android:padding="10dp">
 
         <Spinner
             android:id="@+id/kecamatan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:layout_weight="1"
             android:background="@drawable/shape_bg_spinner" />
 
     </LinearLayout>
@@ -44,17 +42,15 @@
         android:id="@+id/dropdown_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
         android:layout_marginTop="5dp"
-        android:gravity="right"
-        android:padding="10dp"
-        android:weightSum="2">
+        android:gravity="end"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="-50dp"
-            android:layout_weight="1"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
             android:src="@drawable/spinner" />
 
     </LinearLayout>

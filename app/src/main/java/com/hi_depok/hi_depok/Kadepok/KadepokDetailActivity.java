@@ -3,6 +3,7 @@ package com.hi_depok.hi_depok.Kadepok;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -71,13 +72,18 @@ public class KadepokDetailActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kadepok_detail_panti);
+        // Making notification bar transparent
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        }
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         pager = (ViewPager) findViewById(R.id.pager);
         deskripsi = (TextView) findViewById(R.id.deskripsi_panti);
         donasi = (TextView) findViewById(R.id.donasi_panti);
         cherish = (TextView) findViewById(R.id.cherish_us);
-        strip = findViewById(R.id.strip);setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        strip = findViewById(R.id.strip);
         adapter = new Content(getSupportFragmentManager());
         pager.setAdapter(adapter);
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

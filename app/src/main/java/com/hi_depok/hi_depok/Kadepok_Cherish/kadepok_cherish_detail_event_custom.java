@@ -39,10 +39,10 @@ public class kadepok_cherish_detail_event_custom extends PagerAdapter {
         TextView tv_tmpt  = (TextView)v.findViewById(R.id.tmpt);
         TextView tv_detail  = (TextView)v.findViewById(R.id.detail);
         img.setImageResource(imageResource[position]);
-        tv_nama.setText("Nama Acara    : ACX0" + (position + 3));
-        tv_tgl.setText("TTL           : "+ (position + 5) + " Agustus 2015");
-        tv_tmpt.setText("Tempat        : Darul Ilmi");
-        tv_detail.setText("Detail        : \n" +
+        tv_nama.setText("Nama Acara\n ACX0" + (position + 3));
+        tv_tgl.setText("TTL\n "+ (position + 5) + " Agustus 2015");
+        tv_tmpt.setText("Tempat\n Darul Ilmi");
+        tv_detail.setText("Detail\n" +
                 "Panti Asuhan Darul Ilmi melakukan perjalanan manuju Jogjakarta selama 7 hari 6 malam.");
         container.addView(v);
         return v;

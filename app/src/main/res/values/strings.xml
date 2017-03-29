@@ -51,9 +51,9 @@
     </string>
     <string name="detail_location">"8 Rue Scribe, 75009 Paris, France"</string>
     <string name="title_activity_welcome">Home Screen</string>
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
+    <string name="next">SELANJUTNYA</string>
+    <string name="skip">LEWATI</string>
+    <string name="start">MULAI</string>
     <string name="slide_1_title">Hi-Depok</string>
     <string name="slide_1_desc">Aplikasi ini dapat membantu warga Depok dalam berbagai aspek dengan didukung oleh beberapa modul. Pelajari lebih lanjut!</string>
     <string name="slide_2_title">SIKEPOK</string>

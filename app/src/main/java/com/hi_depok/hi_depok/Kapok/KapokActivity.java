@@ -3,6 +3,9 @@ package com.hi_depok.hi_depok.Kapok;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -54,6 +57,11 @@ public class KapokActivity extends AppCompatActivity implements AdapterView.OnIt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kapok_user_kapok);
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        }
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -129,7 +137,8 @@ public class KapokActivity extends AppCompatActivity implements AdapterView.OnIt
 
             pwindo = new PopupWindow(layout, 450, 750, true);
             pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
-
+            pwindo.setOutsideTouchable(true);
+            pwindo.setFocusable(true);
             Button selengkapnya = (Button) layout.findViewById(R.id.next);
             selengkapnya.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -144,7 +153,16 @@ public class KapokActivity extends AppCompatActivity implements AdapterView.OnIt
             e.printStackTrace();
         }
     }
-
+    @Override
+    public void onBackPressed() {
+        if (pwindo != null) {
+            if (pwindo.isShowing()) {
+                pwindo.dismiss();
+            }
+        } else {
+            finish();
+        }
+    }
     private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

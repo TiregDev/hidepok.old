@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -28,11 +29,12 @@
             android:layout_width="54dp"
             android:layout_height="54dp"
             android:layout_gravity="bottom|end"
-            android:onClick="danus_calculate"
-            android:background="@color/colorPrimary"
-            android:src="@drawable/add"
             android:layout_marginBottom="40dp"
-            android:layout_marginEnd="30dp" />
+            android:layout_marginEnd="30dp"
+            android:background="@color/colorPrimary"
+            android:onClick="danus_calculate"
+            android:src="@drawable/add"
+            app:backgroundTint="@color/accent" />
 
     </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>

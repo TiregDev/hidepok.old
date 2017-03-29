@@ -77,18 +77,23 @@
         <activity
             android:name=".Activity_Main.about"
             android:noHistory="true"
+            android:label="Tentang"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity_Main.login"
-            android:theme="@style/Background_main" />
+            android:theme="@style/Background_main"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".Activity_Main.setprofile"
+            android:label="Pengaturan Profil"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity_Main.profile"
+            android:label="Profil"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity_Main.changepass"
+            android:label="Ganti Sandi"
             android:noHistory="true" />
         <activity
             android:name=".Activity_Main.fokopok"
@@ -154,15 +159,21 @@
         <activity android:name=".Lapok.fragment.DescriptionForm" />
         <activity android:name=".Lapok.lapok_content" />
 
-        <activity android:name=".Kadepok_Donasi.kadepok_donasi_verify" />
-        <activity android:name=".Kadepok_Donasi.kadepok_donasi_upload" />
-        <activity android:name=".Kadepok_Cherish.kadepok_cherish_detail_anak" />
-        <activity android:name=".Kadepok_Cherish.kadepok_cherish_detail_event" />
-        <activity android:name=".Kadepok.kadepok_content" />
+        <activity android:name=".Kadepok_Donasi.kadepok_donasi_verify"
+            android:label="Verifikasi Donasi"/>
+        <activity android:name=".Kadepok_Donasi.kadepok_donasi_upload"
+            android:label="Unggah Bukti Donasi"/>
+        <activity android:name=".Kadepok_Cherish.kadepok_cherish_detail_anak"
+            android:label="Detail Anak"/>
+        <activity android:name=".Kadepok_Cherish.kadepok_cherish_detail_event"
+            android:label="Detail Event"/>
+        <activity android:name=".Kadepok.kadepok_content" android:label="Daftar Panti Asuhan"/>
         <activity android:name=".Kadepok.KadepokDetailActivity"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan"
+            android:label="Detail Panti Asuhan"/>
 
-        <activity android:name=".Kadepok_Volunteer.kadepok_volunteer_form"></activity>
+        <activity android:name=".Kadepok_Volunteer.kadepok_volunteer_form"
+            android:label="Volunteer"/>
         <activity android:name=".Sikepok_RS.deskripsiApotek"
             android:label="Deskripsi Apotek"/>
         <activity android:name=".Sikepok_RS.deskripsi_klinik"
@@ -202,13 +213,6 @@
         <activity
             android:name=".Sikepok_RS.RSActivity"
             android:theme="@style/Background_main" />
-        <activity android:name=".Fokopok_Admin.FokopokLogin" />
-        <activity
-            android:name=".Fokopok_Admin.FokopokHome"
-            android:label="FOKOPOK"
-            android:parentActivityName=".Fokopok_Admin.FokopokLogin">
-
-        </activity>
 
         <!--<activity android:name=".fokopok.fokopok_content" />-->
         <activity android:name=".Ucok.danus_activity"
@@ -227,7 +231,8 @@
 
         <activity android:name=".Kapok.activity_selengkapnya" />
         <activity android:name=".Kapok.join_kapok" />
-        <activity android:name=".Kapok.KapokActivity" />
+        <activity android:name=".Kapok.KapokActivity"
+            android:label="Telusuri Kota Depok"/>
         <activity android:name=".Kapok.activity_view_ulasan" />
 
 

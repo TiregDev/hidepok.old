@@ -38,9 +38,9 @@ public class kadepok_cherish_detail_anak_custom extends PagerAdapter {
         TextView tv_ttl  = (TextView)v.findViewById(R.id.ttl);
         TextView tv_jk  = (TextView)v.findViewById(R.id.jk);
         img.setImageResource(imageResource[position]);
-        tv_nama.setText("Nama          : ACX0" + (position + 1));
-        tv_ttl.setText("TTL           : Agustus "+ (position + 1) + " 2015");
-        tv_jk.setText("Jenis Kelamin : Laki-Laki");
+        tv_nama.setText("Nama\n ACX0\n" + (position + 1));
+        tv_ttl.setText("TTL\n Agustus "+ (position + 1) + " 2015\n");
+        tv_jk.setText("Jenis Kelamin \n Laki-Laki\n");
         container.addView(v);
         return v;
     }
