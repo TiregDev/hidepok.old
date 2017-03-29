@@ -21,7 +21,7 @@ import android.widget.TextView;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.fokopok.fokopok_content;
 
-public class fokopok extends AppCompatActivity implements View.OnClickListener {
+public class fokopok extends BaseActivity implements View.OnClickListener {
 
     ViewPager pager;
     FokopokPager adapter;
@@ -32,6 +32,7 @@ public class fokopok extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fokopok);
+        super.onCreateDrawer();
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);

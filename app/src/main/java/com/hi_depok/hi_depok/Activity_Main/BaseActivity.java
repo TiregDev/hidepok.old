@@ -1,66 +1,61 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.R;
 import com.mikepenz.crossfadedrawerlayout.view.CrossfadeDrawerLayout;
-import com.mikepenz.materialdrawer.*;
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.MiniDrawer;
 import com.mikepenz.materialdrawer.interfaces.ICrossfader;
-import com.mikepenz.materialdrawer.model.*;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.util.DrawerUIUtils;
 import com.mikepenz.materialize.util.UIUtils;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Created by User on 29/03/17.
+ */
 
-    private static final int TIME_DELAY = 2000;
-    private static long back_pressed;
+public class BaseActivity extends AppCompatActivity {
     private Drawer result;
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreateDrawer() {
         // Making notification bar transparent
-        setContentView(R.layout.activity_main);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
-        }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        PrimaryDrawerItem home =   new PrimaryDrawerItem()
+        PrimaryDrawerItem home = new PrimaryDrawerItem()
                 .withName("Beranda")
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
-                .withIconColor(Color.rgb(158,158,158))
+                .withIconColor(Color.rgb(158, 158, 158))
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withIcon(R.drawable.ic_action_home4)
                 .withSelectable(false)
                 .withIdentifier(0);
-        PrimaryDrawerItem profile =    new PrimaryDrawerItem()
+        PrimaryDrawerItem profile = new PrimaryDrawerItem()
                 .withName("Profil")
                 .withSelectable(false)
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
-                .withIconColor(Color.rgb(158,158,158))
+                .withIconColor(Color.rgb(158, 158, 158))
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withIcon(R.drawable.ic_action_person4)
                 .withIdentifier(1);
@@ -68,71 +63,71 @@ public class MainActivity extends AppCompatActivity {
                 .withName("Keluar")
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
-                .withIconColor(Color.rgb(158,158,158))
+                .withIconColor(Color.rgb(158, 158, 158))
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withSelectable(false)
                 .withIcon(R.drawable.ic_action_exit_to_app)
                 .withIdentifier(2);
-        SecondaryDrawerItem sikepok =    new SecondaryDrawerItem()
+        SecondaryDrawerItem sikepok = new SecondaryDrawerItem()
                 .withName("Sikepok")
                 .withSelectable(false)
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
-                .withIconColor(Color.rgb(158,158,158))
+                .withIconColor(Color.rgb(158, 158, 158))
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withIcon(R.drawable.sikepok_bw)
                 .withIdentifier(3);
-        SecondaryDrawerItem kadepok =    new SecondaryDrawerItem()
+        SecondaryDrawerItem kadepok = new SecondaryDrawerItem()
                 .withName("KaDepok")
                 .withSelectable(false)
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
-                .withIconColor(Color.rgb(158,158,158))
+                .withIconColor(Color.rgb(158, 158, 158))
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withIcon(R.drawable.kadepok_bw)
                 .withIdentifier(4);
-        SecondaryDrawerItem lapok =    new SecondaryDrawerItem()
+        SecondaryDrawerItem lapok = new SecondaryDrawerItem()
                 .withName("Lapok")
                 .withSelectable(false)
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
-                .withIconColor(Color.rgb(158,158,158))
+                .withIconColor(Color.rgb(158, 158, 158))
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withIcon(R.drawable.lapok_bw)
                 .withIdentifier(5);
-        SecondaryDrawerItem kapok =    new SecondaryDrawerItem()
+        SecondaryDrawerItem kapok = new SecondaryDrawerItem()
                 .withName("Kapok")
                 .withSelectable(false)
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
-                .withIconColor(Color.rgb(158,158,158))
+                .withIconColor(Color.rgb(158, 158, 158))
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withIcon(R.drawable.kapok_bw)
                 .withIdentifier(6);
-        SecondaryDrawerItem ucok =    new SecondaryDrawerItem()
+        SecondaryDrawerItem ucok = new SecondaryDrawerItem()
                 .withName("Ucok")
                 .withSelectable(false)
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
-                .withIconColor(Color.rgb(158,158,158))
+                .withIconColor(Color.rgb(158, 158, 158))
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withIcon(R.drawable.ucok_bw)
                 .withIdentifier(7);
-        SecondaryDrawerItem fokopok =    new SecondaryDrawerItem()
+        SecondaryDrawerItem fokopok = new SecondaryDrawerItem()
                 .withName("Fokopok")
                 .withSelectable(false)
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
-                .withIconColor(Color.rgb(158,158,158))
+                .withIconColor(Color.rgb(158, 158, 158))
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withIcon(R.drawable.fokopok_bw)
                 .withIdentifier(8);
-        PrimaryDrawerItem about =    new PrimaryDrawerItem()
+        PrimaryDrawerItem about = new PrimaryDrawerItem()
                 .withName("Tentang")
                 .withSelectable(false)
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
-                .withIconColor(Color.rgb(158,158,158))
+                .withIconColor(Color.rgb(158, 158, 158))
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withIcon(R.drawable.ic_action_info4)
                 .withIdentifier(9);
@@ -161,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 .withDrawerWidthDp(72)
                 .withFullscreen(true)
                 .withGenerateMiniDrawer(true)
-                .withSliderBackgroundColor(Color.rgb(48,48,48))
+                .withSliderBackgroundColor(Color.rgb(48, 48, 48))
                 .withRootView(R.id.drawer_layout)
                 .addDrawerItems(
                         home,
@@ -251,85 +246,6 @@ public class MainActivity extends AppCompatActivity {
                 return crossfadeDrawerLayout.isCrossfaded();
             }
         });
-
-
-        TextView tv = (TextView)findViewById(R.id.textView);
-        Typeface tf = Typeface.createFromAsset(getAssets(), "font/Blogger_Sans-Bold.otf");
-        tv.setTypeface(tf);
-
-        TextView tv2 = (TextView)findViewById(R.id.textView2);
-        Typeface tf2 = Typeface.createFromAsset(getAssets(), "font/Blogger_Sans-Italic.otf");
-        tv2.setTypeface(tf2);
-
-        Button bt = (Button)findViewById(R.id.sikepok);
-        bt.setTypeface(tf);
-
-        Button bt2 = (Button)findViewById(R.id.kadepok);
-        bt2.setTypeface(tf);
-
-        Button bt3 = (Button)findViewById(R.id.lapok);
-        bt3.setTypeface(tf);
-
-        Button bt4 = (Button)findViewById(R.id.kapok);
-        bt4.setTypeface(tf);
-
-        Button bt5 = (Button)findViewById(R.id.ucok);
-        bt5.setTypeface(tf);
-
-        Button bt6 = (Button)findViewById(R.id.fokopok);
-        bt6.setTypeface(tf);
-
-        Button bt7 = (Button)findViewById(R.id.wv);
-        bt7.setTypeface(tf);
     }
-
-    public void linkSikepok(View view){
-        Intent intent = new Intent(MainActivity.this, sikepok.class);
-        startActivity(intent);
-    }
-
-    public void linkkapok (View view){
-        Intent intent = new Intent(MainActivity.this, kapok.class);
-        startActivity(intent);
-    }
-
-    public void linkkadepok (View view){
-        Intent intent = new Intent(MainActivity.this, kadepok.class);
-        startActivity(intent);
-    }
-
-    public void linklapok (View view){
-        Intent intent = new Intent(MainActivity.this, lapok.class);
-        startActivity(intent);
-    }
-
-    public void linkucok (View view){
-        Intent intent = new Intent(MainActivity.this, ucok.class);
-        startActivity(intent);
-    }
-
-    public void linkfokopok (View view){
-        Intent intent = new Intent(MainActivity.this, fokopok.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void onBackPressed() {
-
-        if (result.isDrawerOpen()) {
-            result.closeDrawer();
-        }
-        else if (back_pressed + TIME_DELAY > System.currentTimeMillis()) {
-            super.onBackPressed();
-
-        }
-        else if (back_pressed + TIME_DELAY <= System.currentTimeMillis()){
-            Toast.makeText(getBaseContext(),"Prees back again to exit app",
-                    Toast.LENGTH_SHORT).show();
-        }
-        back_pressed = System.currentTimeMillis();
-    }
-
-
 
 }

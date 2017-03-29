@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.Ucok.ItemObject;
 import com.hi_depok.hi_depok.Ucok.RecyclerViewAdapter;
@@ -21,13 +22,14 @@ import com.hi_depok.hi_depok.Ucok.ucok_content;
 import java.util.ArrayList;
 import java.util.List;
 
-public class message extends AppCompatActivity {
+public class message extends BaseActivity {
     private LinearLayoutManager lLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fokopok_message);
+        super.onCreateDrawer();
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);

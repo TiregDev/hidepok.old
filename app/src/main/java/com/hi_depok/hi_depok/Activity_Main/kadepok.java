@@ -25,7 +25,7 @@ import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment3;
 import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment4;
 
-public class kadepok extends AppCompatActivity implements View.OnClickListener{
+public class kadepok extends BaseActivity implements View.OnClickListener{
 
     ViewPager pager;
     KadepokPager adapter;
@@ -36,6 +36,7 @@ public class kadepok extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kadepok);
+        super.onCreateDrawer();
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);

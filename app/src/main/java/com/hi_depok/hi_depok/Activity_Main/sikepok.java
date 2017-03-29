@@ -27,7 +27,7 @@ import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment2;
 import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment3;
 import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment4;
 
-public class sikepok extends AppCompatActivity implements View.OnClickListener{
+public class sikepok extends BaseActivity implements View.OnClickListener{
 
     ViewPager pager;
     SikepokPager adapter;
@@ -38,6 +38,7 @@ public class sikepok extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sikepok);
+        super.onCreateDrawer();
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);

@@ -25,6 +25,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
 
+import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Activity_Main.MainActivity;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.Sikepok_Panic.MapsActivity;
@@ -34,7 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class detail_danus extends AppCompatActivity {
+public class detail_danus extends BaseActivity {
     Date date = Calendar.getInstance().getTime();
     DateFormat formatdate = new SimpleDateFormat("dd/MM/yyyy");
     TextView dateAndTimeLabel;
@@ -45,10 +46,16 @@ public class detail_danus extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ucok_detail_danus);
+<<<<<<< HEAD
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+=======
+        super.onCreateDrawer();
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+>>>>>>> origin/master
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
