@@ -25,6 +25,7 @@ import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Activity_Main.kadepok;
 import com.hi_depok.hi_depok.Kadepok_Donasi.kadepok_donasi_upload;
 import com.hi_depok.hi_depok.R;
@@ -33,7 +34,7 @@ import com.hi_depok.hi_depok.Sikepok_Diagnosa.Deskripsi;
 import java.util.ArrayList;
 import java.util.List;
 
-public class kadepok_content extends AppCompatActivity {
+public class kadepok_content extends BaseActivity {
     private LinearLayoutManager lLayout;
     private Spinner kecamatan;
     private ImageView btn_kadepok_notifikasi;
@@ -79,6 +80,7 @@ public class kadepok_content extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kadepok_recycler_view);
+        super.onCreateDrawer();
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);

@@ -19,12 +19,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Lapok.fragment.DescriptionForm;
 import com.hi_depok.hi_depok.R;
 
 import java.io.File;
 
-public class lapok_content extends AppCompatActivity implements View.OnClickListener {
+public class lapok_content extends BaseActivity implements View.OnClickListener {
 
     ViewPager pager;
     Content adapter;
@@ -37,6 +38,7 @@ public class lapok_content extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lapok_content);
+        super.onCreateDrawer();
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
