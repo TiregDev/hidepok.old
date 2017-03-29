@@ -236,7 +236,6 @@
             android:layout_marginTop="10dp"
             android:alpha="0.7"
             android:background="@drawable/shape2"
-            android:onClick="selesai"
             android:text="Selesai"
             android:textAlignment="gravity"
             android:textColor="#fff"

@@ -125,8 +125,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:layout_marginTop="10dp"
-        android:alpha="0.7"
-        android:background="@drawable/shape2"
+        android:textStyle="bold"
+        android:background="@drawable/shape3"
         android:gravity="center"
         android:onClick="temukan"
         android:padding="10dp"
@@ -134,14 +134,16 @@
         android:textColor="#fff"
         android:textSize="14sp" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#b7b7b7"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="20dp" />
+        android:padding="10dp"/>
 
 
 </LinearLayout>
