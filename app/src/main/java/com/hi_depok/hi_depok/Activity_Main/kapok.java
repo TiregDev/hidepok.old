@@ -19,7 +19,7 @@ import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.fragment_kapok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_kapok_activity.fragment2;
 
-public class kapok extends AppCompatActivity implements View.OnClickListener{
+public class kapok extends BaseActivity implements View.OnClickListener{
 
     ViewPager pager;
     KapokPager adapter;
@@ -30,6 +30,7 @@ public class kapok extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kapok);
+        super.onCreateDrawer();
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);

@@ -28,7 +28,7 @@ import com.hi_depok.hi_depok.fragment_lapok_activity.fragment3;
 
 import java.io.File;
 
-public class lapok extends AppCompatActivity implements View.OnClickListener{
+public class lapok extends BaseActivity implements View.OnClickListener{
 
     ViewPager pager;
     LapokPager adapter;
@@ -40,6 +40,7 @@ public class lapok extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lapok);
+        super.onCreateDrawer();
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);

@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#fff"
+    android:paddingBottom="20dp"
     android:padding="5dp">
     <!--
     grid items for RecyclerView
     -->
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_bg_list">
-
+        android:orientation="vertical">
         <ImageView
             android:id="@+id/image"
             android:layout_width="match_parent"
+            android:layout_weight="1"
             android:layout_height="120dp"
             android:scaleType="fitXY"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:singleLine="true"
-            android:layout_below="@id/image"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="abcd"
             android:textSize="14sp"
-            android:textColor="#303030" />
-    </RelativeLayout>
-</LinearLayout>
+            android:textColor="#000" />
+    </LinearLayout>
+</RelativeLayout>

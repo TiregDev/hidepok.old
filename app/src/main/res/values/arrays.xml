@@ -159,16 +159,18 @@
     <!-- String array for RS Module -->
     <array name="FOTORS">
         <item>@drawable/rskeluarga</item>
-        <item>@drawable/rsubunda</item>
-        <item>@drawable/rsuddepok</item>
-        <item>@drawable/rshermina</item>
+        <item>@drawable/rskeluarga</item>
+        <item>@drawable/rskeluarga</item>
+        <item>@drawable/rskeluarga</item>
+        <item>@drawable/rskeluarga</item>
 
     </array>
     <string-array name="NAMARS">
         <item >RS Mitra Keluarga</item>
-        <item >RS Bunda</item>
+        <item >RS Medika</item>
+        <item >RS Ahmad Muchtar</item>
         <item >RSUD Depok</item>
-        <item >RS Hermina</item>
+        <item >RS TNI</item>
     </string-array>
 
     <string-array name="ALAMATRS">
@@ -176,6 +178,7 @@
         <item >Jl. Merdeka No.2</item>
         <item >Jl. Merdeka No.3</item>
         <item >Jl. Merdeka No.4</item>
+        <item >Jl. Merdeka No.5</item>
     </string-array>
 
     <string-array name="JARAKRS">

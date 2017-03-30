@@ -21,12 +21,13 @@ package com.hi_depok.hi_depok.Kadepok_Volunteer;
         import android.widget.Spinner;
         import android.widget.Toast;
 
+        import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
         import com.hi_depok.hi_depok.Activity_Main.kadepok;
         import com.hi_depok.hi_depok.R;
 
         import static java.security.AccessController.getContext;
 
-public class kadepok_volunteer_form extends AppCompatActivity {
+public class kadepok_volunteer_form extends BaseActivity {
     public Button btn_volunteer;
     private Spinner jenis_volunteer_spinner;
     private PopupWindow popupWindow;
@@ -64,6 +65,7 @@ public class kadepok_volunteer_form extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kadepok_volunteer_form);
+        super.onCreateDrawer();
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }

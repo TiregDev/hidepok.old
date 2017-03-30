@@ -20,7 +20,6 @@ package com.hi_depok.hi_depok.Sikepok_RS;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -69,10 +68,10 @@ public class dokter extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, info_dokter.class);
+//                    Intent intent = new Intent(context, daftar_rs.class);
 //                   intent.putExtra(DetailActivity.EXTRA_POSITION, getAdapterPosition());
-                    context.startActivity(intent);
-//                    Toast.makeText(context,"Dokter telah dipilih",Toast.LENGTH_SHORT).show();
+//                    context.startActivity(intent);
+                    Toast.makeText(context,"Dokter telah dipilih",Toast.LENGTH_SHORT).show();
                 }
             });
 

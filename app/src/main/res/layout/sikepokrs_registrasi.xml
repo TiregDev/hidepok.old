@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_centerInParent="true"
-    android:gravity="center"
     android:padding="16dp"
-    android:background="@drawable/bg2">
+    tools:context="com.hanslagrovegmail.sisteminformasikesehatan.registrasi">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="400dp"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:orientation="vertical"
@@ -144,3 +149,4 @@
     </LinearLayout>
 
 </RelativeLayout>
+    </FrameLayout>

@@ -14,9 +14,10 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 
-public class Sugesti extends AppCompatActivity {
+public class Sugesti extends BaseActivity {
     private LinearLayoutManager lLayout;
     String[] items;
     ArrayList<String> listItems;
@@ -26,6 +27,7 @@ public class Sugesti extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sikepokdiagnosa_sugesti);
+        super.onCreateDrawer();
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }

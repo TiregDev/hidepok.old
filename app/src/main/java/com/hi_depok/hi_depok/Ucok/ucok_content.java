@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
+import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Activity_Main.ucok;
 import com.hi_depok.hi_depok.R;
 
@@ -25,7 +26,7 @@ import java.util.List;
  * Created by Muhammad63 on 3/13/2017.
  */
 
-public class ucok_content extends AppCompatActivity {
+public class ucok_content extends BaseActivity {
     private LinearLayoutManager lLayout;
     private Spinner category, sortby;
 
@@ -37,6 +38,7 @@ public class ucok_content extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ucok_recycler_view);
+        super.onCreateDrawer();
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }

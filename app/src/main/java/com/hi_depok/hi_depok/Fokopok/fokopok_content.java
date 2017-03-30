@@ -14,22 +14,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Activity_Main.fokopok;
 import com.hi_depok.hi_depok.R;
 
-public class fokopok_content extends AppCompatActivity implements View.OnClickListener {
+public class fokopok_content extends BaseActivity implements View.OnClickListener {
     ViewPager pager;
     FokopokContent adapter;
     View strip;
-    ImageView komunitas, home;
-    TextView komunitas_text, home_text;
+    ImageView komunitas, home, profil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fokopok_content);
+        super.onCreateDrawer();
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
@@ -40,9 +40,8 @@ public class fokopok_content extends AppCompatActivity implements View.OnClickLi
         pager = (ViewPager) findViewById(R.id.pager);
         komunitas = (ImageView) findViewById(R.id.komunitas);
         home = (ImageView) findViewById(R.id.home);
+        profil = (ImageView) findViewById(R.id.profil);
         strip = findViewById(R.id.strip);
-        komunitas_text = (TextView) findViewById(R.id.komunitas_text);
-        home_text = (TextView) findViewById(R.id.home_text);
 
         adapter = new FokopokContent(getSupportFragmentManager());
         pager.setAdapter(adapter);
@@ -51,10 +50,13 @@ public class fokopok_content extends AppCompatActivity implements View.OnClickLi
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 switch (position) {
                     case 0:
-                        strip.setTranslationX(positionOffsetPixels / 2);
+                        strip.setTranslationX(positionOffsetPixels / 3);
                         break;
                     case 1:
-                        strip.setTranslationX(strip.getWidth() + positionOffsetPixels / 2);
+                        strip.setTranslationX(strip.getWidth() + positionOffsetPixels / 3);
+                        break;
+                    case 2:
+                        strip.setTranslationX(strip.getWidth() * 2 + positionOffsetPixels / 3);
                         break;
                     default:
                         break;
@@ -74,8 +76,7 @@ public class fokopok_content extends AppCompatActivity implements View.OnClickLi
 
         komunitas.setOnClickListener(this);
         home.setOnClickListener(this);
-        komunitas_text.setOnClickListener(this);
-        home_text.setOnClickListener(this);
+        profil.setOnClickListener(this);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -114,11 +115,8 @@ public class fokopok_content extends AppCompatActivity implements View.OnClickLi
             case R.id.home:
                 pager.setCurrentItem(1);
                 break;
-            case R.id.komunitas_text:
-                pager.setCurrentItem(0);
-                break;
-            case R.id.home_text:
-                pager.setCurrentItem(1);
+            case R.id.profil:
+                pager.setCurrentItem(2);
                 break;
             default:
                 break;
@@ -128,11 +126,13 @@ public class fokopok_content extends AppCompatActivity implements View.OnClickLi
     class FokopokContent extends FragmentPagerAdapter {
         com.hi_depok.hi_depok.fokopok.fragment_content.fragment1 fragment1;
         com.hi_depok.hi_depok.fokopok.fragment_content.fragment2 fragment2;
+        com.hi_depok.hi_depok.fokopok.fragment_content.fragment3 fragment3;
 
         public FokopokContent(FragmentManager fm) {
             super(fm);
             fragment1 = com.hi_depok.hi_depok.fokopok.fragment_content.fragment1.newInstance();
             fragment2 = com.hi_depok.hi_depok.fokopok.fragment_content.fragment2.newInstance();
+            fragment3 = com.hi_depok.hi_depok.fokopok.fragment_content.fragment3.newInstance();
         }
 
         @Override
@@ -142,6 +142,8 @@ public class fokopok_content extends AppCompatActivity implements View.OnClickLi
                     return fragment1;
                 case 1:
                     return fragment2;
+                case 2:
+                    return fragment3;
                 default:
                     return fragment1;
             }
@@ -149,9 +151,18 @@ public class fokopok_content extends AppCompatActivity implements View.OnClickLi
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
     }
-    
+
+    public void link_message(View v){
+        Intent intent = new Intent(fokopok_content.this, message.class);
+        startActivity(intent);
+    }
+
+    public void fokopok_activity(View v){
+        Intent intent = new Intent(fokopok_content.this, fokopok.class);
+        startActivity(intent);
+    }
 
 }

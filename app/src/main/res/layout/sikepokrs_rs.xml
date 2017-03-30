@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:weightSum="2"
     android:orientation="vertical"
-    android:layout_centerInParent="true"
-    android:gravity="center"
     tools:context="com.hi_depok.hi_depok.Sikepok_RS.RSActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <ImageView
             android:id="@+id/image"
             android:layout_width="wrap_content"
             android:layout_height="150dp"
-            android:src="@drawable/rmhskt"
+            android:src="@drawable/hospital"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
         <TextView
-            android:id="@+id/sirs"
+            android:id="@+id/ucok"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -44,7 +54,7 @@
             android:textColor="#F6981A"
             android:textSize="16sp"
             android:textStyle="normal|italic"
-            android:layout_below="@+id/sirs"
+            android:layout_below="@+id/ucok"
             android:layout_alignParentStart="true" />
 
     </RelativeLayout>
@@ -52,7 +62,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <com.hitomi.cmlibrary.CircleMenu
             android:id="@+id/circle_menu"
@@ -64,3 +75,4 @@
     </RelativeLayout>
 
 </LinearLayout>
+    </FrameLayout>
