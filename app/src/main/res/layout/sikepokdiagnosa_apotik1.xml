@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout
     android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -84,6 +83,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginStart="30dp"
+                        android:onClick="toMaps"
                         android:layout_below="@+id/ratingBar"
                         android:src="@drawable/maps_small" />
 
@@ -144,4 +144,4 @@
         </ScrollView>
 
 </RelativeLayout>
-    </FrameLayout>
+</FrameLayout>

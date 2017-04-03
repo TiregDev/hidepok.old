@@ -14,7 +14,11 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
+<FrameLayout
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -148,6 +152,7 @@
                     android:id="@+id/icon_lokasi"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
+                    android:onClick="toMaps"
                     android:scaleType="center"
                     app:srcCompat="@drawable/maps_small" />
 
@@ -162,3 +167,4 @@
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>
+    </FrameLayout>

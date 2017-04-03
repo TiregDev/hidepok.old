@@ -47,7 +47,9 @@
             android:alpha="0.7"
             android:background="@drawable/shape2"
             android:text="LIHAT"
+            android:onClick="gotToYoutube"
             android:textColor="#fff" />
+
 
     </RelativeLayout>
 

@@ -92,8 +92,13 @@
         <item name="Saraf">Spesialis Saraf</item>
     </string-array>
 
-    <string name="namaDokter">Dr. Muhammad</string>
-    <string name="spesialis">Spesialis Anak</string>
+    <string name="namaDokter">Dr. Febby Haryono</string>
+    <string name="spesialis">Spesialis Anak \nSpesialis THT</string>
+    <string name="emailDokter">dokterfebby@gmail.com</string>
+    <string name="alamatDokter">Jl. Perumahan Dokter</string>
+    <string name="noHPdokter">085712345678</string>
+    <string name="praktekDokter">Senin : 08.00 - 11.00 \nRabu 13.00 - 16.00 \nKamis 08.00 - 11.00</string>
+
 
 
     <string name="namaApotek">Apotek Roxy</string>

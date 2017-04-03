@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout
     android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,8 +15,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.hi_depok.hi_depok.Activity_Main.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:context="com.hi_depok.hi_depok.Activity_Main.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -243,4 +241,4 @@
     </LinearLayout>
 
 </RelativeLayout>
-    </FrameLayout>
+</FrameLayout>

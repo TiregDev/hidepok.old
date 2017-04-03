@@ -1,16 +1,12 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
-import android.os.Build;
-import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.hi_depok.hi_depok.R;
 import com.mikepenz.crossfadedrawerlayout.view.CrossfadeDrawerLayout;

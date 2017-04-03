@@ -1,4 +1,3 @@
-
 <FrameLayout
     android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -18,7 +17,7 @@
         android:layout_marginBottom="20dp"
         android:background="#303030"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="2">
 
         <ImageView
             android:id="@+id/komunitas"
@@ -36,13 +35,6 @@
             android:layout_weight="1"
             android:src="@drawable/ic_action_home4" />
 
-        <ImageView
-            android:id="@+id/profil"
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:src="@drawable/ic_action_person4" />
     </LinearLayout>
 
     <LinearLayout
@@ -54,9 +46,10 @@
         android:background="#303030"
         android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="2">
 
         <TextView
+            android:id="@+id/komunitas_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -65,19 +58,12 @@
             android:textColor="#fff" />
 
         <TextView
+            android:id="@+id/home_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Beranda"
-            android:textColor="#fff" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Profil"
             android:textColor="#fff" />
 
     </LinearLayout>
@@ -88,7 +74,7 @@
         android:layout_alignParentBottom="true"
         android:background="#302929"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="2">
 
         <View
             android:id="@+id/strip"
@@ -116,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:background="?attr/colorPrimary"
                 android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme" /> />
+                android:theme="?attr/actionBarTheme" />
 
         </RelativeLayout>
 

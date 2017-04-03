@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Activity_Main.fokopok;
@@ -23,7 +26,8 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
     ViewPager pager;
     FokopokContent adapter;
     View strip;
-    ImageView komunitas, home, profil;
+    ImageView komunitas, home;
+    TextView komunitas_text, home_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +35,10 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.fokopok_content);
         super.onCreateDrawer();
         // Making notification bar transparent
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
@@ -40,8 +46,9 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
         pager = (ViewPager) findViewById(R.id.pager);
         komunitas = (ImageView) findViewById(R.id.komunitas);
         home = (ImageView) findViewById(R.id.home);
-        profil = (ImageView) findViewById(R.id.profil);
         strip = findViewById(R.id.strip);
+        komunitas_text = (TextView) findViewById(R.id.komunitas_text);
+        home_text = (TextView) findViewById(R.id.home_text);
 
         adapter = new FokopokContent(getSupportFragmentManager());
         pager.setAdapter(adapter);
@@ -50,13 +57,10 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 switch (position) {
                     case 0:
-                        strip.setTranslationX(positionOffsetPixels / 3);
+                        strip.setTranslationX(positionOffsetPixels / 2);
                         break;
                     case 1:
-                        strip.setTranslationX(strip.getWidth() + positionOffsetPixels / 3);
-                        break;
-                    case 2:
-                        strip.setTranslationX(strip.getWidth() * 2 + positionOffsetPixels / 3);
+                        strip.setTranslationX(strip.getWidth() + positionOffsetPixels / 2);
                         break;
                     default:
                         break;
@@ -76,7 +80,8 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
 
         komunitas.setOnClickListener(this);
         home.setOnClickListener(this);
-        profil.setOnClickListener(this);
+        komunitas_text.setOnClickListener(this);
+        home_text.setOnClickListener(this);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -115,8 +120,11 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
             case R.id.home:
                 pager.setCurrentItem(1);
                 break;
-            case R.id.profil:
-                pager.setCurrentItem(2);
+            case R.id.komunitas_text:
+                pager.setCurrentItem(0);
+                break;
+            case R.id.home_text:
+                pager.setCurrentItem(1);
                 break;
             default:
                 break;
@@ -126,13 +134,11 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
     class FokopokContent extends FragmentPagerAdapter {
         com.hi_depok.hi_depok.fokopok.fragment_content.fragment1 fragment1;
         com.hi_depok.hi_depok.fokopok.fragment_content.fragment2 fragment2;
-        com.hi_depok.hi_depok.fokopok.fragment_content.fragment3 fragment3;
 
         public FokopokContent(FragmentManager fm) {
             super(fm);
             fragment1 = com.hi_depok.hi_depok.fokopok.fragment_content.fragment1.newInstance();
             fragment2 = com.hi_depok.hi_depok.fokopok.fragment_content.fragment2.newInstance();
-            fragment3 = com.hi_depok.hi_depok.fokopok.fragment_content.fragment3.newInstance();
         }
 
         @Override
@@ -142,8 +148,6 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
                     return fragment1;
                 case 1:
                     return fragment2;
-                case 2:
-                    return fragment3;
                 default:
                     return fragment1;
             }
@@ -151,18 +155,9 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
     }
-
-    public void link_message(View v){
-        Intent intent = new Intent(fokopok_content.this, message.class);
-        startActivity(intent);
-    }
-
-    public void fokopok_activity(View v){
-        Intent intent = new Intent(fokopok_content.this, fokopok.class);
-        startActivity(intent);
-    }
+    
 
 }

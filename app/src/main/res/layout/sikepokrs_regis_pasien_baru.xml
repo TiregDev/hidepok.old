@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout
     android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -51,6 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:hint="Nama Sesuai KTP" />
             </LinearLayout>
 
@@ -74,6 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:hint="NIK Sesuai KK" />
             </LinearLayout>
 
@@ -123,6 +124,7 @@
                     android:layout_weight="1"
                     android:hint="dd/mm/yyyy"
                     android:inputType="date"
+                    android:textColor="@color/white"
                     android:maxLength="10" />
             </LinearLayout>
 
@@ -146,6 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:hint="Alamat Sesuai KTP" />
             </LinearLayout>
 
@@ -168,6 +171,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
+                    android:textColor="@color/white"
                     android:layout_weight="1"
                     android:hint="No handphone yang aktif" />
             </LinearLayout>
@@ -180,11 +184,11 @@
                 android:background="@drawable/shape3"
                 android:text="Kirim"
                 android:onClick="kirim_data"
-                android:textColor="#000"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
 
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
-    </FrameLayout>
+</FrameLayout>

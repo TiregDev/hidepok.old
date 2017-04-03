@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout
     android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -77,4 +76,4 @@
         android:layout_below="@+id/dropdown"
         android:scrollbars="vertical" />
 </RelativeLayout>
-    </FrameLayout>
+</FrameLayout>

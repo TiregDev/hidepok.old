@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout
     android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,7 +8,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#303030"
     android:gravity="center"
     android:orientation="vertical"
     tools:context="com.hi_depok.hi_depok.Kapok.KapokActivity">
@@ -136,18 +134,20 @@
         android:gravity="center"
         android:onClick="temukan"
         android:padding="10dp"
-        android:text="@string/button_next"
+        android:text="TEMUKAN"
         android:textColor="#fff"
         android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#b7b7b7"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="20dp" />
+        android:padding="10dp"/>
 
 
 </LinearLayout>

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout
     android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,8 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?android:attr/selectableItemBackground">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/r_toolbar"
@@ -67,4 +65,4 @@
         android:layout_below="@+id/dropdown"
         android:scrollbars="vertical" />
 </RelativeLayout>
-    </FrameLayout>
+</FrameLayout>

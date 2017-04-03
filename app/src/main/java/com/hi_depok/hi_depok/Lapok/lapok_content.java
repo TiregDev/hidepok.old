@@ -10,12 +10,15 @@ import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
@@ -29,7 +32,8 @@ public class lapok_content extends BaseActivity implements View.OnClickListener 
     ViewPager pager;
     Content adapter;
     View strip;
-    ImageView report, forum, notif;
+    ImageView report, forum;
+    TextView report_text, forum_text;
     File imageFile;
 
     @Override
@@ -37,8 +41,10 @@ public class lapok_content extends BaseActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lapok_content);
         super.onCreateDrawer();
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
@@ -46,8 +52,9 @@ public class lapok_content extends BaseActivity implements View.OnClickListener 
         pager = (ViewPager) findViewById(R.id.pager);
         report = (ImageView) findViewById(R.id.report);
         forum = (ImageView) findViewById(R.id.forum);
-        notif = (ImageView) findViewById(R.id.notif);
         strip = findViewById(R.id.strip);
+        report_text = (TextView) findViewById(R.id.report_text);
+        forum_text = (TextView) findViewById(R.id.forum_text);
 
         adapter = new Content(getSupportFragmentManager());
         pager.setAdapter(adapter);
@@ -57,13 +64,10 @@ public class lapok_content extends BaseActivity implements View.OnClickListener 
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 switch (position) {
                     case 0:
-                        strip.setTranslationX(positionOffsetPixels / 3);
+                        strip.setTranslationX(positionOffsetPixels / 2);
                         break;
                     case 1:
-                        strip.setTranslationX(strip.getWidth() + positionOffsetPixels / 3);
-                        break;
-                    case 2:
-                        strip.setTranslationX(strip.getWidth() * 2 + positionOffsetPixels / 3);
+                        strip.setTranslationX(strip.getWidth() + positionOffsetPixels / 2);
                         break;
                     default:
                         break;
@@ -87,7 +91,8 @@ public class lapok_content extends BaseActivity implements View.OnClickListener 
 
         report.setOnClickListener(this);
         forum.setOnClickListener(this);
-        notif.setOnClickListener(this);
+        report_text.setOnClickListener(this);
+        forum_text.setOnClickListener(this);
     }
 
     @Override
@@ -99,8 +104,11 @@ public class lapok_content extends BaseActivity implements View.OnClickListener 
             case R.id.forum:
                 pager.setCurrentItem(1);
                 break;
-            case R.id.notif:
-                pager.setCurrentItem(2);
+            case R.id.report_text:
+                pager.setCurrentItem(0);
+                break;
+            case R.id.forum_text:
+                pager.setCurrentItem(1);
                 break;
             default:
                 break;
@@ -110,13 +118,11 @@ public class lapok_content extends BaseActivity implements View.OnClickListener 
     class Content extends FragmentPagerAdapter {
         com.hi_depok.hi_depok.Lapok.fragment.fragment1 fragment1;
         com.hi_depok.hi_depok.Lapok.fragment.fragment2 fragment2;
-        com.hi_depok.hi_depok.Lapok.fragment.fragment3 fragment3;
 
         public Content(FragmentManager fm) {
             super(fm);
             fragment1 = com.hi_depok.hi_depok.Lapok.fragment.fragment1.newInstance();
             fragment2 = com.hi_depok.hi_depok.Lapok.fragment.fragment2.newInstance();
-            fragment3 = com.hi_depok.hi_depok.Lapok.fragment.fragment3.newInstance();
         }
 
         @Override
@@ -126,8 +132,6 @@ public class lapok_content extends BaseActivity implements View.OnClickListener 
                     return fragment1;
                 case 1:
                     return fragment2;
-                case 2:
-                    return fragment3;
                 default:
                     return fragment2;
             }
@@ -135,7 +139,7 @@ public class lapok_content extends BaseActivity implements View.OnClickListener 
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
     }
 

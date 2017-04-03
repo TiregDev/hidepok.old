@@ -7,6 +7,7 @@ import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import android.widget.TextView;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Kadepok_Donasi.kadepok_donasi_upload;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.Sikepok_Panic.MapsActivity;
 
 public class KadepokDetailActivity extends BaseActivity implements View.OnClickListener {
     ViewPager pager;
@@ -75,8 +77,10 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
         setContentView(R.layout.kadepok_detail_panti);
         super.onCreateDrawer();
         // Making notification bar transparent
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
@@ -197,6 +201,10 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
         }
 
 
+    }
+    public void toMaps(View v){
+        Intent intent = new Intent(getBaseContext(), MapsActivity.class);
+        startActivity(intent);
     }
 
 

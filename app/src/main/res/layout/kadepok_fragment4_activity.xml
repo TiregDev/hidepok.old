@@ -45,6 +45,7 @@
             android:textAlignment="gravity"
             android:gravity="center"
             android:alpha="0.7"
+            android:onClick="gotToYoutube"
             android:background="@drawable/shape2"
             android:text="LIHAT"
             android:textColor="#fff"

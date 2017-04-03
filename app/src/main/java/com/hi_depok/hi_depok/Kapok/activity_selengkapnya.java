@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.Sikepok_Panic.MapsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -139,4 +140,8 @@ public class activity_selengkapnya extends BaseActivity {
             pwindo.dismiss();
         }
     };
+    public void toMaps(View v){
+        Intent intent = new Intent(getBaseContext(), MapsActivity.class);
+        startActivity(intent);
+    }
 }

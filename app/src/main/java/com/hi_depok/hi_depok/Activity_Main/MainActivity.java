@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +27,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.util.DrawerUIUtils;
 import com.mikepenz.materialize.util.UIUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private static final int TIME_DELAY = 2000;
     private static long back_pressed;
@@ -37,10 +38,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Making notification bar transparent
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
         }
         setContentView(R.layout.activity_main);
+        super.onCreateDrawer();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         PrimaryDrawerItem home =   new PrimaryDrawerItem()
@@ -180,43 +184,43 @@ public class MainActivity extends AppCompatActivity {
             public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                 switch ((int) drawerItem.getIdentifier()) {
                     case 0:
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(MainActivity.this, MainActivity.class);
                         startActivity(intent);
                         break;
                     case 1:
-                        Intent intent1 = new Intent(getApplicationContext(), profile.class);
+                        Intent intent1 = new Intent(MainActivity.this, profile.class);
                         startActivity(intent1);
                         break;
                     case 2:
-                        Intent intent2 = new Intent(getApplicationContext(), login.class);
+                        Intent intent2 = new Intent(MainActivity.this, login.class);
                         startActivity(intent2);
                         break;
                     case 3:
-                        Intent intent3 = new Intent(getApplicationContext(), sikepok.class);
+                        Intent intent3 = new Intent(MainActivity.this, sikepok.class);
                         startActivity(intent3);
                         break;
                     case 4:
-                        Intent intent4 = new Intent(getApplicationContext(), kadepok.class);
+                        Intent intent4 = new Intent(MainActivity.this, kadepok.class);
                         startActivity(intent4);
                         break;
                     case 5:
-                        Intent intent5 = new Intent(getApplicationContext(), lapok.class);
+                        Intent intent5 = new Intent(MainActivity.this, lapok.class);
                         startActivity(intent5);
                         break;
                     case 6:
-                        Intent intent6 = new Intent(getApplicationContext(), kapok.class);
+                        Intent intent6 = new Intent(MainActivity.this, kapok.class);
                         startActivity(intent6);
                         break;
                     case 7:
-                        Intent intent7 = new Intent(getApplicationContext(), ucok.class);
+                        Intent intent7 = new Intent(MainActivity.this, ucok.class);
                         startActivity(intent7);
                         break;
                     case 8:
-                        Intent intent8 = new Intent(getApplicationContext(), fokopok.class);
+                        Intent intent8 = new Intent(MainActivity.this, fokopok.class);
                         startActivity(intent8);
                         break;
                     case 9:
-                        Intent intent9 = new Intent(getApplicationContext(), about.class);
+                        Intent intent9 = new Intent(MainActivity.this, about.class);
                         startActivity(intent9);
                         break;
                 }
