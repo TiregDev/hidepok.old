@@ -83,13 +83,13 @@
 
         <ImageButton
             android:id="@+id/like"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="10dp"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/cards_button_width"
+            android:layout_height="@dimen/cards_button_height"
+            android:layout_marginTop="-5dp"
+            android:layout_marginStart="15dp"
             app:srcCompat="@drawable/like"
-            android:layout_below="@+id/card_image"
-            style="?android:attr/borderlessButtonStyle" />
+            android:layout_below="@+id/card_image"/>
 
         <TextView
             android:id="@+id/jumlah_like"
@@ -107,7 +107,7 @@
             android:id="@+id/comment_button"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginStart="15dp"
             app:srcCompat="@drawable/comment"
             android:layout_below="@+id/card_image"
@@ -118,8 +118,8 @@
             android:id="@+id/jumlah_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="10dp"
             android:text="17"
             android:textSize="12sp"
             android:layout_below="@+id/card_image"

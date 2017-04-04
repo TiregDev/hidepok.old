@@ -15,6 +15,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -22,6 +23,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
+import com.hi_depok.hi_depok.Kapok.KapokActivity;
+import com.hi_depok.hi_depok.Kapok.join_kapok;
 import com.hi_depok.hi_depok.Lapok.fragment.DescriptionForm;
 import com.hi_depok.hi_depok.R;
 
@@ -155,7 +158,21 @@ public class lapok_content extends BaseActivity implements View.OnClickListener 
 
         startActivityForResult(intentCamera, 0);
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
 
+
+            case android.R.id.home:
+                // todo: goto back activity from here
+
+                lapok_content.this.finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0) {

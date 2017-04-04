@@ -48,35 +48,40 @@ public class fragment2 extends Fragment {
         return recyclerView;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
-        public ImageView picture;
+        public ImageView picture, like;
         public ImageView avatar;
         public TextView username;
         public TextView time;
         public TextView title;
-        public TextView description;
+        public TextView description, jumlah_like;
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.fokopok_item_list, parent, false));
 
             picture = (ImageView) itemView.findViewById(R.id.card_image);
+            like = (ImageButton) itemView.findViewById(R.id.like);
             avatar = (ImageView) itemView.findViewById(R.id.avatar);
             username = (TextView) itemView.findViewById(R.id.username);
             time = (TextView) itemView.findViewById(R.id.time);
             title    = (TextView) itemView.findViewById(R.id.card_title);
             description = (TextView) itemView.findViewById(R.id.card_text);
-            ImageButton button = (ImageButton)itemView.findViewById(R.id.like);
-            button.setOnClickListener(new View.OnClickListener(){
+            ImageButton favoriteImageButton = (ImageButton) itemView.findViewById(R.id.like);
+            jumlah_like = (TextView) itemView.findViewById(R.id.jumlah_like);
+            favoriteImageButton.setOnClickListener(new View.OnClickListener() {
+                Drawable myDrawable = getResources().getDrawable(R.drawable.favorite);
+
                 @Override
                 public void onClick(View v) {
+                    jumlah_like.setText("294");
+                    like.setImageDrawable(myDrawable);
                     Toast.makeText(v.getContext(), ("Anda telah menyukai content ini"),
                             Toast.LENGTH_LONG).show();
                 }
             });
 
-            ImageButton favoriteImageButton =
-                    (ImageButton) itemView.findViewById(R.id.comment_button);
+            favoriteImageButton = (ImageButton) itemView.findViewById(R.id.comment_button);
             favoriteImageButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -90,7 +95,7 @@ public class fragment2 extends Fragment {
     /**
      * Adapter to display recycler view.
      */
-    public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
+    public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         // Set numbers of Card in RecyclerView.
         private static final int LENGTH = 18;
 

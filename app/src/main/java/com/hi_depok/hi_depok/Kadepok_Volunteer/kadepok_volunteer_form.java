@@ -57,8 +57,6 @@ public class kadepok_volunteer_form extends BaseActivity {
         @Override
         public void onClick(View v) {
             popupWindow.dismiss();
-            Intent verify = new Intent(kadepok_volunteer_form.this, kadepok.class);
-            startActivity(verify);
         }
     };
 

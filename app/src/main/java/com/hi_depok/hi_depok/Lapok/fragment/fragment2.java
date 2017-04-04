@@ -56,8 +56,8 @@ public class fragment2 extends Fragment{
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView picture, avatar, like;
-        public Button send;
-        public EditText comment;
+//        public Button send;
+//        public EditText comment;
         public TextView username, time, title, description, jumlah_like, komentar;
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -66,8 +66,8 @@ public class fragment2 extends Fragment{
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.lapok_item_list, parent, false));
 
-            send = (Button) itemView.findViewById(R.id.send);
-            comment = (EditText) itemView.findViewById(R.id.comment);
+//            send = (Button) itemView.findViewById(R.id.send);
+//            comment = (EditText) itemView.findViewById(R.id.comment);
 
             like = (ImageButton) itemView.findViewById(R.id.like);
             picture = (ImageView) itemView.findViewById(R.id.card_image);
@@ -77,7 +77,7 @@ public class fragment2 extends Fragment{
             time = (TextView) itemView.findViewById(R.id.time);
             title = (TextView) itemView.findViewById(R.id.card_title);
             description = (TextView) itemView.findViewById(R.id.card_text);
-            komentar = (TextView) itemView.findViewById(R.id.labelKomentar);
+//            komentar = (TextView) itemView.findViewById(R.id.labelKomentar);
 
             final RelativeLayout rl = (RelativeLayout) itemView.findViewById(R.id.rl);
 //            itemView.setOnClickListener(new View.OnClickListener() {
@@ -105,31 +105,31 @@ public class fragment2 extends Fragment{
                 }
             });
 
-            send.setOnClickListener(new View.OnClickListener(){
-
-                public void addString(){
-                    EditText editText = (EditText) itemView.findViewById(R.id.comment);
-                    String message = editText.getText().toString();
-                    wordList.add(message);
-                }
-
-
-                @Override
-                public void onClick(View view) {
-                    addString();
-                    String word = "";
-                    for (String addWord : wordList)
-                        if ("".equals(word))
-                            word  = addWord;
-                        else
-                            word  = addWord + "\n" + word;
-
-                    komentar.setText(word);
-                    comment.setText("");
-                    Toast.makeText(getContext(),
-                            "Komentar dimasukkan", Toast.LENGTH_SHORT).show();
-                }
-            });
+//            send.setOnClickListener(new View.OnClickListener(){
+//
+//                public void addString(){
+//                    EditText editText = (EditText) itemView.findViewById(R.id.comment);
+//                    String message = editText.getText().toString();
+//                    wordList.add(message);
+//                }
+//
+//
+//                @Override
+//                public void onClick(View view) {
+//                    addString();
+//                    String word = "";
+//                    for (String addWord : wordList)
+//                        if ("".equals(word))
+//                            word  = addWord;
+//                        else
+//                            word  = addWord + "\n" + word;
+//
+//                    komentar.setText(word);
+//                    comment.setText("");
+//                    Toast.makeText(getContext(),
+//                            "Komentar dimasukkan", Toast.LENGTH_SHORT).show();
+//                }
+//            });
 
             ImageButton commentImageButton =
                     (ImageButton) itemView.findViewById(R.id.comment_button);

@@ -40,7 +40,7 @@
             <ImageView
                 android:id="@+id/list_avatar"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="150dp"
                 android:layout_marginTop="30dp"
                 android:src="@drawable/c" />
 
@@ -59,17 +59,17 @@
             <ImageView
                 android:id="@+id/call"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_below="@+id/list_title"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="35dp"
                 android:layout_marginTop="5dp"
                 android:src="@drawable/call_small" />
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_below="@+id/list_title"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="35dp"
                 android:layout_marginTop="5dp"
                 android:onClick="toMaps"
                 android:src="@drawable/maps_small" />

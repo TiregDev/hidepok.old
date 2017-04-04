@@ -33,8 +33,8 @@ public class ucok_content extends BaseActivity {
     private Spinner category, sortby;
 
 
-    private static final String[]cate = {"Category","Makanan", "Minuman", "Barang Custom"};
-    private static final String[]sort = {"Sort by","Populer", "Harga", "A-Z"};
+    private static final String[]cate = {"Kategori","Makanan", "Minuman", "Barang Custom"};
+    private static final String[]sort = {"Urutkan","Populer", "Harga", "A-Z"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

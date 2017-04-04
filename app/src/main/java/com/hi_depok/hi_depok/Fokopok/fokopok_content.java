@@ -52,6 +52,7 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
 
         adapter = new FokopokContent(getSupportFragmentManager());
         pager.setAdapter(adapter);
+        pager.setCurrentItem(1);
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -149,7 +150,7 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
                 case 1:
                     return fragment2;
                 default:
-                    return fragment1;
+                    return fragment2;
             }
         }
 

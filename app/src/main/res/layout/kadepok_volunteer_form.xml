@@ -1,211 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
-    </RelativeLayout>
-
-    <ScrollView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme" />
+        </RelativeLayout>
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
 
             <LinearLayout
-                android:id="@+id/dropdown"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:orientation="vertical">
 
-                <Spinner
-                    android:id="@+id/jenis_volunter_spinner"
+                <LinearLayout
+                    android:id="@+id/dropdown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/shape_bg_spinner" />
+                    android:orientation="horizontal"
+                    android:padding="15dp">
+
+                    <Spinner
+                        android:id="@+id/jenis_volunter_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/shape_bg_spinner" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/dropdown_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-55dp"
+                    android:gravity="end">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="25dp"
+                        android:src="@drawable/spinner" />
+
+                </LinearLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:focusableInTouchMode="true">
+
+                    <EditText
+                        android:id="@+id/jenis_lain_volunteer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="30dp"
+                        android:hint="Lain-Lain"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColorHint="#b7b7b7"
+                        android:textColorLink="#b7b7b7"
+                        android:textSize="18sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:focusableInTouchMode="true">
+
+                    <EditText
+                        android:id="@+id/nama_volunteer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:hint="Nama"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColorHint="#b7b7b7"
+                        android:textColorLink="#b7b7b7"
+                        android:textSize="18sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:focusableInTouchMode="true">
+
+                    <EditText
+                        android:id="@+id/email_volunteer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:hint="E-mail"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:textColorHint="#b7b7b7"
+                        android:textColorLink="#b7b7b7"
+                        android:textSize="18sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:focusableInTouchMode="true">
+
+                    <EditText
+                        android:id="@+id/tlp_volunteer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:hint="Telepon"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        android:textColorHint="#b7b7b7"
+                        android:textColorLink="#b7b7b7"
+                        android:textSize="18sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:focusableInTouchMode="true">
+
+                    <EditText
+                        android:id="@+id/keahlian_volunteer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:hint="Keahlian"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColorHint="#b7b7b7"
+                        android:textColorLink="#b7b7b7"
+                        android:textSize="18sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp">
+
+                    <Button
+                        android:id="@+id/btn_volunteer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/shape3"
+                        android:text="Daftar"
+                        android:textColor="#fff"
+                        android:textStyle="bold" />
+                </RelativeLayout>
 
             </LinearLayout>
+        </ScrollView>
 
-            <LinearLayout
-                android:id="@+id/dropdown_image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-55dp"
-                android:gravity="end">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="25dp"
-                    android:src="@drawable/spinner" />
-
-            </LinearLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1">
-
-                <EditText
-                    android:id="@+id/jenis_lain_volunteer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="30dp"
-                    android:hint="Lain-Lain"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="none"
-                    android:maxLines="1"
-                    android:textColorHint="#b7b7b7"
-                    android:textColorLink="#b7b7b7"
-                    android:textSize="18sp" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <EditText
-                    android:id="@+id/nama_volunteer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:hint="Nama"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="none"
-                    android:maxLines="1"
-                    android:textColorHint="#b7b7b7"
-                    android:textColorLink="#b7b7b7"
-                    android:textSize="18sp" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <EditText
-                    android:id="@+id/email_volunteer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:hint="E-mail"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:textColorHint="#b7b7b7"
-                    android:textColorLink="#b7b7b7"
-                    android:textSize="18sp" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <EditText
-                    android:id="@+id/tlp_volunteer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:hint="Telepon"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="phone"
-                    android:maxLines="1"
-                    android:textColorHint="#b7b7b7"
-                    android:textColorLink="#b7b7b7"
-                    android:textSize="18sp" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <EditText
-                    android:id="@+id/keahlian_volunteer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:hint="Keahlian"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="none"
-                    android:maxLines="1"
-                    android:textColorHint="#b7b7b7"
-                    android:textColorLink="#b7b7b7"
-                    android:textSize="18sp" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp">
-
-                <Button
-                    android:id="@+id/upload_cv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape3"
-                    android:gravity="center"
-                    android:text="Upload CV"
-                    android:textColor="#fff"
-                    android:textStyle="bold"/>
-
-                <Button
-                    android:id="@+id/btn_volunteer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/upload_cv"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/shape3"
-                    android:text="Daftar"
-                    android:textColor="#fff"
-                    android:textStyle="bold"/>
-            </RelativeLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>
-    </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

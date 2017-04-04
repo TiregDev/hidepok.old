@@ -90,7 +90,7 @@
                             android:gravity="center"
                             android:text="Hapus"
                             android:textAllCaps="false"
-                            android:textColor="#000" />
+                            android:textColor="@color/white" />
                     </RelativeLayout>
 
                     <LinearLayout
@@ -210,7 +210,7 @@
                             android:gravity="center"
                             android:text="Hapus"
                             android:textAllCaps="false"
-                            android:textColor="#000" />
+                            android:textColor="@color/white" />
                     </RelativeLayout>
 
                     <LinearLayout
@@ -330,7 +330,7 @@
                             android:gravity="center"
                             android:text="Hapus"
                             android:textAllCaps="false"
-                            android:textColor="#000" />
+                            android:textColor="@color/white" />
                     </RelativeLayout>
 
                     <LinearLayout
@@ -450,7 +450,7 @@
                             android:gravity="center"
                             android:text="Hapus"
                             android:textAllCaps="false"
-                            android:textColor="#000" />
+                            android:textColor="@color/white" />
                     </RelativeLayout>
 
                     <LinearLayout
@@ -570,7 +570,7 @@
                             android:gravity="center"
                             android:text="Hapus"
                             android:textAllCaps="false"
-                            android:textColor="#000" />
+                            android:textColor="@color/white" />
                     </RelativeLayout>
 
                     <LinearLayout
@@ -690,7 +690,7 @@
                             android:gravity="center"
                             android:text="Hapus"
                             android:textAllCaps="false"
-                            android:textColor="#000" />
+                            android:textColor="@color/white" />
                     </RelativeLayout>
 
                     <LinearLayout

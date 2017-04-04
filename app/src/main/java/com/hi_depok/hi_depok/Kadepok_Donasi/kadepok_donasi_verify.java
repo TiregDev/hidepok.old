@@ -48,8 +48,6 @@ public class kadepok_donasi_verify extends BaseActivity {
         @Override
         public void onClick(View v) {
             popupWindow.dismiss();
-            Intent verify = new Intent(kadepok_donasi_verify.this, kadepok.class);
-            startActivity(verify);
         }
     };
 

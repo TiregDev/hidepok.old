@@ -96,7 +96,7 @@
                             android:gravity="center"
                             android:text="Kirim"
                             android:textAllCaps="false"
-                            android:textColor="#000" />
+                            android:textColor="@color/white" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -191,35 +191,6 @@
                         </RelativeLayout>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="42dp"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical|right"
-                            android:text="@string/disklike"
-                            android:textColor="#fff" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical|left">
-
-                            <ImageView
-                                android:id="@+id/imageView6"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                app:srcCompat="@drawable/icon_thump_down" />
-                        </RelativeLayout>
-                    </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -342,37 +313,6 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical|right"
-                            android:text="@string/disklike"
-                            android:textColor="#fff" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical|left">
-
-                            <ImageView
-                                android:id="@+id/imageView6"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                app:srcCompat="@drawable/icon_thump_down" />
-                        </RelativeLayout>
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical|right"
                             android:text="@string/komen"
                             android:textColor="#fff" />
 
@@ -407,11 +347,11 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
+                    android:textAllCaps="false"
                     android:background="@drawable/shape3"
                     android:onClick="ke_post_terbaru"
                     android:text="Lihat Yang Lain"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
@@ -473,7 +413,7 @@
                             android:gravity="center"
                             android:text="Hapus"
                             android:textAllCaps="false"
-                            android:textColor="#000" />
+                            android:textColor="@color/white" />
                     </RelativeLayout>
 
                     <LinearLayout
@@ -505,36 +445,6 @@
                                 app:srcCompat="@drawable/icon_thump_up" />
                         </RelativeLayout>
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="42dp"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical|right"
-                            android:text="@string/disklike"
-                            android:textColor="#fff" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical|left">
-
-                            <ImageView
-                                android:id="@+id/imageView6"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                app:srcCompat="@drawable/icon_thump_down" />
-                        </RelativeLayout>
-                    </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -615,7 +525,7 @@
                             android:gravity="center"
                             android:text="Hapus"
                             android:textAllCaps="false"
-                            android:textColor="#000" />
+                            android:textColor="@color/white" />
                     </RelativeLayout>
 
                     <LinearLayout
@@ -647,37 +557,6 @@
                                 app:srcCompat="@drawable/icon_thump_up" />
                         </RelativeLayout>
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical|right"
-                            android:text="@string/disklike"
-                            android:textColor="#fff" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical|left">
-
-                            <ImageView
-                                android:id="@+id/imageView6"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                app:srcCompat="@drawable/icon_thump_down" />
-                        </RelativeLayout>
-                    </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -728,6 +607,7 @@
                     android:background="@drawable/shape3"
                     android:onClick="ke_post_saya"
                     android:text="Lihat Yang Lain"
+                    android:textAllCaps="false"
                     android:textColor="#fff"
                     android:textStyle="bold" />
 

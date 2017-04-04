@@ -60,24 +60,25 @@
                     android:layout_marginTop="5dp"
                     android:numStars="5"
                     android:rating="3"
-                    android:stepSize="1.0"/>
+                    android:theme="@style/RatingBar"
+                    android:stepSize="0.5"/>
 
 
                     <ImageView
                         android:id="@+id/call"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginEnd="30dp"
+                        android:layout_marginEnd="35dp"
                         android:layout_below="@+id/ratingBar"
                         android:src="@drawable/call_small"/>
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_marginTop="5dp"
                         android:onClick="toMaps"
-                        android:layout_marginStart="30dp"
+                        android:layout_marginStart="35dp"
                         android:layout_below="@+id/ratingBar"
                         android:src="@drawable/maps_small"/>
 

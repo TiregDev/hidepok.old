@@ -1,165 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1">
 
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
-    </RelativeLayout>
-
-    <RelativeLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp">
+        android:orientation="vertical"
+        android:weightSum="1">
 
-        <Button
-            android:id="@+id/btn_donate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="20dp"
-            android:alpha="0.7"
-            android:background="@drawable/shape2"
-            android:gravity="center"
-            android:text="Edit"
-            android:textAlignment="gravity"
-            android:textColor="#fff" />
 
-        <Button
-            android:id="@+id/verifikasi"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginEnd="20dp"
-            android:alpha="0.7"
-            android:background="@drawable/shape2"
-            android:gravity="center"
-            android:text="Verifikasi"
-            android:textAlignment="gravity"
-            android:textColor="#fff" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/TextDonasi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/TextNama"
-            android:layout_marginStart="10dp"
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:textColor="#fff"
-            android:text="Jumlah Donasi" />
+            android:padding="16dp">
 
-        <TextView
-            android:id="@+id/TextNama"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/TextPanti"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:textColor="#fff"
-            android:text="Nama Donatur" />
+            <Button
+                android:id="@+id/verifikasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape3"
+                android:gravity="center"
+                android:text="Verifikasi"
+                android:textAlignment="gravity"
+                android:textColor="#fff" />
 
-        <TextView
-            android:id="@+id/:Panti"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/TextNama"
-            android:layout_alignStart="@+id/:Nama"
-            android:layout_weight="1"
-            android:textColor="#fff"
-            android:text=":" />
+            <Button
+                android:id="@+id/btn_donate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/verifikasi"
+                android:background="@drawable/shape3"
+                android:gravity="center"
+                android:text="Edit"
+                android:textAlignment="gravity"
+                android:textColor="#fff" />
 
-        <TextView
-            android:id="@+id/:Nama"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/TextDonasi"
-            android:layout_alignStart="@+id/:Donasi"
-            android:layout_weight="1"
-            android:textColor="#fff"
-            android:text=":" />
+            <TextView
+                android:id="@+id/TextDonasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/TextNama"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="Jumlah Donasi"
+                android:textColor="#fff" />
 
-        <TextView
-            android:id="@+id/:Donasi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/TextDonasi"
-            android:layout_alignBottom="@+id/TextDonasi"
-            android:layout_marginStart="11dp"
-            android:layout_toEndOf="@+id/TextDonasi"
-            android:layout_weight="1"
-            android:textColor="#fff"
-            android:text=":" />
+            <TextView
+                android:id="@+id/TextNama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/TextPanti"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="Nama Donatur"
+                android:textColor="#fff" />
 
-        <TextView
-            android:id="@+id/TextPanti"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:textColor="#fff"
-            android:text="Nama Panti" />
+            <TextView
+                android:id="@+id/:Panti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/TextNama"
+                android:layout_alignStart="@+id/:Nama"
+                android:layout_weight="1"
+                android:text=":"
+                android:textColor="#fff" />
 
-        <TextView
-            android:id="@+id/Panti"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/:Panti"
-            android:layout_alignBottom="@+id/:Panti"
-            android:layout_marginStart="19dp"
-            android:layout_toEndOf="@+id/:Panti"
-            android:layout_weight="1"
-            android:textColor="#fff"
-            android:text="Darul Ilmi" />
+            <TextView
+                android:id="@+id/:Nama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/TextDonasi"
+                android:layout_alignStart="@+id/:Donasi"
+                android:layout_weight="1"
+                android:text=":"
+                android:textColor="#fff" />
 
-        <TextView
-            android:id="@+id/Nama"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/:Nama"
-            android:layout_alignBottom="@+id/:Nama"
-            android:layout_alignStart="@+id/Panti"
-            android:layout_weight="1"
-            android:textColor="#fff"
-            android:text="021-87717878" />
+            <TextView
+                android:id="@+id/:Donasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/TextDonasi"
+                android:layout_alignBottom="@+id/TextDonasi"
+                android:layout_marginStart="11dp"
+                android:layout_toEndOf="@+id/TextDonasi"
+                android:layout_weight="1"
+                android:text=":"
+                android:textColor="#fff" />
 
-        <TextView
-            android:id="@+id/Donasi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/:Donasi"
-            android:layout_alignBottom="@+id/:Donasi"
-            android:layout_alignStart="@+id/Nama"
-            android:layout_weight="1"
-            android:textColor="#fff"
-            android:text="Rp 5.000.000;" />
+            <TextView
+                android:id="@+id/TextPanti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="Nama Panti"
+                android:textColor="#fff" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/Panti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/:Panti"
+                android:layout_alignBottom="@+id/:Panti"
+                android:layout_marginStart="19dp"
+                android:layout_toEndOf="@+id/:Panti"
+                android:layout_weight="1"
+                android:text="Darul Ilmi"
+                android:textColor="#fff" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/Nama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/:Nama"
+                android:layout_alignBottom="@+id/:Nama"
+                android:layout_alignStart="@+id/Panti"
+                android:layout_weight="1"
+                android:text="021-87717878"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/Donasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/:Donasi"
+                android:layout_alignBottom="@+id/:Donasi"
+                android:layout_alignStart="@+id/Nama"
+                android:layout_weight="1"
+                android:text="Rp 5.000.000;"
+                android:textColor="#fff" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 </FrameLayout>
