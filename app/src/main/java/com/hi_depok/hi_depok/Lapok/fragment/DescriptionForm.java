@@ -92,6 +92,7 @@ public class DescriptionForm extends AppCompatActivity {
         }
         Intent moveForum = new Intent(getBaseContext(), lapok_content.class);
         startActivity(moveForum);
+        DescriptionForm.this.finish();
     }
 
 //    public void readMessage(View view){

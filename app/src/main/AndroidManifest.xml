@@ -67,12 +67,21 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Lapok.mDetail.DetailActivity"
+            android:theme="@style/Background"
+            android:label="Detail Laporan">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Activity_Main.ucok"
             android:theme="@style/Background">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Activity_Main.about"
             android:label="Tentang"

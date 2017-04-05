@@ -1,114 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.hi_depok.hi_depok.Lapok.lapok_content">
 
-    <LinearLayout
-        android:id="@+id/bar"
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:background="#303030"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/report"
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:src="@drawable/camera"
-            android:onClick="process"/>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/cameraBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="top|end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="35dp"
+            android:src="@drawable/photo_camera"
+            app:backgroundTint="@color/accent"
+            app:elevation="4dp" />
 
-        <ImageView
-            android:id="@+id/forum"
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:src="@drawable/forum" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/bar_name"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="2dp"
-        android:background="#303030"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <TextView
-            android:id="@+id/report_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Report"
-            android:textColor="#fff" />
-
-        <TextView
-            android:id="@+id/forum_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Forum"
-            android:textColor="#fff" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_alignParentBottom="true"
-        android:background="#302929"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <View
-            android:id="@+id/strip"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#fff"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bar"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:layout_height="wrap_content">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical" />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme" />
 
-    </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbar"
+                android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
+        </RelativeLayout>
 
-</RelativeLayout>
-    </FrameLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</FrameLayout>

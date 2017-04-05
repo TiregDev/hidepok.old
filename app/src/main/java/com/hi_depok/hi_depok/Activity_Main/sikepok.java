@@ -168,7 +168,6 @@ public class sikepok extends BaseActivity implements View.OnClickListener{
         }
     }
 
-    //fragment1 fragment1;
     public void diagnosa(View v){
         Intent intent = new Intent(sikepok.this, SikepokDiagnosa.class);
         startActivity(intent);
