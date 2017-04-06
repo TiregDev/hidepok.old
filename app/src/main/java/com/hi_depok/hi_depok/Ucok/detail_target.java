@@ -28,7 +28,6 @@ import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.fokopok.fokopok_content;
 
 public class detail_target extends BaseActivity {
 

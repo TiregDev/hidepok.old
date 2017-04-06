@@ -1,4 +1,4 @@
-package com.hi_depok.hi_depok.fokopok;
+package com.hi_depok.hi_depok.Fokopok;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.Kapok.KapokActivity;
+import com.hi_depok.hi_depok.Kapok.MapsActivity;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.fragment_kapok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_kapok_activity.fragment2;
@@ -125,7 +126,7 @@ public class kapok extends BaseActivity implements View.OnClickListener{
         }
     }
     public void kapokGo(View v){
-        Intent intent = new Intent(kapok.this, KapokActivity.class);
+        Intent intent = new Intent(kapok.this, MapsActivity.class);
         startActivity(intent);
     }
     public void gotToYoutube(View v){

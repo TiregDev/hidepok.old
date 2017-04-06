@@ -1,4 +1,4 @@
-package com.hi_depok.hi_depok.fokopok.fragment_content;
+package com.hi_depok.hi_depok.Fokopok.fragment_content;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.fokopok.RecyclerViewHolder_message;
-import com.hi_depok.hi_depok.fokopok.itemObject_message;
 
 import java.util.List;
 

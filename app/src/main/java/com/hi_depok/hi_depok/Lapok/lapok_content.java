@@ -27,8 +27,6 @@ import com.hi_depok.hi_depok.Lapok.mRecyler.MyAdapter;
 
 import com.hi_depok.hi_depok.Lapok.fragment.DescriptionForm;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.fokopok.fokopok_content;
-import com.hi_depok.hi_depok.fokopok.message;
 
 import java.io.File;
 import java.util.Date;

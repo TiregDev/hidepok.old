@@ -1,4 +1,4 @@
-package com.hi_depok.hi_depok.fokopok;
+package com.hi_depok.hi_depok.Fokopok;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;

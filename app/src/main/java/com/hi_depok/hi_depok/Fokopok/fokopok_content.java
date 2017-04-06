@@ -1,4 +1,4 @@
-package com.hi_depok.hi_depok.fokopok;
+package com.hi_depok.hi_depok.Fokopok;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -133,13 +133,13 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
     }
 
     class FokopokContent extends FragmentPagerAdapter {
-        com.hi_depok.hi_depok.fokopok.fragment_content.fragment1 fragment1;
-        com.hi_depok.hi_depok.fokopok.fragment_content.fragment2 fragment2;
+        com.hi_depok.hi_depok.Fokopok.fragment_content.fragment1 fragment1;
+        com.hi_depok.hi_depok.Fokopok.fragment_content.fragment2 fragment2;
 
         public FokopokContent(FragmentManager fm) {
             super(fm);
-            fragment1 = com.hi_depok.hi_depok.fokopok.fragment_content.fragment1.newInstance();
-            fragment2 = com.hi_depok.hi_depok.fokopok.fragment_content.fragment2.newInstance();
+            fragment1 = com.hi_depok.hi_depok.Fokopok.fragment_content.fragment1.newInstance();
+            fragment2 = com.hi_depok.hi_depok.Fokopok.fragment_content.fragment2.newInstance();
         }
 
         @Override

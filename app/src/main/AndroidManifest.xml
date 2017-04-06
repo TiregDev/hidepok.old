@@ -116,7 +116,7 @@
             android:label="Sistem Informasi UMKM"
             android:parentActivityName=".Ucok.ucok_content" />
         <activity
-            android:name=".fokopok.fokopok_content"
+            android:name=".Fokopok.fokopok_content"
             android:label="FOKOPOK" />
         <activity
             android:name=".Sikepok_Diagnosa.Anggota_badan_badan"
@@ -237,13 +237,16 @@
             android:name=".Ucok.detail_target"
             android:parentActivityName=".Ucok.danus_activity" />
         <activity
-            android:name=".fokopok.message"
+            android:name=".Fokopok.message"
             android:label="Pesan Masuk" />
         <activity android:name=".Kapok.activity_selengkapnya" />
         <activity android:name=".Kapok.join_kapok" />
         <activity
             android:name=".Kapok.KapokActivity"
             android:label="Telusuri Kota Depok" />
+        <activity
+            android:name=".Kapok.MapsActivity"
+            android:label="@string/title_activity_maps" />
         <activity android:name=".Kapok.activity_view_ulasan" />
         <activity
             android:name=".Sikepok_RS.info_dokter"

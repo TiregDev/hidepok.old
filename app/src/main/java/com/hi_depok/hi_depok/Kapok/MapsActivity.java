@@ -1,4 +1,4 @@
-package com.hi_depok.hi_depok.Sikepok_Panic;
+package com.hi_depok.hi_depok.Kapok;
 
 import android.Manifest;
 import android.content.Intent;
@@ -31,6 +31,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.Sikepok_Panic.GetNearbyPlacesData;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
@@ -49,7 +50,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sikepokpanic_maps);
+        setContentView(R.layout.kapok_maps);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
@@ -63,8 +64,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         else {
             Log.d("onCreate","Google Play Services available.");
         }
-        String tempatSehat[] = { "Cari Tempat ...", "Puskesmas", "Klinik", "Apotek", "Ambulans",
-                "Bidan", "Khitan", "Pijat" };
+        String tempatSehat[] = { "Cari Tempat ...", "Kuliner", "Wisata", "Pasar", "Tempat Ibadah",
+                "GOR", };
         Spinner spinner = (Spinner) findViewById(R.id.spinPlaces);
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, tempatSehat);;
@@ -88,12 +89,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     case 5:
                         findPlaces("bidan");
                         break;
-                    case 6:
-                        findPlaces("khitan");
-                        break;
-                    case 7:
-                        findPlaces("hospital");
-                        break;
                     default:
                         break;
                 }
@@ -110,7 +105,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
     public void toList(View view) {
-        startActivity(new Intent(getBaseContext(), MenuActivity.class));
+        startActivity(new Intent(getBaseContext(), KapokActivity.class));
     }
     public void findPlaces(String name){
         String getname = name;

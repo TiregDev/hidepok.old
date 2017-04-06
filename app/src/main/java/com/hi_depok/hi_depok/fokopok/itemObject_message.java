@@ -1,4 +1,4 @@
-package com.hi_depok.hi_depok.fokopok;
+package com.hi_depok.hi_depok.Fokopok;
 
 /**
  * Created by User on 19/03/17.

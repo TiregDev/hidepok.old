@@ -1,4 +1,4 @@
-package com.hi_depok.hi_depok.fokopok.fragment_content;
+package com.hi_depok.hi_depok.Fokopok.fragment_content;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

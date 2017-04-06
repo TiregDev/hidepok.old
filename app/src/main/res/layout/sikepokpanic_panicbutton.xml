@@ -36,7 +36,7 @@
             android:layout_height="250dp"
             android:visibility="gone">
 
-            <include layout="@layout/activity_maps" />
+            <include layout="@layout/sikepokpanic_maps" />
 
         </RelativeLayout>
 

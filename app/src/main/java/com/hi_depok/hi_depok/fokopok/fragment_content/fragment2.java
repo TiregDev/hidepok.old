@@ -1,4 +1,4 @@
-package com.hi_depok.hi_depok.fokopok.fragment_content;
+package com.hi_depok.hi_depok.Fokopok.fragment_content;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.fokopok;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.fokopok.fokopok_content;
 
 /**
  * Created by User on 19/03/17.
@@ -41,7 +40,7 @@ public class fragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.fokopok_fragment2_content, container, false);
-        com.hi_depok.hi_depok.fokopok.fragment_content.fragment2.ContentAdapter adapter = new com.hi_depok.hi_depok.fokopok.fragment_content.fragment2.ContentAdapter(recyclerView.getContext());
+        com.hi_depok.hi_depok.Fokopok.fragment_content.fragment2.ContentAdapter adapter = new com.hi_depok.hi_depok.Fokopok.fragment_content.fragment2.ContentAdapter(recyclerView.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -123,8 +122,8 @@ public class fragment2 extends Fragment {
         }
 
         @Override
-        public com.hi_depok.hi_depok.fokopok.fragment_content.fragment2.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new com.hi_depok.hi_depok.fokopok.fragment_content.fragment2.ViewHolder(LayoutInflater.from(parent.getContext()), parent);
+        public com.hi_depok.hi_depok.Fokopok.fragment_content.fragment2.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new com.hi_depok.hi_depok.Fokopok.fragment_content.fragment2.ViewHolder(LayoutInflater.from(parent.getContext()), parent);
         }
 
         @Override

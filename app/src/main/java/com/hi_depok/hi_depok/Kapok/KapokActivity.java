@@ -193,22 +193,17 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
     public void onNothingSelected(AdapterView<?> arg0) {
 
     }
-    //button join
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_kapok, menu);
-
-        return super.onCreateOptionsMenu(menu);
-    }
+//    //button join
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_kapok, menu);
+//
+//        return super.onCreateOptionsMenu(menu);
+//    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_join:
-                // todo: goto back activity from here
-
-                startActivity(new Intent(KapokActivity.this, join_kapok.class));
-                return true;
 
             case android.R.id.home:
                 // todo: goto back activity from here

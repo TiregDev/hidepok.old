@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.fokopok.fokopok_content;
+import com.hi_depok.hi_depok.Fokopok.fokopok_content;
 
 public class fokopok extends BaseActivity implements View.OnClickListener {
 
