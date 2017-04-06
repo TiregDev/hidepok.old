@@ -24,9 +24,10 @@
                 android:orientation="horizontal">
 
                 <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:textColorHint="#b7b7b7">
 
                     <EditText
                         android:id="@+id/donasi"
@@ -39,7 +40,6 @@
                         android:imeOptions="actionUnspecified"
                         android:inputType="number"
                         android:maxLines="1"
-                        android:textColorHint="#fff"
                         android:textColorLink="#fff"
                         android:textSize="18sp" />
 
@@ -47,30 +47,12 @@
 
             </LinearLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
 
-                <EditText
-                    android:id="@+id/deskripsi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="30dp"
-                    android:hint="Deskripsi"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textMultiLine"
-                    android:textColorHint="#fff"
-                    android:textColorLink="#fff"
-                    android:textSize="18sp" />
-
-            </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:textColorHint="#b7b7b7"
                 android:layout_weight="1">
 
                 <EditText
@@ -80,11 +62,10 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
-                    android:hint="Nama"
+                    android:hint="Nama Pengirim"
                     android:imeOptions="actionUnspecified"
                     android:inputType="none"
                     android:maxLines="1"
-                    android:textColorHint="#fff"
                     android:textColorLink="#fff"
                     android:textSize="18sp" />
 
@@ -93,28 +74,7 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <EditText
-                    android:id="@+id/email_donatur"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:hint="E-mail"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:textColorHint="#fff"
-                    android:textColorLink="#fff"
-                    android:textSize="18sp" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:textColorHint="#b7b7b7"
                 android:layout_weight="1">
 
                 <EditText
@@ -128,11 +88,30 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="phone"
                     android:maxLines="1"
-                    android:textColorHint="#fff"
                     android:textColorLink="#fff"
                     android:textSize="18sp" />
 
             </android.support.design.widget.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/activity_horizontal_margin">
+
+            <Button
+                android:id="@+id/bukti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bukti Transfer"
+                android:textColor="@color/background"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/bukti"
+                android:layout_marginStart="10dp"/>
+
+            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"

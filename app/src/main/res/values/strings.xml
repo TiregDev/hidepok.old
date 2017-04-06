@@ -100,15 +100,14 @@
     <string name="praktekDokter">Senin : 08.00 - 11.00 \nRabu 13.00 - 16.00 \nKamis 08.00 - 11.00</string>
 
 
-
     <string name="namaApotek">Apotek Roxy</string>
     <string name="namaKlinik">Klinik Medica</string>
     <string name="jamBuka">09.00 - 21.00 WIB</string>
 
     <string-array name="jenis_kelamin">
-        <item name="">-Pilih jenis kelamin-</item>
-        <item name="laki-laki">Laki-laki</item>
-        <item name="perempuan">Perempuan</item>
+        <item name="">- Pilih jenis kelamin L/P -</item>
+        <item name="L">L</item>
+        <item name="P">P</item>
     </string-array>
 
     <string-array name="poli">

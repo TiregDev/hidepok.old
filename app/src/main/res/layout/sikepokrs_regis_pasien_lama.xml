@@ -30,49 +30,47 @@
                 android:padding="16dp"
                 android:weightSum="8">
 
-                <LinearLayout
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:focusableInTouchMode="true"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/tulisanPutih"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:text="Nama" />
+                    android:focusableInTouchMode="true">
 
                     <EditText
+                        android:id="@+id/nama_pasien"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:hint="Nama Sesuai KTP"
-                        android:textColor="@color/white" />
-                </LinearLayout>
+                        android:hint="Nama"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="@color/white"
+                        android:textColorHint="#b7b7b7"
+                        android:textColorLink="@color/white"
+                        android:textSize="18sp" />
 
-                <LinearLayout
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:focusableInTouchMode="true"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/tulisanPutih"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:text="NIK" />
+                    android:focusableInTouchMode="true">
 
                     <EditText
+                        android:id="@+id/nik"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:hint="NIK Sesuai KK"
-                        android:textColor="@color/white" />
-                </LinearLayout>
+                        android:hint="NIK"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:textColor="@color/white"
+                        android:textColorHint="#b7b7b7"
+                        android:textColorLink="#b7b7b7"
+                        android:textSize="18sp" />
+
+                </android.support.design.widget.TextInputLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -81,17 +79,20 @@
                     android:orientation="vertical">
 
                     <TextView
-                        style="@style/tulisanPutih"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:text="Jenis Kelamin" />
+                        android:text="Jenis Kelamin"
+                        android:textColor="#b7b7b7"
+                        android:textSize="12sp" />
 
                     <Spinner
+                        android:id="@+id/jk_pasien"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:entries="@array/jenis_kelamin"
+                        android:textColor="@color/white"
                         android:spinnerMode="dropdown" />
                 </LinearLayout>
 
@@ -103,13 +104,15 @@
                     android:orientation="vertical">
 
                     <TextView
-                        style="@style/tulisanPutih"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:text="Tanggal Lahir" />
+                        android:text="Tanggal Lahir"
+                        android:textColor="#b7b7b7"
+                        android:textSize="12sp"/>
 
                     <EditText
+                        android:id="@+id/tgl_lhr_pasien"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -119,73 +122,50 @@
                         android:textColor="@color/white" />
                 </LinearLayout>
 
-                <LinearLayout
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:focusableInTouchMode="true"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/tulisanPutih"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:text="No. RM" />
+                    android:focusableInTouchMode="true">
 
                     <EditText
+                        android:id="@+id/no_rm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:hint="Alamat Sesuai KTP"
-                        android:textColor="@color/white" />
-                </LinearLayout>
+                        android:hint="No. RM"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:textColor="@color/white"
+                        android:textColorHint="#b7b7b7"
+                        android:textColorLink="#b7b7b7"
+                        android:textSize="18sp" />
 
-                <LinearLayout
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:focusableInTouchMode="true"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/tulisanPutih"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:text="Alamat" />
+                    android:focusableInTouchMode="true">
 
                     <EditText
+                        android:id="@+id/alamat_pasien"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:hint="Alamat Sesuai KTP"
-                        android:textColor="@color/white" />
-                </LinearLayout>
+                        android:hint="Alamat"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="@color/white"
+                        android:textColorHint="#b7b7b7"
+                        android:textColorLink="#b7b7b7"
+                        android:textSize="18sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:focusableInTouchMode="true"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/tulisanPutih"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:text="Nomor Handphone" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:hint="No handphone yang aktif"
-                        android:textColor="@color/white" />
-                </LinearLayout>
+                </android.support.design.widget.TextInputLayout>
 
                 <Button
+                    android:id="@+id/kirim"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -193,6 +173,7 @@
                     android:background="@drawable/shape3"
                     android:onClick="kirim_data"
                     android:text="Kirim"
+                    android:layout_marginTop="10dp"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 

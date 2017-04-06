@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp">
+    android:layout_marginTop="1dp"
+    android:orientation="horizontal">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,21 +18,23 @@
             android:layout_height="70dp"
             android:layout_marginTop="-5dp"
             android:padding="10dp"
-            android:src="@drawable/emma_roberts"/>
+            android:src="@drawable/emma_roberts" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="NAMA"
             android:id="@+id/nameTxt"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/imageArtist"/>
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Feb 8, 2017, at 17.00 WIB"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/imageArtist"
+            android:text="NAMA" />
+
+        <TextView
             android:id="@+id/timeTxt"
-            android:layout_toRightOf="@+id/imageArtist"
-            android:layout_below="@+id/nameTxt"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameTxt"
+            android:layout_toEndOf="@+id/imageArtist"
+            android:text="Feb 8, 2017, at 17.00 WIB" />
 
         <RelativeLayout
             android:id="@+id/rl"
@@ -46,8 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/kemacetan"
-                />
+                tools:src="@drawable/kemacetan" />
 
             <TextView
                 android:id="@+id/card_text"
@@ -62,7 +62,7 @@
                 android:singleLine="true"
                 android:textColor="#303030"
                 android:textSize="20sp"
-                tools:text="Macet dijalan juanda, udah berjamjam nih stuck disini"/>
+                tools:text="Macet dijalan juanda, udah berjamjam nih stuck disini" />
 
 
             <ImageButton
@@ -71,7 +71,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_below="@+id/card_text"
-                app:srcCompat="@drawable/like"/>
+                app:srcCompat="@drawable/like" />
 
             <TextView
                 android:id="@+id/jumlah_like"
@@ -79,10 +79,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/card_text"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/like"
+                android:layout_toEndOf="@id/like"
                 android:text="0"
                 android:textColor="#303030"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <ImageButton
                 android:id="@+id/comment_button"
@@ -90,8 +90,8 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_below="@+id/card_text"
-                android:layout_toRightOf="@id/jumlah_like"
-                app:srcCompat="@drawable/comment"/>
+                android:layout_toEndOf="@id/jumlah_like"
+                app:srcCompat="@drawable/comment" />
 
             <TextView
                 android:id="@+id/jumlah_comment"
@@ -99,10 +99,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/card_text"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/comment_button"
+                android:layout_toEndOf="@id/comment_button"
                 android:text="0"
                 android:textColor="#303030"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <ImageButton
                 android:id="@+id/share_button"
@@ -110,8 +110,8 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_below="@+id/card_text"
-                android:layout_toRightOf="@+id/jumlah_comment"
-                app:srcCompat="@drawable/share"/>
+                android:layout_toEndOf="@+id/jumlah_comment"
+                app:srcCompat="@drawable/share" />
 
             <TextView
                 android:id="@+id/jumlah_share"
@@ -119,17 +119,15 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/card_text"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/share_button"
+                android:layout_toEndOf="@id/share_button"
                 android:text="0"
                 android:textColor="#303030"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
         </RelativeLayout>
 
 
     </RelativeLayout>
-
-
 
 
 </android.support.v7.widget.CardView>

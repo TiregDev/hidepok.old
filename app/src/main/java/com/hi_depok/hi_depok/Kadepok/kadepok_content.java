@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,10 +26,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
-import com.hi_depok.hi_depok.Activity_Main.kadepok;
-import com.hi_depok.hi_depok.Kadepok_Donasi.kadepok_donasi_upload;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Sikepok_Diagnosa.Deskripsi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,40 +34,40 @@ import java.util.List;
 public class kadepok_content extends BaseActivity {
     private LinearLayoutManager lLayout;
     private Spinner kecamatan;
-    private ImageView btn_kadepok_notifikasi;
-    private PopupWindow popup_notifikasi;
+//    private ImageView btn_kadepok_notifikasi;
+//    private PopupWindow popup_notifikasi;
     public Button close;
 
-    private void initiatepopup() {
-        try {
-            LayoutInflater layoutInflater = (LayoutInflater)kadepok_content.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = layoutInflater.inflate(R.layout.kadepok_notifikasi, (ViewGroup)findViewById(R.id.kadepok_notifikasi));
+//    private void initiatepopup() {
+//        try {
+//            LayoutInflater layoutInflater = (LayoutInflater)kadepok_content.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//            View layout = layoutInflater.inflate(R.layout.kadepok_notifikasi, (ViewGroup)findViewById(R.id.kadepok_notifikasi));
+//
+//            popup_notifikasi = new PopupWindow(layout, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, true);
+//            popup_notifikasi.showAtLocation(layout, Gravity.CENTER, 0, 0);
+//
+//            close = (Button)layout.findViewById(R.id.close);
+//            close.setOnClickListener(cancel_button_click_listener);
+//
+//            Button notif = (Button)layout.findViewById(R.id.notif);
+//            notif.setOnClickListener(new View.OnClickListener() {
+//                public void onClick(View v) {
+//                    Intent notif = new Intent(kadepok_content.this, kadepok_donasi_upload.class);
+//                    startActivity(notif);
+//                }
+//            });
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-            popup_notifikasi = new PopupWindow(layout, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, true);
-            popup_notifikasi.showAtLocation(layout, Gravity.CENTER, 0, 0);
-
-            close = (Button)layout.findViewById(R.id.close);
-            close.setOnClickListener(cancel_button_click_listener);
-
-            Button notif = (Button)layout.findViewById(R.id.notif);
-            notif.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    Intent notif = new Intent(kadepok_content.this, kadepok_donasi_upload.class);
-                    startActivity(notif);
-                }
-            });
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            popup_notifikasi.dismiss();
-        }
-    };
+//    private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            popup_notifikasi.dismiss();
+//        }
+//    };
 
     private static final String[]camat = {"Pilih Kecamatan", "Beji", "Bojongsari", "Cilodong", "Cimanggis",
             "Cinere", "Cipayung", "Limo", "Pancoran Mas", "Sawangan", "Sukmajaya", "Tapos"};
@@ -176,9 +172,7 @@ public class kadepok_content extends BaseActivity {
                 // todo: goto back activity from here
                 kadepok_content.this.finish();
                 return true;
-            case R.id.action_notif:
-                initiatepopup();
-
+//            case R.id.action_share:
             default:
                 return super.onOptionsItemSelected(item);
         }

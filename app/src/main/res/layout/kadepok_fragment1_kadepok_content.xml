@@ -42,15 +42,6 @@
                 android:textColor="#fff"
                 android:text="Jumlah Anak " />
 
-            <TextView
-                android:id="@+id/desc_panti"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/text_alamat_panti"
-                android:layout_marginTop="40dp"
-                android:textColor="#fff"
-                android:text="@string/item_desc" />
 
             <TextView
                 android:id="@+id/textView30"
@@ -90,6 +81,68 @@
                 android:layout_marginTop="28dp"
                 android:textColor="#fff"
                 android:text="Alamat Panti" />
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text=":"
+                android:layout_alignBaseline="@+id/text_alamat_panti"
+                android:layout_alignBottom="@+id/text_alamat_panti"
+                android:layout_alignStart="@+id/textView32" />
+
+
+            <TextView
+                android:id="@+id/text_email_panti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/text_alamat_panti"
+                android:layout_below="@+id/text_alamat_panti"
+                android:layout_marginTop="28dp"
+                android:textColor="#fff"
+                android:text="Email" />
+
+            <TextView
+                android:id="@+id/textView42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/desc_panti"
+                android:layout_alignBaseline="@+id/text_email_panti"
+                android:layout_alignStart="@+id/textView31"
+                android:textColor="#fff"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/text_rekening_panti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/text_email_panti"
+                android:layout_below="@+id/text_email_panti"
+                android:layout_marginTop="28dp"
+                android:textColor="#fff"
+                android:text="Rekening" />
+
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/desc_panti"
+                android:layout_alignBaseline="@+id/text_rekening_panti"
+                android:layout_alignStart="@+id/textView31"
+                android:textColor="#fff"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/desc_panti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/text_rekening_panti"
+                android:layout_marginTop="40dp"
+                android:textColor="#fff"
+                android:text="@string/item_desc" />
+
 
             <TextView
                 android:id="@+id/textView36"
@@ -159,15 +212,7 @@
                 android:textColor="#fff"
                 android:text="55" />
 
-            <TextView
-                android:id="@+id/textView41"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:text=":"
-                android:layout_alignBaseline="@+id/text_alamat_panti"
-                android:layout_alignBottom="@+id/text_alamat_panti"
-                android:layout_alignStart="@+id/textView32" />
+
 
             <TextView
                 android:id="@+id/alamat_panti"
@@ -177,6 +222,24 @@
                 android:layout_alignStart="@+id/thn_berdiri"
                 android:textColor="#fff"
                 android:text="Jl. Beji, Beji, Depok, Jawa Barat" />
+
+            <TextView
+                android:id="@+id/email_panti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/text_email_panti"
+                android:layout_alignStart="@+id/alamat_panti"
+                android:textColor="#fff"
+                android:text="darulilmi@gmail.com" />
+
+            <TextView
+                android:id="@+id/rekening_panti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/text_rekening_panti"
+                android:layout_alignStart="@+id/email_panti"
+                android:textColor="#fff"
+                android:text="1370004337144" />
         </RelativeLayout>
     </ScrollView>
 

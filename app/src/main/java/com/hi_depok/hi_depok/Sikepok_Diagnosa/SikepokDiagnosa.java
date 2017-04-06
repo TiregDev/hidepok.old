@@ -36,8 +36,4 @@ public class SikepokDiagnosa extends BaseActivity {
         Intent contoh = new Intent(SikepokDiagnosa.this, Ensiklopedia.class);
         startActivity(contoh);
     }
-    public void lokasi (View view){
-        Intent contoh = new Intent(SikepokDiagnosa.this, Lokasi.class);
-        startActivity(contoh);
-    }
 }

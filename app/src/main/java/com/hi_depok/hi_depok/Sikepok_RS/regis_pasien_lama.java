@@ -1,20 +1,28 @@
 package com.hi_depok.hi_depok.Sikepok_RS;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.SmsManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 
 public class regis_pasien_lama extends BaseActivity {
+    private Button kirim;
+    private EditText nama, nik, tgl, rm, alamat;
+    private Spinner jk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +37,54 @@ public class regis_pasien_lama extends BaseActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar3));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        //Pengiriman SMS
+        nama = (EditText) findViewById(R.id.nama_pasien);
+        nik = (EditText) findViewById(R.id.nik);
+        jk = (Spinner) findViewById(R.id.jk_pasien);
+        tgl = (EditText) findViewById(R.id.tgl_lhr_pasien);
+        rm = (EditText) findViewById(R.id.no_rm);
+        alamat = (EditText) findViewById(R.id.alamat_pasien);
+
+        kirim = (Button) findViewById(R.id.kirim);
+        kirim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendSMS();
+            }
+
+        });
     }
+
+    //mengirim sms
+    protected void sendSMS()
+    {
+        String number="085776410906";
+
+        String part1 = nama.getText().toString().toUpperCase();
+        String part2 = nik.getText().toString().toUpperCase();
+        String part3 = jk.getSelectedItem().toString().toUpperCase();
+        String part4 = tgl.getText().toString().toUpperCase();
+        String part5 = rm.getText().toString().toUpperCase();
+        String part6 = alamat.getText().toString().toUpperCase();
+
+        String message = "REG2#" + part1 + "#" + part2 + "#" + part3 + "#" + part4 + "#" + part5 + "#" + part6;
+        try {
+            SmsManager manager = SmsManager.getDefault();
+            manager.sendTextMessage(number, null, message,null,null);
+            Toast.makeText(getApplicationContext(), "SMS Berhasil terkirim!", Toast.LENGTH_LONG).show();
+            Intent next = new Intent(regis_pasien_lama.this, registrasi.class);
+            startActivity(next);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(),"SMS Gagal terkirim, silahkan coba lagi!", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+
+    }
+
+    //menambahkan menu
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

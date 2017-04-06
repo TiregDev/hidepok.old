@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -23,13 +22,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
-import com.hi_depok.hi_depok.Kadepok_Donasi.kadepok_donasi_upload;
+import com.hi_depok.hi_depok.Kadepok_Volunteer.kadepok_volunteer_form;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.Sikepok_Panic.MapsActivity;
+
+import static com.hi_depok.hi_depok.R.id.btn_volunteer;
 
 public class KadepokDetailActivity extends BaseActivity implements View.OnClickListener {
     ViewPager pager;
@@ -43,21 +43,13 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
     private void initiatepopup() {
         try {
             LayoutInflater layoutInflater = (LayoutInflater)KadepokDetailActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = layoutInflater.inflate(R.layout.kadepok_notifikasi, (ViewGroup)findViewById(R.id.kadepok_notifikasi));
+            View layout = layoutInflater.inflate(R.layout.kadepok_donasi_popup, (ViewGroup)findViewById(R.id.rl_custom_layout));
 
             popup_notifikasi = new PopupWindow(layout, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, true);
             popup_notifikasi.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
             close = (Button)layout.findViewById(R.id.close);
             close.setOnClickListener(cancel_button_click_listener);
-
-            Button notif = (Button)layout.findViewById(R.id.notif);
-            notif.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    Intent notif = new Intent(KadepokDetailActivity.this, kadepok_donasi_upload.class);
-                    startActivity(notif);
-                }
-            });
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -136,11 +128,9 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_notif:
-                // todo: goto back activity from here
-
-                initiatepopup();
-                return true;
+//            case R.id.action_share:
+//                // todo: goto back activity from here
+//                return true;
 
             case android.R.id.home:
                 // todo: goto back activity from here

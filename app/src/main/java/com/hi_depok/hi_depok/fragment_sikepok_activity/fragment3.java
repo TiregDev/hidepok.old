@@ -43,9 +43,8 @@ public class fragment3 extends Fragment{
                 "</head>" +
                 "<body>" +
                 "<p align=\"justify\" class=\"text\">";
-        text+= "Penanganan Gawat Darurat (PGD): Merupakan fasilitas pertolongan pertama yang " +
-                "memungkinkan pengguna untuk menghubungi ambulans terdekat dari lokasi kejadian dengan " +
-                "cara yang sederhana. Dilengkapi dengan informasi penyedia ambulans, tukang urut, bidan, dan khitan.";
+        text+= "Modul ini memberikan informasi yang berkaitan dengan tempat sehat, seperti : " +
+                "informasi penyedia ambulans, tukang urut, bidan, khitan, apotek, klinik dan puskesmes.";
         text+= "</p>" +
                 "</body>" +
                 "</html>";

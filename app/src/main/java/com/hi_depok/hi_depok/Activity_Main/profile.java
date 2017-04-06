@@ -8,15 +8,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.hi_depok.hi_depok.Profile.setprofile;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.fragment_profile_activity.myprofile;
-import com.hi_depok.hi_depok.fragment_profile_activity.history;
+import com.hi_depok.hi_depok.Profile.fragment.myprofile;
+import com.hi_depok.hi_depok.Profile.fragment.history;
 
 public class profile extends BaseActivity implements View.OnClickListener {
 
@@ -96,8 +96,8 @@ public class profile extends BaseActivity implements View.OnClickListener {
 
         public ProfilePager(FragmentManager fm) {
             super(fm);
-            myprofile = com.hi_depok.hi_depok.fragment_profile_activity.myprofile.newInstance();
-            history = com.hi_depok.hi_depok.fragment_profile_activity.history.newInstance();
+            myprofile = com.hi_depok.hi_depok.Profile.fragment.myprofile.newInstance();
+            history = com.hi_depok.hi_depok.Profile.fragment.history.newInstance();
         }
 
         @Override

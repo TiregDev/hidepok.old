@@ -1,72 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    android:id="@+id/drawer_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_centerInParent="true"
-    android:gravity="center"
-    tools:context="com.hi_depok.hi_depok.Sikepok_RS.RSActivity">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context="com.hi_depok.hi_depok.Sikepok_Diagnosa.SikepokDiagnosa">
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:src="@drawable/rmhskt"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_marginTop="20dp">
 
-        <TextView
-            android:id="@+id/sirs"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="Sistem Informasi Rumah Sakit"
-            android:textColor="#6B92CB"
-            android:textSize="24sp"
-            android:textStyle="normal|bold"
-            android:layout_below="@+id/image"
-            android:layout_centerHorizontal="true" />
+            <ImageView
+                android:id="@+id/dokter"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/hospital" />
 
-        <TextView
-            android:id="@+id/textView2"
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dokter"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Sistem Informasi\nRumah Sakit"
+                android:textColor="#fff"
+                android:textSize="22sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="top|center_vertical|center_horizontal"
-            android:text="Silahkan pilih layanan yang tersedia"
-            android:textColor="#F6981A"
-            android:textSize="16sp"
-            android:textStyle="normal|italic"
-            android:layout_below="@+id/sirs"
-            android:layout_alignParentStart="true" />
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
 
-    </RelativeLayout>
+            <ImageButton
+                android:id="@+id/diagnosa"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:onClick="rs"
+                android:scaleType="fitXY"
+                android:scaleX="0.7"
+                app:srcCompat="@drawable/hospital" />
 
+            <ImageButton
+                android:id="@+id/ensiklopedia"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:background="@android:color/transparent"
+                android:onClick="daftar"
+                android:scaleType="fitXY"
+                android:scaleX="0.7"
+                app:srcCompat="@drawable/form" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/imageButton8"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:onClick="forum"
+                android:scaleType="fitXY"
+                android:scaleX="0.7"
+                app:srcCompat="@drawable/team" />
 
-        <com.hitomi.cmlibrary.CircleMenu
-            android:id="@+id/circle_menu"
-            android:layout_width="wrap_content"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true" />
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Informasi\nRumah Sakit"
+                android:textColor="#fff"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Layanan\nPendaftaran"
+                android:textColor="#fff"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Forum\nTanya Jawab"
+                android:textColor="#fff"
+                android:textSize="14sp" />
+
+        </LinearLayout>
 
 
-    </RelativeLayout>
-
-</LinearLayout>
+    </LinearLayout>
 </FrameLayout>

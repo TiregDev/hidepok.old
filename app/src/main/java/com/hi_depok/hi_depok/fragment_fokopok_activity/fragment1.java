@@ -45,7 +45,7 @@ public class fragment1 extends Fragment{
                 "<p align=\"justify\" class=\"text\">";
         text+= "Pengguna dapat bergabung di suatu komunitas, mendapatkan informasi setiap " +
                 "komunitas-komunitas dan informasi acara-acara dari komunitas tersebut. Dilengkapi " +
-                "dengan fasilitas chatting untuk para anggota komunitasnya.";
+                "dengan sikepok_fragment_fasilitas chatting untuk para anggota komunitasnya.";
         text+= "</p>" +
                 "</body>" +
                 "</html>";

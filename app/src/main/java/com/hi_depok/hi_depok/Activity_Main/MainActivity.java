@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.notif.event;
 import com.mikepenz.crossfadedrawerlayout.view.CrossfadeDrawerLayout;
 import com.mikepenz.materialdrawer.*;
 import com.mikepenz.materialdrawer.interfaces.ICrossfader;
@@ -311,6 +312,11 @@ public class MainActivity extends BaseActivity {
 
     public void linkfokopok (View view){
         Intent intent = new Intent(MainActivity.this, fokopok.class);
+        startActivity(intent);
+    }
+
+    public void event (View view){
+        Intent intent = new Intent(MainActivity.this, event.class);
         startActivity(intent);
     }
 

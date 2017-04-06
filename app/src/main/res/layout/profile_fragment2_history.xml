@@ -6,20 +6,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical">
 
-        <TextView
-            android:text="@string/desc"
-            android:textColor="#b7b7b7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:id="@+id/diagnosa" />
     </RelativeLayout>
-
-
 
 </LinearLayout>

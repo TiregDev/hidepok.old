@@ -10,7 +10,7 @@
         android:gravity="center_vertical">
 
         <TextView
-            android:text="@string/sikepok_frag3"
+            android:text="Informasi Tempat Sehat"
             android:layout_marginStart="8dp"
             android:textColor="#b7b7b7"
             android:layout_width="match_parent"

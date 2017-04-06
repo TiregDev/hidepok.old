@@ -97,14 +97,14 @@ public class MenuActivity extends BaseActivity {
                     }
                 });*/
         // Adding Floating Action Button to bottom right of main view
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(v, "Hello Snackbar!",
-                        Snackbar.LENGTH_LONG).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Snackbar.make(v, "Hello Snackbar!",
+//                        Snackbar.LENGTH_LONG).show();
+//            }
+//        });
     }
 
     // Add Fragments to Tabs
@@ -114,6 +114,9 @@ public class MenuActivity extends BaseActivity {
         adapter.addFragment(new BidanFragment(), "Bidan");
         adapter.addFragment(new TukangUrutFragment(), "Pijat");
         adapter.addFragment(new KhitanFragment(), "Khitan");
+        adapter.addFragment(new KlinikFragment(), "Klinik");
+        adapter.addFragment(new ApotekFragment(), "Apotek");
+        adapter.addFragment(new PuskesmasFragment(), "Puskesmas");
         viewPager.setAdapter(adapter);
     }
 

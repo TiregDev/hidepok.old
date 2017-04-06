@@ -17,6 +17,6 @@ public class fasilitas extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fasilitas, container, false);
+        return inflater.inflate(R.layout.sikepok_fragment_fasilitas, container, false);
     }
 }

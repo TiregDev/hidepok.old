@@ -34,24 +34,24 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:weightSum="2">
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/imageView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:onClick="ke_pasien_baru"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:paddingTop="40dp"
-                    app:srcCompat="@drawable/new_pasien" />
+                    app:srcCompat="@drawable/pasien_baru" />
 
                 <TextView
                     style="@style/tulisanPutih"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
                     android:onClick="ke_pasien_baru"
                     android:text="Pasien Baru" />
             </LinearLayout>
@@ -61,25 +61,26 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:weightSum="2">
+                android:weightSum="2"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/imageView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:onClick="ke_pasien_lama"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:paddingTop="40dp"
-                    app:srcCompat="@drawable/new_pasien" />
+                    app:srcCompat="@drawable/pasien_lama" />
 
                 <TextView
                     style="@style/tulisanPutih"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:onClick="ke_pasien_lama"
+                    android:layout_marginTop="10dp"
                     android:text="Pasien Lama" />
             </LinearLayout>
         </LinearLayout>
@@ -96,25 +97,26 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:weightSum="2">
+                android:weightSum="2"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/imageView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:onClick="ke_regis_berobat"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:paddingTop="40dp"
-                    app:srcCompat="@drawable/new_pasien" />
+                    app:srcCompat="@drawable/registrasi_berobat" />
 
                 <TextView
                     style="@style/tulisanPutih"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:onClick="ke_regis_berobat"
+                    android:layout_marginTop="10dp"
                     android:text="Registrasi Berobat" />
             </LinearLayout>
 
@@ -123,25 +125,26 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:weightSum="2">
+                android:weightSum="2"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/imageView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:onClick="ke_ketentuan"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:paddingTop="40dp"
-                    app:srcCompat="@drawable/new_pasien" />
+                    app:srcCompat="@drawable/faq" />
 
                 <TextView
                     style="@style/tulisanPutih"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:onClick="ke_ketentuan"
+                    android:layout_marginTop="10dp"
                     android:text="Ketentuan" />
             </LinearLayout>
         </LinearLayout>

@@ -13,21 +13,25 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
         android:background="@android:drawable/ic_menu_close_clear_cancel"
         android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
+    <ImageView
+        android:id="@+id/smile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/smile"
+        android:layout_centerInParent="true"/>
+
     <TextView
         android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical|center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:padding="25sp"
-        android:text="Terimakasih atas donasi Anda. Silahkan melakukan transfer dalam jangka waktu 1 x 24 jam dari sekarang agar dapat diproses lebih lanjut. \n\n Apabila Anda belum mentransfer dalam jangka waktu tersebut, data donasi Anda secara otomatis akan terhapus oleh sistem dan silahkan melakukan proses donasi kembali."
+        android:text="Terimakasih atas donasi Anda"
         android:textAlignment="center"
+        android:layout_below="@id/smile"
         android:textColor="#fff"
-        android:textSize="18sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:textSize="20sp" />
 </RelativeLayout>

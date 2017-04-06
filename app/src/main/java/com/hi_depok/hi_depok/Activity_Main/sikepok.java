@@ -19,8 +19,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Sikepok_Panic.PanicActivity;
+import com.hi_depok.hi_depok.Sikepok_Panic.*;
 import com.hi_depok.hi_depok.Sikepok_Diagnosa.*;
+import com.hi_depok.hi_depok.Sikepok_Panic.MapsActivity;
 import com.hi_depok.hi_depok.Sikepok_RS.*;
 import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_sikepok_activity.fragment2;
@@ -179,7 +180,7 @@ public class sikepok extends BaseActivity implements View.OnClickListener{
     }
 
     public void panic(View v){
-        Intent intent = new Intent(sikepok.this, PanicActivity.class);
+        Intent intent = new Intent(sikepok.this, MapsActivity.class);
         startActivity(intent);
     }
 }

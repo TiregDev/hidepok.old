@@ -40,7 +40,7 @@ public class kadepok_volunteer_form extends BaseActivity {
         try {
 
             LayoutInflater layoutInflater = (LayoutInflater)kadepok_volunteer_form.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = layoutInflater.inflate(R.layout.kadepok_donasi_popup, (ViewGroup)findViewById(R.id.rl_custom_layout));
+            View layout = layoutInflater.inflate(R.layout.kadepok_volunteer_popup, (ViewGroup)findViewById(R.id.rl_custom_layout));
 
             popupWindow = new PopupWindow(layout, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, true);
             popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
