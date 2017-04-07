@@ -42,7 +42,6 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
     private Button temukan;
     private RadioGroup sort;
     private RadioButton urut;
-    ImageView join;
     //array recycleview menu sort
     ArrayList<String> namalogo = new ArrayList<>(Arrays.asList(
             "Wisata", "Warung Pancong Pak Kumis & Mang Dadang",

@@ -52,6 +52,7 @@ dependencies {
     compile 'com.github.Hitomis:CircleMenu:v1.0.0'
     compile 'com.github.wrdlbrnft:sorted-list-adapter:0.1.0.5'
     compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
+    compile 'com.github.chathuralakmal:AndroidImagePopup:1.0.6'
     testCompile 'junit:junit:4.12'
 }
 

@@ -1,5 +1,6 @@
 package com.hi_depok.hi_depok.notif;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.WindowManager;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
@@ -44,6 +46,20 @@ public class event extends BaseActivity {
 
         com.hi_depok.hi_depok.notif.RecyclerViewAdapter rcAdapter = new com.hi_depok.hi_depok.notif.RecyclerViewAdapter(event.this, rowListItem);
         rView.setAdapter(rcAdapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+
+                event.this.finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private List<ItemObject> getAllItemList(){

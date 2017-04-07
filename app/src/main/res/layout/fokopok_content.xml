@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hi_depok.hi_depok.fokopok.fokopok_content">
+    tools:context="com.hi_depok.hi_depok.Fokopok.fokopok_content">
 
     <LinearLayout
         android:id="@+id/bar"

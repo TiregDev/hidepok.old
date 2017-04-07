@@ -30,11 +30,8 @@ package com.hi_depok.hi_depok.Kadepok_Volunteer;
 
 public class kadepok_volunteer_form extends BaseActivity {
     public Button btn_volunteer;
-    private Spinner jenis_volunteer_spinner;
     private PopupWindow popupWindow;
     public Button close;
-
-    private static final String[]jenis = {"Jenis Volunteer", "Guru Matematika", "Guru Fisika", "Guru Bahasa Inggris", "Guru Bahasa Indonesia"};
 
     public void verify_volunteer() {
         try {
@@ -78,43 +75,6 @@ public class kadepok_volunteer_form extends BaseActivity {
             @Override
             public void onClick(View v) {
                 verify_volunteer();
-            }
-        });
-
-        /*-------------------------- START SPINER CATEGORY --------------------------------------- */
-        jenis_volunteer_spinner = (Spinner)findViewById(R.id.jenis_volunter_spinner);
-        ArrayAdapter<String> adapter_camat = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_dropdown_item,jenis);
-
-        adapter_camat.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        jenis_volunteer_spinner.setAdapter(adapter_camat);
-        jenis_volunteer_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 1:
-                        Toast.makeText(getApplicationContext(), ("Anda telah memilih Guru Matematika"),
-                                Toast.LENGTH_SHORT).show();
-                        break;
-                    case 2:
-                        Toast.makeText(getApplicationContext(), ("Anda telah memilih Guru Fisika"),
-                                Toast.LENGTH_SHORT).show();
-                        break;
-                    case 3:
-                        Toast.makeText(getApplicationContext(), ("Anda telah memilih Guru Bahasa Inggris"),
-                                Toast.LENGTH_SHORT).show();
-                        break;
-                    case 4:
-                        Toast.makeText(getApplicationContext(), ("Anda telah memilih Guru Bahasa Indonesia"),
-                                Toast.LENGTH_SHORT).show();
-                        break;
-                    default:
-                        break;
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                //NULL
             }
         });
     }

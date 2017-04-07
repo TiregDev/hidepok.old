@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
@@ -50,8 +51,7 @@ public class lapok_content extends BaseActivity {
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        FloatingActionButton cameraBtn =
-                (FloatingActionButton) findViewById(R.id.cameraBtn);
+        ImageView cameraBtn = (ImageView) findViewById(R.id.cameraBtn);
 
         RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
         rv.setLayoutManager(new LinearLayoutManager(this));

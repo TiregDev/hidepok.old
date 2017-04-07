@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context="com.hi_depok.hi_depok.Kapok.KapokActivity">
 
-    <RelativeLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        tools:context="com.hi_depok.hi_depok.Kapok.KapokActivity">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -24,131 +20,137 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
 
-        <LinearLayout
-            android:id="@+id/dropdown"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:weightSum="2">
+            android:background="@drawable/bg_pattern">
 
-            <Spinner
-                android:id="@+id/camat"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/dropdown"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
                 android:padding="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_bg_spinner" />
+                android:weightSum="2">
 
-            <Spinner
-                android:id="@+id/pilihan"
-                android:layout_width="0dp"
+                <Spinner
+                    android:id="@+id/camat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_bg_spinner"
+                    android:padding="10dp" />
+
+                <Spinner
+                    android:id="@+id/pilihan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_bg_spinner"
+                    android:padding="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dropdown_image"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:weightSum="2">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:src="@drawable/spinner" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="-50dp"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:src="@drawable/spinner" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/urutkan"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/dropdown"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="14sp"
+                    android:gravity="center"
+                    android:text="Urutkan dari   :"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <RadioGroup
+                    android:id="@+id/sort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Rating"
+                        android:textColor="#fff"
+                        android:textColorLink="@color/colorPrimary"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/jarak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:text="Terdekat"
+                        android:textColor="#fff"
+                        android:textColorLink="@color/colorPrimary"
+                        android:textSize="14sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/temukan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape3"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/urutkan"
+                android:onClick="temukan"
                 android:padding="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_bg_spinner" />
+                android:text="TEMUKAN"
+                android:textColor="#fff"
+                android:textSize="14sp" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
-            android:id="@+id/dropdown_image"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#b7b7b7" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar"
-            android:weightSum="2">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:padding="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/spinner" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="-50dp"
-                android:padding="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/spinner" />
-
-        </LinearLayout>
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:background="#303030"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="14sp"
-            android:gravity="center"
-            android:text="Urutkan dari   :"
-            android:textColor="#fff"
-            android:textSize="14sp" />
-
-        <RadioGroup
-            android:id="@+id/sort"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Rating"
-                android:textColor="#fff"
-                android:textColorLink="@color/colorPrimary"
-                android:textSize="14sp" />
-
-            <RadioButton
-                android:id="@+id/jarak"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="Terdekat"
-                android:textColor="#fff"
-                android:textColorLink="@color/colorPrimary"
-                android:textSize="14sp" />
-        </RadioGroup>
+            android:padding="10dp" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/temukan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_marginTop="10dp"
-        android:alpha="0.7"
-        android:background="@drawable/shape2"
-        android:gravity="center"
-        android:onClick="temukan"
-        android:padding="10dp"
-        android:text="TEMUKAN"
-        android:textColor="#fff"
-        android:textSize="14sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#b7b7b7"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"/>
-
-
-</LinearLayout>
-    </FrameLayout>
+</FrameLayout>

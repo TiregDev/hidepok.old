@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Kadepok_Volunteer.kadepok_volunteer_form;
@@ -128,9 +129,15 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-//            case R.id.action_share:
-//                // todo: goto back activity from here
-//                return true;
+            case R.id.action_share:
+//                todo: goto back activity from here
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "Yuk memberi dampak perubahan positif" +
+                        "untuk kota Depok ;) ";
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, "Share via"));
 
             case android.R.id.home:
                 // todo: goto back activity from here

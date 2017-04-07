@@ -27,7 +27,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:text="Temukan Tempat Nongkrong Terdekatmu!"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:padding="16dp"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

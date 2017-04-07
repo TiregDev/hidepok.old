@@ -240,7 +240,6 @@
             android:name=".Fokopok.message"
             android:label="Pesan Masuk" />
         <activity android:name=".Kapok.activity_selengkapnya" />
-        <activity android:name=".Kapok.join_kapok" />
         <activity
             android:name=".Kapok.KapokActivity"
             android:label="Telusuri Kota Depok" />
@@ -251,7 +250,8 @@
         <activity
             android:name=".Sikepok_RS.info_dokter"
             android:label="Informasi Dokter" />
-        <activity android:name=".notif.event"></activity>
+        <activity android:name=".notif.event"
+            android:label="Event Terbaru"/>
     </application>
 
 </manifest>

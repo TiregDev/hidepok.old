@@ -3,6 +3,7 @@ package com.hi_depok.hi_depok.Fokopok.fragment_content;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ceylonlabs.imageviewpopup.ImagePopup;
 import com.hi_depok.hi_depok.Activity_Main.fokopok;
 import com.hi_depok.hi_depok.R;
 
@@ -58,6 +60,21 @@ public class fragment2 extends Fragment {
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.fokopok_item_list, parent, false));
+//            final ImagePopup imagePopup = new ImagePopup(getContext());
+//            imagePopup.setBackgroundColor(Color.BLACK);
+//            imagePopup.setWindowWidth(800);
+//            imagePopup.setWindowHeight(800);
+//            imagePopup.setHideCloseIcon(true);
+//            imagePopup.setImageOnClickClose(true);
+//
+//            final ImageView imageView = (ImageView) getView().findViewById(R.id.avatar_bagian);
+//            imageView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    /** Initiate Popup view **/
+//                    imagePopup.initiatePopup(imageView.getDrawable());
+//                }
+//            });
 
             picture = (ImageView) itemView.findViewById(R.id.card_image);
             like = (ImageButton) itemView.findViewById(R.id.like);
