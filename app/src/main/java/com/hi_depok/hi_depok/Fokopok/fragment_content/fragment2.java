@@ -22,6 +22,8 @@ import com.ceylonlabs.imageviewpopup.ImagePopup;
 import com.hi_depok.hi_depok.Activity_Main.fokopok;
 import com.hi_depok.hi_depok.R;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by User on 19/03/17.
  */
@@ -57,24 +59,25 @@ public class fragment2 extends Fragment {
         public TextView time;
         public TextView title;
         public TextView description, jumlah_like;
+        public CircleImageView imageView;
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.fokopok_item_list, parent, false));
-//            final ImagePopup imagePopup = new ImagePopup(getContext());
-//            imagePopup.setBackgroundColor(Color.BLACK);
-//            imagePopup.setWindowWidth(800);
-//            imagePopup.setWindowHeight(800);
-//            imagePopup.setHideCloseIcon(true);
-//            imagePopup.setImageOnClickClose(true);
-//
-//            final ImageView imageView = (ImageView) getView().findViewById(R.id.avatar_bagian);
-//            imageView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    /** Initiate Popup view **/
-//                    imagePopup.initiatePopup(imageView.getDrawable());
-//                }
-//            });
+            final ImagePopup imagePopup = new ImagePopup(getContext());
+            imagePopup.setBackgroundColor(Color.TRANSPARENT);
+            imagePopup.setWindowWidth(800);
+            imagePopup.setWindowHeight(800);
+            imagePopup.setHideCloseIcon(true);
+            imagePopup.setImageOnClickClose(true);
+
+            imageView = (CircleImageView) itemView.findViewById(R.id.avatar);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    /** Initiate Popup view **/
+                    imagePopup.initiatePopup(imageView.getDrawable());
+                }
+            });
 
             picture = (ImageView) itemView.findViewById(R.id.card_image);
             like = (ImageButton) itemView.findViewById(R.id.like);
