@@ -35,8 +35,7 @@
                 android:background="@color/accent"
                 android:padding="15dp"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/photo_camera"
-                app:backgroundTint="@color/accent" />
+                android:src="@drawable/photo_camera"/>
 
         </RelativeLayout>
 

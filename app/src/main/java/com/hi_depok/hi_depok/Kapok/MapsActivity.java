@@ -64,7 +64,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         else {
             Log.d("onCreate","Google Play Services available.");
         }
-        String tempatSehat[] = { "Cari Tempat ...", "Kuliner", "Wisata", "Pasar", "Tempat Ibadah",
+        String tempatSehat[] = { "Cari Tempat ...", "Kuliner", "Wisata", "Pasar", "Tempat Olahraga",
                 "GOR", };
         Spinner spinner = (Spinner) findViewById(R.id.spinPlaces);
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
@@ -75,19 +75,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 1:
-                        findPlaces("puskesmas");
+                        findPlaces("kuliner");
                         break;
                     case 2:
-                        findPlaces("klinik");
+                        findPlaces("wisata");
                         break;
                     case 3:
-                        findPlaces("apotek");
+                        findPlaces("pasar");
                         break;
                     case 4:
-                        findPlaces("ambulans");
+                        findPlaces("tempat ibadah");
                         break;
                     case 5:
-                        findPlaces("bidan");
+                        findPlaces("Tempat Olahraga");
                         break;
                     default:
                         break;

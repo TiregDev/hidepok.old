@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hi_depok.hi_depok.Lapok.mDetail.DetailActivity;
 import com.hi_depok.hi_depok.R;
 
 /**
@@ -27,8 +26,8 @@ public class RecycleViewHolderMenuKapok extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                KapokActivity pwindo = (KapokActivity) context;
-                pwindo.startActivity(new Intent(context, activity_selengkapnya.class));
+                Intent intent = new Intent(context, kapok_detail.class);
+                context.startActivity(intent);
             }
         });
     }

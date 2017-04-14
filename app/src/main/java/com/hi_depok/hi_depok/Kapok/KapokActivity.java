@@ -1,38 +1,25 @@
 package com.hi_depok.hi_depok.Kapok;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
-import com.hi_depok.hi_depok.Kadepok.KadepokDetailActivity;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Sikepok_Panic.MapsActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,6 +29,7 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
     private Button temukan;
     private RadioGroup sort;
     private RadioButton urut;
+    ImageView join;
     //array recycleview menu sort
     ArrayList<String> namalogo = new ArrayList<>(Arrays.asList(
             "Wisata", "Warung Pancong Pak Kumis & Mang Dadang",
@@ -135,7 +123,7 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
 }
 
     //popup
-    private PopupWindow pwindo;
+   /* private PopupWindow pwindo;
 
     public void initiatepopup() {
         try {
@@ -180,7 +168,7 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
         public void onClick(View v) {
             pwindo.dismiss();
         }
-    };
+    };*/
 
 
     @Override

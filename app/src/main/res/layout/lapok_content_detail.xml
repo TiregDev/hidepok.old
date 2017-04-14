@@ -134,7 +134,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/rl_konten">
+                    android:layout_below="@+id/rl_konten"
+                    android:background="#DEDCD7">
 
                     <ListView
                         android:id="@+id/listKomentar"

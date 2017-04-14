@@ -3,7 +3,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="#DEDCD7">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -40,7 +40,6 @@
             android:layout_alignParentBottom="true"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:focusableInTouchMode="true"
             android:padding="5dp">
 
             <EditText

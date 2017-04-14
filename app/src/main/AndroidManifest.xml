@@ -250,8 +250,10 @@
         <activity
             android:name=".Sikepok_RS.info_dokter"
             android:label="Informasi Dokter" />
-        <activity android:name=".notif.event"
-            android:label="Event Terbaru"/>
+        <activity
+            android:name=".notif.event"
+            android:label="Event Terbaru" />
+        <activity android:name=".Kapok.kapok_detail"></activity>
     </application>
 
 </manifest>
