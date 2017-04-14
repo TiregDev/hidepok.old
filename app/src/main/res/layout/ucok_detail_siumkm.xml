@@ -1,141 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@drawable/bg_pattern">
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/list_avatar"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="30dp"
-                    android:src="@drawable/ucok_image_1" />
-
-                <TextView
-                    android:id="@+id/list_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/list_avatar"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:text="Lemper Meler"
-                    android:textColor="#fff"
-                    android:textSize="30sp" />
-
-                <RatingBar
-                    android:id="@+id/ratingBar"
-                    style="@style/Widget.AppCompat.RatingBar.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/list_title"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="5dp"
-                    android:numStars="5"
-                    android:rating="3"
-                    android:theme="@style/RatingBar"
-                    android:stepSize="0.5"/>
-
-
-                    <ImageView
-                        android:id="@+id/call"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="35dp"
-                        android:layout_below="@+id/ratingBar"
-                        android:src="@drawable/call_small"/>
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:onClick="toMaps"
-                        android:layout_marginStart="35dp"
-                        android:layout_below="@+id/ratingBar"
-                        android:src="@drawable/maps_small"/>
-
-            </RelativeLayout>
-
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:fillViewport="true">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#b7b7b7"/>
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="@string/desc"
-                    android:textColor="#b7b7b7"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="@string/item_desc"
-                    android:textColor="#b7b7b7" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:background="@drawable/bg_pattern">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="10dp"
-                    android:background="#b7b7b7" />
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/list_avatar"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="30dp"
+                            android:src="@drawable/ucok_image_1" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="Alamat dan Contact"
-                    android:textColor="#b7b7b7"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                        <fr.arnaudguyon.smartfontslib.FontTextView
+                            android:id="@+id/list_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/list_avatar"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="Lemper Meler"
+                            android:textColor="#fff"
+                            app:font="@string/fontBold"
+                            android:textSize="30sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="@string/item_desc"
-                    android:textColor="#b7b7b7" />
+                        <RatingBar
+                            android:id="@+id/ratingBar"
+                            style="@style/Widget.AppCompat.RatingBar.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/list_title"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:numStars="5"
+                            android:rating="3"
+                            android:stepSize="0.5"
+                            android:theme="@style/RatingBar" />
 
-            </LinearLayout>
 
+                        <ImageView
+                            android:id="@+id/call"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/ratingBar"
+                            android:layout_marginEnd="35dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/call_small" />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/ratingBar"
+                            android:layout_marginStart="35dp"
+                            android:layout_marginTop="5dp"
+                            android:onClick="toMaps"
+                            android:src="@drawable/maps_small" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#b7b7b7" />
+
+                        <fr.arnaudguyon.smartfontslib.FontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
+                            android:text="@string/desc"
+                            android:textColor="#b7b7b7"
+                            android:textSize="20sp"
+                            app:font="@string/fontBold" />
+
+                        <fr.arnaudguyon.smartfontslib.FontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
+                            android:text="@string/item_desc"
+                            android:textColor="#b7b7b7"
+                            app:font="@string/fontReguler"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#b7b7b7" />
+
+                        <fr.arnaudguyon.smartfontslib.FontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
+                            android:text="Alamat dan Contact"
+                            android:textColor="#b7b7b7"
+                            android:textSize="20sp"
+                            app:font="@string/fontBold" />
+
+                        <fr.arnaudguyon.smartfontslib.FontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
+                            android:text="@string/item_desc"
+                            android:textColor="#b7b7b7"
+                            app:font="@string/fontReguler"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
-    </FrameLayout>
+</FrameLayout>

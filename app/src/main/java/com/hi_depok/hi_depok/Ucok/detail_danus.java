@@ -1,11 +1,15 @@
 package com.hi_depok.hi_depok.Ucok;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -20,6 +24,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -34,6 +39,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class detail_danus extends BaseActivity {
     Date date = Calendar.getInstance().getTime();
@@ -55,6 +62,31 @@ public class detail_danus extends BaseActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //---------------- Image Single Popup
+        final CircleImageView imageView = (CircleImageView) findViewById(R.id.list_avatar);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog settingsDialog = new Dialog(detail_danus.this);
+
+                LayoutInflater inflater = getLayoutInflater();
+                View newView = inflater.inflate(R.layout.activity_image, null);
+
+                settingsDialog.setContentView(newView);
+                settingsDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+                settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
+
+                ImageView iv= (ImageView) newView.findViewById(R.id.profile_img_popup);
+                Bitmap bm=((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                iv.setImageBitmap(bm);
+
+
+                settingsDialog.show();
+
+
+            }
+        });
     }
 
     @Override

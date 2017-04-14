@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent">
 
     <RelativeLayout
@@ -9,14 +10,15 @@
         android:layout_marginTop="10dp"
         android:gravity="center_vertical">
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
             android:text="@string/sikepok_frag1"
             android:layout_marginStart="8dp"
             android:textColor="#b7b7b7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:id="@+id/diagnosa" />
+            android:id="@+id/diagnosa"
+            app:font= "@string/fontReguler"/>
     </RelativeLayout>
 
     <RelativeLayout

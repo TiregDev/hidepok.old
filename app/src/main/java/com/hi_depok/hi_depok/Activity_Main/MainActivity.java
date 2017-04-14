@@ -1,5 +1,6 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -33,7 +34,6 @@ public class MainActivity extends BaseActivity {
     private static final int TIME_DELAY = 2000;
     private static long back_pressed;
     private Drawer result;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -262,6 +262,10 @@ public class MainActivity extends BaseActivity {
         TextView tv2 = (TextView)findViewById(R.id.textView2);
         Typeface tf2 = Typeface.createFromAsset(getAssets(), "font/Blogger_Sans-Italic.otf");
         tv2.setTypeface(tf2);
+
+        TextView tv3 = (TextView)findViewById(R.id.textView3);
+        Typeface tf3 = Typeface.createFromAsset(getAssets(), "font/Blogger_Sans.otf");
+        tv3.setTypeface(tf3);
 
         Button bt = (Button)findViewById(R.id.sikepok);
         bt.setTypeface(tf);

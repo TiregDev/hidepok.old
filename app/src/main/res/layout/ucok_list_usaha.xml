@@ -2,29 +2,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <fr.arnaudguyon.smartfontslib.FontTextView
         android:id="@+id/title_usaha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/article_titles"
-        android:paddingTop="5dp"
-        android:paddingStart="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:font="@string/fontReguler"
         android:textColor="#fff"
         android:text="Title"/>
 
-    <TextView
+    <fr.arnaudguyon.smartfontslib.FontTextView
         android:id="@+id/desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title_usaha"
-        android:paddingStart="10dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:font="@string/fontLight"
         android:textAppearance="?attr/textAppearanceListItem"
         android:ellipsize="end"
         android:textColor="#fff"
         android:singleLine="true"
-        android:textSize="@dimen/slide_desc"
+        android:textSize="@dimen/article_desc"
         android:text="Deskripsi"/>
 
    <View
