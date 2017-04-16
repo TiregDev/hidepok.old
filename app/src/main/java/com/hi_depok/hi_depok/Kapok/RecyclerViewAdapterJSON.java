@@ -76,7 +76,7 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, activity_selengkapnya.class);
+                    Intent intent = new Intent(context, kapok_detail.class);
                     context.startActivity(intent);
                 }
             });

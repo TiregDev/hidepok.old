@@ -1,25 +1,48 @@
 package com.hi_depok.hi_depok.Kapok;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
+import com.hi_depok.hi_depok.Kadepok.KadepokDetailActivity;
 import com.hi_depok.hi_depok.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +52,6 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
     private Button temukan;
     private RadioGroup sort;
     private RadioButton urut;
-    ImageView join;
     //array recycleview menu sort
     ArrayList<String> namalogo = new ArrayList<>(Arrays.asList(
             "Wisata", "Warung Pancong Pak Kumis & Mang Dadang",
@@ -44,7 +66,18 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
             R.drawable.ucok_image_4, R.drawable.wisata,
             R.drawable.ucok_image_4, R.drawable.wisata));
 
-
+    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php";
+    String JSON_ID = "id_tempat";
+    String JSON_ALAMAT = "alamat_tempat";
+    String JSON_NAME = "nama_tempat";
+    String JSON_DESKRIPSI = "deskripsi_tempat";
+    String JSON_NOTLP = "no_telp_tempat";
+    JsonArrayRequest jsonArrayRequest ;
+    List<GetDataAdapter> dataAdapter;
+    RequestQueue requestQueue ;
+    RecyclerView.Adapter recyclerViewadapter;
+    ProgressDialog progressDialog;
+    RecyclerView rView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,9 +97,44 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
         Spinner camat = (Spinner) findViewById(R.id.camat);
         sort=(RadioGroup)findViewById(R.id.sort);
         temukan=(Button)findViewById(R.id.temukan);
-
+        dataAdapter = new ArrayList<>();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading ...");
+        progressDialog.show();
+        JSON_DATA_WEB_CALL();
         // Spinner click listener
-        pilihan.setOnItemSelectedListener(this);
+        pilihan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 1:
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=kuliner";
+                        break;
+                    case 2:
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=wisata";
+                        break;
+                    case 3:
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=pasar";
+                        break;
+                    case 4:
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=tempat_ibadah";
+                        break;
+                    case 5:
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=olahraga";
+                        break;
+                    default:
+                        break;
+                }
+                progressDialog.show();
+                dataAdapter.clear();
+                JSON_DATA_WEB_CALL();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         List<String> pilih = new ArrayList<String>();
         pilih.add("Pilihan");
         pilih.add("Kuliner");
@@ -111,50 +179,90 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
 
         //join
 
-
         //recycleview
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        rView = (RecyclerView) findViewById(R.id.recyclerView);
         // set a GridLayoutManager with 2 number of columns , horizontal gravity and false value for reverseLayout to show the items from start to end
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
-        recyclerView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
+        rView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
         //  call the constructor of CustomAdapter to send the reference and data to Adapter
-        CustomAdapterMenuSort customAdapter = new CustomAdapterMenuSort(KapokActivity.this, namalogo,gambarlogo);
-        recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
+//        CustomAdapterMenuSort customAdapter = new CustomAdapterMenuSort(KapokActivity.this, namalogo,gambarlogo);
+//        rView.setAdapter(customAdapter); // set the Adapter to RecyclerView
 }
+    public void JSON_DATA_WEB_CALL(){
+        jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_URL,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        progressDialog.dismiss();
+                        JSON_PARSE_DATA_AFTER_WEBCALL(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
 
-    //popup
-   /* private PopupWindow pwindo;
+                    }
+                });
 
-    public void initiatepopup() {
-        try {
-            LayoutInflater inflater = (LayoutInflater) KapokActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = inflater.inflate(R.layout.kapok_popup_layout, (ViewGroup) findViewById(R.id.popup_element));
-
-            pwindo = new PopupWindow(layout, 450, 750, true);
-            pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
-            pwindo.setOutsideTouchable(true);
-            pwindo.setFocusable(true);
-            ImageView maps = (ImageView) layout.findViewById(R.id.mapsIcon);
-            maps.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(KapokActivity.this, MapsActivity.class));
-                }
-            });
-            Button selengkapnya = (Button) layout.findViewById(R.id.next);
-            selengkapnya.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(KapokActivity.this, activity_selengkapnya.class));
-                }
-            });
-            ImageView close = (ImageView) layout.findViewById(R.id.close);
-            close.setOnClickListener(cancel_button_click_listener);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
     }
+
+    public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array){
+        for(int i = 0; i<array.length(); i++) {
+            GetDataAdapter dataFromJSON = new GetDataAdapter();
+            JSONObject json = null;
+            try {
+                json = array.getJSONObject(i);
+                dataFromJSON.setName(json.getString(JSON_NAME));
+                dataFromJSON.setFoto(gambarlogo.get(i));
+
+            } catch (JSONException e) {
+
+                e.printStackTrace();
+            }
+            dataAdapter.add(dataFromJSON);
+        }
+
+        recyclerViewadapter = new RecyclerViewAdapterJSON(dataAdapter, this);
+        rView.setAdapter(recyclerViewadapter);
+    }
+
+
+
+//    //popup
+//    private PopupWindow pwindo;
+//
+//    public void initiatepopup() {
+//        try {
+//            LayoutInflater inflater = (LayoutInflater) KapokActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//            View layout = inflater.inflate(R.layout.kapok_popup_layout, (ViewGroup) findViewById(R.id.popup_element));
+//
+//            pwindo = new PopupWindow(layout, 450, 750, true);
+//            pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
+//            pwindo.setOutsideTouchable(true);
+//            pwindo.setFocusable(true);
+//            ImageView maps = (ImageView) layout.findViewById(R.id.mapsIcon);
+//            maps.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    startActivity(new Intent(KapokActivity.this, MapsActivity.class));
+//                }
+//            });
+//            Button selengkapnya = (Button) layout.findViewById(R.id.next);
+//            selengkapnya.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    startActivity(new Intent(KapokActivity.this, activity_selengkapnya.class));
+//                }
+//            });
+//            ImageView close = (ImageView) layout.findViewById(R.id.close);
+//            close.setOnClickListener(cancel_button_click_listener);
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 //    @Override
 //    public void onBackPressed() {
 //        if (pwindo != null) {
@@ -163,12 +271,12 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
 //            }
 //        }
 //    }
-    private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            pwindo.dismiss();
-        }
-    };*/
+//    private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            pwindo.dismiss();
+//        }
+//    };
 
 
     @Override
