@@ -3,15 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?android:attr/selectableItemBackground">
 
-    <TextView
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        app:font="@string/fontReguler"
         android:id="@+id/title_sugesti"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/article_titles"
         android:paddingTop="5dp"
-        android:paddingLeft="10dp"
+        android:layout_marginStart="10dp"
         android:textColor="#fff"
         android:text="Title"
         android:layout_alignParentTop="true"

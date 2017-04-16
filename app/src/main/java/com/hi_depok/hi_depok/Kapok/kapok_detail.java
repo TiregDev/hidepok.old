@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -110,19 +111,19 @@ public class kapok_detail extends BaseActivity {
         return allItems;
     }
 
-    /*  @Override
+    @Override
       public boolean onOptionsItemSelected(MenuItem item) {
           switch (item.getItemId()) {
               case android.R.id.home:
                   // todo: goto back activity from here
 
-                  DetailActivity.this.finish();
+                  kapok_detail.this.finish();
                   return true;
 
               default:
                   return super.onOptionsItemSelected(item);
           }
-      }*/
+      }
     public void toMaps(View v){
         Intent intent = new Intent(getBaseContext(), com.hi_depok.hi_depok.Sikepok_Panic.MapsActivity.class);
         startActivity(intent);

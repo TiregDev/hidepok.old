@@ -42,7 +42,8 @@
             android:orientation="horizontal"
             android:padding="5dp">
 
-            <EditText
+            <fr.arnaudguyon.smartfontslib.FontEditText
+                app:font="@string/fontReguler"
                 android:id="@+id/isiKomentar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

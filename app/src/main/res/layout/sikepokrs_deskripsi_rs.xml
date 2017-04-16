@@ -12,9 +12,10 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontBold"
+            android:textColor="@color/white"
             android:id="@+id/textView5"
-            style="@style/tulisanPutih"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -31,9 +32,11 @@
             android:layout_marginBottom="10dp"
             app:srcCompat="@drawable/rs_mitra_keluarga" />
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontBold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/article_desc"
             android:id="@+id/textView4"
-            style="@style/tulisanPutih"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -41,9 +44,10 @@
             android:layout_marginBottom="10dp"
             android:text="Deskripsi" />
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontReguler"
+            android:textColor="@color/white"
             android:id="@+id/textView3"
-            style="@style/paragrafBiasa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -69,9 +73,10 @@
                 android:layout_alignParentTop="true"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/icon_call" />
+                app:srcCompat="@drawable/call_small" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                app:font="@string/fontReguler"
                 android:id="@+id/kontak"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -95,72 +100,6 @@
             android:weightSum="2">
 
             <ImageView
-                android:id="@+id/icon_desktop"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="center"
-                android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/icon_computer" />
-
-            <TextView
-                android:id="@+id/website"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:layout_marginStart="19dp"
-                android:layout_toEndOf="@+id/icon_desktop"
-                android:text="@string/email"
-                android:textColor="@color/white" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/relativeLayout3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/relativeLayout2"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp"
-            android:weightSum="2">
-
-            <ImageView
-                android:id="@+id/icon_email"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="center"
-                android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/icon_email" />
-
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:layout_marginStart="19dp"
-                android:layout_toEndOf="@+id/icon_email"
-                android:text="@string/email"
-                android:textColor="@color/white" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/relativeLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/relativeLayout3"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp"
-            android:weightSum="2">
-
-            <ImageView
                 android:id="@+id/icon_lokasi"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -168,9 +107,10 @@
                 android:layout_alignParentTop="true"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/icon_location" />
+                app:srcCompat="@drawable/maps_small" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                app:font="@string/fontReguler"
                 android:id="@+id/alamat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -188,12 +128,13 @@
             android:layout_height="50dp"
             android:orientation="horizontal"
             android:weightSum="2"
-            android:layout_below="@+id/relativeLayout4"
+            android:layout_below="@+id/relativeLayout2"
             android:layout_alignParentStart="true"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="100sp">
 
-            <Button
+            <fr.arnaudguyon.smartfontslib.FontButton
+                app:font="@string/fontBold"
                 android:id="@+id/tombol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

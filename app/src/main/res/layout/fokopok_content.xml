@@ -1,8 +1,8 @@
-<FrameLayout
-    android:id="@+id/drawer_layout"
+<FrameLayout android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -48,7 +48,8 @@
         android:orientation="horizontal"
         android:weightSum="2">
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontReguler"
             android:id="@+id/komunitas_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -57,7 +58,8 @@
             android:text="Komunitas"
             android:textColor="#fff" />
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontReguler"
             android:id="@+id/home_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

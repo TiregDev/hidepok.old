@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -78,6 +79,22 @@ public class UcokDetailActivity extends BaseActivity {
 
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+                UcokDetailActivity.this.finish();
+                return true;
+//            case R.id.action_share:
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    public void toMaps(View v){
+        Intent intent = new Intent(getBaseContext(), MapsActivity.class);
+        startActivity(intent);
     }
 
 }

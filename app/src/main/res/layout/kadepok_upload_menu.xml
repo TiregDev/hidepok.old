@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/popup_element"
     android:layout_width="200dp"
     android:layout_height="wrap_content"
     android:background="#fff"
     android:gravity="center">
 
-    <Button
+    <fr.arnaudguyon.smartfontslib.FontButton
+        app:font="@string/fontReguler"
         android:id="@+id/ambil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +18,8 @@
         android:focusableInTouchMode="false"
         android:text="Ambil Foto" />
 
-    <Button
+    <fr.arnaudguyon.smartfontslib.FontButton
+        app:font="@string/fontReguler"
         android:id="@+id/pilih"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

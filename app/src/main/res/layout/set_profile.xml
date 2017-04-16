@@ -1,78 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
-    </RelativeLayout>
-
-
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="-20dp"
-            android:src="@drawable/profile"/>
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme" />
+        </RelativeLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="-20dp"
-            android:orientation="vertical">
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Fajar Zakaria"
-                android:textColor="#b7b7b7"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginStart="-20dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/profile" />
 
-            <EditText
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="-10dp"
-                android:text="Full Idea"
-                android:textColor="#b7b7b7"/>
+                android:layout_height="match_parent"
+                android:layout_marginStart="-20dp"
+                android:orientation="vertical">
+
+                <fr.arnaudguyon.smartfontslib.FontEditText
+                    app:font="@string/fontReguler"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Fajar Zakaria"
+                    android:textColor="#b7b7b7" />
+
+                <fr.arnaudguyon.smartfontslib.FontEditText
+                    app:font="@string/fontReguler"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="-10dp"
+                    android:text="Full Idea"
+                    android:textColor="#b7b7b7" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontReguler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="Andu juga dapat mengganti password"
+            android:textColor="#8c8c8c" />
+
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontReguler"
+            android:id="@+id/changepass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Klik disini"
+            android:textColor="@color/colorPrimary" />
+
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textColor="#8c8c8c"
-        android:gravity="center"
-        android:text="You can change password"/>
-
-    <TextView
-        android:id="@+id/changepass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:onClick="linkpass"
-        android:gravity="center"
-        android:text="Click here" />
-
-</LinearLayout>
-    </FrameLayout>
+</FrameLayout>

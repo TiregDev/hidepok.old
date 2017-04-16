@@ -1,36 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="300dp"
     android:layout_height="300dp"
     android:focusableInTouchMode="true"
     android:padding="15dp">
 
-    <EditText
+    <fr.arnaudguyon.smartfontslib.FontEditText
+        app:font="@string/fontReguler"
         android:id="@+id/target_rupiah"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Target Pendapatan (Rp)"/>
 
-    <TextView
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        app:font="@string/fontReguler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         android:text="contoh: 100000"
         android:textSize="10sp"
         android:layout_marginTop="-5dp"/>
 
-    <EditText
+    <fr.arnaudguyon.smartfontslib.FontEditText
+        app:font="@string/fontReguler"
         android:id="@+id/target_waktu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Target Waktu (Jumlah Hari)"/>
 
-    <TextView
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        app:font="@string/fontReguler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         android:text="contoh: 7"
         android:textSize="10sp"
         android:layout_marginTop="-5dp"/>

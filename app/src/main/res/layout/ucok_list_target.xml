@@ -46,6 +46,7 @@
 
         <fr.arnaudguyon.smartfontslib.FontButton
             android:id="@+id/simpan"
+            android:background="@color/white"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="0.8"

@@ -25,7 +25,8 @@
                 android:layout_height="200dp"
                 app:srcCompat="@drawable/hospital" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                app:font="@string/fontBold"
                 android:id="@+id/text1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,7 +35,7 @@
                 android:gravity="center"
                 android:text="Sistem Informasi\nRumah Sakit"
                 android:textColor="#fff"
-                android:textSize="22sp" />
+                android:textSize="@dimen/article_titles" />
 
         </RelativeLayout>
 
@@ -93,32 +94,35 @@
             android:orientation="horizontal"
             android:weightSum="3">
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                app:font="@string/fontReguler"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Informasi\nRumah Sakit"
                 android:textColor="#fff"
-                android:textSize="14sp" />
+                android:textSize="@dimen/list_body" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                app:font="@string/fontReguler"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Layanan\nPendaftaran"
                 android:textColor="#fff"
-                android:textSize="14sp" />
+                android:textSize="@dimen/list_body" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                app:font="@string/fontReguler"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Forum\nTanya Jawab"
                 android:textColor="#fff"
-                android:textSize="14sp" />
+                android:textSize="@dimen/list_body" />
 
         </LinearLayout>
 

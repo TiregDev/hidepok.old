@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="10dp">
 
     <RelativeLayout
@@ -14,8 +15,8 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
             android:layout_width="80dp"
-            android:padding="10dp"
             android:layout_height="80dp"
+            android:padding="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/profile" />
 
@@ -23,44 +24,47 @@
             android:id="@+id/rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="left"
             android:backgroundTint="#fff"
             android:numStars="5"
+            android:rating="5"
             android:scaleX="0.3"
             android:scaleY="0.3"
-            android:rating="5"
-            android:layout_gravity="left"
-            android:theme="@style/RatingBar"
-            android:layout_alignParentTop="true" />
+            android:theme="@style/RatingBar" />
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/avatar"
+            android:layout_toEndOf="@+id/avatar"
             android:text="Kadek Pandu"
+            android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textAppearance="?attr/textAppearanceListItem"/>
-        <TextView
-            android:layout_width="match_parent"
+            app:font="@string/fontBold" />
+
+        <fr.arnaudguyon.smartfontslib.FontTextView
             android:id="@+id/waktu"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toEndOf="@+id/avatar"
+            android:gravity="end"
             android:text="waktu"
-            android:gravity="right"
             android:textSize="10sp"
-            android:layout_toRightOf="@+id/avatar"
-            android:layout_below="@+id/title"/>
-        <TextView
+            app:font="@string/fontReguler" />
+
+        <fr.arnaudguyon.smartfontslib.FontTextView
             android:id="@+id/komentar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rumah makannya bagus, makanannya murah dan enak."
             android:layout_below="@+id/waktu"
-            android:layout_toRightOf="@id/avatar"
-            android:textSize="14sp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/avatar"
+            android:text="Rumah makannya bagus, makanannya murah dan enak."
             android:textAppearance="?attr/textAppearanceListItem"
-            />
+            android:textSize="14sp"
+            app:font="@string/fontReguler" />
 
     </RelativeLayout>
 

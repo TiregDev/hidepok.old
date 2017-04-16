@@ -133,8 +133,6 @@ public class kadepok_content extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-
-
             case android.R.id.home:
                 // todo: goto back activity from here
                 kadepok_content.this.finish();

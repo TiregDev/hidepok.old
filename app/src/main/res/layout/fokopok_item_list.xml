@@ -15,70 +15,76 @@
         android:background="#fff">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar"
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
-            android:id="@+id/avatar"
-            android:src="@drawable/profile"/>
+            android:src="@drawable/profile" />
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontBold"
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/background"
             android:layout_marginTop="5dp"
-            android:layout_toRightOf="@+id/avatar"
+            android:layout_toEndOf="@+id/avatar"
             android:text="Fajar Zakaria"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontReguler"
+            android:layout_marginTop="5dp"
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Feb 8, 2017 at 17.00 WIB"
-            android:layout_toRightOf="@+id/avatar"
             android:layout_below="@+id/username"
-            android:textSize="12sp"
-            android:textColor="#b7b7b7"/>
+            android:layout_toEndOf="@+id/avatar"
+            android:text="Feb 8, 2017 at 17.00 WIB"
+            android:textColor="#b7b7b7"
+            android:textSize="12sp" />
 
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="50dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
 
         <ImageView
             android:id="@+id/card_image"
             android:layout_width="match_parent"
             android:layout_height="@dimen/card_image_height"
             android:layout_below="@+id/card_text"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
             android:scaleType="centerCrop"
             tools:src="@drawable/image_fokopok_1" />
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontReguler"
             android:id="@+id/card_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/md_keylines"
             android:layout_marginBottom="@dimen/md_keylines"
+            android:layout_marginLeft="@dimen/md_keylines"
             android:layout_marginRight="@dimen/md_keylines"
-            tools:text="Computer Student Club"
             android:ellipsize="end"
             android:singleLine="true"
             android:textColor="#303030"
-            android:textSize="@dimen/article_subheading" />
+            android:textSize="@dimen/article_subheading"
+            tools:text="Computer Student Club" />
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontReguler"
             android:id="@+id/card_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/card_title"
             android:layout_marginStart="@dimen/md_keylines"
-            android:layout_marginTop="-20dp"
-            android:text="Kompetisi Networking di PNJ"/>
+            android:layout_marginTop="-15dp"
+            android:text="Kompetisi Networking di PNJ" />
 
 
         <ImageButton
@@ -86,45 +92,45 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/cards_button_width"
             android:layout_height="@dimen/cards_button_height"
-            android:layout_marginTop="-5dp"
+            android:layout_below="@+id/card_image"
             android:layout_marginStart="15dp"
-            app:srcCompat="@drawable/like"
-            android:layout_below="@+id/card_image"/>
+            android:layout_marginTop="-5dp"
+            app:srcCompat="@drawable/like" />
 
         <TextView
             android:id="@+id/jumlah_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="5dp"
-            android:text="293"
-            android:textSize="12sp"
             android:layout_below="@+id/card_image"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/like"
+            android:text="293"
             android:textColor="#303030"
-            android:layout_toEndOf="@id/like"/>
+            android:textSize="12sp" />
 
         <ImageButton
             android:id="@+id/comment_button"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="15dp"
-            app:srcCompat="@drawable/comment"
             android:layout_below="@+id/card_image"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/jumlah_like"
-            style="?android:attr/borderlessButtonStyle"/>
+            app:srcCompat="@drawable/comment" />
 
         <TextView
             android:id="@+id/jumlah_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="10dp"
-            android:text="17"
-            android:textSize="12sp"
             android:layout_below="@+id/card_image"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/comment_button"
+            android:text="17"
             android:textColor="#303030"
-            android:layout_toRightOf="@id/comment_button"/>
+            android:textSize="12sp" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

@@ -1,245 +1,291 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp">
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:textSize="@dimen/article_desc"
                 android:id="@+id/tlpn_panti"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/textView30"
                 android:layout_alignStart="@+id/pengurus_panti"
+                android:text="021-8766765"
                 android:textColor="#fff"
-                android:text="021-8766765" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/pengurus_panti"
+                android:textSize="@dimen/article_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/textView29"
                 android:layout_centerHorizontal="true"
+                android:text="KH. Darul"
                 android:textColor="#fff"
-                android:text="KH. Darul" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/text_jmlh_anak"
                 android:layout_width="wrap_content"
+                android:textSize="@dimen/article_desc"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/text_telepon"
                 android:layout_below="@+id/text_telepon"
                 android:layout_marginTop="20dp"
+                android:text="Jumlah Anak "
                 android:textColor="#fff"
-                android:text="Jumlah Anak " />
+                app:font="@string/fontReguler" />
 
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/textView30"
+                android:textSize="@dimen/article_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/text_jmlh_anak"
                 android:layout_alignStart="@+id/textView29"
+                android:text=":"
                 android:textColor="#fff"
-                android:text=":" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/textView32"
                 android:layout_width="wrap_content"
+                android:textSize="@dimen/article_desc"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/desc_panti"
                 android:layout_alignBaseline="@+id/text_thn_berdiri"
                 android:layout_alignStart="@+id/textView31"
+                android:text=":"
                 android:textColor="#fff"
-                android:text=":" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/text_thn_berdiri"
                 android:layout_width="wrap_content"
+                android:textSize="@dimen/article_desc"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/text_jmlh_anak"
                 android:layout_below="@+id/text_jmlh_anak"
                 android:layout_marginTop="28dp"
+                android:text="Tahun Berdiri"
                 android:textColor="#fff"
-                android:text="Tahun Berdiri" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/text_alamat_panti"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/article_desc"
                 android:layout_alignStart="@+id/text_thn_berdiri"
                 android:layout_below="@+id/text_thn_berdiri"
                 android:layout_marginTop="28dp"
+                android:text="Alamat Panti"
                 android:textColor="#fff"
-                android:text="Alamat Panti" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/textView41"
                 android:layout_width="wrap_content"
+                android:textSize="@dimen/article_desc"
                 android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:text=":"
                 android:layout_alignBaseline="@+id/text_alamat_panti"
                 android:layout_alignBottom="@+id/text_alamat_panti"
-                android:layout_alignStart="@+id/textView32" />
+                android:layout_alignStart="@+id/textView32"
+                android:text=":"
+                android:textColor="#fff"
+                app:font="@string/fontReguler" />
 
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/text_email_panti"
                 android:layout_width="wrap_content"
+                android:textSize="@dimen/article_desc"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/text_alamat_panti"
                 android:layout_below="@+id/text_alamat_panti"
                 android:layout_marginTop="28dp"
+                android:text="Email"
                 android:textColor="#fff"
-                android:text="Email" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/textView42"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/article_desc"
                 android:layout_above="@+id/desc_panti"
                 android:layout_alignBaseline="@+id/text_email_panti"
                 android:layout_alignStart="@+id/textView31"
+                android:text=":"
                 android:textColor="#fff"
-                android:text=":" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/text_rekening_panti"
+                android:textSize="@dimen/article_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/text_email_panti"
                 android:layout_below="@+id/text_email_panti"
                 android:layout_marginTop="28dp"
+                android:text="Rekening"
                 android:textColor="#fff"
-                android:text="Rekening" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/textView43"
                 android:layout_width="wrap_content"
+                android:textSize="@dimen/article_desc"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/desc_panti"
                 android:layout_alignBaseline="@+id/text_rekening_panti"
                 android:layout_alignStart="@+id/textView31"
+                android:text=":"
                 android:textColor="#fff"
-                android:text=":" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/desc_panti"
                 android:layout_width="wrap_content"
+                android:textSize="@dimen/article_desc"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/text_rekening_panti"
                 android:layout_marginTop="40dp"
+                android:text="@string/item_desc"
                 android:textColor="#fff"
-                android:text="@string/item_desc" />
+                app:font="@string/fontReguler" />
 
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/textView36"
+                android:textSize="@dimen/article_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/jmlh_anak_panti"
-                android:layout_alignLeft="@+id/jmlh_anak_panti"
-                android:layout_marginLeft="30dp"
+                android:layout_alignStart="@+id/jmlh_anak_panti"
+                android:layout_marginStart="30dp"
+                android:text="Anak"
                 android:textColor="#fff"
-                android:text="Anak" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/thn_berdiri"
+                android:textSize="@dimen/article_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/desc_panti"
                 android:layout_alignBaseline="@+id/text_thn_berdiri"
                 android:layout_alignStart="@+id/jmlh_anak_panti"
+                android:text="2003"
                 android:textColor="#fff"
-                android:text="2003" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/text_pengurus"
+                android:textSize="@dimen/article_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:text="Pengurus"
                 android:textColor="#fff"
-                android:text="Pengurus" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/textView31"
+                android:textSize="@dimen/article_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/text_jmlh_anak"
                 android:layout_alignBottom="@+id/text_jmlh_anak"
                 android:layout_alignStart="@+id/textView30"
+                android:text=":"
                 android:textColor="#fff"
-                android:text=":" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/text_telepon"
                 android:layout_width="wrap_content"
+                android:textSize="@dimen/article_desc"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/text_pengurus"
                 android:layout_below="@+id/text_pengurus"
                 android:layout_marginTop="18dp"
+                android:text="No. Telepon"
                 android:textColor="#fff"
-                android:text="No. Telepon" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/textView29"
+                android:textSize="@dimen/article_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/text_jmlh_anak"
+                android:text=":"
                 android:textColor="#fff"
-                android:text=":" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/jmlh_anak_panti"
                 android:layout_width="wrap_content"
+                android:textSize="@dimen/article_desc"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/textView31"
                 android:layout_alignStart="@+id/tlpn_panti"
+                android:text="55"
                 android:textColor="#fff"
-                android:text="55" />
+                app:font="@string/fontReguler" />
 
 
-
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/alamat_panti"
+                android:textSize="@dimen/article_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/text_alamat_panti"
                 android:layout_alignStart="@+id/thn_berdiri"
+                android:text="Jl. Beji, Beji, Depok, Jawa Barat"
                 android:textColor="#fff"
-                android:text="Jl. Beji, Beji, Depok, Jawa Barat" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/email_panti"
+                android:textSize="@dimen/article_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/text_email_panti"
                 android:layout_alignStart="@+id/alamat_panti"
+                android:text="darulilmi@gmail.com"
                 android:textColor="#fff"
-                android:text="darulilmi@gmail.com" />
+                app:font="@string/fontReguler" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
                 android:id="@+id/rekening_panti"
+                android:textSize="@dimen/article_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/text_rekening_panti"
                 android:layout_alignStart="@+id/email_panti"
+                android:text="1370004337144"
                 android:textColor="#fff"
-                android:text="1370004337144" />
+                app:font="@string/fontReguler" />
         </RelativeLayout>
     </ScrollView>
 

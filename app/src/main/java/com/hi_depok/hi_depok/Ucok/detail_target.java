@@ -15,6 +15,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -75,7 +76,18 @@ public class detail_target extends BaseActivity {
 
 //        placePictures.recycle();
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+                detail_target.this.finish();
+                return true;
+//            case R.id.action_share:
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView harike;

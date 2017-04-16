@@ -9,11 +9,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 
 public class setprofile extends BaseActivity {
+
+    TextView changepass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,15 @@ public class setprofile extends BaseActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        changepass = (TextView) findViewById(R.id.changepass);
+        changepass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(setprofile.this, changepass.class);
+                startActivity(intent);
+            }
+        });
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -42,11 +54,6 @@ public class setprofile extends BaseActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    public void linkpass(View view){
-        Intent intent = new Intent(setprofile.this, changepass.class);
-        startActivity(intent);
     }
 
 }

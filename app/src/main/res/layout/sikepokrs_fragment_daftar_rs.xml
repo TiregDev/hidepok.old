@@ -25,9 +25,10 @@
             android:layout_marginStart="10dp"
             app:srcCompat="@drawable/rskeluarga" />
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontBold"
+            android:textColor="@color/white"
             android:id="@+id/namaRS"
-            style="@style/tulisanPutih"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -35,15 +36,16 @@
             android:layout_toEndOf="@+id/gambarRS"
             android:text="@string/namaRS" />
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontReguler"
+            android:textColor="@color/white"
             android:id="@+id/alamatRS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_below="@+id/namaRS"
             android:layout_toEndOf="@+id/gambarRS"
-            android:text="@string/alamat"
-            android:textColor="@color/white" />
+            android:text="@string/alamat" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -71,13 +73,14 @@
                 android:layout_height="match_parent"
                 android:gravity="center">
 
-                <TextView
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    app:font="@string/fontBold"
+                    android:textColor="@color/white"
                     android:id="@+id/jarak1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="@string/jarak1"
-                    android:textColor="@color/white" />
+                    android:text="@string/jarak1" />
 
             </RelativeLayout>
 

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="5dp">
     <!--
     grid items for RecyclerView
@@ -15,10 +16,16 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:scaleType="fitXY"
-            android:alpha="0.9"
             android:src="@mipmap/ic_launcher"/>
 
-        <TextView
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:alpha="0.5"
+            android:background="@color/hitam"/>
+
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontReguler"
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,7 +33,7 @@
             android:layout_marginStart="20dp"
             android:singleLine="true"
             android:text="Pancong"
-            android:textSize="20sp"
+            android:textSize="@dimen/article_titles"
             android:textStyle="bold"
             android:textColor="@color/white" />
     </RelativeLayout>

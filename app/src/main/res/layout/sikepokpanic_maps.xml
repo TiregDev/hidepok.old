@@ -17,14 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:alpha="0.8"
+        android:alpha="0.9"
         android:background="@color/white"
         android:orientation="vertical">
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontReguler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="15dp"
             android:text="Temukan Tempat Sehat Terdekatmu!"
             android:textSize="20sp" />
@@ -39,7 +40,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="15dp"
-                android:layout_weight="1"
                 android:background="#e4e4e4" />
 
             <ImageView
@@ -52,7 +52,8 @@
 
         </RelativeLayout>
 
-        <Button
+        <fr.arnaudguyon.smartfontslib.FontButton
+            app:font="@string/fontBold"
             android:id="@+id/btnExplore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,21 +65,24 @@
             android:text="JELAJAHI SEKARANG"
             android:textColor="@color/white" />
 
-        <Button
+        <fr.arnaudguyon.smartfontslib.FontButton
+            app:font="@string/fontReguler"
             android:id="@+id/btnRestaurant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nearby Restaurants"
             android:visibility="gone" />
 
-        <Button
+        <fr.arnaudguyon.smartfontslib.FontButton
+            app:font="@string/fontReguler"
             android:id="@+id/btnHospital"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nearby Hospitals"
             android:visibility="gone" />
 
-        <Button
+        <fr.arnaudguyon.smartfontslib.FontButton
+            app:font="@string/fontReguler"
             android:id="@+id/btnSchool"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

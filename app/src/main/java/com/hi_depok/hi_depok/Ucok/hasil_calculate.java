@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -53,6 +54,18 @@ public class hasil_calculate extends BaseActivity {
         allItems.add(new itemObject_listdanus("DeGordio Puritio", "Italion Gata, Padova, Italy","IDR 3k/Item", R.drawable.ucok_image_5));
 
         return allItems;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+                hasil_calculate.this.finish();
+                return true;
+//            case R.id.action_share:
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }

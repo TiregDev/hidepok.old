@@ -29,67 +29,72 @@
                     android:layout_weight="1"
                     android:textColorHint="#b7b7b7">
 
-                    <EditText
+                    <fr.arnaudguyon.smartfontslib.FontEditText
                         android:id="@+id/donasi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="20dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="30dp"
+                        android:textColor="@color/white"
                         android:hint="Nominal Donasi (Rp)"
                         android:imeOptions="actionUnspecified"
                         android:inputType="number"
                         android:maxLines="1"
                         android:textColorLink="#fff"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        app:font="@string/fontReguler" />
 
                 </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
 
 
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColorHint="#b7b7b7"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:textColorHint="#b7b7b7">
 
-                <EditText
+                <fr.arnaudguyon.smartfontslib.FontEditText
                     android:id="@+id/nama_donatur"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
+                    android:textColor="@color/white"
                     android:hint="Nama Pengirim"
                     android:imeOptions="actionUnspecified"
                     android:inputType="none"
                     android:maxLines="1"
                     android:textColorLink="#fff"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    app:font="@string/fontReguler" />
 
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColorHint="#b7b7b7"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:textColorHint="#b7b7b7">
 
-                <EditText
+                <fr.arnaudguyon.smartfontslib.FontEditText
                     android:id="@+id/tlp_donatur"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
+                    android:textColor="@color/white"
                     android:layout_marginTop="20dp"
                     android:hint="Telepon"
                     android:imeOptions="actionUnspecified"
                     android:inputType="phone"
                     android:maxLines="1"
                     android:textColorLink="#fff"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    app:font="@string/fontReguler" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -98,18 +103,24 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/activity_horizontal_margin">
 
-            <Button
-                android:id="@+id/bukti"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bukti Transfer"
-                android:textColor="@color/background"/>
+                <fr.arnaudguyon.smartfontslib.FontButton
+                    android:id="@+id/bukti"
+                    android:layout_width="wrap_content"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:text="Bukti Transfer"
+                    android:textColor="@color/background"
+                    app:font="@string/fontReguler" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/bukti"
-                android:layout_marginStart="10dp"/>
+                <fr.arnaudguyon.smartfontslib.FontEditText
+                    app:font="@string/fontReguler"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/bukti" />
 
             </RelativeLayout>
 
@@ -120,7 +131,8 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center">
 
-                <Button
+                <fr.arnaudguyon.smartfontslib.FontButton
+                    app:font="@string/fontBold"
                     android:id="@+id/donate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

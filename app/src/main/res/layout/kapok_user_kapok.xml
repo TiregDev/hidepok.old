@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -63,7 +64,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="70dp"
+                    android:layout_marginStart="60dp"
                     android:layout_weight="1"
                     android:padding="10dp"
                     android:src="@drawable/spinner" />
@@ -102,7 +103,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <RadioButton
+                    <fr.arnaudguyon.smartfontslib.FontRadioButton
+                        app:font="@string/fontReguler"
                         android:id="@+id/rating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -112,7 +114,8 @@
                         android:textColorLink="@color/colorPrimary"
                         android:textSize="14sp" />
 
-                    <RadioButton
+                    <fr.arnaudguyon.smartfontslib.FontRadioButton
+                        app:font="@string/fontReguler"
                         android:id="@+id/jarak"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -124,7 +127,8 @@
                 </RadioGroup>
             </LinearLayout>
 
-            <Button
+            <fr.arnaudguyon.smartfontslib.FontButton
+                app:font="@string/fontBold"
                 android:id="@+id/temukan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

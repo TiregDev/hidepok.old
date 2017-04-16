@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -127,7 +128,18 @@ public class ucok_content extends BaseActivity {
         });
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+                ucok_content.this.finish();
+                return true;
+//            case R.id.action_share:
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     private List<ItemObject> getAllItemList(){
         List<ItemObject> allItems = new ArrayList<>();

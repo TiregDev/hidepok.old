@@ -40,7 +40,8 @@
         android:layout_height="40dp"
         android:gravity="center_horizontal">
 
-        <Button
+        <fr.arnaudguyon.smartfontslib.FontButton
+            app:font="@string/fontReguler"
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

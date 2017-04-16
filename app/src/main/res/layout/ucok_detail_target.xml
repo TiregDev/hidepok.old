@@ -61,19 +61,21 @@
                 android:paddingRight="10dp"
                 android:paddingTop="@dimen/md_keylines">
 
-                <TextView
+                <fr.arnaudguyon.smartfontslib.FontTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/md_keylines"
                     android:text="Deskripsi"
-                    android:textColor="#fff"
+                    android:textColor="@color/white"
+                    app:font="@string/fontBold"
                     android:textSize="@dimen/article_titles" />
 
-                <TextView
+                <fr.arnaudguyon.smartfontslib.FontTextView
                     android:id="@+id/detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#fff"
+                    android:textColor="@color/white"
+                    app:font="@string/fontReguler"
                     tools:text="@string/item_desc" />
 
                 <android.support.v7.widget.RecyclerView

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -46,7 +46,7 @@
                     android:layout_marginTop="20dp"
                     android:src="@drawable/c" />
 
-                <TextView
+                <fr.arnaudguyon.smartfontslib.FontTextView
                     android:id="@+id/list_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,26 +55,29 @@
                     android:gravity="center"
                     android:text="Panti Asuhan Darul Ilmi"
                     android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/article_titles"
+                    app:font="@string/fontBold" />
 
-
-                <ImageView
-                    android:id="@+id/call"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/list_title"
-                    android:layout_marginEnd="35dp"
                     android:layout_marginTop="5dp"
-                    android:src="@drawable/call_small" />
+                    android:gravity="center|center_vertical">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_below="@+id/list_title"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginTop="5dp"
-                    android:onClick="toMaps"
-                    android:src="@drawable/maps_small" />
+                    <ImageView
+                        android:id="@+id/call"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:src="@drawable/call_small" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:onClick="toMaps"
+                        android:src="@drawable/maps_small" />
+
+                </LinearLayout>
 
             </RelativeLayout>
 
@@ -93,32 +96,35 @@
                     android:orientation="horizontal"
                     android:weightSum="3">
 
-                    <TextView
+                    <fr.arnaudguyon.smartfontslib.FontTextView
                         android:id="@+id/deskripsi_panti"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.01"
                         android:gravity="center"
                         android:text="Deskripsi"
-                        android:textColor="#fff" />
+                        android:textColor="#fff"
+                        app:font="@string/fontReguler" />
 
-                    <TextView
+                    <fr.arnaudguyon.smartfontslib.FontTextView
                         android:id="@+id/donasi_panti"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="Donasi"
-                        android:textColor="#fff" />
+                        android:textColor="#fff"
+                        app:font="@string/fontReguler" />
 
-                    <TextView
+                    <fr.arnaudguyon.smartfontslib.FontTextView
                         android:id="@+id/cherish_us"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="Cherish Us"
-                        android:textColor="#fff" />
+                        android:textColor="#fff"
+                        app:font="@string/fontReguler" />
 
                 </LinearLayout>
 

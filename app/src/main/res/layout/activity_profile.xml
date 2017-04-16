@@ -39,11 +39,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="15">
 
-                <TextView
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    app:font="@string/fontReguler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    tools:text="Profil"
+                    android:text="Profil"
                     android:textColor="#fff"
                     android:textSize="20sp" />
 
@@ -76,17 +77,18 @@
                 android:layout_height="70dp"
                 android:src="@drawable/profile" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                app:font="@string/fontBold"
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:text="JAR"
                 android:textColor="#fff"
-                android:textSize="16dp"
-                android:textStyle="bold" />
+                android:textSize="@dimen/article_subheading" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                app:font="@string/fontReguler"
                 android:id="@+id/status_user"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
@@ -94,7 +96,7 @@
                 android:gravity="center"
                 android:text="Full Idea"
                 android:textColor="#fff"
-                android:textSize="12dp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -107,7 +109,8 @@
         android:orientation="horizontal"
         android:weightSum="2">
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontReguler"
             android:id="@+id/profile"
             android:layout_width="0dp"
             android:layout_height="36dp"
@@ -117,7 +120,8 @@
             android:textColor="#fff"
             android:textSize="14sp" />
 
-        <TextView
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontReguler"
             android:id="@+id/history"
             android:layout_width="0dp"
             android:layout_height="36dp"

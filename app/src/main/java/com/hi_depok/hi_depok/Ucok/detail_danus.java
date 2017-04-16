@@ -32,6 +32,7 @@ import android.view.View.OnClickListener;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Activity_Main.MainActivity;
+import com.hi_depok.hi_depok.Kadepok.kadepok_content;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.Sikepok_Panic.MapsActivity;
 
@@ -94,20 +95,22 @@ public class detail_danus extends BaseActivity {
         getMenuInflater().inflate(R.menu.menu_ucok, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.add) {
-            showMessageDialog_danus();
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+                detail_danus.this.finish();
+                return true;
+//            case R.id.action_share:
+            case R.id.add:
+                showMessageDialog_danus();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
+
 
     DatePickerDialog.OnDateSetListener d =
             new DatePickerDialog.OnDateSetListener(){

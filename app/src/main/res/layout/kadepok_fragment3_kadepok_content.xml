@@ -2,7 +2,8 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,14 +15,16 @@
             android:layout_height="wrap_content"
             android:padding="10dp">
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                app:font="@string/fontReguler"
                 android:id="@+id/jumlah_anak"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Panti asuhan Darul Ilmi memiliki 55 anak"
                 android:textColor="@color/white" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                app:font="@string/fontReguler"
                 android:id="@+id/jk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -29,11 +32,12 @@
                 android:text="Dengan 40 Laki-laki dan 15 Perempuan"
                 android:textColor="@color/white" />
 
-            <Button
+            <fr.arnaudguyon.smartfontslib.FontButton
+                app:font="@string/fontBold"
                 android:id="@+id/btn_daftar_anak"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_below="@id/jk"
                 android:layout_marginEnd="10dp"
                 android:layout_marginTop="10dp"
@@ -56,14 +60,16 @@
             android:layout_height="wrap_content"
             android:padding="10dp">
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                app:font="@string/fontReguler"
                 android:id="@+id/event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Panti asuhan Darul Ilmi memiliki Beberapa Event"
                 android:textColor="@color/white" />
 
-            <TextView
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                app:font="@string/fontReguler"
                 android:id="@+id/event2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -71,11 +77,12 @@
                 android:text="Seperti event tahunan ataupun event pada hari besar"
                 android:textColor="@color/white" />
 
-            <Button
+            <fr.arnaudguyon.smartfontslib.FontButton
+                app:font="@string/fontBold"
                 android:id="@+id/btn_daftar_event"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_below="@id/event2"
                 android:layout_marginEnd="10dp"
                 android:layout_marginTop="10dp"

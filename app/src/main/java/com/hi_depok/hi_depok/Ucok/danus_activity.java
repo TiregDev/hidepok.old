@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Activity_Main.ucok;
+import com.hi_depok.hi_depok.Kadepok.kadepok_content;
 import com.hi_depok.hi_depok.R;
 
 import java.util.ArrayList;
@@ -107,5 +109,17 @@ public class danus_activity extends BaseActivity {
 
     public void danus_calculate(View v){
         showMessageDialog();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+                danus_activity.this.finish();
+                return true;
+//            case R.id.action_share:
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

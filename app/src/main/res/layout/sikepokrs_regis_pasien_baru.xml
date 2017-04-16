@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -33,10 +34,10 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    >
+                    android:layout_weight="1">
 
-                    <EditText
+                    <fr.arnaudguyon.smartfontslib.FontEditText
+                        app:font="@string/fontReguler"
                         android:id="@+id/nama_pasien"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -57,7 +58,8 @@
                     android:layout_weight="1"
                     android:focusableInTouchMode="true">
 
-                    <EditText
+                    <fr.arnaudguyon.smartfontslib.FontEditText
+                        app:font="@string/fontReguler"
                         android:id="@+id/nik"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -79,7 +81,8 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <TextView
+                    <fr.arnaudguyon.smartfontslib.FontTextView
+                        app:font="@string/fontReguler"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
@@ -104,7 +107,8 @@
                     android:focusableInTouchMode="true"
                     android:orientation="vertical">
 
-                    <TextView
+                    <fr.arnaudguyon.smartfontslib.FontTextView
+                        app:font="@string/fontReguler"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
@@ -112,7 +116,8 @@
                         android:textColor="#b7b7b7"
                         android:textSize="12sp"/>
 
-                    <EditText
+                    <fr.arnaudguyon.smartfontslib.FontEditText
+                        app:font="@string/fontReguler"
                         android:id="@+id/tgl_lhr_pasien"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -129,7 +134,8 @@
                     android:layout_weight="1"
                     android:focusableInTouchMode="true">
 
-                    <EditText
+                    <fr.arnaudguyon.smartfontslib.FontEditText
+                        app:font="@string/fontReguler"
                         android:id="@+id/alamat_pasien"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -144,7 +150,8 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-                <Button
+                <fr.arnaudguyon.smartfontslib.FontButton
+                    app:font="@string/fontBold"
                     android:id="@+id/kirim"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -154,8 +161,7 @@
                     android:onClick="kirim_data"
                     android:text="Kirim"
                     android:layout_marginTop="10dp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    android:textColor="@color/white" />
 
 
             </LinearLayout>

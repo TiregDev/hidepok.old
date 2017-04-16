@@ -41,21 +41,21 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
     private PopupWindow popup_notifikasi;
     public Button close;
 
-    private void initiatepopup() {
-        try {
-            LayoutInflater layoutInflater = (LayoutInflater)KadepokDetailActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = layoutInflater.inflate(R.layout.kadepok_donasi_popup, (ViewGroup)findViewById(R.id.rl_custom_layout));
-
-            popup_notifikasi = new PopupWindow(layout, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, true);
-            popup_notifikasi.showAtLocation(layout, Gravity.CENTER, 0, 0);
-
-            close = (Button)layout.findViewById(R.id.close);
-            close.setOnClickListener(cancel_button_click_listener);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private void initiatepopup() {
+//        try {
+//            LayoutInflater layoutInflater = (LayoutInflater)KadepokDetailActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//            View layout = layoutInflater.inflate(R.layout.kadepok_donasi_popup, (ViewGroup)findViewById(R.id.rl_custom_layout));
+//
+//            popup_notifikasi = new PopupWindow(layout, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, true);
+//            popup_notifikasi.showAtLocation(layout, Gravity.CENTER, 0, 0);
+//
+//            close = (Button)layout.findViewById(R.id.close);
+//            close.setOnClickListener(cancel_button_click_listener);
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
         @Override
@@ -138,6 +138,7 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
                 sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "");
                 sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
                 startActivity(Intent.createChooser(sharingIntent, "Share via"));
+                return true;
 
             case android.R.id.home:
                 // todo: goto back activity from here
