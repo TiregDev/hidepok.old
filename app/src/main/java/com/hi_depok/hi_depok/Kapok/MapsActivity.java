@@ -64,7 +64,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         else {
             Log.d("onCreate","Google Play Services available.");
         }
-        String tempatSehat[] = { "Cari Tempat ...", "Kuliner", "Wisata", "Pasar", "Tempat Olahraga",
+        String tempatSehat[] = { "Cari Tempat ...", "Kuliner", "Wisata", "Pasar", "Tempat Ibadah",
                 "GOR", };
         Spinner spinner = (Spinner) findViewById(R.id.spinPlaces);
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
@@ -75,7 +75,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 1:
-                        findPlaces("kuliner");
+                        findPlaces("food");
                         break;
                     case 2:
                         findPlaces("wisata");
@@ -84,10 +84,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         findPlaces("pasar");
                         break;
                     case 4:
-                        findPlaces("tempat ibadah");
+                        findPlaces("place_of_worship");
                         break;
                     case 5:
-                        findPlaces("Tempat Olahraga");
+                        findPlaces("gor");
                         break;
                     default:
                         break;
@@ -108,6 +108,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         startActivity(new Intent(getBaseContext(), KapokActivity.class));
     }
     public void findPlaces(String name){
+        mMap.clear();
         String getname = name;
         String url = getUrl(latitude, longitude, getname);
         Object[] DataTransfer = new Object[2];
@@ -250,10 +251,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlacesUrl.append("location=" + latitude + "," + longitude);
-        googlePlacesUrl.append("&radius=" + PROXIMITY_RADIUS);
-        googlePlacesUrl.append("&type=" + nearbyPlace);
-        googlePlacesUrl.append("&sensor=true");
-        googlePlacesUrl.append("&key=" + "AIzaSyATuUiZUkEc_UgHuqsBJa1oqaODI-3mLs0");
+        googlePlacesUrl.append("&keyword=" + nearbyPlace);
+        googlePlacesUrl.append("&rankby=distance");
+        googlePlacesUrl.append("&language=id");
+        googlePlacesUrl.append("&key=" + "AIzaSyBZVege0pHvfWt42HR0eWzbhhNvt6AL7hw");
         Log.d("getUrl", googlePlacesUrl.toString());
         return (googlePlacesUrl.toString());
     }

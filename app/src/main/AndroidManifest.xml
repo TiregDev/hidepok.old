@@ -199,6 +199,9 @@
             android:name=".Sikepok_RS.rs_terdekat"
             android:label="RS Terdekat" />
         <activity
+            android:name=".Sikepok_RS.MapsActivity"
+            android:label="RS Terdekat" />
+        <activity
             android:name=".Sikepok_RS.daftar_rs"
             android:label="Daftar RS" />
         <activity

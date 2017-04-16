@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
+import com.hi_depok.hi_depok.Kapok.*;
 import com.hi_depok.hi_depok.R;
 
 public class RSActivity extends BaseActivity {
@@ -32,7 +33,7 @@ public class RSActivity extends BaseActivity {
     }
 
     public void rs(View v) {
-        Intent intent = new Intent(RSActivity.this, rs_terdekat.class);
+        Intent intent = new Intent(RSActivity.this, MapsActivity.class);
         startActivity(intent);
     }
 

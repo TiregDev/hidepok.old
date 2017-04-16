@@ -30,10 +30,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Provides UI for the Detail page with Collapsing Toolbar.
@@ -41,7 +49,15 @@ import com.hi_depok.hi_depok.R;
 public class DetailActivity extends BaseActivity {
 
     public static final String EXTRA_POSITION = "position";
-
+    public static final String CATEGORY = "position";
+    String GET_JSON_DATA_HTTP_URL;
+    String JSON_ID = "id_tempat";
+    String JSON_ALAMAT = "alamat_tempat";
+    String JSON_NAME = "nama_tempat";
+    String JSON_DESKRIPSI = "deskripsi_tempat";
+    String JSON_NOTLP = "no_telp_tempat";
+    JSONArray array;
+    List<GetDataAdapter> dataAdapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,19 +75,66 @@ public class DetailActivity extends BaseActivity {
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         // Set title of Detail page
-
+        dataAdapter = new ArrayList<>();
         int postion = getIntent().getIntExtra(EXTRA_POSITION, 0);
+        String context = getIntent().getExtras().getString("kategori");
+        switch (context){
+            case "AmbulanceFragment":
+                GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=kuliner";
+                break;
+            case "BidanFragment":
+                GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=kuliner";
+                break;
+            case "TukangUrutFragment":
+                GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=kuliner";
+                break;
+            case "KhitanFragment":
+                GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=kuliner";
+                break;
+            case "KlinikFragment":
+                GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=kuliner";
+                break;
+            case "ApotekFragment":
+                GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=kuliner";
+                break;
+            case "PuskesmasFragment":
+                GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=kuliner";
+                break;
+            default:
+                break;
+        }
+        for(int i = 0; i<array.length(); i++) {
+            GetDataAdapter dataFromJSON = new GetDataAdapter();
+            JSONObject json = null;
+            try {
+                json = array.getJSONObject(i);
+                dataFromJSON.setName(json.getString(JSON_NAME));
+                dataFromJSON.setDeskripsi(json.getString(JSON_DESKRIPSI));
+                dataFromJSON.setAlamat(json.getString(JSON_ALAMAT));
+                dataFromJSON.setNoTelp(json.getString(JSON_NOTLP));
+                dataFromJSON.setFoto(R.drawable.a_avator);
+
+            } catch (JSONException e) {
+
+                e.printStackTrace();
+            }
+            dataAdapter.add(dataFromJSON);
+        }
+
         Resources resources = getResources();
         String[] places = resources.getStringArray(R.array.panic_nama);
-        collapsingToolbar.setTitle(places[postion % places.length]);
+        collapsingToolbar.setTitle(dataAdapter.get(postion).getName());
 
         String[] placeDetails = resources.getStringArray(R.array.place_details);
         TextView placeDetail = (TextView) findViewById(R.id.place_detail);
-        placeDetail.setText(placeDetails[postion % placeDetails.length]);
+        placeDetail.setText(dataAdapter.get(postion).getDeskripsi());
 
         String[] placeLocations = resources.getStringArray(R.array.panic_deskripsi);
         TextView placeLocation =  (TextView) findViewById(R.id.place_location);
-        placeLocation.setText(placeLocations[postion % placeLocations.length]);
+        placeLocation.setText(dataAdapter.get(postion).getAlamat());
+
+        TextView placeContact =  (TextView) findViewById(R.id.place_contact);
+        placeContact.setText(dataAdapter.get(postion).getNoTelp());
 
         TypedArray placePictures = resources.obtainTypedArray(R.array.places_picture2);
         ImageView placePicture = (ImageView) findViewById(R.id.image);

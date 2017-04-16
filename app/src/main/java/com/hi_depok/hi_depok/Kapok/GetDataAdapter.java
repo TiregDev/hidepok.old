@@ -1,4 +1,4 @@
-package com.hi_depok.hi_depok.Sikepok_Panic;
+package com.hi_depok.hi_depok.Kapok;
 
 /**
  * Created by SONY-VAIO on 3/15/2017.
@@ -10,8 +10,6 @@ public class GetDataAdapter {
     String name;
     int foto;
     String deskripsi;
-    String alamat;
-    String no_telp;
 
 
     public String getName() {
@@ -40,9 +38,9 @@ public class GetDataAdapter {
         return foto;
     }
 
-    public void setFoto(int foto) {
+    public void setFoto(int phone_number) {
 
-        this.foto = foto;
+        this.foto = phone_number;
     }
 
     public String getDeskripsi() {
@@ -53,22 +51,6 @@ public class GetDataAdapter {
     public void setDeskripsi(String deskripsi) {
 
         this.deskripsi = deskripsi;
-    }
-    public String getAlamat() {
-
-        return alamat;
-    }
-
-    public void setAlamat(String alamat) {
-
-        this.alamat = alamat;
-    }
-
-    public String getNoTelp(){
-        return no_telp;
-    }
-    public void setNoTelp(String no_telp){
-        this.no_telp = no_telp;
     }
 
 }

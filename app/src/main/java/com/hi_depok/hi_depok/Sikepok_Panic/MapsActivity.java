@@ -3,8 +3,12 @@ package com.hi_depok.hi_depok.Sikepok_Panic;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Build;
+import android.provider.Settings;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -14,6 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -92,7 +97,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         findPlaces("khitan");
                         break;
                     case 7:
-                        findPlaces("hospital");
+                        findPlaces("pijat");
                         break;
                     default:
                         break;
@@ -108,11 +113,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map2);
         mapFragment.getMapAsync(this);
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            showLocationSettings();
+        }
+    }
+    private void showLocationSettings() {
+        Snackbar snackbar = Snackbar
+                .make(findViewById(android.R.id.content), "Location Error: GPS Disabled!",
+                        Snackbar.LENGTH_LONG)
+                .setAction("Enable", new View.OnClickListener() {
+                    @Override                    public void onClick(View v) {
+
+                        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                });
+        snackbar.setActionTextColor(Color.RED);
+        snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
+
+        View sbView = snackbar.getView();
+        TextView textView = (TextView) sbView
+                .findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.YELLOW);
+
+        snackbar.show();
     }
     public void toList(View view) {
         startActivity(new Intent(getBaseContext(), MenuActivity.class));
     }
     public void findPlaces(String name){
+        mMap.clear();
         String getname = name;
         String url = getUrl(latitude, longitude, getname);
         Object[] DataTransfer = new Object[2];
@@ -164,69 +194,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
         }
-
-//        Button btnRestaurant = (Button) findViewById(R.id.btnRestaurant);
-//        btnRestaurant.setOnClickListener(new View.OnClickListener() {
-//            String Restaurant = "restaurant";
-//            @Override
-//            public void onClick(View v) {
-//                Log.d("onClick", "Button is Clicked");
-//                mMap.clear();
-//                String url = getUrl(latitude, longitude, Restaurant);
-//                Object[] DataTransfer = new Object[2];
-//                DataTransfer[0] = mMap;
-//                DataTransfer[1] = url;
-//                Log.d("onClick", url);
-//                GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
-//                getNearbyPlacesData.execute(DataTransfer);
-//                MarkerOptions markerOptions = new MarkerOptions();
-//                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-//                Toast.makeText(MapsActivity.this,"Nearby Restaurants", Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-//        Button btnHospital = (Button) findViewById(R.id.btnHospital);
-//        btnHospital.setOnClickListener(new View.OnClickListener() {
-//            String Hospital = "hospital";
-//            @Override
-//            public void onClick(View v) {
-//                Log.d("onClick", "Button is Clicked");
-//                mMap.clear();
-//                String url = getUrl(latitude, longitude, Hospital);
-//                Object[] DataTransfer = new Object[2];
-//                DataTransfer[0] = mMap;
-//                DataTransfer[1] = url;
-//                Log.d("onClick", url);
-//                GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
-//                getNearbyPlacesData.execute(DataTransfer);
-//                MarkerOptions markerOptions = new MarkerOptions();
-//                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
-//                Toast.makeText(MapsActivity.this,"Nearby Hospitals", Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-//        Button btnSchool = (Button) findViewById(R.id.btnSchool);
-//        btnSchool.setOnClickListener(new View.OnClickListener() {
-//            String School = "school";
-//            @Override
-//            public void onClick(View v) {
-//                Log.d("onClick", "Button is Clicked");
-//                mMap.clear();
-//                if (mCurrLocationMarker != null) {
-//                    mCurrLocationMarker.remove();
-//                }
-//                String url = getUrl(latitude, longitude, School);
-//                Object[] DataTransfer = new Object[2];
-//                DataTransfer[0] = mMap;
-//                DataTransfer[1] = url;
-//                Log.d("onClick", url);
-//                GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
-//                getNearbyPlacesData.execute(DataTransfer);
-//                MarkerOptions markerOptions = new MarkerOptions();
-//                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-//                Toast.makeText(MapsActivity.this,"Nearby Schools", Toast.LENGTH_LONG).show();
-//            }
-//        });
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -255,10 +222,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlacesUrl.append("location=" + latitude + "," + longitude);
-        googlePlacesUrl.append("&radius=" + PROXIMITY_RADIUS);
-        googlePlacesUrl.append("&type=" + nearbyPlace);
-        googlePlacesUrl.append("&sensor=true");
-        googlePlacesUrl.append("&key=" + "AIzaSyATuUiZUkEc_UgHuqsBJa1oqaODI-3mLs0");
+        googlePlacesUrl.append("&keyword=" + nearbyPlace);
+        googlePlacesUrl.append("&rankby=distance");
+        googlePlacesUrl.append("&language=id");
+        googlePlacesUrl.append("&key=" + "AIzaSyBZVege0pHvfWt42HR0eWzbhhNvt6AL7hw");
         Log.d("getUrl", googlePlacesUrl.toString());
         return (googlePlacesUrl.toString());
     }

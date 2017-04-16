@@ -1,103 +1,99 @@
 package com.hi_depok.hi_depok.Sikepok_Panic;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
+
+import android.app.ProgressDialog;
 import android.support.v4.app.Fragment;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 import com.hi_depok.hi_depok.R;
 
-/**
- * Provides UI for the view with List.
- */
 public class BidanFragment extends Fragment {
-
+    private LinearLayoutManager lLayout;
+    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=Bidan";
+    String JSON_ID = "id_tempat";
+    String JSON_ALAMAT = "alamat_tempat";
+    String JSON_NAME = "nama_tempat";
+    String JSON_DESKRIPSI = "deskripsi_tempat";
+    String JSON_NOTLP = "no_telp_tempat";
+    JsonArrayRequest jsonArrayRequest ;
+    List<GetDataAdapter> dataAdapter;
+    RequestQueue requestQueue ;
+    RecyclerView.Adapter recyclerViewadapter;
+    ProgressDialog progressDialog;
+    RecyclerView rView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        RecyclerView recyclerView = (RecyclerView) inflater.inflate(
+        rView = (RecyclerView) inflater.inflate(
                 R.layout.recycler_view, container, false);
-        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        return recyclerView;
+        lLayout = new LinearLayoutManager(getContext());
+        rView.setHasFixedSize(true);
+        rView.setLayoutManager(lLayout);
+        dataAdapter = new ArrayList<>();
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Sedang Mencari ...");
+        progressDialog.show();
+        JSON_DATA_WEB_CALL();
+        return rView;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView avator;
-        public TextView name;
-        public TextView jarak;
-        public TextView description;
-        public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.item_list, parent, false));
-            avator = (ImageView) itemView.findViewById(R.id.list_avatar);
-            name = (TextView) itemView.findViewById(R.id.list_title);
-            description = (TextView) itemView.findViewById(R.id.list_desc);
-            jarak = (TextView) itemView.findViewById(R.id.list_jarak);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, DetailActivity.class);
-                    intent.putExtra(DetailActivity.EXTRA_POSITION, getAdapterPosition());
-                    context.startActivity(intent);
-                }
-            });
-        }
+    public void JSON_DATA_WEB_CALL(){
+        jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_URL,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        progressDialog.dismiss();
+                        JSON_PARSE_DATA_AFTER_WEBCALL(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(jsonArrayRequest);
     }
 
-    /**
-     * Adapter to display recycler view.
-     */
-    public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-        // Set numbers of List in RecyclerView.
-        private static final int LENGTH = 10;
+    public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array){
+        for(int i = 0; i<array.length(); i++) {
+            GetDataAdapter dataFromJSON = new GetDataAdapter();
+            JSONObject json = null;
+            try {
+                json = array.getJSONObject(i);
+                dataFromJSON.setName(json.getString(JSON_NAME));
+                dataFromJSON.setDeskripsi(json.getString(JSON_DESKRIPSI));
+                dataFromJSON.setFoto(R.drawable.a_avator);
 
-        private final String[] arrNama;
-        private final String[] arrJarak;
-        private final String[] arrDeskripsi;
-        private final Drawable[] arrFoto;
+            } catch (JSONException e) {
 
-        public ContentAdapter(Context context) {
-            Resources resources = context.getResources();
-            arrNama = resources.getStringArray(R.array.panic_nama);
-            arrJarak = resources.getStringArray(R.array.panic_jarak);
-            arrDeskripsi = resources.getStringArray(R.array.panic_deskripsi);
-            TypedArray a = resources.obtainTypedArray(R.array.place_avator);
-            arrFoto = new Drawable[a.length()];
-            for (int i = 0; i < arrFoto.length; i++) {
-                arrFoto[i] = a.getDrawable(i);
+                e.printStackTrace();
             }
-            a.recycle();
-        }
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
+            dataAdapter.add(dataFromJSON);
         }
 
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.avator.setImageDrawable(arrFoto[position % arrFoto.length]);
-            holder.name.setText(arrNama[position % arrNama.length]);
-            holder.jarak.setText(arrJarak[position % arrJarak.length]);
-            holder.description.setText(arrDeskripsi[position % arrDeskripsi.length]);
-        }
-
-        @Override
-        public int getItemCount() {
-            return LENGTH;
-        }
+        recyclerViewadapter = new RecyclerViewAdapterJSON(dataAdapter, getContext());
+        rView.setAdapter(recyclerViewadapter);
     }
-
 }
+
 
