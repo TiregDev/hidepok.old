@@ -1,33 +1,19 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
-import android.animation.Animator;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
-import android.support.v4.view.GravityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.notif.event;
-import com.mikepenz.crossfadedrawerlayout.view.CrossfadeDrawerLayout;
-import com.mikepenz.materialdrawer.*;
-import com.mikepenz.materialdrawer.interfaces.ICrossfader;
-import com.mikepenz.materialdrawer.model.*;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-import com.mikepenz.materialdrawer.util.DrawerUIUtils;
-import com.mikepenz.materialize.util.UIUtils;
+import com.mikepenz.materialdrawer.Drawer;
 
 public class MainActivity extends BaseActivity {
 
@@ -48,7 +34,9 @@ public class MainActivity extends BaseActivity {
         super.onCreateDrawer();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        PrimaryDrawerItem home =   new PrimaryDrawerItem()
+        //Yang dibawah ini gaperlu soalnya udah ada onCreateDrawer
+
+        /*PrimaryDrawerItem home =   new PrimaryDrawerItem()
                 .withName("Beranda")
                 .withTextColor(Color.WHITE)
                 .withSelectedTextColor(Color.parseColor("#4f71de"))
@@ -145,7 +133,9 @@ public class MainActivity extends BaseActivity {
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.bgnav2)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Fajar Zakaria").withEmail("JAR@gmail.com").withIcon(getResources().getDrawable(R.drawable.profile))
+                        new ProfileDrawerItem().withName("Fajar Zakaria")
+                                .withEmail("JAR@gmail.com")
+                                .withIcon(getResources().getDrawable(R.drawable.profile))
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
@@ -252,8 +242,9 @@ public class MainActivity extends BaseActivity {
             public boolean isCrossfaded() {
                 return crossfadeDrawerLayout.isCrossfaded();
             }
-        });
+        });*/
 
+        //Sampe sini
 
         TextView tv = (TextView)findViewById(R.id.textView);
         Typeface tf = Typeface.createFromAsset(getAssets(), "font/Blogger_Sans-Bold.otf");
@@ -323,24 +314,5 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(MainActivity.this, event.class);
         startActivity(intent);
     }
-
-    @Override
-    public void onBackPressed() {
-
-        if (result.isDrawerOpen()) {
-            result.closeDrawer();
-        }
-        else if (back_pressed + TIME_DELAY > System.currentTimeMillis()) {
-            super.onBackPressed();
-
-        }
-        else if (back_pressed + TIME_DELAY <= System.currentTimeMillis()){
-            Toast.makeText(getBaseContext(),"Prees back again to exit app",
-                    Toast.LENGTH_SHORT).show();
-        }
-        back_pressed = System.currentTimeMillis();
-    }
-
-
 
 }

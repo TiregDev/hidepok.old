@@ -1,5 +1,6 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -7,6 +8,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.hi_depok.hi_depok.R;
 import com.mikepenz.crossfadedrawerlayout.view.CrossfadeDrawerLayout;
@@ -32,6 +34,9 @@ import com.mikepenz.materialize.util.UIUtils;
 
 public class BaseActivity extends AppCompatActivity {
     private Drawer result;
+    private static final int TIME_DELAY = 2000;
+    private static long back_pressed;
+    Activity activity;
 
     protected void onCreateDrawer() {
         // Making notification bar transparent
@@ -134,7 +139,10 @@ public class BaseActivity extends AppCompatActivity {
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.bgnav2)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Fajar Zakaria").withEmail("JAR@gmail.com").withIcon(getResources().getDrawable(R.drawable.profile))
+                        new ProfileDrawerItem()
+                                .withName("Fajar Zakaria")
+                                .withEmail("JAR@gmail.com")
+                                .withIcon(getResources().getDrawable(R.drawable.profile))
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
@@ -242,6 +250,27 @@ public class BaseActivity extends AppCompatActivity {
                 return crossfadeDrawerLayout.isCrossfaded();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(activity instanceof MainActivity) {
+            if (result.isDrawerOpen()) {
+                result.closeDrawer();
+            }
+            else if (back_pressed + TIME_DELAY > System.currentTimeMillis()) {
+                super.onBackPressed();
+
+            }
+            else if (back_pressed + TIME_DELAY <= System.currentTimeMillis()) {
+                Toast.makeText(getBaseContext(), "Prees back again to exit app",
+                        Toast.LENGTH_SHORT).show();
+            }
+            back_pressed = System.currentTimeMillis();
+        }
+        else {
+            super.onBackPressed();
+        }
     }
 
 }
