@@ -168,6 +168,11 @@ public class menu_rs extends BaseActivity {
         }
     }
 
+    public void toMaps(View v){
+        Intent intent = new Intent(getBaseContext(), MapsActivity.class);
+        startActivity(intent);
+    }
+
     public void toCall(View v){
         String PhoneNo="085695454139";
         Intent dial = new Intent();

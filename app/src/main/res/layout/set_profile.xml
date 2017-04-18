@@ -44,41 +44,86 @@
                 android:orientation="vertical">
 
                 <fr.arnaudguyon.smartfontslib.FontEditText
-                    app:font="@string/fontReguler"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="Fajar Zakaria"
-                    android:textColor="#b7b7b7" />
+                    android:layout_marginEnd="16dp"
+                    android:text="JAR"
+                    android:textColor="#b7b7b7"
+                    app:font="@string/fontReguler" />
 
                 <fr.arnaudguyon.smartfontslib.FontEditText
-                    app:font="@string/fontReguler"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginTop="-10dp"
                     android:text="Full Idea"
-                    android:textColor="#b7b7b7" />
+                    android:textColor="#b7b7b7"
+                    app:font="@string/fontReguler" />
 
             </LinearLayout>
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:paddingTop="10dp">
+
+            <fr.arnaudguyon.smartfontslib.FontEditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="-10dp"
+                android:text="Fajar Zakaria"
+                android:textColor="#b7b7b7"
+                app:font="@string/fontReguler" />
+
+            <fr.arnaudguyon.smartfontslib.FontEditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="-10dp"
+                android:text="jar@hidepok.id"
+                android:textColor="#b7b7b7"
+                app:font="@string/fontReguler" />
+
+            <fr.arnaudguyon.smartfontslib.FontEditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="-10dp"
+                android:text="08218898767"
+                android:textColor="#b7b7b7"
+                app:font="@string/fontReguler" />
+
+            <fr.arnaudguyon.smartfontslib.FontEditText
+                app:font="@string/fontReguler"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="-10dp"
+                android:text="Beji Timur"
+                android:textColor="#b7b7b7" />
+
+        </LinearLayout>
+
         <fr.arnaudguyon.smartfontslib.FontTextView
-            app:font="@string/fontReguler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="Andu juga dapat mengganti password"
-            android:textColor="#8c8c8c" />
+            android:textColor="#8c8c8c"
+            app:font="@string/fontReguler" />
 
         <fr.arnaudguyon.smartfontslib.FontTextView
-            app:font="@string/fontReguler"
             android:id="@+id/changepass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Klik disini"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimary"
+            app:font="@string/fontReguler" />
 
     </LinearLayout>
 </FrameLayout>
