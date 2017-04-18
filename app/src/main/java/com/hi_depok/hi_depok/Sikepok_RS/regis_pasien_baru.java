@@ -67,7 +67,6 @@ public class regis_pasien_baru extends BaseActivity {
     protected void sendSMS()
     {
         String number="085776410906";
-
         String part1 = nama.getText().toString().toUpperCase();
         String part2 = nik.getText().toString().toUpperCase();
         String part3 = jk.getSelectedItem().toString().toUpperCase();

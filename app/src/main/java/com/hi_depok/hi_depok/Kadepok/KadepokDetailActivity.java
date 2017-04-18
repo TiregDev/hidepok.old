@@ -3,6 +3,7 @@ package com.hi_depok.hi_depok.Kadepok;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -28,7 +29,6 @@ import android.widget.Toast;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Kadepok_Volunteer.kadepok_volunteer_form;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Sikepok_Panic.MapsActivity;
 
 import static com.hi_depok.hi_depok.R.id.btn_volunteer;
 
@@ -201,9 +201,21 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
 
     }
     public void toMaps(View v){
-        Intent intent = new Intent(getBaseContext(), MapsActivity.class);
+        Double myLatitude = -6.3656374;
+        Double myLongitude = 106.8237375;
+        String labelLocation = "Perpus UI";
+
+        String urlAddress = "http://maps.google.com/maps?q=" + myLatitude + "," + myLongitude + "(" + labelLocation + ")&iwloc=A&hl=es";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlAddress));
         startActivity(intent);
     }
 
+    public void toCall(View v){
+        String PhoneNo="085695454139";
+        Intent dial = new Intent();
+        dial.setAction("android.intent.action.DIAL");
+        dial.setData(Uri.parse("tel:" + PhoneNo));
+        startActivity(dial);
+    }
 
 }

@@ -66,6 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/article_keylines"
                     android:text="Deskripsi"
+                    android:paddingBottom="10dp"
                     android:textColor="@color/white"
                     android:textSize="@dimen/article_titles"
                     android:textStyle="bold"
@@ -78,9 +79,9 @@
 
                     <ImageView
                         android:id="@+id/icon_detail"
-                        android:layout_width="30dp"
-                        android:layout_marginStart="10dp"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
+                        android:scaleType="center"
                         app:srcCompat="@drawable/information" />
 
                     <fr.arnaudguyon.smartfontslib.FontTextView
@@ -88,7 +89,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:layout_marginStart="10dp"
+
                         android:textColor="@color/white"
                         app:font="@string/fontReguler"
                         tools:text="@string/detail_desc" />
@@ -111,8 +112,9 @@
 
                     <ImageView
                         android:id="@+id/icon_kontak"
-                        android:layout_width="30dp"
+                        android:layout_width="20dp"
                         android:layout_height="match_parent"
+                        android:onClick="toCall"
                         android:layout_marginStart="10dp"
                         app:srcCompat="@drawable/call_small" />
 
@@ -145,7 +147,7 @@
 
                     <ImageView
                         android:id="@+id/icon_lokasi"
-                        android:layout_width="30dp"
+                        android:layout_width="20dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:onClick="toMaps"

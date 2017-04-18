@@ -2,6 +2,7 @@ package com.hi_depok.hi_depok.Sikepok_RS;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -66,10 +67,6 @@ public class menu_rs extends BaseActivity {
 
 
     }
-    public void ke_maps (View view) {
-        startActivity(new Intent(getBaseContext(), com.hi_depok.hi_depok.Sikepok_Panic.MapsActivity.class));
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -169,5 +166,13 @@ public class menu_rs extends BaseActivity {
             }
             return null;
         }
+    }
+
+    public void toCall(View v){
+        String PhoneNo="085695454139";
+        Intent dial = new Intent();
+        dial.setAction("android.intent.action.DIAL");
+        dial.setData(Uri.parse("tel:" + PhoneNo));
+        startActivity(dial);
     }
 }

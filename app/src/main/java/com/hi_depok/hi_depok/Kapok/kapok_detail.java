@@ -125,7 +125,7 @@ public class kapok_detail extends BaseActivity {
           }
       }
     public void toMaps(View v){
-        Intent intent = new Intent(getBaseContext(), com.hi_depok.hi_depok.Sikepok_Panic.MapsActivity.class);
+        Intent intent = new Intent(getBaseContext(), MapsActivity.class);
         startActivity(intent);
     }
     //popup

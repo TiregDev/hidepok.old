@@ -10,6 +10,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -31,10 +32,7 @@ import android.widget.Toast;
 import android.view.View.OnClickListener;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
-import com.hi_depok.hi_depok.Activity_Main.MainActivity;
-import com.hi_depok.hi_depok.Kadepok.kadepok_content;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Sikepok_Panic.MapsActivity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -188,8 +186,20 @@ public class detail_danus extends BaseActivity {
                 dateAndTime.get(Calendar.DAY_OF_MONTH)).show();
     }
     public void toMaps(View v){
-        Intent intent = new Intent(getBaseContext(), MapsActivity.class);
+        Double myLatitude = -6.3656374;
+        Double myLongitude = 106.8237375;
+        String labelLocation = "Perpus UI";
+
+        String urlAddress = "http://maps.google.com/maps?q=" + myLatitude + "," + myLongitude + "(" + labelLocation + ")&iwloc=A&hl=es";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlAddress));
         startActivity(intent);
     }
 
+    public void toCall(View v){
+        String PhoneNo="085695454139";
+        Intent dial = new Intent();
+        dial.setAction("android.intent.action.DIAL");
+        dial.setData(Uri.parse("tel:" + PhoneNo));
+        startActivity(dial);
+    }
 }

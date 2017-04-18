@@ -16,20 +16,19 @@
     <LinearLayout xmlns:tools="https://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_marginBottom="60dp"
         android:alpha="0.8"
         android:background="@color/white"
         android:orientation="vertical">
 
         <fr.arnaudguyon.smartfontslib.FontTextView
-            app:font="@string/fontReguler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:text="Temukan Tempat Nongkrong Terdekatmu!"
             android:textSize="20sp"
-            android:padding="16dp"/>
+            app:font="@string/fontReguler" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -41,10 +40,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="15dp"
-                android:layout_weight="1"
                 android:background="#e4e4e4" />
 
             <ImageView
+                android:id="@+id/spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -52,20 +51,22 @@
                 android:layout_marginTop="20dp"
                 android:src="@drawable/spinner" />
 
+            <fr.arnaudguyon.smartfontslib.FontButton
+                android:id="@+id/btnExplore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/spinPlaces"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorPrimary"
+                android:onClick="toList"
+                android:padding="10dp"
+                android:text="TEMUKAN YANG LAIN"
+                android:textColor="@color/white"
+                app:font="@string/fontBold" />
+
         </RelativeLayout>
-
-        <fr.arnaudguyon.smartfontslib.FontButton
-            app:font="@string/fontBold"
-            android:id="@+id/btnExplore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="40dp"
-            android:background="@color/colorPrimary"
-            android:onClick="toList"
-            android:padding="10dp"
-            android:text="JELAJAHI SEKARANG"
-            android:textColor="@color/white" />
-
     </LinearLayout>
+
 </FrameLayout>

@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -158,5 +159,13 @@ public class DetailActivity extends BaseActivity {
     public void toMaps(View v){
         Intent intent = new Intent(getBaseContext(), MapsActivity.class);
         startActivity(intent);
+    }
+
+    public void toCall(View v){
+        String PhoneNo="085695454139";
+        Intent dial = new Intent();
+        dial.setAction("android.intent.action.DIAL");
+        dial.setData(Uri.parse("tel:" + PhoneNo));
+        startActivity(dial);
     }
 }

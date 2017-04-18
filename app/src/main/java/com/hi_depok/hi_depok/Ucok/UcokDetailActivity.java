@@ -13,6 +13,7 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
@@ -33,7 +34,6 @@ import android.widget.ImageView;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Sikepok_Panic.MapsActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -69,8 +69,8 @@ public class UcokDetailActivity extends BaseActivity {
                 settingsDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                 settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
 
-                ImageView iv= (ImageView) newView.findViewById(R.id.profile_img_popup);
-                Bitmap bm=((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                ImageView iv = (ImageView) newView.findViewById(R.id.profile_img_popup);
+                Bitmap bm = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
                 iv.setImageBitmap(bm);
 
 
@@ -80,6 +80,7 @@ public class UcokDetailActivity extends BaseActivity {
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -92,9 +93,27 @@ public class UcokDetailActivity extends BaseActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    public void toMaps(View v){
-        Intent intent = new Intent(getBaseContext(), MapsActivity.class);
+
+    public void toMaps(View v) {
+//    Intent i = new Intent(Intent.ACTION_VIEW,Uri.parse("geo:-6.3656374,106.8237375"));
+//        i.setClassName("com.google.android.apps.maps",
+//                "com.google.android.maps.MapsActivity"); //TINGGAL NAMBAHIN LABELNYA
+//                startActivity(i);
+
+        Double myLatitude = -6.3656374;
+        Double myLongitude = 106.8237375;
+        String labelLocation = "Perpus UI";
+
+        String urlAddress = "http://maps.google.com/maps?q=" + myLatitude + "," + myLongitude + "(" + labelLocation + ")&iwloc=A&hl=es";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlAddress));
         startActivity(intent);
     }
 
+    public void toCall(View v) {
+        String PhoneNo = "085695454139";
+        Intent dial = new Intent();
+        dial.setAction("android.intent.action.DIAL");
+        dial.setData(Uri.parse("tel:" + PhoneNo));
+        startActivity(dial);
+    }
 }

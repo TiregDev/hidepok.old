@@ -38,13 +38,7 @@ public class fragment1 extends Fragment{
         String text;
         text = "<html>" +
                 "<head>" +
-                "<style type=\"text/css\">" +
-                "@font-face {\n" +
-                "        font-family: 'Blogger_Sans';\n" +
-                "        src: url('file:///android_asset/font/Blogger_Sans.otf') format('truetype');\n" +
-                "        } "+
-                ".text { \n" +
-                "   font-family: 'Blogger_Sans'; color:#b7b7b7;background-color:transparent;}"+
+                "<style type=\"text/css\"> .text{color:#b7b7b7;background-color:transparent;}" +
                 "</style>" +
                 "</head>" +
                 "<body>" +
@@ -56,7 +50,6 @@ public class fragment1 extends Fragment{
                 "</body>" +
                 "</html>";
         view.loadData(text, "text/html", "utf-8");
-        
         return v;
     }
 }
