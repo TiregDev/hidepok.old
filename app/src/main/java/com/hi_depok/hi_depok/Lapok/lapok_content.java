@@ -3,30 +3,28 @@ package com.hi_depok.hi_depok.Lapok;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
+import com.hi_depok.hi_depok.Lapok.fragment.DescriptionForm;
 import com.hi_depok.hi_depok.Lapok.mData.ArtistList;
 import com.hi_depok.hi_depok.Lapok.mRecyler.MyAdapter;
-
-import com.hi_depok.hi_depok.Lapok.fragment.DescriptionForm;
 import com.hi_depok.hi_depok.R;
 
 import java.io.File;
@@ -36,6 +34,12 @@ public class lapok_content extends BaseActivity {
 
     private File imageFile;
     String filename;
+    private Spinner category, sortby;
+    String kategori, status;
+
+    private static final String[]cate = {"Kemacetan", "Bencana Alam", "Pelanggaran Peraturan"
+            , "Jalan Rusak", "Tindak Kriminal", "Terorisme", "Narkoba"};
+    private static final String[] stats = {"Belum Ada Tanggapan", "Proses", "Selesai"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,46 @@ public class lapok_content extends BaseActivity {
 
         MyAdapter adapter = new MyAdapter(this, ArtistList.getArtists());
         rv.setAdapter(adapter);
+
+        /*-------------------------- START SPINER CATEGORY --------------------------------------- */
+        category = (Spinner)findViewById(R.id.category);
+        ArrayAdapter<String> adapter_cate = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item,cate);
+
+        adapter_cate.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        category.setAdapter(adapter_cate);
+        category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                kategori = (String) adapterView.getItemAtPosition(position);
+                Toast.makeText(getBaseContext(), kategori + " selected", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                kategori = "";
+            }
+        });
+
+        /*-------------------------- START SPINER SORTBY --------------------------------------- */
+        sortby = (Spinner)findViewById(R.id.sortby);
+        ArrayAdapter<String> adapter_sort = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item, stats);
+
+        adapter_sort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sortby.setAdapter(adapter_sort);
+        sortby.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                status = (String) adapterView.getItemAtPosition(position);
+                Toast.makeText(getBaseContext(), status + " selected", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                status = "";
+            }
+        });
 
         cameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override

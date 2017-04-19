@@ -1,11 +1,16 @@
 package com.hi_depok.hi_depok.Lapok.mDetail;
 
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,20 +21,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
-import com.hi_depok.hi_depok.Lapok.lapok_content;
 import com.hi_depok.hi_depok.R;
 
 public class DetailActivity extends BaseActivity {
 
     TextView nameTxt, timeTxt, title, jml_like, jml_com, jml_share;
-    ImageView img, kej, likeimg, comimg, shaimg;
-    /*String[] pilihan = {
-            "Merbabu", "Merapi", "Lawu", "Rinjani",
-            "Sumbing","Sindoro", "Krakatau", "Selat Sunda",
-            "Selat Bali","Selat Malaka","Kalimantan",
-            "Sulawesi", "Jawa" };
-    ArrayList mArrayList;*/
+    ImageView img, kej, likeimg, comimg, shaimg, btnKirim;
+    EditText etKomentar;
     EditText comment;
+    private NotificationCompat.Builder mBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,8 @@ public class DetailActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //INITIALIZE VIEWS
+        btnKirim = (ImageView) findViewById(R.id.btnKirim);
+        etKomentar = (EditText) findViewById(R.id.isiKomentar);
         nameTxt = (TextView) findViewById(R.id.nameTxtdetail);
         timeTxt = (TextView) findViewById(R.id.timeTxtdetail);
         title = (TextView) findViewById(R.id.card_text_detail);
@@ -62,17 +64,17 @@ public class DetailActivity extends BaseActivity {
 
         //RECEIVE DATA
         Intent i = this.getIntent();
-        String name = i.getExtras().getString("NAME_KEY");
-        String time = i.getExtras().getString("TIME_KEY");
-        String judul = i.getExtras().getString("TITLE_KEY");
-        String jumlah_suka = i.getExtras().getString("TOTAL_LIKE");
-        String jumlah_komentar = i.getExtras().getString("TOTAL_COMMENT");
-        String jumlah_bagikan = i.getExtras().getString("TOTAL_SHARE");
-        int image = i.getExtras().getInt("IMAGE_KEY");
-        int kejadian = i.getExtras().getInt("KEJADIAN_KEY");
-        int like = i.getExtras().getInt("LIKE_KEY");
-        int comment = i.getExtras().getInt("COMMENT_KEY");
-        int share = i.getExtras().getInt("SHARE_KEY");
+        final String name = i.getExtras().getString("NAME_KEY");
+        final String time = i.getExtras().getString("TIME_KEY");
+        final String judul = i.getExtras().getString("TITLE_KEY");
+        final String jumlah_suka = i.getExtras().getString("TOTAL_LIKE");
+        final String jumlah_komentar = i.getExtras().getString("TOTAL_COMMENT");
+        final String jumlah_bagikan = i.getExtras().getString("TOTAL_SHARE");
+        final int image = i.getExtras().getInt("IMAGE_KEY");
+        final int kejadian = i.getExtras().getInt("KEJADIAN_KEY");
+        final int like = i.getExtras().getInt("LIKE_KEY");
+        final int comment = i.getExtras().getInt("COMMENT_KEY");
+        final int share = i.getExtras().getInt("SHARE_KEY");
 
         //BIND DATA
         nameTxt.setText(name);
@@ -125,7 +127,56 @@ public class DetailActivity extends BaseActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
+
+        btnKirim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String isi = etKomentar.getText().toString();
+                String text = name + " mengomentari : " + isi;
+                mBuilder = new NotificationCompat.Builder(DetailActivity.this);
+                mBuilder
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setContentTitle("Lapok")
+                        .setAutoCancel(true)
+                        .setContentText(text);
+                buildNotification(DetailActivity.this, name, time, judul, jumlah_suka, jumlah_komentar,
+                        jumlah_bagikan, image, kejadian, like, comment, share);
+            }
+        });
     }
+    //------------------------------------BUAT NOTIFIKASI-----------------------------------------//
+    private void buildNotification(Context ctx, String name, String time, String title, String totlike,
+                                   String totcom, String totshare, int image, int kejadian,
+                                   int like, int comment, int share){
+
+        Intent infoNotification = new Intent(ctx, DetailActivity.class);
+
+        //PACK DATA TO SEND
+        infoNotification.putExtra("NAME_KEY", name);
+        infoNotification.putExtra("TIME_KEY", time);
+        infoNotification.putExtra("TITLE_KEY", title);
+        infoNotification.putExtra("IMAGE_KEY", image);
+        infoNotification.putExtra("KEJADIAN_KEY", kejadian);
+        infoNotification.putExtra("LIKE_KEY", like);
+        infoNotification.putExtra("COMMENT_KEY", comment);
+        infoNotification.putExtra("SHARE_KEY", share);
+        infoNotification.putExtra("TOTAL_COMMENT", totcom);
+        infoNotification.putExtra("TOTAL_LIKE", totlike);
+        infoNotification.putExtra("TOTAL_SHARE", totshare);
+
+        //OPEN ACTIVITY
+        TaskStackBuilder taskStackBuilder = TaskStackBuilder
+                .create(DetailActivity.this);
+        taskStackBuilder.addParentStack(DetailActivity.class);
+        taskStackBuilder.addNextIntent(infoNotification);
+        PendingIntent pendingIntent = taskStackBuilder.getPendingIntent(0,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        mBuilder.setContentIntent(pendingIntent);
+        Notification notification = mBuilder.build();
+        notification.flags = Notification.DEFAULT_LIGHTS | Notification.FLAG_AUTO_CANCEL;
+        NotificationManagerCompat.from(DetailActivity.this).notify(0, notification);
+    }
+    //--------------------------------------------------------------------------------------------//
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
