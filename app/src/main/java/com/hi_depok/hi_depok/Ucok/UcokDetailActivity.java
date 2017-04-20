@@ -55,7 +55,7 @@ public class UcokDetailActivity extends BaseActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //---------------- Image Single Popup
+        //---------------- Image Single Popup --------------------------------------------------
         final CircleImageView imageView = (CircleImageView) findViewById(R.id.list_avatar);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,11 +95,6 @@ public class UcokDetailActivity extends BaseActivity {
     }
 
     public void toMaps(View v) {
-//    Intent i = new Intent(Intent.ACTION_VIEW,Uri.parse("geo:-6.3656374,106.8237375"));
-//        i.setClassName("com.google.android.apps.maps",
-//                "com.google.android.maps.MapsActivity"); //TINGGAL NAMBAHIN LABELNYA
-//                startActivity(i);
-
         Double myLatitude = -6.3656374;
         Double myLongitude = 106.8237375;
         String labelLocation = "Perpus UI";

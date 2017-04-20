@@ -1,8 +1,11 @@
 package com.hi_depok.hi_depok.Kadepok;
 
-import android.content.Context;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.Fragment;
@@ -12,57 +15,25 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
-import com.hi_depok.hi_depok.Kadepok_Volunteer.kadepok_volunteer_form;
 import com.hi_depok.hi_depok.R;
 
-import static com.hi_depok.hi_depok.R.id.btn_volunteer;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class KadepokDetailActivity extends BaseActivity implements View.OnClickListener {
     ViewPager pager;
     Content adapter;
     View strip;
     TextView deskripsi, donasi, cherish;
-    private ImageView btn_kadepok_notifikasi;
-    private PopupWindow popup_notifikasi;
     public Button close;
-
-//    private void initiatepopup() {
-//        try {
-//            LayoutInflater layoutInflater = (LayoutInflater)KadepokDetailActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//            View layout = layoutInflater.inflate(R.layout.kadepok_donasi_popup, (ViewGroup)findViewById(R.id.rl_custom_layout));
-//
-//            popup_notifikasi = new PopupWindow(layout, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, true);
-//            popup_notifikasi.showAtLocation(layout, Gravity.CENTER, 0, 0);
-//
-//            close = (Button)layout.findViewById(R.id.close);
-//            close.setOnClickListener(cancel_button_click_listener);
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-    private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            popup_notifikasi.dismiss();
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +46,28 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }
+
+        //---------------- Image Single Popup --------------------------------------------------
+        final CircleImageView imageView = (CircleImageView) findViewById(R.id.list_avatar);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog settingsDialog = new Dialog(KadepokDetailActivity.this);
+
+                LayoutInflater inflater = getLayoutInflater();
+                View newView = inflater.inflate(R.layout.activity_image, null);
+
+                settingsDialog.setContentView(newView);
+                settingsDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+                settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
+
+                ImageView iv = (ImageView) newView.findViewById(R.id.profile_img_popup);
+                Bitmap bm = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                iv.setImageBitmap(bm);
+                settingsDialog.show();
+            }
+        });
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

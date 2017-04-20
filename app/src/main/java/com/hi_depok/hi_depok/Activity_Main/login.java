@@ -68,7 +68,6 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
     EditText mPasswordView, mEmailView;
     Button btnSend;
     String username, password;
-    AlertDialog.Builder mBuilder;
     ImageButton google;
     String login_url = "http://Hidepok.id/login.php";
 
@@ -110,10 +109,16 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
                 username = mEmailView.getText().toString();
                 password = mPasswordView.getText().toString();
 
-                if (username.equals("") || password.equals("")) {
-                    mBuilder.setTitle("Status");
-                    displayAlert("Input a valid username and/or password . . .");
-                } else {
+                if (username.equals("")) {
+                    mEmailView.setError("ISI DULU EMAIL KAMU YA . . .");
+                }else if(password.equals("")){
+                    mPasswordView.setError("PASSWORD KAMU MANA . . .");
+                }
+                else if(username.equals("") || password.equals("")){
+                    Toast.makeText(login.this, "Input a valid username and/or password . . .",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else {
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, login_url,
                             new Response.Listener<String>() {
                                 @Override
@@ -123,20 +128,20 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
                                         JSONObject jsonObject = jsonArray.getJSONObject(0);
                                         String code = jsonObject.getString("code");
                                         if (code.equals("login_failed")) {
-                                            mBuilder.setTitle("Login Error . . .");
-                                            displayAlert(jsonObject.getString("message"));
+                                            Toast.makeText(login.this, jsonObject.getString("message"),
+                                                    Toast.LENGTH_SHORT).show();
                                         } else {
                                             Intent intent = new Intent(login.this,
                                                     MainActivity.class);
                                             //Masukkin sharedPreferences disini
                                             //Deklarasiin classnya diatas jangan di dalem sini
 
-                                           /* Bundle bundle = new Bundle();
+                                            Bundle bundle = new Bundle();
                                             bundle.putString("KEY_NAME",
                                                     jsonObject.getString("nama_user"));
                                             bundle.putString("ADDRESS_NAME",
                                                     jsonObject.getString("email_user"));
-                                            intent.putExtras(bundle);*/
+                                            intent.putExtras(bundle);
                                             startActivity(intent);
                                             finish();
                                         }
@@ -164,19 +169,6 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
                 }
             }
         });
-    }
-
-    private void displayAlert(String message) {
-        mBuilder.setMessage(message);
-        mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-                mEmailView.setText("");
-                mPasswordView.setText("");
-            }
-        });
-        AlertDialog alertDialog = mBuilder.create();
-        alertDialog.show();
     }
 
     private boolean mayRequestContacts() {

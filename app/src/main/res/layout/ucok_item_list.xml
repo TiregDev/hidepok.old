@@ -30,8 +30,7 @@
             android:layout_marginTop="-5dp"
             tools:text="Lemper Lumer"
             app:font="@string/fontBold"
-            android:textAppearance="?attr/textAppearanceListItem"
-            android:textColor="@color/cardview_dark_background"
+            android:textColor="@color/background"
             android:textSize="@dimen/article_titles" />
 
         <fr.arnaudguyon.smartfontslib.FontTextView
@@ -42,12 +41,11 @@
             android:layout_marginTop="5dp"
             android:layout_marginStart="@dimen/md_keylines"
             android:layout_toEndOf="@+id/list_avatar"
-            android:textColor="@color/cardview_dark_background"
+            android:textColor="@color/background"
             android:ellipsize="end"
             android:singleLine="true"
             app:font="@string/fontLight"
             tools:text="@string/item_desc"
-            android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="@dimen/list_body" />
 
         <fr.arnaudguyon.smartfontslib.FontTextView
@@ -59,11 +57,10 @@
             android:layout_marginStart="@dimen/md_keylines"
             android:layout_toEndOf="@+id/list_avatar"
             app:font="@string/fontBold"
-            android:textColor="@color/cardview_dark_background"
+            android:textColor="@color/background"
             android:ellipsize="end"
             android:singleLine="true"
             tools:text="IDR 1k/item"
-            android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="@dimen/list_body" />
 
     </RelativeLayout>

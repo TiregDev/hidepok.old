@@ -75,27 +75,27 @@
                         android:src="@drawable/profile" />
 
                     <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontReguler"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
                         android:layout_toEndOf="@id/ic_people"
                         android:gravity="center_vertical"
-                        android:layout_marginStart="5dp"
                         android:text="@string/item_title"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/article_desc" />
+                        android:textSize="@dimen/article_desc"
+                        app:font="@string/fontReguler" />
                 </RelativeLayout>
 
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
-                    app:font="@string/fontBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
                     android:text="Deskripsi"
                     android:textColor="@color/white"
                     android:textSize="@dimen/article_titles"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:font="@string/fontBold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -107,26 +107,26 @@
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:scaleType="center"
-                        app:srcCompat="@drawable/information"/>
+                        app:srcCompat="@drawable/information" />
 
                     <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontReguler"
-                        android:layout_marginTop="10dp"
                         android:id="@+id/place_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:gravity="center_vertical"
                         android:textColor="@color/white"
+                        app:font="@string/fontReguler"
                         tools:text="@string/detail_desc" />
 
                 </LinearLayout>
 
                 <RatingBar
-                    android:layout_marginStart="50dp"
                     android:id="@+id/ratingBar"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
                     android:layout_marginTop="5dp"
                     android:numStars="5"
                     android:rating="3"
@@ -134,15 +134,15 @@
                     android:theme="@style/RatingBar" />
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
-                    app:font="@string/fontBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/md_keylines"
                     android:layout_marginStart="@dimen/article_keylines"
+                    android:layout_marginTop="@dimen/md_keylines"
                     android:text="Jam Buka"
                     android:textColor="@color/white"
                     android:textSize="@dimen/article_titles"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:font="@string/fontBold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -151,33 +151,33 @@
 
                     <ImageView
                         android:id="@+id/icon_time"
-                        android:layout_marginTop="-10dp"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
+                        android:layout_marginTop="-10dp"
                         android:scaleType="center"
                         app:srcCompat="@drawable/jam" />
 
                     <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontReguler"
                         android:id="@+id/hari"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/jamBuka"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        app:font="@string/fontReguler" />
                 </LinearLayout>
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
-                    app:font="@string/fontBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/md_keylines"
                     android:layout_marginStart="@dimen/article_keylines"
+                    android:layout_marginTop="@dimen/md_keylines"
                     android:text="Menu dan Fasilitas"
                     android:textColor="@color/white"
                     android:textSize="@dimen/article_titles"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:font="@string/fontBold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -192,26 +192,26 @@
                         app:srcCompat="@drawable/restaurant" />
 
                     <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontReguler"
                         android:id="@+id/desc_andalan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:gravity="center_vertical"
                         android:text="Menu Tambahan"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        app:font="@string/fontReguler" />
                 </LinearLayout>
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
-                    app:font="@string/fontReguler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/md_keylines"
                     android:layout_marginStart="@dimen/article_keylines"
+                    android:layout_marginTop="@dimen/md_keylines"
                     android:text="Lokasi"
                     android:textColor="@color/white"
                     android:textSize="@dimen/article_titles"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:font="@string/fontReguler" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -222,18 +222,18 @@
                         android:id="@+id/icon_lokasi"
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:onClick="toMaps"
                         android:layout_marginStart="5dp"
+                        android:onClick="toMaps"
                         app:srcCompat="@drawable/maps_small" />
 
                     <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontReguler"
                         android:id="@+id/place_location"
                         android:layout_width="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
                         android:textColor="@color/white"
+                        app:font="@string/fontReguler"
                         tools:text="@string/detail_location" />
                 </LinearLayout>
 
@@ -252,32 +252,30 @@
                     android:orientation="horizontal">
 
                     <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontReguler"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="15dp"
                         android:text="Tambah Ulasan"
-                        android:textColor="#fff" />
+                        android:textColor="#fff"
+                        app:font="@string/fontReguler" />
 
                     <ImageView
                         android:id="@+id/tambah"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="10dp"
-                        android:clickable="true"
-                        android:onClick="tambah"
                         android:src="@android:drawable/ic_menu_add" />
                 </LinearLayout>
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
-                    app:font="@string/fontBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:text="Ulasan Terbaru"
                     android:textColor="#ffff"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    app:font="@string/fontBold" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recycler_view"
@@ -289,7 +287,6 @@
                 </android.support.v7.widget.RecyclerView>
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
-                    app:font="@string/fontBold"
                     android:id="@+id/ulasan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -299,7 +296,8 @@
                     android:paddingTop="30dp"
                     android:text="Lihat Ulasan Lainnya>>"
                     android:textColor="#ffff"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    app:font="@string/fontBold" />
 
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>

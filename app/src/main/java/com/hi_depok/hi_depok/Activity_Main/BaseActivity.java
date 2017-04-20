@@ -35,7 +35,7 @@ import com.mikepenz.materialize.util.UIUtils;
  */
 
 public class BaseActivity extends AppCompatActivity {
-    private Drawer result;
+    protected Drawer result;
     private static final int TIME_DELAY = 2000;
     private static long back_pressed;
     Activity activity = this;

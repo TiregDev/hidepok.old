@@ -109,23 +109,28 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        LayoutInflater factory = LayoutInflater.from(this);
-        final View exitDialogView = factory.inflate(R.layout.activity_dialog_exit, null);
-        final AlertDialog exitDialog = new AlertDialog.Builder(this).create();
-        exitDialog.setView(exitDialogView);
-        exitDialogView.findViewById(R.id.btn_yes).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.finish();
-            }
-        });
-        exitDialogView.findViewById(R.id.btn_no).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                exitDialog.dismiss();
-            }
-        });
-        exitDialog.show();
+        if (result.isDrawerOpen()) {
+            super.onBackPressed();
+        }
+        else {
+            LayoutInflater factory = LayoutInflater.from(this);
+            final View exitDialogView = factory.inflate(R.layout.activity_dialog_exit, null);
+            final AlertDialog exitDialog = new AlertDialog.Builder(this).create();
+            exitDialog.setView(exitDialogView);
+            exitDialogView.findViewById(R.id.btn_yes).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.finish();
+                }
+            });
+            exitDialogView.findViewById(R.id.btn_no).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    exitDialog.dismiss();
+                }
+            });
+            exitDialog.show();
+        }
     }
 
 }

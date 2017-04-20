@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -70,6 +71,7 @@ public class kapok_detail extends BaseActivity {
 
         TypedArray placePictures = resources.obtainTypedArray(R.array.places_picture2);
         ImageView placePicture = (ImageView) findViewById(R.id.image);
+
         placePicture.setImageDrawable(placePictures.getDrawable(postion % placePictures.length()));
 
         placePictures.recycle();
@@ -85,7 +87,7 @@ public class kapok_detail extends BaseActivity {
         List<ItemObjectViewUlasan> rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(kapok_detail.this);
 
-        RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
+        RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view);
         rView.setLayoutManager(lLayout);
 
         CustomAdapterViewUlasan rcAdapter = new CustomAdapterViewUlasan(kapok_detail.this, rowListItem);
@@ -102,8 +104,9 @@ public class kapok_detail extends BaseActivity {
 
 
     }
+
     //ulasan
-    private List<ItemObjectViewUlasan> getAllItemList(){
+    private List<ItemObjectViewUlasan> getAllItemList() {
         List<ItemObjectViewUlasan> allItems = new ArrayList<>();
         allItems.add(new ItemObjectViewUlasan("Kadek Pandu", "12-01-2016 20:01:56", "Makanannya enak dan murah", R.drawable.profile));
         allItems.add(new ItemObjectViewUlasan("Fajar Zakaria", "12-01-2016 21:01:56", "Tempatnya nyaman dan bersih", R.drawable.profile));
@@ -112,48 +115,55 @@ public class kapok_detail extends BaseActivity {
     }
 
     @Override
-      public boolean onOptionsItemSelected(MenuItem item) {
-          switch (item.getItemId()) {
-              case android.R.id.home:
-                  // todo: goto back activity from here
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
 
-                  kapok_detail.this.finish();
-                  return true;
+                kapok_detail.this.finish();
+                return true;
 
-              default:
-                  return super.onOptionsItemSelected(item);
-          }
-      }
-    public void toMaps(View v){
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void toMaps(View v) {
         Intent intent = new Intent(getBaseContext(), MapsActivity.class);
         startActivity(intent);
     }
-    //popup
-    private PopupWindow pwindo;
 
+    //popup
     private void initiatepopup() {
         try {
-            LayoutInflater inflater = (LayoutInflater) kapok_detail.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = inflater.inflate(R.layout.kapok_popup_ulasan, (ViewGroup) findViewById(R.id.popup_element));
-            pwindo = new PopupWindow(layout, 450,300, true);
-            pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
-            pwindo.setOutsideTouchable(true);
-            pwindo.setFocusable(true);
-
-            ImageView close = (ImageView) layout.findViewById(R.id.close);
-            close.setOnClickListener(cancel_button_click_listener);
-
+            LayoutInflater inflater = getLayoutInflater();
+            final View inflaterView = inflater.inflate(R.layout.kapok_popup_ulasan, null);
+            final AlertDialog inflaterDialog = new AlertDialog.Builder(kapok_detail.this).create();
+            inflaterDialog.setView(inflaterView);
+            inflaterDialog.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    inflaterDialog.dismiss();
+                }
+            });
+            inflaterDialog.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            pwindo.dismiss();
-        }
-    };
+//    public void tambah(View v) {
+//        LayoutInflater inflater = LayoutInflater.from(this);
+//        final View inflaterView = inflater.inflate(R.layout.kapok_popup_ulasan, null);
+//        final AlertDialog inflaterDialog = new AlertDialog.Builder(getBaseContext()).create();
+//        inflaterDialog.setView(inflaterView);
+//        inflaterDialog.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View z) {
+//                inflaterDialog.dismiss();
+//            }
+//        });
+//        inflaterDialog.show();
+//    }
 }
 
 
