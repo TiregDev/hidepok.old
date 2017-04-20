@@ -21,6 +21,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -37,6 +42,10 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.hi_depok.hi_depok.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -45,12 +54,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     double latitude;
     double longitude;
-    private int PROXIMITY_RADIUS = 10000;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
-
+    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php";
+    String JSON_ID = "id_tempat_sehat";
+    String JSON_ALAMAT = "alamat_tempat_sehat";
+    String JSON_JENIS = "nama_jenis";
+    String JSON_KORDINAT = "koordinat_tempat_sehat";
+    String JSON_KECAMATAN = "kecamatan_tempat_sehat";
+    String JSON_NAME = "nama_tempat_sehat";
+    String JSON_FOTO = "foto_tempat_sehat";
+    String JSON_KETERANGAN = "keterangan_tempat_sehat";
+    String JSON_OPERASIONAL = "operasional_tempat_sehat";
+    String JSON_NOTLP = "no_telp_tempat_sehat";
+    String placeId, placeName, placeDeskripsi, placeJenis, placeKecamatan, placeLokasi, placeNoTlp, placeFoto, placeOperasional, placeKordinat;
+    JsonArrayRequest jsonArrayRequest ;
+    RequestQueue requestQueue ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +89,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         else {
             Log.d("onCreate","Google Play Services available.");
         }
-        String tempatSehat[] = { "Cari Tempat ...", "Puskesmas", "Klinik", "Apotek", "Ambulans",
+        String tempatSehat[] = { "Cari Tempat ...", "Puskesmas", "Klinik", "Apotek",
                 "Bidan", "Khitan", "Pijat" };
         Spinner spinner = (Spinner) findViewById(R.id.spinPlaces);
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
@@ -79,29 +100,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 1:
-                        findPlaces("puskesmas");
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?kategori=Puskesmas";
                         break;
                     case 2:
-                        findPlaces("klinik");
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?kategori=Klinik";
                         break;
                     case 3:
-                        findPlaces("apotek");
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?kategori=Apotek";
                         break;
                     case 4:
-                        findPlaces("ambulans");
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?kategori=Bidan";
                         break;
                     case 5:
-                        findPlaces("bidan");
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?kategori=Khitan";
                         break;
                     case 6:
-                        findPlaces("khitan");
-                        break;
-                    case 7:
-                        findPlaces("pijat");
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?kategori=Tukang%20Urut";
                         break;
                     default:
                         break;
                 }
+                JSON_DATA_WEB_CALL();
             }
 
             @Override
@@ -116,6 +135,80 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             showLocationSettings();
+        }
+    }
+    public void JSON_DATA_WEB_CALL() {
+        jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_URL,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        JSON_PARSE_DATA_AFTER_WEBCALL(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+    }
+
+    public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array){
+        mMap.clear();
+        //onLocationChanged(mLastLocation);
+        for(int i = 0; i<array.length(); i++) {
+            JSONObject json = null;
+            try {
+
+                json = array.getJSONObject(i);
+                placeId = json.getString(JSON_ID);
+                placeName = json.getString(JSON_NAME);
+                placeDeskripsi = json.getString(JSON_KETERANGAN);
+                placeLokasi = json.getString(JSON_ALAMAT);
+                placeNoTlp = json.getString(JSON_NOTLP);
+                placeFoto = json.getString(JSON_FOTO);
+                placeOperasional = json.getString(JSON_OPERASIONAL);
+                placeKordinat = json.getString(JSON_KORDINAT);
+                placeKecamatan = json.getString(JSON_KECAMATAN);
+                placeJenis = json.getString(JSON_JENIS);;
+                Log.d("onPostExecute","Entered into showing locations");
+                MarkerOptions markerOptions = new MarkerOptions();
+                String[] kordinat = placeKordinat.split(",");
+                double lat = Double.parseDouble(kordinat[0]);
+                double lng = Double.parseDouble(kordinat[1].trim());
+                LatLng latLng = new LatLng(lat, lng);
+                markerOptions.position(latLng);
+                markerOptions.title(placeName);
+                mMap.addMarker(markerOptions);
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+//                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.apotek));
+                //move map camera
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
+                mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                    @Override
+                    public void onInfoWindowClick(Marker marker) {
+                        Intent intent = new Intent(getBaseContext(), DetailActivity.class);
+                        Log.d("MapsActivity", "get id: " + placeId);
+                        intent.putExtra(DetailActivity.EXTRA_POSITION, placeId);
+//                        intent.putExtra(DetailActivity.NAMA_TEMPAT, placeName);
+//                        intent.putExtra(DetailActivity.DESKRIPSI_TEMPAT, placeDeskripsi);
+//                        intent.putExtra(DetailActivity.LOKASI_TEMPAT, placeLokasi);
+//                        intent.putExtra(DetailActivity.NOTLP_TEMPAT, placeNoTlp);
+//                        intent.putExtra(DetailActivity.FOTO_TEMPAT, placeFoto);
+//                        intent.putExtra(DetailActivity.OPERASIONAL_TEMPAT, placeOperasional);
+//                        intent.putExtra(DetailActivity.KORDINAT_TEMPAT, placeKordinat);
+
+                        startActivity(intent);
+                    }
+                });
+
+            } catch (JSONException e) {
+
+                e.printStackTrace();
+            }
         }
     }
     private void showLocationSettings() {
@@ -141,18 +234,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void toList(View view) {
         startActivity(new Intent(getBaseContext(), MenuActivity.class));
     }
-    public void findPlaces(String name){
-        mMap.clear();
-        String getname = name;
-        String url = getUrl(latitude, longitude, getname);
-        Object[] DataTransfer = new Object[2];
-        DataTransfer[0] = mMap;
-        DataTransfer[1] = url;
-        Log.d("onClick", url);
-        GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
-        getNearbyPlacesData.execute(DataTransfer);
-        Toast.makeText(MapsActivity.this, "Nearby " + getname, Toast.LENGTH_LONG).show();
-    }
+//    public void findPlaces(String name){
+//        mMap.clear();
+//        String getname = name;
+//        String url = getUrl(latitude, longitude, getname);
+//        Object[] DataTransfer = new Object[2];
+//        DataTransfer[0] = mMap;
+//        DataTransfer[1] = url;
+//        Log.d("onClick", url);
+//        GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
+//        getNearbyPlacesData.execute(DataTransfer);
+//        Toast.makeText(MapsActivity.this, "Nearby " + getname, Toast.LENGTH_LONG).show();
+//    }
     private boolean CheckGooglePlayServices() {
         GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
         int result = googleAPI.isGooglePlayServicesAvailable(this);
@@ -235,6 +328,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+
     @Override
     public void onLocationChanged(Location location) {
         Log.d("onLocationChanged", "entered");
@@ -243,21 +337,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (mCurrLocationMarker != null) {
             mCurrLocationMarker.remove();
         }
-
         //Place current location marker
         latitude = location.getLatitude();
         longitude = location.getLongitude();
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title("Current Position");
+        markerOptions.title("Lokasi Kamu");
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
-        Toast.makeText(MapsActivity.this,"Your Current Location", Toast.LENGTH_LONG).show();
+        Toast.makeText(MapsActivity.this,"Lokasi Kamu", Toast.LENGTH_LONG).show();
 
         Log.d("onLocationChanged", String.format("latitude:%.3f longitude:%.3f",latitude,longitude));
 

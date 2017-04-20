@@ -1,7 +1,5 @@
 package com.hi_depok.hi_depok.Sikepok_Panic;
 
-
-import android.app.ProgressDialog;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,17 +24,21 @@ import com.hi_depok.hi_depok.R;
 
 public class PuskesmasFragment extends Fragment {
     private LinearLayoutManager lLayout;
-    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=puskesmas";
-    String JSON_ID = "id_tempat";
-    String JSON_ALAMAT = "alamat_tempat";
-    String JSON_NAME = "nama_tempat";
-    String JSON_DESKRIPSI = "deskripsi_tempat";
-    String JSON_NOTLP = "no_telp_tempat";
+    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?kategori=Puskesmas";
+    String JSON_ID = "id_tempat_sehat";
+    String JSON_ALAMAT = "alamat_tempat_sehat";
+    String JSON_JENIS = "nama_jenis";
+    String JSON_KORDINAT = "koordinat_tempat_sehat";
+    String JSON_KECAMATAN = "kecamatan_tempat_sehat";
+    String JSON_NAME = "nama_tempat_sehat";
+    String JSON_FOTO = "foto_tempat_sehat";
+    String JSON_KETERANGAN = "keterangan_tempat_sehat";
+    String JSON_OPERASIONAL = "operasional_tempat_sehat";
+    String JSON_NOTLP = "no_telp_tempat_sehat";
     JsonArrayRequest jsonArrayRequest ;
     List<GetDataAdapter> dataAdapter;
     RequestQueue requestQueue ;
     RecyclerView.Adapter recyclerViewadapter;
-    ProgressDialog progressDialog;
     RecyclerView rView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,9 +49,6 @@ public class PuskesmasFragment extends Fragment {
         rView.setHasFixedSize(true);
         rView.setLayoutManager(lLayout);
         dataAdapter = new ArrayList<>();
-        progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("Sedang Mencari ...");
-        progressDialog.show();
         JSON_DATA_WEB_CALL();
         return rView;
     }
@@ -59,7 +58,6 @@ public class PuskesmasFragment extends Fragment {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        progressDialog.dismiss();
                         JSON_PARSE_DATA_AFTER_WEBCALL(response);
                     }
                 },
@@ -80,9 +78,16 @@ public class PuskesmasFragment extends Fragment {
             JSONObject json = null;
             try {
                 json = array.getJSONObject(i);
+                dataFromJSON.setId(json.getString(JSON_ID));
                 dataFromJSON.setName(json.getString(JSON_NAME));
-                dataFromJSON.setDeskripsi(json.getString(JSON_DESKRIPSI));
-                dataFromJSON.setFoto(R.drawable.a_avator);
+                dataFromJSON.setDeskripsi(json.getString(JSON_KETERANGAN));
+                dataFromJSON.setAlamat(json.getString(JSON_ALAMAT));
+                dataFromJSON.setNoTelp(json.getString(JSON_NOTLP));
+                dataFromJSON.setFoto(json.getString(JSON_FOTO));
+                dataFromJSON.setKecamatan(json.getString(JSON_KECAMATAN));
+                dataFromJSON.setKordinat(json.getString(JSON_KORDINAT));
+                dataFromJSON.setJenis(json.getString(JSON_JENIS));
+                dataFromJSON.setOperasional(json.getString(JSON_OPERASIONAL));
 
             } catch (JSONException e) {
 
@@ -90,7 +95,6 @@ public class PuskesmasFragment extends Fragment {
             }
             dataAdapter.add(dataFromJSON);
         }
-
         recyclerViewadapter = new RecyclerViewAdapterJSON(dataAdapter, getContext());
         rView.setAdapter(recyclerViewadapter);
     }

@@ -30,6 +30,7 @@ import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -66,12 +67,23 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
             R.drawable.ucok_image_4, R.drawable.wisata,
             R.drawable.ucok_image_4, R.drawable.wisata));
 
-    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php";
+    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/kapok_json.php";
     String JSON_ID = "id_tempat";
     String JSON_ALAMAT = "alamat_tempat";
+    String JSON_KATEGORI = "kategori_tempat";
+    String JSON_KORDINAT = "koordinat_tempat";
+    String JSON_KECAMATAN = "kecamatan_tempat";
     String JSON_NAME = "nama_tempat";
-    String JSON_DESKRIPSI = "deskripsi_tempat";
+    String JSON_FOTO = "foto_tempat";
+    String JSON_DESKIPSI = "deskripsi_tempat";
+    String JSON_FAV = "menu_fav_tempat";
+    String JSON_FASILITAS = "fasilitas_tempat";
+    String JSON_NOTE = "note_tempat";
+    String JSON_OPERASIONAL = "jam_operasi_tempat";
     String JSON_NOTLP = "no_telp_tempat";
+    boolean isSelectCategory, isSelectKecamatan;
+    String kategori;
+    String kecamatan;
     JsonArrayRequest jsonArrayRequest ;
     List<GetDataAdapter> dataAdapter;
     RequestQueue requestQueue ;
@@ -93,48 +105,14 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Spinner pilihan = (Spinner) findViewById(R.id.pilihan);
-        Spinner camat = (Spinner) findViewById(R.id.camat);
+        final Spinner pilihan = (Spinner) findViewById(R.id.pilihan);
+        final Spinner camat = (Spinner) findViewById(R.id.camat);
         sort=(RadioGroup)findViewById(R.id.sort);
         temukan=(Button)findViewById(R.id.temukan);
         dataAdapter = new ArrayList<>();
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Loading ...");
-        progressDialog.show();
-        JSON_DATA_WEB_CALL();
+
+
         // Spinner click listener
-        pilihan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (i) {
-                    case 1:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=kuliner";
-                        break;
-                    case 2:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=wisata";
-                        break;
-                    case 3:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=pasar";
-                        break;
-                    case 4:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=tempat_ibadah";
-                        break;
-                    case 5:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/jsonData.php?kategori=olahraga";
-                        break;
-                    default:
-                        break;
-                }
-                progressDialog.show();
-                dataAdapter.clear();
-                JSON_DATA_WEB_CALL();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
         List<String> pilih = new ArrayList<String>();
         pilih.add("Pilihan");
         pilih.add("Kuliner");
@@ -147,8 +125,38 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
         pilihAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         pilihan.setAdapter(pilihAdapter);
+        pilihan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 1:
+                        kategori = "kuliner";
+                        break;
+                    case 2:
+                        kategori ="wisata";
+                        break;
+                    case 3:
+                        kategori = "pasar";
+                        break;
+                    case 4:
+                        kategori = "tempat%20ibadah";
+                        break;
+                    case 5:
+                        kategori = "olahraga";
+                        break;
+                    default:
+                        isSelectCategory = false;
+                        break;
+                }
+            }
 
-        camat.setOnItemSelectedListener(this);
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
         List<String> wilayah = new ArrayList<String>();
         wilayah.add("Kecamatan");
         wilayah.add("Beji");
@@ -165,15 +173,79 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
 
         ArrayAdapter<String> camatAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, wilayah);
         camatAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        camat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 1:
+                        kecamatan = "beji";
+                        break;
+                    case 2:
+                        kecamatan = "cilodong";
+                        break;
+                    case 3:
+                        kecamatan = "cimanggis";
+                        break;
+                    case 4:
+                        kecamatan = "cinere";
+                        break;
+                    case 5:
+                        kecamatan = "cipayung";
+                        break;
+                    case 6:
+                        kecamatan = "limo";
+                        break;
+                    case 7:
+                        kecamatan = "pancoran%20mas";
+                        break;
+                    case 8:
+                        kecamatan = "sawangan";
+                        break;
+                    case 9:
+                        kecamatan = "tapos";
+                        break;
+                    case 10:
+                        kecamatan = "bojongsari";
+                        break;
+                    case 11:
+                        kecamatan = "sukmajaya";
+                        break;
+                    default:
+                        isSelectKecamatan = false;
+                        break;
+                }
 
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         camat.setAdapter(camatAdapter);
 
 
         temukan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int selectedId= sort.getCheckedRadioButtonId();
-                urut=(RadioButton)findViewById(selectedId);
+                if(pilihan.getSelectedItemPosition()==0)
+                {
+                    Toast.makeText(KapokActivity.this, "Pilih Kategori Terlebih Dahulu!", Toast.LENGTH_LONG).show();
+                }
+                else if(camat.getSelectedItemPosition()==0)
+                {
+                    Toast.makeText(KapokActivity.this, "Pilih Kecamatan Terlebih Dahulu!", Toast.LENGTH_LONG).show();
+                }
+                else if(pilihan.getSelectedItemPosition()==0 && camat.getSelectedItemPosition()==0)
+                {
+                    Toast.makeText(KapokActivity.this, "Pilih Kecamatan dan Kategori Terlebih Dahulu!", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/kapok_json.php?kategori=" + kategori + "&kecamatan=" + kecamatan;
+                }
+
+                JSON_DATA_WEB_CALL();
             }
         });
 
@@ -184,16 +256,13 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
         // set a GridLayoutManager with 2 number of columns , horizontal gravity and false value for reverseLayout to show the items from start to end
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
         rView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
-        //  call the constructor of CustomAdapter to send the reference and data to Adapter
-//        CustomAdapterMenuSort customAdapter = new CustomAdapterMenuSort(KapokActivity.this, namalogo,gambarlogo);
-//        rView.setAdapter(customAdapter); // set the Adapter to RecyclerView
+
 }
     public void JSON_DATA_WEB_CALL(){
         jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_URL,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        progressDialog.dismiss();
                         JSON_PARSE_DATA_AFTER_WEBCALL(response);
                     }
                 },
@@ -209,13 +278,14 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
     }
 
     public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array){
+        dataAdapter.clear();
         for(int i = 0; i<array.length(); i++) {
             GetDataAdapter dataFromJSON = new GetDataAdapter();
             JSONObject json = null;
             try {
                 json = array.getJSONObject(i);
                 dataFromJSON.setName(json.getString(JSON_NAME));
-                dataFromJSON.setFoto(gambarlogo.get(i));
+                //dataFromJSON.setFoto(gambarlogo.get(i));
 
             } catch (JSONException e) {
 
@@ -228,57 +298,6 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
         rView.setAdapter(recyclerViewadapter);
     }
 
-
-
-//    //popup
-//    private PopupWindow pwindo;
-//
-//    public void initiatepopup() {
-//        try {
-//            LayoutInflater inflater = (LayoutInflater) KapokActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//            View layout = inflater.inflate(R.layout.kapok_popup_layout, (ViewGroup) findViewById(R.id.popup_element));
-//
-//            pwindo = new PopupWindow(layout, 450, 750, true);
-//            pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
-//            pwindo.setOutsideTouchable(true);
-//            pwindo.setFocusable(true);
-//            ImageView maps = (ImageView) layout.findViewById(R.id.mapsIcon);
-//            maps.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    startActivity(new Intent(KapokActivity.this, MapsActivity.class));
-//                }
-//            });
-//            Button selengkapnya = (Button) layout.findViewById(R.id.next);
-//            selengkapnya.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    startActivity(new Intent(KapokActivity.this, activity_selengkapnya.class));
-//                }
-//            });
-//            ImageView close = (ImageView) layout.findViewById(R.id.close);
-//            close.setOnClickListener(cancel_button_click_listener);
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//    @Override
-//    public void onBackPressed() {
-//        if (pwindo != null) {
-//            if (pwindo.isShowing()) {
-//                pwindo.dismiss();
-//            }
-//        }
-//    }
-//    private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            pwindo.dismiss();
-//        }
-//    };
-
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -288,14 +307,7 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
     public void onNothingSelected(AdapterView<?> arg0) {
 
     }
-//    //button join
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_kapok, menu);
-//
-//        return super.onCreateOptionsMenu(menu);
-//    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

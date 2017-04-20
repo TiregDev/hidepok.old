@@ -73,12 +73,11 @@ public class MenuActivity extends BaseActivity {
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new AmbulanceFragment(), "Ambulans");
+        adapter.addFragment(new ApotekFragment(), "Apotek");
         adapter.addFragment(new BidanFragment(), "Bidan");
-        adapter.addFragment(new TukangUrutFragment(), "Pijat");
+        adapter.addFragment(new TukangUrutFragment(), "Tukang Urut");
         adapter.addFragment(new KhitanFragment(), "Khitan");
         adapter.addFragment(new KlinikFragment(), "Klinik");
-        adapter.addFragment(new ApotekFragment(), "Apotek");
         adapter.addFragment(new PuskesmasFragment(), "Puskesmas");
         viewPager.setAdapter(adapter);
     }

@@ -1,14 +1,9 @@
 package com.hi_depok.hi_depok.Sikepok_RS;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
@@ -20,10 +15,17 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -39,9 +41,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Sikepok_Panic.GetNearbyPlacesData;
 
-import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
@@ -51,21 +54,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     double latitude;
     double longitude;
-    private int PROXIMITY_RADIUS = 10000;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
-
+    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokrs_menurs_json.php";
+    String JSON_ID = "id_rs";
+    String JSON_NAME ="nama_rs";
+    String JSON_ALAMAT ="alamat_rs";
+    String JSON_KECAMATAN = "kecamatan_rs";
+    String JSON_KORDINATLAT ="koordinat_latitude_rs";
+    String JSON_KORDINATLON ="koordinat_longitude_rs";
+    String JSON_NOTLP ="no_telp_rs";
+    String JSON_WEBSITE ="website_rs";
+    String JSON_EMAIL ="email_rs";
+    String JSON_FOTO ="foto_rs";
+    String JSON_DESKRIPSI ="deskripsi_rs";
+    String JSON_PARTNER ="id_partner";
+    String placeName, placeDeskripsi, placeLokasi, placeNoTlp, placeFoto, placeOperasional, placeKordinatLat, placeKordinatLon;
+    JsonArrayRequest jsonArrayRequest ;
+    RequestQueue requestQueue ;
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sikepokrs_rs_terdekat);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
-        }
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
@@ -79,47 +91,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         else {
             Log.d("onCreate","Google Play Services available.");
         }
-//        String tempatSehat[] = { "Cari Tempat ...", "Puskesmas", "Klinik", "Apotek", "Ambulans",
-//                "Bidan", "Khitan", "Pijat" };
-//        Spinner spinner = (Spinner) findViewById(R.id.spinPlaces);
-//        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_spinner_item, tempatSehat);;
-//        spinner.setAdapter(spinnerAdapter);
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                switch (position) {
-//                    case 1:
-//                        findPlaces("puskesmas");
-//                        break;
-//                    case 2:
-//                        findPlaces("klinik");
-//                        break;
-//                    case 3:
-//                        findPlaces("apotek");
-//                        break;
-//                    case 4:
-//                        findPlaces("ambulans");
-//                        break;
-//                    case 5:
-//                        findPlaces("bidan");
-//                        break;
-//                    case 6:
-//                        findPlaces("khitan");
-//                        break;
-//                    case 7:
-//                        findPlaces("pijat");
-//                        break;
-//                    default:
-//                        break;
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//                //NULL
-//            }
-//        });
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map2);
@@ -127,6 +98,77 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             showLocationSettings();
+        }
+
+    }
+    public void JSON_DATA_WEB_CALL() {
+        jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_URL,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        JSON_PARSE_DATA_AFTER_WEBCALL(response);
+                        Log.d("WebCall","Entered into showing locations: " + GET_JSON_DATA_HTTP_URL);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+    }
+
+    public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array){
+        //onLocationChanged(mLastLocation);
+        for(int i = 0; i<array.length(); i++) {
+            JSONObject json = null;
+            try {
+
+                json = array.getJSONObject(i);
+                placeName = json.getString(JSON_NAME);
+//                placeDeskripsi = json.getString(JSON_KETERANGAN);
+//                placeLokasi = json.getString(JSON_ALAMAT);
+//                placeNoTlp = json.getString(JSON_NOTLP);
+//                placeFoto = json.getString(JSON_FOTO);
+//                placeOperasional = json.getString(JSON_OPERASIONAL);
+                placeKordinatLat = json.getString(JSON_KORDINATLAT);
+                placeKordinatLon = json.getString(JSON_KORDINATLON);
+
+                Log.d("onPostExecute","Entered into showing locations");
+                MarkerOptions markerOptions = new MarkerOptions();
+                double lat = Double.parseDouble(placeKordinatLat);
+                double lng = Double.parseDouble(placeKordinatLon);
+                LatLng latLng = new LatLng(lat, lng);
+                markerOptions.position(latLng);
+                markerOptions.title(placeName);
+                mMap.addMarker(markerOptions);
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+//                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.apotek));
+                //move map camera
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
+//                mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+//                    @Override
+//                    public void onInfoWindowClick(Marker marker) {
+//                        Intent intent = new Intent(getBaseContext(), DetailActivity.class);
+//                        intent.putExtra(DetailActivity.NAMA_TEMPAT, placeName);
+//                        intent.putExtra(DetailActivity.DESKRIPSI_TEMPAT, placeDeskripsi);
+//                        intent.putExtra(DetailActivity.LOKASI_TEMPAT, placeLokasi);
+//                        intent.putExtra(DetailActivity.NOTLP_TEMPAT, placeNoTlp);
+//                        intent.putExtra(DetailActivity.FOTO_TEMPAT, placeFoto);
+//                        intent.putExtra(DetailActivity.OPERASIONAL_TEMPAT, placeOperasional);
+//                        intent.putExtra(DetailActivity.KORDINAT_TEMPAT, placeKordinat);
+//
+//                        startActivity(intent);
+//                    }
+//                });
+
+            } catch (JSONException e) {
+
+                e.printStackTrace();
+            }
         }
     }
     private void showLocationSettings() {
@@ -149,18 +191,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         snackbar.show();
     }
-
-    public void findPlaces(String name){
-        String getname = name;
-        String url = getUrl(latitude, longitude, getname);
-        Object[] DataTransfer = new Object[2];
-        DataTransfer[0] = mMap;
-        DataTransfer[1] = url;
-        Log.d("onClick", url);
-        GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
-        getNearbyPlacesData.execute(DataTransfer);
-        Toast.makeText(MapsActivity.this, "Nearby " + getname, Toast.LENGTH_LONG).show();
+    public void ke_daftar_rs(View view) {
+        startActivity(new Intent(getBaseContext(),daftar_rs.class));
     }
+    //    public void findPlaces(String name){
+//        mMap.clear();
+//        String getname = name;
+//        String url = getUrl(latitude, longitude, getname);
+//        Object[] DataTransfer = new Object[2];
+//        DataTransfer[0] = mMap;
+//        DataTransfer[1] = url;
+//        Log.d("onClick", url);
+//        GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
+//        getNearbyPlacesData.execute(DataTransfer);
+//        Toast.makeText(MapsActivity.this, "Nearby " + getname, Toast.LENGTH_LONG).show();
+//    }
     private boolean CheckGooglePlayServices() {
         GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
         int result = googleAPI.isGooglePlayServicesAvailable(this);
@@ -202,6 +247,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
         }
+        JSON_DATA_WEB_CALL();
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -243,6 +289,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+
     @Override
     public void onLocationChanged(Location location) {
         Log.d("onLocationChanged", "entered");
@@ -251,22 +298,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (mCurrLocationMarker != null) {
             mCurrLocationMarker.remove();
         }
-
         //Place current location marker
         latitude = location.getLatitude();
         longitude = location.getLongitude();
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title("Current Position");
+        markerOptions.title("Lokasi Kamu");
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
-        findPlaces("hospital");
-        Toast.makeText(MapsActivity.this,"Your Current Location", Toast.LENGTH_LONG).show();
+        Toast.makeText(MapsActivity.this,"Lokasi Kamu", Toast.LENGTH_LONG).show();
 
         Log.d("onLocationChanged", String.format("latitude:%.3f longitude:%.3f",latitude,longitude));
 
@@ -349,12 +394,4 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // You can add here other case statements according to your requirement.
         }
     }
-
-
-
-    public void ke_daftar_rs(View view){
-        Intent next = new Intent(MapsActivity.this, daftar_rs.class);
-        startActivity(next);
-    }
-
 }
