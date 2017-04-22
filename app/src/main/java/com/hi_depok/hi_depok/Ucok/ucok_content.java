@@ -1,11 +1,9 @@
 package com.hi_depok.hi_depok.Ucok;
 
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -25,7 +23,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
-import com.hi_depok.hi_depok.Activity_Main.ucok;
 import com.hi_depok.hi_depok.R;
 
 import org.json.JSONArray;
@@ -44,27 +41,29 @@ public class ucok_content extends BaseActivity {
     private Spinner category, sortby;
 
     String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php";
-    String JSON_ID_UKM = "id_barang";
-    String JSON_ID_BARANG = "id_ukm";
+    String JSON_ID_UKM = "id_ukm";
+    String JSON_ID_BARANG = "id_barang";
     String JSON_NAMA_UKM = "nama_ukm";
     String JSON_NAMA_OWNER_UKM = "nama_owner_ukm";
-    String JSON_NAMA_BARANG = "nama_barang";
+    String JSON_NAMA_BARANG = "daftar_barang";
     String JSON_KATEGORI = "kategori";
-    String JSON_HARGA_BARANG = "harga_barang";
+    String JSON_HARGA_BARANG = "daftar_barang";
     String JSON_ALAMAT_UKM = "alamat_ukm";
     String JSON_NO_TLP = "notelp";
     String JSON_KECAMATAN = "kecamatan";
     String JSON_DESC_UKM = "deskripsi_ukm";
-    String JSON_KORDINAT = "koordinat_ukm";
+    String JSON_KORDINAT_1 = "koordinat1";
+    String JSON_KORDINAT_2 = "koordinat2";
+    String JSON_FOTO_BARANG = "foto_barang";
+    String JSON_DAFTAR_FOTO_UKM = "daftar_foto_ukm";
 
     JsonArrayRequest jsonArrayRequest ;
-    List<GetDataAdapter> dataAdapter;
+    List<GetDataAdapter_siumkm> dataAdapter;
     RequestQueue requestQueue ;
     RecyclerView.Adapter recyclerViewadapter;
     RecyclerView rView;
 
-
-    private static final String[]cate = {"Kategori","Makanan", "Minuman", "Barang Custom"};
+    private static final String[]cate = {"Kategori","Makanan", "Minuman",  "Pakaian","Aksesoris","Pajangan","Jasa","Lain-lain"};
     private static final String[]sort = {"Kecamatan","Beji", "Cilodong" , "Cimanggis" ,
             "Cinere" , "Cipayung" , "Limo" , "Pancoran Mas" , "Sawangan" , "Tapos" , "Bojongsari" , "Sukmajaya"};
 
@@ -82,7 +81,7 @@ public class ucok_content extends BaseActivity {
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        List<ItemObject> rowListItem = getAllItemList();
-        lLayout = new LinearLayoutManager(ucok_content.this);
+        lLayout = new LinearLayoutManager(this);
         dataAdapter = new ArrayList<>();
         rView = (RecyclerView)findViewById(R.id.recycler_view);
         rView.setLayoutManager(lLayout);
@@ -100,16 +99,25 @@ public class ucok_content extends BaseActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 1:
-                        Toast.makeText(getApplicationContext(), ("Anda telah memilih makanan"),
-                                Toast.LENGTH_LONG).show();
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kategori=Makanan";
                         break;
                     case 2:
-                        Toast.makeText(getApplicationContext(), ("Anda telah memilih minuman"),
-                                Toast.LENGTH_LONG).show();
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kategori=Minuman";
                         break;
                     case 3:
-                        Toast.makeText(getApplicationContext(), ("Anda telah memilih Barang Custom"),
-                                Toast.LENGTH_LONG).show();
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kategori=Pakaian";
+                        break;
+                    case 4:
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kategori=Aksesoris";
+                        break;
+                    case 5:
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kategori=Pajangan";
+                        break;
+                    case 6:
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kategori=Jasa";
+                        break;
+                    case 7:
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kategori=Lain-lain";
                         break;
                     default:
                         break;
@@ -134,48 +142,37 @@ public class ucok_content extends BaseActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 1:
-                        Toast.makeText(getApplicationContext(), ("Beji"),
-                                Toast.LENGTH_LONG).show();
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kecamatan=Beji";
                         break;
                     case 2:
-                        Toast.makeText(getApplicationContext(), ("Cilodong"),
-                                Toast.LENGTH_LONG).show();
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kecamatan=Cilodong";
                         break;
                     case 3:
-                        Toast.makeText(getApplicationContext(), ("Cimanggis"),
-                                Toast.LENGTH_LONG).show();
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kecamatan=Cimanggis";
                         break;
                     case 4:
-                        Toast.makeText(getApplicationContext(), ("Cinere"),
-                                Toast.LENGTH_LONG).show();
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kecamatan=Cinere";
                         break;
                     case 5:
-                        Toast.makeText(getApplicationContext(), ("Cipayung"),
-                                Toast.LENGTH_LONG).show();
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kecamatan=Cipayung";
                         break;
                     case 6:
-                        Toast.makeText(getApplicationContext(), ("Limo"),
-                                Toast.LENGTH_LONG).show();
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kecamatan=Limo";
                         break;
                     case 7:
-                        Toast.makeText(getApplicationContext(), ("Pancoran Mas"),
-                                Toast.LENGTH_LONG).show();
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kecamatan=Pancoran Mas";
                         break;
                     case 8:
-                        Toast.makeText(getApplicationContext(), ("Sawangan"),
-                                Toast.LENGTH_LONG).show();
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kecamatan=Sawangan";
                         break;
                     case 9:
-                        Toast.makeText(getApplicationContext(), ("Tapos"),
-                                Toast.LENGTH_LONG).show();
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kecamatan=Tapos";
                         break;
                     case 10:
-                        Toast.makeText(getApplicationContext(), ("Bojongsari"),
-                                Toast.LENGTH_LONG).show();
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kecamatan=Bojongsari";
                         break;
                     case 11:
-                        Toast.makeText(getApplicationContext(), ("Sukmajaya"),
-                                Toast.LENGTH_LONG).show();
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kecamatan=Sukmajaya";
                         break;
                     default:
                         break;
@@ -202,22 +199,6 @@ public class ucok_content extends BaseActivity {
         }
     }
 
-//    private List<ItemObject> getAllItemList(){
-//        List<ItemObject> allItems = new ArrayList<>();
-//        allItems.add(new ItemObject("Peter James", "Vildansvagen 19, Lund Sweden","IDR 1k/Item", R.drawable.ucok_image_1));
-//        allItems.add(new ItemObject("Henry Jacobs", "3 Villa Crescent London, UK","IDR 1,5k/Item", R.drawable.ucok_image_2));
-//        allItems.add(new ItemObject("Bola Olumide", "Victoria Island Lagos, Nigeria","IDR 5k/Item", R.drawable.ucok_image_3));
-//        allItems.add(new ItemObject("Chidi Johnson", "New Heaven Enugu, Nigeria","IDR 7k/Item", R.drawable.ucok_image_4));
-//        allItems.add(new ItemObject("DeGordio Puritio", "Italion Gata, Padova, Italy","IDR 3k/Item", R.drawable.ucok_image_5));
-//        allItems.add(new ItemObject("Peter James", "Vildansvagen 19, Lund Sweden","IDR 1k/Item", R.drawable.ucok_image_1));
-//        allItems.add(new ItemObject("Henry Jacobs", "3 Villa Crescent London, UK","IDR 1,5k/Item", R.drawable.ucok_image_2));
-//        allItems.add(new ItemObject("Bola Olumide", "Victoria Island Lagos, Nigeria","IDR 5k/Item", R.drawable.ucok_image_3));
-//        allItems.add(new ItemObject("Chidi Johnson", "New Heaven Enugu, Nigeria","IDR 7k/Item", R.drawable.ucok_image_4));
-//        allItems.add(new ItemObject("DeGordio Puritio", "Italion Gata, Padova, Italy","IDR 3k/Item", R.drawable.ucok_image_5));
-//
-//        return allItems;
-//    }
-
     public void JSON_DATA_WEB_CALL(){
         jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_URL,
                 new Response.Listener<JSONArray>() {
@@ -239,7 +220,7 @@ public class ucok_content extends BaseActivity {
 
     public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array){
         for(int i = 0; i<array.length(); i++) {
-            GetDataAdapter dataFromJSON = new GetDataAdapter();
+            GetDataAdapter_siumkm dataFromJSON = new GetDataAdapter_siumkm();
             JSONObject json = null;
             try {
                 json = array.getJSONObject(i);
@@ -250,14 +231,14 @@ public class ucok_content extends BaseActivity {
                 dataFromJSON.setNama_barang(json.getString(JSON_NAMA_BARANG));
                 dataFromJSON.setKategori(json.getString(JSON_KATEGORI));
                 dataFromJSON.setHarga_barang(json.getString(JSON_HARGA_BARANG));
-                dataFromJSON.setKategori(json.getString(JSON_KATEGORI));
-                dataFromJSON.setHarga_barang(json.getString(JSON_HARGA_BARANG));
                 dataFromJSON.setAlamat_ukm(json.getString(JSON_ALAMAT_UKM));
                 dataFromJSON.setNotelp(json.getString(JSON_NO_TLP));
                 dataFromJSON.setKecamatan(json.getString(JSON_KECAMATAN));
                 dataFromJSON.setDeskripsi_ukm(json.getString(JSON_DESC_UKM));
-                dataFromJSON.setKoordinat_ukm(json.getString(JSON_KORDINAT));
-                Log.d("Ucok_content","Get from DB"+json.getString(JSON_DESC_UKM));
+                dataFromJSON.setKoordinat_ukm_1(json.getString(JSON_KORDINAT_1));
+                dataFromJSON.setKoordinat_ukm_2(json.getString(JSON_KORDINAT_2));
+                dataFromJSON.setFoto_barang(json.getString(JSON_FOTO_BARANG));
+                dataFromJSON.setDaftar_foto_ukm(json.getString(JSON_DAFTAR_FOTO_UKM));
 
             } catch (JSONException e) {
 
@@ -265,7 +246,7 @@ public class ucok_content extends BaseActivity {
             }
             dataAdapter.add(dataFromJSON);
         }
-        recyclerViewadapter = new RecyclerViewAdapterJSON(dataAdapter, this);
+        recyclerViewadapter = new RecyclerViewAdapterJSON_siumkm(dataAdapter, this);
         rView.setAdapter(recyclerViewadapter);
     }
 }

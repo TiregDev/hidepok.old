@@ -9,7 +9,7 @@
     <color name="medium_grey">#9E9E9E</color>
     <color name="button_grey">#757575</color>
     <!-- Screens background color-->
-    <color name="bg_slider_screen1">#f4b241</color>
+    <color name="bg_slider_screen1">#3e50b4</color>
     <color name="bg_slider_screen2">#16bc7d</color>
     <color name="bg_slider_screen3">#203d8c</color>
     <color name="bg_slider_screen4">#34495e</color>

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?android:attr/selectableItemBackground">
@@ -18,16 +16,16 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"/>
+            android:theme="?attr/actionBarTheme" />
 
         <ImageView
             android:id="@+id/cameraBtn"
             android:layout_width="56dp"
             android:layout_height="56dp"
+            android:layout_alignParentEnd="true"
             android:background="@color/accent"
             android:padding="15dp"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/photo_camera"/>
+            android:src="@drawable/photo_camera" />
 
         <LinearLayout
             android:id="@+id/dropdown"
@@ -44,14 +42,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/shape_bg_spinner"/>
+                android:background="@drawable/shape_bg_spinner" />
 
             <Spinner
                 android:id="@+id/sortby"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/shape_bg_spinner"/>
+                android:background="@drawable/shape_bg_spinner" />
 
         </LinearLayout>
 
@@ -69,14 +67,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_weight="1"
-                android:src="@drawable/spinner"/>
+                android:src="@drawable/spinner" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="-50dp"
                 android:layout_weight="1"
-                android:src="@drawable/spinner"/>
+                android:src="@drawable/spinner" />
 
         </LinearLayout>
 
@@ -85,6 +83,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/dropdown"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical" />
     </RelativeLayout>
 </FrameLayout>

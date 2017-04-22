@@ -126,7 +126,7 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
                     Context context = v.getContext();
                     Intent intent = new Intent(context, DetailActivity.class);
                     String pos = (String) itemView.getTag();
-                    Log.d("RecyclerViewAdapterJSON", "get id: " + pos);
+                    Log.d("RecyclerViewAdapterJSON_siumkm", "get id: " + pos);
                     intent.putExtra(DetailActivity.EXTRA_POSITION, pos);
 //                    intent.putExtra(DetailActivity.NAMA_TEMPAT, nama);
 //                    intent.putExtra(DetailActivity.DESKRIPSI_TEMPAT, deskripsi);

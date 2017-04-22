@@ -73,6 +73,7 @@
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/pict_profile"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:src="@drawable/profile" />

@@ -7,23 +7,25 @@ package com.hi_depok.hi_depok.Ucok;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.hi_depok.hi_depok.R;
-import com.squareup.picasso.Picasso;
-import java.net.URLEncoder;
+
 import java.util.List;
 
+import static android.R.attr.id;
 
-public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAdapterJSON.ViewHolder> {
+
+public class RecyclerViewAdapterJSON_siumkm extends RecyclerView.Adapter<RecyclerViewAdapterJSON_siumkm.ViewHolder> {
 
     Context context;
 
-    List<GetDataAdapter> adapter;
+    List<GetDataAdapter_siumkm> adapter;
     String id_barang;
     String id_ukm;
     String nama_ukm;
@@ -35,10 +37,13 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
     String notelp;
     String kecamatan;
     String deskripsi_ukm;
-    String koordinat_ukm;
+    String koordinat_ukm_1;
+    String koordinat_ukm_2;
+    String foto_barang;
+    String daftar_foto_ukm;
     String urlPhoto;
 
-    public RecyclerViewAdapterJSON(List<GetDataAdapter> adapter, Context context){
+    public RecyclerViewAdapterJSON_siumkm(List<GetDataAdapter_siumkm> adapter, Context context){
         super();
         this.adapter = adapter;
         this.context = context;
@@ -66,11 +71,17 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
         notelp = adapter.get(position).getNotelp();
         kecamatan = adapter.get(position).getKecamatan();
         deskripsi_ukm = adapter.get(position).getDeskripsi_ukm();
-        koordinat_ukm = adapter.get(position).getKoordinat_ukm();
+        koordinat_ukm_1 = adapter.get(position).getKoordinat_ukm_1();
+        koordinat_ukm_2 = adapter.get(position).getKoordinat_ukm_2();
+        foto_barang = adapter.get(position).getFoto_barang();
+        daftar_foto_ukm = adapter.get(position).getDaftar_foto_ukm();
 
-        holder.list_title.setText(nama_barang);
+        holder.list_title.setText(nama_ukm);
         holder.list_desc.setText(deskripsi_ukm);
-        holder.list_price.setText(harga_barang);
+        holder.list_price.setText(nama_barang);
+//        holder.itemView.setTag(id_barang);
+
+//        Toast.makeText(context, alamat_ukm,Toast.LENGTH_SHORT).show();
 //        holder.itemView.setTag(id);
 //        String encodeUrl = URLEncoder.encode(foto);
 //
@@ -125,7 +136,7 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
                     Context context = v.getContext();
                     Intent intent = new Intent(context, UcokDetailActivity.class);
 //                    String pos = (String) itemView.getTag();
-//                    Log.d("RecyclerViewAdapterJSON", "get id: " + pos);
+//                    Log.d("RecyclerViewAdapterJSON_siumkm", "get id: " + pos);
 //                    intent.putExtra(DetailActivity.EXTRA_POSITION, pos);
 //                    intent.putExtra(DetailActivity.NAMA_TEMPAT, nama);
 //                    intent.putExtra(DetailActivity.DESKRIPSI_TEMPAT, deskripsi);

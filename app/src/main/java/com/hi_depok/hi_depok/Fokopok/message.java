@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,9 +14,6 @@ import android.view.WindowManager;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Ucok.ItemObject;
-import com.hi_depok.hi_depok.Ucok.RecyclerViewAdapter;
-import com.hi_depok.hi_depok.Ucok.ucok_content;
 
 import java.util.ArrayList;
 import java.util.List;

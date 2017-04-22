@@ -113,14 +113,15 @@
                     android:textColor="@color/background"
                     app:font="@string/fontReguler" />
 
-                <fr.arnaudguyon.smartfontslib.FontEditText
-                    app:font="@string/fontReguler"
+                <TextView
+                    android:id="@+id/txtBukti"
                     android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
                     android:textColor="@color/white"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_toEndOf="@id/bukti" />
+                    android:layout_toEndOf="@id/bukti"
+                    android:text="FILE IMAGE"/>
 
             </RelativeLayout>
 

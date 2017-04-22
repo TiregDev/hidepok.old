@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Ucok.ItemObject;
-import com.hi_depok.hi_depok.Ucok.RecyclerViewHolders;
 
 import java.util.List;
 

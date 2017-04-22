@@ -1,10 +1,14 @@
 package com.hi_depok.hi_depok.Lapok.mDetail;
 
+import android.app.Dialog;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
@@ -12,6 +16,7 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,6 +27,9 @@ import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.Ucok.UcokDetailActivity;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DetailActivity extends BaseActivity {
 
@@ -42,8 +50,30 @@ public class DetailActivity extends BaseActivity {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //---------------- Image Single Popup --------------------------------------------------
+        final CircleImageView imageView = (CircleImageView) findViewById(R.id.imageArtist_detail);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog settingsDialog = new Dialog(DetailActivity.this);
+
+                LayoutInflater inflater = getLayoutInflater();
+                View newView = inflater.inflate(R.layout.activity_image, null);
+
+                settingsDialog.setContentView(newView);
+                settingsDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+                settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
+
+                ImageView iv = (ImageView) newView.findViewById(R.id.profile_img_popup);
+                Bitmap bm = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                iv.setImageBitmap(bm);
+
+                settingsDialog.show();
+            }
+    });
 
         //INITIALIZE VIEWS
         btnKirim = (ImageView) findViewById(R.id.btnKirim);
@@ -144,6 +174,7 @@ public class DetailActivity extends BaseActivity {
             }
         });
     }
+
     //------------------------------------BUAT NOTIFIKASI-----------------------------------------//
     private void buildNotification(Context ctx, String name, String time, String title, String totlike,
                                    String totcom, String totshare, int image, int kejadian,

@@ -5,7 +5,7 @@ package com.hi_depok.hi_depok.Ucok;
  * Created by SONY-VAIO on 3/15/2017.
  */
 
-public class GetDataAdapter {
+public class GetDataAdapter_siumkm {
 
     String id_barang;
     String id_ukm;
@@ -18,8 +18,10 @@ public class GetDataAdapter {
     String notelp;
     String kecamatan;
     String deskripsi_ukm;
-    String koordinat_ukm;
-
+    String koordinat_ukm_1;
+    String koordinat_ukm_2;
+    String foto_barang;
+    String daftar_foto_ukm;
 
     public String getId_barang() {
         return id_barang;
@@ -98,10 +100,31 @@ public class GetDataAdapter {
         this.deskripsi_ukm = deskripsi_ukm;
     }
 
-    public String getKoordinat_ukm(){
-        return koordinat_ukm;
+    public String getKoordinat_ukm_2(){
+        return koordinat_ukm_2;
     }
-    public void setKoordinat_ukm(String koordinat_ukm){
-        this.koordinat_ukm = koordinat_ukm;
+    public void setKoordinat_ukm_2(String koordinat_ukm_2){
+        this.koordinat_ukm_2 = koordinat_ukm_2;
+    }
+
+    public String getKoordinat_ukm_1(){
+        return koordinat_ukm_1;
+    }
+    public void setKoordinat_ukm_1(String koordinat_ukm_1){
+        this.koordinat_ukm_1 = koordinat_ukm_1;
+    }
+
+    public String getFoto_barang(){
+        return foto_barang;
+    }
+    public void setFoto_barang(String foto_barang){
+        this.foto_barang = foto_barang;
+    }
+
+    public String getDaftar_foto_ukm(){
+        return daftar_foto_ukm;
+    }
+    public void setDaftar_foto_ukm(String daftar_foto_ukm){
+        this.daftar_foto_ukm = daftar_foto_ukm;
     }
 }
