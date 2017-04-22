@@ -201,6 +201,7 @@ public class BaseActivity extends AppCompatActivity {
                         break;
                     case 2:
                         Intent intent2 = new Intent(getApplicationContext(), login.class);
+                        finish();
                         startActivity(intent2);
                         break;
                     case 3:

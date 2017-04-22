@@ -22,6 +22,9 @@ import com.hi_depok.hi_depok.Profile.setprofile;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.Profile.fragment.myprofile;
 import com.hi_depok.hi_depok.Profile.fragment.history;
+import com.hi_depok.hi_depok.SessionManager;
+
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -31,6 +34,8 @@ public class profile extends BaseActivity implements View.OnClickListener {
     ProfilePager adapter;
     View strip;
     TextView profile, history;
+    ImageView ham;
+    SessionManager session;
 
 
 
@@ -39,6 +44,7 @@ public class profile extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         super.onCreateDrawer();
+        session = new SessionManager(getApplicationContext());
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -74,6 +80,21 @@ public class profile extends BaseActivity implements View.OnClickListener {
         profile = (TextView) findViewById(R.id.profile);
         history = (TextView) findViewById(R.id.history);
         strip = findViewById(R.id.strip);
+        ham = (ImageView) findViewById(R.id.ham);
+
+        ham.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                result.openDrawer();
+            }
+        });
+
+        HashMap<String, String> user = session.getUserDetails();
+
+        String name = user.get(SessionManager.KEY_NAME);
+        String pass = user.get(SessionManager.KEY_PASSWORD);
+
+        profile.setText(name);
 
         adapter = new ProfilePager(getSupportFragmentManager());
         pager.setAdapter(adapter);

@@ -24,6 +24,7 @@ import com.hi_depok.hi_depok.notif.event;
 import com.mikepenz.materialdrawer.Drawer;
 
 public class MainActivity extends BaseActivity {
+    public Drawer drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
