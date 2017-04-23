@@ -10,13 +10,13 @@ import com.android.volley.toolbox.Volley;
  * Created by Azmi Muhammad on 4/9/2017.
  */
 
-public class ServerSide {
+public class Akses {
 
-    private static ServerSide mInstance;
+    private static Akses mInstance;
     private RequestQueue mRequestQueue;
     private static Context mContext;
 
-    private ServerSide(Context context){
+    private Akses(Context context){
         mContext = context;
         mRequestQueue = getRequestQueue();
     }
@@ -29,9 +29,9 @@ public class ServerSide {
         return mRequestQueue;
     }
 
-    public static synchronized ServerSide getInstance(Context context){
+    public static synchronized Akses getInstance(Context context){
         if(mInstance == null){
-            mInstance = new ServerSide(context);
+            mInstance = new Akses(context);
         }
         return mInstance;
     }

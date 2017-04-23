@@ -1,11 +1,12 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
     android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:id="@+id/LinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,7 +29,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/logo" />
+                android:src="@drawable/logo"/>
         </LinearLayout>
         <!-- Login progress -->
         <ProgressBar
@@ -37,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <ScrollView
             android:id="@+id/login_form"
@@ -59,20 +60,20 @@
                     android:layout_height="wrap_content">
 
                     <fr.arnaudguyon.smartfontslib.FontEditText
-                        app:font="@string/fontReguler"
-                        android:id="@+id/email"
+                        android:id="@+id/username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:alpha="0.7"
-                        android:hint="Nama User"
-                        android:inputType="textEmailAddress"
+                        android:hint="Nama Username"
+                        android:inputType="text"
                         android:maxLines="1"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
                         android:textColor="#f8981d"
                         android:textColorHint="#f8981d"
                         android:textColorLink="#f8981d"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        app:font="@string/fontReguler"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -81,7 +82,6 @@
                     android:layout_height="wrap_content">
 
                     <fr.arnaudguyon.smartfontslib.FontEditText
-                        app:font="@string/fontReguler"
                         android:id="@+id/password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -96,12 +96,12 @@
                         android:textColor="#f8981d"
                         android:textColorHint="#f8981d"
                         android:textColorLink="#f8981d"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        app:font="@string/fontReguler"/>
 
                 </android.support.design.widget.TextInputLayout>
 
                 <fr.arnaudguyon.smartfontslib.FontButton
-                    app:font="@string/fontBold"
                     android:id="@+id/email_sign_in_button"
                     style="?android:textAppearanceSmall"
                     android:layout_width="match_parent"
@@ -110,10 +110,21 @@
                     android:background="@drawable/shape3"
                     android:text="MASUK"
                     android:textColor="#fff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:font="@string/fontBold"/>
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
-                    app:font="@string/fontReguler"
+                    android:id="@+id/registrasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Belum punya akun? Daftar aja yuk disini!"
+                    android:textColor="#b7b7b7"
+                    android:textSize="8pt"
+                    app:font="@string/fontReguler"/>
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -121,7 +132,8 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="atau masuk menggunakan"
                     android:textColor="#b7b7b7"
-                    android:textSize="8pt" />
+                    android:textSize="8pt"
+                    app:font="@string/fontReguler"/>
 
                 <ImageButton
                     android:id="@+id/gmail"
@@ -131,7 +143,7 @@
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/action_sign_in"
                     android:onClick="linkprofile"
-                    app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal" />
+                    app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal"/>
 
             </LinearLayout>
         </ScrollView>

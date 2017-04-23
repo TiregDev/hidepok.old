@@ -43,22 +43,25 @@
                 android:layout_marginStart="-20dp"
                 android:orientation="vertical">
 
-                <fr.arnaudguyon.smartfontslib.FontEditText
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:id="@+id/txtUsername"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="JAR"
-                    android:textColor="#b7b7b7"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:textSize="20sp"
+                    android:text="Jar"
+                    android:textColor="#8c8c8c"
                     app:font="@string/fontReguler" />
 
                 <fr.arnaudguyon.smartfontslib.FontEditText
+                    android:id="@+id/setBio"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginTop="-10dp"
-                    android:text="Full Idea"
+                    android:text="Isi bio kamu"
                     android:textColor="#b7b7b7"
-                    app:font="@string/fontReguler" />
+                    app:font="@string/fontReguler"/>
 
             </LinearLayout>
 
@@ -74,47 +77,64 @@
             android:paddingTop="10dp">
 
             <fr.arnaudguyon.smartfontslib.FontEditText
+                android:id="@+id/setNama"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="-10dp"
-                android:text="Fajar Zakaria"
+                android:text="Isi nama kamu"
+                android:textColor="#b7b7b7"
+                app:font="@string/fontReguler"/>
+
+            <fr.arnaudguyon.smartfontslib.FontEditText
+                android:id="@+id/setEmail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="-10dp"
+                android:text="Isi email kamu"
                 android:textColor="#b7b7b7"
                 app:font="@string/fontReguler" />
 
             <fr.arnaudguyon.smartfontslib.FontEditText
+                android:id="@+id/setNomer"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="-10dp"
-                android:text="jar@hidepok.id"
+                android:text="Isi nomer telepon kamu"
                 android:textColor="#b7b7b7"
                 app:font="@string/fontReguler" />
 
             <fr.arnaudguyon.smartfontslib.FontEditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="-10dp"
-                android:text="08218898767"
-                android:textColor="#b7b7b7"
-                app:font="@string/fontReguler" />
-
-            <fr.arnaudguyon.smartfontslib.FontEditText
+                android:id="@+id/setAlamat"
                 app:font="@string/fontReguler"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="-10dp"
-                android:text="Beji Timur"
+                android:text="Isi alamat kamu"
                 android:textColor="#b7b7b7" />
+
+            <fr.arnaudguyon.smartfontslib.FontButton
+                android:id="@+id/btnSimpanProfil"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/shape3"
+                android:text="SIMPAN"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                app:font="@string/fontBold"/>
 
         </LinearLayout>
 
         <fr.arnaudguyon.smartfontslib.FontTextView
+            android:id="@+id/fontTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Andu juga dapat mengganti password"
+            android:text="Anda juga dapat mengganti password"
             android:textColor="#8c8c8c"
-            app:font="@string/fontReguler" />
+            app:font="@string/fontReguler"/>
 
         <fr.arnaudguyon.smartfontslib.FontTextView
             android:id="@+id/changepass"

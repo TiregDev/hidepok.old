@@ -1,8 +1,5 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
@@ -12,19 +9,19 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Sikepok_RS.MapsActivity;
+import com.hi_depok.hi_depok.SessionManager;
 import com.hi_depok.hi_depok.notif.event;
 import com.mikepenz.materialdrawer.Drawer;
 
 public class MainActivity extends BaseActivity {
     public Drawer drawer;
+    SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +35,13 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         super.onCreateDrawer();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        session = new SessionManager(this);
+        Toast.makeText(this, "User Status: " + session.isLoggedIn(), Toast.LENGTH_SHORT).show();
+
+        if(session.checkLogin()){
+            finish();
+        }
 
         TextView tv = (TextView) findViewById(R.id.textView);
         Typeface tf = Typeface.createFromAsset(getAssets(), "font/Blogger_Sans-Bold.otf");

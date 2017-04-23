@@ -3,12 +3,14 @@ package com.hi_depok.hi_depok.Profile;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
-import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
@@ -17,6 +19,8 @@ import com.hi_depok.hi_depok.R;
 public class setprofile extends BaseActivity {
 
     TextView changepass;
+    EditText etBio, etNama, etEmail, etNomer, etAlamat;
+    Button btnSimpan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,23 @@ public class setprofile extends BaseActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        etBio = (EditText) findViewById(R.id.setBio);
+        etNama = (EditText) findViewById(R.id.setNama);
+        etEmail = (EditText) findViewById(R.id.setEmail);
+        etNomer = (EditText) findViewById(R.id.setNomer);
+        etAlamat = (EditText) findViewById(R.id.setAlamat);
+        btnSimpan = (Button) findViewById(R.id.btnSimpanProfil);
+
+        btnSimpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String bio = etBio.getText().toString();
+                String nama = etNama.getText().toString();
+                String email = etEmail.getText().toString();
+                String no_telp = etNomer.getText().toString();
+            }
+        });
 
         changepass = (TextView) findViewById(R.id.changepass);
         changepass.setOnClickListener(new View.OnClickListener() {

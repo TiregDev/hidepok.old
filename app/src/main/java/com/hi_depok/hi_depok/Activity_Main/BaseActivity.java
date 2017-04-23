@@ -1,18 +1,16 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v4.view.GravityCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.SessionManager;
 import com.mikepenz.crossfadedrawerlayout.view.CrossfadeDrawerLayout;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -30,6 +28,8 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.util.DrawerUIUtils;
 import com.mikepenz.materialize.util.UIUtils;
 
+import java.util.HashMap;
+
 /**
  * Created by User on 29/03/17.
  */
@@ -38,6 +38,7 @@ public class BaseActivity extends AppCompatActivity {
     protected Drawer result;
     private static final int TIME_DELAY = 2000;
     private static long back_pressed;
+    SessionManager session;
     Activity activity = this;
     public Activity c;
 
@@ -51,6 +52,7 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreateDrawer() {
         // Making notification bar transparent
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        session = new SessionManager(this);
 
         PrimaryDrawerItem home = new PrimaryDrawerItem()
                 .withName("Beranda")
@@ -145,13 +147,15 @@ public class BaseActivity extends AppCompatActivity {
 
 
         // Create the AccountHeader
+
+        HashMap<String, String> user = session.getUserDetails();
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.bgnav2)
                 .addProfiles(
                         new ProfileDrawerItem()
-                                .withName("Fajar Zakaria")
-                                .withEmail("JAR@gmail.com")
+                                .withName(user.get(SessionManager.KEY_NAME))
+                                .withEmail(user.get(SessionManager.KEY_EMAIL))
                                 .withIcon(getResources().getDrawable(R.drawable.profile))
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
@@ -200,6 +204,8 @@ public class BaseActivity extends AppCompatActivity {
                         startActivity(intent1);
                         break;
                     case 2:
+                        session = new SessionManager(getApplicationContext());
+                        session.logoutUser();
                         Intent intent2 = new Intent(getApplicationContext(), login.class);
                         finish();
                         startActivity(intent2);

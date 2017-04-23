@@ -69,6 +69,7 @@
                     android:src="@drawable/mail_2" />
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:id="@+id/emailuser"
                     app:font="@string/fontReguler"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -90,6 +91,7 @@
                     android:src="@drawable/call_small" />
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:id="@+id/notelpuser"
                     app:font="@string/fontReguler"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -111,6 +113,7 @@
                     android:src="@drawable/maps_small" />
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:id="@+id/alamatuser"
                     app:font="@string/fontReguler"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"

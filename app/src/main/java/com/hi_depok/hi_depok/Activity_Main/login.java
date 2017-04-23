@@ -1,8 +1,6 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -18,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -33,8 +32,9 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-import com.hi_depok.hi_depok.ServerSide;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.Akses;
+import com.hi_depok.hi_depok.SessionManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,128 +56,6 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
-    private static final int REQUEST_GMAIL = 9001;
-
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-
-    // UI references.
-    GoogleApiClient mGoogleApiClient;
-    EditText mPasswordView, mEmailView;
-    Button btnSend;
-    String username, password;
-    AlertDialog.Builder mBuilder;
-    ImageButton google;
-    String login_url = "http://Hidepok.id/login.php";
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        // Making notification bar transparent
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
-        }
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-        // Set up the login form.
-        mEmailView = (EditText) findViewById(R.id.email);
-        mPasswordView = (EditText) findViewById(R.id.password);
-        btnSend = (Button) findViewById(R.id.email_sign_in_button);
-        google = (ImageButton) findViewById(R.id.gmail);
-        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(
-                GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
-                .build();
-
-        google.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signin();
-            }
-        });
-
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                username = mEmailView.getText().toString();
-                password = mPasswordView.getText().toString();
-
-                if (username.equals("") || password.equals("")) {
-                    mBuilder.setTitle("Status");
-                    displayAlert("Input a valid username and/or password . . .");
-                } else {
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, login_url,
-                            new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
-                                    try {
-                                        JSONArray jsonArray = new JSONArray(response);
-                                        JSONObject jsonObject = jsonArray.getJSONObject(0);
-                                        String code = jsonObject.getString("code");
-                                        if (code.equals("login_failed")) {
-                                            mBuilder.setTitle("Login Error . . .");
-                                            displayAlert(jsonObject.getString("message"));
-                                        } else {
-                                            Intent intent = new Intent(login.this,
-                                                    MainActivity.class);
-                                            //Masukkin sharedPreferences disini
-                                            //Deklarasiin classnya diatas jangan di dalem sini
-
-                                           /* Bundle bundle = new Bundle();
-                                            bundle.putString("KEY_NAME",
-                                                    jsonObject.getString("nama_user"));
-                                            bundle.putString("ADDRESS_NAME",
-                                                    jsonObject.getString("email_user"));
-                                            intent.putExtras(bundle);*/
-                                            startActivity(intent);
-                                            finish();
-                                        }
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-
-                                }
-                            }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(login.this, "An error occured", Toast.LENGTH_SHORT).show();
-                            error.printStackTrace();
-                        }
-                    }) {
-                        @Override
-                        protected Map<String, String> getParams() throws AuthFailureError {
-                            Map<String, String> params = new HashMap<String, String>();
-                            params.put("username", username);
-                            params.put("password", password);
-                            return params;
-                        }
-                    };
-                    ServerSide.getInstance(login.this).addtoRequestQueue(stringRequest);
-                }
-            }
-        });
-    }
-
-    private void displayAlert(String message) {
-        mBuilder.setMessage(message);
-        mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-                mEmailView.setText("");
-                mPasswordView.setText("");
-            }
-        });
-        AlertDialog alertDialog = mBuilder.create();
-        alertDialog.show();
-    }
 
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -214,6 +92,135 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
         }
     }
 
+    /**
+     * A dummy authentication store containing known user names and passwords.
+     * TODO: remove after connecting to a real authentication system.
+     */
+
+    // UI references.
+    GoogleApiClient mGoogleApiClient;
+    EditText mPasswordView, mEmailView;
+    Button btnSend;
+    String username, password;
+    ImageButton google;
+    TextView daftarBaru;
+    SessionManager session;
+    private static final int REQUEST_GMAIL = 9001;
+    String login_url = "http://hidepok.id/login.php";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        session = new SessionManager(getApplicationContext());
+        // Making notification bar transparent
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
+        }
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        if(session.isLoggedIn() == true){
+            finish();
+            Toast.makeText(this, "Selamat datang di Hi Depok!", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(login.this, MainActivity.class));
+        }
+
+        /*if(session.checkLogin()){
+            finish();
+        }*/
+
+        // Set up the login form.
+        mEmailView = (EditText) findViewById(R.id.username);
+        mPasswordView = (EditText) findViewById(R.id.password);
+        btnSend = (Button) findViewById(R.id.email_sign_in_button);
+        google = (ImageButton) findViewById(R.id.gmail);
+
+        daftarBaru = (TextView) findViewById(R.id.registrasi);
+        daftarBaru.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(login.this, register.class));
+            }
+        });
+
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(
+                GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
+                .build();
+
+        google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signin();
+            }
+        });
+
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                username = mEmailView.getText().toString();
+                password = mPasswordView.getText().toString();
+
+                if (username.equals("")) {
+                    mEmailView.setError("Nama harus diisi");
+                }
+                else if (password.equals("")) {
+                    mPasswordView.setError("Sandi harus diiisi");
+                }
+                else {
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, login_url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    try {
+                                        JSONArray jsonArray = new JSONArray(response);
+                                        JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                        String code = jsonObject.getString("code");
+                                        if (code.equals("login_failed")) {
+                                            Toast.makeText(login.this, jsonObject.getString("message"),
+                                                    Toast.LENGTH_SHORT).show();
+                                        }else{
+                                            session.createLoginSession(jsonObject.getString("username_user"),
+                                                    jsonObject.getString("email_user"),
+                                                    jsonObject.getString("password"),
+                                                    jsonObject.getString("nama"));
+                                            Intent intent = new Intent(login.this,
+                                                    MainActivity.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(login.this, "An error occured", Toast.LENGTH_SHORT).show();
+                            error.printStackTrace();
+                        }
+                    }) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> params = new HashMap<String, String>();
+                            params.put("username", username);
+                            params.put("password", password);
+                            return params;
+                        }
+                    };
+                    Akses.getInstance(login.this).addtoRequestQueue(stringRequest);
+                }
+            }
+        });
+    }
+
     public void onConnectionFailed (@NonNull ConnectionResult result){
 
     }
@@ -246,7 +253,7 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
             //Deklarasiin classnya diatas jangan di dalem sini
 
             /*Bundle bundle = new Bundle();
-            bundle.putString("KEY_NAME", name);
+            bundle.putString("KEY_USERNAME", name);
             bundle.putString("ADDRESS_NAME", email);
             intent.putExtras(bundle);*/
 
