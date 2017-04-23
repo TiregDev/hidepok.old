@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
@@ -37,8 +36,6 @@ public class MainActivity extends BaseActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         session = new SessionManager(this);
-        Toast.makeText(this, "User Status: " + session.isLoggedIn(), Toast.LENGTH_SHORT).show();
-
         if(session.checkLogin()){
             finish();
         }
