@@ -39,7 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="Silahkan Pilih Poli dan Nama dokter yang tersedia, nama dokter akan menyesuaikan dengan Poli yang anda pilih." />
+                    android:text="Silahkan Pilih Poli dan Nama dokter yang tersedia, name dokter akan menyesuaikan dengan Poli yang anda pilih." />
 
                 <LinearLayout
                     android:layout_width="match_parent"

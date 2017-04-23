@@ -144,16 +144,16 @@
             android:name=".Sikepok_Diagnosa.SikepokDiagnosa"
             android:theme="@style/Background_main" />
         <activity
-            android:name=".Sikepok_Panic.MenuActivity"
+            android:name=".Sikepok_Panic.activity.MenuActivity"
             android:label="Tempat Sehat" />
-        <activity android:name=".Sikepok_Panic.DetailActivity" />
+        <activity android:name=".Sikepok_Panic.activity.DetailActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".Sikepok_Panic.MapsActivity"
+            android:name=".Sikepok_Panic.activity.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".Activity_Main.WelcomeActivity"
@@ -165,10 +165,10 @@
             android:name=".Lapok.lapok_content"
             android:label="Lapor Depok" />
         <activity
-            android:name=".Kadepok.kadepok_content"
+            android:name=".Kadepok.activity.kadepok_content"
             android:label="Daftar Panti Asuhan" />
         <activity
-            android:name=".Kadepok.KadepokDetailActivity"
+            android:name=".Kadepok.activity.KadepokDetailActivity"
             android:label="Detail Panti Asuhan"
             android:windowSoftInputMode="adjustPan" />
         <activity
@@ -236,19 +236,19 @@
             android:name=".Fokopok.message"
             android:label="Pesan Masuk" />
         <activity
-            android:name=".Kapok.KapokActivity"
+            android:name=".Kapok.activity.KapokActivity"
             android:label="Telusuri Kota Depok" />
         <activity
-            android:name=".Kapok.MapsActivity"
+            android:name=".Kapok.activity.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".Kapok.activity_view_ulasan" />
+        <activity android:name=".Kapok.activity.activity_view_ulasan" />
         <activity
             android:name=".Sikepok_RS.info_dokter"
             android:label="Informasi Dokter" />
         <activity
             android:name=".notif.event"
             android:label="Event Terbaru" />
-        <activity android:name=".Kapok.kapok_detail"></activity>
+        <activity android:name=".Kapok.activity.kapok_detail"></activity>
     </application>
 
 </manifest>

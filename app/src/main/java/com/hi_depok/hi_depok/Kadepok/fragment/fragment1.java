@@ -15,10 +15,10 @@ import com.hi_depok.hi_depok.R;
 
 public class fragment1 extends Fragment {
 
-    public static com.hi_depok.hi_depok.Kadepok.fragment.fragment1 newInstance() {
+    public static fragment1 newInstance() {
         Bundle args = new Bundle();
 
-        com.hi_depok.hi_depok.Kadepok.fragment.fragment1 fragment = new com.hi_depok.hi_depok.Kadepok.fragment.fragment1();
+        fragment1 fragment = new fragment1();
         fragment.setArguments(args);
         return fragment;
     }

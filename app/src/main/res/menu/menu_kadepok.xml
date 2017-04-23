@@ -5,6 +5,6 @@
     <item
         android:id="@+id/action_share"
         android:icon="@drawable/share_white"
-        android:title="@string/action_search"
+        android:name="@string/action_search"
         app:showAsAction="always" />
 </menu>

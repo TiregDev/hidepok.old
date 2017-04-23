@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg"
-        tools:context="com.hi_depok.hi_depok.Kapok.activity_view_ulasan">
+        tools:context="com.hi_depok.hi_depok.Kapok.activity.activity_view_ulasan">
 
 
         <android.support.v7.widget.RecyclerView

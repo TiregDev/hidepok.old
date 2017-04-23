@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/background"
             android:layout_marginTop="5dp"
-            android:layout_toEndOf="@+id/avatar"
+            android:layout_toEndOf="@+id/photo"
             android:text="Fajar Zakaria"
             android:textSize="18sp" />
 
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/username"
-            android:layout_toEndOf="@+id/avatar"
+            android:layout_toEndOf="@+id/photo"
             android:text="Feb 8, 2017 at 17.00 WIB"
             android:textColor="#b7b7b7"
             android:textSize="12sp" />

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D91E18"
+    android:weightSum="5"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Layanan Gawat Darurat"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        android:gravity="top|center"/>
+
+    <ImageView
+        android:id="@+id/callbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/call_btn"/>
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="112"
+        android:textSize="60sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tekan untuk menelepon"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        android:gravity="bottom|center"/>
+</LinearLayout>

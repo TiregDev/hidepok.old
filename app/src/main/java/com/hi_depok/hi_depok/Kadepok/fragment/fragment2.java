@@ -19,9 +19,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hi_depok.hi_depok.Kadepok.KadepokDetailActivity;
-import com.hi_depok.hi_depok.Kadepok.kadepok_content;
-import com.hi_depok.hi_depok.Lapok.fragment.DescriptionForm;
+import com.hi_depok.hi_depok.Kadepok.activity.KadepokDetailActivity;
 import com.hi_depok.hi_depok.R;
 
 import java.io.File;
@@ -33,10 +31,10 @@ import java.util.Date;
 
 public class fragment2 extends DialogFragment {
 
-    public static com.hi_depok.hi_depok.Kadepok.fragment.fragment2 newInstance() {
+    public static fragment2 newInstance() {
         Bundle args = new Bundle();
 
-        com.hi_depok.hi_depok.Kadepok.fragment.fragment2 fragment = new com.hi_depok.hi_depok.Kadepok.fragment.fragment2();
+        fragment2 fragment = new fragment2();
         fragment.setArguments(args);
         return fragment;
     }

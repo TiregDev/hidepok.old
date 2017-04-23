@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/white"
-        tools:context="com.hi_depok.hi_depok.Kapok.KapokActivity">
+        tools:context="com.hi_depok.hi_depok.Kapok.activity.KapokActivity">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"

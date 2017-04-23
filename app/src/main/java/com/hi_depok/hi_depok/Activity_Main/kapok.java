@@ -11,15 +11,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hi_depok.hi_depok.Kapok.KapokActivity;
-import com.hi_depok.hi_depok.Kapok.MapsActivity;
+import com.hi_depok.hi_depok.Kapok.activity.MapsActivity;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.fragment_kapok_activity.fragment1;
 import com.hi_depok.hi_depok.fragment_kapok_activity.fragment2;

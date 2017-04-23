@@ -11,14 +11,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hi_depok.hi_depok.Kadepok.kadepok_content;
+import com.hi_depok.hi_depok.Kadepok.activity.kadepok_content;
 import com.hi_depok.hi_depok.Kadepok_Volunteer.kadepok_volunteer_form;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.fragment_kadepok_activity.fragment1;

@@ -7,24 +7,19 @@ import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
-import com.hi_depok.hi_depok.Activity_Main.ucok;
-import com.hi_depok.hi_depok.Kadepok.kadepok_content;
 import com.hi_depok.hi_depok.R;
 
 import java.util.ArrayList;

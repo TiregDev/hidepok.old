@@ -158,7 +158,7 @@
     <string name="err_msg_required">valid input required</string>
     <string name="err_msg_alamat">masukkan alamat anda</string>
     <string name="err_msg_email">Masukkan Email yang benar</string>
-    <string name="err_msg_pj">masukkan nama penanggung jawab</string>
+    <string name="err_msg_pj">masukkan name penanggung jawab</string>
     <string name="err_msg_telp">masukkan nomor telepon anda</string>
 
     <string name="sikepok_frag1">Diagnosa dan Ensiklopedi</string>
