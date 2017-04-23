@@ -44,7 +44,7 @@ public class fragment3 extends Fragment{
                 "<body>" +
                 "<p align=\"justify\" class=\"text\">";
         text+= "Modul ini memberikan informasi yang berkaitan dengan tempat sehat, seperti : " +
-                "informasi penyedia ambulans, tukang urut, bidan, khitan, apotek, klinik dan puskesmes.";
+                "informasi penyedia ambulans, panti pijat, bidan, khitan, apotek, klinik dan PUSKESMAS.";
         text+= "</p>" +
                 "</body>" +
                 "</html>";

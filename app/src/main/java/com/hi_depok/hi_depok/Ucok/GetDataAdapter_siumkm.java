@@ -21,7 +21,7 @@ public class GetDataAdapter_siumkm {
     String koordinat_ukm_1;
     String koordinat_ukm_2;
     String foto_barang;
-    String daftar_foto_ukm;
+    String foto_ukm;
 
     public String getId_barang() {
         return id_barang;
@@ -121,10 +121,10 @@ public class GetDataAdapter_siumkm {
         this.foto_barang = foto_barang;
     }
 
-    public String getDaftar_foto_ukm(){
-        return daftar_foto_ukm;
+    public String getFoto_ukm(){
+        return foto_ukm;
     }
-    public void setDaftar_foto_ukm(String daftar_foto_ukm){
-        this.daftar_foto_ukm = daftar_foto_ukm;
+    public void setFoto_ukm(String foto_ukm){
+        this.foto_ukm = foto_ukm;
     }
 }

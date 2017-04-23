@@ -18,6 +18,12 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
 
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/filter"-->
+            <!--android:layout_toStartOf="@+id/cameraBtn"/>-->
+
         <ImageView
             android:id="@+id/cameraBtn"
             android:layout_width="56dp"
@@ -27,62 +33,11 @@
             android:padding="15dp"
             android:src="@drawable/photo_camera" />
 
-        <LinearLayout
-            android:id="@+id/dropdown"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:weightSum="2">
-
-            <Spinner
-                android:id="@+id/category"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_bg_spinner" />
-
-            <Spinner
-                android:id="@+id/sortby"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/shape_bg_spinner" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dropdown_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar"
-            android:layout_marginTop="5dp"
-            android:padding="10dp"
-            android:weightSum="2">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_weight="1"
-                android:src="@drawable/spinner" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="-50dp"
-                android:layout_weight="1"
-                android:src="@drawable/spinner" />
-
-        </LinearLayout>
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/dropdown"
+            android:layout_below="@+id/toolbar"
             android:scrollbars="vertical" />
     </RelativeLayout>
 </FrameLayout>

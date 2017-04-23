@@ -14,7 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.JsonRequest;
 import com.hi_depok.hi_depok.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -24,7 +26,6 @@ import static android.R.attr.id;
 public class RecyclerViewAdapterJSON_siumkm extends RecyclerView.Adapter<RecyclerViewAdapterJSON_siumkm.ViewHolder> {
 
     Context context;
-
     List<GetDataAdapter_siumkm> adapter;
     String id_barang;
     String id_ukm;
@@ -40,7 +41,7 @@ public class RecyclerViewAdapterJSON_siumkm extends RecyclerView.Adapter<Recycle
     String koordinat_ukm_1;
     String koordinat_ukm_2;
     String foto_barang;
-    String daftar_foto_ukm;
+    String foto_ukm;
     String urlPhoto;
 
     public RecyclerViewAdapterJSON_siumkm(List<GetDataAdapter_siumkm> adapter, Context context){
@@ -74,41 +75,16 @@ public class RecyclerViewAdapterJSON_siumkm extends RecyclerView.Adapter<Recycle
         koordinat_ukm_1 = adapter.get(position).getKoordinat_ukm_1();
         koordinat_ukm_2 = adapter.get(position).getKoordinat_ukm_2();
         foto_barang = adapter.get(position).getFoto_barang();
-        daftar_foto_ukm = adapter.get(position).getDaftar_foto_ukm();
+        foto_ukm = adapter.get(position).getFoto_ukm();
+        String nama_foto = foto_ukm;
 
         holder.list_title.setText(nama_ukm);
         holder.list_desc.setText(deskripsi_ukm);
         holder.list_price.setText(nama_barang);
-//        holder.itemView.setTag(id_barang);
+        holder.itemView.setTag(id_ukm);
 
-//        Toast.makeText(context, alamat_ukm,Toast.LENGTH_SHORT).show();
-//        holder.itemView.setTag(id);
-//        String encodeUrl = URLEncoder.encode(foto);
-//
-//        switch (jenis){
-//            case "Apotek":
-//                urlPhoto = "http://hidepok.id/images/sikepok/sikepok3/APOTEK/" + encodeUrl + ".jpg";
-//                break;
-//            case "Bidan":
-//                urlPhoto = "http://hidepok.id/images/sikepok/sikepok3/BIDAN/" + encodeUrl + ".jpg";
-//                break;
-//            case "Tukang Urut":
-//                urlPhoto = "http://hidepok.id/images/sikepok/sikepok3/PIJAT/" + encodeUrl + ".jpg";
-//                break;
-//            case "Khitan":
-//                urlPhoto = "http://hidepok.id/images/sikepok/sikepok3/KHITAN/" + encodeUrl + ".jpg";
-//                break;
-//            case "Klinik":
-//                urlPhoto = "http://hidepok.id/images/sikepok/sikepok3/KLINIK/" + encodeUrl + ".jpg";
-//                break;
-//            case "Puskesmas":
-//                urlPhoto = "http://hidepok.id/images/sikepok/sikepok3/PUSKESMAS/" + encodeUrl + ".jpg";
-//                break;
-//            default:
-//                break;
-//        }
-
-//        Picasso.with(context).load(urlPhoto).resize(100, 100).into(holder.personPhoto);
+        urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+nama_foto;
+        Picasso.with(context).load(urlPhoto).resize(100, 100).into(holder.list_avatar);
     }
 
     @Override
@@ -123,7 +99,7 @@ public class RecyclerViewAdapterJSON_siumkm extends RecyclerView.Adapter<Recycle
         public TextView list_price;
         public ImageView list_avatar;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
 
             list_title = (TextView)itemView.findViewById(R.id.list_title);
@@ -135,16 +111,17 @@ public class RecyclerViewAdapterJSON_siumkm extends RecyclerView.Adapter<Recycle
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, UcokDetailActivity.class);
-//                    String pos = (String) itemView.getTag();
+                    String id = (String) itemView.getTag();
+                    intent.putExtra(UcokDetailActivity.PATOKAN, id);
 //                    Log.d("RecyclerViewAdapterJSON_siumkm", "get id: " + pos);
-//                    intent.putExtra(DetailActivity.EXTRA_POSITION, pos);
-//                    intent.putExtra(DetailActivity.NAMA_TEMPAT, nama);
-//                    intent.putExtra(DetailActivity.DESKRIPSI_TEMPAT, deskripsi);
-//                    intent.putExtra(DetailActivity.LOKASI_TEMPAT, alamat);
-//                    intent.putExtra(DetailActivity.NOTLP_TEMPAT, no_telp);
-//                    intent.putExtra(DetailActivity.FOTO_TEMPAT, urlPhoto);
-//                    intent.putExtra(DetailActivity.OPERASIONAL_TEMPAT, operasional);
-//                    intent.putExtra(DetailActivity.KORDINAT_TEMPAT, kordinat);
+//                    intent.putExtra(UcokDetailActivity.EXTRA_POSITION, pos);
+//                    intent.putExtra(UcokDetailActivity.NAMA_TEMPAT, nama);
+//                    intent.putExtra(UcokDetailActivity.DESKRIPSI_TEMPAT, deskripsi);
+//                    intent.putExtra(UcokDetailActivity.LOKASI_TEMPAT, alamat);
+//                    intent.putExtra(UcokDetailActivity.NOTLP_TEMPAT, no_telp);
+//                    intent.putExtra(UcokDetailActivity.FOTO_TEMPAT, urlPhoto);
+//                    intent.putExtra(UcokDetailActivity.OPERASIONAL_TEMPAT, operasional);
+//                    intent.putExtra(UcokDetailActivity.KORDINAT_TEMPAT, kordinat);
 
                     context.startActivity(intent);
                 }

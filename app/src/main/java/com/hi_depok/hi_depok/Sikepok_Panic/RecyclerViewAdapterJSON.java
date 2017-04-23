@@ -76,7 +76,7 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
 
         switch (jenis){
             case "Apotek":
-                urlPhoto = "http://hidepok.id/images/sikepok/sikepok3/APOTEK/" + encodeUrl + ".jpg";
+                urlPhoto = "http://hidepok.id/assets/images/photos/sikepok/sikepok3/APOTEK/" + encodeUrl + ".jpg";
                 break;
             case "Bidan":
                 urlPhoto = "http://hidepok.id/images/sikepok/sikepok3/BIDAN/" + encodeUrl + ".jpg";

@@ -21,6 +21,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -31,15 +32,54 @@ import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.hi_depok.hi_depok.R.drawable.a;
 
 public class UcokDetailActivity extends BaseActivity {
+    public static final String PATOKAN = "patokan";
+    String GET_JSON_DATA_HTTP_URL;
+    String JSON_ID_UKM = "id_ukm";
+    String JSON_ID_BARANG = "id_barang";
+    String JSON_NAMA_UKM = "nama_ukm";
+    String JSON_NAMA_OWNER_UKM = "nama_owner_ukm";
+    String JSON_NAMA_BARANG = "daftar_barang";
+    String JSON_KATEGORI = "daftar_kategori";
+    String JSON_HARGA_BARANG = "daftar_harga";
+    String JSON_ALAMAT_UKM = "alamat_ukm";
+    String JSON_NO_TLP = "notelp";
+    String JSON_KECAMATAN = "kecamatan";
+    String JSON_DESC_UKM = "deskripsi_ukm";
+    String JSON_KORDINAT_1 = "koordinat1";
+    String JSON_KORDINAT_2 = "koordinat2";
+    String JSON_FOTO_BARANG = "foto_barang";
+    String JSON_FOTO_UKM = "foto_ukm";
+    String urlPhoto, no_tlp;
+    CircleImageView imageView;
+    TextView list_title, deskripsi_ukm, alamat_ukm;
+
+    JsonArrayRequest jsonArrayRequest;
+    List<GetDataAdapter_siumkm> dataAdapter;
+    RequestQueue requestQueue;
+    RecyclerView.Adapter recyclerViewadapter;
+    RecyclerView rView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +95,11 @@ public class UcokDetailActivity extends BaseActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        list_title = (TextView) findViewById(R.id.list_title);
+        deskripsi_ukm = (TextView) findViewById(R.id.deskripsi_ukm);
+        alamat_ukm = (TextView) findViewById(R.id.alamat_ukm);
         //---------------- Image Single Popup --------------------------------------------------
-        final CircleImageView imageView = (CircleImageView) findViewById(R.id.list_avatar);
+        imageView = (CircleImageView) findViewById(R.id.list_avatar);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,12 +116,53 @@ public class UcokDetailActivity extends BaseActivity {
                 Bitmap bm = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
                 iv.setImageBitmap(bm);
 
-
                 settingsDialog.show();
-
 
             }
         });
+        Intent i = this.getIntent();
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?id_ukm=" + i.getExtras().getString(PATOKAN);
+        JSON_DATA_WEB_CALL();
+    }
+
+    public void JSON_DATA_WEB_CALL(){
+        jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_URL,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        JSON_PARSE_DATA_AFTER_WEBCALL(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+    }
+
+    public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array){
+        for(int i = 0; i<array.length(); i++) {
+//            GetDataAdapter_siumkm dataFromJSON = new GetDataAdapter_siumkm();
+            JSONObject json = null;
+            try {
+                json = array.getJSONObject(i);
+
+                urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+json.getString(JSON_FOTO_UKM);
+                Picasso.with(this).load(urlPhoto).resize(100, 100).into(imageView);
+                list_title.setText(json.getString(JSON_NAMA_UKM));
+                deskripsi_ukm.setText(json.getString(JSON_DESC_UKM));
+                alamat_ukm.setText(json.getString(JSON_ALAMAT_UKM));
+                no_tlp = json.getString(JSON_NO_TLP);
+
+            } catch (JSONException e) {
+
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -105,7 +189,7 @@ public class UcokDetailActivity extends BaseActivity {
     }
 
     public void toCall(View v) {
-        String PhoneNo = "085695454139";
+        String PhoneNo = no_tlp;
         Intent dial = new Intent();
         dial.setAction("android.intent.action.DIAL");
         dial.setData(Uri.parse("tel:" + PhoneNo));

@@ -44,7 +44,7 @@ public class fragment1 extends Fragment{
                 "<body>" +
                 "<p align=\"justify\" class=\"text\">";
         text+= "Membantu anda untuk menemukan berbagai tempat yang kemungkinan anda cari beserta informasi dari tempat tersebut, seperti tempat kumpul, tempat wisata, "+
-                "tempat ibadah dan masih banyak lagi yang telah diurutkan berdasarkan kecamatan dan rating.";
+                "tempat ibadah dan masih banyak lagi yang telah diurutkan berdasarkan kecamatan.";
         text+= "</p>" +
                 "</body>" +
                 "</html>";

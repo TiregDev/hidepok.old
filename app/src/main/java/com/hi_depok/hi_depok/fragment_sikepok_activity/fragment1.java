@@ -44,7 +44,7 @@ public class fragment1 extends Fragment{
                 "<body>" +
                 "<p align=\"justify\" class=\"text\">";
         text+= "Membantu mendapatkan informasi prakiraan penyakit berdasarkan gejala-gejala dari " +
-                "user. Melihat daftar Institusi kesehatan terdekat dari lokasi user. Dilengkapi " +
+                "user dan dilengkapi " +
                 "dengan ensiklopedia penyakit. ";
         text+= "</p>" +
                 "</body>" +
