@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.R;
 import com.squareup.picasso.Picasso;
 
@@ -44,7 +45,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View itemview = inflater.inflate(R.layout.sikepokpanic_detail, container, false);
         imgs = (ImageView) itemview.findViewById(R.id.image);
-        Picasso.with(context).load(image[position]).resize(500, 500).into(imgs);
+        Glide.with(context).load(image[position]).thumbnail(0.3f).placeholder(R.drawable.image_placeholder).into(imgs);
 
         //add item
         ((ViewPager) container).addView(itemview);

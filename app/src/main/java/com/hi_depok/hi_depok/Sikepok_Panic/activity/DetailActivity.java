@@ -38,6 +38,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
+import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.Sikepok_Panic.util.Utils;
@@ -75,7 +76,6 @@ public class DetailActivity extends BaseActivity {
     ViewPager viewPager;
     PagerAdapter adapter;
     CirclePageIndicator indicator;
-    int[] img;
 
     JsonArrayRequest jsonArrayRequest ;
     RequestQueue requestQueue;
@@ -109,7 +109,6 @@ public class DetailActivity extends BaseActivity {
         placePicture = (ImageView) findViewById(R.id.image);
         viewPager = (ViewPager) findViewById(R.id.pager);
 
-        img = new int[]{R.drawable.logo, R.drawable.logo_kota_depok, R.drawable.logo_pnj};
         indicator = (CirclePageIndicator) findViewById(R.id.indicator);
 
         JSON_DATA_WEB_CALL();
@@ -149,23 +148,19 @@ public class DetailActivity extends BaseActivity {
                 noTelp = json.getString(JSON_NOTLP);
                 kordinat = json.getString(JSON_KORDINAT);
                 namaLokasi = json.getString(JSON_NAME);
-                Utils encodeThis = new Utils();
                 if(!json.getString(JSON_FOTO).equals("null") && json.getString(JSON_FOTO).contains(",")){
                     String[] listFoto = json.getString(JSON_FOTO).split(",");
                     String[] linkFoto = new String[listFoto.length];
                     for(int j=0;j<listFoto.length;j++){
-                        linkFoto[j] = encodeThis.UrlPhotoEncoder(json.getString(JSON_JENIS), listFoto[j], urlPhoto);
+                        linkFoto[j] = "http://hidepok.id/assets/images/photos/sikepok/sikepok3/" + listFoto[j];
                     }
                     adapter = new ViewPagerAdapter(this,linkFoto);
                     viewPager.setAdapter(adapter);
                     indicator.setViewPager(viewPager);
                 }
                 else if(!json.getString(JSON_FOTO).equals("null")){
-                    encodeThis.UrlPhotoEncoder(json.getString(JSON_JENIS), json.getString(JSON_FOTO), urlPhoto);
-                    Picasso.with(this).load(urlPhoto).resize(500, 500).into(placePicture);
-                }
-                else{
-                    placePicture.setImageResource(R.drawable.logo);
+                    urlPhoto = "http://hidepok.id/assets/images/photos/sikepok/sikepok3/" + json.getString(JSON_FOTO);
+                    Glide.with(this).load(urlPhoto).thumbnail(0.3f).placeholder(R.drawable.image_placeholder).into(placePicture);
                 }
 
                 iconKontak.setOnClickListener(new View.OnClickListener() {

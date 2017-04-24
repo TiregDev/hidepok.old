@@ -15,10 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Sikepok_Panic.util.Utils;
 import com.hi_depok.hi_depok.Sikepok_Panic.activity.DetailActivity;
-import com.squareup.picasso.Picasso;
 
 
 public class JSONAdapter extends RecyclerView.Adapter<JSONAdapter.ViewHolder> {
@@ -73,18 +73,14 @@ public class JSONAdapter extends RecyclerView.Adapter<JSONAdapter.ViewHolder> {
         holder.personName.setText(nama);
         holder.personDesc.setText(alamat);
         holder.itemView.setTag(id);
-        Utils encodeThis = new Utils();
         if(!foto.equals("null") && foto.contains(",")){
             String[] listFoto = foto.split(",");
-            encodeThis.UrlPhotoEncoder(jenis, listFoto[0], urlPhoto);
-            Picasso.with(context).load(urlPhoto).resize(100, 100).into(holder.personPhoto);
+            urlPhoto = "http://hidepok.id/assets/images/photos/sikepok/sikepok3/" + listFoto[0];
+            Glide.with(context).load(urlPhoto).placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(holder.personPhoto);
         }
         else if(!foto.equals("null")){
-            encodeThis.UrlPhotoEncoder(jenis, foto, urlPhoto);
-            Picasso.with(context).load(urlPhoto).resize(100, 100).into(holder.personPhoto);
-        }
-        else{
-            holder.personPhoto.setImageResource(R.drawable.logo);
+            urlPhoto = "http://hidepok.id/assets/images/photos/sikepok/sikepok3/" + foto;
+            Glide.with(context).load(urlPhoto).placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(holder.personPhoto);
         }
     }
 

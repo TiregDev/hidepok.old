@@ -181,7 +181,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng latLng = new LatLng(lat, lng);
                 markerOptions.position(latLng);
                 markerOptions.title(placeName);
-                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.gps));
+                if(json.getString(JSON_JENIS).equals("Apotek")){
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_02));
+                }
+                else if(json.getString(JSON_JENIS).equals("Puskesmas")){
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_10));
+                }
+                else if(json.getString(JSON_JENIS).equals("Bidan")){
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_04));
+                }
+                else if(json.getString(JSON_JENIS).equals("Klinik")){
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_03));
+                }
+                else if(json.getString(JSON_JENIS).equals("Tukang Urut")){
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_06));
+                }
+                else if(json.getString(JSON_JENIS).equals("Khitan")){
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_11));
+                }
                 placeMarker = mMap.addMarker(markerOptions);
                 hashMap.put(placeMarker, placeId);
 //                mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
@@ -212,7 +229,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
         markerOptions.title("Lokasi Kamu");
-        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.pin));
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_13));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
@@ -328,7 +345,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
         markerOptions.title("Lokasi Kamu");
-        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.pin));
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_13));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         //move map camera

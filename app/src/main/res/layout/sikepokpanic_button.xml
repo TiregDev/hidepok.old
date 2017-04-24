@@ -12,11 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Layanan Gawat Darurat"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:layout_weight="1"
-        android:gravity="top|center"/>
+        android:gravity="center"
+        app:font="@string/fontBold" />/>
 
     <ImageView
         android:id="@+id/callbtn"
@@ -28,19 +29,22 @@
     <fr.arnaudguyon.smartfontslib.FontTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="112"
         android:textSize="60sp"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:gravity="center"/>
+        android:gravity="center"
+        app:font="@string/fontBold" />/>
 
     <fr.arnaudguyon.smartfontslib.FontTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tekan untuk menelepon"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:layout_weight="1"
-        android:gravity="bottom|center"/>
+        android:gravity="bottom|center"
+        app:font="@string/fontBold" />
 </LinearLayout>

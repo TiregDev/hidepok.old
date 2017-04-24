@@ -71,7 +71,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:paddingRight="@dimen/md_keylines"
                 android:paddingTop="@dimen/md_keylines">
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
@@ -106,8 +105,13 @@
                         android:text="Jam 11 - Jam 12"
                         android:textColor="@color/white"
                         app:font="@string/fontReguler" />
-                </LinearLayout>
 
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#b7b7b7" />
                 <fr.arnaudguyon.smartfontslib.FontTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -140,7 +144,11 @@
                         android:textColor="@color/white"
                         app:font="@string/fontReguler" />
                 </LinearLayout>
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#b7b7b7" />
                 <fr.arnaudguyon.smartfontslib.FontTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -175,7 +183,11 @@
                         app:font="@string/fontReguler" />
                     />
                 </LinearLayout>
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#b7b7b7" />
                 <fr.arnaudguyon.smartfontslib.FontTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
