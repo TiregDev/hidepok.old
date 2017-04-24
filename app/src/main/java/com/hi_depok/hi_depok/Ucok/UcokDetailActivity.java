@@ -148,7 +148,6 @@ public class UcokDetailActivity extends BaseActivity {
 
     public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array){
         for(int i = 0; i<array.length(); i++) {
-//            GetDataAdapter_siumkm dataFromJSON = new GetDataAdapter_siumkm();
             JSONObject json = null;
             try {
                 json = array.getJSONObject(i);

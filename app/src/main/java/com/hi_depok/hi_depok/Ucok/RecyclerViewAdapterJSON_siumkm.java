@@ -114,21 +114,9 @@ public class RecyclerViewAdapterJSON_siumkm extends RecyclerView.Adapter<Recycle
                     Intent intent = new Intent(context, UcokDetailActivity.class);
                     String id = (String) itemView.getTag();
                     intent.putExtra(UcokDetailActivity.PATOKAN, id);
-//                    Log.d("RecyclerViewAdapterJSON_siumkm", "get id: " + pos);
-//                    intent.putExtra(UcokDetailActivity.EXTRA_POSITION, pos);
-//                    intent.putExtra(UcokDetailActivity.NAMA_TEMPAT, nama);
-//                    intent.putExtra(UcokDetailActivity.DESKRIPSI_TEMPAT, deskripsi);
-//                    intent.putExtra(UcokDetailActivity.LOKASI_TEMPAT, alamat);
-//                    intent.putExtra(UcokDetailActivity.NOTLP_TEMPAT, no_telp);
-//                    intent.putExtra(UcokDetailActivity.FOTO_TEMPAT, urlPhoto);
-//                    intent.putExtra(UcokDetailActivity.OPERASIONAL_TEMPAT, operasional);
-//                    intent.putExtra(UcokDetailActivity.KORDINAT_TEMPAT, kordinat);
-
                     context.startActivity(intent);
                 }
             });
-
-
         }
     }
 }

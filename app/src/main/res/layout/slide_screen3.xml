@@ -24,7 +24,7 @@
             android:layout_height="@dimen/img_width_height"
             app:srcCompat="@drawable/kadepok2" />
 
-        <fr.arnaudguyon.smartfontslib.FontEditText
+        <fr.arnaudguyon.smartfontslib.FontTextView
             app:font="@string/fontReguler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

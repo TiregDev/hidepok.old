@@ -128,5 +128,4 @@ public class GetDataAdapter_siumkm {
         this.foto_ukm = foto_ukm;
     }
 
-
 }
