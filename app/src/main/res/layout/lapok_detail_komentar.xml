@@ -203,6 +203,7 @@
             android:orientation="horizontal"
             android:padding="5dp">
 
+
             <fr.arnaudguyon.smartfontslib.FontEditText
                 android:id="@+id/isiKomentar"
                 android:layout_width="0dp"

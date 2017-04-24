@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@drawable/shape4"
+        android:alpha="0.8"
         android:onClick="ke_menu_rs"
         android:orientation="horizontal"
         android:padding="5dp"

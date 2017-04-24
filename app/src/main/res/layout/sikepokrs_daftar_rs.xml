@@ -11,13 +11,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="2"
+        android:background="@drawable/bg_maps"
         tools:context="com.hi_depok.hi_depok.Sikepok_RS.daftar_rs">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="150sp"
-            android:layout_weight="1">
+            android:layout_height="wrap_content">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar3"
@@ -33,12 +33,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:orientation="vertical"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:weightSum="2">
+            android:layout_marginTop="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyView"
