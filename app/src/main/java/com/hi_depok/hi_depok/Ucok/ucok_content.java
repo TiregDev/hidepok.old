@@ -108,7 +108,6 @@ public class ucok_content extends BaseActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-
                         if (ktgr != ""){
                             ktgr = "";
                             GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/ucok_json.php?kategori="+ktgr+"&kecamatan="+ kcmtn;

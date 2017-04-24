@@ -127,4 +127,6 @@ public class GetDataAdapter_siumkm {
     public void setFoto_ukm(String foto_ukm){
         this.foto_ukm = foto_ukm;
     }
+
+
 }

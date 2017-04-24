@@ -29,7 +29,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/logo"/>
+                android:src="@drawable/logo" />
         </LinearLayout>
         <!-- Login progress -->
         <ProgressBar
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <ScrollView
             android:id="@+id/login_form"
@@ -51,9 +51,9 @@
                 android:id="@+id/email_login_form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="-25dp"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:padding="16dp">
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                         android:textColorHint="#f8981d"
                         android:textColorLink="#f8981d"
                         android:textSize="16sp"
-                        app:font="@string/fontReguler"/>
+                        app:font="@string/fontReguler" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -97,7 +97,7 @@
                         android:textColorHint="#f8981d"
                         android:textColorLink="#f8981d"
                         android:textSize="16sp"
-                        app:font="@string/fontReguler"/>
+                        app:font="@string/fontReguler" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -111,18 +111,20 @@
                     android:text="MASUK"
                     android:textColor="#fff"
                     android:textStyle="bold"
-                    app:font="@string/fontBold"/>
+                    app:font="@string/fontBold" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <fr.arnaudguyon.smartfontslib.FontButton
                     android:id="@+id/registrasi"
+                    style="?android:textAppearanceSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="Belum punya akun? Daftar aja yuk disini!"
-                    android:textColor="#b7b7b7"
-                    android:textSize="8pt"
-                    app:font="@string/fontReguler"/>
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/shape3"
+                    android:text="DAFTAR"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    app:font="@string/fontBold" />
+
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
                     android:id="@+id/textView4"
@@ -133,7 +135,7 @@
                     android:text="atau masuk menggunakan"
                     android:textColor="#b7b7b7"
                     android:textSize="8pt"
-                    app:font="@string/fontReguler"/>
+                    app:font="@string/fontReguler" />
 
                 <ImageButton
                     android:id="@+id/gmail"
@@ -143,7 +145,7 @@
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/action_sign_in"
                     android:onClick="linkprofile"
-                    app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal"/>
+                    app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal" />
 
             </LinearLayout>
         </ScrollView>
