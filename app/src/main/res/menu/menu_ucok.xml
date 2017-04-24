@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:title="Simpan"
         android:id="@+id/add"
         android:name="add"
         app:showAsAction="ifRoom">

@@ -1,83 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:padding="20dp">
 
-    <EditText
-        android:id="@+id/nama_user"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="NAMA LENGKAP KAMU"
-        android:inputType="text"/>
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/email_user"
-        android:hint="EMAIL KAMU"
+        <fr.arnaudguyon.smartfontslib.FontEditText
+            android:id="@+id/nama_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Lengkap"
+            android:inputType="text"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/abuAbu"
+            app:font="@string/fontReguler" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:inputType="textEmailAddress"/>
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/username"
-        android:hint="USERNAME KAMU"
+        <fr.arnaudguyon.smartfontslib.FontEditText
+            android:id="@+id/email_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/abuAbu"
+            app:font="@string/fontReguler" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:inputType="text"/>
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/password"
+        <fr.arnaudguyon.smartfontslib.FontEditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:inputType="text"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/abuAbu"
+            app:font="@string/fontReguler" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="PASSWORD KAMU"
-        android:inputType="textPassword"/>
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/cekPass"
+        <fr.arnaudguyon.smartfontslib.FontEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Kata Sandi"
+            android:inputType="textPassword"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/abuAbu"
+            app:font="@string/fontReguler" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="MASUKKAN ULANG PASSWORD KAMU"
-        android:inputType="textPassword"/>
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/tempat_lahir"
+        <fr.arnaudguyon.smartfontslib.FontEditText
+            android:id="@+id/cekPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Konfirmasi Kata Sandi"
+            android:inputType="textPassword"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/abuAbu"
+            app:font="@string/fontReguler" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="TEMPAT LAHIR KAMU"
-        android:inputType="text"/>
+        android:layout_height="wrap_content">
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
-        android:id="@+id/tanggal_lahir"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="Klik disini untuk mendapatkan tanggal lahir kamu"
-        android:textColor="#b7b7b7"
-        android:textSize="8pt"
-        app:font="@string/fontReguler"/>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <fr.arnaudguyon.smartfontslib.FontEditText
+                android:id="@+id/tempat_lahir"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:hint="Tempat Lahir"
+                android:inputType="text"
+                android:textColor="@color/orange"
+                android:textColorHint="@color/abuAbu"
+                app:font="@string/fontReguler" />
+        </android.support.design.widget.TextInputLayout>
+
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            android:id="@+id/tanggal_lahir"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="140dp"
+            android:padding="10dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:background="@color/abuAbu"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Tanggal Lahir"
+            android:textColor="@color/background"
+            android:textSize="8pt"
+            app:font="@string/fontReguler" />
+    </RelativeLayout>
 
     <fr.arnaudguyon.smartfontslib.FontButton
         android:id="@+id/btnRegister"
         style="?android:textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/shape3"
         android:text="DAFTAR"
         android:textColor="#fff"
         android:textStyle="bold"
-        app:font="@string/fontBold"/>
+        app:font="@string/fontBold" />
 
     <fr.arnaudguyon.smartfontslib.FontTextView
         android:id="@+id/txtLogin"
@@ -88,5 +141,5 @@
         android:text="Sudah punya akun? Masuk aja!"
         android:textColor="#b7b7b7"
         android:textSize="8pt"
-        app:font="@string/fontReguler"/>
+        app:font="@string/fontReguler" />
 </LinearLayout>

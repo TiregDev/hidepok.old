@@ -39,6 +39,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 import com.squareup.picasso.Picasso;
@@ -71,7 +72,8 @@ public class UcokDetailActivity extends BaseActivity {
     String JSON_KORDINAT_2 = "koordinat2";
     String JSON_FOTO_BARANG = "foto_barang";
     String JSON_FOTO_UKM = "foto_ukm";
-    String urlPhoto, no_tlp;
+    String urlPhoto, no_tlp, namaukm;
+    Double kordinat1, kordinat2;
     CircleImageView imageView;
     TextView list_title, deskripsi_ukm, alamat_ukm;
 
@@ -152,11 +154,14 @@ public class UcokDetailActivity extends BaseActivity {
                 json = array.getJSONObject(i);
 
                 urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+json.getString(JSON_FOTO_UKM);
-                Picasso.with(this).load(urlPhoto).resize(100, 100).into(imageView);
+                Glide.with(this).load(urlPhoto).override(100, 100).into(imageView);
                 list_title.setText(json.getString(JSON_NAMA_UKM));
                 deskripsi_ukm.setText(json.getString(JSON_DESC_UKM));
                 alamat_ukm.setText(json.getString(JSON_ALAMAT_UKM));
                 no_tlp = json.getString(JSON_NO_TLP);
+                kordinat1 = json.getDouble(JSON_KORDINAT_1);
+                kordinat2 = json.getDouble(JSON_KORDINAT_2);
+                namaukm = json.getString(JSON_NAMA_UKM);
 
             } catch (JSONException e) {
 
@@ -179,9 +184,9 @@ public class UcokDetailActivity extends BaseActivity {
     }
 
     public void toMaps(View v) {
-        Double myLatitude = -6.3656374;
-        Double myLongitude = 106.8237375;
-        String labelLocation = "Perpus UI";
+        Double myLatitude = kordinat1;
+        Double myLongitude = kordinat2;
+        String labelLocation = namaukm;
 
         String urlAddress = "http://maps.google.com/maps?q=" + myLatitude + "," + myLongitude + "(" + labelLocation + ")&iwloc=A&hl=es";
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlAddress));

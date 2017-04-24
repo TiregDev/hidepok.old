@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -121,6 +122,8 @@ public class DetailActivity extends BaseActivity {
         jml_like.setText("0");
         jml_com.setText("0");
         jml_share.setText("0");
+
+        img.requestFocus();
 
         likeimg.setOnClickListener(new View.OnClickListener() {
 

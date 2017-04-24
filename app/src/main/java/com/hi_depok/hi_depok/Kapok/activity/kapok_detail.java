@@ -9,7 +9,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -181,26 +183,23 @@ public class kapok_detail extends BaseActivity {
     private void initiatepopup() {
         try {
             LayoutInflater inflater = (LayoutInflater) kapok_detail.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            final AlertDialog ad = new AlertDialog.Builder(this).create();
             View layout = inflater.inflate(R.layout.kapok_popup_ulasan, (ViewGroup) findViewById(R.id.popup_element));
-            pwindo = new PopupWindow(layout, 450,300, true);
-            pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
-            pwindo.setOutsideTouchable(true);
-            pwindo.setFocusable(true);
-
+            ad.setView(layout);
+            ad.show();
             ImageView close = (ImageView) layout.findViewById(R.id.close);
-            close.setOnClickListener(cancel_button_click_listener);
+            close.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ad.dismiss();
+                }
+            });
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            pwindo.dismiss();
-        }
-    };
 }
 
 

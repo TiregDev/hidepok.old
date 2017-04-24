@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.JsonRequest;
+import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.R;
 import com.squareup.picasso.Picasso;
 
@@ -84,7 +85,7 @@ public class RecyclerViewAdapterJSON_siumkm extends RecyclerView.Adapter<Recycle
         holder.itemView.setTag(id_ukm);
 
         urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+nama_foto;
-        Picasso.with(context).load(urlPhoto).resize(100, 100).into(holder.list_avatar);
+        Glide.with(context).load(urlPhoto).override(100, 100).into(holder.list_avatar);
     }
 
     @Override
