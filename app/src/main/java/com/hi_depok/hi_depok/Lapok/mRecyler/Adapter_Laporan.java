@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Lapok.mData.Artist;
+import com.hi_depok.hi_depok.Lapok.mData.Laporan;
 import com.hi_depok.hi_depok.Lapok.mDetail.DetailActivity;
 
 import java.util.ArrayList;
@@ -18,35 +18,34 @@ import java.util.ArrayList;
  * Created by Azmi Muhammad on 3/17/2017.
  */
 
-public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
+public class Adapter_Laporan extends RecyclerView.Adapter<Holder_Laporan> {
 
     Context c;
-    ArrayList<Artist> artists;
+    ArrayList<Laporan> mLaporan;
 
-    public MyAdapter(Context c, ArrayList<Artist> artists) {
+    public Adapter_Laporan(Context c, ArrayList<Laporan> laporan) {
         this.c = c;
-        this.artists = artists;
+        this.mLaporan = laporan;
     }
 
     @Override
-    public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public Holder_Laporan onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.lapok_isi_forum, parent, false);
-        return new MyHolder(v);
+        return new Holder_Laporan(v);
     }
 
     @Override
-    public void onBindViewHolder(MyHolder holder, int position) {
-        final String name = artists.get(position).getName();
-        final String time = artists.get(position).getWaktu();
-        final String title = artists.get(position).getJudul();
-        final String total_like = artists.get(position).getJml_like();
-        final String total_comment = artists.get(position).getJml_com();
-        final String total_share = artists.get(position).getJml_share();
-        final int image = artists.get(position).getImage();
-        final int kejadian = artists.get(position).getKejadian();
-        final int suka = artists.get(position).getLike_imgbtn();
-        final int komentar = artists.get(position).getComment_imgbtn();
-        final int bagikan = artists.get(position).getShare_imgbtn();
+    public void onBindViewHolder(Holder_Laporan holder, int position) {
+        final String name = mLaporan.get(position).getName();
+        final String time = mLaporan.get(position).getWaktu();
+        final String title = mLaporan.get(position).getJudul();
+        final String total_like = mLaporan.get(position).getJml_like();
+        final String total_comment = mLaporan.get(position).getJml_com();
+        final int image = mLaporan.get(position).getImage();
+        final int kejadian = mLaporan.get(position).getKejadian();
+        final int suka = mLaporan.get(position).getLike_imgbtn();
+        final int komentar = mLaporan.get(position).getComment_imgbtn();
+        final int bagikan = mLaporan.get(position).getShare_imgbtn();
 
         //BIND DATA
         holder.nameTxt.setText(name);
@@ -59,13 +58,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         holder.shaimg.setImageResource(bagikan);
         holder.jml_like.setText(total_like);
         holder.jml_com.setText(total_comment);
-        holder.jml_share.setText(total_share);
 
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(int pos) {
-                openDetailActivity(name, time, title, total_like, total_comment, total_share,
+                openDetailActivity(name, time, title, total_like, total_comment,
                         image, kejadian, suka, komentar, bagikan);
                 Toast.makeText(c, name, Toast.LENGTH_SHORT).show();
             }
@@ -74,12 +72,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     @Override
     public int getItemCount() {
-        return artists.size();
+        return mLaporan.size();
     }
 
     private void openDetailActivity(String name, String time, String title, String totlike,
-                                    String totcom, String totshare, int image, int kejadian,
-                                    int like, int comment, int share){
+                                    String totcom, int image, int kejadian, int like, int comment,
+                                    int share){
         Intent i = new Intent(c, DetailActivity.class);
 
         //PACK DATA TO SEND
@@ -93,7 +91,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         i.putExtra("SHARE_KEY", share);
         i.putExtra("TOTAL_COMMENT", totcom);
         i.putExtra("TOTAL_LIKE", totlike);
-        i.putExtra("TOTAL_SHARE", totshare);
         //OPEN ACTIVITY
         c.startActivity(i);
     }

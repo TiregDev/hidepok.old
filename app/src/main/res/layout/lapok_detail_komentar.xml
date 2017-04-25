@@ -153,18 +153,6 @@
                                     android:layout_toEndOf="@+id/jumlah_comment_detail"
                                     app:srcCompat="@drawable/share"/>
 
-                                <fr.arnaudguyon.smartfontslib.FontTextView
-                                    android:id="@+id/jumlah_share_detail"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/card_text_detail"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_toEndOf="@id/share_button_detail"
-                                    android:text=""
-                                    android:textColor="#303030"
-                                    android:textSize="18sp"
-                                    app:font="@string/fontReguler"/>
-
                             </RelativeLayout>
 
                             <RelativeLayout

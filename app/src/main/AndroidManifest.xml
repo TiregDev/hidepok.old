@@ -80,8 +80,7 @@
         <activity
             android:name=".Lapok.mDetail.DetailActivity"
             android:label="Detail Laporan"
-            android:theme="@style/Background"
-            android:windowSoftInputMode="stateHidden">
+            android:theme="@style/Background">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -166,6 +165,9 @@
             android:name=".Lapok.lapok_content"
             android:label="Lapor Depok" />
         <activity
+            android:name=".Lapok.lapok_ambil_kejadian"
+            android:label="Lapor Depok" />
+        <activity
             android:name=".Kadepok.activity.kadepok_content"
             android:label="Daftar Panti Asuhan" />
         <activity
@@ -180,8 +182,7 @@
             android:label="Registrasi Pasien Baru" />
         <activity
             android:name=".Sikepok_RS.regis_pasien_lama"
-            android:label="Registrasi Pasien Lama"
-            android:windowSoftInputMode="stateHidden"/>
+            android:label="Registrasi Pasien Lama" />
         <activity
             android:name=".Sikepok_RS.regis_berobat"
             android:label="Registrasi Berobat" />
@@ -205,8 +206,7 @@
             android:label="Registrasi" />
         <activity
             android:name=".Sikepok_RS.forum"
-            android:label="Forum"
-            android:windowSoftInputMode="stateHidden"/>
+            android:label="Forum" />
         <activity
             android:name=".Sikepok_RS.rs_terdekat"
             android:label="RS Terdekat" />

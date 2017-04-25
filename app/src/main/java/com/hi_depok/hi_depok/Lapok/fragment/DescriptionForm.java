@@ -4,60 +4,75 @@ package com.hi_depok.hi_depok.Lapok.fragment;
  * Created by Muhammad63 on 3/18/2017.
  */
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.Lapok.lapok_content;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.SessionManager;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class DescriptionForm extends AppCompatActivity {
 
-    EditText entryJudul, entryDeskripsi;
-    TextView perubahanWaktuLabel;
+    EditText etJudul, etDeskripsi, etAlamat;
+    TextView Tanggal, Waktu;
     Spinner spinner;
-    ArrayAdapter<CharSequence> adapter;
+    Button btnSubmit;
+    String kategori;
+    private static final String[]cate = {"Kategori","Kemacetan", "Bencana Alam", "Pelanggaran"
+            , "Jalan Rusak", "Tindak Kriminal", "Terorisme", "Narkoba"};
     Calendar dateAndTime = Calendar.getInstance();
-    DateFormat fmtDateandTime =
-            DateFormat.getDateTimeInstance();
+    SimpleDateFormat sdf_tanggal = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdf_waktu = new SimpleDateFormat("HH:mm:ss");
+    String judul, deskripsi, tanggal, waktu, alamat;
+    String deskripsi_url = "http://hidepok.id/include/lapok_form_pelaporan.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lapok_deskripsi);
 
-        entryJudul = (EditText) findViewById(R.id.entry);
-        entryDeskripsi = (EditText) findViewById(R.id.entryDeskripsi);
-//        coba = (TextView) findViewById(R.id.labelCoba1);
-//        coba.setVisibility(View.GONE);
+        etJudul = (EditText) findViewById(R.id.entry);
+        etDeskripsi = (EditText) findViewById(R.id.etIsiKejadian);
+        etAlamat = (EditText) findViewById(R.id.etAlamat);
+        btnSubmit = (Button) findViewById(R.id.btnSubmitLaporan);
+
+        Intent intent = getIntent();
+        final String image = intent.getExtras().getString("image");
 
         spinner = (Spinner) findViewById(R.id.spinKategori);
-        adapter = ArrayAdapter.createFromResource(this, R.array.places,
-                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        ArrayAdapter<String> category = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item,cate);
+        spinner.setAdapter(category);
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                Toast.makeText(getBaseContext(), adapterView.getItemAtPosition(position)
-                        + " selected", Toast.LENGTH_LONG).show();
+                kategori = adapterView.getItemAtPosition(position).toString();
+                if(!kategori.equals("Kategori")) {
+                    Toast.makeText(DescriptionForm.this, kategori + " selected", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
@@ -66,52 +81,78 @@ public class DescriptionForm extends AppCompatActivity {
             }
         });
 
-        perubahanWaktuLabel = (TextView) findViewById(R.id.labelPerubahanWaktu);
+        Tanggal = (TextView) findViewById(R.id.Tanggal);
+        Waktu = (TextView) findViewById(R.id.Waktu);
         updateLabel();
-    }
 
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                judul = etJudul.getText().toString();
+                deskripsi = etDeskripsi.getText().toString();
+                alamat = etAlamat.getText().toString();
+                tanggal = Tanggal.getText().toString();
+                waktu = Waktu.getText().toString();
+
+                if (judul.equals("")){
+                    etJudul.setError("Judul wajib diisi");
+                }else if(deskripsi.equals("")){
+                        etDeskripsi.setError("Deskripsikan kejadian");
+                }else if(alamat.equals("")){
+                    etAlamat.setError("Tempat kejadian wajib diisi");
+                }else{
+                    final ProgressDialog loading = ProgressDialog.show(DescriptionForm.this,
+                            "Proses...", "Tunggu sebentar...", false, false);
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, deskripsi_url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    loading.dismiss();
+                                    Toast.makeText(DescriptionForm.this, response, Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(DescriptionForm.this, lapok_content.class));
+                                    finish();
+
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(DescriptionForm.this, error.getMessage().toString(),
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }){
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            SessionManager session = new SessionManager(DescriptionForm.this);
+
+                            HashMap<String, String> user = session.getUserDetails();
+                            String id = user.get(SessionManager.KEY_ID_USER);
+
+                            HashMap<String, String> params = new HashMap<String, String>();
+
+                            params.put("id_user", id);
+                            params.put("judul", judul);
+                            params.put("tanggal", tanggal);
+                            params.put("waktu", waktu);
+                            params.put("isi_post", deskripsi);
+                            params.put("kategori", kategori);
+                            params.put("lokasi_post", alamat);
+                            params.put("image", image);
+
+                            return params;
+                        }
+                    };
+                    Akses.getInstance(DescriptionForm.this).addtoRequestQueue(stringRequest);
+                }
+            }
+        });
+
+    }
     private void updateLabel(){
-        perubahanWaktuLabel.setText(
-                fmtDateandTime.format(dateAndTime.getTime())
+        Tanggal.setText(
+                sdf_tanggal.format(dateAndTime.getTime())
+        );
+        Waktu.setText(
+                sdf_waktu.format(dateAndTime.getTime())
         );
     }
-
-    public void writeMessage(View view){
-        String Message = entryJudul.getText().toString();
-        String filename = "hello_file";
-        try {
-            FileOutputStream fileOutputStream = openFileOutput(filename, MODE_PRIVATE);
-            fileOutputStream.write(Message.getBytes());
-            fileOutputStream.close();
-            Toast.makeText(getApplicationContext(), "Pesan Disimpan", Toast.LENGTH_LONG).show();
-            entryJudul.setText("");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Intent moveForum = new Intent(getBaseContext(), lapok_content.class);
-        startActivity(moveForum);
-        DescriptionForm.this.finish();
-    }
-
-//    public void readMessage(View view){
-//        try {
-//            String Message;
-//            FileInputStream fileInputStream = openFileInput("hello_file");
-//            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-//            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-//            StringBuffer stringBuffer = new StringBuffer();
-//            while ((Message = bufferedReader.readLine()) != null){
-//                stringBuffer.append(Message + "\n");
-//                coba.setText(stringBuffer.toString());
-//                coba.setVisibility(View.VISIBLE);
-//            }
-//
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 }

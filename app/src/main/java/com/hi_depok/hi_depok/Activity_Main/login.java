@@ -185,7 +185,8 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
                                             Toast.makeText(login.this, jsonObject.getString("message"),
                                                     Toast.LENGTH_SHORT).show();
                                         }else{
-                                            session.createLoginSession(jsonObject.getString("username_user"),
+                                            session.createLoginSession(jsonObject.getString("id"),
+                                                    jsonObject.getString("username_user"),
                                                     jsonObject.getString("email_user"),
                                                     jsonObject.getString("password"),
                                                     jsonObject.getString("nama"));

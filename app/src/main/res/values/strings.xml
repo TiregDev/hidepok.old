@@ -3,14 +3,14 @@
     <string name="tag_app_name">We Share We Care</string>
 
     <!-- FONT CHANGE -->
-    <string translatable="false" name="fontReguler">font/Blogger_Sans.otf</string>
-    <string translatable="false" name="fontBold">font/Blogger_Sans-Bold.otf</string>
-    <string translatable="false" name="fontBoldItalic">font/Blogger_Sans-Bold_Italic.otf</string>
-    <string translatable="false" name="fontItalic">font/Blogger_Sans-Italic.otf</string>
-    <string translatable="false" name="fontLight">font/Blogger_Sans-Light.otf</string>
-    <string translatable="false" name="fontLightItalic">font/Blogger_Sans-Light_Italic.otf</string>
-    <string translatable="false" name="fontMedium">font/Blogger_Sans-Medium.otf</string>
-    <string translatable="false" name="fontMediumItalic">font/Blogger_Sans-Medium_Italic.otf</string>
+    <string name="fontReguler" translatable="false">font/Blogger_Sans.otf</string>
+    <string name="fontBold" translatable="false">font/Blogger_Sans-Bold.otf</string>
+    <string name="fontBoldItalic" translatable="false">font/Blogger_Sans-Bold_Italic.otf</string>
+    <string name="fontItalic" translatable="false">font/Blogger_Sans-Italic.otf</string>
+    <string name="fontLight" translatable="false">font/Blogger_Sans-Light.otf</string>
+    <string name="fontLightItalic" translatable="false">font/Blogger_Sans-Light_Italic.otf</string>
+    <string name="fontMedium" translatable="false">font/Blogger_Sans-Medium.otf</string>
+    <string name="fontMediumItalic" translatable="false">font/Blogger_Sans-Medium_Italic.otf</string>
 
     <string name="title_activity_login">Login</string>
     <!-- Strings related to login -->
