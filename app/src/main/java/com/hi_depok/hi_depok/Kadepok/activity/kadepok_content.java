@@ -60,9 +60,11 @@ public class kadepok_content extends BaseActivity {
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        dataAdapter = new ArrayList<>();
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
         rView = (RecyclerView)findViewById(R.id.recycler_view);
-        rView.setLayoutManager(new LinearLayoutManager(this));
+        rView.setLayoutManager(llm);
+        dataAdapter = new ArrayList<>();
         JSON_VALIDATE_URL();
 
         /*-------------------------- START SPINER CATEGORY --------------------------------------- */

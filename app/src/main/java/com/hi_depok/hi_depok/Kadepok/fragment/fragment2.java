@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +21,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Kadepok.activity.KadepokDetailActivity;
+import com.hi_depok.hi_depok.Kadepok.activity.kadepok_content;
 import com.hi_depok.hi_depok.R;
 
 import java.io.File;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by Muhammad63 on 3/16/2017.
@@ -107,6 +110,7 @@ public class fragment2 extends DialogFragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         if (requestCode == 0) {
             switch (resultCode) {
                 case Activity.RESULT_OK:
@@ -117,14 +121,11 @@ public class fragment2 extends DialogFragment {
                         Toast.makeText(getActivity(), "There was an error ", Toast.LENGTH_LONG).show();
                     }
                     txtImage.setText(filename);
-                    /*imageFile = new File(Environment.getExternalStorageDirectory()
-                            + "/DCIM/", filename);
-                    Uri tempuri = Uri.fromFile(imageFile);
-                    Bitmap capture = BitmapFactory.decodeFile(tempuri.getPath());*/
-                    Intent deskripsi = new Intent(getActivity(), KadepokDetailActivity.class);
-                    //deskripsi.putExtra("background", capture);
-                    startActivity(deskripsi);
-
+                    super.onActivityResult(requestCode, resultCode, data);
+                    Intent picIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    getActivity().startActivityForResult(picIntent,111);
+//                    Intent deskripsi = new Intent(getActivity(), kadepok_content.class);
+//                    startActivity(deskripsi);
                     break;
                 case Activity.RESULT_CANCELED:
                     break;

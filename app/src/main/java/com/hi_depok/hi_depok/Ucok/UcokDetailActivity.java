@@ -119,7 +119,7 @@ public class UcokDetailActivity extends BaseActivity {
                 settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
 
                 ImageView iv = (ImageView) newView.findViewById(R.id.profile_img_popup);
-                Bitmap bmp = ((GlideBitmapDrawable)imageView.getDrawable().getCurrent()).getBitmap();
+               Bitmap bmp = ((GlideBitmapDrawable)imageView.getDrawable().getCurrent()).getBitmap();
                 iv.setImageBitmap(bmp);
                 settingsDialog.show();
 
@@ -154,9 +154,8 @@ public class UcokDetailActivity extends BaseActivity {
             JSONObject json = null;
             try {
                 json = array.getJSONObject(i);
-
                 urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+json.getString(JSON_FOTO_UKM);
-                Glide.with(this).load(urlPhoto).override(100,100).into(imageView);
+                Glide.with(this).load(urlPhoto).thumbnail(0.3f).placeholder(R.drawable.image_placeholder).into(imageView);
                 list_title.setText(json.getString(JSON_NAMA_UKM));
                 deskripsi_ukm.setText(json.getString(JSON_DESC_UKM));
                 alamat_ukm.setText(json.getString(JSON_ALAMAT_UKM));
