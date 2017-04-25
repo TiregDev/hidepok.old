@@ -25,7 +25,7 @@ public class setprofile extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.set_profile);
+        setContentView(R.layout.activity_profile_set_profile);
         super.onCreateDrawer();
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

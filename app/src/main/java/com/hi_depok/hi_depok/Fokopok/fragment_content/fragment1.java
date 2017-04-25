@@ -46,8 +46,8 @@ public class fragment1 extends Fragment {
 
     private List<itemObject_komunitas> getAllItemList(){
         List<itemObject_komunitas> allItems = new ArrayList<>();
-        allItems.add(new itemObject_komunitas("Komunitas Jalan Santai (20)", R.drawable.lapok_image_2));
-        allItems.add(new itemObject_komunitas("Komunitas Fotografi (75)", R.drawable.lapok_image_3));
+        allItems.add(new itemObject_komunitas("Komunitas Jalan Santai (20)", R.drawable.image_placeholder));
+        allItems.add(new itemObject_komunitas("Komunitas Fotografi (75)", R.drawable.image_placeholder));
 
         return allItems;
     }

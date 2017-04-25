@@ -76,7 +76,7 @@
             <fr.arnaudguyon.smartfontslib.FontTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/version"
+                android:layout_below="@+id/link"
                 android:layout_marginTop="5dp"
                 android:gravity="center_horizontal"
                 android:text="@string/copyright"
@@ -92,6 +92,18 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center_horizontal"
                 android:text="Version 1.0"
+                android:textColor="#b7b7b7"
+                android:textSize="12sp"
+                app:font="@string/fontReguler" />
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:id="@+id/link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/version"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:text="www.hidepok.id"
                 android:textColor="#b7b7b7"
                 android:textSize="12sp"
                 app:font="@string/fontReguler" />

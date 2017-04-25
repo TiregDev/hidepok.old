@@ -63,14 +63,6 @@
         deserunt mollit anim id est laborum.
         </item>
     </string-array>
-    <array name="places_picture">
-        <item>@drawable/lapok_image_1</item>
-        <item>@drawable/lapok_image_2</item>
-        <item>@drawable/lapok_image_3</item>
-        <item>@drawable/lapok_image_1</item>
-        <item>@drawable/lapok_image_2</item>
-        <item>@drawable/lapok_image_3</item>
-    </array>
     <string-array name="place_locations">
         <item>8 Rue Scribe, 75009 Paris, France</item>
         <item>Piazza del Capitolo - 50122 Florence</item>
@@ -79,22 +71,6 @@
         <item>At Meydanı No:7, 34122 Fatih/İstanbul, Turkey</item>
         <item>Cape Town, South Africa</item>
     </string-array>
-    <array name="place_avator">
-        <item>@drawable/a_avator</item>
-        <item>@drawable/b_avator</item>
-        <item>@drawable/c_avator</item>
-        <item>@drawable/d_avator</item>
-        <item>@drawable/e_avator</item>
-        <item>@drawable/f_avator</item>
-    </array>
-    <array name="places_picture2">
-        <item>@drawable/a</item>
-        <item>@drawable/b</item>
-        <item>@drawable/c</item>
-        <item>@drawable/d</item>
-        <item>@drawable/e</item>
-        <item>@drawable/f</item>
-    </array>
     <string-array name="titles">
         <item> Facebook</item>
         <item> Instagram</item>
@@ -130,15 +106,6 @@
         <item>Beji Aja, Depok</item>
     </string-array>
 
-    <array name="panic_foto">
-        <item>@drawable/a</item>
-        <item>@drawable/b</item>
-        <item>@drawable/c</item>
-        <item>@drawable/d</item>
-        <item>@drawable/e</item>
-        <item>@drawable/f</item>
-    </array>
-
     <string-array name="panic_jarak">
         <item>1200m</item>
         <item>1300m</item>
@@ -150,12 +117,12 @@
 
     <!-- String array for RS Module -->
     <array name="FOTORS">
-        <item>@drawable/rskeluarga</item>
-        <item>@drawable/rsubunda</item>
-        <item>@drawable/rsuddepok</item>
-        <item>@drawable/rshermina</item>
-
+        <item>@drawable/image_placeholder</item>
+        <item>@drawable/image_placeholder</item>
+        <item>@drawable/image_placeholder</item>
+        <item>@drawable/image_placeholder</item>
     </array>
+
     <string-array name="NAMARS">
         <item >RS Mitra Keluarga</item>
         <item >RS Bunda</item>
@@ -180,13 +147,13 @@
 
 
     <array name="FOTODOKTER">
-        <item>@drawable/muhammad</item>
-        <item>@drawable/febby</item>
-        <item>@drawable/indah</item>
-        <item>@drawable/febby</item>
-        <item>@drawable/indah</item>
-
+        <item>@drawable/image_placeholder</item>
+        <item>@drawable/image_placeholder</item>
+        <item>@drawable/image_placeholder</item>
+        <item>@drawable/image_placeholder</item>
+        <item>@drawable/image_placeholder</item>
     </array>
+
     <string-array name="NAMADOKTER">
         <item >Dr. Muhammad</item>
         <item >Dr. Febby Haryono</item>

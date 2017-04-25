@@ -1,6 +1,7 @@
 package com.hi_depok.hi_depok.Lapok.mData;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -8,6 +9,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.hi_depok.hi_depok.Akses;
+import com.hi_depok.hi_depok.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,8 +30,9 @@ public class List_Laporan {
         mContext = context;
     }
 
-    public ArrayList<Laporan> getLaporan(final String kategori, final String sortby){
-        ArrayList<Laporan> laporan = new ArrayList<>();
+    public ArrayList<Laporan> getLaporan(final String kategori, final String sortby) {
+        final ArrayList<Laporan> laporan = new ArrayList<>();
+        final Laporan mLaporan = new Laporan();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "url",
                 new Response.Listener<String>() {
                     @Override
@@ -37,21 +40,38 @@ public class List_Laporan {
                         try {
                             JSONArray jsonArray = new JSONArray(response);
                             JSONObject jsonObject = jsonArray.getJSONObject(0);
+                            String code = jsonObject.getString("code");
+                            if (code.equals("not_available")) {
+                                Toast.makeText(mContext, jsonObject.getString("message"),
+                                        Toast.LENGTH_SHORT).show();
+                            } else {
+                                mLaporan.setName(jsonObject.getString("nama"));
+                                mLaporan.setImage(jsonObject.getString("avatar"));
+                                mLaporan.setTanggal(jsonObject.getString("tanggal"));
+                                mLaporan.setWaktu(jsonObject.getString("waktu"));
+                                mLaporan.setKejadian(jsonObject.getString("foto"));
+                                mLaporan.setJudul(jsonObject.getString("judul"));
+                                mLaporan.setComment_imgbtn(R.drawable.comment);
+                                mLaporan.setLike_imgbtn(R.drawable.like);
+                                mLaporan.setShare_imgbtn(R.drawable.share);
+                                mLaporan.setJml_com(jsonObject.getString("komentar"));
+                                mLaporan.setJml_like(jsonObject.getString("suka"));
 
-                            //String judul = jsonObject.getString("id_post")
-                            //mLaporan.setJudul(judul)
-                            //etc...
+                                mLaporan.setStatus(jsonObject.getString("status"));
+                                mLaporan.setId(jsonObject.getString("id_post"));
+                                mLaporan.setIsi(jsonObject.getString("isi"));
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
+                        laporan.add(mLaporan);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
@@ -63,77 +83,5 @@ public class List_Laporan {
         Akses.getInstance(mContext).addtoRequestQueue(stringRequest);
 
         return laporan;
-
-        /*//ADD DATA TO LIST
-        mLaporan = new Laporan();
-        mLaporan.setName("Emma Roberts");
-        mLaporan.setImage(R.drawable.emma_roberts);
-        mLaporan.setWaktu("Feb 8, 2017, at 17.00 WIB");
-        mLaporan.setKejadian(R.drawable.kemacetan);
-        mLaporan.setJudul("Macet di Gerbatama UI Bikin Bete...");
-        mLaporan.setComment_imgbtn(R.drawable.comment);
-        mLaporan.setLike_imgbtn(R.drawable.like);
-        mLaporan.setShare_imgbtn(R.drawable.share);
-        mLaporan.setJml_com("0");
-        mLaporan.setJml_like("0");
-        mLaporan.setJml_share("0");
-        laporan.add(mLaporan);
-
-        mLaporan = new Laporan();
-        mLaporan.setName("Lea Seydoux");
-        mLaporan.setImage(R.drawable.lea_seydoux);
-        mLaporan.setWaktu("Feb 8, 2017, at 17.00 WIB");
-        mLaporan.setKejadian(R.drawable.kebakaran);
-        mLaporan.setJudul("Tolong!!! Kebakaran nih di Detos");
-        mLaporan.setComment_imgbtn(R.drawable.comment);
-        mLaporan.setLike_imgbtn(R.drawable.like);
-        mLaporan.setShare_imgbtn(R.drawable.share);
-        mLaporan.setJml_com("0");
-        mLaporan.setJml_like("0");
-        mLaporan.setJml_share("0");
-        laporan.add(mLaporan);
-
-        mLaporan = new Laporan();
-        mLaporan.setName("Margot Robbie");
-        mLaporan.setImage(R.drawable.margot_robbie);
-        mLaporan.setWaktu("Feb 8, 2017, at 17.00 WIB");
-        mLaporan.setKejadian(R.drawable.banjir);
-        mLaporan.setJudul("Duh mana banjir, ujan, becek, gaada ojek...");
-        mLaporan.setComment_imgbtn(R.drawable.comment);
-        mLaporan.setLike_imgbtn(R.drawable.like);
-        mLaporan.setShare_imgbtn(R.drawable.share);
-        mLaporan.setJml_com("0");
-        mLaporan.setJml_like("0");
-        mLaporan.setJml_share("0");
-        laporan.add(mLaporan);
-
-        mLaporan = new Laporan();
-        mLaporan.setName("Oksana Neveselaya");
-        mLaporan.setImage(R.drawable.oksana_neveselaya);
-        mLaporan.setWaktu("Feb 8, 2017, at 17.00 WIB");
-        mLaporan.setKejadian(R.drawable.perampokan);
-        mLaporan.setJudul("Huhu kasian abangnya dirampok :'( ...");
-        mLaporan.setComment_imgbtn(R.drawable.comment);
-        mLaporan.setLike_imgbtn(R.drawable.like);
-        mLaporan.setShare_imgbtn(R.drawable.share);
-        mLaporan.setJml_com("0");
-        mLaporan.setJml_like("0");
-        mLaporan.setJml_share("0");
-        laporan.add(mLaporan);
-
-        mLaporan = new Laporan();
-        mLaporan.setName("Taissa Farmiga");
-        mLaporan.setImage(R.drawable.taissa_farmiga);
-        mLaporan.setWaktu("Feb 8, 2017, at 17.00 WIB");
-        mLaporan.setKejadian(R.drawable.geng_motor);
-        mLaporan.setJudul("Ihh apaan banget sih geng motor Depok :P");
-        mLaporan.setComment_imgbtn(R.drawable.comment);
-        mLaporan.setLike_imgbtn(R.drawable.like);
-        mLaporan.setShare_imgbtn(R.drawable.share);
-        mLaporan.setJml_com("0");
-        mLaporan.setJml_like("0");
-        mLaporan.setJml_share("0");
-        laporan.add(mLaporan);
-*/
     }
 }

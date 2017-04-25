@@ -7,9 +7,8 @@ package com.hi_depok.hi_depok.Lapok.mData;
 public class Komentar {
     String nama, isi_komentar;
 
-    public Komentar(String nama, String isi_komentar) {
-        this.nama = nama;
-        this.isi_komentar = isi_komentar;
+    public Komentar() {
+
     }
 
     public String getNama() {

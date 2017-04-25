@@ -5,23 +5,35 @@ package com.hi_depok.hi_depok.Lapok.mData;
  */
 
 public class Laporan {
-    String name, waktu, judul, jml_like, jml_com, jml_share;
-    int image, kejadian, like_imgbtn, comment_imgbtn, share_imgbtn;
+    String id, name, waktu, judul, jml_like, jml_com, status, image, kejadian, isi, tanggal;
+    int like_imgbtn, comment_imgbtn, share_imgbtn;
 
-    public Laporan(String name, String waktu, String judul, String jml_like, String jml_com,
-                   String jml_share, int image, int kejadian, int like_imgbtn, int comment_imgbtn,
-                   int share_imgbtn) {
-        this.name = name;
-        this.waktu = waktu;
-        this.judul = judul;
-        this.jml_like = jml_like;
-        this.jml_com = jml_com;
-        this.jml_share = jml_share;
-        this.image = image;
-        this.kejadian = kejadian;
-        this.like_imgbtn = like_imgbtn;
-        this.comment_imgbtn = comment_imgbtn;
-        this.share_imgbtn = share_imgbtn;
+    public Laporan() {
+
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getIsi() {
+        return isi;
+    }
+
+    public String getTanggal() {
+        return tanggal;
+    }
+
+    public void setTanggal(String tanggal) {
+        this.tanggal = tanggal;
+    }
+
+    public void setIsi(String isi) {
+        this.isi = isi;
     }
 
     public String getJml_like() {
@@ -40,12 +52,12 @@ public class Laporan {
         this.jml_com = jml_com;
     }
 
-    public String getJml_share() {
-        return jml_share;
+    public String getStatus() {
+        return status;
     }
 
-    public void setJml_share(String jml_share) {
-        this.jml_share = jml_share;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getJudul() {
@@ -88,11 +100,11 @@ public class Laporan {
         this.waktu = waktu;
     }
 
-    public int getKejadian() {
+    public String getKejadian() {
         return kejadian;
     }
 
-    public void setKejadian(int kejadian) {
+    public void setKejadian(String kejadian) {
         this.kejadian = kejadian;
     }
 
@@ -104,11 +116,11 @@ public class Laporan {
         this.name = name;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

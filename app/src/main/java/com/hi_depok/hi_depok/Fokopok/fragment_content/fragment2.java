@@ -135,7 +135,7 @@ public class fragment2 extends Fragment {
             mUsername = "Fajar Zakaria";
             mTime = "Feb 8, 2017 at 17.00 WIB";
 //            TypedArray a = resources.obtainTypedArray(R.array.places_picture);
-            mPlacePictures = resources.getDrawable(R.drawable.image_fokopok_1);
+            mPlacePictures = resources.getDrawable(R.drawable.image_placeholder);
 //            for (int i = 0; i < mPlacePictures.length; i++) {
 //                mPlacePictures[i] = a.getDrawable(i);
 //            }

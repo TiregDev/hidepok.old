@@ -10,15 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 
 import com.hi_depok.hi_depok.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
-
-import static com.hi_depok.hi_depok.R.id.gambar;
 
 /**
  * Created by Muhammad on 13/03/2017.
@@ -35,14 +30,14 @@ public class fasilitas extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 //        List<String> pilih = new ArrayList<String>();
 //        pilih.add("");
-        v = inflater.inflate(R.layout.sikepok_fragment_fasilitas,null);
+        v = inflater.inflate(R.layout.sikepokrs_fragment_fasilitas,null);
         gambar = (LinearLayout) v.findViewById(R.id.gambar);
         final ArrayList<Bitmap> bitmaps = new ArrayList<>();
-        bitmaps.add(BitmapFactory.decodeResource(getActivity().getResources(),R.drawable.image_fokopok_1));
-        bitmaps.add(BitmapFactory.decodeResource(getActivity().getResources(),R.drawable.image_fokopok_2));
-        bitmaps.add(BitmapFactory.decodeResource(getActivity().getResources(),R.drawable.image_fokopok_3));
-        bitmaps.add(BitmapFactory.decodeResource(getActivity().getResources(),R.drawable.ucok_image_1));
-        bitmaps.add(BitmapFactory.decodeResource(getActivity().getResources(),R.drawable.ucok_image_2));
+        bitmaps.add(BitmapFactory.decodeResource(getActivity().getResources(),R.drawable.image_placeholder));
+        bitmaps.add(BitmapFactory.decodeResource(getActivity().getResources(),R.drawable.image_placeholder));
+        bitmaps.add(BitmapFactory.decodeResource(getActivity().getResources(),R.drawable.image_placeholder));
+        bitmaps.add(BitmapFactory.decodeResource(getActivity().getResources(),R.drawable.image_placeholder));
+        bitmaps.add(BitmapFactory.decodeResource(getActivity().getResources(),R.drawable.image_placeholder));
         image_slide = (ImageView) v.findViewById(R.id.image_slide);
         insertimage(bitmaps);
         return v;
