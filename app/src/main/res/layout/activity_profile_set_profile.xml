@@ -48,8 +48,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:textSize="20sp"
-                    android:text="Jar"
+                    android:textSize="18sp"
+                    android:text="USERNAME KAMU"
                     android:textColor="#8c8c8c"
                     app:font="@string/fontReguler" />
 
@@ -59,7 +59,7 @@
                     android:layout_height="50dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginTop="-10dp"
-                    android:text="Isi bio kamu"
+                    android:hint="Isi bio kamu"
                     android:textColor="#b7b7b7"
                     app:font="@string/fontReguler"/>
 
@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="-10dp"
-                android:text="Isi nama kamu"
+                android:hint="Isi nama kamu"
                 android:textColor="#b7b7b7"
                 app:font="@string/fontReguler"/>
 
@@ -90,7 +90,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="-10dp"
-                android:text="Isi email kamu"
+                android:inputType="textEmailAddress"
+                android:hint="Isi email kamu"
                 android:textColor="#b7b7b7"
                 app:font="@string/fontReguler" />
 
@@ -99,9 +100,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="-10dp"
-                android:text="Isi nomer telepon kamu"
+                android:hint="Isi nomer telepon kamu"
+                android:inputType="number"
                 android:textColor="#b7b7b7"
-                app:font="@string/fontReguler" />
+                app:font="@string/fontReguler"/>
 
             <fr.arnaudguyon.smartfontslib.FontEditText
                 android:id="@+id/setAlamat"
@@ -109,7 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="-10dp"
-                android:text="Isi alamat kamu"
+                android:hint="Isi alamat kamu"
                 android:textColor="#b7b7b7" />
 
             <fr.arnaudguyon.smartfontslib.FontButton

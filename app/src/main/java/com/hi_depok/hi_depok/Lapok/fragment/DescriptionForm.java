@@ -40,8 +40,8 @@ public class DescriptionForm extends AppCompatActivity {
     Spinner spinner;
     Button btnSubmit;
     String kategori;
-    private static final String[]cate = {"Kategori","Kemacetan", "Bencana Alam", "Pelanggaran"
-            , "Jalan Rusak", "Tindak Kriminal", "Terorisme", "Narkoba"};
+    private static final String[]cate = {"", "Sampah", "Kebakaran", "Kemacetan",
+            "Bencana Alam", "Pelanggaran", "Jalan Rusak", "Tindak Kriminal", "Terorisme", "Narkoba"};
     Calendar dateAndTime = Calendar.getInstance();
     SimpleDateFormat sdf_tanggal = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat sdf_waktu = new SimpleDateFormat("HH:mm:ss");

@@ -8,10 +8,6 @@ public class Laporan {
     String id, name, waktu, judul, jml_like, jml_com, status, image, kejadian, isi, tanggal;
     int like_imgbtn, comment_imgbtn, share_imgbtn;
 
-    public Laporan() {
-
-    }
-
     public String getId() {
         return id;
     }

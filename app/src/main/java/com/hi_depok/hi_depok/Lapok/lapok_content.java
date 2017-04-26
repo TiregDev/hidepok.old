@@ -23,21 +23,19 @@ import com.hi_depok.hi_depok.Lapok.mData.List_Laporan;
 import com.hi_depok.hi_depok.Lapok.mRecyler.Adapter_Laporan;
 import com.hi_depok.hi_depok.R;
 
-import java.io.File;
 import java.util.ArrayList;
 
-public class lapok_content extends BaseActivity {
+public class lapok_content extends BaseActivity implements List_Laporan.listLaporan_interface {
 
-    private File imageFile;
-    String filename;
     private Spinner category, sortby;
     String kategori, status;
     Adapter_Laporan mAdapter;
-    ArrayList<Laporan> mList;
+    ArrayList<Laporan> mList = new ArrayList<>();
+    RecyclerView rv;
 
-    private static final String[]cate = {"Kategori","Kemacetan", "Bencana Alam", "Pelanggaran"
-            , "Jalan Rusak", "Tindak Kriminal", "Terorisme", "Narkoba"};
-    private static final String[] stats = {"Status", "Menunggu", "Proses", "Selesai"};
+    private static final String[] cate = {"", "Sampah", "Kebakaran", "Kemacetan",
+            "Bencana Alam", "Pelanggaran", "Jalan Rusak", "Tindak Kriminal", "Terorisme", "Narkoba"};
+    private static final String[] stats = {"", "Menunggu", "Proses", "Selesai"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +48,7 @@ public class lapok_content extends BaseActivity {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ImageView cameraBtn = (ImageView) findViewById(R.id.cameraBtn);
@@ -61,36 +59,38 @@ public class lapok_content extends BaseActivity {
             }
         });
 
-        RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
+        rv = (RecyclerView) findViewById(R.id.rv);
         rv.setLayoutManager(new LinearLayoutManager(this));
-
-        List_Laporan listLaporan = new List_Laporan(this);
+        rv.setHasFixedSize(true);
+        rv.setAdapter(new Adapter_Laporan(lapok_content.this, new ArrayList<Laporan>()));
 
         /*-------------------------- START SPINER CATEGORY --------------------------------------- */
-        category = (Spinner)findViewById(R.id.category);
+        category = (Spinner) findViewById(R.id.category);
         ArrayAdapter<String> adapter_cate = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_dropdown_item,cate);
+                android.R.layout.simple_spinner_dropdown_item, cate);
 
         adapter_cate.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         category.setAdapter(adapter_cate);
         category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 kategori = adapterView.getItemAtPosition(position).toString();
-                if(!kategori.equals("Kategori")) {
+                if (!kategori.equals("")) {
                     Toast.makeText(lapok_content.this, kategori + " selected", Toast.LENGTH_LONG).show();
                 }
+                List_Laporan listLaporan = new List_Laporan(lapok_content.this);
+                listLaporan.registerForListener(lapok_content.this);
+                listLaporan.getLaporan(kategori, status);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                kategori = "";
+
             }
         });
          /*-------------------------- END SPINER CATEGORY ---------------------------------------- */
 
         /*-------------------------- START SPINER SORTBY --------------------------------------- */
-        sortby = (Spinner)findViewById(R.id.sortby);
+        sortby = (Spinner) findViewById(R.id.sortby);
         ArrayAdapter<String> adapter_sort = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item, stats);
 
@@ -100,22 +100,27 @@ public class lapok_content extends BaseActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 status = adapterView.getItemAtPosition(position).toString();
-                if(!status.equals("Status")){
+                if (!status.equals("")) {
                     Toast.makeText(lapok_content.this, status + " selected", Toast.LENGTH_LONG).show();
                 }
+                List_Laporan listLaporan = new List_Laporan(lapok_content.this);
+                listLaporan.registerForListener(lapok_content.this);
+                listLaporan.getLaporan(kategori, status);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                status = "";
+
             }
         });
 
-        mList = listLaporan.getLaporan(kategori, status);
-        mAdapter = new Adapter_Laporan(this, mList);
-        rv.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
+    }
 
+    @Override
+    public void onGetList(ArrayList<Laporan> laporanArrayList) {
+        mAdapter = new Adapter_Laporan(lapok_content.this, laporanArrayList);
+        rv.setAdapter(null);
+        rv.setAdapter(mAdapter);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
