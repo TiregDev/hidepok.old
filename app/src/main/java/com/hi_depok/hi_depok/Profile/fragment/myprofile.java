@@ -36,7 +36,7 @@ public class myprofile extends Fragment {
     private TextView nama, tgl_lahir, tgl_join, email, no_telp, alamat;
     String detail_url = "http://hidepok.id/getUserDetail.php";
     SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
-    SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("d MMM yyyy");
     Date gabung, kelahiran;
 
     public static myprofile newInstance() {
@@ -112,7 +112,7 @@ public class myprofile extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 SessionManager session = new SessionManager(getContext());
-                //session email untuk diambil dan dimasukkan ke dalam skrip php
+                //session username untuk diambil dan dimasukkan ke dalam skrip php
                 HashMap<String, String> user = session.getUserDetails();
                 String username_session = user.get(SessionManager.KEY_USERNAME);
                 //username ada di skrip getUserDetail.php dengan paramater name

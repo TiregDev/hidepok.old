@@ -64,16 +64,16 @@ public class event extends BaseActivity {
 
     private List<ItemObject> getAllItemList(){
         List<ItemObject> allItems = new ArrayList<>();
-        allItems.add(new ItemObject("Bakti Sosial", "Vildansvagen 19, Lund Sweden","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.image_fokopok_1));
-        allItems.add(new ItemObject("Pameran", "3 Villa Crescent London, UK","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.ucok_image_2));
-        allItems.add(new ItemObject("Lomba Makan", "Victoria Island Lagos, Nigeria","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.image_fokopok_2));
-        allItems.add(new ItemObject("Gathering Komika", "New Heaven Enugu, Nigeria","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.ucok_image_4));
-        allItems.add(new ItemObject("Nobar", "Italion Gata, Padova, Italy","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.ucok_image_5));
-        allItems.add(new ItemObject("PHBD", "Vildansvagen 19, Lund Sweden","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.image_fokopok_3));
-        allItems.add(new ItemObject("Jalan Santai", "3 Villa Crescent London, UK","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.ucok_image_2));
-        allItems.add(new ItemObject("Balap Lari", "Victoria Island Lagos, Nigeria","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.ucok_image_3));
-        allItems.add(new ItemObject("Lomba Renang", "New Heaven Enugu, Nigeria","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.ucok_image_4));
-        allItems.add(new ItemObject("Syiar Ramadhan", "Italion Gata, Padova, Italy","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.ucok_image_5));
+        allItems.add(new ItemObject("Bakti Sosial", "Vildansvagen 19, Lund Sweden","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.image_placeholder));
+        allItems.add(new ItemObject("Pameran", "3 Villa Crescent London, UK","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.image_placeholder));
+        allItems.add(new ItemObject("Lomba Makan", "Victoria Island Lagos, Nigeria","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.image_placeholder));
+        allItems.add(new ItemObject("Gathering Komika", "New Heaven Enugu, Nigeria","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.image_placeholder));
+        allItems.add(new ItemObject("Nobar", "Italion Gata, Padova, Italy","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.image_placeholder));
+        allItems.add(new ItemObject("PHBD", "Vildansvagen 19, Lund Sweden","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.image_placeholder));
+        allItems.add(new ItemObject("Jalan Santai", "3 Villa Crescent London, UK","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.image_placeholder));
+        allItems.add(new ItemObject("Balap Lari", "Victoria Island Lagos, Nigeria","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.image_placeholder));
+        allItems.add(new ItemObject("Lomba Renang", "New Heaven Enugu, Nigeria","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.image_placeholder));
+        allItems.add(new ItemObject("Syiar Ramadhan", "Italion Gata, Padova, Italy","Panti Asuhan Darul Ilmi. 22/07/2017", R.drawable.image_placeholder));
 
         return allItems;
     }

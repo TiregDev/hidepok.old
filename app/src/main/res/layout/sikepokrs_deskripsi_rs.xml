@@ -30,7 +30,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView5"
             android:layout_marginBottom="10dp"
-            app:srcCompat="@drawable/rs_mitra_keluarga" />
+            app:srcCompat="@drawable/image_placeholder" />
 
         <fr.arnaudguyon.smartfontslib.FontTextView
             app:font="@string/fontBold"

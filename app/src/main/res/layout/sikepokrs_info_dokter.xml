@@ -44,10 +44,8 @@
                     android:id="@+id/imageDesc"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/textView5"
                     android:layout_marginBottom="10dp"
-                    app:srcCompat="@drawable/febby" />
+                    app:srcCompat="@drawable/image_placeholder" />
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
                     app:font="@string/fontBold"

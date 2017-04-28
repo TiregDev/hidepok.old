@@ -70,7 +70,7 @@ public class detail_target extends BaseActivity {
        TextView placeDetail = (TextView) findViewById(R.id.detail);
         placeDetail.setText(placeDetails);
 //
-        Drawable placePictures = resources.getDrawable(R.drawable.image_fokopok_2);
+        Drawable placePictures = resources.getDrawable(R.drawable.image_placeholder);
         ImageView placePicutre = (ImageView) findViewById(R.id.image_target);
         placePicutre.setImageDrawable(placePictures);
 

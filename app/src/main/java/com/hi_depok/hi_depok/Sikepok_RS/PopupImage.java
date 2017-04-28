@@ -4,13 +4,10 @@ import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatDialog;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -52,7 +49,7 @@ public class PopupImage extends DialogFragment implements View.OnClickListener {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         position = getArguments().getInt("position");
         bitmaps = (ArrayList<Bitmap>) getArguments().getSerializable("bitmaps");
-        view = LayoutInflater.from(getActivity()).inflate(R.layout.popup_image, null);
+        view = LayoutInflater.from(getActivity()).inflate(R.layout.popup_image_single, null);
         pager = (ExtendedViewPager) view.findViewById(view_pager);
         layout = (RelativeLayout) view.findViewById(R.id.background);
         adapter = new PopupImageAdapter(getActivity(), bitmaps);

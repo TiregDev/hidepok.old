@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:padding="@dimen/md_keylines">
+
+    <ImageView
+        android:id="@+id/list_avatar"
+        android:layout_width="@dimen/avator_size"
+        android:layout_height="@dimen/avator_size"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image_placeholder"/>
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        android:id="@+id/list_jarak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/list_avatar"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:scaleType="centerCrop"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        app:font="@string/fontReguler"
+        tools:text="1024m" />
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        android:id="@+id/list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/md_keylines"
+        android:layout_toEndOf="@+id/list_avatar"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textColor="@color/white"
+        android:textSize="@dimen/article_subheading"
+        app:font="@string/fontBold"
+        tools:text="@string/item_title" />
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        android:id="@+id/list_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/list_title"
+        android:layout_marginStart="@dimen/md_keylines"
+        android:layout_toEndOf="@+id/list_avatar"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textColor="@color/white"
+        android:textSize="@dimen/list_body"
+        app:font="@string/fontReguler"
+        tools:text="@string/item_desc" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/list_desc"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/list_avatar"
+        android:background="#b7b7b7"
+        android:textColor="@color/white" />
+</RelativeLayout>

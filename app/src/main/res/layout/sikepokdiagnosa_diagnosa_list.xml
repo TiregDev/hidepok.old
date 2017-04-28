@@ -16,7 +16,7 @@
             android:id="@+id/avatar_bagian"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            tools:src="@drawable/lapok_image_2" />
+            tools:src="@drawable/image_placeholder" />
 
         <fr.arnaudguyon.smartfontslib.FontTextView
             app:font="@string/fontReguler"

@@ -166,6 +166,9 @@
             android:name=".Lapok.lapok_content"
             android:label="Lapor Depok" />
         <activity
+            android:name=".Lapok.lapok_ambil_kejadian"
+            android:label="Lapor Depok" />
+        <activity
             android:name=".Kadepok.activity.kadepok_content"
             android:label="Daftar Panti Asuhan" />
         <activity

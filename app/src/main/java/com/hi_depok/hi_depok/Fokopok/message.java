@@ -48,7 +48,7 @@ public class message extends BaseActivity {
     private List<itemObject_message> getAllItemList(){
         List<itemObject_message> allItems = new ArrayList<>();
         allItems.add(new itemObject_message("Alian Rakhul Yama (20)", R.drawable.profile));
-        allItems.add(new itemObject_message("Ninda Komala (75)", R.drawable.ucok_image_4));
+        allItems.add(new itemObject_message("Ninda Komala (75)", R.drawable.image_placeholder));
 
         return allItems;
     }

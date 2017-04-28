@@ -20,19 +20,6 @@
             android:scaleType="centerCrop"
             android:src="@drawable/profile" />
 
-        <RatingBar
-            android:id="@+id/rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="left"
-            android:backgroundTint="#fff"
-            android:numStars="5"
-            android:rating="5"
-            android:scaleX="0.3"
-            android:scaleY="0.3"
-            android:theme="@style/RatingBar" />
-
         <fr.arnaudguyon.smartfontslib.FontTextView
             android:id="@+id/title"
             android:layout_width="match_parent"
@@ -49,7 +36,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/title"
             android:layout_toEndOf="@+id/avatar"
-            android:gravity="end"
             android:text="waktu"
             android:textSize="10sp"
             app:font="@string/fontReguler" />

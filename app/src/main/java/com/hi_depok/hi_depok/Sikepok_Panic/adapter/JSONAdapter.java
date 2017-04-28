@@ -49,7 +49,7 @@ public class JSONAdapter extends RecyclerView.Adapter<JSONAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokpanic_item_list, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(v);
 

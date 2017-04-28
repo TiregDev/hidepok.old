@@ -170,7 +170,7 @@ public class BaseActivity extends AppCompatActivity {
                 .withActivity(this)
                 .withHasStableIds(true)
                 .withAccountHeader(headerResult)
-                .withDrawerLayout(R.layout.crossfade_layout)
+                .withDrawerLayout(R.layout.navbar_crossfade_layout)
                 .withDrawerWidthDp(72)
                 .withFullscreen(true)
                 .withGenerateMiniDrawer(true)

@@ -27,8 +27,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
+import com.hi_depok.hi_depok.Lapok.mData.Komentar;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Ucok.UcokDetailActivity;
+
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -38,6 +40,7 @@ public class DetailActivity extends BaseActivity {
     ImageView img, kej, likeimg, comimg, shaimg, btnKirim;
     EditText etKomentar;
     EditText comment;
+    List<Komentar> mList;
     private NotificationCompat.Builder mBuilder;
 
     @Override
@@ -76,6 +79,14 @@ public class DetailActivity extends BaseActivity {
             }
     });
 
+        /*//Mengambil komentar dari DB
+        mList = new ArrayList<>();
+        //mList.add()
+
+        ListView listView = (ListView) findViewById(R.id.listKomentar);
+        Adapter_Komentar adapterKomentar = new Adapter_Komentar(this, R.layout.lapok_isi_komentar, mList);
+        listView.setAdapter(adapterKomentar);*/
+
         //INITIALIZE VIEWS
         btnKirim = (ImageView) findViewById(R.id.btnKirim);
         etKomentar = (EditText) findViewById(R.id.isiKomentar);
@@ -84,7 +95,6 @@ public class DetailActivity extends BaseActivity {
         title = (TextView) findViewById(R.id.card_text_detail);
         jml_like = (TextView) findViewById(R.id.jumlah_like_detail);
         jml_com = (TextView) findViewById(R.id.jumlah_comment_detail);
-        jml_share = (TextView) findViewById(R.id.jumlah_share_detail);
         img = (ImageView) findViewById(R.id.imageArtist_detail);
         kej = (ImageView) findViewById(R.id.card_image_detail);
         likeimg = (ImageView) findViewById(R.id.like_detail);
@@ -100,7 +110,6 @@ public class DetailActivity extends BaseActivity {
         final String judul = i.getExtras().getString("TITLE_KEY");
         final String jumlah_suka = i.getExtras().getString("TOTAL_LIKE");
         final String jumlah_komentar = i.getExtras().getString("TOTAL_COMMENT");
-        final String jumlah_bagikan = i.getExtras().getString("TOTAL_SHARE");
         final int image = i.getExtras().getInt("IMAGE_KEY");
         final int kejadian = i.getExtras().getInt("KEJADIAN_KEY");
         final int like = i.getExtras().getInt("LIKE_KEY");
@@ -113,7 +122,6 @@ public class DetailActivity extends BaseActivity {
         title.setText(judul);
         jml_like.setText(jumlah_suka);
         jml_com.setText(jumlah_komentar);
-        jml_share.setText(jumlah_bagikan);
         img.setImageResource(image);
         kej.setImageResource(kejadian);
         likeimg.setImageResource(like);
@@ -121,7 +129,6 @@ public class DetailActivity extends BaseActivity {
         shaimg.setImageResource(share);
         jml_like.setText("0");
         jml_com.setText("0");
-        jml_share.setText("0");
 
         img.requestFocus();
 
@@ -155,7 +162,6 @@ public class DetailActivity extends BaseActivity {
                 sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
                 view.getContext().startActivity(Intent.createChooser(sharingIntent, "Share via"));
 
-                jml_share.setText("1");
                 Toast.makeText(view.getContext(), "Sebarkan berita ini",
                         Toast.LENGTH_SHORT).show();
             }
@@ -173,15 +179,15 @@ public class DetailActivity extends BaseActivity {
                         .setAutoCancel(true)
                         .setContentText(text);
                 buildNotification(DetailActivity.this, name, time, judul, jumlah_suka, jumlah_komentar,
-                        jumlah_bagikan, image, kejadian, like, comment, share);
+                        image, kejadian, like, comment, share);
             }
         });
     }
 
     //------------------------------------BUAT NOTIFIKASI-----------------------------------------//
     private void buildNotification(Context ctx, String name, String time, String title, String totlike,
-                                   String totcom, String totshare, int image, int kejadian,
-                                   int like, int comment, int share){
+                                   String totcom, int image, int kejadian, int like, int comment,
+                                   int share){
 
         Intent infoNotification = new Intent(ctx, DetailActivity.class);
 
@@ -196,7 +202,6 @@ public class DetailActivity extends BaseActivity {
         infoNotification.putExtra("SHARE_KEY", share);
         infoNotification.putExtra("TOTAL_COMMENT", totcom);
         infoNotification.putExtra("TOTAL_LIKE", totlike);
-        infoNotification.putExtra("TOTAL_SHARE", totshare);
 
         //OPEN ACTIVITY
         TaskStackBuilder taskStackBuilder = TaskStackBuilder

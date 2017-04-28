@@ -53,7 +53,7 @@
                                 android:layout_height="70dp"
                                 android:layout_marginTop="-5dp"
                                 android:padding="10dp"
-                                android:src="@drawable/emma_roberts"/>
+                                android:src="@drawable/image_placeholder"/>
 
                             <fr.arnaudguyon.smartfontslib.FontTextView
                                 android:id="@+id/nameTxtdetail"
@@ -85,7 +85,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="200dp"
                                     android:scaleType="centerCrop"
-                                    tools:src="@drawable/lapok_image_3"/>
+                                    tools:src="@drawable/image_placeholder"/>
 
                                 <fr.arnaudguyon.smartfontslib.FontTextView
                                     android:id="@+id/card_text_detail"
@@ -152,18 +152,6 @@
                                     android:layout_below="@+id/card_text_detail"
                                     android:layout_toEndOf="@+id/jumlah_comment_detail"
                                     app:srcCompat="@drawable/share"/>
-
-                                <fr.arnaudguyon.smartfontslib.FontTextView
-                                    android:id="@+id/jumlah_share_detail"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/card_text_detail"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_toEndOf="@id/share_button_detail"
-                                    android:text=""
-                                    android:textColor="#303030"
-                                    android:textSize="18sp"
-                                    app:font="@string/fontReguler"/>
 
                             </RelativeLayout>
 

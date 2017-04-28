@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="15dp"
-    android:gravity="top">
+    android:gravity="top"
+    android:padding="15dp">
 
     <fr.arnaudguyon.smartfontslib.FontEditText
-        app:font="@string/fontReguler"
+        android:id="@+id/entry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Judul Laporan"
-        android:id="@+id/entry"
         android:textColor="@color/white"
-        android:textColorHint="@color/abuAbu"/>
+        android:textColorHint="@color/abuAbu"
+        app:font="@string/fontReguler"/>
 
     <LinearLayout
         android:id="@+id/dropdown"
@@ -28,8 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:padding="10dp"
-            android:background="@drawable/shape_bg_spinner" />
+            android:background="@drawable/shape_bg_spinner"
+            android:padding="10dp"/>
 
     </LinearLayout>
 
@@ -42,58 +43,81 @@
         android:gravity="end"
         android:padding="10dp">
 
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/spinner" />
+            android:src="@drawable/spinner"/>
 
     </LinearLayout>
 
     <fr.arnaudguyon.smartfontslib.FontTextView
-        app:font="@string/fontReguler"
         android:id="@+id/labelWaktu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/dropdown_image"
+        android:paddingTop="30dp"
         android:text="Tanggal dan Waktu Laporan : "
         android:textColor="@color/white"
-        android:textSize="12sp"/>
+        android:textSize="12sp"
+        app:font="@string/fontReguler"/>
 
     <fr.arnaudguyon.smartfontslib.FontTextView
-        app:font="@string/fontReguler"
-        android:id="@+id/labelPerubahanWaktu"
+        android:id="@+id/Tanggal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/labelWaktu"
-        android:text="Waktu Sekarang"
+        android:text="Tanggal Sekarang"
         android:textColor="@color/white"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        app:font="@string/fontReguler"/>
 
-    <fr.arnaudguyon.smartfontslib.FontEditText
-        app:font="@string/fontReguler"
-        android:id="@+id/entryDeskripsi"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:gravity="top"
-        android:layout_below="@id/labelPerubahanWaktu"
-        android:hint="Deskripsi"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"
-        android:textColorHint="@color/abuAbu"
-        android:inputType="textMultiLine"/>
-    <fr.arnaudguyon.smartfontslib.FontButton
-        app:font="@string/fontBold"
-        android:id="@+id/btnSubmitLaporan"
-        android:layout_marginTop="20dp"
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        android:id="@+id/Waktu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/entryDeskripsi"
-        android:text="LAPORKAN"
-        android:background="@drawable/shape3"
-        android:textStyle="bold"
+        android:layout_below="@id/Tanggal"
+        android:text="Waktu Sekarang"
         android:textColor="@color/white"
-        android:onClick="writeMessage"/>
+        android:textSize="18sp"
+        app:font="@string/fontReguler"/>
+
+    <fr.arnaudguyon.smartfontslib.FontEditText
+        android:id="@+id/etIsiKejadian"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/Tanggal"
+        android:layout_marginTop="10dp"
+        android:gravity="top"
+        android:hint="Isi Kejadian"
+        android:inputType="textMultiLine"
+        android:textColor="@color/white"
+        android:textColorHint="@color/abuAbu"
+        app:font="@string/fontReguler"/>
+
+    <fr.arnaudguyon.smartfontslib.FontEditText
+        android:id="@+id/etAlamat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etIsiKejadian"
+        android:layout_marginTop="10dp"
+        android:gravity="top"
+        android:hint="Alamat Kejadian"
+        android:inputType="textMultiLine"
+        android:textColor="@color/white"
+        android:textColorHint="@color/abuAbu"
+        app:font="@string/fontReguler"/>
+
+    <fr.arnaudguyon.smartfontslib.FontButton
+        android:id="@+id/btnSubmitLaporan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etAlamat"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape3"
+        android:text="LAPORKAN"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:font="@string/fontBold"/>
 
 </RelativeLayout>

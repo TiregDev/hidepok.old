@@ -12,20 +12,41 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
+import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.SessionManager;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class setprofile extends BaseActivity {
 
-    TextView changepass;
+    TextView changepass, txtUsername;
     EditText etBio, etNama, etEmail, etNomer, etAlamat;
     Button btnSimpan;
+    SessionManager session;
+    String url_update_profile = "http://hidepok.id/updateProfile.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.set_profile);
+        setContentView(R.layout.activity_profile_set_profile);
         super.onCreateDrawer();
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -34,9 +55,10 @@ public class setprofile extends BaseActivity {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        txtUsername = (TextView) findViewById(R.id.txtUsername);
         etBio = (EditText) findViewById(R.id.setBio);
         etNama = (EditText) findViewById(R.id.setNama);
         etEmail = (EditText) findViewById(R.id.setEmail);
@@ -44,13 +66,73 @@ public class setprofile extends BaseActivity {
         etAlamat = (EditText) findViewById(R.id.setAlamat);
         btnSimpan = (Button) findViewById(R.id.btnSimpanProfil);
 
+        session = new SessionManager(this);
+        HashMap<String, String> user = session.getUserDetails();
+        String username = user.get(SessionManager.KEY_USERNAME);
+        final String id_user = user.get(SessionManager.KEY_ID_USER);
+
+        txtUsername.setText(username);
+
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String bio = etBio.getText().toString();
-                String nama = etNama.getText().toString();
-                String email = etEmail.getText().toString();
-                String no_telp = etNomer.getText().toString();
+                final String bio = etBio.getText().toString();
+                final String nama = etNama.getText().toString();
+                final String email = etEmail.getText().toString();
+                final String no_telp = etNomer.getText().toString();
+                if (bio.equals("")) {
+                    etBio.setError("Nama harus diisi");
+                } else if (nama.equals("")) {
+                    etNama.setError("Nama harus diiisi");
+                } else if (email.equals("")) {
+                    etEmail.setError("Email harus diisi");
+                } else if (no_telp.equals("")) {
+                    etNomer.setError("Nomor telpon harus diisi");
+                } else {
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url_update_profile,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    try {
+                                        JSONArray jsonArray = new JSONArray(response);
+                                        JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                        Toast.makeText(setprofile.this, jsonObject.getString("message"),
+                                                Toast.LENGTH_SHORT).show();
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                                Toast.makeText(setprofile.this, "Percobaan koneksi gagal! Cek koneksi anda!",
+                                        Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof AuthFailureError) {
+                                Toast.makeText(setprofile.this, "Gagal terhubung! Cek koneksi anda!",
+                                        Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof ServerError) {
+                                Toast.makeText(setprofile.this, "Gagal terhubung dengan server!",
+                                        Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof NetworkError) {
+                                Toast.makeText(setprofile.this, "Gagal terhubung! Cek koneksi anda!",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            HashMap<String, String> params = new HashMap<String, String>();
+                            params.put("bio", bio);
+                            params.put("nama", nama);
+                            params.put("email", email);
+                            params.put("no_telp", no_telp);
+                            params.put("id_user", id_user);
+                            return params;
+                        }
+                    };
+                    Akses.getInstance(setprofile.this).addtoRequestQueue(stringRequest);
+                }
             }
         });
 
@@ -63,6 +145,7 @@ public class setprofile extends BaseActivity {
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
