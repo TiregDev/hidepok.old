@@ -48,7 +48,7 @@ public class SessionManager {
     }
 
     /**
-     * Create login session
+     * Create login session INI
      */
     public void createLoginSession(String username, String email, String pass, String name) {
         // Storing login value as TRUE

@@ -84,7 +84,7 @@ public class MenuActivity extends BaseActivity {
         viewPager.setAdapter(adapter);
     }
 
-    static class Adapter extends FragmentPagerAdapter {
+    public static class Adapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
@@ -160,6 +160,7 @@ public class MenuActivity extends BaseActivity {
         }
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public void onBackPressed() {
         if (!searchView.isIconified()) {
