@@ -6,20 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_marginTop="15dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/desc">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <fr.arnaudguyon.smartfontslib.FontTextView
             app:font="@string/fontBold"
             android:textColor="@color/white"
-            android:id="@+id/textView5"
+            android:id="@+id/namaRS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -28,7 +24,7 @@
             android:textSize="28sp" />
 
         <ImageView
-            android:id="@+id/imageDesc"
+            android:id="@+id/imageRS"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_alignParentStart="true"
@@ -40,32 +36,31 @@
             app:font="@string/fontBold"
             android:textColor="@color/white"
             android:textSize="@dimen/article_desc"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="16dp"
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/imageDesc"
+            android:layout_marginBottom="10dp"
             android:text="Deskripsi" />
 
         <fr.arnaudguyon.smartfontslib.FontTextView
             app:font="@string/fontReguler"
             android:textColor="@color/white"
-            android:id="@+id/textView3"
+            android:id="@+id/descRS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/textView4"
+            android:layout_marginBottom="10dp"
             android:text="@string/deskripsi_rs" />
-
-        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/desc"
+            android:layout_below="@+id/textView3"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp"
             android:weightSum="2">
@@ -77,13 +72,12 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_gravity="center"
-                android:onClick="toCall"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="10dp"
                 app:srcCompat="@drawable/call_small" />
 
             <fr.arnaudguyon.smartfontslib.FontTextView
                 app:font="@string/fontReguler"
-                android:id="@+id/kontak"
+                android:id="@+id/telpRS"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -109,16 +103,15 @@
                 android:id="@+id/icon_lokasi"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:onClick="toMaps"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_gravity="center"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="10dp"
                 app:srcCompat="@drawable/maps_small" />
 
             <fr.arnaudguyon.smartfontslib.FontTextView
                 app:font="@string/fontReguler"
-                android:id="@+id/alamat"
+                android:id="@+id/alamatRS"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -130,6 +123,33 @@
 
         </RelativeLayout>
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_below="@+id/relativeLayout2"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="100sp">
+
+            <fr.arnaudguyon.smartfontslib.FontButton
+                app:font="@string/fontBold"
+                android:id="@+id/tombol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape3"
+                android:onClick="ke_maps"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="Dapatkan Lokasi"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginEnd="11dp"
+                android:layout_alignParentTop="true" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </ScrollView>

@@ -1,53 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:paddingEnd="16dp"
     android:paddingStart="16dp"
     android:paddingTop="10dp">
 
     <LinearLayout
+        android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:weightSum="2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/border_style"
         android:padding="10dp"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/linearLayout6"
-        android:background="@drawable/border_style">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/fotoDokter"
-            android:layout_width="132dp"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/profile" />
+        android:weightSum="3">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_weight="2">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/fotoDokter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/febby" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="2"
+            android:layout_weight="1">
 
             <fr.arnaudguyon.smartfontslib.FontTextView
-                app:font="@string/fontBold"
+                android:id="@+id/namaDokter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/namaDokter"
                 android:textColor="@color/white"
                 android:textSize="@dimen/article_desc"
-                android:id="@+id/namaDokter"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="@string/namaDokter" />
+                app:font="@string/fontBold" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
-                app:font="@string/fontReguler"
-                android:textColor="@color/white"
-                android:id="@+id/spesialisasiDokter"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="@string/spesialis"/>
+                android:weightSum="3"
+                android:orientation="horizontal">
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:text="Spesialis:"
+                    android:textColor="@color/white"
+                    app:font="@string/fontReguler" />
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:id="@+id/spesialisasiDokter"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/spesialis"
+                    android:textColor="@color/white"
+                    app:font="@string/fontReguler" />
+            </LinearLayout>
+
 
         </LinearLayout>
 

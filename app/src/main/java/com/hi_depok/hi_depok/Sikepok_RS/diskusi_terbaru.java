@@ -23,18 +23,18 @@ public class diskusi_terbaru extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.sikepokrs_diskusi_terbaru, null);
 
-        LinearLayout asal = (LinearLayout) view.findViewById(R.id.link_ke_sana);
-
-        asal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = v.getContext();
-                Intent intent = new Intent(context, detail_post.class);
-//                    intent.putExtra(DetailActivity.EXTRA_POSITION, getAdapterPosition());
-                context.startActivity(intent);
-            }
-
-        });
+//        LinearLayout asal = (LinearLayout) view.findViewById(R.id.link_ke_sana);
+//
+//        asal.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Context context = v.getContext();
+//                Intent intent = new Intent(context, detail_post.class);
+////                    intent.putExtra(DetailActivity.EXTRA_POSITION, getAdapterPosition());
+//                context.startActivity(intent);
+//            }
+//
+//        });
 
 //        public void ke_detail_diskusi(View view){
 //            Intent next = new Intent(MainActivity.this, rs_terdekat.class);

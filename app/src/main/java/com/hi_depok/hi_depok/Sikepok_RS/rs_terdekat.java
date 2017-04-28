@@ -35,7 +35,7 @@ public class rs_terdekat extends BaseActivity {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyView);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
