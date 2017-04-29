@@ -2,87 +2,74 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="wrap_content"
+    android:paddingEnd="10dp"
+    android:paddingStart="10dp"
+    android:paddingTop="10dp">
 
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            android:id="@+id/namaFasilitas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginBottom="5dp"
+            android:text="Nama Fasilitas"
+            android:textColor="@color/white"
+            android:textSize="@dimen/article_desc"
+            app:font="@string/fontBold" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Deskripsi Fasilitas"
-                android:textColor="@color/white"
-                android:textSize="@dimen/article_desc"
-                app:font="@string/fontBold" />
+        <ImageView
+            android:id="@+id/image_slide"
+            android:layout_width="match_parent"
+            android:layout_height="70sp"
+            android:layout_margin="5sp"
+            android:src="@drawable/image_placeholder" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="@string/deskripsi_rs"
-                android:textColor="@color/white"
-                app:font="@string/fontReguler" />
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            android:id="@+id/deskripsiFasilitas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/deskripsi_rs"
+            android:textColor="@color/white"
+            app:font="@string/fontReguler" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
-                    android:id="@+id/ruangan"
-                    style="@style/tulisanPutih"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="8dp"
-                    android:text="Ruang Teratai"
-                    app:font="@string/fontBold" />
+        <!--<HorizontalScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_below="@id/ruangan"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:scrollbars="none">-->
 
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_below="@id/ruangan"
-                    android:layout_marginTop="10dp"
-                    android:scrollbars="none">
+        <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:orientation="horizontal">-->
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="70dp"
-                        android:orientation="horizontal">
-                        <View
-                            android:layout_width="12dp"
-                            android:layout_height="match_parent" />
+        <!--<View-->
+        <!--android:layout_width="12dp"-->
+        <!--android:layout_height="match_parent" />-->
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/image_slide"/>
+        <!--<ImageView-->
+        <!--android:id="@+id/image_slide"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
 
-                        <LinearLayout
-                            android:id="@+id/gambar"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
+        <!--<LinearLayout-->
+        <!--android:id="@+id/gambar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="horizontal">-->
 
-                        </LinearLayout>
-                    </LinearLayout>
-                </HorizontalScrollView>
+        <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+        <!--</HorizontalScrollView>-->
 
-            </RelativeLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
+    </LinearLayout>
 
 </LinearLayout>
