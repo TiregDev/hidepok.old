@@ -1,79 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?android:attr/selectableItemBackground">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
-
-    <LinearLayout
-        android:id="@+id/dropdown"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:weightSum="2">
-
-        <Spinner
-            android:id="@+id/category"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/shape_bg_spinner"
-            android:layout_weight="1" />
-
-        <Spinner
-            android:id="@+id/sortby"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_bg_spinner"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/dropdown_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="5dp"
-        android:padding="10dp"
-        android:weightSum="2">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_weight="1"
-            android:src="@drawable/spinner" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="-50dp"
-            android:layout_weight="1"
-            android:src="@drawable/spinner" />
-
-    </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/dropdown"
-        android:scrollbars="vertical" />
-</RelativeLayout>
+        android:background="?android:attr/selectableItemBackground">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:scrollbars="vertical" />
+    </RelativeLayout>
 </FrameLayout>

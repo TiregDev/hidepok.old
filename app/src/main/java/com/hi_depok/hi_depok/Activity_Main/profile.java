@@ -1,7 +1,11 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,30 +13,30 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.hi_depok.hi_depok.Profile.fragment.history;
 import com.hi_depok.hi_depok.Profile.fragment.myprofile;
 import com.hi_depok.hi_depok.Profile.setprofile;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.SessionManager;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class profile extends BaseActivity implements View.OnClickListener {
 
@@ -41,7 +45,8 @@ public class profile extends BaseActivity implements View.OnClickListener {
     View strip;
     TextView profile, history, nama_profil, bio_profil;
     ImageView ham;
-    String detail_url = "http://hidepok.id/getUserDetail.php";
+    CircleImageView imageView;
+    String detail_url = "http://hidepok.id/android/hidepok/getUserDetail.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,28 @@ public class profile extends BaseActivity implements View.OnClickListener {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         nama_profil = (TextView) findViewById(R.id.username);
         bio_profil = (TextView) findViewById(R.id.status_user);
+
+        //---------------- Image Single Popup --------------------------------------------------
+        imageView = (CircleImageView) findViewById(R.id.pict_profile);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog settingsDialog = new Dialog(profile.this);
+
+                LayoutInflater inflater = getLayoutInflater();
+                View newView = inflater.inflate(R.layout.activity_image, null);
+
+                settingsDialog.setContentView(newView);
+                settingsDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+                settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
+
+                ImageView iv = (ImageView) newView.findViewById(R.id.profile_img_popup);
+                Bitmap bm = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                iv.setImageBitmap(bm);
+                settingsDialog.show();
+
+            }
+        });
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, detail_url,
                 new Response.Listener<String>() {

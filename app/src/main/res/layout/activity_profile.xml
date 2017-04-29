@@ -85,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:gravity="center"
-                android:text="JAR"
+                android:text="@string/spasi"
                 android:textColor="#fff"
                 android:textSize="@dimen/article_subheading" />
 
@@ -96,7 +96,7 @@
                 android:layout_height="20dp"
                 android:layout_marginTop="-10dp"
                 android:gravity="center"
-                android:text="Full Idea"
+                android:text="@string/spasi"
                 android:textColor="#fff"
                 android:textSize="12sp" />
 

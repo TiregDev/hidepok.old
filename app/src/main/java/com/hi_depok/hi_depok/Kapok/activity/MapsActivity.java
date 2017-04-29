@@ -53,7 +53,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
-    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/kapok_json.php";
+    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/kapok/kapok_json.php";
     String JSON_ID = "id_tempat";
     String JSON_ALAMAT = "alamat_tempat";
     String JSON_KATEGORI = "kategori_tempat";
@@ -107,19 +107,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 1:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/kapok_json.php?kategori=kuliner";
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/kapok/kapok_json.php?kategori=kuliner";
                         break;
                     case 2:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/kapok_json.php?kategori=wisata";
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/kapok/kapok_json.php?kategori=wisata";
                         break;
                     case 3:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/kapok_json.php?kategori=pasar";
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/kapok/kapok_json.php?kategori=pasar";
                         break;
                     case 4:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/kapok_json.php?kategori=tempat%20ibadah";
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/kapok/kapok_json.php?kategori=tempat%20ibadah";
                         break;
                     case 5:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/kapok_json.php?kategori=olahraga";
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/kapok/kapok_json.php?kategori=olahraga";
                         break;
                     default:
                         break;

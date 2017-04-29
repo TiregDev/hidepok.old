@@ -1,4 +1,4 @@
-package com.hi_depok.hi_depok.Ucok;
+package com.hi_depok.hi_depok.Ucok.SIUMKM;
 
 /**
  * Created by SONY-VAIO on 3/15/2017.
@@ -12,16 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.toolbox.JsonRequest;
 import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-import static android.R.attr.id;
 
 
 public class RecyclerViewAdapterJSON_siumkm extends RecyclerView.Adapter<RecyclerViewAdapterJSON_siumkm.ViewHolder> {
@@ -85,7 +80,7 @@ public class RecyclerViewAdapterJSON_siumkm extends RecyclerView.Adapter<Recycle
         holder.itemView.setTag(id_ukm);
 
         urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+nama_foto;
-        Glide.with(context).load(urlPhoto).override(100, 100).into(holder.list_avatar);
+        Glide.with(context).load(urlPhoto).thumbnail(0.3f).placeholder(R.drawable.image_placeholder).into(holder.list_avatar);
     }
 
     @Override

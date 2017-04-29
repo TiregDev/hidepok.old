@@ -1,10 +1,9 @@
-package com.hi_depok.hi_depok.Ucok;
+package com.hi_depok.hi_depok.Ucok.Danus;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;

@@ -54,7 +54,7 @@
                     android:layout_below="@+id/list_avatar"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text="Panti Asuhan Darul Ilmi"
+                    android:text="@string/spasi"
                     android:textColor="#fff"
                     android:textSize="@dimen/article_titles"
                     app:font="@string/fontBold" />

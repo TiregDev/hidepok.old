@@ -1,4 +1,4 @@
-package com.hi_depok.hi_depok.Ucok;
+package com.hi_depok.hi_depok.Ucok.Danus;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,11 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import com.hi_depok.hi_depok.R;
 
 import java.util.List;

@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class List_Laporan {
     Context mContext;
-    String getContent_url = "http://hidepok.id/include/lapok_getContent.php";
+    String getContent_url = "http://hidepok.id/android/lapok/lapok_getContent.php";
     ArrayList<Laporan> laporan = new ArrayList<>();
 
     public List_Laporan(Context context) {
