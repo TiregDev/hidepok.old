@@ -91,7 +91,7 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        JSON_URL = "http://hidepok.id/include/kadepok_json.php?id=" + getIntent().getExtras().getString("getId");
+        JSON_URL = "http://hidepok.id/android/kadepok/kadepok_json.php?id=" + getIntent().getExtras().getString("getId");
         namaPanti = (TextView)findViewById(R.id.list_title);
         fotoPanti = (CircleImageView)findViewById(R.id.list_avatar);
         JSON_VALIDATE_URL();
@@ -165,7 +165,6 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
                 namaPanti.setText(json.getString("nama_panti"));
                 String urlPhoto = "http://hidepok.id/assets/images/photos/kadepok/" + json.getString("foto_profile_panti");
                 Picasso.with(this).load(urlPhoto).resize(300, 300).into(fotoPanti);
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }

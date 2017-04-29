@@ -36,7 +36,7 @@ public class lapok_ambil_kejadian extends AppCompatActivity implements View.OnCl
 
     private int TAKE_IMAGE_REQUEST = 2;
 
-    private String UPLOAD_URL = "http://hidepok.id/include/uploadGambar.php";
+    private String UPLOAD_URL = "http://hidepok.id/android/lapok/uploadGambar.php";
     private File imageFile;
     String filename;
     private String KEY_IMAGE = "image";

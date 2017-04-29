@@ -103,8 +103,6 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
         }
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -112,6 +110,7 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
 
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

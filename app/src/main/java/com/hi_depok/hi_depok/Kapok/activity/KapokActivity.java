@@ -42,7 +42,7 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
     private RadioButton urut;
     //array recycleview menu sort
 
-    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/kapok_json.php";
+    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/kapok/kapok_json.php";
     String JSON_ID = "id_tempat";
     String JSON_ALAMAT = "alamat_tempat";
     String JSON_KATEGORI = "kategori_tempat";
@@ -213,9 +213,8 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
                 }
                 else
                 {
-                    GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/kapok_json.php?kategori=" + kategori + "&kecamatan=" + kecamatan;
+                    GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/kapok/kapok_json.php?kategori=" + kategori + "&kecamatan=" + kecamatan;
                 }
-
                 JSON_DATA_WEB_CALL();
             }
         });

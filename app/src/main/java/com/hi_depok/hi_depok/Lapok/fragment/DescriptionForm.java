@@ -46,7 +46,7 @@ public class DescriptionForm extends AppCompatActivity {
     SimpleDateFormat sdf_tanggal = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat sdf_waktu = new SimpleDateFormat("HH:mm:ss");
     String judul, deskripsi, tanggal, waktu, alamat;
-    String deskripsi_url = "http://hidepok.id/include/lapok_form_pelaporan.php";
+    String deskripsi_url = "http://hidepok.id/android/lapok/lapok_form_pelaporan.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
