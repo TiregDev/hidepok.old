@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class myprofile extends Fragment {
     private TextView nama, tgl_lahir, tgl_join, email, no_telp, alamat;
-    String detail_url = "http://hidepok.id/getUserDetail.php";
+    String detail_url = "http://hidepok.id/android/hidepok/getUserDetail.php";
     SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("d MMM yyyy");
     Date gabung, kelahiran;
@@ -82,19 +82,19 @@ public class myprofile extends Fragment {
                                 tgl_lahir.setText(jsonObject.getString("tempat_kelahiran") + ", "
                                         + mSimpleDateFormat.format(kelahiran));
                             }else{
-                                tgl_lahir.setText("Tempat dan tanggal lahir kamu");
+                                tgl_lahir.setText("Tempat dan tanggal lahir");
                             }
 
                             if(!jsonObject.getString("no_telp").equals("null")){
                                 no_telp.setText(jsonObject.getString("no_telp"));
                             } else{
-                                no_telp.setText("Nomor telepon kamu");
+                                no_telp.setText("Nomor telepon");
                             }
 
                             if(!jsonObject.getString("alamat").equals("null")){
                                 alamat.setText(jsonObject.getString("alamat"));
                             }else{
-                                alamat.setText("Alamat rumah kamu");
+                                alamat.setText("Alamat");
                             }
 
                         } catch (JSONException e) {
@@ -106,7 +106,7 @@ public class myprofile extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "An error occured" + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Gagal Terhubung! Cek Koneksi Anda!" + error, Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override

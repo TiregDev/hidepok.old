@@ -106,7 +106,7 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
     TextView daftarBaru;
     SessionManager session;
     private static final int REQUEST_GMAIL = 9001;
-    String login_url = "http://hidepok.id/login.php";
+    String login_url = "http://hidepok.id/android/hidepok/login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,7 +204,7 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
                             }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(login.this, "An error occured", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(login.this, "Gagal terhubung! Cek koneksi anda!", Toast.LENGTH_SHORT).show();
                             error.printStackTrace();
                         }
                     }) {

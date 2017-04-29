@@ -71,7 +71,7 @@ public class kapok_detail extends BaseActivity {
         collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         // Set title of Detail page
-        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/kapok_json.php?id=" + getIntent().getExtras().getString(EXTRA_POSITION);
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/kapok/kapok_json.php?id=" + getIntent().getExtras().getString(EXTRA_POSITION);
         int postion = getIntent().getIntExtra(EXTRA_POSITION, 0);
         Resources resources = getResources();
         collapsingToolbar.getExpandedTitleMarginBottom();

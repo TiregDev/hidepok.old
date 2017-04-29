@@ -135,6 +135,15 @@ public class BaseActivity extends AppCompatActivity {
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withIcon(R.drawable.fokopok_bw)
                 .withIdentifier(8);
+        PrimaryDrawerItem FAQ = new PrimaryDrawerItem()
+                .withName("FAQ")
+                .withSelectable(false)
+                .withTextColor(Color.WHITE)
+                .withSelectedTextColor(Color.parseColor("#4f71de"))
+                .withIconColor(Color.rgb(158, 158, 158))
+                .withSelectedColor(Color.parseColor("#202020"))
+                .withIcon(R.drawable.question)
+                .withIdentifier(9);
         PrimaryDrawerItem about = new PrimaryDrawerItem()
                 .withName("Tentang")
                 .withSelectable(false)
@@ -143,7 +152,7 @@ public class BaseActivity extends AppCompatActivity {
                 .withIconColor(Color.rgb(158, 158, 158))
                 .withSelectedColor(Color.parseColor("#202020"))
                 .withIcon(R.drawable.ic_action_info4)
-                .withIdentifier(9);
+                .withIdentifier(10);
 
 
         // Create the AccountHeader
@@ -188,6 +197,7 @@ public class BaseActivity extends AppCompatActivity {
                         ucok,
                         fokopok,
                         new DividerDrawerItem(),
+                        FAQ,
                         about)
                 .withShowDrawerOnFirstLaunch(true)
                 .build();
@@ -235,8 +245,12 @@ public class BaseActivity extends AppCompatActivity {
                         startActivity(intent8);
                         break;
                     case 9:
-                        Intent intent9 = new Intent(getApplicationContext(), about.class);
+                        Intent intent9 = new Intent(getApplicationContext(), faq.class);
                         startActivity(intent9);
+                        break;
+                    case 10:
+                        Intent intent10 = new Intent(getApplicationContext(), about.class);
+                        startActivity(intent10);
                         break;
                 }
                 return true;

@@ -41,7 +41,7 @@ public class setprofile extends BaseActivity {
     EditText etBio, etNama, etEmail, etNomer, etAlamat;
     Button btnSimpan;
     SessionManager session;
-    String url_update_profile = "http://hidepok.id/updateProfile.php";
+    String url_update_profile = "http://hidepok.id/android/hidepok/updateProfile.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +81,7 @@ public class setprofile extends BaseActivity {
                 final String email = etEmail.getText().toString();
                 final String no_telp = etNomer.getText().toString();
                 if (bio.equals("")) {
-                    etBio.setError("Nama harus diisi");
+                    etBio.setError("Bio harus diisi");
                 } else if (nama.equals("")) {
                     etNama.setError("Nama harus diiisi");
                 } else if (email.equals("")) {
@@ -106,7 +106,7 @@ public class setprofile extends BaseActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             if (error instanceof TimeoutError || error instanceof NoConnectionError) {
-                                Toast.makeText(setprofile.this, "Percobaan koneksi gagal! Cek koneksi anda!",
+                                Toast.makeText(setprofile.this, "Koneksi gagal! Cek koneksi anda!",
                                         Toast.LENGTH_SHORT).show();
                             } else if (error instanceof AuthFailureError) {
                                 Toast.makeText(setprofile.this, "Gagal terhubung! Cek koneksi anda!",

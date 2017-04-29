@@ -1,7 +1,6 @@
 package com.hi_depok.hi_depok.Fokopok;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,7 +8,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Ucok.UcokDetailActivity;
 
 /**
  * Created by User on 19/03/17.

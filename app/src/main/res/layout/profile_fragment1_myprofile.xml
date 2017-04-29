@@ -18,7 +18,7 @@
             app:font="@string/fontReguler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fajar Zakaria"
+            android:text="@string/spasi"
             android:textColor="@color/white"
             android:padding="10dp"
             android:background="#F3A111"
@@ -30,7 +30,7 @@
             app:font="@string/fontLight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Jakarta, 10-02-1997"
+            android:text="@string/spasi"
             android:textColor="@color/white"
             android:layout_below="@id/namauser"
             android:background="#F3A111"
@@ -46,7 +46,7 @@
             android:background="#F3A111"
             android:textColor="@color/white"
             android:layout_below="@id/ttl"
-            android:text="Bergabung dengan Hi-Depok sejak 10-02-2009"
+            android:text="@string/spasi"
             android:gravity="center"
             android:paddingBottom="10dp"/>
 
@@ -76,7 +76,7 @@
                     android:layout_marginStart="30dp"
                     android:gravity="center_vertical"
                     android:textColor="@color/background"
-                    android:text="jar@hidepok.id" />
+                    android:text="@string/spasi" />
 
             </TableRow>
 
@@ -98,7 +98,7 @@
                     android:layout_marginStart="30dp"
                     android:gravity="center_vertical"
                     android:textColor="@color/background"
-                    android:text="08218898767" />
+                    android:text="@string/spasi" />
 
             </TableRow>
 
@@ -120,7 +120,7 @@
                     android:layout_marginStart="30dp"
                     android:gravity="center_vertical"
                     android:textColor="@color/background"
-                    android:text="Beji Timur" />
+                    android:text="@string/spasi" />
 
             </TableRow>
 

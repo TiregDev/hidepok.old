@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title=""
+        android:id="@+id/filter"
+        android:layout_alignParentLeft="true"
+        android:icon="@drawable/filter_2"
+        android:orderInCategory="200"
+        android:name="@string/action_more"
+        app:showAsAction="always">
+    </item>
+
+</menu>

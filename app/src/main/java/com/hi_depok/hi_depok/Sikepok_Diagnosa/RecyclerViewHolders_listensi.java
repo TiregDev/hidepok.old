@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Ucok.detail_target;
 
 
 /**
