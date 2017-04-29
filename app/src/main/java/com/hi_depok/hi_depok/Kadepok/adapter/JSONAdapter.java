@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.Kadepok.activity.KadepokDetailActivity;
 import com.hi_depok.hi_depok.R;
 import com.squareup.picasso.Picasso;
@@ -25,10 +26,16 @@ public class JSONAdapter extends RecyclerView.Adapter<JSONAdapter.ViewHolder> {
     Context context;
 
     List<ItemObject> adapter;
-    String id;
-    String nama;
-    String alamat;
-    String photo;
+    private String id;
+    private String name;
+    private String alamat;
+    private String telepon;
+    private String photo;
+    private String kecamatan;
+    private String email;
+    private String jumlahanak;
+    private String tahun;
+    private String rekening;
     String urlPhoto;
 
     public JSONAdapter(List<ItemObject> adapter, Context context){
@@ -52,17 +59,23 @@ public class JSONAdapter extends RecyclerView.Adapter<JSONAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        nama = adapter.get(position).getName();
+        id = adapter.get(position).getId();
+        name = adapter.get(position).getName();
         alamat = adapter.get(position).getAlamat();
         photo = adapter.get(position).getPhoto();
-        id = adapter.get(position).getId();
+        telepon = adapter.get(position).getTelepon();
+        kecamatan = adapter.get(position).getKecamatan();
+        email = adapter.get(position).getEmail();
+        jumlahanak = adapter.get(position).getJumlahanak();
+        tahun = adapter.get(position).getTahun();
+        rekening = adapter.get(position).getRekening();
 
 
         holder.itemView.setTag(id);
-        holder.list_title.setText(nama);
+        holder.list_title.setText(name);
         holder.list_alamat.setText(alamat);
         urlPhoto = "http://hidepok.id/assets/images/photos/kadepok/" + photo;
-        Picasso.with(context).load(urlPhoto).resize(100, 100).into(holder.list_avatar);
+        Glide.with(context).load(urlPhoto).placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(holder.list_avatar);
     }
 
     @Override

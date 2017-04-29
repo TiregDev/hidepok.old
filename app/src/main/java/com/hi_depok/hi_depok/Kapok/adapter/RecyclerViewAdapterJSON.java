@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.Kapok.activity.kapok_detail;
 import com.hi_depok.hi_depok.R;
 
@@ -26,6 +27,8 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
     List<GetDataAdapter> adapter;
     String id;
     String nama;
+    String foto;
+    String urlPhoto;
 
     public RecyclerViewAdapterJSON(List<GetDataAdapter> getDataAdapter, Context context){
 
@@ -50,9 +53,18 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
 
         id = adapter.get(position).getId();
         nama = adapter.get(position).getName();
+        foto = adapter.get(position).getFoto();
 
+        if(!foto.equals("null") && foto.contains(",")){
+            String[] listFoto = foto.split(",");
+            urlPhoto = "http://hidepok.id/assets/images/photos/kapok/" + listFoto[0];
+            Glide.with(context).load(urlPhoto).placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(holder.personPhoto);
+        }
+        else if(!foto.equals("null")){
+            urlPhoto = "http://hidepok.id/assets/images/photos/kapok/" + foto;
+            Glide.with(context).load(urlPhoto).placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(holder.personPhoto);
+        }
         holder.personName.setText(nama);
-        holder.personPhoto.setImageResource(R.drawable.logo);
         holder.itemView.setTag(id);
 
     }
@@ -81,7 +93,7 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
                     Context context = v.getContext();
                     String pos = (String) itemView.getTag();
                     Intent intent = new Intent(context, kapok_detail.class);
-                    intent.putExtra(kapok_detail.EXTRA_POSITION, pos);
+                    intent.putExtra("getID", pos);
                     context.startActivity(intent);
                 }
             });

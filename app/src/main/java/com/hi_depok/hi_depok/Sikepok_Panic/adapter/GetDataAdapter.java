@@ -17,6 +17,7 @@ public class GetDataAdapter {
     String jenis;
     String kecamatan;
     String kordinat;
+    String jarak;
 
 
     public String getName() {
@@ -79,5 +80,10 @@ public class GetDataAdapter {
     public void setKordinat(String kordinat) {
         this.kordinat = kordinat;
     }
-
+    public String getJarak() {
+        return jarak;
+    }
+    public void setJarak(String jarak) {
+        this.jarak = jarak;
+    }
 }

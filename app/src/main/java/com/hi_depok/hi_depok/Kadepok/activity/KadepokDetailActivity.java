@@ -29,11 +29,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
-import com.hi_depok.hi_depok.Kadepok.adapter.ItemObject;
-import com.hi_depok.hi_depok.Kadepok.adapter.JSONAdapter;
+import com.hi_depok.hi_depok.Kadepok.fragment.*;
 import com.hi_depok.hi_depok.R;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -164,7 +163,7 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
                 json = array.getJSONObject(i);
                 namaPanti.setText(json.getString("nama_panti"));
                 String urlPhoto = "http://hidepok.id/assets/images/photos/kadepok/" + json.getString("foto_profile_panti");
-                Picasso.with(this).load(urlPhoto).resize(300, 300).into(fotoPanti);
+                Glide.with(this).load(urlPhoto).placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(fotoPanti);
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -222,15 +221,15 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
     }
 
     class Content extends FragmentPagerAdapter {
-        com.hi_depok.hi_depok.Kadepok.fragment.fragment1 fragment1;
-        com.hi_depok.hi_depok.Kadepok.fragment.fragment2 fragment2;
-        com.hi_depok.hi_depok.Kadepok.fragment.fragment3 fragment3;
+        fragment1 fragment1;
+        fragment2 fragment2;
+        fragment3 fragment3;
 
         public Content(FragmentManager fm) {
             super(fm);
-            fragment1 = com.hi_depok.hi_depok.Kadepok.fragment.fragment1.newInstance();
-            fragment2 = com.hi_depok.hi_depok.Kadepok.fragment.fragment2.newInstance();
-            fragment3 = com.hi_depok.hi_depok.Kadepok.fragment.fragment3.newInstance();
+            fragment1 = fragment1.newInstance();
+            fragment2 = fragment2.newInstance();
+            fragment3 = fragment3.newInstance();
         }
 
         @Override

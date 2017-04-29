@@ -38,8 +38,19 @@
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax"
-                    tools:background="@drawable/a" />
+                    tools:background="@drawable/image_placeholder" />
 
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.viewpagerindicator.CirclePageIndicator
+                    android:id="@+id/indicator"
+                    android:padding="15dp"
+                    android:layout_gravity="bottom"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent" />
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
@@ -117,7 +128,7 @@
                         android:gravity="center_vertical"
                         android:textColor="@color/white"
                         app:font="@string/fontReguler"
-                        tools:text="@string/detail_desc" />
+                        android:text="Deskripsi"/>
 
                 </LinearLayout>
 
@@ -169,6 +180,7 @@
                 </LinearLayout>
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/article_keylines"
@@ -192,7 +204,7 @@
                         app:srcCompat="@drawable/restaurant" />
 
                     <fr.arnaudguyon.smartfontslib.FontTextView
-                        android:id="@+id/desc_andalan"
+                        android:id="@+id/menu_fasilitas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"

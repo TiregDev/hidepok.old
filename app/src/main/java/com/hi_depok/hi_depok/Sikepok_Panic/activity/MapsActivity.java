@@ -71,7 +71,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String JSON_KETERANGAN = "keterangan_tempat_sehat";
     String JSON_OPERASIONAL = "operasional_tempat_sehat";
     String JSON_NOTLP = "no_telp_tempat_sehat";
-    String placeId, placeName, placeDeskripsi, placeJenis, placeKecamatan, placeLokasi, placeNoTlp, placeFoto, placeOperasional, placeKordinat;
+    String placeId, placeName, placeDeskripsi, placeJenis, placeKecamatan, placeLokasi, placeNoTlp, placeFoto, placeOperasional, placeKordinat, latlong;
     JsonArrayRequest jsonArrayRequest ;
     RequestQueue requestQueue ;
     HashMap<Marker, String> hashMap;
@@ -92,11 +92,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         else {
             Log.d("onCreate","Google Play Services available.");
         }
-        String tempatSehat[] = { "Cari Tempat ...", "Puskesmas", "Klinik", "Apotek",
+        String tempatSehat[] = { "Semua Tempat", "Puskesmas", "Klinik", "Apotek",
                 "Bidan", "Khitan", "Pijat" };
         Spinner spinner = (Spinner) findViewById(R.id.spinPlaces);
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, tempatSehat);;
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, tempatSehat);
         spinner.setAdapter(spinnerAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -139,10 +139,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map2);
         mapFragment.getMapAsync(this);
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            showLocationSettings();
-        }
+//        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+//            showLocationSettings();
+//        }
     }
+
     public void JSON_DATA_WEB_CALL() {
         jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_URL,
                 new Response.Listener<JSONArray>() {
@@ -174,41 +175,37 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 placeName = json.getString(JSON_NAME);
                 placeKordinat = json.getString(JSON_KORDINAT);
                 Log.d("onPostExecute","Entered into showing locations");
-                final MarkerOptions markerOptions = new MarkerOptions();
+                MarkerOptions markerOptions = new MarkerOptions();
                 String[] kordinat = placeKordinat.split(",");
                 double lat = Double.parseDouble(kordinat[0]);
                 double lng = Double.parseDouble(kordinat[1].trim());
-                LatLng latLng = new LatLng(lat, lng);
-                markerOptions.position(latLng);
+//
+
+                LatLng endPoint = new LatLng(lat, lng);
+                markerOptions.position(endPoint);
                 markerOptions.title(placeName);
                 if(json.getString(JSON_JENIS).equals("Apotek")){
-                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_02));
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_04));
                 }
                 else if(json.getString(JSON_JENIS).equals("Puskesmas")){
                     markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_10));
                 }
                 else if(json.getString(JSON_JENIS).equals("Bidan")){
-                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_04));
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_02));
                 }
                 else if(json.getString(JSON_JENIS).equals("Klinik")){
-                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_03));
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_05));
                 }
                 else if(json.getString(JSON_JENIS).equals("Tukang Urut")){
-                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_06));
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_08));
                 }
                 else if(json.getString(JSON_JENIS).equals("Khitan")){
                     markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_11));
                 }
+
+
                 placeMarker = mMap.addMarker(markerOptions);
                 hashMap.put(placeMarker, placeId);
-//                mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-//                    @Override
-//                    public boolean onMarkerClick(Marker marker) {
-//                        String id = hashMap.get(marker);
-//                        Toast.makeText(getBaseContext(), "Marker id: " + id, Toast.LENGTH_LONG).show();
-//                        return false;
-//                    }
-//                });
                 mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                     @Override
                     public void onInfoWindowClick(Marker marker) {
@@ -255,7 +252,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         snackbar.show();
     }
     public void toList(View view) {
-        startActivity(new Intent(getBaseContext(), MenuActivity.class));
+        Intent intent = new Intent(getBaseContext(), MenuActivity.class);
+
+        intent.putExtra("LatLong", latlong);
+        startActivity(intent);
     }
 
     private boolean CheckGooglePlayServices() {
@@ -341,16 +341,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Place current location marker
         latitude = location.getLatitude();
         longitude = location.getLongitude();
-        LatLng latLng = new LatLng(latitude, longitude);
+        latlong = String.valueOf(latitude) + "," + String.valueOf(longitude);
+        LatLng startPoint = new LatLng(latitude, longitude);
         MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
+        markerOptions.position(startPoint);
+
         markerOptions.title("Lokasi Kamu");
         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_13));
-        mCurrLocationMarker = mMap.addMarker(markerOptions);
-
-        //move map camera
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(startPoint));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
+        mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         Log.d("onLocationChanged", String.format("latitude:%.3f longitude:%.3f",latitude,longitude));
 
@@ -426,7 +426,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     // Permission denied, Disable the functionality that depends on this permission.
                     Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
                 }
-                return;
             }
 
             // other 'case' lines to check for other permissions this app might request.

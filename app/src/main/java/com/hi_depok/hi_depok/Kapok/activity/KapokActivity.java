@@ -214,20 +214,21 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
                 else
                 {
                     GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/kapok_json.php?kategori=" + kategori + "&kecamatan=" + kecamatan;
+                    JSON_DATA_WEB_CALL();
                 }
 
-                JSON_DATA_WEB_CALL();
+
             }
         });
 
-        //join
+        JSON_DATA_WEB_CALL();
 
         //recycleview
         rView = (RecyclerView) findViewById(R.id.recyclerView);
         // set a GridLayoutManager with 2 number of columns , horizontal gravity and false value for reverseLayout to show the items from start to end
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
         rView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
-        JSON_DATA_WEB_CALL();
+
 
 }
     public void JSON_DATA_WEB_CALL(){
@@ -259,7 +260,6 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
                 dataFromJSON.setName(json.getString(JSON_NAME));
                 dataFromJSON.setFoto(json.getString(JSON_FOTO));
                 dataFromJSON.setId(json.getString(JSON_ID));
-                //dataFromJSON.setFoto(gambarlogo.get(i));
 
             } catch (JSONException e) {
 

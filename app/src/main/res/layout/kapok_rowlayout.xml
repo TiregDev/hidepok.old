@@ -16,12 +16,12 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:scaleType="fitXY"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@drawable/image_placeholder"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:alpha="0.8"
+            android:alpha="0.5"
             android:background="@color/hitam"/>
 
         <fr.arnaudguyon.smartfontslib.FontTextView

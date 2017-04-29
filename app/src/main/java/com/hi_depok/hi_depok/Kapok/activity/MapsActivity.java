@@ -180,7 +180,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng latLng = new LatLng(lat, lng);
                 markerOptions.position(latLng);
                 markerOptions.title(placeName);
-                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.maps_kapok));
+
+                if(json.getString(JSON_KATEGORI).equals("kuliner")){
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_07));
+                }
+                else if(json.getString(JSON_KATEGORI).equals("wisata")){
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_03));
+                }
+                else if(json.getString(JSON_KATEGORI).equals("pasar")){
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_06));
+                }
+                else if(json.getString(JSON_KATEGORI).equals("tempat ibadah")){
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_09));
+                }
+                else if(json.getString(JSON_KATEGORI).equals("olahraga")){
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_12));
+                }
+
                 placeMarker = mMap.addMarker(markerOptions);
                 hashMap.put(placeMarker, placeId);
                 mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
@@ -188,7 +204,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     public void onInfoWindowClick(Marker marker) {
                         String id = hashMap.get(marker);
                         Intent intent = new Intent(getBaseContext(), kapok_detail.class);
-                        intent.putExtra(kapok_detail.EXTRA_POSITION, id);
+                        intent.putExtra("getID", id);
                         startActivity(intent);
                     }
                 });
@@ -201,7 +217,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             MarkerOptions markerOptions = new MarkerOptions();
             markerOptions.position(latLng);
             markerOptions.title("Lokasi Kamu");
-            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.pin));
+            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_13));
             mCurrLocationMarker = mMap.addMarker(markerOptions);
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
@@ -317,7 +333,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
         markerOptions.title("Lokasi Kamu");
-        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.pin));
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_13));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         //move map camera

@@ -70,9 +70,9 @@ public class DetailActivity extends BaseActivity {
     String JSON_NOTLP = "no_telp_tempat_sehat";
     String urlPhoto, noTelp, kordinat, namaLokasi;
     CollapsingToolbarLayout collapsingToolbar;
-    TextView placeOperasional, placeDeskripsi, placeContact, placeLocation;
+    TextView placeOperasional, placeDeskripsi, placeContact, placeContact2, placeLocation;
 
-    ImageView placePicture, iconLokasi, iconKontak;
+    ImageView placePicture, iconLokasi, iconKontak, iconKontak2;
     ViewPager viewPager;
     PagerAdapter adapter;
     CirclePageIndicator indicator;
@@ -92,19 +92,19 @@ public class DetailActivity extends BaseActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Intent i = this.getIntent();
 
-        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?id=" + i.getExtras().getString(EXTRA_POSITION);
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?id=" + getIntent().getExtras().getString(EXTRA_POSITION);
 
         iconLokasi = (ImageView) findViewById(R.id.icon_lokasi);
         iconKontak = (ImageView) findViewById(R.id.icon_kontak);
+        iconKontak2 = (ImageView) findViewById(R.id.icon_kontak2);
         // Set Collapsing Toolbar layout to the screen
-        collapsingToolbar =
-                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
 
         placeOperasional =  (TextView) findViewById(R.id.place_operasional);
         placeDeskripsi =  (TextView) findViewById(R.id.place_detail);
         placeContact =  (TextView) findViewById(R.id.place_contact);
+        placeContact2 =  (TextView) findViewById(R.id.place_contact2);
         placeLocation =  (TextView) findViewById(R.id.place_location);
         placePicture = (ImageView) findViewById(R.id.image);
         viewPager = (ViewPager) findViewById(R.id.pager);
@@ -162,16 +162,40 @@ public class DetailActivity extends BaseActivity {
                     urlPhoto = "http://hidepok.id/assets/images/photos/sikepok/sikepok3/" + json.getString(JSON_FOTO);
                     Glide.with(this).load(urlPhoto).thumbnail(0.3f).placeholder(R.drawable.image_placeholder).into(placePicture);
                 }
+                else {
+                    placePicture.setImageResource(R.drawable.image_placeholder);
+                }
 
-                iconKontak.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent dial = new Intent();
-                        dial.setAction("android.intent.action.DIAL");
-                        dial.setData(Uri.parse("tel:" + noTelp));
-                        startActivity(dial);
-                    }
-                });
+
+                if(!json.getString(JSON_NOTLP).equals("null") && json.getString(JSON_NOTLP).contains(",")){
+                    final String[] listNo = json.getString(JSON_NOTLP).split(",");
+                    placeContact.setText(listNo[0]);
+                    placeContact2.setText(listNo[1].trim());
+                    iconKontak.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent dial = new Intent();
+                            dial.setAction("android.intent.action.DIAL");
+                            dial.setData(Uri.parse("tel:" + listNo[0]));
+                            startActivity(dial);
+                        }
+                    });
+                    iconKontak2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent dial = new Intent();
+                            dial.setAction("android.intent.action.DIAL");
+                            dial.setData(Uri.parse("tel:" + listNo[1]));
+                            startActivity(dial);
+                        }
+                    });
+                }
+
+                else if(!json.getString(JSON_NOTLP).equals("null")){
+                    placeContact.setText(json.getString(JSON_NOTLP));
+                    findViewById(R.id.telp2).setVisibility(View.GONE);
+                }
+
                 iconLokasi.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

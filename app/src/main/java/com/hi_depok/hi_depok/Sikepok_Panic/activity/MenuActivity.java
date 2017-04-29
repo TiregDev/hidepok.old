@@ -60,7 +60,7 @@ public class MenuActivity extends BaseActivity {
         // Set Tabs inside Toolbar
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        tabs.getTabAt(6).setIcon(R.drawable.call_btn);
+        tabs.getTabAt(0).setIcon(R.drawable.call_btn);
 //        tabs.getTabAt(1).setIcon(R.drawable.panic_bidan);
 //        tabs.getTabAt(2).setIcon(R.drawable.panic_pijat);
 //        tabs.getTabAt(3).setIcon(R.drawable.panic_sunat);
@@ -73,13 +73,13 @@ public class MenuActivity extends BaseActivity {
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());;
 
-        adapter.addFragment(TempatSehatFragment.newInstance("Apotek"), "Apotek");
-        adapter.addFragment(TempatSehatFragment.newInstance("Klinik"), "Klinik");
-        adapter.addFragment(TempatSehatFragment.newInstance("Puskesmas"), "Puskesmas");
-        adapter.addFragment(TempatSehatFragment.newInstance("Bidan"), "Bidan");
-        adapter.addFragment(TempatSehatFragment.newInstance("Tukang%20Urut"), "Tukang Urut");
-        adapter.addFragment(TempatSehatFragment.newInstance("Khitan"), "Khitan");
         adapter.addFragment(new PanicButtonFragment(), "");
+        adapter.addFragment(TempatSehatFragment.newInstance("Apotek", getIntent().getStringExtra("LatLong")), "Apotek");
+        adapter.addFragment(TempatSehatFragment.newInstance("Klinik", getIntent().getStringExtra("LatLong")), "Klinik");
+        adapter.addFragment(TempatSehatFragment.newInstance("Puskesmas", getIntent().getStringExtra("LatLong")), "Puskesmas");
+        adapter.addFragment(TempatSehatFragment.newInstance("Bidan", getIntent().getStringExtra("LatLong")), "Bidan");
+        adapter.addFragment(TempatSehatFragment.newInstance("Tukang%20Urut", getIntent().getStringExtra("LatLong")), "Tukang Urut");
+        adapter.addFragment(TempatSehatFragment.newInstance("Khitan", getIntent().getStringExtra("LatLong")), "Khitan");
 
         viewPager.setAdapter(adapter);
     }

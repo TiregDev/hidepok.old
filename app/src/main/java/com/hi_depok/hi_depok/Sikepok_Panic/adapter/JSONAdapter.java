@@ -36,6 +36,7 @@ public class JSONAdapter extends RecyclerView.Adapter<JSONAdapter.ViewHolder> {
     String jenis;
     String kecamatan;
     String kordinat;
+    String jarak;
     String urlPhoto;
 
     public JSONAdapter(List<GetDataAdapter> adapter, Context context){
@@ -69,9 +70,11 @@ public class JSONAdapter extends RecyclerView.Adapter<JSONAdapter.ViewHolder> {
         jenis = adapter.get(position).getJenis();
         kecamatan = adapter.get(position).getKecamatan();
         kordinat = adapter.get(position).getKordinat();
+        jarak = adapter.get(position).getJarak();
 
         holder.personName.setText(nama);
         holder.personDesc.setText(alamat);
+        holder.personDistance.setText(jarak);
         holder.itemView.setTag(id);
         if(!foto.equals("null") && foto.contains(",")){
             String[] listFoto = foto.split(",");
@@ -93,6 +96,7 @@ public class JSONAdapter extends RecyclerView.Adapter<JSONAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView personName;
+        public TextView personDistance;
         public TextView personDesc;
         public ImageView personPhoto;
 
@@ -102,6 +106,7 @@ public class JSONAdapter extends RecyclerView.Adapter<JSONAdapter.ViewHolder> {
             super(itemView);
 
             personName = (TextView)itemView.findViewById(R.id.list_title);
+            personDistance = (TextView)itemView.findViewById(R.id.list_jarak);
             personDesc = (TextView)itemView.findViewById(R.id.list_desc);
             personPhoto = (ImageView)itemView.findViewById(R.id.list_avatar);
             itemView.setOnClickListener(new View.OnClickListener() {
