@@ -60,15 +60,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="70dp"
                         android:orientation="horizontal">
-                        <!--<View-->
-                            <!--android:layout_width="12dp"-->
-                            <!--android:layout_height="match_parent" />-->
+                        <View
+                            android:layout_width="12dp"
+                            android:layout_height="match_parent" />
 
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/image_slide"
-                            android:layout_marginStart="0dp"/>
+                            android:id="@+id/image_slide"/>
 
                         <LinearLayout
                             android:id="@+id/gambar"

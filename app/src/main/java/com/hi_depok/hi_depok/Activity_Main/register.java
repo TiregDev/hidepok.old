@@ -36,7 +36,7 @@ public class register extends AppCompatActivity {
     TextView txtLogin, txtTanggal;
     SessionManager session;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    String regist_url = "http://hidepok.id/registrasi.php";
+    String regist_url = "http://hidepok.id/android/hidepok/registrasi.php";
     Calendar dateAndTime = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener d =
             new DatePickerDialog.OnDateSetListener(){

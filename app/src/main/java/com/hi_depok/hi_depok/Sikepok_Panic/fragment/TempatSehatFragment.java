@@ -61,7 +61,7 @@ public class TempatSehatFragment extends Fragment {
         rView.setHasFixedSize(true);
         rView.setLayoutManager(lLayout);
         dataAdapter = new ArrayList<>();
-        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?kategori=" + getTitle();
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.3/sikepokpanic_json.php?kategori=" + getTitle();
         JSON_DATA_WEB_CALL();
         return rView;
     }

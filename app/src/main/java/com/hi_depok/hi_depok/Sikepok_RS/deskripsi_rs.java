@@ -88,7 +88,7 @@ public class deskripsi_rs extends Fragment {
         dialog.show();
         dialog.setCancelable(true);
 
-        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokrs_menurs_json.php?id_rs="+ getTitle();
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_menurs_json.php?id_rs="+ getTitle();
 
         JSON_DATA_WEB_CALL();
 

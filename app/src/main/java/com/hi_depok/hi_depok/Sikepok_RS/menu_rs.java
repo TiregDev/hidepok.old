@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.preference.PreferenceManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,20 +28,25 @@ import android.widget.Toast;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.SessionManager;
 import com.hi_depok.hi_depok.Sikepok_Panic.activity.MenuActivity;
 import com.hi_depok.hi_depok.Sikepok_Panic.fragment.PanicButtonFragment;
 import com.hi_depok.hi_depok.Sikepok_Panic.fragment.TempatSehatFragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class menu_rs extends BaseActivity {
 
+    public static final String EXTRA_ID = "position";
     public  static final String DEFAULT = "N/A";
     private DrawerLayout mDrawerLayout;
     private SearchView searchView;
     String apa_aja;
-
+    String hadi;
+//    SessionManager session;
+    public String idRs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +63,13 @@ public class menu_rs extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+
         //shared preferences test
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
-        String id_rs=sharedPreferences.getString("id_rs", "1");
-        apa_aja = id_rs;
+        final SharedPreferences prefsa = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        idRs = prefsa.getString("id_rs","No data found");
+//        Toast.makeText(this, idRs, Toast.LENGTH_SHORT).show();
+
         // Setting ViewPager for each Tabs
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -82,10 +91,10 @@ public class menu_rs extends BaseActivity {
     private void setupViewPager(ViewPager viewPager) {
         MenuActivity.Adapter adapter = new MenuActivity.Adapter(getSupportFragmentManager());
 
-        adapter.addFragment(deskripsi_rs.newInstance(apa_aja), "Deskripsi");
-        adapter.addFragment(jadwal_praktek.newInstance("Klinik"), "Jadwal");
-        adapter.addFragment(dokter.newInstance("Puskesmas"), "Dokter");
-        adapter.addFragment(fasilitas.newInstance("Puskesmas"), "Fasilitas");
+        adapter.addFragment(deskripsi_rs.newInstance(idRs), "Deskripsi");
+        adapter.addFragment(jadwal_praktek.newInstance(idRs), "Jadwal");
+        adapter.addFragment(dokter.newInstance(idRs), "Dokter");
+        adapter.addFragment(fasilitas.newInstance(idRs), "Fasilitas");
 
         viewPager.setAdapter(adapter);
     }

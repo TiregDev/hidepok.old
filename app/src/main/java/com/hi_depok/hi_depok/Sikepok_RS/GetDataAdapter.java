@@ -296,4 +296,105 @@ public class GetDataAdapter {
     public void setId_rs(String id_rs) {
         this.id_rs = id_rs;
     }
+
+
+    //adapter table jadwal
+    String id_jadwal;
+    String senin;
+    String selasa;
+    String rabu;
+    String kamis;
+    String jumat;
+    String sabtu;
+    String minggu;
+
+    public String getId_jadwal() {
+        return id_jadwal;
+    }
+    public void setId_jadwal(String id_jadwal) {
+        this.id_jadwal = id_jadwal;
+    }
+
+    public String getSenin() {
+        return senin;
+    }
+    public void setSenin(String senin) {
+        this.senin = senin;
+    }
+
+    public String getSelasa() {
+        return selasa;
+    }
+    public void setSelasa(String selasa) {
+        this.selasa = selasa;
+    }
+
+    public String getRabu() {
+        return rabu;
+    }
+    public void setRabu(String rabu) {
+        this.rabu = rabu;
+    }
+
+    public String getKamis() {
+        return kamis;
+    }
+    public void setKamis(String kamis) {
+        this.kamis = kamis;
+    }
+
+    public String getJumat() {
+        return jumat;
+    }
+    public void setJumat(String jumat) {
+        this.jumat = jumat;
+    }
+
+    public String getSabtu() {
+        return sabtu;
+    }
+    public void setSabtu(String sabtu) {
+        this.sabtu = sabtu;
+    }
+
+    public String getMinggu() {
+        return minggu;
+    }
+    public void setMinggu(String minggu) {
+        this.minggu = minggu;
+    }
+
+    //adapter table fasilitas
+    String id_fasilitas;
+    String nama_fasilitas;
+    String foto_fasilitas;
+    String deskripsi_fasilitas;
+
+    public String getId_fasilitas() {
+        return id_fasilitas;
+    }
+    public void setId_fasilitas(String id_fasilitas) {
+        this.id_fasilitas = id_fasilitas;
+    }
+
+    public String getNama_fasilitas() {
+        return nama_fasilitas;
+    }
+    public void setNama_fasilitas(String nama_fasilitas) {
+        this.nama_fasilitas = nama_fasilitas;
+    }
+
+    public String getFoto_fasilitas() {
+        return foto_fasilitas;
+    }
+    public void setFoto_fasilitas(String foto_fasilitas) {
+        this.foto_fasilitas = foto_fasilitas;
+    }
+
+    public String getDeskripsi_fasilitas() {
+        return deskripsi_fasilitas;
+    }
+    public void setDeskripsi_fasilitas(String deskripsi_fasilitas) {
+        this.deskripsi_fasilitas = deskripsi_fasilitas;
+    }
 }

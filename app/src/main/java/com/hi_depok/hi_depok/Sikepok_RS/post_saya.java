@@ -31,7 +31,7 @@ import java.util.List;
 
 public class post_saya extends BaseActivity {
 
-    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokrs_postsaya_json.php";
+    String GET_JSON_DATA_HTTP_URL;
     String JSON_ID_POST = "id_post";
     String JSON_ID_MODUL = "id_modul";
     String JSON_ID_USER = "id_user";
@@ -78,6 +78,9 @@ public class post_saya extends BaseActivity {
         dialog.setMessage("Loading");
         dialog.show();
         dialog.setCancelable(false);
+
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?id_saya_semua=6";
+
         JSON_DATA_WEB_CALL();
     }
 
@@ -130,7 +133,7 @@ public class post_saya extends BaseActivity {
             dataAdapter.add(dataFromJSON);
         }
 
-        recyclerViewadapter = new RecyclerViewAdapterPOST(dataAdapter, this);
+        recyclerViewadapter = new RecyclerViewAdapterPOSTSAYA(dataAdapter, this);
         rView.setAdapter(recyclerViewadapter);
     }
 

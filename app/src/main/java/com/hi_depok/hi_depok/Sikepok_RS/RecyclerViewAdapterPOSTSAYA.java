@@ -15,12 +15,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.SessionManager;
 
 import java.util.List;
 
 
-public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAdapterPOST.ViewHolder> {
+public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerViewAdapterPOSTSAYA.ViewHolder> {
 
     Context context;
 
@@ -42,7 +41,7 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
     String id_modul;
     String urlPhoto;
 
-    public RecyclerViewAdapterPOST(List<GetDataAdapter> adapter, Context context){
+    public RecyclerViewAdapterPOSTSAYA(List<GetDataAdapter> adapter, Context context){
 
         super();
 
@@ -53,7 +52,7 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokrs_fragment_post, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokrs_fragment_post_saya, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(v);
 

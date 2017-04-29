@@ -43,6 +43,8 @@ public class SessionManager {
     // Email address (make variable public to access from outside)
     public static final String KEY_PASS = "pass";
 
+    public static final String KEY_ID_RS = "id_rs";
+
     // Constructor
     public SessionManager(Context context) {
         this._context = context;
@@ -71,6 +73,15 @@ public class SessionManager {
 
         // Storing name in pref
         editor.putString(KEY_NAME, name);
+
+        // commit changes
+        editor.commit();
+    }
+
+    public void sessionRS(String id_rs) {
+
+        // Storing id in pref
+        editor.putString(KEY_ID_RS, id_rs);
 
         // commit changes
         editor.commit();
@@ -124,6 +135,16 @@ public class SessionManager {
 
         // return user
         return user;
+    }
+
+    public HashMap<String, String> getIDRS() {
+        HashMap<String, String> rs = new HashMap<String, String>();
+
+        // id
+        rs.put(KEY_ID_RS, pref.getString(KEY_ID_RS, null));
+
+        // return user
+        return rs;
     }
 
     /**

@@ -31,6 +31,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -93,8 +94,9 @@ public class DetailActivity extends BaseActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent i = this.getIntent();
+        Toast.makeText(getBaseContext(),i.getExtras().getString(EXTRA_POSITION),Toast.LENGTH_SHORT).show();
 
-        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?id=" + i.getExtras().getString(EXTRA_POSITION);
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.3/sikepokpanic_json.php?id=" + i.getExtras().getString(EXTRA_POSITION);
 
         iconLokasi = (ImageView) findViewById(R.id.icon_lokasi);
         iconKontak = (ImageView) findViewById(R.id.icon_kontak);

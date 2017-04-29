@@ -7,6 +7,7 @@ package com.hi_depok.hi_depok.Sikepok_RS;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -124,19 +125,13 @@ public class RecyclerViewAdapterDOKTER extends RecyclerView.Adapter<RecyclerView
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                    SharedPreferences.Editor editor=sharedPreferences.edit();
+                    editor.putString("id_dokter",itemView.getTag().toString());
+                    editor.commit();
+
                     Context context = v.getContext();
                     Intent intent = new Intent(context, info_dokter.class);
-                    String pos = (String) itemView.getTag();
-//                    Toast.makeText(context,pos,Toast.LENGTH_SHORT).show();
-                    Log.d("JSONAdapter", "get id: " + pos);
-                    intent.putExtra("EXTRA_ID", pos.toString());
-
-                    SharedPreferences sharedPreferences = context.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor=sharedPreferences.edit();
-                    editor.putString("id_rs", angka);
-                    editor.commit();
-                    editor.apply();
-
                     context.startActivity(intent);
                 }
             });

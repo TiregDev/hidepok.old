@@ -47,7 +47,7 @@ public class daftar_rs extends BaseActivity {
     private SearchView searchView;
 
     public static final String PATOKAN = "patokan";
-    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokrs_menurs_json.php";
+    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_menurs_json.php";
     String JSON_ID = "id_rs";
     String JSON_ALAMAT = "alamat_rs";
     String JSON_NAME = "nama_rs";
@@ -207,14 +207,14 @@ public class daftar_rs extends BaseActivity {
     }
 
 
-    public void ke_daftar_rs(View view){
-        Intent next = new Intent(daftar_rs.this, daftar_rs.class);
-        startActivity(next);
-    }
-
-    public void ke_menu_rs(View view){
-        Intent next = new Intent(daftar_rs.this, menu_rs.class);
-        startActivity(next);
-    }
+//    public void ke_daftar_rs(View view){
+//        Intent next = new Intent(daftar_rs.this, daftar_rs.class);
+//        startActivity(next);
+//    }
+//
+//    public void ke_menu_rs(View view){
+//        Intent next = new Intent(daftar_rs.this, menu_rs.class);
+//        startActivity(next);
+//    }
 
 }

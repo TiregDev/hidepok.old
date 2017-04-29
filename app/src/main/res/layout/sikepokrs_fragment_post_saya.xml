@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="10dp"
         android:background="@drawable/shape4"
-        android:onClick="ke_detail_post_saya"
         android:orientation="vertical">
 
         <fr.arnaudguyon.smartfontslib.FontTextView

@@ -7,6 +7,7 @@ package com.hi_depok.hi_depok.Sikepok_RS;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +17,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hi_depok.hi_depok.Activity_Main.MainActivity;
+import com.hi_depok.hi_depok.Activity_Main.login;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.SessionManager;
 import com.squareup.picasso.Picasso;
 
 import java.net.URLEncoder;
@@ -41,6 +45,9 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
     String email;
     String id_partner;
     String urlPhoto;
+    String haha;
+
+//    SessionManager session;
 
     public RecyclerViewAdapterJSON(List<GetDataAdapter> adapter, Context context){
 
@@ -57,11 +64,13 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
 
         ViewHolder viewHolder = new ViewHolder(v);
 
+//        session = new SessionManager(v.getContext());
+
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         id = adapter.get(position).getId();
         nama = adapter.get(position).getName();
         deskripsi = adapter.get(position).getDeskripsi();
@@ -80,6 +89,8 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
         holder.itemView.setTag(id);
         String encodeUrl = URLEncoder.encode(foto);
         urlPhoto = "http://hidepok.id/assets/images/photos/sikepok/sikepok2/" + encodeUrl;
+
+
 
 //        switch (jenis){
 //            case "Apotek":
@@ -105,6 +116,8 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
 //        }
 //        Toast.makeText(context, holder.itemView.getTag().toString(),Toast.LENGTH_SHORT).show();
         Picasso.with(context).load(urlPhoto).resize(100, 100).into(holder.personPhoto);
+
+
     }
 
     @Override
@@ -119,35 +132,27 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
         public TextView personAlamat;
         public ImageView personPhoto;
 
-        String angka = "6";
-
-
         public ViewHolder(final View itemView) {
-
             super(itemView);
 
             personName = (TextView)itemView.findViewById(R.id.namaRS);
             personAlamat = (TextView)itemView.findViewById(R.id.alamatRS);
             personPhoto = (ImageView)itemView.findViewById(R.id.gambarRS);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, menu_rs.class);
-                    String pos = (String) itemView.getTag();
-//                    Toast.makeText(context,pos,Toast.LENGTH_SHORT).show();
-                    Log.d("JSONAdapter", "get id: " + pos);
-                    intent.putExtra("EXTRA_ID", pos.toString());
 
-                    SharedPreferences sharedPreferences = context.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
                     SharedPreferences.Editor editor=sharedPreferences.edit();
-                    editor.putString("id_rs", pos.toString());
+                    editor.putString("id_rs",itemView.getTag().toString());
                     editor.commit();
 
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, menu_rs.class);
                     context.startActivity(intent);
                 }
             });
-
 
         }
     }

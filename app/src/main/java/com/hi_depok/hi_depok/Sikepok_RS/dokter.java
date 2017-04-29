@@ -3,10 +3,12 @@ package com.hi_depok.hi_depok.Sikepok_RS;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,7 +37,7 @@ import java.util.List;
 public class dokter extends Fragment {
 
     public static final String PATOKAN = "patokan";
-    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokrs_menurs_json.php?id_rs2=2";
+    String GET_JSON_DATA_HTTP_URL;
     String JSON_ID_DOKTER = "id_dokter";
     String JSON_NAMA_DOKTER = "nama_dokter";
     String JSON_ALAMAT_DOKTER = "alamat_dokter";
@@ -45,6 +47,8 @@ public class dokter extends Fragment {
     String JSON_FOTO_DOKTER = "foto_dokter";
     String JSON_DESKRIPSI_DOKTER = "deskripsi_dokter";
     String JSON_ID_RS ="id_rs";
+
+    String idRs;
 
     JsonArrayRequest jsonArrayRequest ;
     List<GetDataAdapter> dataAdapter;
@@ -84,6 +88,13 @@ public class dokter extends Fragment {
         dialog.setMessage("Loading");
         dialog.show();
         dialog.setCancelable(true);
+
+        //shared preferences test
+        final SharedPreferences prefsa = PreferenceManager.getDefaultSharedPreferences(getContext());
+        idRs = prefsa.getString("id_rs","No data found");
+
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_menurs_json.php?id_rs2="+ idRs;
+
         JSON_DATA_WEB_CALL();
 
         return v;

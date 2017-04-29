@@ -39,7 +39,8 @@ import java.util.List;
 public class forum extends BaseActivity {
     private SearchView searchView;
 
-    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokrs_postsaya_json.php?id=2";
+    String GET_JSON_DATA_HTTP_URL;
+    String GET_JSON_DATA_HTTP_URL2;
     String JSON_ID_POST = "id_post";
     String JSON_ID_MODUL = "id_modul";
     String JSON_ID_USER = "id_user";
@@ -59,8 +60,8 @@ public class forum extends BaseActivity {
     List<GetDataAdapter> dataAdapter;
     RequestQueue requestQueue ;
     RecyclerView.Adapter recyclerViewadapter;
-    RecyclerView rView;
-    RecyclerView rView1;
+    RecyclerView rViewPOST;
+    RecyclerView rViewSAYA;
     ProgressDialog dialog;
 
     @Override
@@ -78,18 +79,23 @@ public class forum extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //recycler view
-        rView1 = (RecyclerView) findViewById(R.id.recyclerviewpost1);
-        rView1.setLayoutManager(new LinearLayoutManager(this));
+        rViewPOST = (RecyclerView) findViewById(R.id.recyclerviewpost1);
+        rViewPOST.setLayoutManager(new LinearLayoutManager(this));
 
-        rView = (RecyclerView) findViewById(R.id.recyclerviewpost2);
-        rView.setLayoutManager(new LinearLayoutManager(this));
+        rViewSAYA = (RecyclerView) findViewById(R.id.recyclerviewpost2);
+        rViewSAYA.setLayoutManager(new LinearLayoutManager(this));
 
         dataAdapter = new ArrayList<>();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Loading");
         dialog.show();
         dialog.setCancelable(false);
+
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?id=2";
+        GET_JSON_DATA_HTTP_URL2 = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?id_saya=6";
+
         JSON_DATA_WEB_CALL();
+        JSON_DATA_WEB_CALL2();
     }
 
     //r view
@@ -143,12 +149,62 @@ public class forum extends BaseActivity {
         }
 
         recyclerViewadapter = new RecyclerViewAdapterPOST(dataAdapter, this);
-        rView.setAdapter(recyclerViewadapter);
-
-        rView1.setAdapter(recyclerViewadapter);
-
+        rViewPOST.setAdapter(recyclerViewadapter);
     }
 
+    //r view 2
+    public void JSON_DATA_WEB_CALL2(){
+        jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_URL2,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        dialog.dismiss();
+                        JSON_PARSE_DATA_AFTER_WEBCALL2(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+    }
+
+    public void JSON_PARSE_DATA_AFTER_WEBCALL2(JSONArray array){
+        for(int i = 0; i<array.length(); i++) {
+            GetDataAdapter dataFromJSON = new GetDataAdapter();
+            JSONObject json = null;
+            try {
+                json = array.getJSONObject(i);
+
+                dataFromJSON.setId_post(json.getString(JSON_ID_POST));
+                dataFromJSON.setId_modul(json.getString(JSON_ID_MODUL));
+                dataFromJSON.setId_user(json.getString(JSON_ID_USER));
+                dataFromJSON.setJudul_post(json.getString(JSON_JUDUL_POST));
+                dataFromJSON.setIsi_post(json.getString(JSON_ISI_POST));
+                dataFromJSON.setTanggal_post(json.getString(JSON_TANGGAL_POST));
+                dataFromJSON.setWaktu_post(json.getString(JSON_WAKTU_POST));
+                dataFromJSON.setKategori_post(json.getString(JSON_KATEGORI_POST));
+                dataFromJSON.setFoto_post(json.getString(JSON_FOTO_POST));
+                dataFromJSON.setDeskripsi_post(json.getString(JSON_DESKRIPSI_POST));
+                dataFromJSON.setLokasi_post(json.getString(JSON_LOKASI_POST));
+                dataFromJSON.setNo_identitas_post(json.getString(JSON_NO_IDENTITAS_POST));
+                dataFromJSON.setStatus_post(json.getString(JSON_STATUS_POST));
+                dataFromJSON.setRating_post(json.getString(JSON_RATING_POST));
+
+            } catch (JSONException e) {
+
+                e.printStackTrace();
+            }
+            dataAdapter.add(dataFromJSON);
+        }
+        recyclerViewadapter = new RecyclerViewAdapterPOSTSAYA(dataAdapter, this);
+        rViewSAYA.setAdapter(recyclerViewadapter);
+
+    }
 
     //search
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -211,15 +267,15 @@ public class forum extends BaseActivity {
         }
     }
 
-    public void ke_detail_post (View view){
-        Intent next = new Intent(forum.this, detail_post.class);
-        startActivity(next);
-    }
-
-    public void ke_detail_post_saya (View view){
-        Intent next = new Intent(forum.this, detail_post_saya.class);
-        startActivity(next);
-    }
+//    public void ke_detail_post (View view){
+//        Intent next = new Intent(forum.this, detail_post.class);
+//        startActivity(next);
+//    }
+//
+//    public void ke_detail_post_saya (View view){
+//        Intent next = new Intent(forum.this, detail_post_saya.class);
+//        startActivity(next);
+//    }
 
     public void ke_post_saya (View view){
         Intent next = new Intent(forum.this, post_saya.class);

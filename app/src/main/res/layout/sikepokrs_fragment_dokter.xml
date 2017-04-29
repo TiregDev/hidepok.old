@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingEnd="16dp"
-    android:paddingStart="16dp"
     android:paddingTop="10dp">
 
     <LinearLayout
@@ -26,8 +24,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/fotoDokter"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/febby" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
