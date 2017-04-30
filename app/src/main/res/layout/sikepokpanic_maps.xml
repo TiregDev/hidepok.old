@@ -17,37 +17,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:alpha="0.9"
-        android:background="@color/white"
+        android:background="@android:drawable/dialog_holo_light_frame"
         android:orientation="vertical">
 
         <fr.arnaudguyon.smartfontslib.FontTextView
-            app:font="@string/fontReguler"
+            app:font="@string/fontBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:text="Temukan Tempat Sehat Terdekatmu!"
+            android:layout_gravity="center"
+            android:text="Temukan Tempat Sehat Terdekat!"
             android:textSize="20sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Spinner
+            <com.jaredrummler.materialspinner.MaterialSpinner
                 android:id="@+id/spinPlaces"
-                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="15dp"
-                android:background="#e4e4e4" />
-
-            <ImageView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/spinner" />
+                android:layout_margin="15dp" />
+
 
         </RelativeLayout>
 
@@ -61,32 +52,9 @@
             android:background="@color/colorPrimary"
             android:onClick="toList"
             android:padding="10dp"
-            android:text="JELAJAHI SEKARANG"
+            android:text="CARI SEKARANG"
             android:textColor="@color/white" />
 
-        <fr.arnaudguyon.smartfontslib.FontButton
-            app:font="@string/fontReguler"
-            android:id="@+id/btnRestaurant"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nearby Restaurants"
-            android:visibility="gone" />
-
-        <fr.arnaudguyon.smartfontslib.FontButton
-            app:font="@string/fontReguler"
-            android:id="@+id/btnHospital"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nearby Hospitals"
-            android:visibility="gone" />
-
-        <fr.arnaudguyon.smartfontslib.FontButton
-            app:font="@string/fontReguler"
-            android:id="@+id/btnSchool"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nearby Schools"
-            android:visibility="gone" />
 
     </LinearLayout>
 </FrameLayout>

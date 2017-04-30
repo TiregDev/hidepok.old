@@ -41,6 +41,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.hi_depok.hi_depok.R;
+import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -98,13 +99,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         String tempatSehat[] = { "Cari Tempat ...", "Kuliner", "Wisata", "Pasar", "Tempat Ibadah",
                 "GOR", };
-        Spinner spinner = (Spinner) findViewById(R.id.spinPlaces);
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, tempatSehat);;
-        spinner.setAdapter(spinnerAdapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.spinPlaces);
+        spinner.setItems(tempatSehat);
+        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
                 switch (position) {
                     case 1:
                         GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/kapok/kapok_json.php?kategori=kuliner";
@@ -125,11 +124,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         break;
                 }
                 JSON_DATA_WEB_CALL();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                //NULL
             }
         });
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.

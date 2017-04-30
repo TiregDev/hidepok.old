@@ -19,84 +19,13 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"
-            android:fillViewport="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
-
-                    <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontBold"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Sakit Mata"
-                        android:textColor="#b7b7b7"
-                        android:textSize="28sp"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#b7b7b7"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="5dp"/>
-
-                    <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontBold"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/desc"
-                        android:padding="10dp"
-                        android:textColor="#b7b7b7"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontReguler"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="@string/item_desc"
-                        android:textColor="#b7b7b7" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="10dp"
-                        android:background="#b7b7b7" />
-
-                    <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontBold"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="Gejala"
-                        android:textColor="#b7b7b7"
-                        android:textSize="20sp"/>
-
-                    <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontReguler"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="@string/item_desc"
-                        android:textColor="#b7b7b7" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-        </ScrollView>
+        <WebView
+            android:id="@+id/textContent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/toolbar"
+            android:layout_marginTop="0dp"
+            android:background="@android:color/transparent" />
     </RelativeLayout>
 </FrameLayout>

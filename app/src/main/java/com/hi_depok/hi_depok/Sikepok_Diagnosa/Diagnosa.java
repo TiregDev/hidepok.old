@@ -1,26 +1,44 @@
 package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.view.MenuItemCompat;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-
-import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
-import com.hi_depok.hi_depok.R;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Diagnosa extends BaseActivity {
-    private LinearLayoutManager lLayout;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
+import com.hi_depok.hi_depok.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class Diagnosa extends BaseActivity implements SearchView.OnQueryTextListener {
+    String JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokdiagnosa_json.php";
+    RecyclerView rView;
+    List<DataModel> dataAdapter;
+    DataModel data;
+    SearchView searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,15 +52,45 @@ public class Diagnosa extends BaseActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        List<itemObject_diagnosa> rowListItem2 = getAllItemList();
-        lLayout = new LinearLayoutManager(this);
-
-        RecyclerView rView = (RecyclerView)findViewById(R.id.list_diagnosa);
-        rView.setLayoutManager(lLayout);
-
-        RecyclerViewAdapter_diagnosa rcAdapter = new RecyclerViewAdapter_diagnosa(this, rowListItem2);
-        rView.setAdapter(rcAdapter);
+        rView = (RecyclerView) findViewById(R.id.list_diagnosa);
+        rView.setLayoutManager(new LinearLayoutManager(this));
+        rView.setHasFixedSize(true);
+        dataAdapter = new ArrayList<>();
+        getDataFromJSON(JSON_URL);
     }
+
+    public void getDataFromJSON(String url){
+        JsonArrayRequest req = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for(int i=0;i<response.length();i++){
+                    data = new DataModel();
+                    JSONObject json = null;
+                    try{
+
+                        json = response.getJSONObject(i);
+                        data.setId(json.getString("id_bagian_tubuh"));
+                        data.setNama(json.getString("nama_bagian_tubuh"));
+                        data.setFoto(json.getString("foto_bagian_tubuh"));
+
+                    } catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                    dataAdapter.add(data);
+                }
+                RecyclerView.Adapter rViewAdapter = new DiagnosaAdapter(dataAdapter, getBaseContext());
+                rView.setAdapter(rViewAdapter);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue reqQueue = Volley.newRequestQueue(this);
+        reqQueue.add(req);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -56,15 +104,19 @@ public class Diagnosa extends BaseActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    private List<itemObject_diagnosa> getAllItemList(){
-        List<itemObject_diagnosa> allItems = new ArrayList<>();
-        allItems.add(new itemObject_diagnosa("Kepala", R.drawable.kepala));
-        allItems.add(new itemObject_diagnosa("Dada", R.drawable.dada));
-        allItems.add(new itemObject_diagnosa("Punggung", R.drawable.punggung));
-        allItems.add(new itemObject_diagnosa("Perut", R.drawable.perut));
-        allItems.add(new itemObject_diagnosa("Tangan", R.drawable.tangan));
-        allItems.add(new itemObject_diagnosa("Kaki", R.drawable.kaki));
 
-        return allItems;
+    @Override
+    public boolean onQueryTextChange(String query) {
+        // Here is where we are going to implement the filter logic
+        return false;
     }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
 }
+
+
+

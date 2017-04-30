@@ -5,7 +5,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +19,7 @@ import com.hi_depok.hi_depok.R;
 /**
  * Created by HP on 4/28/2016.
  */
-public class Anggota_badan_badan extends BaseActivity {
+public class DiagnosaBagian extends BaseActivity {
 
     ExpandableRelativeLayout expandableLayout1, expandableLayout2, expandableLayout3, expandableLayout4, expandableLayout5;
 
@@ -44,7 +43,7 @@ public class Anggota_badan_badan extends BaseActivity {
             case android.R.id.home:
                 // todo: goto back activity from here
 
-                Anggota_badan_badan.this.finish();
+                DiagnosaBagian.this.finish();
                 return true;
 
             default:
@@ -81,7 +80,7 @@ public class Anggota_badan_badan extends BaseActivity {
         }
     }
     public void sugesti (View view){
-        Intent contoh = new Intent(Anggota_badan_badan.this, Sugesti.class);
+        Intent contoh = new Intent(DiagnosaBagian.this, Sugesti.class);
         startActivity(contoh);
     }
 }

@@ -9,7 +9,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.hi_depok.hi_depok.Sikepok_Diagnosa.Anggota_badan_badan">
+        tools:context="com.hi_depok.hi_depok.Sikepok_Diagnosa.DiagnosaBagian">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"

@@ -41,7 +41,7 @@ public class kadepok_content extends BaseActivity {
     RecyclerView.Adapter recyclerViewadapter;
     RecyclerView rView;
     String spn_kecamatan;
-    String JSON_URL = "http://hidepok.id/include/kadepok_json.php";
+    String JSON_URL = "http://hidepok.id/android/kapok/kadepok_json.php";
     private static final String[]camat = {"Pilih Kecamatan", "Beji", "Bojongsari", "Cilodong", "Cimanggis",
             "Cinere", "Cipayung", "Limo", "Pancoran Mas", "Sawangan", "Sukmajaya", "Tapos"};
 
@@ -137,7 +137,7 @@ public class kadepok_content extends BaseActivity {
                     default:
                         break;
                 }
-                JSON_URL = "http://hidepok.id/include/kadepok_json.php" + spn_kecamatan;
+                JSON_URL = "http://hidepok.id/android/kadepok/kadepok_json.php" + spn_kecamatan;
 
             }
 

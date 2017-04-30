@@ -1,6 +1,8 @@
 package com.hi_depok.hi_depok.Sikepok_Panic.activity;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -13,11 +15,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +41,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.hi_depok.hi_depok.R;
+import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,19 +49,19 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
+public class MapsActivity extends FragmentActivity implements LocationListener, OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener,
-        LocationListener {
+        GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
     double latitude;
     double longitude;
+    boolean connected = false;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
     Marker mCurrLocationMarker, placeMarker;
     LocationRequest mLocationRequest;
-    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php";
+    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.3/sikepokpanic_json.php";
     String JSON_ID = "id_tempat_sehat";
     String JSON_ALAMAT = "alamat_tempat_sehat";
     String JSON_JENIS = "nama_jenis";
@@ -79,11 +80,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sikepokpanic_maps);
-
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            checkLocationPermission();
-        }
-
         //Check if Google Play Services Available or not
         if (!CheckGooglePlayServices()) {
             Log.d("onCreate", "Finishing test case since Google Play Services are not available");
@@ -93,55 +89,61 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Log.d("onCreate","Google Play Services available.");
         }
         String tempatSehat[] = { "Semua Tempat", "Puskesmas", "Klinik", "Apotek",
-                "Bidan", "Khitan", "Pijat" };
-        Spinner spinner = (Spinner) findViewById(R.id.spinPlaces);
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, tempatSehat);
-        spinner.setAdapter(spinnerAdapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                "Bidan", "Tempat Khitan", "Tempat Pijat" };
+        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.spinPlaces);
+        spinner.setItems(tempatSehat);
+        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
                 switch (position) {
                     case 0:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php";
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.3/sikepokpanic_json.php";
                         break;
                     case 1:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?kategori=Puskesmas";
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.3/sikepokpanic_json.php?kategori=Puskesmas";
                         break;
                     case 2:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?kategori=Klinik";
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.3/sikepokpanic_json.php?kategori=Klinik";
                         break;
                     case 3:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?kategori=Apotek";
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.3/sikepokpanic_json.php?kategori=Apotek";
                         break;
                     case 4:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?kategori=Bidan";
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.3/sikepokpanic_json.php?kategori=Bidan";
                         break;
                     case 5:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?kategori=Khitan";
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.3/sikepokpanic_json.php?kategori=Tempat%20Khitan";
                         break;
                     case 6:
-                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?kategori=Tukang%20Urut";
+                        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.3/sikepokpanic_json.php?kategori=Tempat%20Pijat";
                         break;
                     default:
                         break;
                 }
+
                 JSON_DATA_WEB_CALL();
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                //NULL
-            }
         });
+        JSON_DATA_WEB_CALL();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map2);
         mapFragment.getMapAsync(this);
-        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-//        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-//            showLocationSettings();
-//        }
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (!locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            showLocationSettings();
+        }
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        //stop location updates when Activity is no longer active
+        if (mGoogleApiClient != null) {
+            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+        }
     }
 
     public void JSON_DATA_WEB_CALL() {
@@ -179,6 +181,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String[] kordinat = placeKordinat.split(",");
                 double lat = Double.parseDouble(kordinat[0]);
                 double lng = Double.parseDouble(kordinat[1].trim());
+
 //
 
                 LatLng endPoint = new LatLng(lat, lng);
@@ -196,13 +199,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 else if(json.getString(JSON_JENIS).equals("Klinik")){
                     markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_05));
                 }
-                else if(json.getString(JSON_JENIS).equals("Tukang Urut")){
+                else if(json.getString(JSON_JENIS).equals("Tempat Pijat")){
                     markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_08));
                 }
-                else if(json.getString(JSON_JENIS).equals("Khitan")){
+                else if(json.getString(JSON_JENIS).equals("Tempat Khitan")){
                     markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_11));
                 }
-
+                if(latlong==null){
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(endPoint));
+                    mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
+                }
 
                 placeMarker = mMap.addMarker(markerOptions);
                 hashMap.put(placeMarker, placeId);
@@ -222,14 +228,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 e.printStackTrace();
             }
         }
-        LatLng latLng = new LatLng(latitude, longitude);
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
-        markerOptions.title("Lokasi Kamu");
-        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_13));
-        mCurrLocationMarker = mMap.addMarker(markerOptions);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
+
+        if(latlong!=null){
+            LatLng latLng = new LatLng(latitude, longitude);
+            MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.position(latLng);
+            markerOptions.title("Lokasi Kamu");
+            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_13));
+            mCurrLocationMarker = mMap.addMarker(markerOptions);
+        }
+
     }
     private void showLocationSettings() {
         Snackbar snackbar = Snackbar
@@ -252,10 +260,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         snackbar.show();
     }
     public void toList(View view) {
-        Intent intent = new Intent(getBaseContext(), MenuActivity.class);
+        if(latlong!=null){
+            Intent intent = new Intent(getBaseContext(), MenuActivity.class);
+            intent.putExtra("LatLong", latlong);
+            startActivity(intent);
+        }
+        else{
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Menunggu untuk mendapatkan lokasi anda!", Snackbar.LENGTH_LONG);
+            snackbar.show();
+        }
 
-        intent.putExtra("LatLong", latlong);
-        startActivity(intent);
     }
 
     private boolean CheckGooglePlayServices() {
@@ -293,6 +307,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     == PackageManager.PERMISSION_GRANTED) {
                 buildGoogleApiClient();
                 mMap.setMyLocationEnabled(true);
+            } else {
+                //Request Location Permission
+                checkLocationPermission();
             }
         }
         else {
@@ -348,17 +365,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         markerOptions.title("Lokasi Kamu");
         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_13));
+
+        mCurrLocationMarker = mMap.addMarker(markerOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(startPoint));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
-        mCurrLocationMarker = mMap.addMarker(markerOptions);
-
+        connected = true;
         Log.d("onLocationChanged", String.format("latitude:%.3f longitude:%.3f",latitude,longitude));
 
         //stop location updates
-        if (mGoogleApiClient != null) {
-            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
-            Log.d("onLocationChanged", "Removing Location Updates");
-        }
+//        if (mGoogleApiClient != null) {
+//            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+//            Log.d("onLocationChanged", "Removing Location Updates");
+//        }
         Log.d("onLocationChanged", "Exit");
 
     }
@@ -369,34 +387,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
-    public boolean checkLocationPermission(){
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
+    private void checkLocationPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
 
-            // Asking user if explanation is needed
+            // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
 
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
-
-                //Prompt the user once explanation has been shown
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_LOCATION);
+                new AlertDialog.Builder(this)
+                        .setTitle("Location Permission Needed")
+                        .setMessage("This app needs the Location permission, please accept to use location functionality")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //Prompt the user once explanation has been shown
+                                ActivityCompat.requestPermissions(MapsActivity.this,
+                                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                                        MY_PERMISSIONS_REQUEST_LOCATION );
+                            }
+                        })
+                        .create()
+                        .show();
 
 
             } else {
                 // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_LOCATION);
+                        MY_PERMISSIONS_REQUEST_LOCATION );
             }
-            return false;
-        } else {
-            return true;
         }
     }
 
@@ -409,8 +432,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    // permission was granted. Do the
-                    // contacts-related task you need to do.
+                    // permission was granted, yay! Do the
+                    // location-related task you need to do.
                     if (ContextCompat.checkSelfPermission(this,
                             Manifest.permission.ACCESS_FINE_LOCATION)
                             == PackageManager.PERMISSION_GRANTED) {
@@ -423,13 +446,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 } else {
 
-                    // Permission denied, Disable the functionality that depends on this permission.
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
                     Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
                 }
+                return;
             }
 
-            // other 'case' lines to check for other permissions this app might request.
-            // You can add here other case statements according to your requirement.
+            // other 'case' lines to check for other
+            // permissions this app might request
         }
     }
 }

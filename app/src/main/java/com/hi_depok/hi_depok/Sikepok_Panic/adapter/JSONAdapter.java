@@ -74,7 +74,7 @@ public class JSONAdapter extends RecyclerView.Adapter<JSONAdapter.ViewHolder> {
 
         holder.personName.setText(nama);
         holder.personDesc.setText(alamat);
-        holder.personDistance.setText(jarak);
+        holder.personDistance.setText(jarak + " KM");
         holder.itemView.setTag(id);
         if(!foto.equals("null") && foto.contains(",")){
             String[] listFoto = foto.split(",");

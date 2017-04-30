@@ -90,7 +90,7 @@ public class kapok_detail extends BaseActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
         indicator = (CirclePageIndicator) findViewById(R.id.indicator);
         // Set title of Detail page
-        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/kapok_json.php?id=" + getIntent().getExtras().getString("getID");
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/kapok/kapok_json.php?id=" + getIntent().getExtras().getString("getID");
 
 
         TextView lengkap = (TextView) findViewById(R.id.ulasan);

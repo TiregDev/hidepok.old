@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebView;
 
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
@@ -28,6 +29,8 @@ public class Deskripsi extends BaseActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        WebView webView = (WebView) findViewById(R.id.textContent);
+        webView.loadUrl("http://hidepok.id/assets/files/sikepok/1.1/" + getIntent().getExtras().getString("getPage"));
     }
 
     @Override

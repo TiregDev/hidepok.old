@@ -1,10 +1,11 @@
 package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,15 +15,30 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 
-public class Ensiklopedia extends BaseActivity implements SearchView.OnQueryTextListener {
-    private LinearLayoutManager lLayout;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class Ensiklopedia extends BaseActivity {
+    String JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokensiklopedia_json.php";
+    RecyclerView rView;
+    List<DataModel> dataAdapter;
+    DataModel data;
+    SearchView searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,38 +52,97 @@ public class Ensiklopedia extends BaseActivity implements SearchView.OnQueryText
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        List<itemObject_listensi> rowListItem3 = getAllItemList();
-        lLayout = new LinearLayoutManager(getApplicationContext());
-
-        RecyclerView rView = (RecyclerView)findViewById(R.id.list_ensiklopedia);
-        rView.setLayoutManager(lLayout);
-
-        RecyclerViewAdapter_listensi rcAdapter = new RecyclerViewAdapter_listensi(getApplicationContext(), rowListItem3);
-        rView.setAdapter(rcAdapter);
-
+        rView = (RecyclerView) findViewById(R.id.list_ensiklopedia);
+        rView.setLayoutManager(new LinearLayoutManager(this));
+        rView.setHasFixedSize(true);
+        dataAdapter = new ArrayList<>();
+        getDataFromJSON(JSON_URL);
     }
 
-    private List<itemObject_listensi> getAllItemList(){
-        List<itemObject_listensi> allItems = new ArrayList<>();
-        allItems.add(new itemObject_listensi("Kepala"));
-        allItems.add(new itemObject_listensi("Dada"));
-        allItems.add(new itemObject_listensi("Punggung"));
-        allItems.add(new itemObject_listensi("Perut"));
-        allItems.add(new itemObject_listensi("Tangan"));
-        allItems.add(new itemObject_listensi("Kaki"));
+    public void getDataFromJSON(String url){
+        JsonArrayRequest req = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for(int i=0;i<response.length();i++){
+                    data = new DataModel();
+                    JSONObject json = null;
+                    try{
 
-        return allItems;
+                        json = response.getJSONObject(i);
+                        data.setId(json.getString("id_penyakit"));
+                        data.setNama(json.getString("nama_penyakit"));
+                        data.setHalaman(json.getString("halaman"));
+
+                    } catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                    dataAdapter.add(data);
+                }
+                RecyclerView.Adapter rViewAdapter = new EnsiklopediaAdapter(dataAdapter, getBaseContext());
+                rView.setAdapter(rViewAdapter);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue reqQueue = Volley.newRequestQueue(this);
+        reqQueue.add(req);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
         final MenuItem searchItem = menu.findItem(R.id.action_search);
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        searchView.setOnQueryTextListener(this);
 
-        return true;
+        if (searchItem != null) {
+            searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+            searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+                @Override
+                public boolean onClose() {
+                    //some operation
+                    dataAdapter.clear();
+                    getDataFromJSON(JSON_URL);
+                    return false;
+                }
+            });
+            searchView.setOnSearchClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //some operation
+                }
+            });
+            EditText searchPlate = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+            searchPlate.setHint("Search");
+            View searchPlateView = searchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
+            searchPlateView.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent));
+            // use this method for search process
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    // use this method when query submittet
+                    dataAdapter.clear();
+                    getDataFromJSON(JSON_URL + "?cari=" + query);
+                    Toast.makeText(getBaseContext(), "Hasil pencarian untuk: " + query, Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    dataAdapter.clear();
+                    getDataFromJSON(JSON_URL + "?cari=" + newText);
+                    return false;
+                }
+            });
+            SearchManager searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        }
+
+        return super.onCreateOptionsMenu(menu);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -82,18 +157,6 @@ public class Ensiklopedia extends BaseActivity implements SearchView.OnQueryText
                 return super.onOptionsItemSelected(item);
         }
     }
-
-    @Override
-    public boolean onQueryTextChange(String query) {
-        // Here is where we are going to implement the filter logic
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
 }
 
 

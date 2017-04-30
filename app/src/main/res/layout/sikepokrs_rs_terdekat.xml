@@ -17,11 +17,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:alpha="0.8"
-        android:background="@color/white"
+        android:background="@android:drawable/dialog_holo_light_frame"
         android:orientation="vertical">
 
         <fr.arnaudguyon.smartfontslib.FontTextView
-            app:font="@string/fontReguler"
+            app:font="@string/fontBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

@@ -1,6 +1,5 @@
 package com.hi_depok.hi_depok.Sikepok_Panic.activity;
 
-import android.app.SearchManager;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,17 +8,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +31,8 @@ public class MenuActivity extends BaseActivity {
 
     private DrawerLayout mDrawerLayout;
     private SearchView searchView;
+
+    String urlSearch;
 
 
     @Override
@@ -61,12 +57,6 @@ public class MenuActivity extends BaseActivity {
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
         tabs.getTabAt(0).setIcon(R.drawable.call_btn);
-//        tabs.getTabAt(1).setIcon(R.drawable.panic_bidan);
-//        tabs.getTabAt(2).setIcon(R.drawable.panic_pijat);
-//        tabs.getTabAt(3).setIcon(R.drawable.panic_sunat);
-//        for (int i = 0; i < tabs.getTabCount(); i++) {
-//            tabs.getTabAt(i).setIcon(R.drawable.ic_action_home4);
-//        }
     }
 
     // Add Fragments to Tabs
@@ -78,13 +68,13 @@ public class MenuActivity extends BaseActivity {
         adapter.addFragment(TempatSehatFragment.newInstance("Klinik", getIntent().getStringExtra("LatLong")), "Klinik");
         adapter.addFragment(TempatSehatFragment.newInstance("Puskesmas", getIntent().getStringExtra("LatLong")), "Puskesmas");
         adapter.addFragment(TempatSehatFragment.newInstance("Bidan", getIntent().getStringExtra("LatLong")), "Bidan");
-        adapter.addFragment(TempatSehatFragment.newInstance("Tukang%20Urut", getIntent().getStringExtra("LatLong")), "Tukang Urut");
-        adapter.addFragment(TempatSehatFragment.newInstance("Khitan", getIntent().getStringExtra("LatLong")), "Khitan");
+        adapter.addFragment(TempatSehatFragment.newInstance("Tempat%20Pijat", getIntent().getStringExtra("LatLong")), "Tempat Pijat");
+        adapter.addFragment(TempatSehatFragment.newInstance("Tempat%20Khitan", getIntent().getStringExtra("LatLong")), "Tempat Khitan");
 
         viewPager.setAdapter(adapter);
     }
 
-    public static class Adapter extends FragmentPagerAdapter {
+    static class Adapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
@@ -113,63 +103,12 @@ public class MenuActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        // Retrieve the SearchView and plug it into SearchManager
-        final MenuItem searchItem = menu.findItem(R.id.action_search);
-
-        if (searchItem != null) {
-            searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-            searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-                @Override
-                public boolean onClose() {
-                    //some operation
-                    return false;
-                }
-            });
-            searchView.setOnSearchClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //some operation
-                }
-            });
-            EditText searchPlate = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
-            searchPlate.setHint("Search");
-            View searchPlateView = searchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
-            searchPlateView.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent));
-            // use this method for search process
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
-                    // use this method when query submitted
-                    Toast.makeText(MenuActivity.this, query, Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-
-                @Override
-                public boolean onQueryTextChange(String newText) {
-                    // use this method for auto complete search process
-                    return false;
-                }
-            });
-            SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-
-        }
-        return super.onCreateOptionsMenu(menu);
-    }
 
     @Override
     public void onBackPressed() {
-        if (!searchView.isIconified()) {
-            searchView.setIconified(true);
-            findViewById(R.id.action_search).setVisibility(View.VISIBLE);
-        } else {
-            super.onBackPressed();
-        }
+        super.onBackPressed();
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

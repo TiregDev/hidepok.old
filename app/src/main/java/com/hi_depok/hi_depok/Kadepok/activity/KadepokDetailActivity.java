@@ -90,7 +90,7 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        JSON_URL = "http://hidepok.id/include/kadepok_json.php?id=" + getIntent().getExtras().getString("getId");
+        JSON_URL = "http://hidepok.id/android/kadepok/kadepok_json.php?id=" + getIntent().getExtras().getString("getId");
         namaPanti = (TextView)findViewById(R.id.list_title);
         fotoPanti = (CircleImageView)findViewById(R.id.list_avatar);
         JSON_VALIDATE_URL();

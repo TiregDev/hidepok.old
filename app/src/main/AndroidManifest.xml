@@ -6,15 +6,16 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -127,11 +128,11 @@
             android:name=".Fokopok.fokopok_content"
             android:label="FOKOPOK" />
         <activity
-            android:name=".Sikepok_Diagnosa.Anggota_badan_badan"
+            android:name=".Sikepok_Diagnosa.DiagnosaBagian"
             android:label="Kepala" />
         <activity
             android:name=".Sikepok_Diagnosa.Deskripsi"
-            android:label="Mata Katarak" />
+            android:label="Deskripsi" />
         <activity
             android:name=".Sikepok_Diagnosa.Diagnosa"
             android:label="Diagnosa" />
@@ -146,7 +147,7 @@
             android:theme="@style/Background_main" />
         <activity
             android:name=".Sikepok_Panic.activity.MenuActivity"
-            android:label="Tempat Sehat" />
+            android:label="Tempat Terdekat" />
         <activity android:name=".Sikepok_Panic.activity.DetailActivity" />
 
         <meta-data

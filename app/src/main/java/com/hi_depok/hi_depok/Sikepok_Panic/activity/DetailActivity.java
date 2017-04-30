@@ -16,11 +16,13 @@
 
 package com.hi_depok.hi_depok.Sikepok_Panic.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
@@ -76,7 +78,7 @@ public class DetailActivity extends BaseActivity {
     ViewPager viewPager;
     PagerAdapter adapter;
     CirclePageIndicator indicator;
-
+    ProgressDialog dialog;
     JsonArrayRequest jsonArrayRequest ;
     RequestQueue requestQueue;
     @Override
@@ -93,7 +95,7 @@ public class DetailActivity extends BaseActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/include/sikepokpanic_json.php?id=" + getIntent().getExtras().getString(EXTRA_POSITION);
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.3/sikepokpanic_json.php?id=" + getIntent().getExtras().getString(EXTRA_POSITION);
 
         iconLokasi = (ImageView) findViewById(R.id.icon_lokasi);
         iconKontak = (ImageView) findViewById(R.id.icon_kontak);
@@ -110,8 +112,22 @@ public class DetailActivity extends BaseActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
 
         indicator = (CirclePageIndicator) findViewById(R.id.indicator);
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Memuat Data ...");
+        dialog.setCancelable(false);
+        dialog.show();
+        Runnable progressRunnable = new Runnable() {
 
-        JSON_DATA_WEB_CALL();
+            @Override
+            public void run() {
+                JSON_DATA_WEB_CALL();
+                dialog.cancel();
+            }
+        };
+
+        Handler pdCanceller = new Handler();
+        pdCanceller.postDelayed(progressRunnable, 3000);
+
     }
 
     public void JSON_DATA_WEB_CALL() {
