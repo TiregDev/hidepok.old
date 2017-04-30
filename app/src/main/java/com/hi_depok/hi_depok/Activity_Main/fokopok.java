@@ -128,7 +128,7 @@ public class fokopok extends BaseActivity implements View.OnClickListener {
         startActivity(intent);
     }
     public void gotToYoutube(View v){
-        String id = "TiregDev";
+        String id = "14RwPlPGgi4";
         try {
 
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + id));

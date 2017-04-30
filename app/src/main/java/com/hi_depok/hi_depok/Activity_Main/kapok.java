@@ -128,7 +128,7 @@ public class kapok extends BaseActivity implements View.OnClickListener{
         startActivity(intent);
     }
     public void gotToYoutube(View v){
-        String id = "TiregDev";
+        String id = "Bl3CRmWySjo";
         try {
 
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + id));

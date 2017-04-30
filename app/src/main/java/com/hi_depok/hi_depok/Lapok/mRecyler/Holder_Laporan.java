@@ -1,5 +1,6 @@
 package com.hi_depok.hi_depok.Lapok.mRecyler;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -77,6 +78,7 @@ public class Holder_Laporan extends RecyclerView.ViewHolder implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        this.ItemClickListener.onItemClick(this.getLayoutPosition());
+        Toast.makeText(view.getContext(), "Segera hadir setelah penyempurnaan aplikasi", Toast.LENGTH_LONG).show();
+//        this.ItemClickListener.onItemClick(this.getLayoutPosition());
     }
 }

@@ -87,7 +87,7 @@ public class menu_rs extends BaseActivity {
 
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
-        MenuActivity.Adapter adapter = new MenuActivity.Adapter(getSupportFragmentManager());
+        Adapter adapter = new Adapter(getSupportFragmentManager());
 
         adapter.addFragment(deskripsi_rs.newInstance(idRs), "Deskripsi");
         adapter.addFragment(jadwal_praktek.newInstance(idRs), "Jadwal");

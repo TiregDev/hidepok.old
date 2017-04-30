@@ -147,7 +147,7 @@ public class ucok extends BaseActivity implements View.OnClickListener{
         startActivity(intent);
     }
     public void gotToYoutube(View v){
-        String id = "TiregDev";
+        String id = "8aNrMvziH3U";
         try {
 
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + id));

@@ -122,7 +122,7 @@ public class list_diskusi extends BaseActivity {
 
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
-        MenuActivity.Adapter adapter = new MenuActivity.Adapter(getSupportFragmentManager());
+        Adapter adapter = new Adapter(getSupportFragmentManager());
 
         adapter.addFragment(diskusi_terbaru.newInstance(idRs), "Terbaru");
         adapter.addFragment(diskusi_terpopuler.newInstance(idRs), "Terpopuler");

@@ -97,6 +97,7 @@
                             android:layout_gravity="center_horizontal|fill"
                             android:layout_marginEnd="5dp"
                             android:layout_marginTop="10dp"
+                            android:onClick="linktoyoutube"
                             android:alpha="0.7"
                             android:background="@drawable/shape2"
                             android:drawableStart="@drawable/ic_action_play_circle_filled"

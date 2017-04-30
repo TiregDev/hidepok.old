@@ -1,8 +1,10 @@
 package com.hi_depok.hi_depok.Activity_Main;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -132,6 +134,23 @@ public class MainActivity extends BaseActivity {
                 }
             });
             exitDialog.show();
+        }
+    }
+
+    public void linktoyoutube(View v){
+        String id = "Kns24Fqa3gc";
+        try {
+
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + id));
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
+        } catch (ActivityNotFoundException e) {
+
+            // youtube is not installed.Will be opened in other available apps
+
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtube.com/watch?v=" + id));
+            startActivity(i);
         }
     }
 

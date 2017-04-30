@@ -88,9 +88,10 @@ public class danus_activity extends BaseActivity {
 
         alert.setPositiveButton("Kalkulasi", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog, int which) {
-                progresscalculate();
-                Intent intent = new Intent(danus_activity.this, hasil_calculate.class);
-                startActivity(intent);
+//                progresscalculate();
+//                Intent intent = new Intent(danus_activity.this, hasil_calculate.class);
+//                startActivity(intent);
+                Toast.makeText(getBaseContext(), "Segera hadir setelah penyempurnaan aplikasi", Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }
         });

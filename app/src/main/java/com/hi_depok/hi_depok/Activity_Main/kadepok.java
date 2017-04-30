@@ -148,7 +148,7 @@ public class kadepok extends BaseActivity implements View.OnClickListener{
         startActivity(intent);
     }
     public void gotToYoutube(View v){
-        String id = "TiregDev";
+        String id = "PW3JTUPdcDk";
         try {
 
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + id));

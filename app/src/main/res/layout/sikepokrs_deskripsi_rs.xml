@@ -139,7 +139,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape3"
-                android:onClick="ke_maps"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:text="Dapatkan Lokasi"

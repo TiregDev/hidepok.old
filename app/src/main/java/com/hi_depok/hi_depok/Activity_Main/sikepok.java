@@ -96,7 +96,7 @@ public class sikepok extends BaseActivity implements View.OnClickListener{
         play.setOnClickListener(this);
     }
     public void gotToYoutube(View v){
-        String id = "TiregDev";
+        String id = "8KEjQxkxraM";
         try {
 
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + id));

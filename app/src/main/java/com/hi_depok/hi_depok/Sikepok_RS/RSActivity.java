@@ -43,8 +43,7 @@ public class RSActivity extends BaseActivity {
     }
 
     public void forum(View v) {
-        Intent intent = new Intent(RSActivity.this, forum.class);
-        startActivity(intent);
+        Toast.makeText(getBaseContext(), "Segera hadir setelah penyempurnaan aplikasi", Toast.LENGTH_LONG).show();
     }
 
 }

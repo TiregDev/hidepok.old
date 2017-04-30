@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.R;
@@ -84,11 +85,12 @@ public class DiagnosaAdapter extends RecyclerView.Adapter<DiagnosaAdapter.ViewHo
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, DiagnosaBagian.class);
-                    String pos = (String) itemView.getTag();
-                    Log.d("JSONAdapter", "get id: " + pos);
-
-                    context.startActivity(intent);
+//                    Intent intent = new Intent(context, DiagnosaBagian.class);
+//                    String pos = (String) itemView.getTag();
+//                    Log.d("JSONAdapter", "get id: " + pos);
+//
+//                    context.startActivity(intent);
+                    Toast.makeText(context, "Segera hadir setelah penyempurnaan aplikasi", Toast.LENGTH_LONG).show();
                 }
             });
 

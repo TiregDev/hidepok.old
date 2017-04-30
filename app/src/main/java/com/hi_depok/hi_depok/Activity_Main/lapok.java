@@ -149,7 +149,7 @@ public class lapok extends BaseActivity implements View.OnClickListener{
         startActivity(new Intent(lapok.this, lapok_ambil_kejadian.class));
     }
     public void gotToYoutube(View v){
-        String id = "TiregDev";
+        String id = "NXHQmRKD9lE";
         try {
 
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + id));
