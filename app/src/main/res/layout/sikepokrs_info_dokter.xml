@@ -31,38 +31,52 @@
                 android:orientation="vertical">
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
-                    app:font="@string/fontBold"
-                    android:textColor="@color/white"
+                    android:id="@+id/namaDokter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:gravity="center"
                     android:text="@string/namaDokter"
-                    android:textSize="28sp" />
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    app:font="@string/fontBold" />
 
                 <ImageView
-                    android:id="@+id/imageDesc"
+                    android:id="@+id/fotoDokter"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginBottom="10dp"
                     app:srcCompat="@drawable/image_placeholder" />
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
-                    app:font="@string/fontBold"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/article_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Deskripsi" />
+                    android:text="Deskripsi"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/article_desc"
+                    app:font="@string/fontBold" />
 
-                <RelativeLayout
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:id="@+id/descDokter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Deskripsi"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/article_desc" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
-                    android:weightSum="2">
+                    android:weightSum="7">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6">
                     <ImageView
                         android:id="@+id/icon_kontak1"
                         android:layout_width="30dp"
@@ -72,52 +86,187 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="10dp"
                         app:srcCompat="@drawable/icon_regis" />
+                    </LinearLayout>
 
                     <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontReguler"
-                        android:textColor="@color/white"
-                        android:id="@+id/kontak1"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/spesialisasiDokter"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center"
                         android:layout_marginStart="19dp"
                         android:layout_toEndOf="@+id/icon_kontak1"
-                        android:text="@string/spesialis" />
+                        android:text="@string/spesialis"
+                        android:textColor="@color/white"
+                        app:font="@string/fontReguler" />
 
-                </RelativeLayout>
+                </LinearLayout>
 
 
-                <RelativeLayout
-                    android:layout_marginTop="10dp"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal"
-                    android:weightSum="2">
+                    android:weightSum="7">
 
-                    <ImageView
-                        android:id="@+id/icon_desktop"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        app:srcCompat="@drawable/icon_clock" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6">
 
-                    <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontReguler"
-                        android:textColor="@color/white"
-                        android:layout_width="wrap_content"
+                        <ImageView
+                            android:id="@+id/icon_desktop"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            app:srcCompat="@drawable/icon_clock" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="19dp"
-                        android:layout_toEndOf="@+id/icon_desktop"
-                        android:text="@string/praktekDokter" />
+                        android:layout_weight="1"
+                        android:weightSum="4"
+                        android:orientation="horizontal">
 
-                </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:orientation="vertical">
+
+                            <fr.arnaudguyon.smartfontslib.FontTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="19dp"
+                                android:layout_toEndOf="@+id/icon_desktop"
+                                android:text="Senin"
+                                android:textColor="@color/white"
+                                app:font="@string/fontReguler" />
+                            <fr.arnaudguyon.smartfontslib.FontTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="19dp"
+                                android:layout_toEndOf="@+id/icon_desktop"
+                                android:text="Selasa"
+                                android:textColor="@color/white"
+                                app:font="@string/fontReguler" />
+                            <fr.arnaudguyon.smartfontslib.FontTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="19dp"
+                                android:layout_toEndOf="@+id/icon_desktop"
+                                android:text="Rabu"
+                                android:textColor="@color/white"
+                                app:font="@string/fontReguler" />
+                            <fr.arnaudguyon.smartfontslib.FontTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="19dp"
+                                android:layout_toEndOf="@+id/icon_desktop"
+                                android:text="Kamis"
+                                android:textColor="@color/white"
+                                app:font="@string/fontReguler" />
+                            <fr.arnaudguyon.smartfontslib.FontTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="19dp"
+                                android:layout_toEndOf="@+id/icon_desktop"
+                                android:text="Jumat"
+                                android:textColor="@color/white"
+                                app:font="@string/fontReguler" />
+                            <fr.arnaudguyon.smartfontslib.FontTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="19dp"
+                                android:layout_toEndOf="@+id/icon_desktop"
+                                android:text="Sabtu"
+                                android:textColor="@color/white"
+                                app:font="@string/fontReguler" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <fr.arnaudguyon.smartfontslib.FontTextView
+                                android:id="@+id/senin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="19dp"
+                                android:layout_toEndOf="@+id/icon_desktop"
+                                android:text="08.00 - 10.00"
+                                android:textColor="@color/white"
+                                app:font="@string/fontReguler" />
+                            <fr.arnaudguyon.smartfontslib.FontTextView
+                                android:id="@+id/selasa"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="19dp"
+                                android:layout_toEndOf="@+id/icon_desktop"
+                                android:text="08.00 - 10.00"
+                                android:textColor="@color/white"
+                                app:font="@string/fontReguler" />
+                            <fr.arnaudguyon.smartfontslib.FontTextView
+                                android:id="@+id/rabu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="19dp"
+                                android:layout_toEndOf="@+id/icon_desktop"
+                                android:text="08.00 - 10.00"
+                                android:textColor="@color/white"
+                                app:font="@string/fontReguler" />
+                            <fr.arnaudguyon.smartfontslib.FontTextView
+                                android:id="@+id/kamis"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="19dp"
+                                android:layout_toEndOf="@+id/icon_desktop"
+                                android:text="08.00 - 10.00"
+                                android:textColor="@color/white"
+                                app:font="@string/fontReguler" />
+                            <fr.arnaudguyon.smartfontslib.FontTextView
+                                android:id="@+id/jumat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="19dp"
+                                android:layout_toEndOf="@+id/icon_desktop"
+                                android:text="08.00 - 10.00"
+                                android:textColor="@color/white"
+                                app:font="@string/fontReguler" />
+                            <fr.arnaudguyon.smartfontslib.FontTextView
+                                android:id="@+id/sabtu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="19dp"
+                                android:layout_toEndOf="@+id/icon_desktop"
+                                android:text="08.00 - 10.00"
+                                android:textColor="@color/white"
+                                app:font="@string/fontReguler" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
 
 
             </LinearLayout>

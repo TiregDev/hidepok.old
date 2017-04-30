@@ -49,21 +49,21 @@
                             android:orientation="vertical">
 
                             <fr.arnaudguyon.smartfontslib.FontTextView
-                                app:font="@string/fontBold"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/article_desc"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
-                                android:text="@string/judul_post" />
+                                android:text="@string/judul_post"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/article_desc"
+                                app:font="@string/fontBold" />
 
                             <fr.arnaudguyon.smartfontslib.FontTextView
-                                app:font="@string/fontReguler"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
                                 android:text="@string/isi_post"
-                                android:textColor="#fff" />
+                                android:textColor="#fff"
+                                app:font="@string/fontReguler" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -77,14 +77,14 @@
                                     android:gravity="center_vertical|start">
 
                                     <fr.arnaudguyon.smartfontslib.FontButton
-                                        app:font="@string/fontBold"
                                         android:layout_width="70dp"
                                         android:layout_height="30dp"
                                         android:background="@drawable/shape3"
                                         android:gravity="center"
                                         android:text="Hapus"
                                         android:textAllCaps="false"
-                                        android:textColor="@color/white" />
+                                        android:textColor="@color/white"
+                                        app:font="@string/fontBold" />
                                 </RelativeLayout>
 
                                 <LinearLayout
@@ -102,13 +102,13 @@
                                     android:orientation="horizontal">
 
                                     <fr.arnaudguyon.smartfontslib.FontTextView
-                                        app:font="@string/fontReguler"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1"
                                         android:gravity="center_vertical|end"
                                         android:text="@string/like"
-                                        android:textColor="#fff" />
+                                        android:textColor="#fff"
+                                        app:font="@string/fontReguler" />
 
                                     <RelativeLayout
                                         android:layout_width="match_parent"
@@ -133,13 +133,13 @@
                                     android:orientation="horizontal">
 
                                     <fr.arnaudguyon.smartfontslib.FontTextView
-                                        app:font="@string/fontReguler"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1"
                                         android:gravity="center_vertical|end"
                                         android:text="@string/komen"
-                                        android:textColor="#fff" />
+                                        android:textColor="#fff"
+                                        app:font="@string/fontReguler" />
 
 
                                     <RelativeLayout
@@ -164,279 +164,18 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:weightSum="6">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="5"
-                            android:padding="5dp">
-
-
-                            <ImageView
-                                android:layout_width="0dp"
-                                android:layout_height="40dp"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                app:srcCompat="@drawable/icon_respond" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@drawable/shape5"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <LinearLayout
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/recyclerviewpost"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <fr.arnaudguyon.smartfontslib.FontTextView
-                                    app:font="@string/fontReguler"
-                                    android:layout_width="35dp"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="Dari:"
-                                    android:textColor="@color/white" />
-
-                                <fr.arnaudguyon.smartfontslib.FontTextView
-                                    app:font="@string/fontBold"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/article_desc"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5dp"
-                                    android:layout_marginStart="10dp"
-                                    android:text="@string/komentator" />
-                            </LinearLayout>
-
-                            <fr.arnaudguyon.smartfontslib.FontTextView
-                                app:font="@string/fontReguler"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:text="@string/isi_post"
-                                android:textColor="#fff" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:weightSum="4">
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|left">
-
-                                    <fr.arnaudguyon.smartfontslib.FontButton
-                                        app:font="@string/fontBold"
-                                        android:layout_width="70dp"
-                                        android:layout_height="30dp"
-                                        android:background="@drawable/shape3"
-                                        android:gravity="center"
-                                        android:text="Hapus"
-                                        android:textAllCaps="false"
-                                        android:textColor="@color/white" />
-                                </RelativeLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal">
-
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal">
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal">
-
-                                    <fr.arnaudguyon.smartfontslib.FontTextView
-                                        app:font="@string/fontReguler"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="1"
-                                        android:gravity="center_vertical|end"
-                                        android:text="@string/like"
-                                        android:textColor="#fff" />
-
-                                    <RelativeLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="1"
-                                        android:gravity="center_vertical|left">
-
-                                        <ImageView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="1"
-                                            android:padding="5dp"
-                                            app:srcCompat="@drawable/icon_thump_up" />
-                                    </RelativeLayout>
-                                </LinearLayout>
-
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:weightSum="6">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="5"
-                            android:padding="5dp">
-
-
-                            <ImageView
-                                android:layout_width="0dp"
-                                android:layout_height="40dp"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                app:srcCompat="@drawable/icon_respond" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@drawable/shape5"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <fr.arnaudguyon.smartfontslib.FontTextView
-                                    app:font="@string/fontReguler"
-                                    android:layout_width="35dp"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="Dari:"
-                                    android:textColor="@color/white" />
-
-                                <fr.arnaudguyon.smartfontslib.FontTextView
-                                    app:font="@string/fontBold"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/article_desc"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5dp"
-                                    android:layout_marginStart="10dp"
-                                    android:text="@string/komentator" />
-                            </LinearLayout>
-
-                            <fr.arnaudguyon.smartfontslib.FontTextView
-                                app:font="@string/fontReguler"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:text="@string/isi_post"
-                                android:textColor="#fff" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:weightSum="4">
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|left">
-
-                                    <fr.arnaudguyon.smartfontslib.FontButton
-                                        app:font="@string/fontBold"
-                                        android:layout_width="70dp"
-                                        android:layout_height="30dp"
-                                        android:background="@drawable/shape3"
-                                        android:gravity="center"
-                                        android:text="Hapus"
-                                        android:textAllCaps="false"
-                                        android:textColor="@color/white" />
-                                </RelativeLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal">
-
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal">
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal">
-
-                                    <fr.arnaudguyon.smartfontslib.FontTextView
-                                        app:font="@string/fontReguler"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="1"
-                                        android:gravity="center_vertical|end"
-                                        android:text="@string/like"
-                                        android:textColor="#fff" />
-
-                                    <RelativeLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="1"
-                                        android:gravity="center_vertical|left">
-
-                                        <ImageView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="1"
-                                            android:padding="5dp"
-                                            app:srcCompat="@drawable/icon_thump_up" />
-                                    </RelativeLayout>
-                                </LinearLayout>
-
-
-                            </LinearLayout>
+                                android:layout_height="match_parent" />
 
                         </LinearLayout>
                     </LinearLayout>
@@ -448,15 +187,6 @@
                         android:layout_weight="1"
                         android:orientation="horizontal"
                         android:weightSum="6">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="5"
-                            android:padding="5dp">
-
-
-                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -479,13 +209,14 @@
                                     android:orientation="horizontal">
 
                                     <fr.arnaudguyon.smartfontslib.FontEditText
-                                        app:font="@string/fontReguler"
+                                        android:id="@+id/tulis_komentar"
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
+                                        android:layout_height="wrap_content"
                                         android:hint="Tulis komentar ..."
+                                        android:inputType="textMultiLine"
+                                        android:textColor="@color/white"
                                         android:textColorHint="@color/abuAbu"
-                                        android:textColor="@color/white" />
-
+                                        app:font="@string/fontReguler" />
                                 </LinearLayout>
 
                                 <RelativeLayout
@@ -494,21 +225,18 @@
                                     android:gravity="center_vertical|right">
 
                                     <fr.arnaudguyon.smartfontslib.FontButton
-                                        app:font="@string/fontBold"
                                         android:layout_width="70dp"
                                         android:layout_height="30dp"
                                         android:background="@drawable/shape3"
                                         android:gravity="center"
                                         android:text="Kirim"
                                         android:textAllCaps="false"
-                                        android:textColor="@color/white" />
+                                        android:textColor="@color/white"
+                                        app:font="@string/fontBold" />
                                 </RelativeLayout>
 
                             </LinearLayout>
-
                         </LinearLayout>
-
-
                     </LinearLayout>
 
 

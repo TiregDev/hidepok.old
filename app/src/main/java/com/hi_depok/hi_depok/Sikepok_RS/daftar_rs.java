@@ -1,5 +1,6 @@
 package com.hi_depok.hi_depok.Sikepok_RS;
 
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -27,11 +28,46 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class daftar_rs extends BaseActivity {
     private SearchView searchView;
+
+    public static final String PATOKAN = "patokan";
+    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_menurs_json.php";
+    String JSON_ID = "id_rs";
+    String JSON_ALAMAT = "alamat_rs";
+    String JSON_NAME = "nama_rs";
+    String JSON_DESKRIPSI = "deskripsi_rs";
+    String JSON_NOTLP = "no_telp_rs";
+    String JSON_FOTO = "foto_rs";
+    String JSON_KECAMATAN = "kecamatan_rs";
+    String JSON_LAT = "koordinat_latitude_rs";
+    String JSON_LONG ="koordinat_longitude_rs";
+    String JSON_WEB ="website_rs";
+    String JSON_EMAIL = "email_rs";
+    String JSON_ID_PARTNER = "id_partner";
+
+    JsonArrayRequest jsonArrayRequest ;
+    List<GetDataAdapter> dataAdapter;
+    RequestQueue requestQueue ;
+    RecyclerView.Adapter recyclerViewadapter;
+    RecyclerView rView;
+    ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,18 +81,17 @@ public class daftar_rs extends BaseActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar3));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyView);
-        rs_terdekat.ContentAdapter adapter = new rs_terdekat.ContentAdapter(recyclerView.getContext());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-//        RecyclerView recyclerView = (RecyclerView) inflater.inflate(
-//                R.layout.recycler_view, container, false);
-//        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
-//        recyclerView.setAdapter(adapter);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rView = (RecyclerView) findViewById(R.id.recyclerview);
+
+        rView.setLayoutManager(new LinearLayoutManager(this));
+
+        dataAdapter = new ArrayList<>();
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Loading");
+        dialog.show();
+        dialog.setCancelable(true);
+        JSON_DATA_WEB_CALL();
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -117,83 +152,69 @@ public class daftar_rs extends BaseActivity {
         }
         return super.onCreateOptionsMenu(menu);
     }
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView gambarRS;
-        public TextView namaRS;
-        public TextView alamat;
-        public TextView jarak1;
 
-        public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.sikepokrs_fragment_daftar_rs, parent, false));
-            gambarRS = (ImageView) itemView.findViewById(R.id.gambarRS);
-            namaRS = (TextView) itemView.findViewById(R.id.namaRS);
-            alamat = (TextView) itemView.findViewById(R.id.alamatRS);
-            jarak1 = (TextView) itemView.findViewById(R.id.jarak1);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    Context context = v.getContext();
-//                    Intent intent = new Intent(context, DetailActivity.class);
-//                    intent.putExtra(DetailActivity.EXTRA_POSITION, getAdapterPosition());
-//                    context.startActivity(intent);
-                }
-            });
-        }
+    //recycler
+    public void JSON_DATA_WEB_CALL(){
+        jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_URL,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        dialog.dismiss();
+                        JSON_PARSE_DATA_AFTER_WEBCALL(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
     }
 
-    /**
-     * Adapter to display recycler view.
-     */
-    public static class ContentAdapter extends RecyclerView.Adapter<rs_terdekat.ViewHolder> {
-        // Set numbers of List in RecyclerView.
-        private static final int LENGTH = 18;
+    public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array){
+        for(int i = 0; i<array.length(); i++) {
+            GetDataAdapter dataFromJSON = new GetDataAdapter();;
+            JSONObject json = null;
+            try {
+                json = array.getJSONObject(i);
+                dataFromJSON = new GetDataAdapter();
 
-        private final String[] ALAMATRS;
-        private final String[] JARAKRS;
-        private final String[] NAMARS;
-        private final Drawable[] FOTORS;
+                dataFromJSON.setName(json.getString(JSON_NAME));
+                dataFromJSON.setDeskripsi(json.getString(JSON_DESKRIPSI));
+                dataFromJSON.setNoTelp(json.getString(JSON_NOTLP));
+                dataFromJSON.setAlamat(json.getString(JSON_ALAMAT));
+                dataFromJSON.setFoto(json.getString(JSON_FOTO));
+                dataFromJSON.setId(json.getString(JSON_ID));
+                dataFromJSON.setKecamatan(json.getString(JSON_KECAMATAN));
+                dataFromJSON.setKordinatLat(json.getString(JSON_LAT));
+                dataFromJSON.setKordinatLong(json.getString(JSON_LONG));
+                dataFromJSON.setWebsite(json.getString(JSON_WEB));
+                dataFromJSON.setEmail(json.getString(JSON_EMAIL));
+                dataFromJSON.setId_partner(json.getString(JSON_ID_PARTNER));
 
-        public ContentAdapter(Context context) {
-            Resources resources = context.getResources();
-            NAMARS = resources.getStringArray(R.array.NAMARS);
-            ALAMATRS = resources.getStringArray(R.array.ALAMATRS);
-            JARAKRS = resources.getStringArray(R.array.JARAKRS);
-            TypedArray a = resources.obtainTypedArray(R.array.FOTORS);
-            FOTORS = new Drawable[a.length()];
-            for (int i = 0; i < FOTORS.length; i++) {
-                FOTORS[i] = a.getDrawable(i);
+            } catch (JSONException e) {
+
+                e.printStackTrace();
             }
-            a.recycle();
-        }
-        @Override
-        public rs_terdekat.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new rs_terdekat.ViewHolder(LayoutInflater.from(parent.getContext()), parent);
+            dataAdapter.add(dataFromJSON);
         }
 
-        @Override
-        public void onBindViewHolder(rs_terdekat.ViewHolder holder, int position) {
-            holder.gambarRS.setImageDrawable(FOTORS[position % FOTORS.length]);
-            holder.namaRS.setText(NAMARS[position % NAMARS.length]);
-            holder.alamat.setText(ALAMATRS[position % ALAMATRS.length]);
-            holder.jarak1.setText(JARAKRS[position % JARAKRS.length]);
-        }
-
-        @Override
-        public int getItemCount() {
-            return LENGTH;
-        }
+        recyclerViewadapter = new RecyclerViewAdapterJSON(dataAdapter, this);
+        rView.setAdapter(recyclerViewadapter);
     }
 
 
-
-    public void ke_daftar_rs(View view){
-        Intent next = new Intent(daftar_rs.this, daftar_rs.class);
-        startActivity(next);
-    }
-
-    public void ke_menu_rs(View view){
-        Intent next = new Intent(daftar_rs.this, menu_rs.class);
-        startActivity(next);
-    }
+//    public void ke_daftar_rs(View view){
+//        Intent next = new Intent(daftar_rs.this, daftar_rs.class);
+//        startActivity(next);
+//    }
+//
+//    public void ke_menu_rs(View view){
+//        Intent next = new Intent(daftar_rs.this, menu_rs.class);
+//        startActivity(next);
+//    }
 
 }
