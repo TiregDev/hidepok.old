@@ -27,6 +27,7 @@ public class regis_pasien_baru extends BaseActivity {
     private Button kirim;
     private EditText nama, nik, tgl, alamat;
     private Spinner jk;
+    String jenis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +70,12 @@ public class regis_pasien_baru extends BaseActivity {
         String number="085776410906";
         String part1 = nama.getText().toString().toUpperCase();
         String part2 = nik.getText().toString().toUpperCase();
-        String part3 = jk.getSelectedItem().toString().toUpperCase();
+        if (jk.getSelectedItem().toString().toUpperCase().equals("LAKI-LAKI")){
+            jenis = "L";
+        } else if (jk.getSelectedItem().toString().toUpperCase().equals("PEREMPUAN")){
+            jenis = "P";
+        }
+        String part3 = jenis;
         String part4 = tgl.getText().toString().toUpperCase();
         String part5 = alamat.getText().toString().toUpperCase();
 

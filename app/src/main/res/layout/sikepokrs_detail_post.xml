@@ -48,16 +48,45 @@
                             android:layout_height="match_parent"
                             android:orientation="vertical">
 
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="9"
+                                    android:src="@drawable/ic_action_person4"/>
+
+                                <fr.arnaudguyon.smartfontslib.FontTextView
+                                    android:id="@+id/pengirim_post"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:layout_marginBottom="5dp"
+                                    android:paddingTop="4dp"
+                                    android:gravity="center_vertical"
+                                    android:text="Hadi Nur Salam"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/article_desc"
+                                    app:font="@string/fontBold" />
+                            </LinearLayout>
+
                             <fr.arnaudguyon.smartfontslib.FontTextView
+                                android:id="@+id/judul_post"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
+                                android:gravity="center"
                                 android:text="@string/judul_post"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/article_desc"
                                 app:font="@string/fontBold" />
 
                             <fr.arnaudguyon.smartfontslib.FontTextView
+                                android:id="@+id/isi_post"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"

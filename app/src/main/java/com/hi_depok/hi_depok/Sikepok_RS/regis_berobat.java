@@ -22,6 +22,7 @@ import com.hi_depok.hi_depok.R;
 public class regis_berobat extends BaseActivity {
     private Spinner poli, dokter;
     private Button kirim;
+    String pilihan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class regis_berobat extends BaseActivity {
 
         //Pengiriman SMS
         poli = (Spinner) findViewById(R.id.pilih_poli);
-        dokter = (Spinner) findViewById(R.id.pilih_dokter);
+//        dokter = (Spinner) findViewById(R.id.pilih_dokter);
 
         kirim = (Button) findViewById(R.id.kirim);
         kirim.setOnClickListener(new View.OnClickListener() {
@@ -56,10 +57,50 @@ public class regis_berobat extends BaseActivity {
     {
         String number="085776410906";
 
-        String part1 = poli.getSelectedItem().toString().toUpperCase();
-        String part2 = dokter.getSelectedItem().toString().toUpperCase();
+        if (poli.getSelectedItem().toString().equals("Poli Penyakit Dalam - Dr. Kahar")){
+            pilihan = "DAL-KAHAR";
+        } else if (poli.getSelectedItem().toString().equals("Poli Penyakit Dalam - Dr. Desi")){
+            pilihan = "DAL-DESI";
+        } else if (poli.getSelectedItem().toString().equals("Poli Anak - Dr. Dipari")){
+            pilihan = "ANA-DIPARI";
+        } else if (poli.getSelectedItem().toString().equals("Poli Anak - Dr. Harry")){
+            pilihan = "ANA-HARRY";
+        } else if (poli.getSelectedItem().toString().equals("Poli Anak - Dr. Indra")){
+            pilihan = "ANA-INDRA";
+        } else if (poli.getSelectedItem().toString().equals("Poli Anak - Dr. Siswanto")){
+            pilihan = "ANA-SISWANTO";
+        } else if (poli.getSelectedItem().toString().equals("Poli Psikiatri - Dr. Diana")){
+            pilihan = "PSI-DIANA";
+        } else if (poli.getSelectedItem().toString().equals("Poli Saraf/Neurologi - Dr. Agus")){
+            pilihan = "SAR-AGUS";
+        } else if (poli.getSelectedItem().toString().equals("Poli Mata - Dr. Lieska")){
+            pilihan = "MAT-LIESKA";
+        } else if (poli.getSelectedItem().toString().equals("Poli Paru - Dr. Sherly")){
+            pilihan = "PAR-SHERLY";
+        } else if (poli.getSelectedItem().toString().equals("Poli Anestesi - Dr. Amelia")){
+            pilihan = "ANE-UJANG";
+        } else if (poli.getSelectedItem().toString().equals("Poli Bedah - Dr. Abu")){
+            pilihan = "BED-ABU";
+        } else if (poli.getSelectedItem().toString().equals("Poli Bedah - Dr. Henru")){
+            pilihan = "BED-HENRU";
+        } else if (poli.getSelectedItem().toString().equals("Poli Kebidanan dan Kandungan - Dr. Bagus")){
+            pilihan = "KAN-BAGUS";
+        } else if (poli.getSelectedItem().toString().equals("Poli Kebidanan dan Kandungan - Dr. Patma")){
+            pilihan = "KAN-PATMA";
+        } else if (poli.getSelectedItem().toString().equals("Poli THT - Dr. Caroline")){
+            pilihan = "THT-CAROLINE";
+        } else if (poli.getSelectedItem().toString().equals("Poli Gigi dan Bedah Mulu - Dr. Sigit")){
+            pilihan = "GIG-SIGIT";
+        } else if (poli.getSelectedItem().toString().equals("Poli Gigi dan Bedah Mulu - Dr. Darma")){
+            pilihan = "GIG-DARMA";
+        } else if (poli.getSelectedItem().toString().equals("Poli CST - Dr. Kurnia")){
+            pilihan = "CST-KURNIA";
+        } else if (poli.getSelectedItem().toString().equals("Poli VCT - Dr. Kurnia")){
+            pilihan = "VCT-KURNIA";
+        }
+        String part1 = pilihan;
 
-        String message = "DAFPAS#" + part1 + "-" + part2;
+        String message = "DAFPAS#" + part1;
         try {
             SmsManager manager = SmsManager.getDefault();
             manager.sendTextMessage(number, null, message,null,null);

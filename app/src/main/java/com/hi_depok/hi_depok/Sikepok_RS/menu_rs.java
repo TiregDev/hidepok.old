@@ -63,8 +63,6 @@ public class menu_rs extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-
         //shared preferences test
         final SharedPreferences prefsa = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         idRs = prefsa.getString("id_rs","No data found");

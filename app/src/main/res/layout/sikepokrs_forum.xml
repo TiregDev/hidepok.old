@@ -148,8 +148,8 @@
                         app:font="@string/fontBold"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:background="@drawable/shape3"
                         android:onClick="ke_post_terbaru"
+                        android:background="@drawable/shape3"
                         android:text="Lihat Yang Lain"
                         android:textAllCaps="false"
                         android:textColor="@color/white" />
@@ -199,8 +199,8 @@
                         android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:background="@drawable/shape3"
                         android:onClick="ke_post_saya"
+                        android:background="@drawable/shape3"
                         android:text="Lihat Yang Lain"
                         android:textAllCaps="false" />
 

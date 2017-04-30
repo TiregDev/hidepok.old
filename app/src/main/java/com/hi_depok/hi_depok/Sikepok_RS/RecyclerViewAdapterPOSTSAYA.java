@@ -107,11 +107,11 @@ public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerVi
                 public void onClick(View v) {
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
                     SharedPreferences.Editor editor=sharedPreferences.edit();
-                    editor.putString("id_rs",itemView.getTag().toString());
+                    editor.putString("id_post_saya",itemView.getTag().toString());
                     editor.commit();
 
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, detail_post.class);
+                    Intent intent = new Intent(context, detail_post_saya.class);
                     context.startActivity(intent);
                 }
             });

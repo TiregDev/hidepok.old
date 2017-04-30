@@ -138,11 +138,6 @@ public class post_saya extends BaseActivity {
     }
 
 
-    //intent
-    public void ke_detail_post_saya (View view){
-        Intent next = new Intent(post_saya.this, detail_post_saya.class);
-        startActivity(next);
-    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

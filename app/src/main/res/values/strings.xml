@@ -114,25 +114,112 @@
     <string name="jamBuka">09.00 - 21.00 WIB</string>
 
     <string-array name="jenis_kelamin">
-        <item name="">- Pilih jenis kelamin L/P -</item>
-        <item name="L">L</item>
-        <item name="P">P</item>
+        <item name="">- Pilih jenis kelamin-</item>
+        <item name="L">Laki-laki</item>
+        <item name="P">Perempuan</item>
     </string-array>
 
     <string-array name="poli">
         <item name="">-Pilih Poli-</item>
-        <item name="THT">Poli THT</item>
-        <item name="Bedah">Poli Bedah</item>
-        <item name="Saraf">Poli Saraf</item>
+        <item name="DAL-KAHAR">Poli Penyakit Dalam - Dr. Kahar</item>
+        <item name="DAL-DESI">Poli Penyakit Dalam - Dr. Desi</item>
+        <item name="ANA-DIPARI">Poli Anak - Dr. Dipari</item>
+        <item name="ANA-HARRY">Poli Anak - Dr. Harry</item>
+        <item name="ANA-INDRA">Poli Anak - Dr. Indra</item>
+        <item name="ANA-SISWANTO">Poli Anak - Dr. Siswanto</item>
+        <item name="PSI-DIANA">Poli Psikiatri - Dr. Diana</item>
+        <item name="SAR-AGUS">Poli Saraf/Neurologi - Dr. Agus</item>
+        <item name="MAT-LIESKA">Poli Mata - Dr. Lieska</item>
+        <item name="PAR-SHERLY">Poli Paru - Dr. Sherly</item>
+        <item name="ANE-AMELIA">Poli Anestesi - Dr. Amelia</item>
+        <item name="ANE-UJANG">Poli Anestesi - Dr. Ujang</item>
+        <item name="BED-ABU">Poli Bedah - Dr. Abu</item>
+        <item name="BED-HENRU">Poli Bedah - Dr. Henru</item>
+        <item name="KAN-BAGUS">Poli Kebidanan dan Kandungan - Dr. Bagus</item>
+        <item name="KAN-PATMA">Poli Kebidanan dan Kandungan - Dr. Patma</item>
+        <item name="THT-CAROLINE">Poli THT - Dr. Caroline</item>
+        <item name="GIG-SIGIT">Poli Gigi dan Bedah Mulu - Dr. Sigit</item>
+        <item name="GIG-DARMA">Poli Gigi dan Bedah Mulu - Dr. Darma</item>
+        <item name="CST-KURNIA">Poli CST - Dr. Kurnia</item>
+        <item name="VCT-KURNIA">Poli VCT - Dr. Kurnia</item>
     </string-array>
 
-    <string-array name="dokter">
+    <string-array name="dokterDAL">
         <item name="">-Pilih Dokter-</item>
-        <item name="hadi">Dr. Hadi</item>
-        <item name="kahar">Dr. Kahar</item>
-        <item name="agus">Dr. Agus</item>
-        <item name="diana">Dr. Diana</item>
-        <item name="desi">Dr. Desi</item>
+        <item name="KAHAR">Dr. Kahar</item>
+        <item name="DESI">Dr. Desi</item>
+    </string-array>
+
+    <string-array name="dokterANA">
+        <item name="">-Pilih Dokter-</item>
+        <item name="DIAPARI">Dr. Diapari</item>
+        <item name="HARRY">Dr. Harry</item>
+        <item name="INDRA">Dr. Indra</item>
+        <item name="SISWANTO">Dr. Siswanto</item>
+    </string-array>
+
+    <string-array name="dokterPSI">
+        <item name="">-Pilih Dokter-</item>
+        <item name="DIANA">Dr. Diana</item>
+    </string-array>
+
+    <string-array name="dokterSAR">
+        <item name="">-Pilih Dokter-</item>
+        <item name="AGUS">Dr. Agus</item>
+    </string-array>
+
+    <string-array name="dokterKUL">
+        <item name="">-Pilih Dokter-</item>
+        <item name="MUNIRA">Dr. Munira</item>
+    </string-array>
+
+    <string-array name="dokterMAT">
+        <item name="">-Pilih Dokter-</item>
+        <item name="LIESKA">Dr. Lieska</item>
+    </string-array>
+
+    <string-array name="dokterPAR">
+        <item name="">-Pilih Dokter-</item>
+        <item name="SHERLY">Dr. Sherly</item>
+    </string-array>
+
+    <string-array name="dokterANE">
+        <item name="">-Pilih Dokter-</item>
+        <item name="AMELIA">Dr. Amelia</item>
+        <item name="AMELIA">Dr. Ujang</item>
+    </string-array>
+
+    <string-array name="dokterBED">
+        <item name="">-Pilih Dokter-</item>
+        <item name="ABU">Dr. Abu</item>
+        <item name="HENRU">Dr. Henru</item>
+    </string-array>
+
+    <string-array name="dokterKAN">
+        <item name="">-Pilih Dokter-</item>
+        <item name="BAGUS">Dr. Bagus</item>
+        <item name="PATMA">Dr. Patma</item>
+    </string-array>
+
+    <string-array name="dokterTHT">
+        <item name="">-Pilih Dokter-</item>
+        <item name="CAROLINE">Dr. Caroline</item>
+    </string-array>
+
+    <string-array name="dokterGIG">
+        <item name="">-Pilih Dokter-</item>
+        <item name="SIGIT">Dr. Sigit</item>
+        <item name="DARMA">Dr. Darma</item>
+    </string-array>
+
+    <string-array name="dokterCST">
+        <item name="">-Pilih Dokter-</item>
+        <item name="KURNIA">Dr. Kurnia</item>
+    </string-array>
+
+    <string-array name="dokterVCT">
+        <item name="">-Pilih Dokter-</item>
+        <item name="KURNIA">Dr. Kurnia</item>
     </string-array>
 
     <string name="ketentuan1">Registrasi dapat dilakukan setiap saat dan hanya 1 kali (1 No.HP berlaku untuk 1 pasien) </string>

@@ -54,7 +54,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:layout_weight="1"
-                        android:text="Pilih Poli"
+                        android:text="Pilih Poli dan Dokter"
                         android:textColor="#b7b7b7"
                         android:textSize="12sp" />
 
@@ -68,32 +68,7 @@
                         android:spinnerMode="dropdown"/>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:weightSum="2">
 
-                    <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontReguler"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:layout_weight="1"
-                        android:text="Nama Dokter"
-                        android:textColor="#b7b7b7"
-                        android:textSize="12sp" />
-
-                    <Spinner
-                        android:id="@+id/pilih_dokter"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_weight="1"
-                        android:entries="@array/dokter"
-                        android:spinnerMode="dropdown" />
-                </LinearLayout>
 
                 <fr.arnaudguyon.smartfontslib.FontButton
                     app:font="@string/fontBold"

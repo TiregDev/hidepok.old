@@ -55,6 +55,7 @@ public class forum extends BaseActivity {
     String JSON_NO_IDENTITAS_POST = "no_identitas_post";
     String JSON_STATUS_POST = "status_post";
     String JSON_RATING_POST = "rating_post";
+    String JSON_NAMA_USER = "nama_user";
 
     JsonArrayRequest jsonArrayRequest ;
     List<GetDataAdapter> dataAdapter;
@@ -140,6 +141,7 @@ public class forum extends BaseActivity {
                 dataFromJSON.setNo_identitas_post(json.getString(JSON_NO_IDENTITAS_POST));
                 dataFromJSON.setStatus_post(json.getString(JSON_STATUS_POST));
                 dataFromJSON.setRating_post(json.getString(JSON_RATING_POST));
+                dataFromJSON.setNama_user(json.getString(JSON_NAMA_USER));
 
             } catch (JSONException e) {
 
@@ -194,6 +196,7 @@ public class forum extends BaseActivity {
                 dataFromJSON.setNo_identitas_post(json.getString(JSON_NO_IDENTITAS_POST));
                 dataFromJSON.setStatus_post(json.getString(JSON_STATUS_POST));
                 dataFromJSON.setRating_post(json.getString(JSON_RATING_POST));
+                dataFromJSON.setNama_user(json.getString(JSON_NAMA_USER));
 
             } catch (JSONException e) {
 

@@ -40,6 +40,7 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
     String rating_post;
     String id_user;
     String id_modul;
+    String nama_user;
     String urlPhoto;
 
     public RecyclerViewAdapterPOST(List<GetDataAdapter> adapter, Context context){
@@ -79,9 +80,12 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
         id_modul = adapter.get(position).getId_modul();
         foto_post = adapter.get(position).getFoto_post();
 
+        nama_user = adapter.get(position).getNama_user();
+
 
         holder.judulPost.setText(judul_post);
         holder.isiPost.setText(isi_post);
+        holder.namaUser.setText(nama_user);
         holder.itemView.setTag(id_post);
 
     }
@@ -96,6 +100,7 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
 
         public TextView judulPost;
         public TextView isiPost;
+        public TextView namaUser;
 
         public ViewHolder(final View itemView) {
 
@@ -103,12 +108,13 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
 
             judulPost = (TextView)itemView.findViewById(R.id.judul_post);
             isiPost = (TextView)itemView.findViewById(R.id.isi_post);
+            namaUser = (TextView)itemView.findViewById(R.id.pengirim_post);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
                     SharedPreferences.Editor editor=sharedPreferences.edit();
-                    editor.putString("id_rs",itemView.getTag().toString());
+                    editor.putString("id_post",itemView.getTag().toString());
                     editor.commit();
 
                     Context context = v.getContext();

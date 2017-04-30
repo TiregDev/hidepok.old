@@ -397,4 +397,14 @@ public class GetDataAdapter {
     public void setDeskripsi_fasilitas(String deskripsi_fasilitas) {
         this.deskripsi_fasilitas = deskripsi_fasilitas;
     }
+
+    //adapter table user
+    String nama_user;
+
+    public String getNama_user() {
+        return nama_user;
+    }
+    public void setNama_user(String nama_user) {
+        this.nama_user = nama_user;
+    }
 }
