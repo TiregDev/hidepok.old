@@ -45,6 +45,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -54,7 +55,7 @@ import java.util.Map;
 
 public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
-    TextView nameTxt, timeTxt, title, jml_like, jml_com, jml_share;
+    TextView nameTxt, timeTxt, title, jml_like, jml_com;
     ImageView img, kej, likeimg, comimg, shaimg, btnKirim;
     EditText etKomentar;
     EditText comment;
@@ -98,8 +99,8 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
                        @Override
                        public void run() {
                            swipe.setRefreshing(true);
-                           mList.clear();
-                           adapter.notifyDataSetChanged();
+                           /*mList.clear();
+                           adapter.notifyDataSetChanged();*/
                            callVolley(id_post);
                        }
                    }
@@ -156,7 +157,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 String shareBody = "Yuk memberi dampak perubahan positif" +
-                        "untuk kota Depok ;) ";
+                        " untuk kota Depok ;) ";
                 sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "");
                 sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
                 view.getContext().startActivity(Intent.createChooser(sharingIntent, "Share via"));
@@ -189,33 +190,46 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
     }
 
     private void callVolley(final String id_post_detail) {
-        mList.clear();
-        adapter.notifyDataSetChanged();
+        /*mList.clear();
+        adapter.notifyDataSetChanged();*/
         swipe.setRefreshing(true);
         StringRequest requestDetail = new StringRequest(Request.Method.POST, detail_url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
+                            JSONArray jsonArray_detail = new JSONArray(response);
+                            JSONObject objDetail = jsonArray_detail.getJSONObject(0);
+
                             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                             DateFormat df1 = new SimpleDateFormat("HH:mm:ss");
                             Date startDate, startTime;
-                            String avatar, kejadian;
-                            JSONArray jsonArray_detail = new JSONArray(response);
-                            JSONObject objDetail = jsonArray_detail.getJSONObject(0);
+                            String avatar, kejadian, waktu, tanggal;
+
+                            tanggal = objDetail.getString("tanggal");
+                            waktu = objDetail.getString("waktu");
+                            avatar = "http://hidepok.id/assets/images/photos/avatar/" + objDetail.getString("avatar");
+                            kejadian = "http://hidepok.id/assets/images/photos/lapok/" + objDetail.getString("kejadian");
+
+                            try {
+                                startDate = df.parse(tanggal);
+                                startTime = df1.parse(waktu);
+                                SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("d MMM yyyy");
+                                String newDateString = mSimpleDateFormat.format(startDate);
+                                String newTimeString = df1.format(startTime);
+                                String waktu_kejadian = newDateString + ", pada pukul " + newTimeString + " WIB";
+                                timeTxt.setText(waktu_kejadian);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
                             nameTxt.setText(objDetail.getString("nama_user"));
-                            timeTxt.setText(objDetail.getString("nama_user"));
-                            jml_like.setText(objDetail.getString("nama_user"));
-                            jml_com.setText(objDetail.getString("nama_user"));
-                            jml_share.setText(objDetail.getString("nama_user"));
-                            nameTxt.setText(objDetail.getString("nama_user"));
+                            jml_like.setText(objDetail.getString("suka"));
+                            jml_com.setText(objDetail.getString("komentar"));
+                            title.setText(objDetail.getString("isi"));
 
                             likeimg.setImageResource(R.drawable.like);
                             shaimg.setImageResource(R.drawable.share);
                             comimg.setImageResource(R.drawable.comment);
-
-                            avatar = "http://hidepok.id/assets/images/photos/avatar/" + objDetail.getString("avatar");
-                            kejadian = "http://hidepok.id/assets/images/photos/lapok/" + objDetail.getString("kejadian");
 
                             Glide.with(DetailActivity.this).load(kejadian).thumbnail(0.3f)
                                     .placeholder(R.drawable.image_placeholder).into(kej);
@@ -311,6 +325,18 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
         session = new SessionManager(DetailActivity.this);
         HashMap<String, String> post_detail = session.getIdPost();
         final String id_post = post_detail.get(SessionManager.KEY_ID_POST);
+        kosong_detai();
         callVolley(id_post);
+    }
+
+    private void kosong_detai() {
+        nameTxt.setText("");
+        timeTxt.setText("");
+        title.setText("");
+        kej.setImageResource(R.drawable.image_placeholder);
+        img.setImageResource(R.drawable.image_placeholder);
+        likeimg.setImageResource(R.drawable.like);
+        comimg.setImageResource(R.drawable.comment);
+        shaimg.setImageResource(R.drawable.share);
     }
 }

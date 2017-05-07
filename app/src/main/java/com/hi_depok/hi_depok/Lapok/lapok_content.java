@@ -89,6 +89,8 @@ public class lapok_content extends BaseActivity implements SwipeRefreshLayout.On
         mSwipeRefreshLayout.post(new Runnable() {
                                      @Override
                                      public void run() {
+                                         kategori = "Pilih%20Kategori";
+                                         status = "Pilih%20Status";
                                          mSwipeRefreshLayout.setRefreshing(true);
                                          mList.clear();
                                          mAdapter.notifyDataSetChanged();
@@ -174,6 +176,8 @@ public class lapok_content extends BaseActivity implements SwipeRefreshLayout.On
 
     @Override
     public void onRefresh() {
+        kategori = "Pilih%20Kategori";
+        status = "Pilih%20Status";
         mList.clear();
         mAdapter.notifyDataSetChanged();
         callVolley(kategori, status);
