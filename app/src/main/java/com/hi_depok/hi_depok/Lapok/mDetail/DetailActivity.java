@@ -1,47 +1,70 @@
 package com.hi_depok.hi_depok.Lapok.mDetail;
 
 import android.app.Dialog;
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
+import com.hi_depok.hi_depok.Akses;
+import com.hi_depok.hi_depok.Lapok.Utility;
+import com.hi_depok.hi_depok.Lapok.mAdapter.Adapter_Komentar;
 import com.hi_depok.hi_depok.Lapok.mData.Komentar;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.SessionManager;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
-public class DetailActivity extends BaseActivity {
+public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     TextView nameTxt, timeTxt, title, jml_like, jml_com, jml_share;
     ImageView img, kej, likeimg, comimg, shaimg, btnKirim;
     EditText etKomentar;
     EditText comment;
-    List<Komentar> mList;
-    private NotificationCompat.Builder mBuilder;
+    List<Komentar> mList = new ArrayList<Komentar>();
+    SwipeRefreshLayout swipe;
+    Adapter_Komentar adapter;
+    SessionManager session;
+    String detail_url = "http://hidepok.id/android/lapok/lapok_getContent_detail.php";
+    String url = "http://hidepok.id/android/lapok/lapok_komentar.php?id=";
+    NotificationCompat.Builder mBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +80,43 @@ public class DetailActivity extends BaseActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //---------------- Image Single Popup --------------------------------------------------
-        final CircleImageView imageView = (CircleImageView) findViewById(R.id.imageArtist_detail);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        session = new SessionManager(this);
+        HashMap<String, String> post_detail = session.getIdPost();
+        final String id_post = post_detail.get(SessionManager.KEY_ID_POST);
+
+        ListView listView = (ListView) findViewById(R.id.listKomentar);
+        swipe = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout_komentar);
+        adapter = new Adapter_Komentar(this, R.layout.lapok_isi_komentar, mList);
+
+        swipe.setOnRefreshListener(this);
+
+        listView.setAdapter(adapter);
+
+        Utility.setListViewHeightBasedOnChildren(listView);
+
+        swipe.post(new Runnable() {
+                       @Override
+                       public void run() {
+                           swipe.setRefreshing(true);
+                           mList.clear();
+                           adapter.notifyDataSetChanged();
+                           callVolley(id_post);
+                       }
+                   }
+        );
+
+        //INITIALIZE VIEWS
+        btnKirim = (ImageView) findViewById(R.id.btnKirim);
+        etKomentar = (EditText) findViewById(R.id.isiKomentar);
+        nameTxt = (TextView) findViewById(R.id.nameTxtdetail);
+        timeTxt = (TextView) findViewById(R.id.timeTxtdetail);
+        title = (TextView) findViewById(R.id.card_text_detail);
+        jml_like = (TextView) findViewById(R.id.jumlah_like_detail);
+        jml_com = (TextView) findViewById(R.id.jumlah_comment_detail);
+        img = (ImageView) findViewById(R.id.imageArtist_detail);
+        kej = (ImageView) findViewById(R.id.card_image_detail);
+
+        kej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Dialog settingsDialog = new Dialog(DetailActivity.this);
@@ -72,81 +129,23 @@ public class DetailActivity extends BaseActivity {
                 settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
 
                 ImageView iv = (ImageView) newView.findViewById(R.id.profile_img_popup);
-                Bitmap bm = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                Bitmap bm = ((GlideBitmapDrawable) kej.getDrawable()).getBitmap();
                 iv.setImageBitmap(bm);
 
                 settingsDialog.show();
             }
-    });
+        });
 
-        /*//Mengambil komentar dari DB
-        mList = new ArrayList<>();
-        //mList.add()
-
-        ListView listView = (ListView) findViewById(R.id.listKomentar);
-        Adapter_Komentar adapterKomentar = new Adapter_Komentar(this, R.layout.lapok_isi_komentar, mList);
-        listView.setAdapter(adapterKomentar);*/
-
-        //INITIALIZE VIEWS
-        btnKirim = (ImageView) findViewById(R.id.btnKirim);
-        etKomentar = (EditText) findViewById(R.id.isiKomentar);
-        nameTxt = (TextView) findViewById(R.id.nameTxtdetail);
-        timeTxt = (TextView) findViewById(R.id.timeTxtdetail);
-        title = (TextView) findViewById(R.id.card_text_detail);
-        jml_like = (TextView) findViewById(R.id.jumlah_like_detail);
-        jml_com = (TextView) findViewById(R.id.jumlah_comment_detail);
-        img = (ImageView) findViewById(R.id.imageArtist_detail);
-        kej = (ImageView) findViewById(R.id.card_image_detail);
         likeimg = (ImageView) findViewById(R.id.like_detail);
         comimg = (ImageView) findViewById(R.id.comment_button_detail);
         shaimg = (ImageView) findViewById(R.id.share_button_detail);
         comment = (EditText) findViewById(R.id.isiKomentar);
 
-
-        //RECEIVE DATA
-        Intent i = this.getIntent();
-        final String name = i.getExtras().getString("NAME_KEY");
-        final String time = i.getExtras().getString("TIME_KEY");
-        final String judul = i.getExtras().getString("TITLE_KEY");
-        final String jumlah_suka = i.getExtras().getString("TOTAL_LIKE");
-        final String jumlah_komentar = i.getExtras().getString("TOTAL_COMMENT");
-        final int image = i.getExtras().getInt("IMAGE_KEY");
-        final int kejadian = i.getExtras().getInt("KEJADIAN_KEY");
-        final int like = i.getExtras().getInt("LIKE_KEY");
-        final int comment = i.getExtras().getInt("COMMENT_KEY");
-        final int share = i.getExtras().getInt("SHARE_KEY");
-
-        //BIND DATA
-        nameTxt.setText(name);
-        timeTxt.setText(time);
-        title.setText(judul);
-        jml_like.setText(jumlah_suka);
-        jml_com.setText(jumlah_komentar);
-        img.setImageResource(image);
-        kej.setImageResource(kejadian);
-        likeimg.setImageResource(like);
-        comimg.setImageResource(comment);
-        shaimg.setImageResource(share);
-        jml_like.setText("0");
-        jml_com.setText("0");
-
-        img.requestFocus();
-
         likeimg.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
-                jml_like.setText("1");
                 likeimg.setImageResource(R.drawable.favorite);
                 Toast.makeText(view.getContext(), "Anda menyukai konten ini",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        comimg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(), "Klik Gambar Untuk Memberikan Komentar",
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -170,30 +169,106 @@ public class DetailActivity extends BaseActivity {
         btnKirim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String isi = etKomentar.getText().toString();
-                String text = name + " mengomentari : " + isi;
+                /*session = new SessionManager(DetailActivity.this);
+                //session username untuk diambil dan dimasukkan ke dalam skrip php
+                HashMap<String, String> user = session.getUserDetails();
+                String nama_user_komentar = user.get(SessionManager.KEY_NAME);
+
+                String komentar_user = etKomentar.getText().toString();
+                String text = nama_user_komentar + " mengomentari : " + komentar_user;
                 mBuilder = new NotificationCompat.Builder(DetailActivity.this);
                 mBuilder
                         .setSmallIcon(R.mipmap.ic_launcher)
-                        .setContentTitle("Lapok")
+                        .setContentTitle("Hi Depok")
                         .setAutoCancel(true)
                         .setContentText(text);
-                buildNotification(DetailActivity.this, name, time, judul, jumlah_suka, jumlah_komentar,
-                        image, kejadian, like, comment, share);
+                buildNotification(DetailActivity.this, id_post, name, time, date, isi, jumlah_suka,
+                        jumlah_komentar, image, kejadian, like, comment, share);*/
             }
         });
     }
 
+    private void callVolley(final String id_post_detail) {
+        mList.clear();
+        adapter.notifyDataSetChanged();
+        swipe.setRefreshing(true);
+        StringRequest requestDetail = new StringRequest(Request.Method.POST, detail_url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                            DateFormat df1 = new SimpleDateFormat("HH:mm:ss");
+                            Date startDate, startTime;
+                            String avatar, kejadian;
+                            JSONArray jsonArray_detail = new JSONArray(response);
+                            JSONObject objDetail = jsonArray_detail.getJSONObject(0);
+                            nameTxt.setText(objDetail.getString("nama_user"));
+                            timeTxt.setText(objDetail.getString("nama_user"));
+                            jml_like.setText(objDetail.getString("nama_user"));
+                            jml_com.setText(objDetail.getString("nama_user"));
+                            jml_share.setText(objDetail.getString("nama_user"));
+                            nameTxt.setText(objDetail.getString("nama_user"));
+
+                            likeimg.setImageResource(R.drawable.like);
+                            shaimg.setImageResource(R.drawable.share);
+                            comimg.setImageResource(R.drawable.comment);
+
+                            avatar = "http://hidepok.id/assets/images/photos/avatar/" + objDetail.getString("avatar");
+                            kejadian = "http://hidepok.id/assets/images/photos/lapok/" + objDetail.getString("kejadian");
+
+                            Glide.with(DetailActivity.this).load(kejadian).thumbnail(0.3f)
+                                    .placeholder(R.drawable.image_placeholder).into(kej);
+                            Glide.with(DetailActivity.this).load(avatar).thumbnail(0.3f)
+                                    .placeholder(R.drawable.image_placeholder).into(img);
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    Toast.makeText(DetailActivity.this, "Percobaan koneksi gagal! Cek koneksi anda!",
+                            Toast.LENGTH_SHORT).show();
+                } else if (error instanceof AuthFailureError) {
+                    Toast.makeText(DetailActivity.this, "Gagal terhubung! Cek koneksi anda!",
+                            Toast.LENGTH_SHORT).show();
+                } else if (error instanceof ServerError) {
+                    Toast.makeText(DetailActivity.this, "Gagal terhubung dengan server!",
+                            Toast.LENGTH_SHORT).show();
+                } else if (error instanceof NetworkError) {
+                    Toast.makeText(DetailActivity.this, "Gagal terhubung! Cek koneksi anda!",
+                            Toast.LENGTH_SHORT).show();
+                }
+                swipe.setRefreshing(false);
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> param = new HashMap<>();
+                param.put("id_post", id_post_detail);
+                return param;
+            }
+        };
+        Akses.getInstance(DetailActivity.this).addtoRequestQueue(requestDetail);
+    }
+
+
     //------------------------------------BUAT NOTIFIKASI-----------------------------------------//
-    private void buildNotification(Context ctx, String name, String time, String title, String totlike,
-                                   String totcom, int image, int kejadian, int like, int comment,
-                                   int share){
+    /*private void buildNotification(Context ctx, String id_post, String name, String time, String date,
+                                   String title, String totlike, String totcom, String image,
+                                   String kejadian, int like, int comment, int share) {
 
         Intent infoNotification = new Intent(ctx, DetailActivity.class);
 
         //PACK DATA TO SEND
+        infoNotification.putExtra("ID_POST_KEY", id_post);
         infoNotification.putExtra("NAME_KEY", name);
         infoNotification.putExtra("TIME_KEY", time);
+        infoNotification.putExtra("DATE_KEY", date);
         infoNotification.putExtra("TITLE_KEY", title);
         infoNotification.putExtra("IMAGE_KEY", image);
         infoNotification.putExtra("KEJADIAN_KEY", kejadian);
@@ -214,7 +289,7 @@ public class DetailActivity extends BaseActivity {
         Notification notification = mBuilder.build();
         notification.flags = Notification.DEFAULT_LIGHTS | Notification.FLAG_AUTO_CANCEL;
         NotificationManagerCompat.from(DetailActivity.this).notify(0, notification);
-    }
+    }*/
     //--------------------------------------------------------------------------------------------//
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -228,5 +303,14 @@ public class DetailActivity extends BaseActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        mList.clear();
+        session = new SessionManager(DetailActivity.this);
+        HashMap<String, String> post_detail = session.getIdPost();
+        final String id_post = post_detail.get(SessionManager.KEY_ID_POST);
+        callVolley(id_post);
     }
 }

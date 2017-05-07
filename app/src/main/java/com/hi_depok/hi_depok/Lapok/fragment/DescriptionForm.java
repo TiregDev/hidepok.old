@@ -70,7 +70,7 @@ public class DescriptionForm extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 kategori = adapterView.getItemAtPosition(position).toString();
-                if(!kategori.equals("Kategori")) {
+                if(!kategori.equals("")) {
                     Toast.makeText(DescriptionForm.this, kategori + " selected", Toast.LENGTH_LONG).show();
                 }
             }
@@ -97,8 +97,12 @@ public class DescriptionForm extends AppCompatActivity {
                 if (judul.equals("")){
                     etJudul.setError("Judul wajib diisi");
                 }else if(deskripsi.equals("")){
-                        etDeskripsi.setError("Deskripsikan kejadian");
-                }else if(alamat.equals("")){
+                    etDeskripsi.setError("Deskripsikan kejadian");
+                }else if(kategori.equals("")){
+                    Toast.makeText(DescriptionForm.this, "Pilih kategori sesuai kejadian terlebih dahulu",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else if(alamat.equals("")){
                     etAlamat.setError("Tempat kejadian wajib diisi");
                 }else{
                     final ProgressDialog loading = ProgressDialog.show(DescriptionForm.this,

@@ -24,9 +24,9 @@
             android:id="@+id/cameraBtn"
             android:layout_width="56dp"
             android:layout_height="56dp"
+            android:layout_alignParentEnd="true"
             android:background="@color/accent"
             android:padding="15dp"
-            android:layout_alignParentEnd="true"
             android:src="@drawable/photo_camera"/>
 
         <LinearLayout
@@ -80,11 +80,18 @@
 
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/dropdown"
-            android:scrollbars="vertical"/>
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dropdown">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"/>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
     </RelativeLayout>
 </FrameLayout>

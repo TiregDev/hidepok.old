@@ -3,7 +3,6 @@ package com.hi_depok.hi_depok.Lapok.mAdapter;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,13 +37,13 @@ public class Adapter_Komentar extends ArrayAdapter<Komentar>{
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         Holder_Komentar holder_komentar = null;
 
         if (convertView == null) {
             LayoutInflater layoutInflater = ((Activity)mContext).getLayoutInflater();
 
-            convertView = layoutInflater.inflate(layoutResourcesId, parent);
+            convertView = layoutInflater.inflate(layoutResourcesId, parent, false);
 
             holder_komentar = new Holder_Komentar();
             holder_komentar.nama = (TextView)convertView.findViewById(R.id.namaUser_Post);
@@ -60,5 +59,10 @@ public class Adapter_Komentar extends ArrayAdapter<Komentar>{
         holder_komentar.isi_komentar.setText(komentar.getIsi_komentar());
 
         return convertView;
+    }
+
+    @Override
+    public int getCount() {
+        return mList.size();
     }
 }

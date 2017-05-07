@@ -20,167 +20,175 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"/>
 
-        <RelativeLayout
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout_komentar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar">
+            android:layout_below="@+id/toolbar">
 
-            <ScrollView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toolbar">
 
-                <RelativeLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    xmlns:tools="http://schemas.android.com/tools"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+                    android:layout_height="wrap_content">
 
-                    <android.support.v7.widget.CardView
+                    <RelativeLayout
                         xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        xmlns:tools="http://schemas.android.com/tools"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
-                        <RelativeLayout
+                        <android.support.v7.widget.CardView
+                            xmlns:android="http://schemas.android.com/apk/res/android"
                             android:layout_width="match_parent"
-                            android:layout_height="fill_parent">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/imageArtist_detail"
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
-                                android:layout_marginTop="-5dp"
-                                android:padding="10dp"
-                                android:src="@drawable/image_placeholder"/>
-
-                            <fr.arnaudguyon.smartfontslib.FontTextView
-                                android:id="@+id/nameTxtdetail"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_toEndOf="@+id/imageArtist_detail"
-                                android:text="NAMA"
-                                android:textColor="@color/background"
-                                app:font="@string/fontBold"/>
-
-                            <fr.arnaudguyon.smartfontslib.FontTextView
-                                android:id="@+id/timeTxtdetail"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/nameTxtdetail"
-                                android:layout_toEndOf="@+id/imageArtist_detail"
-                                android:text="Feb 8, 2017, at 17.00 WIB"
-                                app:font="@string/fontLight"/>
-
-                            <RelativeLayout
-                                android:id="@+id/rl_konten"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="60dp">
-
-                                <ImageView
-                                    android:id="@+id/card_image_detail"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="200dp"
-                                    android:scaleType="centerCrop"
-                                    tools:src="@drawable/image_placeholder"/>
-
-                                <fr.arnaudguyon.smartfontslib.FontTextView
-                                    android:id="@+id/card_text_detail"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/card_image_detail"
-                                    android:layout_marginBottom="16dp"
-                                    android:layout_marginLeft="16dp"
-                                    android:layout_marginRight="16dp"
-                                    android:layout_marginTop="16dp"
-                                    android:ellipsize="end"
-                                    android:textColor="#303030"
-                                    android:textSize="@dimen/article_desc"
-                                    app:font="@string/fontReguler"
-                                    tools:text="Macet dijalan juanda, udah berjam jam nih stuck disini"/>
-
-
-                                <ImageButton
-                                    android:id="@+id/like_detail"
-                                    style="?android:attr/borderlessButtonStyle"
-                                    android:layout_width="48dp"
-                                    android:layout_height="48dp"
-                                    android:layout_below="@+id/card_text_detail"
-                                    app:srcCompat="@drawable/like"/>
-
-                                <fr.arnaudguyon.smartfontslib.FontTextView
-                                    android:id="@+id/jumlah_like_detail"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/card_text_detail"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_toEndOf="@id/like_detail"
-                                    android:text=""
-                                    android:textColor="#303030"
-                                    android:textSize="18sp"
-                                    app:font="@string/fontReguler"/>
-
-                                <ImageButton
-                                    android:id="@+id/comment_button_detail"
-                                    style="?android:attr/borderlessButtonStyle"
-                                    android:layout_width="48dp"
-                                    android:layout_height="48dp"
-                                    android:layout_below="@+id/card_text_detail"
-                                    android:layout_toEndOf="@id/jumlah_like_detail"
-                                    app:srcCompat="@drawable/comment"/>
-
-                                <fr.arnaudguyon.smartfontslib.FontTextView
-                                    android:id="@+id/jumlah_comment_detail"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/card_text_detail"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_toEndOf="@id/comment_button_detail"
-                                    android:text=""
-                                    android:textColor="#303030"
-                                    android:textSize="18sp"
-                                    app:font="@string/fontReguler"/>
-
-                                <ImageButton
-                                    android:id="@+id/share_button_detail"
-                                    style="?android:attr/borderlessButtonStyle"
-                                    android:layout_width="48dp"
-                                    android:layout_height="48dp"
-                                    android:layout_below="@+id/card_text_detail"
-                                    android:layout_toEndOf="@+id/jumlah_comment_detail"
-                                    app:srcCompat="@drawable/share"/>
-
-                            </RelativeLayout>
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/rl_konten"
-                                android:background="#DEDCD7">
+                                android:layout_height="fill_parent">
 
-                                <ListView
-                                    android:id="@+id/listKomentar"
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/imageArtist_detail"
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_marginTop="-5dp"
+                                    android:padding="10dp"
+                                    android:src="@drawable/image_placeholder"/>
+
+                                <fr.arnaudguyon.smartfontslib.FontTextView
+                                    android:id="@+id/nameTxtdetail"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toEndOf="@+id/imageArtist_detail"
+                                    android:text="NAMA"
+                                    android:textColor="@color/background"
+                                    app:font="@string/fontBold"/>
+
+                                <fr.arnaudguyon.smartfontslib.FontTextView
+                                    android:id="@+id/timeTxtdetail"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/nameTxtdetail"
+                                    android:layout_toEndOf="@+id/imageArtist_detail"
+                                    android:text="Feb 8, 2017, at 17.00 WIB"
+                                    app:font="@string/fontLight"/>
+
+                                <RelativeLayout
+                                    android:id="@+id/rl_konten"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="60dp">
 
-                                </ListView>
+                                    <ImageView
+                                        android:id="@+id/card_image_detail"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp"
+                                        android:scaleType="centerCrop"
+                                        tools:src="@drawable/image_placeholder"/>
+
+                                    <fr.arnaudguyon.smartfontslib.FontTextView
+                                        android:id="@+id/card_text_detail"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/card_image_detail"
+                                        android:layout_marginBottom="16dp"
+                                        android:layout_marginLeft="16dp"
+                                        android:layout_marginRight="16dp"
+                                        android:layout_marginTop="16dp"
+                                        android:ellipsize="end"
+                                        android:textColor="#303030"
+                                        android:textSize="@dimen/article_desc"
+                                        app:font="@string/fontReguler"
+                                        tools:text="Macet dijalan juanda, udah berjam jam nih stuck disini"/>
+
+
+                                    <ImageButton
+                                        android:id="@+id/like_detail"
+                                        style="?android:attr/borderlessButtonStyle"
+                                        android:layout_width="48dp"
+                                        android:layout_height="48dp"
+                                        android:layout_below="@+id/card_text_detail"
+                                        app:srcCompat="@drawable/like"/>
+
+                                    <fr.arnaudguyon.smartfontslib.FontTextView
+                                        android:id="@+id/jumlah_like_detail"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/card_text_detail"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_toEndOf="@id/like_detail"
+                                        android:text=""
+                                        android:textColor="#303030"
+                                        android:textSize="18sp"
+                                        app:font="@string/fontReguler"/>
+
+                                    <ImageButton
+                                        android:id="@+id/comment_button_detail"
+                                        style="?android:attr/borderlessButtonStyle"
+                                        android:layout_width="48dp"
+                                        android:layout_height="48dp"
+                                        android:layout_below="@+id/card_text_detail"
+                                        android:layout_toEndOf="@id/jumlah_like_detail"
+                                        app:srcCompat="@drawable/comment"/>
+
+                                    <fr.arnaudguyon.smartfontslib.FontTextView
+                                        android:id="@+id/jumlah_comment_detail"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/card_text_detail"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_toEndOf="@id/comment_button_detail"
+                                        android:text=""
+                                        android:textColor="#303030"
+                                        android:textSize="18sp"
+                                        app:font="@string/fontReguler"/>
+
+                                    <ImageButton
+                                        android:id="@+id/share_button_detail"
+                                        style="?android:attr/borderlessButtonStyle"
+                                        android:layout_width="48dp"
+                                        android:layout_height="48dp"
+                                        android:layout_below="@+id/card_text_detail"
+                                        android:layout_toEndOf="@+id/jumlah_comment_detail"
+                                        app:srcCompat="@drawable/share"/>
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/rl_konten"
+                                    android:background="#DEDCD7">
+
+                                    <ListView
+                                        android:id="@+id/listKomentar"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="90dp">
+
+                                    </ListView>
+
+                                </RelativeLayout>
+
 
                             </RelativeLayout>
 
 
-                        </RelativeLayout>
+                        </android.support.v7.widget.CardView>
 
 
-                    </android.support.v7.widget.CardView>
+                    </RelativeLayout>
 
+                </ScrollView>
+            </RelativeLayout>
 
-                </RelativeLayout>
-
-            </ScrollView>
-        </RelativeLayout>
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <LinearLayout
             android:id="@+id/layoutPesan"

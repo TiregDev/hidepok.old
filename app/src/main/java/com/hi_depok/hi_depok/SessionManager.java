@@ -45,6 +45,8 @@ public class SessionManager {
 
     public static final String KEY_ID_RS = "id_rs";
 
+    public static final String KEY_ID_POST = "id_post";
+
     // Constructor
     public SessionManager(Context context) {
         this._context = context;
@@ -76,6 +78,11 @@ public class SessionManager {
 
         // commit changes
         editor.commit();
+    }
+
+    public void setIdPost(String id_post) {
+        // Storing id in pref
+        editor.putString(KEY_ID_POST, id_post);
     }
 
     public void sessionRS(String id_rs) {
@@ -135,6 +142,12 @@ public class SessionManager {
 
         // return user
         return user;
+    }
+
+    public HashMap<String, String> getIdPost() {
+        HashMap<String, String> getId = new HashMap<String, String>();
+        getId.put(KEY_ID_POST, pref.getString(KEY_ID_POST, null));
+        return getId;
     }
 
     public HashMap<String, String> getIDRS() {

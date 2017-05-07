@@ -18,26 +18,26 @@
             android:layout_height="70dp"
             android:layout_marginTop="-5dp"
             android:padding="10dp"
-            android:src="@drawable/image_placeholder" />
+            android:src="@drawable/image_placeholder"/>
 
         <fr.arnaudguyon.smartfontslib.FontTextView
-            app:font="@string/fontBold"
             android:id="@+id/nameTxt"
-            android:textColor="@color/background"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/imageArtist"
-            android:text="NAMA" />
+            android:text="NAMA"
+            android:textColor="@color/background"
+            app:font="@string/fontBold"/>
 
         <fr.arnaudguyon.smartfontslib.FontTextView
-            app:font="@string/fontLight"
             android:id="@+id/timeTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/nameTxt"
             android:layout_toEndOf="@+id/imageArtist"
-            android:text="Feb 8, 2017, at 17.00 WIB" />
+            android:text="Feb 8, 2017, at 17.00 WIB"
+            app:font="@string/fontLight"/>
 
         <RelativeLayout
             android:id="@+id/rl"
@@ -50,10 +50,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/kemacetan" />
+                tools:src="@drawable/image_placeholder"/>
 
             <fr.arnaudguyon.smartfontslib.FontTextView
-                app:font="@string/fontReguler"
                 android:id="@+id/card_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,7 +65,8 @@
                 android:singleLine="true"
                 android:textColor="#303030"
                 android:textSize="20sp"
-                tools:text="Macet dijalan juanda, udah berjamjam nih stuck disini" />
+                app:font="@string/fontReguler"
+                tools:text="Macet dijalan juanda, udah berjamjam nih stuck disini"/>
 
 
             <ImageButton
@@ -75,10 +75,9 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_below="@+id/card_text"
-                app:srcCompat="@drawable/like" />
+                app:srcCompat="@drawable/like"/>
 
             <fr.arnaudguyon.smartfontslib.FontTextView
-                app:font="@string/fontReguler"
                 android:id="@+id/jumlah_like"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,7 +86,8 @@
                 android:layout_toEndOf="@id/like"
                 android:text="0"
                 android:textColor="#303030"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:font="@string/fontReguler"/>
 
             <ImageButton
                 android:id="@+id/comment_button"
@@ -96,10 +96,9 @@
                 android:layout_height="48dp"
                 android:layout_below="@+id/card_text"
                 android:layout_toEndOf="@id/jumlah_like"
-                app:srcCompat="@drawable/comment" />
+                app:srcCompat="@drawable/comment"/>
 
             <fr.arnaudguyon.smartfontslib.FontTextView
-                app:font="@string/fontReguler"
                 android:id="@+id/jumlah_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -108,7 +107,8 @@
                 android:layout_toEndOf="@id/comment_button"
                 android:text="0"
                 android:textColor="#303030"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:font="@string/fontReguler"/>
 
             <ImageButton
                 android:id="@+id/share_button"
@@ -117,7 +117,15 @@
                 android:layout_height="48dp"
                 android:layout_below="@+id/card_text"
                 android:layout_toEndOf="@+id/jumlah_comment"
-                app:srcCompat="@drawable/share" />
+                app:srcCompat="@drawable/share"/>
+
+            <ImageView
+                android:id="@+id/status_post"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_below="@+id/card_text"
+                android:layout_toEndOf="@+id/share_button"
+                android:src="@drawable/circle_wait_list"/>
 
         </RelativeLayout>
 
