@@ -35,12 +35,8 @@ public class lapok_ambil_kejadian extends AppCompatActivity implements View.OnCl
     private Uri tempuri;
 
     private int TAKE_IMAGE_REQUEST = 2;
-
-    private String UPLOAD_URL = "http://hidepok.id/android/lapok/uploadGambar.php";
     private File imageFile;
     String filename;
-    private String KEY_IMAGE = "image";
-    private String KEY_NAME = "name";
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -94,14 +90,15 @@ public class lapok_ambil_kejadian extends AppCompatActivity implements View.OnCl
             //uploadImage();
             if(null!=imageView.getDrawable())
             {
+                //imageview have image
                 String image = getStringImage();
                 Intent intent = new Intent(this, DescriptionForm.class);
                 intent.putExtra("image", image);
                 startActivity(intent);
-                //imageview have image
+                finish();
             }else{
-                Toast.makeText(this, "Gambar belum ada", Toast.LENGTH_SHORT).show();
                 //imageview have no image
+                Toast.makeText(this, "Gambar belum ada", Toast.LENGTH_SHORT).show();
             }
         }
     }

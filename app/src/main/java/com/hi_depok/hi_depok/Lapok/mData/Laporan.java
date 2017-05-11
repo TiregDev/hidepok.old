@@ -5,7 +5,7 @@ package com.hi_depok.hi_depok.Lapok.mData;
  */
 
 public class Laporan {
-    String id, name, waktu, judul, jml_like, jml_com, status, image, kejadian, isi, tanggal;
+    String id, name, waktu, judul, jml_like, jml_com, status, image, kejadian, isi, tanggal, hasil;
     int like_imgbtn, comment_imgbtn, share_imgbtn;
 
     public String getId() {
@@ -14,6 +14,14 @@ public class Laporan {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getHasil() {
+        return hasil;
+    }
+
+    public void setHasil(String hasil) {
+        this.hasil = hasil;
     }
 
     public String getIsi() {

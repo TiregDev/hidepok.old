@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.Lapok.mData.Laporan;
 import com.hi_depok.hi_depok.Lapok.mDetail.DetailActivity;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.SessionManager;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -27,7 +26,6 @@ public class Adapter_Laporan extends RecyclerView.Adapter<Holder_Laporan> {
 
     Context mContext;
     ArrayList<Laporan> mLaporan;
-    SessionManager session;
 
     public Adapter_Laporan(Context c, ArrayList<Laporan> laporan) {
         this.mContext = c;
@@ -46,16 +44,22 @@ public class Adapter_Laporan extends RecyclerView.Adapter<Holder_Laporan> {
         String tanggal = mLaporan.get(position).getTanggal();
         String waktu = mLaporan.get(position).getWaktu();
         String title = mLaporan.get(position).getJudul();
+        String hasil = mLaporan.get(position).getHasil();
         String total_like = mLaporan.get(position).getJml_like();
         String total_comment = mLaporan.get(position).getJml_com();
         String image = mLaporan.get(position).getImage();
         String kejadian = mLaporan.get(position).getKejadian();
-        int suka = mLaporan.get(position).getLike_imgbtn();
+//        int suka = mLaporan.get(position).getLike_imgbtn();
         int komentar = mLaporan.get(position).getComment_imgbtn();
         int bagikan = mLaporan.get(position).getShare_imgbtn();
 
         final String id_post = mLaporan.get(position).getId();
         String status = mLaporan.get(position).getStatus();
+
+        if(hasil.equals("sudah"))
+            holder.likeimg.setImageResource(R.drawable.favorite);
+        else
+            holder.likeimg.setImageResource(R.drawable.like);
 
         if(status.equals("Menunggu"))
             holder.stsimg.setImageResource(R.drawable.circle_wait_list);
@@ -90,7 +94,7 @@ public class Adapter_Laporan extends RecyclerView.Adapter<Holder_Laporan> {
 
         holder.nameTxt.setText(name);
         holder.title.setText(title);
-        holder.likeimg.setImageResource(suka);
+//        holder.likeimg.setImageResource(suka);
         holder.comimg.setImageResource(komentar);
         holder.shaimg.setImageResource(bagikan);
         holder.jml_like.setText(total_like);
@@ -99,9 +103,8 @@ public class Adapter_Laporan extends RecyclerView.Adapter<Holder_Laporan> {
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(int pos) {
-                session = new SessionManager(mContext);
-                session.setIdPost(id_post);
                 Intent i = new Intent(mContext, DetailActivity.class);
+                i.putExtra("ID_POST_DETAIL", id_post);
                 mContext.startActivity(i);
             }
         });

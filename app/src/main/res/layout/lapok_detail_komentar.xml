@@ -159,6 +159,14 @@
                                         android:layout_toEndOf="@+id/jumlah_comment_detail"
                                         app:srcCompat="@drawable/share"/>
 
+                                    <ImageView
+                                        android:id="@+id/status_post_detail"
+                                        android:layout_width="48dp"
+                                        android:layout_height="48dp"
+                                        android:layout_below="@+id/card_text_detail"
+                                        android:layout_toEndOf="@+id/share_button_detail"
+                                        android:src="@drawable/circle_wait_list"/>
+
                                 </RelativeLayout>
 
                                 <RelativeLayout

@@ -1,6 +1,9 @@
 package com.hi_depok.hi_depok.Lapok.mDetail;
 
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
@@ -8,6 +11,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
@@ -29,6 +34,7 @@ import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
@@ -56,15 +62,16 @@ import java.util.Map;
 public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     TextView nameTxt, timeTxt, title, jml_like, jml_com;
-    ImageView img, kej, likeimg, comimg, shaimg, btnKirim;
+    ImageView img, kej, likeimg, comimg, shaimg, statimg, btnKirim;
     EditText etKomentar;
     EditText comment;
+    SessionManager session;
     List<Komentar> mList = new ArrayList<Komentar>();
     SwipeRefreshLayout swipe;
     Adapter_Komentar adapter;
-    SessionManager session;
     String detail_url = "http://hidepok.id/android/lapok/lapok_getContent_detail.php";
     String url = "http://hidepok.id/android/lapok/lapok_komentar.php?id=";
+    String insert = "http://hidepok.id/android/lapok/lapok_insert.php";
     NotificationCompat.Builder mBuilder;
 
     @Override
@@ -81,9 +88,8 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        session = new SessionManager(this);
-        HashMap<String, String> post_detail = session.getIdPost();
-        final String id_post = post_detail.get(SessionManager.KEY_ID_POST);
+        Intent i = this.getIntent();
+        final String id_post = (String) i.getExtras().get("ID_POST_DETAIL");
 
         ListView listView = (ListView) findViewById(R.id.listKomentar);
         swipe = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout_komentar);
@@ -99,8 +105,8 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
                        @Override
                        public void run() {
                            swipe.setRefreshing(true);
-                           /*mList.clear();
-                           adapter.notifyDataSetChanged();*/
+                           mList.clear();
+                           adapter.notifyDataSetChanged();
                            callVolley(id_post);
                        }
                    }
@@ -116,6 +122,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
         jml_com = (TextView) findViewById(R.id.jumlah_comment_detail);
         img = (ImageView) findViewById(R.id.imageArtist_detail);
         kej = (ImageView) findViewById(R.id.card_image_detail);
+        statimg = (ImageView) findViewById(R.id.status_post_detail);
 
         kej.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,9 +152,38 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
         likeimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                likeimg.setImageResource(R.drawable.favorite);
-                Toast.makeText(view.getContext(), "Anda menyukai konten ini",
-                        Toast.LENGTH_SHORT).show();
+                session = new SessionManager(DetailActivity.this);
+                HashMap<String, String> user = session.getUserDetails();
+                final String id_user = user.get(SessionManager.KEY_ID_USER);
+                StringRequest likeRequest = new StringRequest(Request.Method.POST, insert,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                if(response.equals("belum")){
+                                    likeimg.setImageResource(R.drawable.favorite);
+                                    Toast.makeText(DetailActivity.this, "Anda menyukai konten ini",
+                                            Toast.LENGTH_SHORT).show();
+                                }else
+                                    Toast.makeText(DetailActivity.this, "Anda telah menyukai konten ini",
+                                            Toast.LENGTH_SHORT).show();
+                                callVolley(id_post);
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        HashMap<String, String> params = new HashMap<String, String>();
+                        params.put("id_post", id_post);
+                        params.put("id_user", id_user);
+                        params.put("id", "2");
+                        return params;
+                    }
+                };
+                Akses.getInstance(DetailActivity.this).addtoRequestQueue(likeRequest);
             }
         });
 
@@ -170,28 +206,74 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
         btnKirim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*session = new SessionManager(DetailActivity.this);
-                //session username untuk diambil dan dimasukkan ke dalam skrip php
+
+                session = new SessionManager(DetailActivity.this);
                 HashMap<String, String> user = session.getUserDetails();
                 String nama_user_komentar = user.get(SessionManager.KEY_NAME);
+                final String id_user_komentar = user.get(SessionManager.KEY_ID_USER);
 
-                String komentar_user = etKomentar.getText().toString();
-                String text = nama_user_komentar + " mengomentari : " + komentar_user;
-                mBuilder = new NotificationCompat.Builder(DetailActivity.this);
-                mBuilder
-                        .setSmallIcon(R.mipmap.ic_launcher)
-                        .setContentTitle("Hi Depok")
-                        .setAutoCancel(true)
-                        .setContentText(text);
-                buildNotification(DetailActivity.this, id_post, name, time, date, isi, jumlah_suka,
-                        jumlah_komentar, image, kejadian, like, comment, share);*/
+                final String komentar_user = etKomentar.getText().toString();
+                if (!komentar_user.equals("")) {
+                    String text = nama_user_komentar + " mengomentari : " + komentar_user;
+
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, insert,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    Toast.makeText(DetailActivity.this, response, Toast.LENGTH_SHORT).show();
+                                    callVolley(id_post);
+                                    etKomentar.setText("");
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                                Toast.makeText(DetailActivity.this, "Percobaan koneksi gagal! Cek koneksi anda!",
+                                        Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof AuthFailureError) {
+                                Toast.makeText(DetailActivity.this, "Gagal terhubung! Cek koneksi anda!",
+                                        Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof ServerError) {
+                                Toast.makeText(DetailActivity.this, "Gagal terhubung dengan server!",
+                                        Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof NetworkError) {
+                                Toast.makeText(DetailActivity.this, "Gagal terhubung! Cek koneksi anda!",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            HashMap<String, String> params = new HashMap<String, String>();
+                            params.put("id_post", id_post);
+                            params.put("id_user", id_user_komentar);
+                            params.put("isi_komentar", komentar_user);
+                            params.put("id", "1");
+                            return params;
+                        }
+                    };
+                    Akses.getInstance(DetailActivity.this).addtoRequestQueue(stringRequest);
+                    mBuilder = new NotificationCompat.Builder(DetailActivity.this);
+                    mBuilder
+                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setContentTitle("Hi Depok")
+                            .setAutoCancel(true)
+                            .setContentText(text)
+                            .setStyle(new NotificationCompat.BigTextStyle().bigText(text));
+                    buildNotification(DetailActivity.this, id_post);
+                } else
+                    etKomentar.setError("Anda belum memberikan komentar anda");
             }
         });
     }
 
-    private void callVolley(final String id_post_detail) {
-        /*mList.clear();
-        adapter.notifyDataSetChanged();*/
+    private void callVolley(final String id_post) {
+        String komentar_url = url + id_post;
+        session = new SessionManager(DetailActivity.this);
+        HashMap<String, String> user = session.getUserDetails();
+        final String id_user = user.get(SessionManager.KEY_ID_USER);
+        mList.clear();
+        adapter.notifyDataSetChanged();
         swipe.setRefreshing(true);
         StringRequest requestDetail = new StringRequest(Request.Method.POST, detail_url,
                 new Response.Listener<String>() {
@@ -209,7 +291,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
                             tanggal = objDetail.getString("tanggal");
                             waktu = objDetail.getString("waktu");
                             avatar = "http://hidepok.id/assets/images/photos/avatar/" + objDetail.getString("avatar");
-                            kejadian = "http://hidepok.id/assets/images/photos/lapok/" + objDetail.getString("kejadian");
+                            kejadian = "http://hidepok.id/assets/images/photos/lapok/" + objDetail.getString("foto");
 
                             try {
                                 startDate = df.parse(tanggal);
@@ -222,20 +304,41 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
                             } catch (ParseException e) {
                                 e.printStackTrace();
                             }
-                            nameTxt.setText(objDetail.getString("nama_user"));
+                            nameTxt.setText(objDetail.getString("nama"));
                             jml_like.setText(objDetail.getString("suka"));
                             jml_com.setText(objDetail.getString("komentar"));
                             title.setText(objDetail.getString("isi"));
 
                             likeimg.setImageResource(R.drawable.like);
+
+                            if (!objDetail.getString("user_like").equals("null")) {
+                                String[] array = objDetail.getString("user_like").split(", ");
+                                for (int j = 0; j < array.length; j++) {
+                                    if (id_user.equals(array[j])) {
+                                        likeimg.setImageResource(R.drawable.favorite);
+                                    } else {
+                                        likeimg.setImageResource(R.drawable.like);
+                                    }
+                                }
+                            } else {
+                                likeimg.setImageResource(R.drawable.like);
+                            }
+
                             shaimg.setImageResource(R.drawable.share);
                             comimg.setImageResource(R.drawable.comment);
+
+                            String status = objDetail.getString("status");
+                            if (status.equals("Menunggu"))
+                                statimg.setImageResource(R.drawable.circle_wait_list);
+                            else if (status.equals("Proses"))
+                                statimg.setImageResource(R.drawable.circle_process_list);
+                            else if (status.equals("Selesai"))
+                                statimg.setImageResource(R.drawable.circle_done_list);
 
                             Glide.with(DetailActivity.this).load(kejadian).thumbnail(0.3f)
                                     .placeholder(R.drawable.image_placeholder).into(kej);
                             Glide.with(DetailActivity.this).load(avatar).thumbnail(0.3f)
                                     .placeholder(R.drawable.image_placeholder).into(img);
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -257,40 +360,67 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
                     Toast.makeText(DetailActivity.this, "Gagal terhubung! Cek koneksi anda!",
                             Toast.LENGTH_SHORT).show();
                 }
-                swipe.setRefreshing(false);
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> param = new HashMap<>();
-                param.put("id_post", id_post_detail);
+                param.put("id_post", id_post);
                 return param;
             }
         };
         Akses.getInstance(DetailActivity.this).addtoRequestQueue(requestDetail);
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, komentar_url, "",
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject obj_komentar = response.getJSONObject(i);
+                                Komentar komentar = new Komentar();
+                                komentar.setNama(obj_komentar.getString("nama_user"));
+                                komentar.setIsi_komentar(obj_komentar.getString("isi_komentar"));
+                                mList.add(komentar);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                        adapter.notifyDataSetChanged();
+                        swipe.setRefreshing(false);
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    Toast.makeText(DetailActivity.this, "Percobaan koneksi gagal! Cek koneksi anda!",
+                            Toast.LENGTH_SHORT).show();
+                } else if (error instanceof AuthFailureError) {
+                    Toast.makeText(DetailActivity.this, "Gagal terhubung! Cek koneksi anda!",
+                            Toast.LENGTH_SHORT).show();
+                } else if (error instanceof ServerError) {
+                    Toast.makeText(DetailActivity.this, "Gagal terhubung dengan server!",
+                            Toast.LENGTH_SHORT).show();
+                } else if (error instanceof NetworkError) {
+                    Toast.makeText(DetailActivity.this, "Gagal terhubung! Cek koneksi anda!",
+                            Toast.LENGTH_SHORT).show();
+                }
+                swipe.setRefreshing(false);
+            }
+        });
+        Akses.getInstance(DetailActivity.this).addtoRequestQueue(jsonArrayRequest);
     }
 
 
     //------------------------------------BUAT NOTIFIKASI-----------------------------------------//
-    /*private void buildNotification(Context ctx, String id_post, String name, String time, String date,
-                                   String title, String totlike, String totcom, String image,
-                                   String kejadian, int like, int comment, int share) {
+    private void buildNotification(Context ctx, String id_post) {
 
         Intent infoNotification = new Intent(ctx, DetailActivity.class);
 
         //PACK DATA TO SEND
-        infoNotification.putExtra("ID_POST_KEY", id_post);
-        infoNotification.putExtra("NAME_KEY", name);
-        infoNotification.putExtra("TIME_KEY", time);
-        infoNotification.putExtra("DATE_KEY", date);
-        infoNotification.putExtra("TITLE_KEY", title);
-        infoNotification.putExtra("IMAGE_KEY", image);
-        infoNotification.putExtra("KEJADIAN_KEY", kejadian);
-        infoNotification.putExtra("LIKE_KEY", like);
-        infoNotification.putExtra("COMMENT_KEY", comment);
-        infoNotification.putExtra("SHARE_KEY", share);
-        infoNotification.putExtra("TOTAL_COMMENT", totcom);
-        infoNotification.putExtra("TOTAL_LIKE", totlike);
+        infoNotification.putExtra("ID_POST_DETAIL", id_post);
 
         //OPEN ACTIVITY
         TaskStackBuilder taskStackBuilder = TaskStackBuilder
@@ -303,7 +433,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
         Notification notification = mBuilder.build();
         notification.flags = Notification.DEFAULT_LIGHTS | Notification.FLAG_AUTO_CANCEL;
         NotificationManagerCompat.from(DetailActivity.this).notify(0, notification);
-    }*/
+    }
     //--------------------------------------------------------------------------------------------//
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -321,15 +451,10 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
 
     @Override
     public void onRefresh() {
-        mList.clear();
-        session = new SessionManager(DetailActivity.this);
-        HashMap<String, String> post_detail = session.getIdPost();
-        final String id_post = post_detail.get(SessionManager.KEY_ID_POST);
-        kosong_detai();
-        callVolley(id_post);
+        swipe.setRefreshing(false);
     }
 
-    private void kosong_detai() {
+    private void kosong_detail() {
         nameTxt.setText("");
         timeTxt.setText("");
         title.setText("");
