@@ -10,12 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/article_titles"
-        android:layout_marginTop="5dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         app:font="@string/fontReguler"
         android:textColor="#fff"
-        android:text="Title"/>
+        android:text="Title"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <fr.arnaudguyon.smartfontslib.FontTextView
         android:id="@+id/desc"

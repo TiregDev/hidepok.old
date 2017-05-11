@@ -135,7 +135,7 @@ public class register extends AppCompatActivity {
                             }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(register.this, "An error occured", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(register.this, "Koneksi Gagal! Cek Koneksi Anda!", Toast.LENGTH_SHORT).show();
                             error.printStackTrace();
                         }
                     }){
