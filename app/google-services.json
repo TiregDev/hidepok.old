@@ -1,66 +1,35 @@
 {
   "project_info": {
-    "project_number": "309301715779",
-    "firebase_url": "https://hi-depok.firebaseio.com",
-    "project_id": "hi-depok",
-    "storage_bucket": "hi-depok.appspot.com"
+    "project_number": "446733735879",
+    "firebase_url": "https://tireg2014.firebaseio.com",
+    "project_id": "tireg2014",
+    "storage_bucket": "tireg2014.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:309301715779:android:85703a16a273b1bb",
+        "mobilesdk_app_id": "1:446733735879:android:9df19063c77af0ac",
         "android_client_info": {
-          "package_name": "com.hi_depok.android"
+          "package_name": "com.tireg2014.aefvoel.myfirstapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "309301715779-4ksvedj623oco8rh0k49fltujq4p76t1.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyARyXX_I1PNw79WFtkPOjrQbr9Q9eUuwxw"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:309301715779:android:64c043dec7b45b2b",
-        "android_client_info": {
-          "package_name": "com.hi_depok.hi_depok"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "309301715779-lovpi9ok4q00jj03d5p0ft6ukhcom0h3.apps.googleusercontent.com",
+          "client_id": "446733735879-fgc62cpkf5toqu5s0tg20f2gnihgisus.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.hi_depok.hi_depok",
-            "certificate_hash": "504FDE3218B5C3F31023296B5636BEF41FC8A63A"
+            "package_name": "com.tireg2014.aefvoel.myfirstapp",
+            "certificate_hash": "b627832bce86f1fc68c8f9a82f44698db0bf9cc8"
           }
         },
         {
-          "client_id": "309301715779-4ksvedj623oco8rh0k49fltujq4p76t1.apps.googleusercontent.com",
+          "client_id": "446733735879-ion12f561vj0c1qj8u5afntsq9bbr8q1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyARyXX_I1PNw79WFtkPOjrQbr9Q9eUuwxw"
+          "current_key": "AIzaSyD3Z4Ig8W8eQaN806SFa3S2DZtLAq8KGGU"
         }
       ],
       "services": {
@@ -71,7 +40,51 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "309301715779-4ksvedj623oco8rh0k49fltujq4p76t1.apps.googleusercontent.com",
+              "client_id": "446733735879-ion12f561vj0c1qj8u5afntsq9bbr8q1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:446733735879:android:64c043dec7b45b2b",
+        "android_client_info": {
+          "package_name": "com.hi_depok.hi_depok"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "446733735879-q8q9s8nhhoqhuempd8aan8imquck7i20.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hi_depok.hi_depok",
+            "certificate_hash": "b627832bce86f1fc68c8f9a82f44698db0bf9cc8"
+          }
+        },
+        {
+          "client_id": "446733735879-ion12f561vj0c1qj8u5afntsq9bbr8q1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3Z4Ig8W8eQaN806SFa3S2DZtLAq8KGGU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "446733735879-ion12f561vj0c1qj8u5afntsq9bbr8q1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

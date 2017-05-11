@@ -2,6 +2,14 @@
     <string name="app_name">Hi-Depok</string>
     <string name="tag_app_name">We Share We Care</string>
 
+    <!-- CHAT -->
+    <string name="sendPhoto">Photo Camera</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="select_picture_title">Get Photo From</string>
+    <string name="sendPhotoGallery">Photo Gallery</string>
+    <string name="sendLocation">Send Location</string>
+    <string name="locationTo">Location To</string>
+
     <!-- FONT CHANGE -->
     <string name="fontReguler" translatable="false">font/Blogger_Sans.otf</string>
     <string name="fontBold" translatable="false">font/Blogger_Sans-Bold.otf</string>

@@ -19,8 +19,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.SessionManager;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +38,11 @@ import java.util.List;
 public class danus_activity extends BaseActivity {
     ProgressDialog dialog;
     private LinearLayoutManager lLayout;
-
+    String JSON_URL;
+    RecyclerView rView;
+    List<DataModel> dataAdapter;
+    DataModel data;
+    SessionManager session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,23 +56,50 @@ public class danus_activity extends BaseActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        List<itemObject_listusaha> rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(getBaseContext());
-
-        RecyclerView rView = (RecyclerView)findViewById(R.id.list_usaha);
+        rView = (RecyclerView)findViewById(R.id.list_usaha);
         rView.setLayoutManager(lLayout);
-
-        RecyclerViewAdapter_listusaha rcAdapter = new RecyclerViewAdapter_listusaha(getBaseContext(), rowListItem);
-        rView.setAdapter(rcAdapter);
+        rView.setHasFixedSize(true);
+        dataAdapter = new ArrayList<>();
+        session = new SessionManager(this);
+        JSON_URL = "http://hidepok.id/android/ucok/ucok_riwayat_usaha.php?id_user=" + session.getUserDetails().get(SessionManager.KEY_ID_USER);
+        getDataFromJSON(JSON_URL);
     }
 
-    public List<itemObject_listusaha> getAllItemList() {
-        List<itemObject_listusaha> allItems = new ArrayList<>();
-        allItems.add(new itemObject_listusaha("ITechno Cup", R.string.item_desc));
-        allItems.add(new itemObject_listusaha("Studi Banding", R.string.item_desc));
-        allItems.add(new itemObject_listusaha("Kabir", R.string.item_desc));
-        return allItems;
+
+    public void getDataFromJSON(String url){
+        JsonArrayRequest req = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for(int i=0;i<response.length();i++){
+                    data = new DataModel();
+                    JSONObject json = null;
+                    try{
+
+                        json = response.getJSONObject(i);
+                        data.setId(json.getString("id_event"));
+                        data.setNama(json.getString("nama_event"));
+                        data.setDeskripsi(json.getString("desc_event"));
+
+                    } catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                    dataAdapter.add(data);
+                }
+                RecyclerView.Adapter rViewAdapter = new DanusAdapter(dataAdapter, getBaseContext());
+                rView.setAdapter(rViewAdapter);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue reqQueue = Volley.newRequestQueue(this);
+        reqQueue.add(req);
     }
+
+
 
     private void progresscalculate(){
         dialog = new ProgressDialog(danus_activity.this);

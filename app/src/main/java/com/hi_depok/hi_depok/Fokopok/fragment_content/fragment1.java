@@ -9,7 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.hi_depok.hi_depok.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +29,12 @@ import java.util.List;
 
 public class fragment1 extends Fragment {
     private LinearLayoutManager lLayout;
+    String JSON_URL;
+    RecyclerView rView;
+    List<DataModel> dataAdapter;
+    DataModel data;
+    RecyclerView.Adapter rViewAdapter;
+    JsonArrayRequest req;
 
     public static fragment1 newInstance(){
         Bundle args = new Bundle();
@@ -33,22 +48,41 @@ public class fragment1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View  v = inflater.inflate(R.layout.fokopok_fragment1_content, null);
-        List<itemObject_komunitas> rowListItem = getAllItemList();
-        lLayout = new LinearLayoutManager(getActivity());
+        rView = (RecyclerView)v.findViewById(R.id.fokopok_komunitas);
+        rView.setLayoutManager(new LinearLayoutManager(getContext()));
+        dataAdapter = new ArrayList<>();
+        JSON_URL = "http://hidepok.id/android/fokopok/fokopok_json.php";
+        req = new JsonArrayRequest(JSON_URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for(int i=0;i<response.length();i++){
+                    data = new DataModel();
+                    JSONObject json = null;
+                    try{
 
-        RecyclerView rView = (RecyclerView)v.findViewById(R.id.fokopok_komunitas);
-        rView.setLayoutManager(lLayout);
+                        json = response.getJSONObject(i);
+                        data.setId(json.getString("id_komunitas"));
+                        data.setNama(json.getString("nama_komunitas"));
+                        data.setFoto(json.getString("foto_komunitas"));
 
-        RecyclerViewAdapter_komunitas rcAdapter = new RecyclerViewAdapter_komunitas(getActivity(), rowListItem);
-        rView.setAdapter(rcAdapter);
+                    } catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                    dataAdapter.add(data);
+                }
+                rViewAdapter = new KomunitasAdapter(dataAdapter, getContext());
+                rView.setAdapter(rViewAdapter);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue reqQueue = Volley.newRequestQueue(getContext());
+        reqQueue.add(req);
         return v;
     }
 
-    private List<itemObject_komunitas> getAllItemList(){
-        List<itemObject_komunitas> allItems = new ArrayList<>();
-        allItems.add(new itemObject_komunitas("Komunitas Jalan Santai (20)", R.drawable.image_placeholder));
-        allItems.add(new itemObject_komunitas("Komunitas Fotografi (75)", R.drawable.image_placeholder));
-
-        return allItems;
-    }
 }

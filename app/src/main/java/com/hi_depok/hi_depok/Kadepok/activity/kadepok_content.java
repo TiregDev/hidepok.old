@@ -66,7 +66,6 @@ public class kadepok_content extends BaseActivity {
         rView = (RecyclerView)findViewById(R.id.recycler_view);
         rView.setLayoutManager(llm);
         dataAdapter = new ArrayList<>();
-        JSON_VALIDATE_URL();
 
         /*-------------------------- START SPINER CATEGORY --------------------------------------- */
         kecamatan = (Spinner)findViewById(R.id.kecamatan);
@@ -138,6 +137,7 @@ public class kadepok_content extends BaseActivity {
                         break;
                 }
                 JSON_URL = "http://hidepok.id/android/kadepok/kadepok_json.php" + spn_kecamatan;
+                JSON_VALIDATE_URL();
 
             }
 
@@ -147,6 +147,7 @@ public class kadepok_content extends BaseActivity {
             }
         });
         kecamatan.setAdapter(adapter_camat);
+        JSON_VALIDATE_URL();
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

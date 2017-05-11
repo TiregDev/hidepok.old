@@ -129,7 +129,7 @@
             android:label="FOKOPOK" />
         <activity
             android:name=".Sikepok_Diagnosa.DiagnosaBagian"
-            android:label="Pilihan Gejala" />
+            android:label="Diagnosa Bagian" />
         <activity
             android:name=".Sikepok_Diagnosa.Deskripsi"
             android:label="Deskripsi" />
@@ -255,12 +255,22 @@
             android:name=".notif.event"
             android:label="Event Terbaru" />
         <activity android:name=".Kapok.activity.kapok_detail" />
-        <activity
-            android:name=".Activity_Main.faq"
-            android:label="FAQ" />
-        <activity
-            android:name=".Sikepok_Diagnosa.Gejala"
-            android:label="Gejala"></activity>
+        <activity android:name=".Activity_Main.faq"
+            android:label="FAQ"/>
+
+        <activity android:name=".Fokopok.firebase.MainActivity">
+        </activity>
+        <activity android:name=".Fokopok.firebase.view.LoginActivity" />
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
     </application>
 
 </manifest>
