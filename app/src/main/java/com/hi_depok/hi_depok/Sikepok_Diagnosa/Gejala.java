@@ -1,13 +1,12 @@
 package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -16,15 +15,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.Button;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 
@@ -35,11 +32,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * Created by HP on 4/28/2016.
- */
-public class DiagnosaBagian extends BaseActivity {
+public class Gejala extends BaseActivity {
 
     String JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokdiagnosa_json.php";
     RecyclerView rView;
@@ -49,7 +42,7 @@ public class DiagnosaBagian extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sikepokdiagnosa_anggota_badan);
+        setContentView(R.layout.sikepokdiagnosa_gejala);
         super.onCreateDrawer();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -63,8 +56,17 @@ public class DiagnosaBagian extends BaseActivity {
         rView.setLayoutManager(new LinearLayoutManager(this));
         rView.setHasFixedSize(true);
         dataAdapter = new ArrayList<>();
-        JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokdiagnosa_json.php?id=" + getIntent().getExtras().getString("getID");
+        SharedPreferences pref = this.getSharedPreferences("MyPref", 0);
+        JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokdiagnosa_json.php?gejala=" + pref.getString("idgejala", "0");
         getDataFromJSON(JSON_URL);
+        Button tombol_sugesti = (Button) findViewById(R.id.tombol_sugesti);
+        tombol_sugesti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), Sugesti.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void getDataFromJSON(String url){
@@ -85,7 +87,7 @@ public class DiagnosaBagian extends BaseActivity {
                     }
                     dataAdapter.add(data);
                 }
-                RecyclerView.Adapter rViewAdapter = new DiagnosaBagianAdapter(dataAdapter, getBaseContext());
+                RecyclerView.Adapter rViewAdapter = new GejalaAdapter(dataAdapter, getBaseContext());
                 rView.setAdapter(rViewAdapter);
             }
         }, new Response.ErrorListener() {
@@ -100,7 +102,7 @@ public class DiagnosaBagian extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_gejala, menu);
+        getMenuInflater().inflate(R.menu.menu_hapus_gejala, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -110,15 +112,19 @@ public class DiagnosaBagian extends BaseActivity {
             case android.R.id.home:
                 // todo: goto back activity from here
 
-                DiagnosaBagian.this.finish();
+                Gejala.this.finish();
                 return true;
-            case R.id.action_gejala:
-                startActivity(new Intent(getBaseContext(), Gejala.class));
+            case R.id.action_hapus_gejala:
+                dataAdapter.clear();
+                SharedPreferences pref = getBaseContext().getSharedPreferences("MyPref", 0);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.clear();
+                editor.commit();
+                JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokdiagnosa_json.php?gejala=" + pref.getString("idgejala", "0");
+                getDataFromJSON(JSON_URL);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 }
-
-

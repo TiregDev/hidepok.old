@@ -2,6 +2,7 @@ package com.hi_depok.hi_depok.Sikepok_Diagnosa;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
@@ -33,7 +34,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Diagnosa extends BaseActivity implements SearchView.OnQueryTextListener {
+public class Diagnosa extends BaseActivity {
     String JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokdiagnosa_json.php";
     RecyclerView rView;
     List<DataModel> dataAdapter;
@@ -56,6 +57,8 @@ public class Diagnosa extends BaseActivity implements SearchView.OnQueryTextList
         rView.setLayoutManager(new LinearLayoutManager(this));
         rView.setHasFixedSize(true);
         dataAdapter = new ArrayList<>();
+        SharedPreferences pref = this.getSharedPreferences("MyPref", 0);
+        pref.getString("idgejala", "0");
         getDataFromJSON(JSON_URL);
     }
 
@@ -104,18 +107,6 @@ public class Diagnosa extends BaseActivity implements SearchView.OnQueryTextList
                 return super.onOptionsItemSelected(item);
         }
     }
-
-    @Override
-    public boolean onQueryTextChange(String query) {
-        // Here is where we are going to implement the filter logic
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
 }
 
 

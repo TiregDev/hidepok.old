@@ -11,26 +11,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.R;
 
 import java.util.List;
 
 
-public class DiagnosaAdapter extends RecyclerView.Adapter<DiagnosaAdapter.ViewHolder> {
+public class SugestiAdapter extends RecyclerView.Adapter<SugestiAdapter.ViewHolder> {
 
     Context context;
 
     List<DataModel> adapter;
     String id;
     String nama;
-    String foto;
+    String halaman;
 
-    public DiagnosaAdapter(List<DataModel> adapter, Context context){
+    public SugestiAdapter(List<DataModel> adapter, Context context){
 
         super();
 
@@ -41,7 +38,7 @@ public class DiagnosaAdapter extends RecyclerView.Adapter<DiagnosaAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokdiagnosa_listdiagnosa, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokdiagnosa_ensiklopedia_list, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(v);
 
@@ -53,13 +50,10 @@ public class DiagnosaAdapter extends RecyclerView.Adapter<DiagnosaAdapter.ViewHo
 
         id = adapter.get(position).getId();
         nama = adapter.get(position).getNama();
-        foto = adapter.get(position).getFoto();
-
+        halaman = adapter.get(position).getHalaman();
 
         holder.title.setText(nama);
-        holder.itemView.setTag(id);
-
-        Glide.with(context).load("http://hidepok.id/assets/images/photos/sikepok/sikepok1/bagian_tubuh/" + foto).placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(holder.image);
+        holder.itemView.setTag(halaman);
 
     }
 
@@ -72,23 +66,21 @@ public class DiagnosaAdapter extends RecyclerView.Adapter<DiagnosaAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView title;
-        public ImageView image;
 
 
         public ViewHolder(final View itemView) {
 
             super(itemView);
 
-            title = (TextView)itemView.findViewById(R.id.nama_bagian);
-            image = (ImageView)itemView.findViewById(R.id.bagian_tubuh);
+            title = (TextView)itemView.findViewById(R.id.title_ensiklopedia);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, DiagnosaBagian.class);
-                    String pos = (String) itemView.getTag();
-                    Log.d("JSONAdapter", "get id: " + pos);
-                    intent.putExtra("getID", pos);
+                    Intent intent = new Intent(context, Deskripsi.class);
+                    String hal = (String) itemView.getTag();
+                    intent.putExtra("getPage", hal);
+                    Log.d("JSONAdapter", "get page: " + hal);
 
                     context.startActivity(intent);
                 }
@@ -98,4 +90,3 @@ public class DiagnosaAdapter extends RecyclerView.Adapter<DiagnosaAdapter.ViewHo
         }
     }
 }
-
