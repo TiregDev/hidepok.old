@@ -2,6 +2,7 @@ package com.hi_depok.hi_depok.Sikepok_RS;
 
 import android.app.ProgressDialog;
 import android.app.SearchManager;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
@@ -19,18 +20,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
+import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.SessionManager;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -38,14 +45,26 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class detail_post extends BaseActivity {
     private SearchView searchView;
 
     //inisialisasi simpan komentar
+    EditText komen;
+    Button kirimKomen;
+    Calendar dateAndTime = Calendar.getInstance();
+    SimpleDateFormat sdf_tanggal = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdf_waktu = new SimpleDateFormat("HH:mm:ss");
+    String Komen, Tanggal, Waktu;
+    String STRTanggal, STRWaktu;
 
+    String KIRIM_KOMENTAR_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_savekomen_json.php";
 
     //inisialisasi post
     String GET_JSON_DATA_HTTP_URL;
@@ -99,6 +118,11 @@ public class detail_post extends BaseActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar3));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //inisialisasi data kirim komen
+        komen = (EditText) findViewById(R.id.tulis_komentar);
+        kirimKomen = (Button) findViewById(R.id.kirim_komentar);
+        updateLabel();
+
         //inisialisasi adapter
         dataAdapter = new ArrayList<>();
 
@@ -146,6 +170,72 @@ public class detail_post extends BaseActivity {
         GET_JSON_DATA_HTTP_KOMENTAR = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?komentar=" + idPost;
 
         JSON_DATA_WEB_CALL2();
+
+        //kirim.setOnClickListener(this); //Set on click Get
+        kirimKomen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Komen = komen.getText().toString();
+                Tanggal = STRTanggal.toString();
+                Waktu = STRWaktu.toString();
+
+                if(Komen.equals("")){
+                    isi.setError("Komentar harus diisi terlebih dahulu");
+                }else{
+                    final ProgressDialog loading = ProgressDialog.show(detail_post.this,
+                            "Proses...", "Tunggu sebentar...", false, false);
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, KIRIM_KOMENTAR_URL,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    loading.dismiss();
+                                    Toast.makeText(detail_post.this, response, Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(detail_post.this, detail_post.class));
+                                    finish();
+
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(detail_post.this, error.getMessage().toString(),
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }){
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            SessionManager session = new SessionManager(detail_post.this);
+
+                            HashMap<String, String> user = session.getUserDetails();
+                            String id = user.get(SessionManager.KEY_ID_USER);
+
+                            HashMap<String, String> params = new HashMap<String, String>();
+
+                            params.put("id_user", id);
+                            params.put("isi_komentar", Komen);
+                            params.put("tanggal_komentar", Tanggal);
+                            params.put("waktu_komentar", Waktu);
+                            params.put("id_post", idPost);
+
+                            return params;
+                        }
+                    };
+                    Akses.getInstance(detail_post.this).addtoRequestQueue(stringRequest);
+                }
+            }
+        });
+    }
+
+    //Update Label
+    private void updateLabel(){
+//        Tanggal.setText(
+//                sdf_tanggal.format(dateAndTime.getTime())
+//        );
+//        Waktu.setText(
+//                sdf_waktu.format(dateAndTime.getTime())
+//        );
+
+        STRTanggal = sdf_tanggal.format(dateAndTime.getTime());
+        STRWaktu = sdf_waktu.format(dateAndTime.getTime());
     }
 
     //parsing JSON

@@ -58,16 +58,16 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_weight="9"
-                                    android:src="@drawable/ic_action_person4"/>
+                                    android:src="@drawable/ic_action_person4" />
 
                                 <fr.arnaudguyon.smartfontslib.FontTextView
                                     android:id="@+id/pengirim_post"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:layout_marginBottom="5dp"
-                                    android:paddingTop="4dp"
+                                    android:layout_weight="1"
                                     android:gravity="center_vertical"
+                                    android:paddingTop="4dp"
                                     android:text="@string/komentator"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/article_desc"
@@ -237,13 +237,13 @@
 
                                     <fr.arnaudguyon.smartfontslib.FontEditText
                                         android:id="@+id/tulis_komentar"
-                                        app:font="@string/fontReguler"
-                                        android:textColorHint="@color/abuAbu"
-                                        android:textColor="@color/white"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:hint="Tulis komentar ..."
-                                        android:inputType="textMultiLine" />
+                                        android:inputType="textMultiLine"
+                                        android:textColor="@color/white"
+                                        android:textColorHint="@color/abuAbu"
+                                        app:font="@string/fontReguler" />
                                 </LinearLayout>
 
                                 <RelativeLayout
@@ -252,14 +252,15 @@
                                     android:gravity="center_vertical|right">
 
                                     <fr.arnaudguyon.smartfontslib.FontButton
-                                        app:font="@string/fontBold"
+                                        android:id="@+id/kirim_komentar"
                                         android:layout_width="70dp"
                                         android:layout_height="30dp"
                                         android:background="@drawable/shape3"
                                         android:gravity="center"
                                         android:text="Kirim"
                                         android:textAllCaps="false"
-                                        android:textColor="@color/white" />
+                                        android:textColor="@color/white"
+                                        app:font="@string/fontBold" />
                                 </RelativeLayout>
 
                             </LinearLayout>

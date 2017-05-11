@@ -68,7 +68,7 @@ public class forum extends BaseActivity{
     String Judul, Isi, Tanggal, Waktu;
     String STRTanggal, STRWaktu;
 
-    String deskripsi_url = "http://hidepok.id/android/sikepok/1.2/sikepokrs_savepost_json.php";
+    String KIRIM_POST_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_savepost_json.php";
 
     String GET_JSON_DATA_HTTP_URL;
     String GET_JSON_DATA_HTTP_URL2;
@@ -111,7 +111,7 @@ public class forum extends BaseActivity{
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar3));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //inisialisasi data
+        //inisialisasi data kirim post
         judul = (EditText) findViewById(R.id.judul);
         isi = (EditText) findViewById(R.id.isi);
         kirim = (Button) findViewById(R.id.kirim);
@@ -153,7 +153,7 @@ public class forum extends BaseActivity{
                 }else{
                     final ProgressDialog loading = ProgressDialog.show(forum.this,
                             "Proses...", "Tunggu sebentar...", false, false);
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, deskripsi_url,
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, KIRIM_POST_URL,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {

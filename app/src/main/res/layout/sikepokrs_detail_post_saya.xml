@@ -229,6 +229,7 @@
 
                                     <fr.arnaudguyon.smartfontslib.FontButton
                                         android:layout_width="70dp"
+                                        android:id="@+id/kirim_komentar"
                                         android:layout_height="30dp"
                                         android:background="@drawable/shape3"
                                         android:gravity="center"
