@@ -31,13 +31,13 @@
                 android:padding="16dp">
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
-                    android:textSize="@dimen/article_desc"
-                    app:font="@string/fontBold"
-                    android:textColor="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Tulis Post Baru" />
+                    android:text="Tulis Post Baru"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/article_desc"
+                    app:font="@string/fontBold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -48,28 +48,30 @@
                     android:orientation="vertical">
 
                     <fr.arnaudguyon.smartfontslib.FontTextView
-                        app:font="@string/fontReguler"
-                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ingin berbagi informasi baru ?"/>
+                        android:text="Ingin berbagi informasi baru ?"
+                        android:textColor="@color/white"
+                        app:font="@string/fontReguler" />
 
                     <fr.arnaudguyon.smartfontslib.FontEditText
-                        app:font="@string/fontReguler"
-                        android:textColorHint="@color/abuAbu"
-                        android:textColor="@color/white"
+                        android:id="@+id/judul"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Judul Post ..." />
+                        android:hint="Judul Post ..."
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/abuAbu"
+                        app:font="@string/fontReguler" />
 
                     <fr.arnaudguyon.smartfontslib.FontEditText
-                        app:font="@string/fontReguler"
-                        android:textColorHint="@color/abuAbu"
-                        android:textColor="@color/white"
+                        android:id="@+id/isi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Penjelasan informasi ..."
-                        android:inputType="textMultiLine" />
+                        android:inputType="textMultiLine"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/abuAbu"
+                        app:font="@string/fontReguler" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -94,14 +96,15 @@
                             android:gravity="center_vertical|end">
 
                             <fr.arnaudguyon.smartfontslib.FontButton
-                                app:font="@string/fontBold"
+                                android:id="@+id/kirim"
                                 android:layout_width="70dp"
                                 android:layout_height="30dp"
                                 android:background="@drawable/shape3"
                                 android:gravity="center"
                                 android:text="Kirim"
                                 android:textAllCaps="false"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/white"
+                                app:font="@string/fontBold" />
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -115,13 +118,13 @@
                     android:background="@drawable/shape3" />
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
-                    android:textSize="@dimen/article_desc"
-                    app:font="@string/fontBold"
-                    android:textColor="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Diskusi Terbaru" />
+                    android:text="Diskusi Terbaru"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/article_desc"
+                    app:font="@string/fontBold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -145,14 +148,14 @@
                     android:weightSum="2">
 
                     <fr.arnaudguyon.smartfontslib.FontButton
-                        app:font="@string/fontBold"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:onClick="ke_post_terbaru"
                         android:background="@drawable/shape3"
+                        android:onClick="ke_post_terbaru"
                         android:text="Lihat Yang Lain"
                         android:textAllCaps="false"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        app:font="@string/fontBold" />
 
                 </LinearLayout>
 
@@ -163,13 +166,13 @@
                     android:background="@drawable/shape3" />
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
-                    app:font="@string/fontBold"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/article_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Post Saya" />
+                    android:text="Post Saya"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/article_desc"
+                    app:font="@string/fontBold" />
 
 
                 <LinearLayout
@@ -195,14 +198,14 @@
                     android:weightSum="2">
 
                     <fr.arnaudguyon.smartfontslib.FontButton
-                        app:font="@string/fontBold"
-                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:onClick="ke_post_saya"
                         android:background="@drawable/shape3"
+                        android:onClick="ke_post_saya"
                         android:text="Lihat Yang Lain"
-                        android:textAllCaps="false" />
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:font="@string/fontBold" />
 
                 </LinearLayout>
 

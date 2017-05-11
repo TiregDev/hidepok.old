@@ -68,7 +68,7 @@
                                     android:layout_marginBottom="5dp"
                                     android:paddingTop="4dp"
                                     android:gravity="center_vertical"
-                                    android:text="Hadi Nur Salam"
+                                    android:text="@string/komentator"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/article_desc"
                                     app:font="@string/fontBold" />
@@ -199,7 +199,7 @@
                             android:orientation="vertical">
 
                             <android.support.v7.widget.RecyclerView
-                                android:id="@+id/recyclerviewpost"
+                                android:id="@+id/recyclerviewpostkomen"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent" />
 

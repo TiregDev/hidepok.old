@@ -238,13 +238,13 @@
     <string name="ketentuan6">No. RM adalah nomor yang tertera pada kartu berobat yang terdiri dari 6 digit, bila pasien tidak mengetahui nomor rekam medis maka No.RM diisi 0 </string>
     <string name="ketentuan7">Pasien daftar ulang kembali di loket pendaftaran RSUD Kota Depok pada waktu yang telah ditetapkan dalam balasan SMS</string>
 
-    <string name="judul_post">Oralit untuk diare</string>
-    <string name="isi_post">Oralit adalah larutan gula garam yang merupakan salah satu solusi untuk diare. sebagai obat alternatif yang dapat dibuat oleh sapa saja. Membuatnya pun sangat mudah. hanya dengan mencampurkan gula dan garam dengan takaran yang cocok lalu diberi air hangat.</string>
+    <string name="judul_post">Menuat judul post ...</string>
+    <string name="isi_post">Memuat isi post. Harap tunggu ...</string>
 
-    <string name="like">7</string>
-    <string name="disklike">3</string>
-    <string name="komen">2</string>
-    <string name="komentator">Hadi Nur Salam</string>
+    <string name="like">0</string>
+    <string name="disklike">0</string>
+    <string name="komen">0</string>
+    <string name="komentator">Memuat pengirim ...</string>
     <string name="title_activity_list_diskusi">list_diskusi</string>
 
     <string name="button_lengkap">Selengkapnya</string>

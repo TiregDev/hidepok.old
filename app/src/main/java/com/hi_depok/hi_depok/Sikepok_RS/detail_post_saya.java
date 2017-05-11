@@ -10,6 +10,8 @@ import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -40,11 +42,13 @@ public class detail_post_saya extends BaseActivity {
     private SearchView searchView;
 
     String GET_JSON_DATA_HTTP_URL;
+    String JSON_JUDUL_POST = "judul_post";
+    String JSON_ISI_POST = "isi_post";
+    String JSON_NAMA_USER = "nama_user";
+
     String JSON_ID_POST = "id_post";
     String JSON_ID_MODUL = "id_modul";
     String JSON_ID_USER = "id_user";
-    String JSON_JUDUL_POST = "judul_post";
-    String JSON_ISI_POST = "isi_post";
     String JSON_TANGGAL_POST = "tanggal_post";
     String JSON_WAKTU_POST = "waktu_post";
     String JSON_KATEGORI_POST = "kategori_post";
@@ -54,7 +58,13 @@ public class detail_post_saya extends BaseActivity {
     String JSON_NO_IDENTITAS_POST = "no_identitas_post";
     String JSON_STATUS_POST = "status_post";
     String JSON_RATING_POST = "rating_post";
-    String JSON_NAMA_USER = "nama_user";
+
+    String GET_JSON_DATA_HTTP_KOMENTAR;
+    String JSON_ID_KOMENTAR = "id_komentar";
+    String JSON_ISI_KOMENTAR = "isi_komentar";
+    String JSON_TANGGAL_KOMENTAR = "tanggal_komentar";
+    String JSON_WAKTU_KOMENTAR = "waktu_komentar";
+    String JSON_NAMA_KOMENTATOR = "nama_user";
 
     JsonArrayRequest jsonArrayRequest ;
     List<GetDataAdapter> dataAdapter;
@@ -63,6 +73,9 @@ public class detail_post_saya extends BaseActivity {
     TextView nama, judul, isi;
     //    ImageView image;
     String idPostSaya;
+
+    RecyclerView.Adapter recyclerViewadapter;
+    RecyclerView rViewKOMEN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,15 +91,28 @@ public class detail_post_saya extends BaseActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar3));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //inisialisasi adapter
+        dataAdapter = new ArrayList<>();
+
         //inisialisasi tampilan di xml
 //        nama = (TextView) findViewById(R.id.pengirim_post);
         judul = (TextView) findViewById(R.id.judul_post);
         isi = (TextView) findViewById(R.id.isi_post);
 //        image = (ImageView) findViewById(R.id.fotoDokter);
-        dialog = new ProgressDialog(this);
-        dialog.setMessage("Loading");
-        dialog.show();
-        dialog.setCancelable(true);
+//        dialog = new ProgressDialog(this);
+//        dialog.setMessage("Loading");
+//        dialog.show();
+//        dialog.setCancelable(true);
+
+        //recycler view
+        rViewKOMEN = (RecyclerView) findViewById(R.id.recyclerviewpostkomensaya);
+        rViewKOMEN.setLayoutManager(new LinearLayoutManager(this));
+
+        dataAdapter = new ArrayList<>();
+//        dialog = new ProgressDialog(this);
+//        dialog.setMessage("Loading");
+//        dialog.show();
+//        dialog.setCancelable(true);
 
         //shared preferences
         final SharedPreferences prefsa = PreferenceManager.getDefaultSharedPreferences(this);
@@ -95,6 +121,19 @@ public class detail_post_saya extends BaseActivity {
         GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?detail_post_saya=" + idPostSaya;
 
         JSON_DATA_WEB_CALL();
+
+        //recycler view
+        rViewKOMEN = (RecyclerView) findViewById(R.id.recyclerviewpostkomensaya);
+        rViewKOMEN.setLayoutManager(new LinearLayoutManager(this));
+
+        dataAdapter = new ArrayList<>();
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Loading");
+        dialog.show();
+        dialog.setCancelable(true);
+        GET_JSON_DATA_HTTP_KOMENTAR = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?komentar=" + idPostSaya;
+
+        JSON_DATA_WEB_CALL2();
     }
 
     //parsing JSON
@@ -141,6 +180,51 @@ public class detail_post_saya extends BaseActivity {
             }
         }
 
+
+    }
+
+    //r view 2
+    public void JSON_DATA_WEB_CALL2() {
+        jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_KOMENTAR,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        dialog.dismiss();
+                        JSON_PARSE_DATA_AFTER_WEBCALL2(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+    }
+
+    public void JSON_PARSE_DATA_AFTER_WEBCALL2(JSONArray array) {
+        for (int i = 0; i < array.length(); i++) {
+            GetDataAdapter dataFromJSON = new GetDataAdapter();
+            JSONObject json = null;
+            try {
+                json = array.getJSONObject(i);
+
+                dataFromJSON.setId_komentar(json.getString(JSON_ID_KOMENTAR));
+                dataFromJSON.setIsi_komentar(json.getString(JSON_ISI_KOMENTAR));
+                dataFromJSON.setTanggal_komentar(json.getString(JSON_TANGGAL_KOMENTAR));
+                dataFromJSON.setWaktu_komentar(json.getString(JSON_WAKTU_KOMENTAR));
+                dataFromJSON.setNama_user(json.getString(JSON_NAMA_KOMENTATOR));
+
+            } catch (JSONException e) {
+
+                e.printStackTrace();
+            }
+            dataAdapter.add(dataFromJSON);
+        }
+        recyclerViewadapter = new RecyclerViewAdapterKOMENTARSAYA(dataAdapter, this);
+        rViewKOMEN.setAdapter(recyclerViewadapter);
 
     }
 

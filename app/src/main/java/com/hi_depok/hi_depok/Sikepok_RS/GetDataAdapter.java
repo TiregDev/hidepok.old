@@ -407,4 +407,38 @@ public class GetDataAdapter {
     public void setNama_user(String nama_user) {
         this.nama_user = nama_user;
     }
+
+    //adapter table komentar
+    String id_komentar;
+    String isi_komentar;
+    String tanggal_komentar;
+    String waktu_komentar;
+
+    public String getId_komentar() {
+        return id_komentar;
+    }
+    public void setId_komentar(String id_komentar) {
+        this.id_komentar = id_komentar;
+    }
+
+    public String getIsi_komentar() {
+        return isi_komentar;
+    }
+    public void setIsi_komentar(String isi_komentar) {
+        this.isi_komentar = isi_komentar;
+    }
+
+    public String getTanggal_komentar() {
+        return tanggal_komentar;
+    }
+    public void setTanggal_komentar(String tanggal_komentar) {
+        this.tanggal_komentar = tanggal_komentar;
+    }
+
+    public String getWaktu_komentar() {
+        return waktu_komentar;
+    }
+    public void setWaktu_komentar(String waktu_komentar) {
+        this.waktu_komentar = waktu_komentar;
+    }
 }

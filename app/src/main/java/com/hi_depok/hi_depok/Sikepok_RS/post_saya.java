@@ -79,7 +79,7 @@ public class post_saya extends BaseActivity {
         dialog.show();
         dialog.setCancelable(false);
 
-        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?id_saya_semua=6";
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?id_saya_semua=9";
 
         JSON_DATA_WEB_CALL();
     }
