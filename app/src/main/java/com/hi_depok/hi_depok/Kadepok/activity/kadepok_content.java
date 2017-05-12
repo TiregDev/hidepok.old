@@ -45,6 +45,9 @@ public class kadepok_content extends BaseActivity {
     private static final String[]camat = {"Pilih Kecamatan", "Beji", "Bojongsari", "Cilodong", "Cimanggis",
             "Cinere", "Cipayung", "Limo", "Pancoran Mas", "Sawangan", "Sukmajaya", "Tapos"};
 
+    JsonArrayRequest jsonArrayRequest ;
+    RequestQueue requestQueue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,6 +140,7 @@ public class kadepok_content extends BaseActivity {
                         break;
                 }
                 JSON_URL = "http://hidepok.id/android/kadepok/kadepok_json.php" + spn_kecamatan;
+                dataAdapter.clear();
                 JSON_VALIDATE_URL();
 
             }
@@ -161,8 +165,7 @@ public class kadepok_content extends BaseActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    JsonArrayRequest jsonArrayRequest ;
-    RequestQueue requestQueue;
+
     public void JSON_VALIDATE_URL(){
         jsonArrayRequest = new JsonArrayRequest(JSON_URL,
                 new Response.Listener<JSONArray>() {

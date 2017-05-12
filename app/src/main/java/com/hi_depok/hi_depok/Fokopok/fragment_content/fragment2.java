@@ -1,6 +1,7 @@
 package com.hi_depok.hi_depok.Fokopok.fragment_content;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ceylonlabs.imageviewpopup.ImagePopup;
+import com.hi_depok.hi_depok.Activity_Main.fokopok;
 import com.hi_depok.hi_depok.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -27,6 +29,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 
 public class fragment2 extends Fragment {
+    private LinearLayoutManager lLayout;
 
     public static fragment2 newInstance(){
         Bundle args = new Bundle();
@@ -38,15 +41,14 @@ public class fragment2 extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fokopok_fragment2_content, container, false);
-        RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerview);
-        com.hi_depok.hi_depok.Fokopok.fragment_content.fragment2.ContentAdapter adapter =
-                new com.hi_depok.hi_depok.Fokopok.fragment_content.fragment2.ContentAdapter(recyclerView.getContext());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        RecyclerView recyclerView = (RecyclerView) inflater.inflate(
+                R.layout.fokopok_fragment2_content, container, false);
+        com.hi_depok.hi_depok.Fokopok.fragment_content.fragment2.ContentAdapter adapter = new com.hi_depok.hi_depok.Fokopok.fragment_content.fragment2.ContentAdapter(recyclerView.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
-        return v;
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        return recyclerView;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

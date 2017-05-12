@@ -206,19 +206,18 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/text_rekening_panti"
                 android:layout_marginTop="40dp"
-                android:text="@string/spasi"
+                android:text="aaaaaaa"
                 android:textColor="#fff"
                 app:font="@string/fontReguler" />
 
 
             <fr.arnaudguyon.smartfontslib.FontTextView
-                android:id="@+id/textView36"
+                android:id="@+id/jmlAnak"
                 android:textSize="@dimen/article_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/jmlh_anak_panti"
                 android:layout_alignStart="@+id/jmlh_anak_panti"
-                android:layout_marginStart="30dp"
                 android:text="Anak"
                 android:textColor="#fff"
                 app:font="@string/fontReguler" />

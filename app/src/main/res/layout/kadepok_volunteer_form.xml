@@ -13,7 +13,6 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -40,8 +39,38 @@
                     android:layout_weight="1"
                     android:focusableInTouchMode="true">
 
+                    <fr.arnaudguyon.smartfontslib.FontTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:text="Pilih Panti Asuhan"
+                        android:textColor="#b7b7b7"
+                        android:textSize="12sp"
+                        app:font="@string/fontReguler" />
+                    <Spinner
+                        android:id="@+id/pilih_panti"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:entries="@array/panti"
+                        android:spinnerMode="dropdown" />
+
+
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:focusableInTouchMode="true">
+
                     <fr.arnaudguyon.smartfontslib.FontEditText
-                        app:font="@string/fontReguler"
                         android:id="@+id/jenis_lain_volunteer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -54,7 +83,8 @@
                         android:maxLines="1"
                         android:textColorHint="#b7b7b7"
                         android:textColorLink="#b7b7b7"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        app:font="@string/fontReguler" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -65,7 +95,6 @@
                     android:focusableInTouchMode="true">
 
                     <fr.arnaudguyon.smartfontslib.FontEditText
-                        app:font="@string/fontReguler"
                         android:id="@+id/nama_volunteer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -78,7 +107,8 @@
                         android:maxLines="1"
                         android:textColorHint="#b7b7b7"
                         android:textColorLink="#b7b7b7"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        app:font="@string/fontReguler" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -89,7 +119,6 @@
                     android:focusableInTouchMode="true">
 
                     <fr.arnaudguyon.smartfontslib.FontEditText
-                        app:font="@string/fontReguler"
                         android:id="@+id/tlp_volunteer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -102,7 +131,8 @@
                         android:maxLines="1"
                         android:textColorHint="#b7b7b7"
                         android:textColorLink="#b7b7b7"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        app:font="@string/fontReguler" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -113,7 +143,6 @@
                     android:focusableInTouchMode="true">
 
                     <fr.arnaudguyon.smartfontslib.FontEditText
-                        app:font="@string/fontReguler"
                         android:id="@+id/keahlian_volunteer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -126,7 +155,8 @@
                         android:maxLines="1"
                         android:textColorHint="#b7b7b7"
                         android:textColorLink="#b7b7b7"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        app:font="@string/fontReguler" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -139,7 +169,6 @@
                     android:layout_marginTop="20dp">
 
                     <fr.arnaudguyon.smartfontslib.FontButton
-                        app:font="@string/fontBold"
                         android:id="@+id/btn_volunteer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -147,7 +176,8 @@
                         android:background="@drawable/shape3"
                         android:text="Daftar"
                         android:textColor="#fff"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:font="@string/fontBold" />
                 </RelativeLayout>
 
             </LinearLayout>

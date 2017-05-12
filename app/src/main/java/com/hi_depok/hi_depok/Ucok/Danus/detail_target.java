@@ -22,12 +22,30 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 
+
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
+
 public class detail_target extends BaseActivity {
 
-    public static final String EXTRA_POSITION = "position";
+    String URL;
+    DataModel data;
+    CollapsingToolbarLayout collapsingToolbar;
+    TextView placeDetail, placeDetail2;
+    ImageView placePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,36 +58,53 @@ public class detail_target extends BaseActivity {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.target_recycler);
-        detail_target.ContentAdapter adapter = new detail_target.ContentAdapter(recyclerView.getContext());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         /* ----------------------------- TOOLBAR ----------------------------------------------------------*/
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Set Collapsing Toolbar layout to the screen
-        CollapsingToolbarLayout collapsingToolbar =
-                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        int postion = getIntent().getIntExtra(EXTRA_POSITION, 0);
-        Resources resources = getResources();
-        String places = "ITechnoCup";
-       collapsingToolbar.setTitle(places);
-//
-        String placeDetails = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys" +
-                "standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make" +
-                "a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting," +
-                "remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing" +
-                "Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum";
-       TextView placeDetail = (TextView) findViewById(R.id.detail);
-        placeDetail.setText(placeDetails);
-//
-        Drawable placePictures = resources.getDrawable(R.drawable.image_placeholder);
-        ImageView placePicutre = (ImageView) findViewById(R.id.image_target);
-        placePicutre.setImageDrawable(placePictures);
+        collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
 
-//        placePictures.recycle();
+        placeDetail = (TextView) findViewById(R.id.detail);
+        placeDetail2 = (TextView) findViewById(R.id.detail_jual);
+
+        placePicture = (ImageView) findViewById(R.id.image_target);
+
+        URL = "http://hidepok.id/android/ucok/ucok_riwayat_usaha.php?id=" + getIntent().getExtras().getString("getId");
+        getDataFromJSON(URL);
+    }
+
+
+    public void getDataFromJSON(String url){
+        JsonArrayRequest req = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for(int i=0;i<response.length();i++){
+                    data = new DataModel();
+                    JSONObject json = null;
+                    try{
+
+                        json = response.getJSONObject(i);
+                        collapsingToolbar.setTitle(json.getString("nama_event"));
+                        placeDetail.setText(json.getString("desc_event"));
+                        String a = "Untuk mendapatkan uang sebanyak "+json.getString("target_uang")+ " dalam waktu "+json.getString("target_hari")+" hari, Anda menjual "+json.getString("barang_jual")+" dengan harga "+json.getString("harga_jual");
+                        placeDetail2.setText(a);
+                        Glide.with(getBaseContext()).load("http://hidepok.id/assets/images/photos/ucok/" + json.getString("foto_barang")).placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(placePicture);
+
+
+                    } catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue reqQueue = Volley.newRequestQueue(this);
+        reqQueue.add(req);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -81,55 +116,6 @@ public class detail_target extends BaseActivity {
 //            case R.id.action_share:
             default:
                 return super.onOptionsItemSelected(item);
-        }
-    }
-    public class ViewHolder extends RecyclerView.ViewHolder{
-
-        public TextView harike;
-        public EditText input_pendapatan;
-//        public Button simpan;
-
-        public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.ucok_list_target, parent, false));
-
-            harike = (TextView) itemView.findViewById(R.id.harike);
-            input_pendapatan = (EditText) itemView.findViewById(R.id.input_pendapatan);
-            Button button = (Button)itemView.findViewById(R.id.simpan);
-            button.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(v.getContext(), ("Berhasil Menambahkan"),
-                            Toast.LENGTH_LONG).show();
-                }
-            });
-        }
-    }
-
-    public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-        // Set numbers of Card in RecyclerView.
-        private static final int LENGTH = 7;
-
-        private final String[] mHari;
-
-
-        public ContentAdapter(Context context) {
-            Resources resources = context.getResources();
-            mHari = resources.getStringArray(R.array.harike);
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.harike.setText(mHari[position % mHari.length]);
-        }
-
-        @Override
-        public int getItemCount() {
-            return LENGTH;
         }
     }
 }

@@ -76,14 +76,16 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     app:font="@string/fontReguler"
-                    tools:text="@string/item_desc" />
+                    android:text="@string/spasi" />
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/target_recycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:scrollbars="vertical" />
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:id="@+id/detail_jual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    app:font="@string/fontReguler"
+                    android:text="@string/spasi" />
+
 
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>

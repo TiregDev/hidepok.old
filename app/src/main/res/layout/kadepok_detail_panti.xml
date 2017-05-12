@@ -70,13 +70,12 @@
                         android:id="@+id/call"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:onClick="toCall"
                         android:src="@drawable/call_small" />
 
                     <ImageView
+                        android:id="@+id/maps"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:onClick="toMaps"
                         android:src="@drawable/maps_small" />
 
                 </LinearLayout>

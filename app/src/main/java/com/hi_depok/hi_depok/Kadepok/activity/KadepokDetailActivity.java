@@ -50,6 +50,7 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
     String JSON_URL;
     CircleImageView fotoPanti;
     TextView namaPanti;
+    ImageView telpPanti, kordinatPanti;
     JsonArrayRequest jsonArrayRequest ;
     RequestQueue requestQueue;
 
@@ -93,6 +94,8 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
         JSON_URL = "http://hidepok.id/android/kadepok/kadepok_json.php?id=" + getIntent().getExtras().getString("getId");
         namaPanti = (TextView)findViewById(R.id.list_title);
         fotoPanti = (CircleImageView)findViewById(R.id.list_avatar);
+        telpPanti = (ImageView) findViewById(R.id.call);
+        kordinatPanti = (ImageView) findViewById(R.id.maps);
         JSON_VALIDATE_URL();
 
         pager = (ViewPager) findViewById(R.id.pager);
@@ -162,8 +165,30 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
             try {
                 json = array.getJSONObject(i);
                 namaPanti.setText(json.getString("nama_panti"));
+                final String label = json.getString("nama_panti");
+                final String PhoneNo = json.getString("telpon_panti");
+                final String kordinat = json.getString("koordinat_panti");
                 String urlPhoto = "http://hidepok.id/assets/images/photos/kadepok/" + json.getString("foto_profile_panti");
                 Glide.with(this).load(urlPhoto).placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(fotoPanti);
+                telpPanti.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent dial = new Intent();
+                        dial.setAction("android.intent.action.DIAL");
+                        dial.setData(Uri.parse("tel:" + PhoneNo));
+                        startActivity(dial);
+                    }
+                });
+                kordinatPanti.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String urlAddress = "http://maps.google.com/maps?q=" + kordinat + "(" + label + ")&iwloc=A&hl=es";
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlAddress));
+                        startActivity(intent);
+                    }
+                });
+
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -227,7 +252,7 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
 
         public Content(FragmentManager fm) {
             super(fm);
-            fragment1 = fragment1.newInstance();
+            fragment1 = fragment1.newInstance(getIntent().getExtras().getString("getId"));
             fragment2 = fragment2.newInstance();
             fragment3 = fragment3.newInstance();
         }
@@ -252,23 +277,6 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
         }
 
 
-    }
-    public void toMaps(View v){
-        Double myLatitude = -6.3656374;
-        Double myLongitude = 106.8237375;
-        String labelLocation = "Perpus UI";
-
-        String urlAddress = "http://maps.google.com/maps?q=" + myLatitude + "," + myLongitude + "(" + labelLocation + ")&iwloc=A&hl=es";
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlAddress));
-        startActivity(intent);
-    }
-
-    public void toCall(View v){
-        String PhoneNo="085695454139";
-        Intent dial = new Intent();
-        dial.setAction("android.intent.action.DIAL");
-        dial.setData(Uri.parse("tel:" + PhoneNo));
-        startActivity(dial);
     }
 
 }

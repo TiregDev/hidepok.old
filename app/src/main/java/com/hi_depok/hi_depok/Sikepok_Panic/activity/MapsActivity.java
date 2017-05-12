@@ -236,6 +236,8 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
             markerOptions.title("Lokasi Kamu");
             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_13));
             mCurrLocationMarker = mMap.addMarker(markerOptions);
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
         }
 
     }
@@ -367,8 +369,7 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_13));
 
         mCurrLocationMarker = mMap.addMarker(markerOptions);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(startPoint));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
+
         connected = true;
         Log.d("onLocationChanged", String.format("latitude:%.3f longitude:%.3f",latitude,longitude));
 
