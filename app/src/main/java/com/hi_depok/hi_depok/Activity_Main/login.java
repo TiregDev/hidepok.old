@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +15,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -32,8 +30,8 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.Akses;
+import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
 
 import org.json.JSONArray;
@@ -103,10 +101,10 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
     Button btnSend;
     String username, password;
     ImageButton google;
-    TextView daftarBaru;
     SessionManager session;
     private static final int REQUEST_GMAIL = 9001;
     String login_url = "http://hidepok.id/android/hidepok/login.php";
+    String cek_user_url = "http://hidepok.id/android/hidepok/cek_user.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,14 +134,6 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
         mPasswordView = (EditText) findViewById(R.id.password);
         btnSend = (Button) findViewById(R.id.email_sign_in_button);
         google = (ImageButton) findViewById(R.id.gmail);
-
-        daftarBaru = (TextView) findViewById(R.id.registrasi);
-        daftarBaru.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(login.this, register.class));
-            }
-        });
 
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(
                 GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
@@ -222,7 +212,7 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
         });
     }
 
-    public void onConnectionFailed (@NonNull ConnectionResult result){
+    public void onConnectionFailed (ConnectionResult result){
 
     }
 
@@ -245,22 +235,59 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
             GoogleSignInAccount account = result.getSignInAccount();
 
             //Buat ngambil nama dan email user
-            String name = account.getDisplayName();
-            String email = account.getEmail();
+            final String name = account.getDisplayName();
+            final String email = account.getEmail();
 
-            Intent intent = new Intent(login.this, MainActivity.class);
+            final StringRequest request = new StringRequest(Request.Method.POST, cek_user_url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                String code = jsonObject.getString("code");
+                                if (code.equals("user_available")) {
+                                    session.createLoginSession(jsonObject.getString("id"),
+                                            jsonObject.getString("username_user"),
+                                            jsonObject.getString("email_user"),
+                                            jsonObject.getString("password"),
+                                            jsonObject.getString("nama"));
+                                    Toast.makeText(login.this, "Selamat datang di Hi Depok!",
+                                            Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(login.this,
+                                            MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                    finish();
+                                }else{
+                                    Intent regist = new Intent(login.this, register.class);
+                                    regist.putExtra("nama", name);
+                                    regist.putExtra("email", email);
+                                    startActivity(regist);
+                                    Toast.makeText(login.this, jsonObject.getString("message"),
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                                updateUI(true);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
 
-            //Masukkin sharedPreferences disini
-            //Deklarasiin classnya diatas jangan di dalem sini
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
 
-            /*Bundle bundle = new Bundle();
-            bundle.putString("KEY_USERNAME", name);
-            bundle.putString("ADDRESS_NAME", email);
-            intent.putExtras(bundle);*/
-
-            startActivity(intent);
-            updateUI(true);
-            finish();
+                }
+            }){
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    HashMap<String, String> param = new HashMap<>();
+                    param.put("email", email);
+                    return param;
+                }
+            };
+            Akses.getInstance(login.this).addtoRequestQueue(request);
         }else{
             updateUI(false);
         }
@@ -268,9 +295,9 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
 
     private void updateUI(Boolean isLogin){
         if(isLogin){
-            //cek kalo login user sukses
-        }else{
 
+        }else{
+            Toast.makeText(this, "Coba lagi . . .", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -283,7 +310,7 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
     }
 
     @Override
-    public void onConnected(@Nullable Bundle bundle) {
+    public void onConnected(Bundle bundle) {
 
     }
 

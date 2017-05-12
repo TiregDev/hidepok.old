@@ -35,10 +35,13 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class setprofile extends BaseActivity {
 
-    TextView changepass, txtUsername;
-    EditText etBio, etNama, etEmail, etNomer, etAlamat;
+    CircleImageView image;
+    TextView changepass;
+    EditText etBio, etNama, etEmail, etNomer, etAlamat, etUsername;
     Button btnSimpan;
     SessionManager session;
     String url_update_profile = "http://hidepok.id/android/hidepok/updateProfile.php";
@@ -58,7 +61,8 @@ public class setprofile extends BaseActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        txtUsername = (TextView) findViewById(R.id.txtUsername);
+        image = (CircleImageView) findViewById(R.id.profpict);
+        etUsername = (EditText) findViewById(R.id.setUsername);
         etBio = (EditText) findViewById(R.id.setBio);
         etNama = (EditText) findViewById(R.id.setNama);
         etEmail = (EditText) findViewById(R.id.setEmail);
@@ -69,9 +73,24 @@ public class setprofile extends BaseActivity {
         session = new SessionManager(this);
         HashMap<String, String> user = session.getUserDetails();
         String username = user.get(SessionManager.KEY_USERNAME);
+        String name = user.get(SessionManager.KEY_NAME);
+        String email = user.get(SessionManager.KEY_EMAIL);
         final String id_user = user.get(SessionManager.KEY_ID_USER);
 
-        txtUsername.setText(username);
+        etUsername.setText(username);
+        etNama.setText(name);
+        etEmail.setText(email);
+
+        etUsername.setEnabled(false);
+        etNama.setEnabled(false);
+        etEmail.setEnabled(false);
+
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(setprofile.this, ambil_gambar.class));
+            }
+        });
 
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,10 +101,6 @@ public class setprofile extends BaseActivity {
                 final String no_telp = etNomer.getText().toString();
                 if (bio.equals("")) {
                     etBio.setError("Bio harus diisi");
-                } else if (nama.equals("")) {
-                    etNama.setError("Nama harus diiisi");
-                } else if (email.equals("")) {
-                    etEmail.setError("Email harus diisi");
                 } else if (no_telp.equals("")) {
                     etNomer.setError("Nomor telpon harus diisi");
                 } else {
@@ -98,6 +113,8 @@ public class setprofile extends BaseActivity {
                                         JSONObject jsonObject = jsonArray.getJSONObject(0);
                                         Toast.makeText(setprofile.this, jsonObject.getString("message"),
                                                 Toast.LENGTH_SHORT).show();
+                                        etBio.setText("");
+                                        etNomer.setText("");
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }

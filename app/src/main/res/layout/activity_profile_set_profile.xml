@@ -31,6 +31,7 @@
             android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profpict"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_marginStart="-20dp"
@@ -43,15 +44,15 @@
                 android:layout_marginStart="-20dp"
                 android:orientation="vertical">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
-                    android:id="@+id/txtUsername"
+                <fr.arnaudguyon.smartfontslib.FontEditText
+                    android:id="@+id/setUsername"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:textSize="18sp"
-                    android:text="USERNAME KAMU"
-                    android:textColor="#8c8c8c"
-                    app:font="@string/fontReguler" />
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="-10dp"
+                    android:hint="Isi bio kamu"
+                    android:textColor="#b7b7b7"
+                    app:font="@string/fontReguler"/>
 
                 <fr.arnaudguyon.smartfontslib.FontEditText
                     android:id="@+id/setBio"

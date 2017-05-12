@@ -67,6 +67,10 @@ public class register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        Intent getGmail = this.getIntent();
+        String nama = (String) getGmail.getExtras().get("nama");
+        String surel = (String) getGmail.getExtras().get("email");
+
         etNama = (EditText) findViewById(R.id.nama_user);
         etEmail = (EditText) findViewById(R.id.email_user);
         etUsername = (EditText) findViewById(R.id.username);
@@ -76,6 +80,12 @@ public class register extends AppCompatActivity {
         btnDaftar = (Button) findViewById(R.id.btnRegister);
         txtTanggal = (TextView) findViewById(R.id.tanggal_lahir);
         txtLogin = (TextView) findViewById(R.id.txtLogin);
+
+        etNama.setText(nama);
+        etEmail.setText(surel);
+
+        etNama.setEnabled(false);
+        etEmail.setEnabled(false);
 
         txtTanggal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +134,7 @@ public class register extends AppCompatActivity {
                                             Toast.makeText(register.this, jsonObject.getString("message"),
                                                     Toast.LENGTH_SHORT).show();
                                             Intent intent = new Intent(register.this,
-                                                    login.class);
+                                                    MainActivity.class);
                                             startActivity(intent);
                                             finish();
                                         }

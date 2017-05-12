@@ -19,23 +19,26 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
+import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.Profile.fragment.history;
 import com.hi_depok.hi_depok.Profile.fragment.myprofile;
 import com.hi_depok.hi_depok.Profile.setprofile;
 import com.hi_depok.hi_depok.R;
-import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.SessionManager;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class profile extends BaseActivity implements View.OnClickListener {
@@ -84,45 +87,7 @@ public class profile extends BaseActivity implements View.OnClickListener {
 
             }
         });
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, detail_url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
-                            JSONObject jsonObject = jsonArray.getJSONObject(0);
-
-                            //ambil nilai dari db
-                            nama_profil.setText(jsonObject.getString("nama"));
-                            if(!jsonObject.getString("bio").equals("null")){
-                            bio_profil.setText(jsonObject.getString("bio"));
-                            }else{
-                                bio_profil.setText("Pengguna Hi Depok");
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(profile.this, "An error occured" + error, Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                SessionManager session = new SessionManager(profile.this);
-                //session email untuk diambil dan dimasukkan ke dalam skrip php
-                HashMap<String, String> user = session.getUserDetails();
-                String email_session = user.get(SessionManager.KEY_USERNAME);
-                //username ada di skrip getUserDetail.php dengan paramater name
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("username", email_session);
-                return params;
-            }
-        };
-        Akses.getInstance(this).addtoRequestQueue(stringRequest);
+        getProfile();
 
         pager = (ViewPager) findViewById(R.id.pager);
         profile = (TextView) findViewById(R.id.profile);
@@ -167,6 +132,53 @@ public class profile extends BaseActivity implements View.OnClickListener {
 
         profile.setOnClickListener(this);
         history.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getProfile();
+    }
+
+    private void getProfile() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, detail_url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                            //ambil nilai dari db
+                            nama_profil.setText(jsonObject.getString("nama"));
+                            if(!jsonObject.getString("bio").equals("null")){
+                                bio_profil.setText(jsonObject.getString("bio"));
+                            }else{
+                                bio_profil.setText("Pengguna Hi Depok");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(profile.this, "An error occured" + error, Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                SessionManager session = new SessionManager(profile.this);
+                //session email untuk diambil dan dimasukkan ke dalam skrip php
+                HashMap<String, String> user = session.getUserDetails();
+                String email_session = user.get(SessionManager.KEY_USERNAME);
+                //username ada di skrip getUserDetail.php dengan paramater name
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("username", email_session);
+                return params;
+            }
+        };
+        Akses.getInstance(this).addtoRequestQueue(stringRequest);
     }
 
     @Override
