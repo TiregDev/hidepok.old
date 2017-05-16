@@ -123,31 +123,31 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            android:layout_below="@+id/relativeLayout2"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="100sp">
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:weightSum="2"-->
+            <!--android:layout_below="@+id/relativeLayout2"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:layout_marginTop="12dp"-->
+            <!--android:layout_marginBottom="100sp">-->
 
-            <fr.arnaudguyon.smartfontslib.FontButton
-                app:font="@string/fontBold"
-                android:id="@+id/tombol"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape3"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:text="Dapatkan Lokasi"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_marginEnd="11dp"
-                android:layout_alignParentTop="true" />
+            <!--<fr.arnaudguyon.smartfontslib.FontButton-->
+                <!--app:font="@string/fontBold"-->
+                <!--android:id="@+id/tombol"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/shape3"-->
+                <!--android:paddingLeft="16dp"-->
+                <!--android:paddingRight="16dp"-->
+                <!--android:text="Dapatkan Lokasi"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_marginEnd="11dp"-->
+                <!--android:layout_alignParentTop="true" />-->
 
-        </RelativeLayout>
+        <!--</RelativeLayout>-->
 
     </LinearLayout>
 

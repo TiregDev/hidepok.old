@@ -60,6 +60,7 @@ public class forum extends BaseActivity{
 //    public static final String KEY_ISI = "isi_post";
 //    public static final String KEY_ID = "id_user";
 
+    //inisialisasi insert
     EditText judul, isi;
     Button kirim;
     Calendar dateAndTime = Calendar.getInstance();
@@ -70,6 +71,7 @@ public class forum extends BaseActivity{
 
     String KIRIM_POST_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_savepost_json.php";
 
+    //inisialisasi post
     String GET_JSON_DATA_HTTP_URL;
     String GET_JSON_DATA_HTTP_URL2;
     String JSON_ID_POST = "id_post";
@@ -88,11 +90,15 @@ public class forum extends BaseActivity{
     String JSON_RATING_POST = "rating_post";
     String JSON_NAMA_USER = "nama_user";
 
+    SessionManager session;
+
     JsonArrayRequest jsonArrayRequest;
     JsonArrayRequest jsonArrayRequest2;
     List<GetDataAdapter> dataAdapter;
+    List<GetDataAdapter> dataAdapter2;
     RequestQueue requestQueue;
     RecyclerView.Adapter recyclerViewadapter;
+    RecyclerView.Adapter recyclerViewadapter2;
     RecyclerView rViewPOST;
     RecyclerView rViewSAYA;
     ProgressDialog dialog;
@@ -117,6 +123,10 @@ public class forum extends BaseActivity{
         kirim = (Button) findViewById(R.id.kirim);
         updateLabel();
 
+        //session login
+        session = new SessionManager(this);
+        HashMap<String, String> user = session.getUserDetails();
+        String id_user = user.get(SessionManager.KEY_ID_USER);
 
         //recycler view
         rViewPOST = (RecyclerView) findViewById(R.id.recyclerviewpost1);
@@ -126,13 +136,14 @@ public class forum extends BaseActivity{
         rViewSAYA.setLayoutManager(new LinearLayoutManager(this));
 
         dataAdapter = new ArrayList<>();
+        dataAdapter2 = new ArrayList<>();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Loading");
         dialog.show();
         dialog.setCancelable(true);
 
         GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?id=2";
-        GET_JSON_DATA_HTTP_URL2 = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?id_saya=6";
+        GET_JSON_DATA_HTTP_URL2 = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?id_saya=" + id_user;
 
         JSON_DATA_WEB_CALL();
         JSON_DATA_WEB_CALL2();
@@ -312,10 +323,10 @@ public class forum extends BaseActivity{
 
                 e.printStackTrace();
             }
-            dataAdapter.add(dataFromJSON);
+            dataAdapter2.add(dataFromJSON);
         }
-        recyclerViewadapter = new RecyclerViewAdapterPOSTSAYA(dataAdapter, this);
-        rViewSAYA.setAdapter(recyclerViewadapter);
+        recyclerViewadapter2 = new RecyclerViewAdapterPOSTSAYA(dataAdapter2, this);
+        rViewSAYA.setAdapter(recyclerViewadapter2);
 
     }
 

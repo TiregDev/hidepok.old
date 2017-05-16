@@ -31,6 +31,7 @@ import java.util.List;
 
 public class post_saya extends BaseActivity {
 
+    //inisialisasi post
     String GET_JSON_DATA_HTTP_URL;
     String JSON_ID_POST = "id_post";
     String JSON_ID_MODUL = "id_modul";

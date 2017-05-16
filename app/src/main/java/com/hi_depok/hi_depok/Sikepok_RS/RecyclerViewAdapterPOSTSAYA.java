@@ -9,11 +9,21 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.hi_depok.hi_depok.R;
 
 import java.util.List;
@@ -22,6 +32,8 @@ import java.util.List;
 public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerViewAdapterPOSTSAYA.ViewHolder> {
 
     Context context;
+    Button btnHapus;
+    String DELETE_URL;
 
     List<GetDataAdapter> adapter;
 
@@ -55,6 +67,23 @@ public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerVi
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokrs_fragment_post_saya, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(v);
+
+        String a = "75";
+
+        DELETE_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_delete_json.php?id_post=" + a ;
+        btnHapus = (Button) v.findViewById(R.id.hapus);
+
+        btnHapus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Volleydeletefunc(DELETE_URL);
+
+                Context context = view.getContext();
+                Intent intent = new Intent(context, post_saya.class);
+                context.startActivity(intent);
+            }
+        });
 
         return viewHolder;
     }
@@ -116,7 +145,55 @@ public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerVi
                 }
             });
 
+//            btnHapus.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    DELETE_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_delete_json.php?id_post=" + itemView.getTag().toString() ;
+//                    Volleydeletefunc(DELETE_URL);
+//
+//                    Context context = view.getContext();
+//                    Intent intent = new Intent(context, post_saya.class);
+//                    context.startActivity(intent);
+//                }
+//            });
 
         }
+    }
+
+    public void Volleydeletefunc(String DELETE_URL){
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, DELETE_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.i("LOG_VOLLEY", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("LOG_VOLLEY", error.toString());
+            }
+        }) {
+
+
+            @Override
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                String responseString = "";
+                if (response != null) {
+
+                    responseString = String.valueOf(response.statusCode);
+
+                }
+                return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+            }
+        };
+
+        requestQueue.add(stringRequest);
+
+
+
+
+
     }
 }
