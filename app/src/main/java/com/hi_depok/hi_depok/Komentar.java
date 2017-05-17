@@ -1,4 +1,4 @@
-package com.hi_depok.hi_depok.Lapok.mData;
+package com.hi_depok.hi_depok;
 
 /**
  * Created by Azmi Muhammad on 4/24/2017.

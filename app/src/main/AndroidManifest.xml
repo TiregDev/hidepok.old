@@ -258,22 +258,31 @@
             android:name=".notif.event"
             android:label="Event Terbaru" />
         <activity android:name=".Kapok.activity.kapok_detail" />
-        <activity android:name=".Activity_Main.faq"
-            android:label="FAQ"/>
+        <activity
+            android:name=".Activity_Main.faq"
+            android:label="FAQ" />
+        <activity
+            android:name=".Fokopok.firebase.MainActivity"
+            android:theme="@style/AppTheme" />
 
-        <activity android:name=".Fokopok.firebase.MainActivity">
-        </activity>
-        <activity android:name=".Fokopok.firebase.view.LoginActivity" />
+        <activity
+            android:name=".Fokopok.firebase.view.LoginActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Fokopok.firebase.view.FullScreenImageActivity"
+            android:theme="@style/AppThemeFullScreenImage" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
-            android:grantUriPermissions="true"
-            >
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
+
+        <activity android:name=".Fokopok.detail_post_fokopok"></activity>
     </application>
 
 </manifest>

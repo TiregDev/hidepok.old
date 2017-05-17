@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.ceylonlabs.imageviewpopup.ImagePopup;
+import com.hi_depok.hi_depok.Fokopok.detail_post_fokopok;
 import com.hi_depok.hi_depok.Fokopok.firebase.MainActivity;
 import com.hi_depok.hi_depok.R;
 
@@ -128,38 +129,18 @@ public class ArtikelAdapter extends RecyclerView.Adapter<ArtikelAdapter.ViewHold
             description = (TextView) itemView.findViewById(R.id.card_text);
             favoriteImageButton = (ImageButton) itemView.findViewById(R.id.like);
             jumlah_like = (TextView) itemView.findViewById(R.id.jumlah_like);
-            favoriteImageButton.setOnClickListener(new View.OnClickListener() {
+
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    jumlah_like.setText("294");
-                    Drawable myDrawable = v.getResources().getDrawable(R.drawable.favorite);
-                    like.setImageDrawable(myDrawable);
-                    Toast.makeText(v.getContext(), ("Anda telah menyukai content ini"),
-                            Toast.LENGTH_LONG).show();
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, detail_post_fokopok.class);
+                    String hal = (String) itemView.getTag();
+                    intent.putExtra("id_artikel", hal);
+
+                    context.startActivity(intent);
                 }
             });
-
-            commentButton = (ImageButton) itemView.findViewById(R.id.comment_button);
-            commentButton.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(v.getContext(), ("Anda telah memilih comment"),
-                            Toast.LENGTH_LONG).show();
-                }
-            });
-
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Context context = v.getContext();
-//                    Intent intent = new Intent(context, MainActivity.class);
-//                    String hal = (String) itemView.getTag();
-//                    intent.putExtra("getRoom", hal);
-//                    Log.d("JSONAdapter", "get page: " + hal);
-//
-//                    context.startActivity(intent);
-//                }
-//            });
 
 
         }

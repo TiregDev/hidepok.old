@@ -286,7 +286,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
      */
     private void photoCameraIntent(){
         String nomeFoto = DateFormat.format("yyyy-MM-dd_hhmmss", new Date()).toString();
-        filePathImageCamera = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), nomeFoto+"camera.jpg");
+        filePathImageCamera = new File((Environment.DIRECTORY_PICTURES), nomeFoto+"camera.jpg");
         Intent it = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
                 BuildConfig.APPLICATION_ID + ".provider",

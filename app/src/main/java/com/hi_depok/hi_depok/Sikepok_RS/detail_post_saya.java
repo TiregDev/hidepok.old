@@ -54,7 +54,7 @@ public class detail_post_saya extends BaseActivity {
 
     //inisialisasi simpan komentar
     EditText komen;
-    Button kirimKomen;
+    Button kirimKomen, hapusPost;
     Calendar dateAndTime = Calendar.getInstance();
     SimpleDateFormat sdf_tanggal = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat sdf_waktu = new SimpleDateFormat("HH:mm:ss");
@@ -62,7 +62,7 @@ public class detail_post_saya extends BaseActivity {
     String STRTanggal, STRWaktu;
 
     String KIRIM_KOMENTAR_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_savekomen_json.php";
-
+    String delete_post = "http://hidepok.id/android/sikepok/1.2/sikepokrs_delete_json.php";
     //inisialisasi
     String GET_JSON_DATA_HTTP_URL;
     String JSON_JUDUL_POST = "judul_post";
@@ -117,7 +117,15 @@ public class detail_post_saya extends BaseActivity {
         //inisialisasi data kirim komen
         komen = (EditText) findViewById(R.id.tulis_komentar);
         kirimKomen = (Button) findViewById(R.id.kirim_komentar);
+        hapusPost = (Button) findViewById(R.id.hapus_post);
         updateLabel();
+
+        hapusPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deletePost();
+            }
+        });
 
         //inisialisasi adapter
         dataAdapter = new ArrayList<>();
@@ -215,6 +223,29 @@ public class detail_post_saya extends BaseActivity {
                 }
             }
         });
+    }
+
+    private void deletePost() {
+        StringRequest delete = new StringRequest(Request.Method.POST, delete_post,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(detail_post_saya.this, response, Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> param = new HashMap<>();
+                param.put("id_post", idPostSaya);
+                return param;
+            }
+        };
+        Akses.getInstance(detail_post_saya.this).addtoRequestQueue(delete);
     }
 
     //Update Label

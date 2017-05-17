@@ -29,7 +29,7 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <alessandro.firebaseandroid.view.TouchImageView
+    <com.hi_depok.hi_depok.Fokopok.firebase.view.TouchImageView
         android:layout_below="@+id/toolbar"
         android:id="@+id/imageView"
         android:layout_width="match_parent"

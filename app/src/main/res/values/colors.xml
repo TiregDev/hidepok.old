@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="primary_text_material_light">#8c8c8c</color>
     <color name="background">#303030</color>
+    <color name="chatBackground">#e9e3dd</color>
     <color name="dark_grey">#424242</color>
     <color name="medium_grey">#9E9E9E</color>
     <color name="button_grey">#757575</color>

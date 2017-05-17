@@ -18,9 +18,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.ceylonlabs.imageviewpopup.ImagePopup;
 import com.hi_depok.hi_depok.Activity_Main.fokopok;
 import com.hi_depok.hi_depok.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -30,7 +42,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class fragment2 extends Fragment {
     private LinearLayoutManager lLayout;
-
+    String JSON_URL;
+    RecyclerView rView;
+    List<DataModel> dataAdapter;
+    DataModel data;
+    RecyclerView.Adapter rViewAdapter;
+    JsonArrayRequest req;
     public static fragment2 newInstance(){
         Bundle args = new Bundle();
 
@@ -42,126 +59,47 @@ public class fragment2 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        RecyclerView recyclerView = (RecyclerView) inflater.inflate(
-                R.layout.fokopok_fragment2_content, container, false);
-        com.hi_depok.hi_depok.Fokopok.fragment_content.fragment2.ContentAdapter adapter = new com.hi_depok.hi_depok.Fokopok.fragment_content.fragment2.ContentAdapter(recyclerView.getContext());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        return recyclerView;
-    }
+        View  v = inflater.inflate(R.layout.fokopok_fragment2_content, null);
+        rView = (RecyclerView)v.findViewById(R.id.recycler_view);
+        rView.setLayoutManager(new LinearLayoutManager(getContext()));
+        dataAdapter = new ArrayList<>();
+        JSON_URL = "http://hidepok.id/android/fokopok/fokopok_artikel.php";
+        req = new JsonArrayRequest(JSON_URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for(int i=0;i<response.length();i++){
+                    data = new DataModel();
+                    JSONObject json = null;
+                    try{
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+                        json = response.getJSONObject(i);
 
-        public ImageView picture, like;
-        public ImageView avatar;
-        public TextView username;
-        public TextView time;
-        public TextView title;
-        public TextView description, jumlah_like;
-        public CircleImageView imageView;
+                        data.setId(json.getString("id_artikel"));
+                        data.setNama(json.getString("nama_komunitas"));
+                        data.setAvatar(json.getString("foto_komunitas"));
+                        data.setFoto(json.getString("foto_artikel"));
+                        data.setIsi(json.getString("isi_artikel"));
+                        data.setWaktu(json.getString("waktu_artikel"));
+                        data.setJudul(json.getString("judul_artikel"));
 
-        public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.fokopok_item_list, parent, false));
-            final ImagePopup imagePopup = new ImagePopup(getContext());
-            imagePopup.setBackgroundColor(Color.TRANSPARENT);
-            imagePopup.setWindowWidth(800);
-            imagePopup.setWindowHeight(800);
-            imagePopup.setHideCloseIcon(true);
-            imagePopup.setImageOnClickClose(true);
-
-            imageView = (CircleImageView) itemView.findViewById(R.id.avatar);
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    /** Initiate Popup view **/
-                    imagePopup.initiatePopup(imageView.getDrawable());
+                    } catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                    dataAdapter.add(data);
                 }
-            });
+                rViewAdapter = new ArtikelAdapter(dataAdapter, getContext());
+                rView.setAdapter(rViewAdapter);
 
-            picture = (ImageView) itemView.findViewById(R.id.card_image);
-            like = (ImageButton) itemView.findViewById(R.id.like);
-            avatar = (ImageView) itemView.findViewById(R.id.avatar);
-            username = (TextView) itemView.findViewById(R.id.username);
-            time = (TextView) itemView.findViewById(R.id.time);
-            title    = (TextView) itemView.findViewById(R.id.card_title);
-            description = (TextView) itemView.findViewById(R.id.card_text);
-            ImageButton favoriteImageButton = (ImageButton) itemView.findViewById(R.id.like);
-            jumlah_like = (TextView) itemView.findViewById(R.id.jumlah_like);
-            favoriteImageButton.setOnClickListener(new View.OnClickListener() {
-                Drawable myDrawable = getResources().getDrawable(R.drawable.favorite);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
-                @Override
-                public void onClick(View v) {
-                    jumlah_like.setText("294");
-                    like.setImageDrawable(myDrawable);
-                    Toast.makeText(v.getContext(), ("Anda telah menyukai content ini"),
-                            Toast.LENGTH_LONG).show();
-                }
-            });
-
-            favoriteImageButton = (ImageButton) itemView.findViewById(R.id.comment_button);
-            favoriteImageButton.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(v.getContext(), ("Anda telah memilih comment"),
-                            Toast.LENGTH_LONG).show();
-                }
-            });
-
-        }
+            }
+        });
+        RequestQueue reqQueue = Volley.newRequestQueue(getContext());
+        reqQueue.add(req);
+        return v;
     }
-
-    /**
-     * Adapter to display recycler view.
-     */
-    public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-        // Set numbers of Card in RecyclerView.
-        private static final int LENGTH = 18;
-
-        private final String mPlaces;
-        private final String mPlaceDesc;
-        private final Drawable mPlacePictures;
-        private final Drawable mAvatar;
-        private final String mUsername;
-        private final String mTime;
-
-
-        public ContentAdapter(Context context) {
-            Resources resources = context.getResources();
-            mPlaces = "Computer Student Club";
-            mPlaceDesc = "Kompetisi Networking di PNJ";
-            mAvatar = resources.getDrawable(R.drawable.profile);
-            mUsername = "Fajar Zakaria";
-            mTime = "Feb 8, 2017 at 17.00 WIB";
-//            TypedArray a = resources.obtainTypedArray(R.array.places_picture);
-            mPlacePictures = resources.getDrawable(R.drawable.image_placeholder);
-//            for (int i = 0; i < mPlacePictures.length; i++) {
-//                mPlacePictures[i] = a.getDrawable(i);
-//            }
-//            a.recycle();
-        }
-
-        @Override
-        public com.hi_depok.hi_depok.Fokopok.fragment_content.fragment2.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new com.hi_depok.hi_depok.Fokopok.fragment_content.fragment2.ViewHolder(LayoutInflater.from(parent.getContext()), parent);
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.avatar.setImageDrawable(mAvatar);
-            holder.username.setText(mUsername);
-            holder.time.setText(mTime);
-            holder.title.setText(mPlaces);
-            holder.description.setText(mPlaceDesc);
-            holder.picture.setImageDrawable(mPlacePictures);
-        }
-
-        @Override
-        public int getItemCount() {
-            return LENGTH;
-        }
-    }
-
 }
 

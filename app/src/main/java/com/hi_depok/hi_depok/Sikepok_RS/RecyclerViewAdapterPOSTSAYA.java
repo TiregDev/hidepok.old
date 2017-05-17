@@ -15,7 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,16 +26,18 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.R;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerViewAdapterPOSTSAYA.ViewHolder> {
 
     Context context;
     Button btnHapus;
-    String DELETE_URL;
 
     List<GetDataAdapter> adapter;
 
@@ -68,17 +72,13 @@ public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerVi
 
         ViewHolder viewHolder = new ViewHolder(v);
 
-        String a = "75";
-
-        DELETE_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_delete_json.php?id_post=" + a ;
         btnHapus = (Button) v.findViewById(R.id.hapus);
 
         btnHapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Volleydeletefunc(DELETE_URL);
-
+                Volleydeletefunc();
                 Context context = view.getContext();
                 Intent intent = new Intent(context, post_saya.class);
                 context.startActivity(intent);
@@ -160,40 +160,27 @@ public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerVi
         }
     }
 
-    public void Volleydeletefunc(String DELETE_URL){
-
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-
-        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, DELETE_URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.i("LOG_VOLLEY", response);
-            }
-        }, new Response.ErrorListener() {
+    public void Volleydeletefunc(){
+        String delete_url = "http://hidepok.id/android/sikepok/1.2/sikepokrs_delete_json.php";
+        StringRequest deletePost = new StringRequest(Request.Method.POST, delete_url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("LOG_VOLLEY", error.toString());
+
             }
-        }) {
-
-
+        }){
             @Override
-            protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                String responseString = "";
-                if (response != null) {
-
-                    responseString = String.valueOf(response.statusCode);
-
-                }
-                return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> param = new HashMap<>();
+                param.put("id_post", id_post);
+                return param;
             }
         };
-
-        requestQueue.add(stringRequest);
-
-
-
-
-
+        Akses.getInstance(context).addtoRequestQueue(deletePost);
     }
 }

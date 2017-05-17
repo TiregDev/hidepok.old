@@ -1,4 +1,4 @@
-package com.hi_depok.hi_depok.Lapok.mAdapter;
+package com.hi_depok.hi_depok;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,9 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
-import com.hi_depok.hi_depok.Lapok.mData.Komentar;
-import com.hi_depok.hi_depok.R;
 
 import java.util.List;
 

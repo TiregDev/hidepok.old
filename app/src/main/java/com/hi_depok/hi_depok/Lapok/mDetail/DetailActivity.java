@@ -41,8 +41,8 @@ import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.Lapok.Utility;
-import com.hi_depok.hi_depok.Lapok.mAdapter.Adapter_Komentar;
-import com.hi_depok.hi_depok.Lapok.mData.Komentar;
+import com.hi_depok.hi_depok.Adapter_Komentar;
+import com.hi_depok.hi_depok.Komentar;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
 
@@ -77,7 +77,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lapok_detail_komentar);
+        setContentView(R.layout.detail_komentar);
         super.onCreateDrawer();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
