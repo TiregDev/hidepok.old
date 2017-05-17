@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -39,7 +40,9 @@ import org.json.JSONObject;
 
 public class Sugesti extends BaseActivity {
     String JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokensiklopedia_json.php";
+    String idgejala;
     RecyclerView rView;
+    TextView emptyview;
     List<DataModel> dataAdapter;
     DataModel data;
     SearchView searchView;
@@ -59,10 +62,20 @@ public class Sugesti extends BaseActivity {
         rView = (RecyclerView) findViewById(R.id.list_sugesti);
         rView.setLayoutManager(new LinearLayoutManager(this));
         rView.setHasFixedSize(true);
+        emptyview = (TextView) findViewById(R.id.empty_view);
         dataAdapter = new ArrayList<>();
         SharedPreferences pref = this.getSharedPreferences("MyPref", 0);
-        JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokdiagnosa_json.php?sugesti=" + pref.getString("idgejala", "0");
+        idgejala = pref.getString("idgejala", "0");
+        JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokdiagnosa_json.php?sugesti=" + idgejala;
         getDataFromJSON(JSON_URL);
+        if (idgejala=="0") {
+            rView.setVisibility(View.GONE);
+            emptyview.setVisibility(View.VISIBLE);
+        }
+        else {
+            rView.setVisibility(View.VISIBLE);
+            emptyview.setVisibility(View.GONE);
+        }
     }
 
     public void getDataFromJSON(String url){

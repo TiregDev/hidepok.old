@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -35,7 +36,9 @@ import java.util.List;
 public class Gejala extends BaseActivity {
 
     String JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokdiagnosa_json.php";
+    String idgejala;
     RecyclerView rView;
+    TextView emptyview;
     List<DataModel> dataAdapter;
     DataModel data;
     SearchView searchView;
@@ -55,10 +58,20 @@ public class Gejala extends BaseActivity {
         rView = (RecyclerView) findViewById(R.id.list_ensiklopedia);
         rView.setLayoutManager(new LinearLayoutManager(this));
         rView.setHasFixedSize(true);
+        emptyview = (TextView) findViewById(R.id.empty_view);
         dataAdapter = new ArrayList<>();
         SharedPreferences pref = this.getSharedPreferences("MyPref", 0);
-        JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokdiagnosa_json.php?gejala=" + pref.getString("idgejala", "0");
+        idgejala = pref.getString("idgejala", "0");
+        JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokdiagnosa_json.php?gejala=" + idgejala;
         getDataFromJSON(JSON_URL);
+        if (idgejala=="0") {
+            rView.setVisibility(View.GONE);
+            emptyview.setVisibility(View.VISIBLE);
+        }
+        else {
+            rView.setVisibility(View.VISIBLE);
+            emptyview.setVisibility(View.GONE);
+        }
         Button tombol_sugesti = (Button) findViewById(R.id.tombol_sugesti);
         tombol_sugesti.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +80,7 @@ public class Gejala extends BaseActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     public void getDataFromJSON(String url){
@@ -120,8 +134,17 @@ public class Gejala extends BaseActivity {
                 SharedPreferences.Editor editor = pref.edit();
                 editor.clear();
                 editor.commit();
+                idgejala = pref.getString("idgejala", "0");
                 JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokdiagnosa_json.php?gejala=" + pref.getString("idgejala", "0");
                 getDataFromJSON(JSON_URL);
+                if (idgejala=="0") {
+                    rView.setVisibility(View.GONE);
+                    emptyview.setVisibility(View.VISIBLE);
+                }
+                else {
+                    rView.setVisibility(View.VISIBLE);
+                    emptyview.setVisibility(View.GONE);
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

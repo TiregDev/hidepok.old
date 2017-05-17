@@ -143,6 +143,9 @@
             android:name=".Sikepok_Diagnosa.Sugesti"
             android:label="Sugesti" />
         <activity
+            android:name=".Sikepok_Diagnosa.Gejala"
+            android:label="Pilih Gejala" />
+        <activity
             android:name=".Sikepok_Diagnosa.SikepokDiagnosa"
             android:theme="@style/Background_main" />
         <activity
