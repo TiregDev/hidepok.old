@@ -60,7 +60,7 @@ public class rs_terdekat extends BaseActivity {
             gambarRS = (ImageView) itemView.findViewById(R.id.gambarRS);
             namaRS = (TextView) itemView.findViewById(R.id.namaRS);
             alamat = (TextView) itemView.findViewById(R.id.alamatRS);
-            jarak1 = (TextView) itemView.findViewById(R.id.jarak1);
+//            jarak1 = (TextView) itemView.findViewById(R.id.jarak1);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

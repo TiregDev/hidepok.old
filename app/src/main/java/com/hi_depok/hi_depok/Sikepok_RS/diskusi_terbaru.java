@@ -51,6 +51,8 @@ public class diskusi_terbaru extends Fragment {
     String JSON_STATUS_POST = "status_post";
     String JSON_RATING_POST = "rating_post";
     String JSON_NAMA_USER = "nama_user";
+    String JSON_ANGKA_KOMEN = "total_komentar";
+    String JSON_ANGKA_SUKA = "total_suka";
 
     JsonArrayRequest jsonArrayRequest ;
     List<GetDataAdapter> dataAdapter;
@@ -96,7 +98,7 @@ public class diskusi_terbaru extends Fragment {
 //        final SharedPreferences prefsa = PreferenceManager.getDefaultSharedPreferences(getContext());
 //        idRs = prefsa.getString("id_rs","No data found");
 
-        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?";
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php";
 
         JSON_DATA_WEB_CALL();
 
@@ -147,6 +149,8 @@ public class diskusi_terbaru extends Fragment {
                 dataFromJSON.setStatus_post(json.getString(JSON_STATUS_POST));
                 dataFromJSON.setRating_post(json.getString(JSON_RATING_POST));
                 dataFromJSON.setNama_user(json.getString(JSON_NAMA_USER));
+                dataFromJSON.setAngka_komen(json.getString(JSON_ANGKA_KOMEN));
+                dataFromJSON.setAngka_suka(json.getString(JSON_ANGKA_SUKA));
 
             } catch (JSONException e) {
 

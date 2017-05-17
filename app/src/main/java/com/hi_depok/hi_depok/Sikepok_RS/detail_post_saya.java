@@ -62,11 +62,14 @@ public class detail_post_saya extends BaseActivity {
     String STRTanggal, STRWaktu;
 
     String KIRIM_KOMENTAR_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_savekomen_json.php";
-    String delete_post = "http://hidepok.id/android/sikepok/1.2/sikepokrs_delete_json.php";
+    String DELETE_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_delete_json.php";
+
     //inisialisasi
     String GET_JSON_DATA_HTTP_URL;
     String JSON_JUDUL_POST = "judul_post";
     String JSON_ISI_POST = "isi_post";
+    String JSON_ANGKA_KOMEN = "total_komentar";
+    String JSON_ANGKA_SUKA = "total_suka";
     String JSON_NAMA_USER = "nama_user";
 
     String JSON_ID_POST = "id_post";
@@ -82,6 +85,7 @@ public class detail_post_saya extends BaseActivity {
     String JSON_STATUS_POST = "status_post";
     String JSON_RATING_POST = "rating_post";
 
+    //inisialisasi komentar
     String GET_JSON_DATA_HTTP_KOMENTAR;
     String JSON_ID_KOMENTAR = "id_komentar";
     String JSON_ISI_KOMENTAR = "isi_komentar";
@@ -93,7 +97,7 @@ public class detail_post_saya extends BaseActivity {
     List<GetDataAdapter> dataAdapter;
     RequestQueue requestQueue ;
     ProgressDialog dialog;
-    TextView nama, judul, isi;
+    TextView nama, judul, isi, angka_suka, angka_komen;
     //    ImageView image;
     String idPostSaya;
 
@@ -120,20 +124,22 @@ public class detail_post_saya extends BaseActivity {
         hapusPost = (Button) findViewById(R.id.hapus_post);
         updateLabel();
 
+        //inisialisasi adapter
+        dataAdapter = new ArrayList<>();
+
         hapusPost.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 deletePost();
             }
         });
-
-        //inisialisasi adapter
-        dataAdapter = new ArrayList<>();
 
         //inisialisasi tampilan di xml
 //        nama = (TextView) findViewById(R.id.pengirim_post);
         judul = (TextView) findViewById(R.id.judul_post);
         isi = (TextView) findViewById(R.id.isi_post);
+        angka_komen = (TextView) findViewById(R.id.angka_komen);
+        angka_suka = (TextView) findViewById(R.id.angka_like);
 //        image = (ImageView) findViewById(R.id.fotoDokter);
 //        dialog = new ProgressDialog(this);
 //        dialog.setMessage("Loading");
@@ -226,11 +232,13 @@ public class detail_post_saya extends BaseActivity {
     }
 
     private void deletePost() {
-        StringRequest delete = new StringRequest(Request.Method.POST, delete_post,
+        StringRequest delete = new StringRequest(Request.Method.POST, DELETE_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(detail_post_saya.this, response, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(detail_post_saya.this, post_saya.class));
+                        finish();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -292,6 +300,8 @@ public class detail_post_saya extends BaseActivity {
 //                nama.setText(json.getString(JSON_NAMA_USER));
                 judul.setText(json.getString(JSON_JUDUL_POST));
                 isi.setText(json.getString(JSON_ISI_POST));
+                angka_komen.setText(json.getString(JSON_ANGKA_KOMEN));
+                angka_suka.setText(json.getString(JSON_ANGKA_SUKA));
 
 //                String encodeUrl = URLEncoder.encode(json.getString(JSON_FOTO_DOKTER));
 //

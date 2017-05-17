@@ -441,4 +441,23 @@ public class GetDataAdapter {
     public void setWaktu_komentar(String waktu_komentar) {
         this.waktu_komentar = waktu_komentar;
     }
+
+
+    //adapter table tambahan
+    String angka_komen;
+    String angka_suka;
+
+    public String getAngka_komen() {
+        return angka_komen;
+    }
+    public void setAngka_komen(String angka_komen) {
+        this.angka_komen = angka_komen;
+    }
+
+    public String getAngka_suka() {
+        return angka_suka;
+    }
+    public void setAngka_suka(String angka_suka) {
+        this.angka_suka = angka_suka;
+    }
 }

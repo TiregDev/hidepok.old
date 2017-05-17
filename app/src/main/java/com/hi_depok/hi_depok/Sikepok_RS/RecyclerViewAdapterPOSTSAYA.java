@@ -38,12 +38,15 @@ public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerVi
 
     Context context;
     Button btnHapus;
+    String DELETE_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_delete_json.php";
 
     List<GetDataAdapter> adapter;
 
     String id_post;
     String judul_post;
     String isi_post;
+    String angka_komen;
+    String angka_suka;
     String tanggal_post;
     String waktu_post;
     String kategori_post;
@@ -70,18 +73,14 @@ public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerVi
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokrs_fragment_post_saya, parent, false);
 
-        ViewHolder viewHolder = new ViewHolder(v);
+        final ViewHolder viewHolder = new ViewHolder(v);
 
         btnHapus = (Button) v.findViewById(R.id.hapus);
 
         btnHapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Volleydeletefunc();
-                Context context = view.getContext();
-                Intent intent = new Intent(context, post_saya.class);
-                context.startActivity(intent);
+                viewHolder.deletePost();
             }
         });
 
@@ -94,6 +93,8 @@ public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerVi
         id_post = adapter.get(position).getId_post();
         judul_post = adapter.get(position).getJudul_post();
         isi_post = adapter.get(position).getIsi_post();
+        angka_komen = adapter.get(position).getAngka_komen();
+        angka_suka = adapter.get(position).getAngka_suka();
 
         tanggal_post = adapter.get(position).getTanggal_post();
         waktu_post = adapter.get(position).getWaktu_post();
@@ -110,6 +111,8 @@ public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerVi
 
         holder.judulPost.setText(judul_post);
         holder.isiPost.setText(isi_post);
+        holder.angkaKomen.setText(angka_komen);
+        holder.angkaSuka.setText(angka_suka);
         holder.itemView.setTag(id_post);
 
     }
@@ -124,6 +127,8 @@ public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerVi
 
         public TextView judulPost;
         public TextView isiPost;
+        public TextView angkaKomen;
+        public TextView angkaSuka;
 
         public ViewHolder(final View itemView) {
 
@@ -131,6 +136,8 @@ public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerVi
 
             judulPost = (TextView)itemView.findViewById(R.id.judul_post);
             isiPost = (TextView)itemView.findViewById(R.id.isi_post);
+            angkaKomen = (TextView)itemView.findViewById(R.id.angka_komen);
+            angkaSuka = (TextView)itemView.findViewById(R.id.angka_like);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -144,43 +151,33 @@ public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerVi
                     context.startActivity(intent);
                 }
             });
-
-//            btnHapus.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    DELETE_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_delete_json.php?id_post=" + itemView.getTag().toString() ;
-//                    Volleydeletefunc(DELETE_URL);
-//
-//                    Context context = view.getContext();
-//                    Intent intent = new Intent(context, post_saya.class);
-//                    context.startActivity(intent);
-//                }
-//            });
-
         }
+
+        public void deletePost() {
+            StringRequest delete = new StringRequest(Request.Method.POST, DELETE_URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Toast.makeText(RecyclerViewAdapterPOSTSAYA.this.context, response, Toast.LENGTH_SHORT).show();
+                            context.startActivity(new Intent(RecyclerViewAdapterPOSTSAYA.this.context, post_saya.class));
+//                            finish();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }){
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    HashMap<String, String> param = new HashMap<>();
+                    param.put("id_post", itemView.getTag().toString());
+                    return param;
+                }
+            };
+            Akses.getInstance(RecyclerViewAdapterPOSTSAYA.this.context).addtoRequestQueue(delete);
+        }
+
     }
 
-    public void Volleydeletefunc(){
-        String delete_url = "http://hidepok.id/android/sikepok/1.2/sikepokrs_delete_json.php";
-        StringRequest deletePost = new StringRequest(Request.Method.POST, delete_url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> param = new HashMap<>();
-                param.put("id_post", id_post);
-                return param;
-            }
-        };
-        Akses.getInstance(context).addtoRequestQueue(deletePost);
-    }
 }
