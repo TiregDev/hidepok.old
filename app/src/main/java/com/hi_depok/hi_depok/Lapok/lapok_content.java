@@ -88,14 +88,6 @@ public class lapok_content extends BaseActivity implements SwipeRefreshLayout.On
         rv.setAdapter(mAdapter);
 
         mSwipeRefreshLayout.setOnRefreshListener(this);
-        mSwipeRefreshLayout.post(new Runnable() {
-                                     @Override
-                                     public void run() {
-                                         lapok_get_content();
-                                         mSwipeRefreshLayout.setRefreshing(true);
-                                     }
-                                 }
-        );
 
 
         /*-------------------------- START SPINER CATEGORY --------------------------------------- */
@@ -114,9 +106,9 @@ public class lapok_content extends BaseActivity implements SwipeRefreshLayout.On
                 if (kategori.contains(" ") || status.contains(" ")) {
                     String newKategori = kategori.replace(" ", "%20");
                     String newStatus = status.replace(" ", "%20");
-                    callVolley(newKategori, newStatus);
+                    content(newKategori, newStatus);
                 } else
-                    callVolley(kategori, status);
+                    content(kategori, status);
 //                posisi_kategori = position;
             }
 
@@ -146,9 +138,9 @@ public class lapok_content extends BaseActivity implements SwipeRefreshLayout.On
                 if (kategori.contains(" ") || status.contains(" ")) {
                     String newKategori = kategori.replace(" ", "%20");
                     String newStatus = status.replace(" ", "%20");
-                    callVolley(newKategori, newStatus);
+                    content(newKategori, newStatus);
                 } else
-                    callVolley(kategori, status);
+                    content(kategori, status);
 //                posisi_status = position;
             }
 
@@ -188,12 +180,12 @@ public class lapok_content extends BaseActivity implements SwipeRefreshLayout.On
         status = "Pilih%20Status";
         mList.clear();
         mAdapter.notifyDataSetChanged();
-        callVolley(kategori, status);
+        content(kategori, status);
         category.setSelection(0);
         sortby.setSelection(0);
     }
 
-    private void callVolley(final String param1, final String param2) {
+    private void content(final String param1, final String param2) {
         String getContent_url = "http://hidepok.id/android/lapok/lapok_getContent.php?kategori=" + param1 + "&status=" + param2;
         mList.clear();
         mAdapter.notifyDataSetChanged();

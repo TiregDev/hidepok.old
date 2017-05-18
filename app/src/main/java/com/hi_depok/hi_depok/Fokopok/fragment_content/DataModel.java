@@ -5,14 +5,31 @@ package com.hi_depok.hi_depok.Fokopok.fragment_content;
  */
 
 public class DataModel {
-    String id;
-    String nama;
-    String foto;
-    String halaman;
-    String isi;
-    String waktu;
-    String judul;
-    String avatar;
+    String id, nama, foto, halaman, waktu, judul, avatar, suka, komentar, hasil;
+
+    public String getHasil() {
+        return hasil;
+    }
+
+    public void setHasil(String hasil) {
+        this.hasil = hasil;
+    }
+
+    public String getSuka() {
+        return suka;
+    }
+
+    public void setSuka(String suka) {
+        this.suka = suka;
+    }
+
+    public String getKomentar() {
+        return komentar;
+    }
+
+    public void setKomentar(String komentar) {
+        this.komentar = komentar;
+    }
 
     public String getAvatar() {
         return avatar;
@@ -28,14 +45,6 @@ public class DataModel {
 
     public void setJudul(String judul) {
         this.judul = judul;
-    }
-
-    public String getIsi() {
-        return isi;
-    }
-
-    public void setIsi(String isi) {
-        this.isi = isi;
     }
 
     public String getWaktu() {

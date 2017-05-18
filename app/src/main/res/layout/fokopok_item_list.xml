@@ -56,7 +56,7 @@
             android:id="@+id/card_image"
             android:layout_width="match_parent"
             android:layout_height="@dimen/card_image_height"
-            android:layout_below="@+id/card_text"
+            android:layout_below="@+id/card_title"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:scaleType="centerCrop"
@@ -76,17 +76,6 @@
             android:textSize="@dimen/article_subheading"
             tools:text="Computer Student Club" />
 
-        <fr.arnaudguyon.smartfontslib.FontTextView
-            app:font="@string/fontReguler"
-            android:id="@+id/card_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/card_title"
-            android:layout_marginStart="@dimen/md_keylines"
-            android:layout_marginTop="-15dp"
-            android:text="Kompetisi Networking di PNJ" />
-
-
         <ImageButton
             android:id="@+id/like"
             style="?android:attr/borderlessButtonStyle"
@@ -105,7 +94,6 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/like"
-            android:text="293"
             android:textColor="#303030"
             android:textSize="12sp" />
 
@@ -128,7 +116,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
             android:layout_toEndOf="@id/comment_button"
-            android:text="17"
             android:textColor="#303030"
             android:textSize="12sp" />
 

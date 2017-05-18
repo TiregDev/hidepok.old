@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -182,13 +181,11 @@ public class detail_post_saya extends BaseActivity {
                 if(Komen.equals("")){
                     isi.setError("Komentar harus diisi terlebih dahulu");
                 }else{
-                    final ProgressDialog loading = ProgressDialog.show(detail_post_saya.this,
-                            "Proses...", "Tunggu sebentar...", false, false);
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, KIRIM_KOMENTAR_URL,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
-                                    loading.dismiss();
+                                    dialog.dismiss();
                                     Toast.makeText(detail_post_saya.this, response, Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(detail_post_saya.this, detail_post_saya.class));
                                     finish();

@@ -4,13 +4,10 @@ import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.os.AsyncTask;
 import android.os.Build;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.Loader;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -28,7 +25,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.HttpClientStack;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -47,8 +43,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.hi_depok.hi_depok.R.layout.sikepokrs_forum;
 
 
 public class forum extends BaseActivity{
@@ -106,7 +100,7 @@ public class forum extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(sikepokrs_forum);
+        setContentView(R.layout.sikepokrs_forum);
         super.onCreateDrawer();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -162,13 +156,11 @@ public class forum extends BaseActivity{
                 }else if(Isi.equals("")){
                     isi.setError("Isi post harus diisi terlebih dahulu");
                 }else{
-                    final ProgressDialog loading = ProgressDialog.show(forum.this,
-                            "Proses...", "Tunggu sebentar...", false, false);
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, KIRIM_POST_URL,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
-                                    loading.dismiss();
+                                    dialog.dismiss();
                                     Toast.makeText(forum.this, response, Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(forum.this, post_saya.class));
                                     finish();

@@ -107,7 +107,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
                            swipe.setRefreshing(true);
                            mList.clear();
                            adapter.notifyDataSetChanged();
-                           callVolley(id_post);
+                           content_detail(id_post);
                        }
                    }
         );
@@ -166,7 +166,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
                                 }else
                                     Toast.makeText(DetailActivity.this, "Anda telah menyukai konten ini",
                                             Toast.LENGTH_SHORT).show();
-                                callVolley(id_post);
+                                content_detail(id_post);
                             }
                         }, new Response.ErrorListener() {
                     @Override
@@ -221,7 +221,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
                                 @Override
                                 public void onResponse(String response) {
                                     Toast.makeText(DetailActivity.this, response, Toast.LENGTH_SHORT).show();
-                                    callVolley(id_post);
+                                    content_detail(id_post);
                                     etKomentar.setText("");
                                 }
                             }, new Response.ErrorListener() {
@@ -267,7 +267,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
         });
     }
 
-    private void callVolley(final String id_post) {
+    private void content_detail(final String id_post) {
         String komentar_url = url + id_post;
         session = new SessionManager(DetailActivity.this);
         HashMap<String, String> user = session.getUserDetails();
@@ -452,16 +452,5 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
     @Override
     public void onRefresh() {
         swipe.setRefreshing(false);
-    }
-
-    private void kosong_detail() {
-        nameTxt.setText("");
-        timeTxt.setText("");
-        title.setText("");
-        kej.setImageResource(R.drawable.image_placeholder);
-        img.setImageResource(R.drawable.image_placeholder);
-        likeimg.setImageResource(R.drawable.like);
-        comimg.setImageResource(R.drawable.comment);
-        shaimg.setImageResource(R.drawable.share);
     }
 }
