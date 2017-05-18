@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.hi_depok.hi_depok.R;
@@ -26,6 +27,8 @@ public class SugestiAdapter extends RecyclerView.Adapter<SugestiAdapter.ViewHold
     String id;
     String nama;
     String halaman;
+    Double persen;
+    Integer ppersen;
 
     public SugestiAdapter(List<DataModel> adapter, Context context){
 
@@ -38,7 +41,7 @@ public class SugestiAdapter extends RecyclerView.Adapter<SugestiAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokdiagnosa_ensiklopedia_list, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokdiagnosa_sugesti_list, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(v);
 
@@ -51,8 +54,11 @@ public class SugestiAdapter extends RecyclerView.Adapter<SugestiAdapter.ViewHold
         id = adapter.get(position).getId();
         nama = adapter.get(position).getNama();
         halaman = adapter.get(position).getHalaman();
-
+        persen = adapter.get(position).getPersen();
+        persen = persen * 10000;
+        ppersen = persen.intValue();
         holder.title.setText(nama);
+        holder.pb.setProgress(ppersen);
         holder.itemView.setTag(halaman);
 
     }
@@ -66,13 +72,16 @@ public class SugestiAdapter extends RecyclerView.Adapter<SugestiAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView title;
+        public ProgressBar pb;
 
 
         public ViewHolder(final View itemView) {
 
             super(itemView);
 
-            title = (TextView)itemView.findViewById(R.id.title_ensiklopedia);
+            title = (TextView)itemView.findViewById(R.id.title_sugesti);
+            pb = (ProgressBar) itemView.findViewById(R.id.pb);
+            pb.setMax(10000);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

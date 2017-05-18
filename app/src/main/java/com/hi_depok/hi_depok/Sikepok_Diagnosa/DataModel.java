@@ -9,6 +9,7 @@ public class DataModel {
     String nama;
     String foto;
     String halaman;
+    Double persen;
 
     public String getHalaman() {
         return halaman;
@@ -41,4 +42,8 @@ public class DataModel {
     public void setNama(String nama) {
         this.nama = nama;
     }
+
+    public Double getPersen() { return persen;}
+
+    public void setPersen(Double persen) { this.persen = persen; }
 }
