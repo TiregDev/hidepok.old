@@ -29,6 +29,8 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
     String id_post;
     String judul_post;
     String isi_post;
+    String angka_komen;
+    String angka_suka;
     String tanggal_post;
     String waktu_post;
     String kategori_post;
@@ -67,6 +69,8 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
         id_post = adapter.get(position).getId_post();
         judul_post = adapter.get(position).getJudul_post();
         isi_post = adapter.get(position).getIsi_post();
+        angka_komen = adapter.get(position).getAngka_komen();
+        angka_suka = adapter.get(position).getAngka_suka();
 
         tanggal_post = adapter.get(position).getTanggal_post();
         waktu_post = adapter.get(position).getWaktu_post();
@@ -86,6 +90,8 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
         holder.judulPost.setText(judul_post);
         holder.isiPost.setText(isi_post);
         holder.namaUser.setText(nama_user);
+        holder.angkaKomen.setText(angka_komen);
+        holder.angkaSuka.setText(angka_suka);
         holder.itemView.setTag(id_post);
 
     }
@@ -101,6 +107,8 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
         public TextView judulPost;
         public TextView isiPost;
         public TextView namaUser;
+        public TextView angkaKomen;
+        public TextView angkaSuka;
 
         public ViewHolder(final View itemView) {
 
@@ -109,6 +117,8 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
             judulPost = (TextView)itemView.findViewById(R.id.judul_post);
             isiPost = (TextView)itemView.findViewById(R.id.isi_post);
             namaUser = (TextView)itemView.findViewById(R.id.pengirim_post);
+            angkaKomen = (TextView)itemView.findViewById(R.id.angka_komen);
+            angkaSuka = (TextView)itemView.findViewById(R.id.angka_like);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

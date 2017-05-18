@@ -4,6 +4,7 @@ package com.hi_depok.hi_depok.Sikepok_Diagnosa;
  * Created by SONY-VAIO on 3/15/2017.
  */
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,6 +28,7 @@ public class GejalaAdapter extends RecyclerView.Adapter<GejalaAdapter.ViewHolder
     List<DataModel> adapter;
     String id;
     String nama;
+    String idgejala;
     String simpen;
 
     public GejalaAdapter(List<DataModel> adapter, Context context){
@@ -78,18 +80,25 @@ public class GejalaAdapter extends RecyclerView.Adapter<GejalaAdapter.ViewHolder
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-//                    adapter.clear();
-//                    Intent intent = new Intent(context, Gejala.class);
-//                    String idgejala = (String) itemView.getTag();
-//                    SharedPreferences pref = context.getSharedPreferences("MyPref", 0);
-//                    SharedPreferences.Editor editor = pref.edit();
-//                    simpen = pref.getString("idgejala", "0");
-//                    simpen = simpen.replace(idgejala,"");
-//                    editor.putString("idgejala",simpen);
-//                    editor.commit();
-//                    Toast.makeText(context,simpen,Toast.LENGTH_SHORT).show();
-//                    Log.d("JSONAdapter", "get page: " + idgejala);
-//                    context.startActivity(intent);
+                    Activity activity = (Activity) context;
+                    SharedPreferences pref = context.getSharedPreferences("MyPref", 0);
+                    SharedPreferences.Editor editor = pref.edit();
+                    simpen = pref.getString("idgejala","0");
+                    Intent intent = new Intent(context, Gejala.class);
+                    idgejala = (String) itemView.getTag();
+                    simpen = simpen.replace(idgejala+",","");
+                    simpen = simpen.replace(","+idgejala,"");
+                    simpen = simpen.replace(idgejala,"");
+//                    intent.putExtra("getPage", hal);
+                    if(simpen.isEmpty())
+                    {
+                        simpen = "0";
+                    }
+                    Log.d("JSONAdapter", "get page: " + simpen);
+                    editor.putString("idgejala", simpen);
+                    editor.commit();
+                    context.startActivity(intent);
+                    activity.finish();
                 }
             });
 

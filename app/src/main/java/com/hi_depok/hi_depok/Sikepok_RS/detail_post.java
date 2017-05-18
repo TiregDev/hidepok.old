@@ -70,6 +70,8 @@ public class detail_post extends BaseActivity {
     String GET_JSON_DATA_HTTP_URL;
     String JSON_JUDUL_POST = "judul_post";
     String JSON_ISI_POST = "isi_post";
+    String JSON_ANGKA_KOMEN = "total_komentar";
+    String JSON_ANGKA_SUKA = "total_suka";
     String JSON_NAMA_USER = "nama_user";
 
     String JSON_ID_POST = "id_post";
@@ -97,7 +99,7 @@ public class detail_post extends BaseActivity {
     List<GetDataAdapter> dataAdapter;
     RequestQueue requestQueue ;
     ProgressDialog dialog;
-    TextView nama, judul, isi;
+    TextView nama, judul, isi, angka_suka, angka_komen;
 //    ImageView image;
     String idPost;
 
@@ -130,6 +132,8 @@ public class detail_post extends BaseActivity {
         nama = (TextView) findViewById(R.id.pengirim_post);
         judul = (TextView) findViewById(R.id.judul_post);
         isi = (TextView) findViewById(R.id.isi_post);
+        angka_komen = (TextView) findViewById(R.id.angka_komen);
+        angka_suka = (TextView) findViewById(R.id.angka_like);
 //        image = (ImageView) findViewById(R.id.fotoDokter);
         dialog = new ProgressDialog(this);
         dialog.setMessage("Loading");
@@ -269,6 +273,8 @@ public class detail_post extends BaseActivity {
                 nama.setText(json.getString(JSON_NAMA_USER));
                 judul.setText(json.getString(JSON_JUDUL_POST));
                 isi.setText(json.getString(JSON_ISI_POST));
+                angka_komen.setText(json.getString(JSON_ANGKA_KOMEN));
+                angka_suka.setText(json.getString(JSON_ANGKA_SUKA));
 
 //                String encodeUrl = URLEncoder.encode(json.getString(JSON_FOTO_DOKTER));
 //

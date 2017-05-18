@@ -5,20 +5,33 @@ package com.hi_depok.hi_depok.Sikepok_RS;
  */
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.R;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class RecyclerViewAdapterKOMENTARSAYA extends RecyclerView.Adapter<RecyclerViewAdapterKOMENTARSAYA.ViewHolder> {
 
     Context context;
+    Button btnHapusKomen;
+    String DELETE_KOMENTAR_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_delete_komen_json.php";
 
     List<GetDataAdapter> adapter;
 
@@ -44,7 +57,16 @@ public class RecyclerViewAdapterKOMENTARSAYA extends RecyclerView.Adapter<Recycl
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokrs_fragment_detail_post_saya, parent, false);
 
-        ViewHolder viewHolder = new ViewHolder(v);
+        final ViewHolder viewHolder = new ViewHolder(v);
+
+        btnHapusKomen = (Button) v.findViewById(R.id.hapus_komentar);
+
+        btnHapusKomen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewHolder.deleteKomen();
+            }
+        });
 
         return viewHolder;
     }
@@ -65,7 +87,7 @@ public class RecyclerViewAdapterKOMENTARSAYA extends RecyclerView.Adapter<Recycl
 
         holder.isiKomentar.setText(isi_komentar);
         holder.Komentator.setText(nama_user);
-        holder.itemView.setTag(id_post);
+        holder.itemView.setTag(id_komentar);
 
     }
 
@@ -99,8 +121,31 @@ public class RecyclerViewAdapterKOMENTARSAYA extends RecyclerView.Adapter<Recycl
 //                    context.startActivity(intent);
 //                }
 //            });
+        }
 
+        public void deleteKomen() {
+            StringRequest delete = new StringRequest(Request.Method.POST, DELETE_KOMENTAR_URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Toast.makeText(RecyclerViewAdapterKOMENTARSAYA.this.context, response, Toast.LENGTH_SHORT).show();
+                            context.startActivity(new Intent(RecyclerViewAdapterKOMENTARSAYA.this.context, detail_post_saya.class));
+//                            finish();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
 
+                }
+            }){
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    HashMap<String, String> param = new HashMap<>();
+                    param.put("id_komen", itemView.getTag().toString());
+                    return param;
+                }
+            };
+            Akses.getInstance(RecyclerViewAdapterKOMENTARSAYA.this.context).addtoRequestQueue(delete);
         }
     }
 }

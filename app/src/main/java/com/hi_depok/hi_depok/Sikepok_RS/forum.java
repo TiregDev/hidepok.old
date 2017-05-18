@@ -83,6 +83,8 @@ public class forum extends BaseActivity{
     String JSON_STATUS_POST = "status_post";
     String JSON_RATING_POST = "rating_post";
     String JSON_NAMA_USER = "nama_user";
+    String JSON_ANGKA_KOMEN = "total_komentar";
+    String JSON_ANGKA_SUKA = "total_suka";
 
     SessionManager session;
 
@@ -255,6 +257,9 @@ public class forum extends BaseActivity{
                 dataFromJSON.setStatus_post(json.getString(JSON_STATUS_POST));
                 dataFromJSON.setRating_post(json.getString(JSON_RATING_POST));
                 dataFromJSON.setNama_user(json.getString(JSON_NAMA_USER));
+                dataFromJSON.setAngka_komen(json.getString(JSON_ANGKA_KOMEN));
+                dataFromJSON.setAngka_suka(json.getString(JSON_ANGKA_SUKA));
+
 
             } catch (JSONException e) {
 
@@ -310,6 +315,8 @@ public class forum extends BaseActivity{
                 dataFromJSON.setStatus_post(json.getString(JSON_STATUS_POST));
                 dataFromJSON.setRating_post(json.getString(JSON_RATING_POST));
                 dataFromJSON.setNama_user(json.getString(JSON_NAMA_USER));
+                dataFromJSON.setAngka_komen(json.getString(JSON_ANGKA_KOMEN));
+                dataFromJSON.setAngka_suka(json.getString(JSON_ANGKA_SUKA));
 
             } catch (JSONException e) {
 

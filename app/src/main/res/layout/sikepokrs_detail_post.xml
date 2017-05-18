@@ -130,6 +130,7 @@
                                     android:orientation="horizontal">
 
                                     <fr.arnaudguyon.smartfontslib.FontTextView
+                                        android:id="@+id/angka_like"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1"
@@ -160,6 +161,7 @@
                                     android:orientation="horizontal">
 
                                     <fr.arnaudguyon.smartfontslib.FontTextView
+                                        android:id="@+id/angka_komen"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1"

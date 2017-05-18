@@ -21,12 +21,14 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.SessionManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class post_saya extends BaseActivity {
@@ -47,6 +49,10 @@ public class post_saya extends BaseActivity {
     String JSON_NO_IDENTITAS_POST = "no_identitas_post";
     String JSON_STATUS_POST = "status_post";
     String JSON_RATING_POST = "rating_post";
+    String JSON_ANGKA_KOMEN = "total_komentar";
+    String JSON_ANGKA_SUKA = "total_suka";
+
+    SessionManager session;
 
     JsonArrayRequest jsonArrayRequest ;
     List<GetDataAdapter> dataAdapter;
@@ -69,6 +75,11 @@ public class post_saya extends BaseActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar3));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //session login
+        session = new SessionManager(this);
+        HashMap<String, String> user = session.getUserDetails();
+        String id_user = user.get(SessionManager.KEY_ID_USER);
+
         //recycler view
         rView = (RecyclerView) findViewById(R.id.recyclerviewpost);
 
@@ -80,7 +91,7 @@ public class post_saya extends BaseActivity {
         dialog.show();
         dialog.setCancelable(false);
 
-        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?id_saya_semua=9";
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?id_saya_semua=" + id_user;
 
         JSON_DATA_WEB_CALL();
     }
@@ -126,6 +137,8 @@ public class post_saya extends BaseActivity {
                 dataFromJSON.setNo_identitas_post(json.getString(JSON_NO_IDENTITAS_POST));
                 dataFromJSON.setStatus_post(json.getString(JSON_STATUS_POST));
                 dataFromJSON.setRating_post(json.getString(JSON_RATING_POST));
+                dataFromJSON.setAngka_komen(json.getString(JSON_ANGKA_KOMEN));
+                dataFromJSON.setAngka_suka(json.getString(JSON_ANGKA_SUKA));
 
             } catch (JSONException e) {
 

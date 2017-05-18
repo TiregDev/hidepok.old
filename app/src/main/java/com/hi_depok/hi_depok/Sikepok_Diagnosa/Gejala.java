@@ -37,6 +37,8 @@ public class Gejala extends BaseActivity {
 
     String JSON_URL = "http://hidepok.id/android/sikepok/1.1/sikepokdiagnosa_json.php";
     String idgejala;
+    String idg;
+    Integer idgej;
     RecyclerView rView;
     TextView emptyview;
     List<DataModel> dataAdapter;

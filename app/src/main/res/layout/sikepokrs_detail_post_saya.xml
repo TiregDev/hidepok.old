@@ -106,6 +106,7 @@
                                     android:orientation="horizontal">
 
                                     <fr.arnaudguyon.smartfontslib.FontTextView
+                                        android:id="@+id/angka_like"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1"
@@ -137,6 +138,7 @@
                                     android:orientation="horizontal">
 
                                     <fr.arnaudguyon.smartfontslib.FontTextView
+                                        android:id="@+id/angka_komen"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1"
@@ -229,8 +231,8 @@
                                     android:gravity="center_vertical|right">
 
                                     <fr.arnaudguyon.smartfontslib.FontButton
-                                        android:layout_width="70dp"
                                         android:id="@+id/kirim_komentar"
+                                        android:layout_width="70dp"
                                         android:layout_height="30dp"
                                         android:background="@drawable/shape3"
                                         android:gravity="center"
