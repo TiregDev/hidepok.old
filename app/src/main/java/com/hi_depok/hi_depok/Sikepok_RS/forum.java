@@ -341,6 +341,7 @@ public class forum extends BaseActivity{
         JSON_DATA_WEB_CALL2();
     }
 
+
     //search
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
