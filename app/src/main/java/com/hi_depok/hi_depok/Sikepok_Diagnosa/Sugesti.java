@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +60,7 @@ public class Sugesti extends BaseActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         rView = (RecyclerView) findViewById(R.id.list_sugesti);
         rView.setLayoutManager(new LinearLayoutManager(this));
         rView.setHasFixedSize(true);
@@ -91,6 +93,7 @@ public class Sugesti extends BaseActivity {
                         data.setId(json.getString("id_penyakit"));
                         data.setNama(json.getString("nama_penyakit"));
                         data.setHalaman(json.getString("halaman"));
+                        data.setPersen(json.getDouble("persentase"));
 
                     } catch (JSONException e){
                         e.printStackTrace();
