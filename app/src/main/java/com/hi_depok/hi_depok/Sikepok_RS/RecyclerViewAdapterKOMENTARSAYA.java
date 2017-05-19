@@ -122,7 +122,6 @@ public class RecyclerViewAdapterKOMENTARSAYA extends RecyclerView.Adapter<Recycl
 //                }
 //            });
         }
-
         public void deleteKomen() {
             StringRequest delete = new StringRequest(Request.Method.POST, DELETE_KOMENTAR_URL,
                     new Response.Listener<String>() {
