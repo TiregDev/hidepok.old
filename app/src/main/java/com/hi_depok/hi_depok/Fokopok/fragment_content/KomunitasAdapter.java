@@ -65,7 +65,7 @@ public class KomunitasAdapter extends RecyclerView.Adapter<KomunitasAdapter.View
 
 
         holder.name.setText(nama);
-        Glide.with(context).load("http://hidepok.id/assets/images/photos/fokopok/" + foto).placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(holder.avatar);
+        Glide.with(context).load("http://hidepok.id/assets/images/photos/fokopok/" + foto).placeholder(R.drawable.image_placeholder).into(holder.avatar);
         holder.itemView.setTag(id);
 
 

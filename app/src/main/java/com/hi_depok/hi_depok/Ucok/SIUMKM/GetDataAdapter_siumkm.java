@@ -22,6 +22,33 @@ public class GetDataAdapter_siumkm {
     String koordinat_ukm_2;
     String foto_barang;
     String foto_ukm;
+    String target_waktu;
+    String target_uang;
+    String harga_jual;
+
+    public String getTarget_waktu() {
+        return target_waktu;
+    }
+
+    public void setTarget_waktu(String target_waktu) {
+        this.target_waktu = target_waktu;
+    }
+
+    public String getTarget_uang() {
+        return target_uang;
+    }
+
+    public void setTarget_uang(String target_uang) {
+        this.target_uang = target_uang;
+    }
+
+    public String getHarga_jual() {
+        return harga_jual;
+    }
+
+    public void setHarga_jual(String harga_jual) {
+        this.harga_jual = harga_jual;
+    }
 
     public String getId_barang() {
         return id_barang;

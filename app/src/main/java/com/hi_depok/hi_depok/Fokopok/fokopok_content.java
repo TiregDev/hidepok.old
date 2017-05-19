@@ -87,11 +87,11 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_new_msg:
-                // todo: goto back activity from here
-
-                startActivity(new Intent(getBaseContext(), message.class));
-                return true;
+//            case R.id.action_new_msg:
+//                // todo: goto back activity from here
+//
+//                startActivity(new Intent(getBaseContext(), message.class));
+//                return true;
             case android.R.id.home:
                 // todo: goto back activity from here
 
@@ -103,13 +103,13 @@ public class fokopok_content extends BaseActivity implements View.OnClickListene
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_fokopok, menu);
-
-        return super.onCreateOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_fokopok, menu);
+//
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
     @Override
     public void onClick(View view) {

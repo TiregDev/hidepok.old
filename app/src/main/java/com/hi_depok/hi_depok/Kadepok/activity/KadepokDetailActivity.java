@@ -253,7 +253,7 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
         public Content(FragmentManager fm) {
             super(fm);
             fragment1 = fragment1.newInstance(getIntent().getExtras().getString("getId"));
-            fragment2 = fragment2.newInstance();
+            fragment2 = fragment2.newInstance(getIntent().getExtras().getString("getId"));
             fragment3 = fragment3.newInstance();
         }
 

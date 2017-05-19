@@ -19,12 +19,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
+import com.hi_depok.hi_depok.Activity_Main.MainActivity;
+import com.hi_depok.hi_depok.Activity_Main.login;
+import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
 
@@ -33,7 +39,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class danus_activity extends BaseActivity {
     ProgressDialog dialog;
@@ -43,6 +51,9 @@ public class danus_activity extends BaseActivity {
     List<DataModel> dataAdapter;
     DataModel data;
     SessionManager session;
+
+    EditText formMessage1, formMessage2;
+    String login_url = "http://hidepok.id/android/ucok/ucok_dss.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +75,7 @@ public class danus_activity extends BaseActivity {
         session = new SessionManager(this);
         JSON_URL = "http://hidepok.id/android/ucok/ucok_riwayat_usaha.php?id_user=" + session.getUserDetails().get(SessionManager.KEY_ID_USER);
         getDataFromJSON(JSON_URL);
+
     }
 
 
@@ -101,17 +113,19 @@ public class danus_activity extends BaseActivity {
 
 
 
-    private void progresscalculate(){
-        dialog = new ProgressDialog(danus_activity.this);
-        dialog.show();
-        dialog.setMessage("Progress Kalkulasi");
-    }
+//    private void progresscalculate(){
+//        dialog = new ProgressDialog(danus_activity.this);
+//        dialog.show();
+//        dialog.setMessage("Progress Kalkulasi");
+//    }
 
     private void showMessageDialog (){
         LayoutInflater inflater = getLayoutInflater();
         View alertLayout= inflater.inflate(R.layout.ucok_danus_messagedialog, null);
-        final EditText formMessage1 = (EditText) alertLayout.findViewById(R.id.target_rupiah);
-        final EditText formMessage2 = (EditText) alertLayout.findViewById(R.id.target_waktu);
+        formMessage1 = (EditText) alertLayout.findViewById(R.id.target_rupiah);
+        formMessage2 = (EditText) alertLayout.findViewById(R.id.target_waktu);
+
+
 
         AlertDialog.Builder alert = new AlertDialog.Builder(danus_activity.this);
         alert.setTitle("Silahkan Masukkan");
@@ -129,11 +143,11 @@ public class danus_activity extends BaseActivity {
 
         alert.setPositiveButton("Kalkulasi", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog, int which) {
-//                progresscalculate();
-//                Intent intent = new Intent(danus_activity.this, hasil_calculate.class);
-//                startActivity(intent);
-                Toast.makeText(getBaseContext(), "Segera hadir setelah penyempurnaan aplikasi", Toast.LENGTH_LONG).show();
-                dialog.dismiss();
+
+                String urlJSON = "http://hidepok.id/android/ucok/ucok_dss.php?target_uang=" + formMessage1.getText() + "&target_hari=" + formMessage2.getText();
+                Intent intent = new Intent(danus_activity.this, hasil_calculate.class);
+                intent.putExtra("urlJSON", urlJSON);
+                startActivity(intent);
             }
         });
         AlertDialog dialog = alert.create();
@@ -143,6 +157,7 @@ public class danus_activity extends BaseActivity {
         Button buttonNegative = dialog.getButton(DialogInterface.BUTTON_NEGATIVE);
         buttonNegative.setTextColor(ContextCompat.getColor(this, R.color.abuAbu));
     }
+
 
     public void danus_calculate(View v){
         showMessageDialog();

@@ -20,12 +20,25 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.Kadepok.activity.KadepokDetailActivity;
 import com.hi_depok.hi_depok.Kadepok.activity.kadepok_content;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.SessionManager;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -34,13 +47,7 @@ import java.util.Set;
 
 public class fragment2 extends DialogFragment {
 
-    public static fragment2 newInstance() {
-        Bundle args = new Bundle();
 
-        fragment2 fragment = new fragment2();
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     private File imageFile;
     String filename;
@@ -48,7 +55,25 @@ public class fragment2 extends DialogFragment {
     private PopupWindow popupWindow;
     public Button close;
     public TextView txtImage;
+    TextView jumlahDonasi, namaDonatur, telpDonatur;
+    String url;
+    SessionManager session;
     View v;
+
+    public static fragment2 newInstance(String id) {
+
+        fragment2 fragment = new fragment2();
+        Bundle args = new Bundle();
+
+        args.putString("id", id);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public String getID() {
+        Bundle args = getArguments();
+        return args.getString("id", "0");
+    }
 
     public void verify_volunteer() {
         try {
@@ -78,14 +103,67 @@ public class fragment2 extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.kadepok_fragment2_kadepok_content, null);
 //        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-
+        session = new SessionManager(getContext());
         donate = (Button)v.findViewById(R.id.donate);
         bukti = (Button)v.findViewById(R.id.bukti);
         txtImage = (TextView)v.findViewById(R.id.txtBukti);
 
+        jumlahDonasi = (TextView)v.findViewById(R.id.donasi);
+        namaDonatur = (TextView)v.findViewById(R.id.nama_donatur);
+        telpDonatur = (TextView)v.findViewById(R.id.tlp_donatur);
+        url = "http://hidepok.id/android/kadepok/kadepok_donasi_json.php";
         donate.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                verify_volunteer();
+            @Override
+            public void onClick(View view) {
+                final String donasi = jumlahDonasi.getText().toString();
+                final String donatur = namaDonatur.getText().toString();
+                final String telp = telpDonatur.getText().toString();
+                final String txtImg = txtImage.getText().toString();
+
+                if (donasi.equals("")) {
+                    jumlahDonasi.setError("Jumlah harus diisi");
+                } else if (donatur.equals("")) {
+                    namaDonatur.setError("Nama harus diiisi");
+                } else if (telp.equals("")) {
+                    namaDonatur.setError("Telp harus diiisi");
+                } else{
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    try {
+                                        JSONArray jsonArray = new JSONArray(response);
+                                        JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                        Toast.makeText(getContext(), jsonObject.getString("message"),
+                                                    Toast.LENGTH_SHORT).show();
+                                        verify_volunteer();
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getContext(), "Koneksi Gagal! Cek Koneksi Anda!", Toast.LENGTH_SHORT).show();
+                            error.printStackTrace();
+                        }
+                    }){
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            HashMap<String, String> params = new HashMap<String, String>();
+                            HashMap<String, String> user = session.getUserDetails();
+                            params.put("nominal_donasi", donasi);
+                            params.put("nama_donasi", donatur);
+                            params.put("telepon_donasi", telp);
+                            params.put("id_panti_donasi", getID());
+                            params.put("id_user_donasi", user.get(SessionManager.KEY_ID_USER));
+                            params.put("bukti_transfer_donasi", txtImg);
+                            return params;
+                        }
+                    };
+                    Akses.getInstance(getContext()).addtoRequestQueue(stringRequest);
+                }
+
             }
         });
 
@@ -101,7 +179,6 @@ public class fragment2 extends DialogFragment {
                 Uri tempuri = Uri.fromFile(imageFile);
                 camera.putExtra(MediaStore.EXTRA_OUTPUT, tempuri);
                 camera.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
-
                 startActivityForResult(camera, 0);
             }
         });
