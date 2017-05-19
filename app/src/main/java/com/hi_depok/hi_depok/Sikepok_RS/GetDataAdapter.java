@@ -20,6 +20,7 @@ public class GetDataAdapter {
     String website;
     String email;
     String id_partner;
+    String jarak;
     int foto_drawable;
 
 
@@ -107,6 +108,13 @@ public class GetDataAdapter {
     }
     public void setFotoDrawable(int foto_drawable) {
         this.foto_drawable = foto_drawable;
+    }
+
+    public String getJarak() {
+        return jarak;
+    }
+    public void setJarak(String jarak) {
+        this.jarak = jarak;
     }
 
     //adapter table post

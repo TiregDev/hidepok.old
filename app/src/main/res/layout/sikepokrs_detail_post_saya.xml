@@ -122,6 +122,7 @@
                                         android:gravity="center_vertical|start">
 
                                         <ImageView
+                                            android:id="@+id/gambar_suka"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:layout_weight="1"

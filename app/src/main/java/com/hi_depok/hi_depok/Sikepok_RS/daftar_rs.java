@@ -40,6 +40,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,6 +69,28 @@ public class daftar_rs extends BaseActivity {
     RecyclerView.Adapter recyclerViewadapter;
     RecyclerView rView;
     ProgressDialog dialog;
+
+
+//    public static daftar_rs newInstance(String title, String location) {
+//        daftar_rs fragment = new daftar_rs();
+//
+//        Bundle args = new Bundle();
+//        args.putString("title", title);
+//        args.putString("location", location);
+//        fragment.setArguments(args);
+//
+//        return fragment;
+//    }
+//
+//    public String getTitle() {
+//        Bundle args = getArguments();
+//        return args.getString("title", "NO TITLE FOUND");
+//    }
+//
+//    public String getLocation() {
+//        Bundle args = getArguments();
+//        return args.getString("location", "0.0");
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,6 +218,20 @@ public class daftar_rs extends BaseActivity {
                 dataFromJSON.setWebsite(json.getString(JSON_WEB));
                 dataFromJSON.setEmail(json.getString(JSON_EMAIL));
                 dataFromJSON.setId_partner(json.getString(JSON_ID_PARTNER));
+
+//                String kordinat1 = json.getString(JSON_LAT);
+//                String kordinat2 = json.getString(JSON_LONG);
+//                double latitudeA = Double.parseDouble(kordinat1);
+//                double longitudeA = Double.parseDouble(kordinat2);
+//
+//                String[] kordinatB = getLocation().split(",");
+//                double latitudeB = Double.parseDouble(kordinatB[0]);
+//                double longitudeB = Double.parseDouble(kordinatB[1].trim());
+//
+//                Double jarak = BigDecimal.valueOf(util.CalculationByDistance(latitudeB, longitudeB, latitudeA, longitudeA))
+//                        .setScale(3, RoundingMode.HALF_UP)
+//                        .doubleValue();
+//                dataFromJSON.setJarak(String.valueOf(jarak));
 
             } catch (JSONException e) {
 

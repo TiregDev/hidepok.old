@@ -89,12 +89,13 @@
                     android:gravity="center_vertical|left">
 
                     <ImageView
-                        android:id="@+id/like"
+                        android:id="@+id/gambar_suka"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:padding="5dp"
-                        app:srcCompat="@drawable/icon_thump_up" />
+                        app:srcCompat="@drawable/icon_thump_up"
+                        android:layout_alignParentBottom="true" />
                 </RelativeLayout>
             </LinearLayout>
 

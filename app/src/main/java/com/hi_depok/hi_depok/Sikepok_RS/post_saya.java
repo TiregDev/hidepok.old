@@ -36,19 +36,19 @@ public class post_saya extends BaseActivity {
     //inisialisasi post
     String GET_JSON_DATA_HTTP_URL;
     String JSON_ID_POST = "id_post";
-    String JSON_ID_MODUL = "id_modul";
+//    String JSON_ID_MODUL = "id_modul";
     String JSON_ID_USER = "id_user";
     String JSON_JUDUL_POST = "judul_post";
     String JSON_ISI_POST = "isi_post";
     String JSON_TANGGAL_POST = "tanggal_post";
     String JSON_WAKTU_POST = "waktu_post";
-    String JSON_KATEGORI_POST = "kategori_post";
-    String JSON_FOTO_POST = "foto_post";
-    String JSON_DESKRIPSI_POST = "deskripsi_post";
-    String JSON_LOKASI_POST = "lokasi_post";
-    String JSON_NO_IDENTITAS_POST = "no_identitas_post";
-    String JSON_STATUS_POST = "status_post";
-    String JSON_RATING_POST = "rating_post";
+//    String JSON_KATEGORI_POST = "kategori_post";
+//    String JSON_FOTO_POST = "foto_post";
+//    String JSON_DESKRIPSI_POST = "deskripsi_post";
+//    String JSON_LOKASI_POST = "lokasi_post";
+//    String JSON_NO_IDENTITAS_POST = "no_identitas_post";
+//    String JSON_STATUS_POST = "status_post";
+//    String JSON_RATING_POST = "rating_post";
     String JSON_ANGKA_KOMEN = "total_komentar";
     String JSON_ANGKA_SUKA = "total_suka";
 
@@ -124,19 +124,19 @@ public class post_saya extends BaseActivity {
                 json = array.getJSONObject(i);
 
                 dataFromJSON.setId_post(json.getString(JSON_ID_POST));
-                dataFromJSON.setId_modul(json.getString(JSON_ID_MODUL));
+//                dataFromJSON.setId_modul(json.getString(JSON_ID_MODUL));
                 dataFromJSON.setId_user(json.getString(JSON_ID_USER));
                 dataFromJSON.setJudul_post(json.getString(JSON_JUDUL_POST));
                 dataFromJSON.setIsi_post(json.getString(JSON_ISI_POST));
                 dataFromJSON.setTanggal_post(json.getString(JSON_TANGGAL_POST));
                 dataFromJSON.setWaktu_post(json.getString(JSON_WAKTU_POST));
-                dataFromJSON.setKategori_post(json.getString(JSON_KATEGORI_POST));
-                dataFromJSON.setFoto_post(json.getString(JSON_FOTO_POST));
-                dataFromJSON.setDeskripsi_post(json.getString(JSON_DESKRIPSI_POST));
-                dataFromJSON.setLokasi_post(json.getString(JSON_LOKASI_POST));
-                dataFromJSON.setNo_identitas_post(json.getString(JSON_NO_IDENTITAS_POST));
-                dataFromJSON.setStatus_post(json.getString(JSON_STATUS_POST));
-                dataFromJSON.setRating_post(json.getString(JSON_RATING_POST));
+//                dataFromJSON.setKategori_post(json.getString(JSON_KATEGORI_POST));
+//                dataFromJSON.setFoto_post(json.getString(JSON_FOTO_POST));
+//                dataFromJSON.setDeskripsi_post(json.getString(JSON_DESKRIPSI_POST));
+//                dataFromJSON.setLokasi_post(json.getString(JSON_LOKASI_POST));
+//                dataFromJSON.setNo_identitas_post(json.getString(JSON_NO_IDENTITAS_POST));
+//                dataFromJSON.setStatus_post(json.getString(JSON_STATUS_POST));
+//                dataFromJSON.setRating_post(json.getString(JSON_RATING_POST));
                 dataFromJSON.setAngka_komen(json.getString(JSON_ANGKA_KOMEN));
                 dataFromJSON.setAngka_suka(json.getString(JSON_ANGKA_SUKA));
 
@@ -151,7 +151,16 @@ public class post_saya extends BaseActivity {
         rView.setAdapter(recyclerViewadapter);
     }
 
+    //On Restart
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        dataAdapter.clear();
+        recyclerViewadapter.notifyDataSetChanged();
+        JSON_DATA_WEB_CALL();
+    }
 
+    //lain2
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

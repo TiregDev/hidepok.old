@@ -135,19 +135,19 @@ public class diskusi_terpopuler extends Fragment {
                 dataFromJSON = new GetDataAdapter();
 
                 dataFromJSON.setId_post(json.getString(JSON_ID_POST));
-                dataFromJSON.setId_modul(json.getString(JSON_ID_MODUL));
+//                dataFromJSON.setId_modul(json.getString(JSON_ID_MODUL));
                 dataFromJSON.setId_user(json.getString(JSON_ID_USER));
                 dataFromJSON.setJudul_post(json.getString(JSON_JUDUL_POST));
                 dataFromJSON.setIsi_post(json.getString(JSON_ISI_POST));
                 dataFromJSON.setTanggal_post(json.getString(JSON_TANGGAL_POST));
                 dataFromJSON.setWaktu_post(json.getString(JSON_WAKTU_POST));
                 dataFromJSON.setKategori_post(json.getString(JSON_KATEGORI_POST));
-                dataFromJSON.setFoto_post(json.getString(JSON_FOTO_POST));
-                dataFromJSON.setDeskripsi_post(json.getString(JSON_DESKRIPSI_POST));
-                dataFromJSON.setLokasi_post(json.getString(JSON_LOKASI_POST));
-                dataFromJSON.setNo_identitas_post(json.getString(JSON_NO_IDENTITAS_POST));
-                dataFromJSON.setStatus_post(json.getString(JSON_STATUS_POST));
-                dataFromJSON.setRating_post(json.getString(JSON_RATING_POST));
+//                dataFromJSON.setFoto_post(json.getString(JSON_FOTO_POST));
+//                dataFromJSON.setDeskripsi_post(json.getString(JSON_DESKRIPSI_POST));
+//                dataFromJSON.setLokasi_post(json.getString(JSON_LOKASI_POST));
+//                dataFromJSON.setNo_identitas_post(json.getString(JSON_NO_IDENTITAS_POST));
+//                dataFromJSON.setStatus_post(json.getString(JSON_STATUS_POST));
+//                dataFromJSON.setRating_post(json.getString(JSON_RATING_POST));
                 dataFromJSON.setNama_user(json.getString(JSON_NAMA_USER));
                 dataFromJSON.setAngka_komen(json.getString(JSON_ANGKA_KOMEN));
                 dataFromJSON.setAngka_suka(json.getString(JSON_ANGKA_SUKA));

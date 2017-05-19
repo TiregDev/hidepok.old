@@ -72,79 +72,79 @@
                 android:textColor="#fff"
                 app:font="@string/fontReguler" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="4">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:weightSum="4">-->
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|start">
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center_vertical|start">-->
 
-                    <RelativeLayout
-                        android:layout_width="70dp"
-                        android:layout_height="30dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text=""
-                        android:textColor="#000"
-                        android:textStyle="bold" />
-                </RelativeLayout>
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="70dp"-->
+                        <!--android:layout_height="30dp"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text=""-->
+                        <!--android:textColor="#000"-->
+                        <!--android:textStyle="bold" />-->
+                <!--</RelativeLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:orientation="horizontal">-->
 
 
-                </LinearLayout>
+                <!--</LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <fr.arnaudguyon.smartfontslib.FontTextView
-                        android:id="@+id/angka_like_komentar"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical|end"
-                        android:text="@string/like"
-                        android:textColor="#fff"
-                        app:font="@string/fontReguler" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical|left">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:padding="5dp"
-                            app:srcCompat="@drawable/icon_thump_up" />
-                    </RelativeLayout>
-                </LinearLayout>
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:orientation="horizontal">-->
 
 
-            </LinearLayout>
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<fr.arnaudguyon.smartfontslib.FontTextView-->
+                        <!--android:id="@+id/angka_like_komentar"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:gravity="center_vertical|end"-->
+                        <!--android:text="@string/like"-->
+                        <!--android:textColor="#fff"-->
+                        <!--app:font="@string/fontReguler" />-->
+
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:gravity="center_vertical|left">-->
+
+                        <!--<ImageView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:padding="5dp"-->
+                            <!--app:srcCompat="@drawable/icon_thump_up" />-->
+                    <!--</RelativeLayout>-->
+                <!--</LinearLayout>-->
+
+
+            <!--</LinearLayout>-->
 
         </LinearLayout>
     </LinearLayout>

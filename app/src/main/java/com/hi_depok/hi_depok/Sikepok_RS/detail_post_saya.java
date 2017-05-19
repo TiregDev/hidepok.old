@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,6 +63,7 @@ public class detail_post_saya extends BaseActivity {
 
     String KIRIM_KOMENTAR_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_savekomen_json.php";
     String DELETE_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_delete_json.php";
+    String SUKA_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_savesuka_json.php";
 
     //inisialisasi
     String GET_JSON_DATA_HTTP_URL;
@@ -97,6 +99,8 @@ public class detail_post_saya extends BaseActivity {
     RequestQueue requestQueue ;
     ProgressDialog dialog;
     TextView nama, judul, isi, angka_suka, angka_komen;
+    ImageView gambar_suka;
+    SessionManager session;
     //    ImageView image;
     String idPostSaya;
 
@@ -139,6 +143,7 @@ public class detail_post_saya extends BaseActivity {
         isi = (TextView) findViewById(R.id.isi_post);
         angka_komen = (TextView) findViewById(R.id.angka_komen);
         angka_suka = (TextView) findViewById(R.id.angka_like);
+        gambar_suka = (ImageView) findViewById(R.id.gambar_suka);
 //        image = (ImageView) findViewById(R.id.fotoDokter);
 //        dialog = new ProgressDialog(this);
 //        dialog.setMessage("Loading");
@@ -226,6 +231,46 @@ public class detail_post_saya extends BaseActivity {
                 }
             }
         });
+
+        //like
+        gambar_suka.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                session = new SessionManager(detail_post_saya.this);
+                HashMap<String, String> user = session.getUserDetails();
+                final String id_user = user.get(SessionManager.KEY_ID_USER);
+
+                StringRequest likeRequest = new StringRequest(Request.Method.POST, SUKA_URL,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                if(response.equals("belum")){
+                                    gambar_suka.setImageResource(R.drawable.icon_thump_up_active);
+                                    Toast.makeText(detail_post_saya.this, "Anda menyukai post ini",
+                                            Toast.LENGTH_SHORT).show();
+                                }else
+                                    Toast.makeText(detail_post_saya.this, "Anda telah menyukai post ini",
+                                            Toast.LENGTH_SHORT).show();
+                                JSON_DATA_WEB_CALL();
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        HashMap<String, String> params = new HashMap<String, String>();
+                        params.put("id_post", idPostSaya);
+                        params.put("id_user", id_user);
+                        params.put("id", "1");
+                        return params;
+                    }
+                };
+                Akses.getInstance(detail_post_saya.this).addtoRequestQueue(likeRequest);
+            }
+        });
     }
 
     private void deletePost() {
@@ -299,6 +344,13 @@ public class detail_post_saya extends BaseActivity {
                 isi.setText(json.getString(JSON_ISI_POST));
                 angka_komen.setText(json.getString(JSON_ANGKA_KOMEN));
                 angka_suka.setText(json.getString(JSON_ANGKA_SUKA));
+                gambar_suka.setImageResource(R.drawable.icon_thump_up);
+
+                if (json.getString(JSON_ANGKA_SUKA).equals("0")) {
+                    gambar_suka.setImageResource(R.drawable.icon_thump_up);
+                } else {
+                    gambar_suka.setImageResource(R.drawable.icon_thump_up_active);
+                }
 
 //                String encodeUrl = URLEncoder.encode(json.getString(JSON_FOTO_DOKTER));
 //
@@ -358,6 +410,16 @@ public class detail_post_saya extends BaseActivity {
         recyclerViewadapter = new RecyclerViewAdapterKOMENTARSAYA(dataAdapter, this);
         rViewKOMEN.setAdapter(recyclerViewadapter);
 
+    }
+
+    //On Restart
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        dataAdapter.clear();
+        recyclerViewadapter.notifyDataSetChanged();
+        JSON_DATA_WEB_CALL();
+        JSON_DATA_WEB_CALL2();
     }
 
     //dll

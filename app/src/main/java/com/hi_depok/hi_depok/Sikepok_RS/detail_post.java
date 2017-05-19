@@ -66,6 +66,8 @@ public class detail_post extends BaseActivity {
 
     String KIRIM_KOMENTAR_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_savekomen_json.php";
 
+    String SUKA_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_savesuka_json.php";
+
     //inisialisasi post
     String GET_JSON_DATA_HTTP_URL;
     String JSON_JUDUL_POST = "judul_post";
@@ -100,6 +102,8 @@ public class detail_post extends BaseActivity {
     RequestQueue requestQueue ;
     ProgressDialog dialog;
     TextView nama, judul, isi, angka_suka, angka_komen;
+    ImageView  gambar_suka;
+    SessionManager session;
 //    ImageView image;
     String idPost;
 
@@ -134,6 +138,8 @@ public class detail_post extends BaseActivity {
         isi = (TextView) findViewById(R.id.isi_post);
         angka_komen = (TextView) findViewById(R.id.angka_komen);
         angka_suka = (TextView) findViewById(R.id.angka_like);
+        gambar_suka = (ImageView) findViewById(R.id.gambar_suka);
+
 //        image = (ImageView) findViewById(R.id.fotoDokter);
         dialog = new ProgressDialog(this);
         dialog.setMessage("Loading");
@@ -150,7 +156,45 @@ public class detail_post extends BaseActivity {
 //        dialog.show();
 //        dialog.setCancelable(true);
 
+        //like
+        gambar_suka.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                session = new SessionManager(detail_post.this);
+                HashMap<String, String> user = session.getUserDetails();
+                final String id_user = user.get(SessionManager.KEY_ID_USER);
+                StringRequest likeRequest = new StringRequest(Request.Method.POST, SUKA_URL,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                if(response.equals("belum")){
+                                    gambar_suka.setImageResource(R.drawable.icon_thump_up_active);
+                                    Toast.makeText(detail_post.this, "Anda menyukai post ini",
+                                            Toast.LENGTH_SHORT).show();
+                                }else
+                                    Toast.makeText(detail_post.this, "Anda telah menyukai post ini",
+                                            Toast.LENGTH_SHORT).show();
+                                JSON_DATA_WEB_CALL();
+//                                callVolley(id_post);
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
 
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        HashMap<String, String> params = new HashMap<String, String>();
+                        params.put("id_post", idPost);
+                        params.put("id_user", id_user);
+                        params.put("id", "1");
+                        return params;
+                    }
+                };
+                Akses.getInstance(detail_post.this).addtoRequestQueue(likeRequest);
+            }
+        });
 
         //shared preferences
         final SharedPreferences prefsa = PreferenceManager.getDefaultSharedPreferences(this);
@@ -244,6 +288,7 @@ public class detail_post extends BaseActivity {
 
     //parsing JSON
     public void JSON_DATA_WEB_CALL(){
+
         jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_URL,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -265,6 +310,10 @@ public class detail_post extends BaseActivity {
     }
 
     public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array){
+        session = new SessionManager(detail_post.this);
+        HashMap<String, String> user = session.getUserDetails();
+        final String id_user = user.get(SessionManager.KEY_ID_USER);
+
         for(int i = 0; i<array.length(); i++) {
             JSONObject json = null;
             try {
@@ -275,6 +324,14 @@ public class detail_post extends BaseActivity {
                 isi.setText(json.getString(JSON_ISI_POST));
                 angka_komen.setText(json.getString(JSON_ANGKA_KOMEN));
                 angka_suka.setText(json.getString(JSON_ANGKA_SUKA));
+                gambar_suka.setImageResource(R.drawable.icon_thump_up);
+
+                if (json.getString(JSON_ANGKA_SUKA).equals("0")) {
+                    gambar_suka.setImageResource(R.drawable.icon_thump_up);
+                } else {
+                    gambar_suka.setImageResource(R.drawable.icon_thump_up_active);
+                }
+
 
 //                String encodeUrl = URLEncoder.encode(json.getString(JSON_FOTO_DOKTER));
 //

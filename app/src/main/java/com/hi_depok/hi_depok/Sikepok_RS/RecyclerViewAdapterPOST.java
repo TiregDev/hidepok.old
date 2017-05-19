@@ -12,17 +12,31 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAdapterPOST.ViewHolder> {
 
     Context context;
+    String SUKA_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_savesuka_json.php";
+
+    ImageView gambar_suka;
+    SessionManager session;
 
     List<GetDataAdapter> adapter;
 
@@ -58,7 +72,15 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokrs_fragment_post, parent, false);
 
-        ViewHolder viewHolder = new ViewHolder(v);
+        final ViewHolder viewHolder = new ViewHolder(v);
+
+        gambar_suka = (ImageView) v.findViewById(R.id.gambar_suka);
+        gambar_suka.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewHolder.sukai();
+            }
+        });
 
         return viewHolder;
     }
@@ -92,6 +114,13 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
         holder.namaUser.setText(nama_user);
         holder.angkaKomen.setText(angka_komen);
         holder.angkaSuka.setText(angka_suka);
+        holder.gambarSuka.setImageResource(R.drawable.icon_thump_up);
+
+        if (angka_suka.equals("0")) {
+            holder.gambarSuka.setImageResource(R.drawable.icon_thump_up);
+        } else {
+            holder.gambarSuka.setImageResource(R.drawable.icon_thump_up_active);
+        }
         holder.itemView.setTag(id_post);
 
     }
@@ -109,6 +138,7 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
         public TextView namaUser;
         public TextView angkaKomen;
         public TextView angkaSuka;
+        public ImageView gambarSuka;
 
         public ViewHolder(final View itemView) {
 
@@ -119,6 +149,7 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
             namaUser = (TextView)itemView.findViewById(R.id.pengirim_post);
             angkaKomen = (TextView)itemView.findViewById(R.id.angka_komen);
             angkaSuka = (TextView)itemView.findViewById(R.id.angka_like);
+            gambarSuka = (ImageView) itemView.findViewById(R.id.gambar_suka);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -134,6 +165,45 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
             });
 
 
+        }
+
+        public void sukai() {
+            session = new SessionManager(RecyclerViewAdapterPOST.this.context);
+            HashMap<String, String> user = session.getUserDetails();
+            final String id_user = user.get(SessionManager.KEY_ID_USER);
+
+            StringRequest likeRequest = new StringRequest(Request.Method.POST, SUKA_URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            if(response.equals("belum")){
+                                gambar_suka.setImageResource(R.drawable.icon_thump_up_active);
+                                Toast.makeText(RecyclerViewAdapterPOST.this.context, "Anda menyukai post ini",
+                                        Toast.LENGTH_SHORT).show();
+//                                context.startActivity(new Intent(context, detail_post.class));
+                            }else {
+                                Toast.makeText(RecyclerViewAdapterPOST.this.context, "Anda telah menyukai post ini",
+                                        Toast.LENGTH_SHORT).show();
+                                context.startActivity(new Intent(RecyclerViewAdapterPOST.this.context, detail_post.class));
+//                            JSON_DATA_WEB_CALL();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    HashMap<String, String> params = new HashMap<String, String>();
+                    params.put("id_post", itemView.getTag().toString());
+                    params.put("id_user", id_user);
+                    params.put("id", "1");
+                    return params;
+                }
+            };
+            Akses.getInstance(RecyclerViewAdapterPOST.this.context).addtoRequestQueue(likeRequest);
         }
     }
 }
