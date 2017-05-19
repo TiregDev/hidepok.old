@@ -55,7 +55,7 @@ public class regis_berobat extends BaseActivity {
     //mengirim sms
     protected void sendSMS()
     {
-        String number="085776410906";
+        String number="085811811833";
 
         if (poli.getSelectedItem().toString().equals("Poli Penyakit Dalam - Dr. Kahar")){
             pilihan = "DAL-KAHAR";
