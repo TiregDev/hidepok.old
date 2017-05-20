@@ -184,6 +184,11 @@ public class RecyclerViewAdapterPOST extends RecyclerView.Adapter<RecyclerViewAd
                             }else {
                                 Toast.makeText(RecyclerViewAdapterPOST.this.context, "Anda telah menyukai post ini",
                                         Toast.LENGTH_SHORT).show();
+
+                                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                                SharedPreferences.Editor editor=sharedPreferences.edit();
+                                editor.putString("id_post",itemView.getTag().toString());
+                                editor.commit();
                                 context.startActivity(new Intent(RecyclerViewAdapterPOST.this.context, detail_post.class));
 //                            JSON_DATA_WEB_CALL();
                             }

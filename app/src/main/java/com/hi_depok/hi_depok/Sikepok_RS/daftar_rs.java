@@ -17,6 +17,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,14 +43,17 @@ import org.json.JSONObject;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class daftar_rs extends BaseActivity {
     private SearchView searchView;
 
     public static final String PATOKAN = "patokan";
-    String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_menurs_json.php";
+    String GET_JSON_DATA_HTTP_URL;
     String JSON_ID = "id_rs";
     String JSON_ALAMAT = "alamat_rs";
     String JSON_NAME = "nama_rs";
@@ -69,28 +73,6 @@ public class daftar_rs extends BaseActivity {
     RecyclerView.Adapter recyclerViewadapter;
     RecyclerView rView;
     ProgressDialog dialog;
-
-
-//    public static daftar_rs newInstance(String title, String location) {
-//        daftar_rs fragment = new daftar_rs();
-//
-//        Bundle args = new Bundle();
-//        args.putString("title", title);
-//        args.putString("location", location);
-//        fragment.setArguments(args);
-//
-//        return fragment;
-//    }
-//
-//    public String getTitle() {
-//        Bundle args = getArguments();
-//        return args.getString("title", "NO TITLE FOUND");
-//    }
-//
-//    public String getLocation() {
-//        Bundle args = getArguments();
-//        return args.getString("location", "0.0");
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,8 +97,13 @@ public class daftar_rs extends BaseActivity {
         dialog.setMessage("Loading");
         dialog.show();
         dialog.setCancelable(true);
+
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_menurs_json.php";
+
         JSON_DATA_WEB_CALL();
     }
+
+    //dll
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -130,10 +117,12 @@ public class daftar_rs extends BaseActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    //search
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        // Retrieve the SearchView and plug it into SearchManager
+
         final MenuItem searchItem = menu.findItem(R.id.action_search);
 
         if (searchItem != null) {
@@ -142,6 +131,9 @@ public class daftar_rs extends BaseActivity {
                 @Override
                 public boolean onClose() {
                     //some operation
+                    dataAdapter.clear();
+                    GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_menurs_json.php";
+                    JSON_DATA_WEB_CALL();
                     return false;
                 }
             });
@@ -159,21 +151,27 @@ public class daftar_rs extends BaseActivity {
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
-                    // use this method when query submitted
-                    Toast.makeText(daftar_rs.this, query, Toast.LENGTH_SHORT).show();
+                    // use this method when query submittet
+                    dataAdapter.clear();
+                    GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_menurs_json.php?cari="+query;
+                    JSON_DATA_WEB_CALL();
+                    Toast.makeText(getBaseContext(), "Hasil pencarian untuk: " + query, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
                 @Override
                 public boolean onQueryTextChange(String newText) {
-                    // use this method for auto complete search process
+                    dataAdapter.clear();
+                    GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_menurs_json.php?cari="+newText;
+                    JSON_DATA_WEB_CALL();
                     return false;
                 }
             });
-            SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+            SearchManager searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
         }
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -219,19 +217,16 @@ public class daftar_rs extends BaseActivity {
                 dataFromJSON.setEmail(json.getString(JSON_EMAIL));
                 dataFromJSON.setId_partner(json.getString(JSON_ID_PARTNER));
 
-//                String kordinat1 = json.getString(JSON_LAT);
-//                String kordinat2 = json.getString(JSON_LONG);
-//                double latitudeA = Double.parseDouble(kordinat1);
-//                double longitudeA = Double.parseDouble(kordinat2);
-//
-//                String[] kordinatB = getLocation().split(",");
-//                double latitudeB = Double.parseDouble(kordinatB[0]);
-//                double longitudeB = Double.parseDouble(kordinatB[1].trim());
-//
-//                Double jarak = BigDecimal.valueOf(util.CalculationByDistance(latitudeB, longitudeB, latitudeA, longitudeA))
-//                        .setScale(3, RoundingMode.HALF_UP)
-//                        .doubleValue();
-//                dataFromJSON.setJarak(String.valueOf(jarak));
+                double latitudeA = Double.parseDouble(json.getString(JSON_LAT));
+                double longitudeA = Double.parseDouble(json.getString(JSON_LONG));
+
+                double latitudeB = getIntent().getExtras().getDouble("getLat");
+                double longitudeB = getIntent().getExtras().getDouble("getLong");
+
+                Double jarak = BigDecimal.valueOf(CalculationByDistance(latitudeB, longitudeB, latitudeA, longitudeA))
+                        .setScale(1, RoundingMode.HALF_UP)
+                        .doubleValue();
+                dataFromJSON.setJarak(String.valueOf(jarak));
 
             } catch (JSONException e) {
 
@@ -239,11 +234,40 @@ public class daftar_rs extends BaseActivity {
             }
             dataAdapter.add(dataFromJSON);
         }
+        Collections.sort(dataAdapter, new Comparator<GetDataAdapter>() {
+            @Override
+            public int compare(GetDataAdapter data1, GetDataAdapter data2) {
+                Double f1 = Double.parseDouble(data1.getJarak());
+                Double f2 = Double.parseDouble(data2.getJarak());
+                return f1.compareTo(f2);
+            }
+        });
 
         recyclerViewadapter = new RecyclerViewAdapterJSON(dataAdapter, this);
         rView.setAdapter(recyclerViewadapter);
     }
 
+    //distance
+    public double CalculationByDistance(double lat1, double lon1, double lat2, double lon2) {
+        int Radius = 6371;// radius of earth in Km
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                + Math.cos(Math.toRadians(lat1))
+                * Math.cos(Math.toRadians(lat2)) * Math.sin(dLon / 2)
+                * Math.sin(dLon / 2);
+        double c = 2 * Math.asin(Math.sqrt(a));
+        double valueResult = Radius * c;
+        double km = valueResult / 1;
+        DecimalFormat newFormat = new DecimalFormat("####");
+        int kmInDec = Integer.valueOf(newFormat.format(km));
+        double meter = valueResult % 1000;
+        int meterInDec = Integer.valueOf(newFormat.format(meter));
+        Log.i("Radius Value", "" + valueResult + "   KM  " + kmInDec
+                + " Meter   " + meterInDec);
+
+        return Radius * c;
+    }
 
 //    public void ke_daftar_rs(View view){
 //        Intent next = new Intent(daftar_rs.this, daftar_rs.class);
@@ -254,5 +278,6 @@ public class daftar_rs extends BaseActivity {
 //        Intent next = new Intent(daftar_rs.this, menu_rs.class);
 //        startActivity(next);
 //    }
+
 
 }

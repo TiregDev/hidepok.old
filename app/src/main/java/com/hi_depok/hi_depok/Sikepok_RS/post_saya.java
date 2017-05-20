@@ -1,18 +1,25 @@
 package com.hi_depok.hi_depok.Sikepok_RS;
 
 import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -32,6 +39,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class post_saya extends BaseActivity {
+    private SearchView searchView;
 
     //inisialisasi post
     String GET_JSON_DATA_HTTP_URL;
@@ -173,5 +181,68 @@ public class post_saya extends BaseActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    //search
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //session login
+        session = new SessionManager(this);
+        HashMap<String, String> user = session.getUserDetails();
+        final String id_user = user.get(SessionManager.KEY_ID_USER);
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        final MenuItem searchItem = menu.findItem(R.id.action_search);
+
+        if (searchItem != null) {
+            searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+            searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+                @Override
+                public boolean onClose() {
+                    //some operation
+                    dataAdapter.clear();
+                    GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?id_saya_semua=" + id_user;
+                    JSON_DATA_WEB_CALL();
+                    return false;
+                }
+            });
+            searchView.setOnSearchClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //some operation
+                }
+            });
+            EditText searchPlate = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+            searchPlate.setHint("Search");
+            View searchPlateView = searchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
+            searchPlateView.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent));
+            // use this method for search process
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    // use this method when query submittet
+                    dataAdapter.clear();
+                    GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?id_saya_semua=" + id_user + "&cari2=" +query;
+                    JSON_DATA_WEB_CALL();
+                    Toast.makeText(getBaseContext(), "Hasil pencarian untuk: " + query, Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    // use this method when query submittet
+                    dataAdapter.clear();
+                    GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?id_saya_semua=" + id_user + "&cari2=" +newText;
+                    JSON_DATA_WEB_CALL();
+                    return false;
+                }
+            });
+            SearchManager searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        }
+
+        return super.onCreateOptionsMenu(menu);
     }
 }

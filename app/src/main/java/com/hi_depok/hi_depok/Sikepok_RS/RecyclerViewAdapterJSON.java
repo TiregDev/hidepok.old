@@ -84,11 +84,11 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
         website = adapter.get(position).getWebsite();
         email = adapter.get(position).getEmail();
         id_partner = adapter.get(position).getId_partner();
-//        jarak = adapter.get(position).getJarak();
+        jarak = adapter.get(position).getJarak();
 
         holder.personName.setText(nama);
         holder.personAlamat.setText(alamat);
-//        holder.personDistance.setText(jarak + " km");
+        holder.personDistance.setText(jarak + " km");
         holder.itemView.setTag(id);
         String encodeUrl = URLEncoder.encode(foto);
         urlPhoto = "http://hidepok.id/assets/images/photos/sikepok/sikepok2/" + encodeUrl;
@@ -133,7 +133,7 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
 
         public TextView personName;
         public TextView personAlamat;
-//        public TextView personDistance;
+        public TextView personDistance;
         public ImageView personPhoto;
 
         public ViewHolder(final View itemView) {
@@ -141,7 +141,7 @@ public class RecyclerViewAdapterJSON extends RecyclerView.Adapter<RecyclerViewAd
 
             personName = (TextView)itemView.findViewById(R.id.namaRS);
             personAlamat = (TextView)itemView.findViewById(R.id.alamatRS);
-//            personDistance = (TextView)itemView.findViewById(R.id.list_jarak);
+            personDistance = (TextView)itemView.findViewById(R.id.jarakRS);
             personPhoto = (ImageView)itemView.findViewById(R.id.gambarRS);
 
             itemView.setOnClickListener(new View.OnClickListener() {

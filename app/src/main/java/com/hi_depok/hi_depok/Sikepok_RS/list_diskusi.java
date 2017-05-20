@@ -73,52 +73,52 @@ public class list_diskusi extends BaseActivity {
     }
 
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        // Retrieve the SearchView and plug it into SearchManager
-        final MenuItem searchItem = menu.findItem(R.id.action_search);
-
-        if (searchItem != null) {
-            searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-            searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-                @Override
-                public boolean onClose() {
-                    //some operation
-                    return false;
-                }
-            });
-            searchView.setOnSearchClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //some operation
-                }
-            });
-            EditText searchPlate = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
-            searchPlate.setHint("Search");
-            View searchPlateView = searchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
-            searchPlateView.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent));
-            // use this method for search process
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
-                    // use this method when query submitted
-                    Toast.makeText(list_diskusi.this, query, Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-
-                @Override
-                public boolean onQueryTextChange(String newText) {
-                    // use this method for auto complete search process
-                    return false;
-                }
-            });
-            SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-
-        }
-        return super.onCreateOptionsMenu(menu);
-    }
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        // Retrieve the SearchView and plug it into SearchManager
+//        final MenuItem searchItem = menu.findItem(R.id.action_search);
+//
+//        if (searchItem != null) {
+//            searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+//            searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+//                @Override
+//                public boolean onClose() {
+//                    //some operation
+//                    return false;
+//                }
+//            });
+//            searchView.setOnSearchClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    //some operation
+//                }
+//            });
+//            EditText searchPlate = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+//            searchPlate.setHint("Search");
+//            View searchPlateView = searchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
+//            searchPlateView.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent));
+//            // use this method for search process
+//            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//                @Override
+//                public boolean onQueryTextSubmit(String query) {
+//                    // use this method when query submitted
+//                    Toast.makeText(list_diskusi.this, query, Toast.LENGTH_SHORT).show();
+//                    return false;
+//                }
+//
+//                @Override
+//                public boolean onQueryTextChange(String newText) {
+//                    // use this method for auto complete search process
+//                    return false;
+//                }
+//            });
+//            SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+//            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+//
+//        }
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {

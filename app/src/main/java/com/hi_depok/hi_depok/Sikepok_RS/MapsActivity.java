@@ -71,7 +71,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String JSON_FOTO ="foto_rs";
     String JSON_DESKRIPSI ="deskripsi_rs";
     String JSON_PARTNER ="id_partner";
-    String placeName, placeDeskripsi, placeLokasi, placeNoTlp, placeFoto, placeOperasional, placeKordinatLat, placeKordinatLon;
+    String placeName, placeDeskripsi, placeLokasi, placeNoTlp, placeFoto, placeOperasional, placeKordinatLat, placeKordinatLon, latlong;
     JsonArrayRequest jsonArrayRequest ;
     RequestQueue requestQueue ;
     @Override
@@ -95,6 +95,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map2);
         mapFragment.getMapAsync(this);
+
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             showLocationSettings();
@@ -193,7 +194,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         snackbar.show();
     }
     public void ke_daftar_rs(View view) {
-        startActivity(new Intent(getBaseContext(),daftar_rs.class));
+        if(latlong!=null) {
+            Intent intent = new Intent(getBaseContext(), daftar_rs.class);
+            intent.putExtra("getLat", latitude);
+            intent.putExtra("getLong", longitude);
+            startActivity(intent);
+        }else{
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Menunggu untuk mendapatkan lokasi anda!", Snackbar.LENGTH_LONG);
+            snackbar.show();
+        }
+
     }
     //    public void findPlaces(String name){
 //        mMap.clear();
@@ -302,6 +312,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Place current location marker
         latitude = location.getLatitude();
         longitude = location.getLongitude();
+        latlong = String.valueOf(latitude) + "," + String.valueOf(longitude);
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
