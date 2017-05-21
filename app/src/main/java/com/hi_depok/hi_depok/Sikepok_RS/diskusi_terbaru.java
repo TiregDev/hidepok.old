@@ -38,6 +38,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * Created by Hadi on 13/03/2017.
  */
@@ -70,13 +72,15 @@ public class diskusi_terbaru extends Fragment {
     RecyclerView rView;
     SearchView searchView;
     ProgressDialog dialog;
+//    String dicari;
 
     //tambahan untuk fragment
-    public static diskusi_terbaru newInstance(String title) {
+    public static diskusi_terbaru newInstance(String title, String cariin) {
         diskusi_terbaru fragment = new diskusi_terbaru();
 
         Bundle args = new Bundle();
         args.putCharSequence("title", title);
+        args.putCharSequence("cariin", cariin);
         fragment.setArguments(args);
 
         return fragment;
@@ -85,6 +89,11 @@ public class diskusi_terbaru extends Fragment {
     public String getTitle() {
         Bundle args = getArguments();
         return args.getString("title", "NO TITLE FOUND");
+    }
+
+    public String getCari() {
+        Bundle args = getArguments();
+        return args.getString("cariin", "");
     }
     //tambahan fragment sampai sini
 
@@ -114,8 +123,15 @@ public class diskusi_terbaru extends Fragment {
 //        final SharedPreferences prefsa = PreferenceManager.getDefaultSharedPreferences(getContext());
 //        idRs = prefsa.getString("id_rs","No data found");
 
-        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php";
+//        //preference search dari forum
+//        final SharedPreferences prefsa = PreferenceManager.getDefaultSharedPreferences(getContext());
+//        dicari = prefsa.getString("dicari_diforum","");
 
+        if (!getCari().equals("")) {
+            GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?cari=" + getCari();
+        } else {
+            GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php";
+        }
         JSON_DATA_WEB_CALL();
 
         return v;
@@ -224,7 +240,7 @@ public class diskusi_terbaru extends Fragment {
                 public boolean onQueryTextChange(String newText) {
                     // use this method for auto complete search process
                     dataAdapter.clear();
-                    GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?cari==" + newText;
+                    GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_forum_json.php?cari=" + newText;
                     JSON_DATA_WEB_CALL();
                     return false;
                 }
@@ -234,4 +250,12 @@ public class diskusi_terbaru extends Fragment {
 
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        dataAdapter.clear();
+        JSON_DATA_WEB_CALL();
+    }
+
 }

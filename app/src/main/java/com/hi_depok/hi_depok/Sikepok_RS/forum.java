@@ -2,10 +2,13 @@ package com.hi_depok.hi_depok.Sikepok_RS;
 
 import android.app.ProgressDialog;
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -343,10 +346,10 @@ public class forum extends BaseActivity{
 
 
     //search
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        // Retrieve the SearchView and plug it into SearchManager
+
         final MenuItem searchItem = menu.findItem(R.id.action_search);
 
         if (searchItem != null) {
@@ -355,6 +358,9 @@ public class forum extends BaseActivity{
                 @Override
                 public boolean onClose() {
                     //some operation
+//                    dataAdapter.clear();
+//                    GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_menurs_json.php";
+//                    JSON_DATA_WEB_CALL();
                     return false;
                 }
             });
@@ -372,21 +378,31 @@ public class forum extends BaseActivity{
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
-                    // use this method when query submitted
-                    Toast.makeText(forum.this, query, Toast.LENGTH_SHORT).show();
+                    // use this method when query submittet
+//                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(forum.this);
+//                    SharedPreferences.Editor editor=sharedPreferences.edit();
+//                        editor.putString("dicari_diforum",query);
+//                    editor.commit();
+
+                    Intent intent = new Intent(forum.this, list_diskusi.class);
+                    intent.putExtra("yang_dicari",query);
+                    startActivity(intent);
                     return false;
                 }
 
                 @Override
                 public boolean onQueryTextChange(String newText) {
-                    // use this method for auto complete search process
+//                    dataAdapter.clear();
+//                    GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.2/sikepokrs_menurs_json.php?cari="+newText;
+//                    JSON_DATA_WEB_CALL();
                     return false;
                 }
             });
-            SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+            SearchManager searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
         }
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -404,65 +420,16 @@ public class forum extends BaseActivity{
         }
     }
 
-//    public void ke_detail_post (View view){
-//        Intent next = new Intent(forum.this, detail_post.class);
-//        startActivity(next);
-//    }
-//
-//    public void ke_detail_post_saya (View view){
-//        Intent next = new Intent(forum.this, detail_post_saya.class);
-//        startActivity(next);
-//    }
-
     public void ke_post_saya(View view) {
         Intent next = new Intent(forum.this, post_saya.class);
+        next.putExtra("yang_dicari","");
         startActivity(next);
     }
 
     public void ke_post_terbaru(View view) {
         Intent next = new Intent(forum.this, list_diskusi.class);
+        next.putExtra("yang_dicari","");
         startActivity(next);
     }
 
-//    //Save post to db with method post
-//    private void kirimPost() {
-//        final String Judul = judul.getText().toString().trim();
-//        final String Isi = isi.getText().toString().trim();
-//        final String Id = "9";
-//
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST, KIRIM_POST_URL,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        Toast.makeText(forum.this, response, Toast.LENGTH_LONG).show();
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(forum.this, error.toString(), Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//
-//        ) {
-//            @Override
-//            protected Map<String, String> getParams() {
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put(KEY_JUDUL, Judul);
-//                params.put(KEY_ISI, Isi);
-//                params.put(KEY_ID, Id);
-//                return params;
-//            }
-//        };
-//
-//        RequestQueue requestQueue =  Volley.newRequestQueue(this);
-//        requestQueue.add(stringRequest);
-//    }
-//
-//    @Override
-//    public void onClick(View v) {
-//        if(v == kirim){
-//            kirimPost();
-//        }
-//    }
 }

@@ -90,16 +90,16 @@
 
 
     <string name="rs_terdekat_text">Halaman Dua Berhasil</string>
-    <string name="jarak1">5m</string>
-    <string name="namaRS">RS Mitra Keluarga</string>
-    <string name="alamat">Jl. Merdeka No.2</string>
+    <string name="jarak1">..m</string>
+    <string name="namaRS">Memuat nama RS ...</string>
+    <string name="alamat">Memuat alamat RS</string>
     <string name="title_activity_menu_rs">menu_rs</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="deskripsi_rs">RS Mitra Keluarga Depok adalah rumah sakit swasta kelas B. Rumah sakit ini mampu memberikan pelayanan kedokteran spesialis dan subspesialis terbatas. Rumah sakit ini juga menampung pelayanan rujukan dari rumah sakit kabupaten. Tempat ini tersedia 144 tempat tidur inap dengan 27 tempat tidur VIP.  </string>
-    <string name="no_telp">085776410909</string>
-    <string name="web">mitrakeluarga.com/depok/</string>
-    <string name="email">mitrakeluarga@gmail.com</string>
-    <string name="alamat_desc">Jl. Merdeka No.2</string>
+    <string name="deskripsi_rs">Memuat deskripsi ...</string>
+    <string name="no_telp">Memuat no telepon ...</string>
+    <string name="web">Memuat link website ...</string>
+    <string name="email">Memuat email ...</string>
+    <string name="alamat_desc">Memuat alamat ...</string>
     <string name="link">Link to G-Maps</string>
 
     <string-array name="jadwal">
@@ -109,12 +109,12 @@
         <item name="Saraf">Spesialis Saraf</item>
     </string-array>
 
-    <string name="namaDokter">Dr. Febby Haryono</string>
-    <string name="spesialis">Spesialis Anak \nSpesialis THT</string>
-    <string name="emailDokter">dokterfebby@gmail.com</string>
-    <string name="alamatDokter">Jl. Perumahan Dokter</string>
-    <string name="noHPdokter">085712345678</string>
-    <string name="praktekDokter">Senin : 08.00 - 11.00 \nRabu 13.00 - 16.00 \nKamis 08.00 - 11.00</string>
+    <string name="namaDokter">Memuat nama ...</string>
+    <string name="spesialis">Memuat spesialis ...</string>
+    <string name="emailDokter">Memuat email ...</string>
+    <string name="alamatDokter">Memuat alamat ...</string>
+    <string name="noHPdokter">Memuat no telepon ...</string>
+    <string name="praktekDokter">Memuat jadwal ...</string>
 
 
     <string name="namaApotek">Apotek Roxy</string>
@@ -238,7 +238,7 @@
     <string name="ketentuan6">No. RM adalah nomor yang tertera pada kartu berobat yang terdiri dari 6 digit, bila pasien tidak mengetahui nomor rekam medis maka No.RM diisi 0 </string>
     <string name="ketentuan7">Pasien daftar ulang kembali di loket pendaftaran RSUD Kota Depok pada waktu yang telah ditetapkan dalam balasan SMS</string>
 
-    <string name="judul_post">Menuat judul post ...</string>
+    <string name="judul_post">Memuat judul post ...</string>
     <string name="isi_post">Memuat isi post. Harap tunggu ...</string>
 
     <string name="like">0</string>

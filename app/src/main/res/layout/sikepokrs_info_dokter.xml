@@ -210,7 +210,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="19dp"
                                 android:layout_toEndOf="@+id/icon_desktop"
-                                android:text="08.00 - 10.00"
+                                android:text="-"
                                 android:textColor="@color/white"
                                 app:font="@string/fontReguler" />
                             <fr.arnaudguyon.smartfontslib.FontTextView
@@ -220,7 +220,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="19dp"
                                 android:layout_toEndOf="@+id/icon_desktop"
-                                android:text="08.00 - 10.00"
+                                android:text="-"
                                 android:textColor="@color/white"
                                 app:font="@string/fontReguler" />
                             <fr.arnaudguyon.smartfontslib.FontTextView
@@ -230,7 +230,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="19dp"
                                 android:layout_toEndOf="@+id/icon_desktop"
-                                android:text="08.00 - 10.00"
+                                android:text="-"
                                 android:textColor="@color/white"
                                 app:font="@string/fontReguler" />
                             <fr.arnaudguyon.smartfontslib.FontTextView
@@ -240,7 +240,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="19dp"
                                 android:layout_toEndOf="@+id/icon_desktop"
-                                android:text="08.00 - 10.00"
+                                android:text="-"
                                 android:textColor="@color/white"
                                 app:font="@string/fontReguler" />
                             <fr.arnaudguyon.smartfontslib.FontTextView
@@ -250,7 +250,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="19dp"
                                 android:layout_toEndOf="@+id/icon_desktop"
-                                android:text="08.00 - 10.00"
+                                android:text="-"
                                 android:textColor="@color/white"
                                 app:font="@string/fontReguler" />
                             <fr.arnaudguyon.smartfontslib.FontTextView
@@ -260,7 +260,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="19dp"
                                 android:layout_toEndOf="@+id/icon_desktop"
-                                android:text="08.00 - 10.00"
+                                android:text="-"
                                 android:textColor="@color/white"
                                 app:font="@string/fontReguler" />
                         </LinearLayout>

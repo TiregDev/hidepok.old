@@ -124,7 +124,7 @@ public class list_diskusi extends BaseActivity {
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
 
-        adapter.addFragment(diskusi_terbaru.newInstance(idRs), "Terbaru");
+        adapter.addFragment(diskusi_terbaru.newInstance(idRs,getIntent().getExtras().getString("yang_dicari")), "Terbaru");
         adapter.addFragment(diskusi_terpopuler.newInstance(idRs), "Terpopuler");
 
         viewPager.setAdapter(adapter);
