@@ -62,31 +62,66 @@
                 android:paddingTop="@dimen/md_keylines">
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
                     android:layout_marginBottom="@dimen/md_keylines"
                     android:text="Deskripsi"
                     android:textColor="@color/white"
-                    app:font="@string/fontBold"
-                    android:textSize="@dimen/article_titles" />
+                    android:textSize="@dimen/article_titles"
+                    app:font="@string/fontBold" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
-                    android:id="@+id/detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    app:font="@string/fontReguler"
-                    android:text="@string/spasi" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
-                    android:id="@+id/detail_jual"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    app:font="@string/fontReguler"
-                    android:text="@string/spasi" />
+                    <ImageView
+                        android:id="@+id/icon_detail"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@drawable/information" />
 
+                    <fr.arnaudguyon.smartfontslib.FontTextView
+                        android:id="@+id/detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/icon_detail"
+                        android:layout_marginStart="10dp"
+                        android:lineSpacingExtra="5dp"
+                        android:text="@string/spasi"
+                        android:textColor="@color/white"
+                        app:font="@string/fontReguler" />
+                </RelativeLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"/>
+
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/icon_uang"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@drawable/money" />
+
+                    <fr.arnaudguyon.smartfontslib.FontTextView
+                        android:id="@+id/detail_jual"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/icon_uang"
+                        android:layout_marginStart="10dp"
+                        android:lineSpacingExtra="5dp"
+                        android:text="@string/spasi"
+                        android:textColor="@color/white"
+                        app:font="@string/fontReguler" />
+
+                </RelativeLayout>
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>

@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp">
 
 
-    <Button
+    <fr.arnaudguyon.smartfontslib.FontButton
         android:id="@+id/buttonTake"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:font="@string/fontReguler"
+        android:background="@drawable/shape2"
         android:text="Take Image"/>
 
-    <Button
+    <fr.arnaudguyon.smartfontslib.FontButton
+        android:layout_marginTop="5dp"
         android:id="@+id/buttonChoose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:font="@string/fontReguler"
+        android:background="@drawable/shape2"
         android:text="Choose Image"/>
 
 
@@ -27,10 +32,13 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
 
-    <Button
+    <fr.arnaudguyon.smartfontslib.FontButton
         android:id="@+id/buttonUpload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:font="@string/fontBold"
+        android:textColor="@color/white"
+        android:background="@drawable/shape3"
         android:text="Upload Image"/>
 
 

@@ -91,7 +91,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_toEndOf="@id/ic_people"
                         android:gravity="center_vertical"
-                        android:text="@string/item_title"
+                        android:text="@string/spasi"
                         android:textColor="@color/white"
                         android:textSize="@dimen/article_desc"
                         app:font="@string/fontReguler" />
@@ -126,9 +126,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:gravity="center_vertical"
+                        android:text="@string/spasi"
                         android:textColor="@color/white"
-                        app:font="@string/fontReguler"
-                        android:text="Deskripsi"/>
+                        app:font="@string/fontReguler" />
 
                 </LinearLayout>
 
@@ -174,7 +174,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/jamBuka"
+                        android:text="@string/spasi"
                         android:textColor="@color/white"
                         app:font="@string/fontReguler" />
                 </LinearLayout>
@@ -209,7 +209,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:gravity="center_vertical"
-                        android:text="Menu Tambahan"
+                        android:text="@string/spasi"
                         android:textColor="@color/white"
                         app:font="@string/fontReguler" />
                 </LinearLayout>
@@ -246,7 +246,7 @@
                         android:layout_marginTop="5dp"
                         android:textColor="@color/white"
                         app:font="@string/fontReguler"
-                        tools:text="@string/detail_location" />
+                        tools:text="@string/spasi" />
                 </LinearLayout>
 
                 <View

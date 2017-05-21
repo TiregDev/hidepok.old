@@ -169,8 +169,8 @@ public class UcokDetailActivity extends BaseActivity {
                 json = array.getJSONObject(i);
                 urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+json.getString(JSON_FOTO_UKM);
                 Picasso.with(this).load(urlPhoto).resize(300, 300).placeholder(R.drawable.image_placeholder).into(imageView);
-                String desc_owner = "Nama owner usaha ini adalah "+json.getString(JSON_NAMA_OWNER_UKM);
-                String desc_alamat = json.getString(JSON_ALAMAT_UKM)+", "+json.getString(JSON_KECAMATAN);
+                String desc_owner = "Nama owner : "+json.getString(JSON_NAMA_OWNER_UKM);
+                String desc_alamat = json.getString(JSON_ALAMAT_UKM)+", "+json.getString(JSON_KECAMATAN)+", Depok.";
                 String desc_barang = json.getString(JSON_NAMA_UKM)+" menjual "+json.getString(JSON_NAMA_BARANG);
                 list_title.setText(json.getString(JSON_NAMA_UKM));
                 deskripsi_ukm.setText(json.getString(JSON_DESC_UKM));
@@ -182,7 +182,6 @@ public class UcokDetailActivity extends BaseActivity {
                 kordinat2 = json.getDouble(JSON_KORDINAT_2);
                 namaukm = json.getString(JSON_NAMA_UKM);
             } catch (JSONException e) {
-
                 e.printStackTrace();
             }
         }

@@ -76,7 +76,6 @@ public class detail_danus extends BaseActivity {
                 Bitmap bm=((BitmapDrawable)imageView.getDrawable()).getBitmap();
                 iv.setImageBitmap(bm);
 
-
                 settingsDialog.show();
 
 
@@ -123,8 +122,6 @@ public class detail_danus extends BaseActivity {
         View alertLayout= inflater.inflate(R.layout.ucok_add_danus_dialog, null);
         final EditText formMessage1 = (EditText) alertLayout.findViewById(R.id.nama_target);
         final EditText formMessage2 = (EditText) alertLayout.findViewById(R.id.deskripsi);
-
-
 
         dateAndTimeLabel = (TextView) alertLayout.findViewById(R.id.gantitanggal);
         updateLabel();

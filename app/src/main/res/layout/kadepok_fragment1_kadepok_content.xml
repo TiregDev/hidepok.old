@@ -206,7 +206,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/text_rekening_panti"
                 android:layout_marginTop="40dp"
-                android:text="aaaaaaa"
+                android:text="@string/spasi"
                 android:textColor="#fff"
                 app:font="@string/fontReguler" />
 

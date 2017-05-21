@@ -148,17 +148,20 @@
                         android:layout_height="wrap_content"
                         android:padding="16dp"
                         android:text="@string/spasi"
+                        android:lineSpacingExtra="3dp"
                         android:textColor="#b7b7b7"
                         app:font="@string/fontReguler" />
 
                     <fr.arnaudguyon.smartfontslib.FontTextView
                         android:id="@+id/owner"
+                        android:lineSpacingExtra="3dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="16dp"
+                        android:layout_marginStart="16dp"
+                        android:textSize="16sp"
                         android:text="@string/spasi"
                         android:textColor="#b7b7b7"
-                        app:font="@string/fontReguler" />
+                        app:font="@string/fontBold" />
 
                     <View
                         android:layout_width="match_parent"
@@ -179,7 +182,7 @@
                         android:id="@+id/barang"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="16dp"
+                        android:layout_marginStart="16dp"
                         android:text="@string/spasi"
                         android:textColor="#b7b7b7"
                         app:font="@string/fontReguler" />
@@ -203,8 +206,9 @@
                         android:id="@+id/alamat_ukm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="16dp"
+                        android:layout_marginStart="16dp"
                         android:text="@string/spasi"
+                        android:layout_marginBottom="16dp"
                         android:textColor="#b7b7b7"
                         app:font="@string/fontReguler" />
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/white"
+        android:orientation="vertical"
         tools:context="com.hi_depok.hi_depok.Kapok.activity.KapokActivity">
 
         <android.support.v7.widget.Toolbar
@@ -30,8 +30,8 @@
                 android:id="@+id/dropdown"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
+                android:orientation="horizontal"
                 android:padding="10dp"
                 android:weightSum="2">
 
@@ -79,70 +79,22 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/urutkan"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/dropdown"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="14sp"
-                    android:gravity="center"
-                    android:text="Urutkan dari   :"
-                    android:textColor="#fff"
-                    android:textSize="14sp" />
-
-                <RadioGroup
-                    android:id="@+id/sort"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <fr.arnaudguyon.smartfontslib.FontRadioButton
-                        app:font="@string/fontReguler"
-                        android:id="@+id/rating"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="Rating"
-                        android:textColor="#fff"
-                        android:textColorLink="@color/colorPrimary"
-                        android:textSize="14sp" />
-
-                    <fr.arnaudguyon.smartfontslib.FontRadioButton
-                        app:font="@string/fontReguler"
-                        android:id="@+id/jarak"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:text="Terdekat"
-                        android:textColor="#fff"
-                        android:textColorLink="@color/colorPrimary"
-                        android:textSize="14sp" />
-                </RadioGroup>
-            </LinearLayout>
-
             <fr.arnaudguyon.smartfontslib.FontButton
-                app:font="@string/fontBold"
                 android:id="@+id/temukan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/dropdown_image"
+                android:layout_centerHorizontal="true"
                 android:layout_marginBottom="12dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shape3"
                 android:gravity="center"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/urutkan"
                 android:onClick="temukan"
                 android:padding="10dp"
                 android:text="TEMUKAN"
                 android:textColor="#fff"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                app:font="@string/fontBold" />
 
         </RelativeLayout>
 

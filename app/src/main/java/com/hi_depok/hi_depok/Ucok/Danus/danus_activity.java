@@ -44,7 +44,7 @@ import java.util.List;
 import java.util.Map;
 
 public class danus_activity extends BaseActivity {
-    ProgressDialog dialog;
+//    ProgressDialog dialog;
     private LinearLayoutManager lLayout;
     String JSON_URL;
     RecyclerView rView;
@@ -125,8 +125,6 @@ public class danus_activity extends BaseActivity {
         formMessage1 = (EditText) alertLayout.findViewById(R.id.target_rupiah);
         formMessage2 = (EditText) alertLayout.findViewById(R.id.target_waktu);
 
-
-
         AlertDialog.Builder alert = new AlertDialog.Builder(danus_activity.this);
         alert.setTitle("Silahkan Masukkan");
         alert.setView(alertLayout);
@@ -143,11 +141,21 @@ public class danus_activity extends BaseActivity {
 
         alert.setPositiveButton("Kalkulasi", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog, int which) {
-
-                String urlJSON = "http://hidepok.id/android/ucok/ucok_dss.php?target_uang=" + formMessage1.getText() + "&target_hari=" + formMessage2.getText();
-                Intent intent = new Intent(danus_activity.this, hasil_calculate.class);
-                intent.putExtra("urlJSON", urlJSON);
-                startActivity(intent);
+                if (formMessage1.getText().toString().length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Target harus diisikan terlebih dahulu", Toast.LENGTH_SHORT).show();
+                }
+                else if (formMessage2.getText().toString().length()==0){
+                    Toast.makeText(getApplicationContext(), "Target harus diisikan terlebih dahulu", Toast.LENGTH_SHORT).show();
+                }
+                else if ((formMessage1.getText().toString().length() == 0) && (formMessage2.getText().toString().length()==0)){
+                    Toast.makeText(getApplicationContext(), "Target harus diisikan terlebih dahulu", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    String urlJSON = "http://hidepok.id/android/ucok/ucok_dss.php?target_uang=" + formMessage1.getText() + "&target_hari=" + formMessage2.getText();
+                    Intent intent = new Intent(danus_activity.this, hasil_calculate.class);
+                    intent.putExtra("urlJSON", urlJSON);
+                    startActivity(intent);
+                }
             }
         });
         AlertDialog dialog = alert.create();

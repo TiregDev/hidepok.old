@@ -54,8 +54,6 @@ public class DanusAdapter extends RecyclerView.Adapter<DanusAdapter.ViewHolder> 
         id = adapter.get(position).getId();
         nama = adapter.get(position).getNama();
         deskripsi = adapter.get(position).getDeskripsi();
-
-
         holder.title.setText(nama);
         holder.desc.setText(deskripsi);
         holder.itemView.setTag(id);
@@ -73,7 +71,6 @@ public class DanusAdapter extends RecyclerView.Adapter<DanusAdapter.ViewHolder> 
         public TextView title;
         public TextView desc;
 
-
         public ViewHolder(final View itemView) {
 
             super(itemView);
@@ -88,13 +85,9 @@ public class DanusAdapter extends RecyclerView.Adapter<DanusAdapter.ViewHolder> 
                     String pos = (String) itemView.getTag();
                     intent.putExtra("getId", pos);
                     Log.d("JSONAdapter", "get id: " + pos);
-
                     context.startActivity(intent);
-                    Toast.makeText(context, "Segera hadir setelah penyempurnaan aplikasi", Toast.LENGTH_LONG).show();
                 }
             });
-
-
         }
     }
 }

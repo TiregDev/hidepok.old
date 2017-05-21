@@ -74,11 +74,13 @@ public class KalkulasiAdapter extends RecyclerView.Adapter<KalkulasiAdapter.View
         koordinat_ukm_2 = adapter.get(position).getKoordinat_ukm_2();
         foto_barang = adapter.get(position).getFoto_barang();
         foto_ukm = adapter.get(position).getFoto_ukm();
+        String nama_ukm_2 = "Dari UKM "+nama_ukm;
+        String harga_barang_2 = "Rp "+harga_barang;
         String nama_foto = foto_ukm;
 
-        holder.list_title.setText(nama_ukm);
-        holder.list_desc.setText(deskripsi_ukm);
-        holder.list_price.setText(nama_barang);
+        holder.list_title.setText(nama_barang);
+        holder.list_desc.setText(nama_ukm_2);
+        holder.list_price.setText(harga_barang_2);
         holder.itemView.setTag(id_ukm);
 
         urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+nama_foto;
@@ -108,7 +110,7 @@ public class KalkulasiAdapter extends RecyclerView.Adapter<KalkulasiAdapter.View
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, UcokDetailActivity.class);
+                    Intent intent = new Intent(context, detail_danus.class);
                     String id = (String) itemView.getTag();
                     intent.putExtra(UcokDetailActivity.PATOKAN, id);
                     context.startActivity(intent);

@@ -18,23 +18,22 @@
         android:textStyle="bold"
         app:font="@string/fontBold"/>
 
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
-
     <fr.arnaudguyon.smartfontslib.FontButton
         android:id="@+id/buttonUpload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/shape3"
         android:text="UNGGAH"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:font="@string/fontBold"/>
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>

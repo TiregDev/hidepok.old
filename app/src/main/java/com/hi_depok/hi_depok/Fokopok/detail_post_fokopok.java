@@ -46,7 +46,7 @@ public class detail_post_fokopok extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detail_komentar);
+        setContentView(R.layout.lapok_detail_komentar);
 
         btnKirim = (ImageView) findViewById(R.id.btnKirim);
         etKomentar = (EditText) findViewById(R.id.isiKomentar);

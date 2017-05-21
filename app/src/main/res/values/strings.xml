@@ -267,6 +267,7 @@
     <string name="ucok_frag1">Sistem Informasi UMKM</string>
     <string name="ucok_frag2">Sistem Rekomendasi Dana Usaha</string>
     <string name="fokopok_frag1">Komunitas dan Forum se-Depok</string>
+    <string name="dss_ucok">Dari data yang anda inputkan, sistem memberikan rekomendasi untuk menjalankan dana usaha dengan ketepatan tertinggi yang berada pada daftar teratas</string>
 
     <!-- ==================================== FAQ QUETION ============================================= !-->
     <string name="faq_no1">1. Apakah yang dimaksud dengan aplikasi Hi-Depok?</string>

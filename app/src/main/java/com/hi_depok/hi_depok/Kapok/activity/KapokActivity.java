@@ -13,8 +13,6 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -38,8 +36,6 @@ import java.util.List;
 
 public class KapokActivity extends BaseActivity implements AdapterView.OnItemSelectedListener  {
     private Button temukan;
-    private RadioGroup sort;
-    private RadioButton urut;
     //array recycleview menu sort
 
     String GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/kapok/kapok_json.php";
@@ -80,7 +76,6 @@ public class KapokActivity extends BaseActivity implements AdapterView.OnItemSel
 
         final Spinner pilihan = (Spinner) findViewById(R.id.pilihan);
         final Spinner camat = (Spinner) findViewById(R.id.camat);
-        sort=(RadioGroup)findViewById(R.id.sort);
         temukan=(Button)findViewById(R.id.temukan);
         dataAdapter = new ArrayList<>();
 

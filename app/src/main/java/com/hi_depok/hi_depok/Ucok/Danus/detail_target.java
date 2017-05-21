@@ -87,7 +87,7 @@ public class detail_target extends BaseActivity {
                         json = response.getJSONObject(i);
                         collapsingToolbar.setTitle(json.getString("nama_event"));
                         placeDetail.setText(json.getString("desc_event"));
-                        String a = "Untuk mendapatkan uang sebanyak "+json.getString("target_uang")+ " dalam waktu "+json.getString("target_hari")+" hari, Anda menjual "+json.getString("barang_jual")+" dengan harga "+json.getString("harga_jual");
+                        String a = "Untuk mendapatkan uang sebanyak Rp "+json.getString("target_uang")+ " dalam waktu "+json.getString("target_hari")+" hari, Anda di rekomendasikan untuk menjual "+json.getString("barang_jual")+" dengan harga Rp "+json.getString("harga_jual");
                         placeDetail2.setText(a);
                         Glide.with(getBaseContext()).load("http://hidepok.id/assets/images/photos/ucok/" + json.getString("foto_barang")).placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(placePicture);
 
