@@ -42,7 +42,7 @@ public class GejalaAdapter extends RecyclerView.Adapter<GejalaAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokdiagnosa_ensiklopedia_list, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sikepokdiagnosa_gejala_list, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(v);
 
@@ -69,6 +69,7 @@ public class GejalaAdapter extends RecyclerView.Adapter<GejalaAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView title;
+        public TextView x;
 
 
         public ViewHolder(final View itemView) {
@@ -76,7 +77,8 @@ public class GejalaAdapter extends RecyclerView.Adapter<GejalaAdapter.ViewHolder
             super(itemView);
 
             title = (TextView)itemView.findViewById(R.id.title_ensiklopedia);
-            itemView.setOnClickListener(new View.OnClickListener() {
+            x = (TextView) itemView.findViewById(R.id.x);
+            x.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();

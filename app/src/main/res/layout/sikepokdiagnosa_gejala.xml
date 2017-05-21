@@ -38,12 +38,17 @@
                 android:text="Pilih Gejala"
                 android:textColor="#FFF"/>
         </RelativeLayout>
-        <Button
+        <fr.arnaudguyon.smartfontslib.FontButton
             android:id="@+id/tombol_sugesti"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape3"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:font="@string/fontBold"
             android:text="Lihat Sugesti" />
     </RelativeLayout>
 </FrameLayout>

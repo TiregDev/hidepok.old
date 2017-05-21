@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?android:attr/selectableItemBackground">
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        app:font="@string/fontReguler"
+        android:layout_weight="1"
+        android:id="@+id/title_ensiklopedia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/article_titles"
+        android:paddingTop="5dp"
+        android:layout_marginStart="15dp"
+        android:textColor="#fff"
+        android:text="Title"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        app:font="@string/fontReguler"
+        android:id="@+id/x"
+        android:layout_weight="4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/article_titles"
+        android:paddingTop="5dp"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:text="x"
+        />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#b7b7b7"
+        android:layout_below="@+id/linear"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>
