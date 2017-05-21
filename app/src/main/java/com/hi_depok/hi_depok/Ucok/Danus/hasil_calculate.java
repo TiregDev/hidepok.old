@@ -34,12 +34,17 @@ public class hasil_calculate extends BaseActivity {
     String JSON_NAMA_UKM = "nama_ukm";
     String JSON_NAMA_BARANG = "nama_barang";
     String JSON_HARGA_BARANG = "harga_barang";
+    String JSON_FOTO_BARANG = "foto_barang";
     String JSON_NO_TLP = "notelp";
     String JSON_KORDINAT_1 = "koordinat1";
     String JSON_KORDINAT_2 = "koordinat2";
     String JSON_TARGET_WAKTU= "target_waktu";
     String JSON_TARGET_UANG = "target_harga";
     String JSON_HARGA_JUAL = "harga_jual";
+    String JSON_DESC_UKM = "deskripsi_ukm";
+    String JSON_ALAMAT_UKM = "alamat_ukm";
+    String JSON_OWNER_UKM = "nama_owner_ukm";
+    String JSON_KECAMATAN = "kecamatan";
 
     JsonArrayRequest jsonArrayRequest ;
     List<GetDataAdapter_siumkm> dataAdapter;
@@ -108,12 +113,17 @@ public class hasil_calculate extends BaseActivity {
                 dataFromJSON.setNama_ukm(json.getString(JSON_NAMA_UKM));
                 dataFromJSON.setNama_barang(json.getString(JSON_NAMA_BARANG));
                 dataFromJSON.setHarga_barang(json.getString(JSON_HARGA_BARANG));
+                dataFromJSON.setFoto_barang(json.getString(JSON_FOTO_BARANG));
                 dataFromJSON.setNotelp(json.getString(JSON_NO_TLP));
                 dataFromJSON.setKoordinat_ukm_1(json.getString(JSON_KORDINAT_1));
                 dataFromJSON.setKoordinat_ukm_2(json.getString(JSON_KORDINAT_2));
                 dataFromJSON.setTarget_waktu(json.getString(JSON_TARGET_WAKTU));
                 dataFromJSON.setTarget_uang(json.getString(JSON_TARGET_UANG));
                 dataFromJSON.setHarga_jual(json.getString(JSON_HARGA_JUAL));
+                dataFromJSON.setDeskripsi_ukm(json.getString(JSON_DESC_UKM));
+                dataFromJSON.setAlamat_ukm(json.getString(JSON_ALAMAT_UKM));
+                dataFromJSON.setNama_owner_ukm(json.getString(JSON_OWNER_UKM));
+                dataFromJSON.setKecamatan(json.getString(JSON_KECAMATAN));
 
             } catch (JSONException e) {
 

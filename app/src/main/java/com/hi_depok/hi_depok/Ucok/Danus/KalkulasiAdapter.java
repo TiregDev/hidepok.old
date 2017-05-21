@@ -40,6 +40,7 @@ public class KalkulasiAdapter extends RecyclerView.Adapter<KalkulasiAdapter.View
     String koordinat_ukm_2;
     String foto_barang;
     String foto_ukm;
+    String harga_jual;
     String urlPhoto;
 
     public KalkulasiAdapter(List<GetDataAdapter_siumkm> adapter, Context context){
@@ -74,16 +75,17 @@ public class KalkulasiAdapter extends RecyclerView.Adapter<KalkulasiAdapter.View
         koordinat_ukm_2 = adapter.get(position).getKoordinat_ukm_2();
         foto_barang = adapter.get(position).getFoto_barang();
         foto_ukm = adapter.get(position).getFoto_ukm();
+        harga_jual = adapter.get(position).getHarga_jual();
         String nama_ukm_2 = "Dari UKM "+nama_ukm;
-        String harga_barang_2 = "Rp "+harga_barang;
+        String harga_barang_2 = "Rp "+harga_jual;
         String nama_foto = foto_ukm;
 
         holder.list_title.setText(nama_barang);
         holder.list_desc.setText(nama_ukm_2);
         holder.list_price.setText(harga_barang_2);
-        holder.itemView.setTag(id_ukm);
+        holder.itemView.setTag(id_barang);
 
-        urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+nama_foto;
+        urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+foto_barang;
         Glide.with(context).load(urlPhoto).thumbnail(0.3f).placeholder(R.drawable.image_placeholder).into(holder.list_avatar);
     }
 
