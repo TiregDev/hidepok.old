@@ -116,6 +116,7 @@ public class JSONAdapter extends RecyclerView.Adapter<JSONAdapter.ViewHolder> {
                     Intent intent = new Intent(context, DetailActivity.class);
                     String pos = (String) itemView.getTag();
                     Log.d("JSONAdapter", "get id: " + pos);
+                    Log.d("JSONAdapter", "getSize: " + getItemCount());
                     intent.putExtra(DetailActivity.EXTRA_POSITION, pos);
 
                     context.startActivity(intent);

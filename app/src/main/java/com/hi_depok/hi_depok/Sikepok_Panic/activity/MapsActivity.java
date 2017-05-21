@@ -54,8 +54,7 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
         GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
-    double latitude;
-    double longitude;
+    double latitude, longitude, lat, lng;
     boolean connected = false;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
@@ -179,8 +178,14 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
                 Log.d("onPostExecute","Entered into showing locations");
                 MarkerOptions markerOptions = new MarkerOptions();
                 String[] kordinat = placeKordinat.split(",");
-                double lat = Double.parseDouble(kordinat[0]);
-                double lng = Double.parseDouble(kordinat[1].trim());
+                if(placeKordinat.contains(",")) {
+                    lat = Double.parseDouble(kordinat[0]);
+                    lng = Double.parseDouble(kordinat[1].trim());
+                }
+                else{
+                    lat = 0.0;
+                    lng = 0.0;
+                }
 
 //
 
@@ -204,10 +209,6 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
                 }
                 else if(json.getString(JSON_JENIS).equals("Tempat Khitan")){
                     markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_11));
-                }
-                if(latlong==null){
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(endPoint));
-                    mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
                 }
 
                 placeMarker = mMap.addMarker(markerOptions);
@@ -332,8 +333,8 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
     @Override
     public void onConnected(Bundle bundle) {
         mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(1000);
-        mLocationRequest.setFastestInterval(1000);
+//        mLocationRequest.setInterval(1000);
+//        mLocationRequest.setFastestInterval(1000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
@@ -352,7 +353,6 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
     @Override
     public void onLocationChanged(Location location) {
         Log.d("onLocationChanged", "entered");
-
         mLastLocation = location;
         if (mCurrLocationMarker != null) {
             mCurrLocationMarker.remove();
@@ -369,6 +369,8 @@ public class MapsActivity extends FragmentActivity implements LocationListener, 
         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_13));
 
         mCurrLocationMarker = mMap.addMarker(markerOptions);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(startPoint));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
 
         connected = true;
         Log.d("onLocationChanged", String.format("latitude:%.3f longitude:%.3f",latitude,longitude));

@@ -101,6 +101,11 @@ public class detail_danus extends BaseActivity {
 
         //---------------- Image Single Popup
         final CircleImageView imageView = (CircleImageView) findViewById(R.id.list_avatar);
+        list_title = (TextView) findViewById(R.id.list_title);
+        deskripsi_ukm = (TextView) findViewById(R.id.deskripsi_ukm);
+        alamat_ukm = (TextView) findViewById(R.id.alamat_ukm);
+//        barang = (TextView) findViewById(R.id.barang);
+//        owner = (TextView) findViewById(R.id.owner);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -217,7 +222,7 @@ public class detail_danus extends BaseActivity {
     }
 
     public void JSON_DATA_WEB_CALL(){
-        jsonArrayRequest = new JsonArrayRequest(getIntent().getExtras().getString("urlJSON"),
+        jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_URL,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -241,15 +246,15 @@ public class detail_danus extends BaseActivity {
             try {
                 json = array.getJSONObject(i);
                 urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+json.getString(JSON_FOTO_BARANG);
-                Picasso.with(this).load(urlPhoto).resize(300, 300).placeholder(R.drawable.image_placeholder).into(imageView);
+                //Picasso.with(this).load(urlPhoto).resize(300, 300).placeholder(R.drawable.image_placeholder).into(imageView);
                 String desc_owner = "Nama owner : "+json.getString(JSON_OWNER_UKM);
                 String desc_alamat = json.getString(JSON_ALAMAT_UKM)+", "+json.getString(JSON_KECAMATAN)+", Depok.";
                 String desc_barang = json.getString(JSON_NAMA_UKM)+" menjual "+json.getString(JSON_NAMA_BARANG);
                 list_title.setText(json.getString(JSON_NAMA_UKM));
                 deskripsi_ukm.setText(json.getString(JSON_DESC_UKM));
                 alamat_ukm.setText(desc_alamat);
-                barang.setText(desc_barang);
-                owner.setText(desc_owner);
+//                barang.setText(desc_barang);
+//                owner.setText(desc_owner);
                 no_tlp = json.getString(JSON_NO_TLP);
                 kordinat1 = json.getDouble(JSON_KORDINAT_1);
                 kordinat2 = json.getDouble(JSON_KORDINAT_2);

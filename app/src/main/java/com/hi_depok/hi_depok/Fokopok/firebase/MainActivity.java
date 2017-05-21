@@ -20,6 +20,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -27,10 +29,15 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -60,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private static final int IMAGE_GALLERY_REQUEST = 1;
     private static final int IMAGE_CAMERA_REQUEST = 2;
     private static final int PLACE_PICKER_REQUEST = 3;
+    private static final int RC_SIGN_IN = 9001;
 
     static final String TAG = MainActivity.class.getSimpleName();
     String CHAT_REFERENCE;
@@ -98,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         setContentView(R.layout.fokopok_activity_main);
         CHAT_REFERENCE = "Room" + getIntent().getExtras().getString("getRoom");
         if (!Util.verificaConexao(this)){
-            Util.initToast(this,"Você não tem conexão com internet");
+            Util.initToast(this,"Hidupkan internet anda!");
             finish();
         }else{
             bindViews();
@@ -145,6 +153,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     //PLACE IS NULL
                 }
             }
+        }else if (requestCode == RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            if (result.isSuccess()) {
+                GoogleSignInAccount account = result.getSignInAccount();
+                firebaseAuthWithGoogle(account);
+            } else {
+                Log.e(TAG, "Google Sign In failed.");
+            }
         }
 
     }
@@ -159,19 +175,19 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.sendPhoto:
-                verifyStoragePermissions();
+//            case R.id.sendPhoto:
+//                verifyStoragePermissions();
 //                photoCameraIntent();
-                break;
+//                break;
             case R.id.sendPhotoGallery:
                 photoGalleryIntent();
                 break;
             case R.id.sendLocation:
                 locationPlacesIntent();
                 break;
-            case R.id.sign_out:
-                signOut();
-                break;
+//            case R.id.sign_out:
+//                signOut();
+//                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -344,12 +360,35 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         if (mFirebaseUser == null){
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
+            signIn();
         }else{
             userModel = new UserModel(mFirebaseUser.getDisplayName(), mFirebaseUser.getPhotoUrl().toString(), mFirebaseUser.getUid() );
             lerMessagensFirebase();
         }
+    }
+
+    private void signIn() {
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        Log.d(TAG, "firebaseAuthWithGooogle:" + acct.getId());
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mFirebaseAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "signInWithCredential", task.getException());
+                            Util.initToast(getBaseContext(),"Authentication failed");
+                        } else {
+                            startActivity(new Intent(getBaseContext(), MainActivity.class));
+                            finish();
+                        }
+                    }
+                });
     }
 
     /**

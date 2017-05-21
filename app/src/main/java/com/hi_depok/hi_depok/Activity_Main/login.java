@@ -237,7 +237,7 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
             //Buat ngambil nama dan email user
             final String name = account.getDisplayName();
             final String email = account.getEmail();
-            final String foto = account.getPhotoUrl().toString();
+
 
             final StringRequest request = new StringRequest(Request.Method.POST, cek_user_url,
                     new Response.Listener<String>() {
@@ -265,7 +265,6 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
                                     Intent regist = new Intent(login.this, register.class);
                                     regist.putExtra("nama", name);
                                     regist.putExtra("email", email);
-                                    regist.putExtra("foto", foto);
                                     startActivity(regist);
                                     Toast.makeText(login.this, jsonObject.getString("message"),
                                             Toast.LENGTH_SHORT).show();

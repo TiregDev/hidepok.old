@@ -108,6 +108,7 @@
                         app:font="@string/fontBold" />
 
                     <fr.arnaudguyon.smartfontslib.FontTextView
+                        android:id="@+id/deskripsi_ukm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="16dp"
@@ -132,6 +133,7 @@
                         app:font="@string/fontBold" />
 
                     <fr.arnaudguyon.smartfontslib.FontTextView
+                        android:id="@+id/alamat_ukm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="16dp"

@@ -37,24 +37,24 @@ public class history extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        RecyclerView rView = (RecyclerView) inflater.inflate(
-                R.layout.recycler_view, container, false);
-        List<ItemObject> rowListItem = getAllItemList();
-        lLayout = new LinearLayoutManager(getActivity());
-        rView.setLayoutManager(lLayout);
-
-        com.hi_depok.hi_depok.Profile.fragment.RecyclerViewAdapter rcAdapter = new com.hi_depok.hi_depok.Profile.fragment.RecyclerViewAdapter(getContext(), rowListItem);
-        rView.setAdapter(rcAdapter);
+        View rView = inflater.inflate(
+                R.layout.profile_fragment2_history, container, false);
+//        List<ItemObject> rowListItem = getAllItemList();
+//        lLayout = new LinearLayoutManager(getActivity());
+//        rView.setLayoutManager(lLayout);
+//
+//        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(getContext(), rowListItem);
+//        rView.setAdapter(rcAdapter);
         return rView;
     }
 
-    private List<com.hi_depok.hi_depok.Profile.fragment.ItemObject> getAllItemList(){
-        List<com.hi_depok.hi_depok.Profile.fragment.ItemObject> allItems = new ArrayList<>();
-        allItems.add(new com.hi_depok.hi_depok.Profile.fragment.ItemObject("Bakti Sosial","Panti Asuhan Darul Ilmi. 22/07/2017"));
-        allItems.add(new com.hi_depok.hi_depok.Profile.fragment.ItemObject("Pameran","Panti Asuhan Darul Ilmi. 22/07/2017"));
-        allItems.add(new com.hi_depok.hi_depok.Profile.fragment.ItemObject("Lomba Makan","Panti Asuhan Darul Ilmi. 22/07/2017"));
-        allItems.add(new com.hi_depok.hi_depok.Profile.fragment.ItemObject("Gathering Komika","Panti Asuhan Darul Ilmi. 22/07/2017"));
-        allItems.add(new com.hi_depok.hi_depok.Profile.fragment.ItemObject("Nobar", "Panti Asuhan Darul Ilmi. 22/07/2017"));
+    private List<ItemObject> getAllItemList(){
+        List<ItemObject> allItems = new ArrayList<>();
+        allItems.add(new ItemObject("Bakti Sosial","Panti Asuhan Darul Ilmi. 22/07/2017"));
+        allItems.add(new ItemObject("Pameran","Panti Asuhan Darul Ilmi. 22/07/2017"));
+        allItems.add(new ItemObject("Lomba Makan","Panti Asuhan Darul Ilmi. 22/07/2017"));
+        allItems.add(new ItemObject("Gathering Komika","Panti Asuhan Darul Ilmi. 22/07/2017"));
+        allItems.add(new ItemObject("Nobar", "Panti Asuhan Darul Ilmi. 22/07/2017"));
         return allItems;
     }
 }

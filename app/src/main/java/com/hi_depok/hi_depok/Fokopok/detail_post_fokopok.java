@@ -1,10 +1,15 @@
 package com.hi_depok.hi_depok.Fokopok;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
+import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Adapter_Komentar;
 import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.Komentar;
@@ -30,7 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class detail_post_fokopok extends AppCompatActivity {
+public class detail_post_fokopok extends BaseActivity {
     TextView namaKomunitas, timeTxt, title, jml_like, jml_com;
     ImageView gambar_komunitas, gambar_event, likeimg, comimg, btnKirim, statimg, shareimg;
     EditText etKomentar;
@@ -47,6 +53,15 @@ public class detail_post_fokopok extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lapok_detail_komentar);
+        super.onCreateDrawer();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        }
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         btnKirim = (ImageView) findViewById(R.id.btnKirim);
         etKomentar = (EditText) findViewById(R.id.isiKomentar);

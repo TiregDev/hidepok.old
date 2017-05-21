@@ -61,6 +61,7 @@ public class TempatSehatFragment extends Fragment {
     RecyclerView.Adapter recyclerViewadapter;
     RecyclerView rView;
     SearchView searchView;
+    double latitudeA, longitudeA, latitudeB, longitudeB;
     Utils util = new Utils();
 
     public static TempatSehatFragment newInstance(String title, String location) {
@@ -187,13 +188,21 @@ public class TempatSehatFragment extends Fragment {
                                 dataFromJSON.setJenis(json.getString(JSON_JENIS));
                                 dataFromJSON.setOperasional(json.getString(JSON_OPERASIONAL));
 
-                                String[] kordinatA = json.getString(JSON_KORDINAT).split(",");
-                                double latitudeA = Double.parseDouble(kordinatA[0]);
-                                double longitudeA = Double.parseDouble(kordinatA[1].trim());
+
+                                if(json.getString(JSON_KORDINAT).contains(",")) {
+                                    String[] kordinatA = json.getString(JSON_KORDINAT).split(",");
+                                    latitudeA = Double.parseDouble(kordinatA[0]);
+                                    longitudeA = Double.parseDouble(kordinatA[1].trim());
+                                }
+                                else{
+                                    latitudeA = 0.0;
+                                    longitudeA = 0.0;
+                                }
+
 
                                 String[] kordinatB = getLocation().split(",");
-                                double latitudeB = Double.parseDouble(kordinatB[0]);
-                                double longitudeB = Double.parseDouble(kordinatB[1].trim());
+                                latitudeB = Double.parseDouble(kordinatB[0]);
+                                longitudeB = Double.parseDouble(kordinatB[1].trim());
 
                                 Double jarak = BigDecimal.valueOf(util.CalculationByDistance(latitudeB, longitudeB, latitudeA, longitudeA))
                                         .setScale(3, RoundingMode.HALF_UP)

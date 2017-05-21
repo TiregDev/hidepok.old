@@ -43,9 +43,9 @@ public class SessionManager {
     // Email address (make variable public to access from outside)
     public static final String KEY_PASS = "pass";
 
-    public static final String KEY_ID_RS = "id_rs";
+    public static final String KEY_BIO = "bio";
 
-    public static final String KEY_ID_POST = "id_post";
+    public static final String KEY_NOTELP = "notelp";
 
     // Constructor
     public SessionManager(Context context) {
@@ -76,23 +76,16 @@ public class SessionManager {
         // Storing name in pref
         editor.putString(KEY_NAME, name);
 
-        // commit changes
-        editor.commit();
-    }
-
-    public void setIdPost(String id_post) {
-        // Storing id in pref
-        editor.putString(KEY_ID_POST, id_post);
-    }
-
-    public void sessionRS(String id_rs) {
-
-        // Storing id in pref
-        editor.putString(KEY_ID_RS, id_rs);
+//        // Storing bio in pref
+//        editor.putString(KEY_BIO, bio);
+//
+//        // Storing notelp in pref
+//        editor.putString(KEY_NOTELP, notelp);
 
         // commit changes
         editor.commit();
     }
+
 
     /**
      * Check login method wil check user login status
@@ -140,25 +133,16 @@ public class SessionManager {
         //user name id
         user.put(KEY_NAME, pref.getString(KEY_NAME, null));
 
+//        // user bio id
+//        user.put(KEY_BIO, pref.getString(KEY_BIO, null));
+//
+//        //user notelp id
+//        user.put(KEY_NOTELP, pref.getString(KEY_NOTELP, null));
+
         // return user
         return user;
     }
 
-    public HashMap<String, String> getIdPost() {
-        HashMap<String, String> getId = new HashMap<String, String>();
-        getId.put(KEY_ID_POST, pref.getString(KEY_ID_POST, null));
-        return getId;
-    }
-
-    public HashMap<String, String> getIDRS() {
-        HashMap<String, String> rs = new HashMap<String, String>();
-
-        // id
-        rs.put(KEY_ID_RS, pref.getString(KEY_ID_RS, null));
-
-        // return user
-        return rs;
-    }
 
     /**
      * Clear session details

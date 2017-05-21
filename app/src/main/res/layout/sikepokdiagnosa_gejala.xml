@@ -51,7 +51,6 @@
             android:layout_centerHorizontal="true"
             android:textColor="@color/white"
             android:textStyle="bold"
-            app:font="@string/fontBold"
             android:text="Lihat Sugesti" />
     </RelativeLayout>
 </FrameLayout>
