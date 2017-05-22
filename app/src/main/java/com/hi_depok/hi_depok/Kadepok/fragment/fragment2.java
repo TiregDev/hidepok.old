@@ -9,7 +9,6 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +25,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.hi_depok.hi_depok.Akses;
-import com.hi_depok.hi_depok.Kadepok.activity.KadepokDetailActivity;
-import com.hi_depok.hi_depok.Kadepok.activity.kadepok_content;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
 
@@ -39,15 +36,12 @@ import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by Muhammad63 on 3/16/2017.
  */
 
 public class fragment2 extends DialogFragment {
-
-
 
     private File imageFile;
     String filename;

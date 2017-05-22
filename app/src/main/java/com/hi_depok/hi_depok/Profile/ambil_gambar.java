@@ -2,7 +2,6 @@ package com.hi_depok.hi_depok.Profile;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -26,6 +25,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.hi_depok.hi_depok.Activity_Main.profile;
 import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
@@ -225,26 +225,18 @@ public class ambil_gambar extends AppCompatActivity implements View.OnClickListe
 
     private void uploadImage() {
         //Showing the progress dialog
-        final ProgressDialog loading = ProgressDialog.show(this, "Sedang diunggah...", "Tunggu sebentar...",
-                false, false);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, UPLOAD_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
-                        //Disimissing the progress dialog
-                        loading.dismiss();
                         //Showing toast message of the response
                         Toast.makeText(ambil_gambar.this, s, Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ambil_gambar.this, setprofile.class));
-                        finish();
+                        startActivity(new Intent(ambil_gambar.this, profile.class));
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        //Dismissing the progress dialog
-                        loading.dismiss();
-
                         //Showing toast
                         Toast.makeText(ambil_gambar.this, "Terjadi kesalahan . . .", Toast.LENGTH_LONG).show();
                     }

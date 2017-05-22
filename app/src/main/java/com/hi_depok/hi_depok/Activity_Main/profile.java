@@ -180,7 +180,8 @@ public class profile extends BaseActivity implements View.OnClickListener {
 
                             if (!foto.equals("null")) {
                                 avatar ="http://hidepok.id/assets/images/avatar/" + foto;
-                                Picasso.with(getBaseContext()).load(avatar).resize(300,300).into(imageView);
+                                Picasso.with(getBaseContext()).load(avatar).placeholder(R.drawable.image_placeholder)
+                                        .resize(300,300).into(imageView);
                             } else {
                                 imageView.setImageResource(R.drawable.profile);
                             }

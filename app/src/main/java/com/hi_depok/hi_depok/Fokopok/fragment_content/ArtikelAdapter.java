@@ -66,10 +66,10 @@ public class ArtikelAdapter extends RecyclerView.Adapter<ArtikelAdapter.ViewHold
         holder.favoriteImageButton.setImageResource(R.drawable.like);
         holder.commentButton.setImageResource(R.drawable.comment);
 
-        /*if(hasil.equals("sudah"))
-            holder.like.setImageResource(R.drawable.favorite);
+        if(hasil.equals("sudah"))
+            holder.favoriteImageButton.setImageResource(R.drawable.favorite);
         else
-            holder.like.setImageResource(R.drawable.like);*/
+            holder.favoriteImageButton.setImageResource(R.drawable.like);
 
         holder.username.setText(nama);
         holder.time.setText(waktu);

@@ -1,9 +1,6 @@
 package com.hi_depok.hi_depok.Lapok.mDetail;
 
 import android.app.Dialog;
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
@@ -11,8 +8,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
@@ -39,10 +34,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
-import com.hi_depok.hi_depok.Akses;
-import com.hi_depok.hi_depok.Lapok.Utility;
 import com.hi_depok.hi_depok.Adapter_Komentar;
+import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.Komentar;
+import com.hi_depok.hi_depok.Lapok.Utility;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
 import com.squareup.picasso.Picasso;
@@ -101,16 +96,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
 
         Utility.setListViewHeightBasedOnChildren(listView);
 
-        swipe.post(new Runnable() {
-                       @Override
-                       public void run() {
-                           swipe.setRefreshing(true);
-                           mList.clear();
-                           adapter.notifyDataSetChanged();
-                           content_detail(id_post);
-                       }
-                   }
-        );
+        content_detail(id_post);
 
         //INITIALIZE VIEWS
         btnKirim = (ImageView) findViewById(R.id.btnKirim);
@@ -252,14 +238,6 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
                         }
                     };
                     Akses.getInstance(DetailActivity.this).addtoRequestQueue(stringRequest);
-                    mBuilder = new NotificationCompat.Builder(DetailActivity.this);
-                    mBuilder
-                            .setSmallIcon(R.mipmap.ic_launcher)
-                            .setContentTitle("Hi Depok")
-                            .setAutoCancel(true)
-                            .setContentText(text)
-                            .setStyle(new NotificationCompat.BigTextStyle().bigText(text));
-                    buildNotification(DetailActivity.this, id_post);
                 } else
                     etKomentar.setError("Anda belum memberikan komentar anda");
             }
@@ -413,29 +391,6 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
         });
         Akses.getInstance(DetailActivity.this).addtoRequestQueue(jsonArrayRequest);
     }
-
-
-    //------------------------------------BUAT NOTIFIKASI-----------------------------------------//
-    private void buildNotification(Context ctx, String id_post) {
-
-        Intent infoNotification = new Intent(ctx, DetailActivity.class);
-
-        //PACK DATA TO SEND
-        infoNotification.putExtra("ID_POST_DETAIL", id_post);
-
-        //OPEN ACTIVITY
-        TaskStackBuilder taskStackBuilder = TaskStackBuilder
-                .create(DetailActivity.this);
-        taskStackBuilder.addParentStack(DetailActivity.class);
-        taskStackBuilder.addNextIntent(infoNotification);
-        PendingIntent pendingIntent = taskStackBuilder.getPendingIntent(0,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-        mBuilder.setContentIntent(pendingIntent);
-        Notification notification = mBuilder.build();
-        notification.flags = Notification.DEFAULT_LIGHTS | Notification.FLAG_AUTO_CANCEL;
-        NotificationManagerCompat.from(DetailActivity.this).notify(0, notification);
-    }
-    //--------------------------------------------------------------------------------------------//
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
