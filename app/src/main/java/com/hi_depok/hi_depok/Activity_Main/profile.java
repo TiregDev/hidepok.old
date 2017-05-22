@@ -178,21 +178,20 @@ public class profile extends BaseActivity implements View.OnClickListener {
 
                             foto = jsonObject.getString("foto");
 
-                            if (!foto.equals("null")) {
+//                            if (!foto.equals("null")) {
                                 avatar ="http://hidepok.id/assets/images/avatar/" + foto;
-                                Picasso.with(getBaseContext()).load(avatar).placeholder(R.drawable.image_placeholder)
-                                        .resize(300,300).into(imageView);
-                            } else {
-                                imageView.setImageResource(R.drawable.profile);
-                            }
+                                Picasso.with(getBaseContext()).load(avatar).resize(300,300).into(imageView);
+//                            } else {
+//                                imageView.setImageResource(R.drawable.profile);
+//                            }
 
                             //ambil nilai dari db
                             nama_profil.setText(jsonObject.getString("nama"));
-                            if (!jsonObject.getString("bio").equals("null")) {
+//                            if (!jsonObject.getString("bio").equals("null")) {
                                 bio_profil.setText(jsonObject.getString("bio"));
-                            } else {
-                                bio_profil.setText("Pengguna Hi Depok");
-                            }
+//                            } else {
+//                                bio_profil.setText("Pengguna Hi Depok");
+//                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ import com.hi_depok.hi_depok.Komentar;
 import com.hi_depok.hi_depok.Lapok.Utility;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
+import com.hi_depok.hi_depok.Ucok.SIUMKM.UcokDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -55,6 +57,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     TextView nameTxt, timeTxt, title, jml_like, jml_com;
@@ -68,6 +72,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
     String url = "http://hidepok.id/android/lapok/lapok_komentar.php?id=";
     String insert = "http://hidepok.id/android/lapok/lapok_insert.php";
     NotificationCompat.Builder mBuilder;
+    CircleImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +87,28 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //---------------- Image Single Popup --------------------------------------------------
+        imageView = (CircleImageView) findViewById(R.id.imageArtist_detail);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog settingsDialog = new Dialog(DetailActivity.this);
+
+                LayoutInflater inflater = getLayoutInflater();
+                View newView = inflater.inflate(R.layout.activity_image, null);
+
+                settingsDialog.setContentView(newView);
+                settingsDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+                settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
+
+                ImageView iv = (ImageView) newView.findViewById(R.id.profile_img_popup);
+                Bitmap bm = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                iv.setImageBitmap(bm);
+                settingsDialog.show();
+
+            }
+        });
 
         Intent i = this.getIntent();
         final String id_post = (String) i.getExtras().get("ID_POST_DETAIL");

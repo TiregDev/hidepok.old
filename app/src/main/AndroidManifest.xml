@@ -291,7 +291,9 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".Fokopok.detail_post_fokopok"></activity>
+        <activity android:name=".Fokopok.detail_post_fokopok"
+            android:label="Detail Post"
+            android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>

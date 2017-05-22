@@ -33,12 +33,15 @@ import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Kadepok.fragment.*;
 import com.hi_depok.hi_depok.R;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static android.R.attr.label;
 
 public class KadepokDetailActivity extends BaseActivity implements View.OnClickListener {
     ViewPager pager;
@@ -169,7 +172,7 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
                 final String PhoneNo = json.getString("telpon_panti");
                 final String kordinat = json.getString("koordinat_panti");
                 String urlPhoto = "http://hidepok.id/assets/images/photos/kadepok/" + json.getString("foto_profile_panti");
-                Glide.with(this).load(urlPhoto).placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(fotoPanti);
+                Picasso.with(this).load(urlPhoto).resize(300, 300).placeholder(R.drawable.image_placeholder).into(fotoPanti);
                 telpPanti.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -211,7 +214,7 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
 //                todo: goto back activity from here
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                String shareBody = "Yuk memberi dampak perubahan positif" +
+                String shareBody = "Yuk memberi dampak perubahan positif dengan membantu panti asuhan " + label +
                         "untuk kota Depok ;) ";
                 sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "");
                 sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
@@ -228,6 +231,7 @@ public class KadepokDetailActivity extends BaseActivity implements View.OnClickL
                 return super.onOptionsItemSelected(item);
         }
     }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){

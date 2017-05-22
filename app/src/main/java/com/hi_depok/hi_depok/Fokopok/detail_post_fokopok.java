@@ -1,14 +1,14 @@
 package com.hi_depok.hi_depok.Fokopok;
 
+import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.os.Build;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -28,12 +28,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
-import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Adapter_Komentar;
 import com.hi_depok.hi_depok.Akses;
+import com.hi_depok.hi_depok.Kadepok.activity.KadepokDetailActivity;
 import com.hi_depok.hi_depok.Komentar;
+import com.hi_depok.hi_depok.Lapok.mDetail.DetailActivity;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,9 +46,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class detail_post_fokopok extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener{
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class detail_post_fokopok extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
     TextView namaKomunitas, timeTxt, title, jml_like, jml_com;
-    ImageView gambar_komunitas, gambar_event, likeimg, comimg, btnKirim, statimg, shareimg;
+    ImageView gambar_event, likeimg, comimg, btnKirim, statimg, shareimg;
+    CircleImageView imageView;
     EditText etKomentar;
     SessionManager session;
     List<Komentar> mList = new ArrayList<Komentar>();
@@ -61,15 +66,7 @@ public class detail_post_fokopok extends BaseActivity implements SwipeRefreshLay
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_komentar);
-        super.onCreateDrawer();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
-        }
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         session = new SessionManager(this);
         HashMap<String, String> user = session.getUserDetails();
         final String id_user_komentar = user.get(SessionManager.KEY_ID_USER);
@@ -91,7 +88,6 @@ public class detail_post_fokopok extends BaseActivity implements SwipeRefreshLay
         likeimg = (ImageView) findViewById(R.id.like_detail);
         jml_like = (TextView) findViewById(R.id.jumlah_like_detail);
         jml_com = (TextView) findViewById(R.id.jumlah_comment_detail);
-        gambar_komunitas = (ImageView) findViewById(R.id.imageArtist_detail);
         gambar_event = (ImageView) findViewById(R.id.card_image_detail);
         statimg = (ImageView) findViewById(R.id.status_post_detail);
         shareimg = (ImageView) findViewById(R.id.share_button_detail);
@@ -99,6 +95,27 @@ public class detail_post_fokopok extends BaseActivity implements SwipeRefreshLay
 
         statimg.setVisibility(View.GONE);
         shareimg.setVisibility(View.GONE);
+
+        //---------------- Image Single Popup --------------------------------------------------
+        imageView = (CircleImageView) findViewById(R.id.imageArtist_detail);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog settingsDialog = new Dialog(detail_post_fokopok.this);
+
+                LayoutInflater inflater = getLayoutInflater();
+                View newView = inflater.inflate(R.layout.activity_image, null);
+
+                settingsDialog.setContentView(newView);
+                settingsDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+                settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
+
+                ImageView iv = (ImageView) newView.findViewById(R.id.profile_img_popup);
+                Bitmap bm = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                iv.setImageBitmap(bm);
+                settingsDialog.show();
+            }
+        });
 
         Intent intent = this.getIntent();
         id_artikel = (String) intent.getExtras().get("id_artikel");
@@ -225,9 +242,8 @@ public class detail_post_fokopok extends BaseActivity implements SwipeRefreshLay
                             Glide.with(detail_post_fokopok.this).load("http://hidepok.id/assets/images/photos/fokopok/" +
                                     json.getString("foto_artikel"))
                                     .placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(gambar_event);
-                            Glide.with(detail_post_fokopok.this).load("http://hidepok.id/assets/images/photos/fokopok/" +
-                                    json.getString("foto_komunitas"))
-                                    .placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(gambar_komunitas);
+                            Picasso.with(detail_post_fokopok.this).load("http://hidepok.id/assets/images/photos/fokopok/" +
+                                    json.getString("foto_artikel")).resize(300,300).into(imageView);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -293,24 +309,5 @@ public class detail_post_fokopok extends BaseActivity implements SwipeRefreshLay
     @Override
     public void onRefresh() {
         detail_artikel(id_artikel);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-//            case R.id.action_new_msg:
-//                // todo: goto back activity from here
-//
-//                startActivity(new Intent(getBaseContext(), message.class));
-//                return true;
-            case android.R.id.home:
-                // todo: goto back activity from here
-
-                detail_post_fokopok.this.finish();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 }

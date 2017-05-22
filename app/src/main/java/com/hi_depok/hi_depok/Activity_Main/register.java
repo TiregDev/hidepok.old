@@ -37,6 +37,9 @@ public class register extends AppCompatActivity {
     SessionManager session;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     String regist_url = "http://hidepok.id/android/hidepok/registrasi.php";
+    String bio = "Pengguna Hi-Depok";
+    String photo_default = "avatar_default.png";
+    String alamat = "Alamat Anda belum tersedia";
     Calendar dateAndTime = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener d =
             new DatePickerDialog.OnDateSetListener(){
@@ -158,6 +161,9 @@ public class register extends AppCompatActivity {
                             params.put("password", password);
                             params.put("tempat_lahir", tempat);
                             params.put("tanggal_lahir", tanggal);
+                            params.put("bio", bio);
+                            params.put("photo", photo_default);
+                            params.put("alamat", alamat);
                             return params;
                         }
                     };

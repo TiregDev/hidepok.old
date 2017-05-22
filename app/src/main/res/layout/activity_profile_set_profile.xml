@@ -24,38 +24,35 @@
         </RelativeLayout>
 
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profpict"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
-                android:layout_marginStart="-20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="15dp"
                 android:src="@drawable/profile" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="-20dp"
-                android:orientation="vertical">
-
                 <fr.arnaudguyon.smartfontslib.FontEditText
                     android:id="@+id/setUsername"
+                    android:layout_toEndOf="@id/profpict"
                     android:layout_width="match_parent"
+                    android:layout_marginStart="10dp"
                     android:layout_height="50dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginTop="-10dp"
                     android:hint="Isi bio kamu"
                     android:textColor="#b7b7b7"
                     app:font="@string/fontReguler"/>
 
                 <fr.arnaudguyon.smartfontslib.FontEditText
                     android:id="@+id/setBio"
+                    android:layout_toEndOf="@id/profpict"
+                    android:layout_below="@id/setUsername"
+                    android:layout_marginStart="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginEnd="16dp"
@@ -64,9 +61,7 @@
                     android:textColor="#b7b7b7"
                     app:font="@string/fontReguler"/>
 
-            </LinearLayout>
-
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
