@@ -14,6 +14,18 @@
         android:gravity="center"
         android:padding="16dp">
 
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            app:font="@string/fontBold"
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dokter"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Layanan Pendaftaran\nRSUD Depok"
+            android:textColor="#fff"
+            android:textSize="@dimen/article_titles" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="400dp"
