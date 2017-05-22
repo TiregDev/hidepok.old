@@ -50,7 +50,8 @@ public class lapok_content extends BaseActivity implements SwipeRefreshLayout.On
     SwipeRefreshLayout mSwipeRefreshLayout;
     RecyclerView rv;
     SessionManager session;
-    //    int posisi_kategori, posisi_status;
+    int posisi_kategori, posisi_status;
+    private boolean userIsInteracting;
     private LinearLayoutManager lLayout;
 
     private static final String[] cate = {"Pilih Kategori", "Sampah", "Kebakaran", "Kemacetan",
@@ -88,6 +89,16 @@ public class lapok_content extends BaseActivity implements SwipeRefreshLayout.On
         rv.setAdapter(mAdapter);
 
         mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.post(new Runnable() {
+                       @Override
+                       public void run() {
+                           mSwipeRefreshLayout.setRefreshing(true);
+                           mList.clear();
+                           mAdapter.notifyDataSetChanged();
+                           content(kategori, status);
+                       }
+                   }
+        );
 
 
         /*-------------------------- START SPINER CATEGORY --------------------------------------- */
@@ -103,13 +114,15 @@ public class lapok_content extends BaseActivity implements SwipeRefreshLayout.On
                 if (!kategori.equals("Pilih Kategori")) {
                     Toast.makeText(lapok_content.this, kategori + " selected", Toast.LENGTH_LONG).show();
                 }
-                if (kategori.contains(" ") || status.contains(" ")) {
-                    String newKategori = kategori.replace(" ", "%20");
-                    String newStatus = status.replace(" ", "%20");
-                    content(newKategori, newStatus);
-                } else
-                    content(kategori, status);
-//                posisi_kategori = position;
+                if (userIsInteracting) {
+                    if (kategori.contains(" ") || status.contains(" ")) {
+                        String newKategori = kategori.replace(" ", "%20");
+                        String newStatus = status.replace(" ", "%20");
+                        content(newKategori, newStatus);
+                    } else
+                        content(kategori, status);
+                }
+                posisi_kategori = position;
             }
 
             @Override
@@ -135,13 +148,15 @@ public class lapok_content extends BaseActivity implements SwipeRefreshLayout.On
                 if (!status.equals("Pilih Status")) {
                     Toast.makeText(lapok_content.this, status + " selected", Toast.LENGTH_LONG).show();
                 }
-                if (kategori.contains(" ") || status.contains(" ")) {
-                    String newKategori = kategori.replace(" ", "%20");
-                    String newStatus = status.replace(" ", "%20");
-                    content(newKategori, newStatus);
-                } else
-                    content(kategori, status);
-//                posisi_status = position;
+                if (userIsInteracting) {
+                    if (kategori.contains(" ") || status.contains(" ")) {
+                        String newKategori = kategori.replace(" ", "%20");
+                        String newStatus = status.replace(" ", "%20");
+                        content(newKategori, newStatus);
+                    } else
+                        content(kategori, status);
+                }
+                posisi_status = position;
             }
 
             @Override
@@ -162,6 +177,12 @@ public class lapok_content extends BaseActivity implements SwipeRefreshLayout.On
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onUserInteraction() {
+        super.onUserInteraction();
+        userIsInteracting = true;
     }
 
     @Override
@@ -204,7 +225,7 @@ public class lapok_content extends BaseActivity implements SwipeRefreshLayout.On
                         final Laporan mLaporan = new Laporan();
                         JSONObject jsonObject = response.getJSONObject(i);
 
-                        final String id_post_suka = jsonObject.getString("id_post");
+                        String id_post = jsonObject.getString("id_post");
                         mLaporan.setName(jsonObject.getString("nama"));
                         mLaporan.setImage(jsonObject.getString("avatar"));
                         mLaporan.setTanggal(jsonObject.getString("tanggal"));
@@ -223,7 +244,7 @@ public class lapok_content extends BaseActivity implements SwipeRefreshLayout.On
                                     mLaporan.setHasil("belum");
                                 }
                             }
-                        }else{
+                        } else {
                             mLaporan.setHasil("belum");
                         }
 
@@ -232,7 +253,7 @@ public class lapok_content extends BaseActivity implements SwipeRefreshLayout.On
                         mLaporan.setShare_imgbtn(R.drawable.share);
 
                         mLaporan.setStatus(jsonObject.getString("status"));
-                        mLaporan.setId(id_post_suka);
+                        mLaporan.setId(id_post);
                         mLaporan.setIsi(jsonObject.getString("isi"));
                         mList.add(mLaporan);
                     } catch (JSONException e) {
