@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -28,14 +29,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
+import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.SessionManager;
 import com.hi_depok.hi_depok.Ucok.SIUMKM.GetDataAdapter_siumkm;
 import com.squareup.picasso.Picasso;
 
@@ -47,7 +53,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -68,8 +76,16 @@ public class detail_danus extends BaseActivity {
     String JSON_DESC_UKM = "deskripsi_ukm";
     String JSON_ALAMAT_UKM = "alamat_ukm";
     String JSON_OWNER_UKM = "nama_owner_ukm";
-    String JSON_KECAMATAN;
-    TextView list_title, deskripsi_ukm, alamat_ukm, barang, owner;
+    String JSON_KECAMATAN = "kecamatan";
+    String JSON_KEUNTUNGAN = "keuntungan";
+    String JSON_PERSENTASE = "persentase";
+    String JSON_PERHITUNGAN= "perhitungan";
+    String JSON_JUMLAH_JUAL_HARI = "jumlah_jual_hari";
+    String tu, tw, nb, nu, jjh, hj, hb, p, k, foto;
+
+
+    TextView list_title, deskripsi_ukm, alamat_ukm, barang, owner, hasil_kalkulasi;
+    ImageView image_slide, telpUKM, kordinatUKM;
     Double kordinat1, kordinat2;
     String no_tlp, namaukm;
     String urlPhoto;
@@ -100,13 +116,17 @@ public class detail_danus extends BaseActivity {
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //---------------- Image Single Popup
-        imageView = (CircleImageView) findViewById(R.id.list_avatar);
         list_title = (TextView) findViewById(R.id.list_title);
+        hasil_kalkulasi = (TextView) findViewById(R.id.hasil_kalkulasi);
         deskripsi_ukm = (TextView) findViewById(R.id.deskripsi_ukm);
         alamat_ukm = (TextView) findViewById(R.id.alamat_ukm);
-//        barang = (TextView) findViewById(R.id.barang);
-//        owner = (TextView) findViewById(R.id.owner);
+        barang = (TextView) findViewById(R.id.barang);
+        owner = (TextView) findViewById(R.id.owner);
+        telpUKM = (ImageView) findViewById(R.id.call);
+        kordinatUKM = (ImageView) findViewById(R.id.maps);
+
+        //---------------- Image Single Popup --------------------------------------------------
+        imageView = (CircleImageView) findViewById(R.id.list_avatar);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,17 +139,18 @@ public class detail_danus extends BaseActivity {
                 settingsDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                 settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
 
-                ImageView iv= (ImageView) newView.findViewById(R.id.profile_img_popup);
-                Bitmap bm=((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                ImageView iv = (ImageView) newView.findViewById(R.id.profile_img_popup);
+                Bitmap bm = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
                 iv.setImageBitmap(bm);
-
                 settingsDialog.show();
-
 
             }
         });
         Intent i = this.getIntent();
-        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/ucok/ucok_dss.php?id_barang=" + i.getExtras().getString(PATOKAN);
+        SharedPreferences pref = getBaseContext().getSharedPreferences("Ucok", 0);
+        String abc = pref.getString("urlJSON","a");
+        GET_JSON_DATA_HTTP_URL = abc + "&id_barang=" + i.getExtras().getString(PATOKAN);
+//        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/ucok/ucok_dss.php?id_barang=" + i.getExtras().getString(PATOKAN);
         JSON_DATA_WEB_CALL();
     }
 
@@ -166,52 +187,6 @@ public class detail_danus extends BaseActivity {
                     updateLabel();
                 }
             };
-
-    private void showMessageDialog_danus (){
-        LayoutInflater inflater = getLayoutInflater();
-        View alertLayout= inflater.inflate(R.layout.ucok_add_danus_dialog, null);
-        final EditText formMessage1 = (EditText) alertLayout.findViewById(R.id.nama_target);
-        final EditText formMessage2 = (EditText) alertLayout.findViewById(R.id.deskripsi);
-
-        dateAndTimeLabel = (TextView) alertLayout.findViewById(R.id.gantitanggal);
-        updateLabel();
-
-        mulai = (Button) alertLayout.findViewById(R.id.date);
-        mulai.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                settingTanggal();
-            }
-        });
-
-        AlertDialog.Builder alert = new AlertDialog.Builder(detail_danus.this);
-        alert.setTitle("Silahkan Masukkan Data Target");
-        alert.setView(alertLayout);
-        alert.setCancelable(true);
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getBaseContext(), "Batal", Toast.LENGTH_SHORT).show();
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
-            }
-        });
-
-        alert.setPositiveButton("Tambahkan", new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(detail_danus.this, detail_target.class);
-                startActivity(intent);
-//                Toast.makeText(getApplicationContext(),"Bisa",Toast.LENGTH_SHORT).show();
-            }
-        });
-        AlertDialog dialog = alert.create();
-        dialog.show();
-        Button buttonPositive = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
-        buttonPositive.setTextColor(ContextCompat.getColor(this, R.color.abuAbu));
-        Button buttonNegative = dialog.getButton(DialogInterface.BUTTON_NEGATIVE);
-        buttonNegative.setTextColor(ContextCompat.getColor(this, R.color.abuAbu));
-    }
 //    public void link_addusaha (View v){
 //        showMessageDialog_danus();
 //    }
@@ -246,15 +221,26 @@ public class detail_danus extends BaseActivity {
             JSONObject json = null;
             try {
                 json = array.getJSONObject(i);
-                urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+json.getString("foto_barang");
-                if(!json.getString("foto_barang").equals("null")){
-                    Glide.with(this).load(urlPhoto).placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(imageView);
-                }
+                foto = json.getString(JSON_FOTO_BARANG);
+                urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+ foto;
+                Picasso.with(this).load(urlPhoto).resize(300, 300).placeholder(R.drawable.image_placeholder).into(imageView);
                 list_title.setText(json.getString("nama_barang"));
-                deskripsi_ukm.setText(json.getString("deskripsi_ukm"));
+                deskripsi_ukm.setText(json.getString(JSON_DESC_UKM));
                 alamat_ukm.setText(json.getString("alamat_ukm"));
-//                barang.setText(desc_barang);
-//                owner.setText(desc_owner);
+                tw = json.getString(JSON_TARGET_WAKTU);
+                tu = json.getString(JSON_TARGET_UANG);
+                nb = json.getString(JSON_NAMA_BARANG);
+                nu = json.getString(JSON_NAMA_UKM);
+                jjh = json.getString(JSON_JUMLAH_JUAL_HARI);
+                hj = json.getString(JSON_HARGA_JUAL);
+                hb = json.getString(JSON_HARGA_BARANG);
+                p = json.getString(JSON_PERSENTASE);
+                k = json.getString(JSON_KEUNTUNGAN);
+                String hasil = "Dengan waktu selama "+tw+" hari dan target pendapatan sebesar Rp "+tu+
+                        ", maka Anda dapat menjual "+nb+" dari UKM "+nu+" sebanyak "+jjh+
+                        " buah seharga Rp "+hj+" dari harga awal barang adalah Rp "+hb+
+                        ". Dengan persentase sebesar "+p+"% maka Anda akan mendapatkan keuntungan sebesar Rp "+k+" per itemnya." ;
+                hasil_kalkulasi.setText(hasil);
                 no_tlp = json.getString(JSON_NO_TLP);
                 kordinat1 = json.getDouble(JSON_KORDINAT_1);
                 kordinat2 = json.getDouble(JSON_KORDINAT_2);
@@ -288,4 +274,98 @@ public class detail_danus extends BaseActivity {
         dial.setData(Uri.parse("tel:" + PhoneNo));
         startActivity(dial);
     }
+
+    private void showMessageDialog_danus (){
+        LayoutInflater inflater = getLayoutInflater();
+        View alertLayout= inflater.inflate(R.layout.ucok_add_danus_dialog, null);
+        final EditText formMessage1 = (EditText) alertLayout.findViewById(R.id.nama_target);
+        final EditText formMessage2 = (EditText) alertLayout.findViewById(R.id.deskripsi);
+
+        dateAndTimeLabel = (TextView) alertLayout.findViewById(R.id.gantitanggal);
+        updateLabel();
+
+        mulai = (Button) alertLayout.findViewById(R.id.date);
+        mulai.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                settingTanggal();
+            }
+        });
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(detail_danus.this);
+        alert.setTitle("Silahkan Masukkan Data Target");
+        alert.setView(alertLayout);
+        alert.setCancelable(true);
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getBaseContext(), "Batal", Toast.LENGTH_SHORT).show();
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        });
+
+        alert.setPositiveButton("Tambahkan", new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog, int which) {
+                if (formMessage1.getText().toString().length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Nama event harus diisikan terlebih dahulu", Toast.LENGTH_SHORT).show();
+                }
+                else if (formMessage2.getText().toString().length()==0){
+                    Toast.makeText(getApplicationContext(), "Deskripsi event harus diisikan terlebih dahulu", Toast.LENGTH_SHORT).show();
+                }
+                else if ((formMessage1.getText().toString().length() == 0) && (formMessage2.getText().toString().length()==0)){
+                    Toast.makeText(getApplicationContext(), "Nama dan deskripsi event harus diisikan terlebih dahulu", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    final String target = formMessage1.getText().toString();
+                    final String deksripsi = formMessage2.getText().toString();
+                    final String tanggal = dateAndTimeLabel.getText().toString();
+                    StringRequest tambah = new StringRequest(Request.Method.POST, "http://hidepok.id/android/ucok/ucok_insert.php",
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    Toast.makeText(detail_danus.this, response, Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(detail_danus.this, detail_target.class);
+                                    startActivity(intent);
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    }) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            SessionManager session = new SessionManager(detail_danus.this);
+                            HashMap<String, String> user = session.getUserDetails();
+                            String id_user = user.get(SessionManager.KEY_ID_USER);
+                            HashMap<String, String> params = new HashMap<String, String>();
+                            params.put("target", target);
+                            params.put("deskripsi", deksripsi);
+                            params.put("id_user", id_user);
+                            params.put("tanggal", tanggal);
+                            params.put("hari", tw);
+                            params.put("uang", tu);
+                            params.put("barang", nb);
+                            params.put("harga_barang", hb);
+                            params.put("harga_jual", hj);
+                            params.put("foto", foto);
+                            return params;
+                        }
+                    };
+                    Akses.getInstance(detail_danus.this).addtoRequestQueue(tambah);
+                    Toast.makeText(getApplicationContext(), "Data berhasil disimpan!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(detail_danus.this, danus_activity.class));
+                }
+            }
+        });
+        AlertDialog dialog = alert.create();
+        dialog.show();
+        Button buttonPositive = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        buttonPositive.setTextColor(ContextCompat.getColor(this, R.color.abuAbu));
+        Button buttonNegative = dialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+        buttonNegative.setTextColor(ContextCompat.getColor(this, R.color.abuAbu));
+    }
+
 }

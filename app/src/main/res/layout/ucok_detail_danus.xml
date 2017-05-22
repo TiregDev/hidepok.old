@@ -111,9 +111,37 @@
                     <fr.arnaudguyon.smartfontslib.FontTextView
                         android:id="@+id/deskripsi_ukm"
                         android:layout_width="match_parent"
+                        android:layout_marginEnd="16dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:lineSpacingExtra="5dp"
+                        android:text="@string/spasi"
+                        android:textColor="#b7b7b7"
+                        app:font="@string/fontReguler"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#b7b7b7" />
+
+                    <fr.arnaudguyon.smartfontslib.FontTextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="16dp"
+                        android:text="Hasil Kalkulasi"
+                        android:textColor="#b7b7b7"
+                        android:textSize="20sp"
+                        app:font="@string/fontBold" />
+
+                    <fr.arnaudguyon.smartfontslib.FontTextView
+                        android:id="@+id/hasil_kalkulasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="16dp"
                         android:lineSpacingExtra="5dp"
+                        android:textSize="16sp"
                         android:text="@string/spasi"
                         android:textColor="#b7b7b7"
                         app:font="@string/fontReguler"/>
@@ -137,7 +165,9 @@
                         android:id="@+id/alamat_ukm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
                         android:lineSpacingExtra="5dp"
                         android:text="@string/spasi"
                         android:textColor="#b7b7b7"

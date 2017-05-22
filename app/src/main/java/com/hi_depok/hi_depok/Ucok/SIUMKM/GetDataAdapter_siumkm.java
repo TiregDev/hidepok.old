@@ -25,6 +25,130 @@ public class GetDataAdapter_siumkm {
     String target_waktu;
     String target_uang;
     String harga_jual;
+    String keuntungan;
+    String persentase;
+    String perhitungan;
+    String jumlah_jual_hari;
+
+    public String getId_barang() {
+        return id_barang;
+    }
+
+    public void setId_barang(String id_barang) {
+        this.id_barang = id_barang;
+    }
+
+    public String getId_ukm() {
+        return id_ukm;
+    }
+
+    public void setId_ukm(String id_ukm) {
+        this.id_ukm = id_ukm;
+    }
+
+    public String getNama_ukm() {
+        return nama_ukm;
+    }
+
+    public void setNama_ukm(String nama_ukm) {
+        this.nama_ukm = nama_ukm;
+    }
+
+    public String getNama_owner_ukm() {
+        return nama_owner_ukm;
+    }
+
+    public void setNama_owner_ukm(String nama_owner_ukm) {
+        this.nama_owner_ukm = nama_owner_ukm;
+    }
+
+    public String getNama_barang() {
+        return nama_barang;
+    }
+
+    public void setNama_barang(String nama_barang) {
+        this.nama_barang = nama_barang;
+    }
+
+    public String getKategori() {
+        return kategori;
+    }
+
+    public void setKategori(String kategori) {
+        this.kategori = kategori;
+    }
+
+    public String getHarga_barang() {
+        return harga_barang;
+    }
+
+    public void setHarga_barang(String harga_barang) {
+        this.harga_barang = harga_barang;
+    }
+
+    public String getAlamat_ukm() {
+        return alamat_ukm;
+    }
+
+    public void setAlamat_ukm(String alamat_ukm) {
+        this.alamat_ukm = alamat_ukm;
+    }
+
+    public String getNotelp() {
+        return notelp;
+    }
+
+    public void setNotelp(String notelp) {
+        this.notelp = notelp;
+    }
+
+    public String getKecamatan() {
+        return kecamatan;
+    }
+
+    public void setKecamatan(String kecamatan) {
+        this.kecamatan = kecamatan;
+    }
+
+    public String getDeskripsi_ukm() {
+        return deskripsi_ukm;
+    }
+
+    public void setDeskripsi_ukm(String deskripsi_ukm) {
+        this.deskripsi_ukm = deskripsi_ukm;
+    }
+
+    public String getKoordinat_ukm_1() {
+        return koordinat_ukm_1;
+    }
+
+    public void setKoordinat_ukm_1(String koordinat_ukm_1) {
+        this.koordinat_ukm_1 = koordinat_ukm_1;
+    }
+
+    public String getKoordinat_ukm_2() {
+        return koordinat_ukm_2;
+    }
+
+    public void setKoordinat_ukm_2(String koordinat_ukm_2) {
+        this.koordinat_ukm_2 = koordinat_ukm_2;
+    }
+
+    public String getFoto_barang() {
+        return foto_barang;
+    }
+
+    public void setFoto_barang(String foto_barang) {
+        this.foto_barang = foto_barang;
+    }
+
+    public String getFoto_ukm() {
+        return foto_ukm;
+    }
+
+    public void setFoto_ukm(String foto_ukm) {
+        this.foto_ukm = foto_ukm;
+    }
 
     public String getTarget_waktu() {
         return target_waktu;
@@ -50,109 +174,35 @@ public class GetDataAdapter_siumkm {
         this.harga_jual = harga_jual;
     }
 
-    public String getId_barang() {
-        return id_barang;
-    }
-    public void setId_barang(String id_barang) {
-        this.id_barang = id_barang;
+    public String getKeuntungan() {
+        return keuntungan;
     }
 
-    public String getId_ukm(){
-        return id_ukm;
-    }
-    public void setId_ukm(String id_ukm){
-        this.id_ukm = id_ukm;
+    public void setKeuntungan(String keuntungan) {
+        this.keuntungan = keuntungan;
     }
 
-    public String getNama_ukm(){
-        return nama_ukm;
-    }
-    public void setNama_ukm(String nama_ukm){
-        this.nama_ukm = nama_ukm;
+    public String getPersentase() {
+        return persentase;
     }
 
-    public String getNama_owner_ukm(){
-        return nama_owner_ukm;
-    }
-    public void setNama_owner_ukm(String nama_owner_ukm){
-        this.nama_owner_ukm = nama_owner_ukm;
+    public void setPersentase(String persentase) {
+        this.persentase = persentase;
     }
 
-    public String getNama_barang(){
-        return nama_barang;
-    }
-    public void setNama_barang(String nama_barang){
-        this.nama_barang = nama_barang;
+    public String getPerhitungan() {
+        return perhitungan;
     }
 
-    public String getKategori(){
-        return kategori;
-    }
-    public void setKategori(String kategori){
-        this.kategori = kategori;
+    public void setPerhitungan(String perhitungan) {
+        this.perhitungan = perhitungan;
     }
 
-    public String getHarga_barang(){
-        return harga_barang;
-    }
-    public void setHarga_barang(String harga_barang){
-        this.harga_barang = harga_barang;
+    public String getJumlah_jual_hari() {
+        return jumlah_jual_hari;
     }
 
-    public String getAlamat_ukm(){
-        return alamat_ukm;
+    public void setJumlah_jual_hari(String jumlah_jual_hari) {
+        this.jumlah_jual_hari = jumlah_jual_hari;
     }
-    public void setAlamat_ukm(String alamat_ukm){
-        this.alamat_ukm = alamat_ukm;
-    }
-
-    public String getNotelp(){
-        return notelp;
-    }
-    public void setNotelp(String notelp){
-        this.notelp = notelp;
-    }
-
-    public String getKecamatan(){
-        return kecamatan;
-    }
-    public void setKecamatan(String kecamatan){
-        this.kecamatan = kecamatan;
-    }
-
-    public String getDeskripsi_ukm(){
-        return deskripsi_ukm;
-    }
-    public void setDeskripsi_ukm(String deskripsi_ukm){
-        this.deskripsi_ukm = deskripsi_ukm;
-    }
-
-    public String getKoordinat_ukm_2(){
-        return koordinat_ukm_2;
-    }
-    public void setKoordinat_ukm_2(String koordinat_ukm_2){
-        this.koordinat_ukm_2 = koordinat_ukm_2;
-    }
-
-    public String getKoordinat_ukm_1(){
-        return koordinat_ukm_1;
-    }
-    public void setKoordinat_ukm_1(String koordinat_ukm_1){
-        this.koordinat_ukm_1 = koordinat_ukm_1;
-    }
-
-    public String getFoto_barang(){
-        return foto_barang;
-    }
-    public void setFoto_barang(String foto_barang){
-        this.foto_barang = foto_barang;
-    }
-
-    public String getFoto_ukm(){
-        return foto_ukm;
-    }
-    public void setFoto_ukm(String foto_ukm){
-        this.foto_ukm = foto_ukm;
-    }
-
 }

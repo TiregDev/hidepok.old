@@ -45,6 +45,10 @@ public class hasil_calculate extends BaseActivity {
     String JSON_ALAMAT_UKM = "alamat_ukm";
     String JSON_OWNER_UKM = "nama_owner_ukm";
     String JSON_KECAMATAN = "kecamatan";
+    String JSON_KEUNTUNGAN = "keuntungan";
+    String JSON_PERSENTASE = "persentase";
+    String JSON_PERHITUNGAN= "perhitungan";
+    String JSON_JUMLAH_JUAL_HARI = "jumlah_jual_hari";
 
     JsonArrayRequest jsonArrayRequest ;
     List<GetDataAdapter_siumkm> dataAdapter;
@@ -124,6 +128,10 @@ public class hasil_calculate extends BaseActivity {
                 dataFromJSON.setAlamat_ukm(json.getString(JSON_ALAMAT_UKM));
                 dataFromJSON.setNama_owner_ukm(json.getString(JSON_OWNER_UKM));
                 dataFromJSON.setKecamatan(json.getString(JSON_KECAMATAN));
+                dataFromJSON.setKeuntungan(json.getString(JSON_KEUNTUNGAN));
+                dataFromJSON.setPersentase(json.getString(JSON_PERSENTASE));
+                dataFromJSON.setPerhitungan(json.getString(JSON_PERHITUNGAN));
+                dataFromJSON.setJumlah_jual_hari(json.getString(JSON_JUMLAH_JUAL_HARI));
 
             } catch (JSONException e) {
 

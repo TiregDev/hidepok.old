@@ -3,6 +3,7 @@ package com.hi_depok.hi_depok.Ucok.Danus;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
@@ -153,6 +154,10 @@ public class danus_activity extends BaseActivity {
                 else {
                     String urlJSON = "http://hidepok.id/android/ucok/ucok_dss.php?target_uang=" + formMessage1.getText() + "&target_hari=" + formMessage2.getText();
                     Intent intent = new Intent(danus_activity.this, hasil_calculate.class);
+                    SharedPreferences pref = getBaseContext().getSharedPreferences("Ucok", 0);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("urlJSON", urlJSON);
+                    editor.commit();
                     intent.putExtra("urlJSON", urlJSON);
                     startActivity(intent);
                 }

@@ -41,6 +41,10 @@ public class KalkulasiAdapter extends RecyclerView.Adapter<KalkulasiAdapter.View
     String foto_barang;
     String foto_ukm;
     String harga_jual;
+    String persentase;
+    String keuntungan;
+    String target_waktu;
+    String target_uang;
     String urlPhoto;
 
     public KalkulasiAdapter(List<GetDataAdapter_siumkm> adapter, Context context){
@@ -76,6 +80,10 @@ public class KalkulasiAdapter extends RecyclerView.Adapter<KalkulasiAdapter.View
         foto_barang = adapter.get(position).getFoto_barang();
         foto_ukm = adapter.get(position).getFoto_ukm();
         harga_jual = adapter.get(position).getHarga_jual();
+        persentase = adapter.get(position).getPersentase();
+        keuntungan = adapter.get(position).getKeuntungan();
+        target_uang = adapter.get(position).getTarget_uang();
+        target_waktu = adapter.get(position).getTarget_waktu();
         String nama_ukm_2 = "Dari UKM "+nama_ukm;
         String harga_barang_2 = "Rp "+harga_jual;
         String nama_foto = foto_ukm;

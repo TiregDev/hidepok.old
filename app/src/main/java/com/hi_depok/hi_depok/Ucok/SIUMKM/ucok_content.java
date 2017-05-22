@@ -1,11 +1,10 @@
 package com.hi_depok.hi_depok.Ucok.SIUMKM;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,8 +29,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
-import com.hi_depok.hi_depok.Fokopok.message;
-import com.hi_depok.hi_depok.Kapok.activity.KapokActivity;
 import com.hi_depok.hi_depok.R;
 
 import org.json.JSONArray;
@@ -45,10 +42,12 @@ import java.util.List;
  * Created by Muhammad63 on 3/13/2017.
  */
 
-public class ucok_content extends BaseActivity {
+public class ucok_content extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
     private LinearLayoutManager lLayout;
     private Spinner category, sortby;
     private Button temukan, temukan_semua;
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
 
     String ktgr = "";
     String kcmtn = "";
@@ -323,5 +322,10 @@ public class ucok_content extends BaseActivity {
         }
         recyclerViewadapter = new RecyclerViewAdapterJSON_siumkm(dataAdapter, this);
         rView.setAdapter(recyclerViewadapter);
+    }
+
+    @Override
+    public void onRefresh() {
+
     }
 }

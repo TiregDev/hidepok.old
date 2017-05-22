@@ -173,34 +173,17 @@ public class UcokDetailActivity extends BaseActivity {
                 Picasso.with(this).load(urlPhoto).resize(300, 300).placeholder(R.drawable.image_placeholder).into(imageView);
                 String desc_owner = "Nama owner : "+json.getString(JSON_NAMA_OWNER_UKM);
                 String desc_alamat = json.getString(JSON_ALAMAT_UKM)+", "+json.getString(JSON_KECAMATAN)+", Depok.";
-                String desc_barang = json.getString(JSON_NAMA_UKM)+" menjual "+json.getString(JSON_NAMA_BARANG);
+                String desc_barang = "UKM "+json.getString(JSON_NAMA_UKM)+" menjual "+json.getString(JSON_NAMA_BARANG);
+                String alamat_cp = "UKM "+json.getString(JSON_NAMA_UKM)+" beralamat di "+desc_alamat+"\n Kontak : "+json.getString(JSON_NO_TLP);
                 list_title.setText(json.getString(JSON_NAMA_UKM));
                 deskripsi_ukm.setText(json.getString(JSON_DESC_UKM));
-                alamat_ukm.setText(desc_alamat);
+                alamat_ukm.setText(alamat_cp);
                 barang.setText(desc_barang);
                 owner.setText(desc_owner);
                 no_tlp = json.getString(JSON_NO_TLP);
                 kordinat1 = json.getDouble(JSON_KORDINAT_1);
                 kordinat2 = json.getDouble(JSON_KORDINAT_2);
                 namaukm = json.getString(JSON_NAMA_UKM);
-//                telpUKM.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//                        Intent dial = new Intent();
-//                        dial.setAction("android.intent.action.DIAL");
-//                        dial.setData(Uri.parse("tel:" + no_tlp));
-//                        startActivity(dial);
-//                    }
-//                });
-//                kordinatUKM.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        String urlAddress = "http://maps.google.com/maps?q=" + kordinat1 + "," + kordinat2 + "(" + namaukm + ")&iwloc=A&hl=es";
-//                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlAddress));
-//                        startActivity(intent);
-//                    }
-//                });
             } catch (JSONException e) {
                 e.printStackTrace();
             }
