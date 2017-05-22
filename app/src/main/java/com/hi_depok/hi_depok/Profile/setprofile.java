@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,17 +37,14 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class setprofile extends BaseActivity {
 
-    CircleImageView image;
     TextView changepass;
+    ImageView profpict;
     EditText etBio, etNama, etEmail, etNomer, etAlamat, etUsername;
     Button btnSimpan;
     SessionManager session;
     String url_update_profile = "http://hidepok.id/android/hidepok/updateProfile.php";
-    String detail_url = "http://hidepok.id/android/hidepok/getUserDetail.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +61,6 @@ public class setprofile extends BaseActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-        image = (CircleImageView) findViewById(R.id.profpict);
         etUsername = (EditText) findViewById(R.id.setUsername);
         etBio = (EditText) findViewById(R.id.setBio);
         etNama = (EditText) findViewById(R.id.setNama);
@@ -71,64 +68,30 @@ public class setprofile extends BaseActivity {
         etNomer = (EditText) findViewById(R.id.setNomer);
         etAlamat = (EditText) findViewById(R.id.setAlamat);
         btnSimpan = (Button) findViewById(R.id.btnSimpanProfil);
+        profpict = (ImageView) findViewById(R.id.profpict);
 
         session = new SessionManager(this);
-
         HashMap<String, String> user = session.getUserDetails();
         String username = user.get(SessionManager.KEY_USERNAME);
         String name = user.get(SessionManager.KEY_NAME);
         String email = user.get(SessionManager.KEY_EMAIL);
+        String notelp = user.get(SessionManager.KEY_NOTELP);
+        String alamat = user.get(SessionManager.KEY_ALAMAT);
+        String bio = user.get(SessionManager.KEY_BIO);
+        String avatar = user.get(SessionManager.KEY_FOTO);
         final String id_user = user.get(SessionManager.KEY_ID_USER);
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, detail_url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
-                            JSONObject jsonObject = jsonArray.getJSONObject(0);
-                            etBio.setText(jsonObject.getString("bio"));
-                            etNomer.setText(jsonObject.getString("no_telp"));
-                            etAlamat.setText(jsonObject.getString("alamat"));
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getBaseContext(), "Gagal Terhubung! Cek Koneksi Anda!" + error, Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                SessionManager session = new SessionManager(getBaseContext());
-                //session username untuk diambil dan dimasukkan ke dalam skrip php
-                HashMap<String, String> user = session.getUserDetails();
-                String username_session = user.get(SessionManager.KEY_USERNAME);
-                //username ada di skrip getUserDetail.php dengan paramater name
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("username", username_session);
-                return params;
-            }
-        };
-        Akses.getInstance(setprofile.this).addtoRequestQueue(stringRequest);
 
         etUsername.setText(username);
         etNama.setText(name);
         etEmail.setText(email);
+        etAlamat.setText(alamat);
+        etBio.setText(bio);
+        etNomer.setText(notelp);
+        Picasso.with(getBaseContext()).load(avatar).resize(300,300).into(profpict);
 
         etUsername.setEnabled(false);
         etNama.setEnabled(false);
         etEmail.setEnabled(false);
-
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(setprofile.this, ambil_gambar.class));
-            }
-        });
 
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,53 +99,63 @@ public class setprofile extends BaseActivity {
                 final String bio = etBio.getText().toString();
                 final String nama = etNama.getText().toString();
                 final String email = etEmail.getText().toString();
-                final String no_telp = etNomer.getText().toString();
                 final String alamat = etAlamat.getText().toString();
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url_update_profile,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                try {
-                                    JSONArray jsonArray = new JSONArray(response);
-                                    JSONObject jsonObject = jsonArray.getJSONObject(0);
-                                    Toast.makeText(setprofile.this, jsonObject.getString("message"),
-                                            Toast.LENGTH_SHORT).show();
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
+                final String no_telp = etNomer.getText().toString();
+                if (bio.equals("")) {
+                    etBio.setError("Bio harus diisi");
+                } else if (no_telp.equals("")) {
+                    etNomer.setError("Nomor telpon harus diisi");
+                } else if (no_telp.equals("")) {
+                    etAlamat.setError("Alamat harus diisi");
+                } else {
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url_update_profile,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    try {
+                                        JSONArray jsonArray = new JSONArray(response);
+                                        JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                        Toast.makeText(setprofile.this, jsonObject.getString("message"),
+                                                Toast.LENGTH_SHORT).show();
+                                        etBio.setText("");
+                                        etNomer.setText("");
+                                        etAlamat.setText("");
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                                Toast.makeText(setprofile.this, "Koneksi gagal! Cek koneksi anda!",
+                                        Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof AuthFailureError) {
+                                Toast.makeText(setprofile.this, "Gagal terhubung! Cek koneksi anda!",
+                                        Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof ServerError) {
+                                Toast.makeText(setprofile.this, "Gagal terhubung dengan server!",
+                                        Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof NetworkError) {
+                                Toast.makeText(setprofile.this, "Gagal terhubung! Cek koneksi anda!",
+                                        Toast.LENGTH_SHORT).show();
                             }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        if (error instanceof TimeoutError || error instanceof NoConnectionError) {
-                            Toast.makeText(setprofile.this, "Koneksi gagal! Cek koneksi anda!",
-                                    Toast.LENGTH_SHORT).show();
-                        } else if (error instanceof AuthFailureError) {
-                            Toast.makeText(setprofile.this, "Gagal terhubung! Cek koneksi anda!",
-                                    Toast.LENGTH_SHORT).show();
-                        } else if (error instanceof ServerError) {
-                            Toast.makeText(setprofile.this, "Gagal terhubung dengan server!",
-                                    Toast.LENGTH_SHORT).show();
-                        } else if (error instanceof NetworkError) {
-                            Toast.makeText(setprofile.this, "Gagal terhubung! Cek koneksi anda!",
-                                    Toast.LENGTH_SHORT).show();
                         }
-                    }
-                }) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        HashMap<String, String> params = new HashMap<String, String>();
-                        params.put("bio", bio);
-                        params.put("nama", nama);
-                        params.put("email", email);
-                        params.put("alamat", alamat);
-                        params.put("no_telp", no_telp);
-                        params.put("id_user", id_user);
-                        return params;
-                    }
-                };
-                Akses.getInstance(setprofile.this).addtoRequestQueue(stringRequest);
+                    }) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            HashMap<String, String> params = new HashMap<String, String>();
+                            params.put("bio", bio);
+                            params.put("nama", nama);
+                            params.put("alamat", alamat);
+                            params.put("email", email);
+                            params.put("no_telp", no_telp);
+                            params.put("id_user", id_user);
+                            return params;
+                        }
+                    };
+                    Akses.getInstance(setprofile.this).addtoRequestQueue(stringRequest);
+                }
             }
         });
 

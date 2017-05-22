@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.Lapok.mData.Laporan;
 import com.hi_depok.hi_depok.Lapok.mDetail.DetailActivity;
 import com.hi_depok.hi_depok.R;
+import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -83,10 +84,13 @@ public class Adapter_Laporan extends RecyclerView.Adapter<Holder_Laporan> {
             e.printStackTrace();
         }
 
+        if(image.equals("null")){
+            holder.img.setImageResource(R.drawable.profile);
+        }else{
+            final String urlAvatar = "http://hidepok.id/assets/images/avatar/" + image;
+            Picasso.with(mContext).load(urlAvatar).resize(300,300).into(holder.img);
+        }
 
-        final String urlAvatar = "http://hidepok.id/assets/images/photos/avatar/" + image;
-        Glide.with(mContext).load(urlAvatar).thumbnail(0.3f).placeholder(R.drawable.image_placeholder)
-                .into(holder.img);
         final String urlFotoPost = "http://hidepok.id/assets/images/photos/lapok/" + kejadian;
         Glide.with(mContext).load(urlFotoPost).thumbnail(0.3f).placeholder(R.drawable.image_placeholder)
                 .into(holder.kej);

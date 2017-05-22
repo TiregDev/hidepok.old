@@ -5,10 +5,18 @@ package com.hi_depok.hi_depok;
  */
 
 public class Komentar {
-    String nama, isi_komentar;
+    String nama, isi_komentar, profpict;
 
     public Komentar() {
 
+    }
+
+    public String getProfpict() {
+        return profpict;
+    }
+
+    public void setProfpict(String profpict) {
+        this.profpict = profpict;
     }
 
     public String getNama() {

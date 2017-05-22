@@ -8,9 +8,9 @@
     android:layout_marginBottom="10dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profil_user_lain"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:id="@+id/profil_user_komentar"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/profile"
             android:layout_marginStart="10dp"/>
 
@@ -18,7 +18,7 @@
             android:id="@+id/namaUser_Post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/profil_user_lain"
+            android:layout_toEndOf="@id/profil_user_komentar"
             android:layout_marginStart="10dp"
             app:font="@string/fontBold"
             android:text="@string/spasi" />
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/namaUser_Post"
-            android:layout_toEndOf="@id/profil_user_lain"
+            android:layout_toEndOf="@id/profil_user_komentar"
             android:layout_marginStart="10dp"
             app:font="@string/fontReguler"
             android:text="@string/spasi" />

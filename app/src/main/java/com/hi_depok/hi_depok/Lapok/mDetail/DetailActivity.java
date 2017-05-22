@@ -45,6 +45,7 @@ import com.hi_depok.hi_depok.Adapter_Komentar;
 import com.hi_depok.hi_depok.Komentar;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,7 +65,6 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
     TextView nameTxt, timeTxt, title, jml_like, jml_com;
     ImageView img, kej, likeimg, comimg, shaimg, statimg, btnKirim;
     EditText etKomentar;
-    EditText comment;
     SessionManager session;
     List<Komentar> mList = new ArrayList<Komentar>();
     SwipeRefreshLayout swipe;
@@ -77,7 +77,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lapok_detail_komentar);
+        setContentView(R.layout.detail_komentar);
         super.onCreateDrawer();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -147,7 +147,6 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
         likeimg = (ImageView) findViewById(R.id.like_detail);
         comimg = (ImageView) findViewById(R.id.comment_button_detail);
         shaimg = (ImageView) findViewById(R.id.share_button_detail);
-        comment = (EditText) findViewById(R.id.isiKomentar);
 
         likeimg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -290,7 +289,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
 
                             tanggal = objDetail.getString("tanggal");
                             waktu = objDetail.getString("waktu");
-                            avatar = "http://hidepok.id/assets/images/photos/avatar/" + objDetail.getString("avatar");
+                            avatar = "http://hidepok.id/assets/images/avatar/" + objDetail.getString("avatar");
                             kejadian = "http://hidepok.id/assets/images/photos/lapok/" + objDetail.getString("foto");
 
                             try {
@@ -308,8 +307,6 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
                             jml_like.setText(objDetail.getString("suka"));
                             jml_com.setText(objDetail.getString("komentar"));
                             title.setText(objDetail.getString("isi"));
-
-                            likeimg.setImageResource(R.drawable.like);
 
                             if (!objDetail.getString("user_like").equals("null")) {
                                 String[] array = objDetail.getString("user_like").split(", ");
@@ -337,8 +334,11 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
 
                             Glide.with(DetailActivity.this).load(kejadian).thumbnail(0.3f)
                                     .placeholder(R.drawable.image_placeholder).into(kej);
-                            Glide.with(DetailActivity.this).load(avatar).thumbnail(0.3f)
-                                    .placeholder(R.drawable.image_placeholder).into(img);
+
+                            if(objDetail.getString("avatar").equals("null")){
+                                img.setImageResource(R.drawable.profile);
+                            }else
+                                Picasso.with(DetailActivity.this).load(avatar).resize(300,300).into(img);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -381,6 +381,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
                                 Komentar komentar = new Komentar();
                                 komentar.setNama(obj_komentar.getString("nama_user"));
                                 komentar.setIsi_komentar(obj_komentar.getString("isi_komentar"));
+                                komentar.setProfpict(obj_komentar.getString("foto_user"));
                                 mList.add(komentar);
                             } catch (JSONException e) {
                                 e.printStackTrace();

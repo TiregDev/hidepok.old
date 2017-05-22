@@ -175,11 +175,16 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
                                             Toast.makeText(login.this, jsonObject.getString("message"),
                                                     Toast.LENGTH_SHORT).show();
                                         }else{
+                                            String avatar = "http://hidepok.id/assets/images/avatar/" +
+                                                    jsonObject.getString("foto");
                                             session.createLoginSession(jsonObject.getString("id"),
                                                     jsonObject.getString("username_user"),
                                                     jsonObject.getString("email_user"),
                                                     jsonObject.getString("password"),
-                                                    jsonObject.getString("nama"));
+                                                    jsonObject.getString("nama"),
+                                                    jsonObject.getString("bio"),
+                                                    jsonObject.getString("notelp"), avatar,
+                                                    jsonObject.getString("alamat"));
                                             Intent intent = new Intent(login.this,
                                                     MainActivity.class);
                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -238,7 +243,6 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
             final String name = account.getDisplayName();
             final String email = account.getEmail();
 
-
             final StringRequest request = new StringRequest(Request.Method.POST, cek_user_url,
                     new Response.Listener<String>() {
                         @Override
@@ -248,11 +252,16 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
                                 JSONObject jsonObject = jsonArray.getJSONObject(0);
                                 String code = jsonObject.getString("code");
                                 if (code.equals("user_available")) {
+                                    String avatar = "http://hidepok.id/assets/images/avatar/" +
+                                            jsonObject.getString("foto");
                                     session.createLoginSession(jsonObject.getString("id"),
                                             jsonObject.getString("username_user"),
                                             jsonObject.getString("email_user"),
                                             jsonObject.getString("password"),
-                                            jsonObject.getString("nama"));
+                                            jsonObject.getString("nama"),
+                                            jsonObject.getString("bio"),
+                                            jsonObject.getString("notelp"),
+                                            avatar, jsonObject.getString("alamat"));
                                     Toast.makeText(login.this, "Selamat datang di Hi Depok!",
                                             Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(login.this,

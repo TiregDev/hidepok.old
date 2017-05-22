@@ -47,6 +47,10 @@ public class SessionManager {
 
     public static final String KEY_NOTELP = "notelp";
 
+    public static final String KEY_FOTO = "foto";
+
+    public static final String KEY_ALAMAT = "alamat";
+
     // Constructor
     public SessionManager(Context context) {
         this._context = context;
@@ -57,7 +61,8 @@ public class SessionManager {
     /**
      * Create login session INI
      */
-    public void createLoginSession(String id_user, String username, String email, String pass, String name) {
+    public void createLoginSession(String id_user, String username, String email, String pass, String name,
+                                   String bio, String notelp, String avatar, String alamat) {
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
@@ -77,10 +82,14 @@ public class SessionManager {
         editor.putString(KEY_NAME, name);
 
 //        // Storing bio in pref
-//        editor.putString(KEY_BIO, bio);
+        editor.putString(KEY_BIO, bio);
 //
 //        // Storing notelp in pref
-//        editor.putString(KEY_NOTELP, notelp);
+        editor.putString(KEY_NOTELP, notelp);
+
+        editor.putString(KEY_FOTO, avatar);
+
+        editor.putString(KEY_ALAMAT, alamat);
 
         // commit changes
         editor.commit();
@@ -134,10 +143,14 @@ public class SessionManager {
         user.put(KEY_NAME, pref.getString(KEY_NAME, null));
 
 //        // user bio id
-//        user.put(KEY_BIO, pref.getString(KEY_BIO, null));
+        user.put(KEY_BIO, pref.getString(KEY_BIO, null));
 //
 //        //user notelp id
-//        user.put(KEY_NOTELP, pref.getString(KEY_NOTELP, null));
+        user.put(KEY_NOTELP, pref.getString(KEY_NOTELP, null));
+
+        user.put(KEY_FOTO, pref.getString(KEY_FOTO, null));
+
+        user.put(KEY_ALAMAT, pref.getString(KEY_ALAMAT, null));
 
         // return user
         return user;

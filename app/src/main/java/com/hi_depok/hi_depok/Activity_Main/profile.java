@@ -26,11 +26,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.hi_depok.hi_depok.Akses;
+import com.hi_depok.hi_depok.Profile.ambil_gambar;
 import com.hi_depok.hi_depok.Profile.fragment.history;
 import com.hi_depok.hi_depok.Profile.fragment.myprofile;
 import com.hi_depok.hi_depok.Profile.setprofile;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,8 +50,10 @@ public class profile extends BaseActivity implements View.OnClickListener {
     View strip;
     TextView profile, history, nama_profil, bio_profil;
     ImageView ham;
+    SessionManager session;
     CircleImageView imageView;
     String detail_url = "http://hidepok.id/android/hidepok/getUserDetail.php";
+    String foto, avatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,28 +70,51 @@ public class profile extends BaseActivity implements View.OnClickListener {
         nama_profil = (TextView) findViewById(R.id.username);
         bio_profil = (TextView) findViewById(R.id.status_user);
 
+        session = new SessionManager(this);
+        HashMap<String, String> user = session.getUserDetails();
+        String nama = user.get(SessionManager.KEY_NAME);
+        String bio = user.get(SessionManager.KEY_BIO);
+        String avatar = user.get(SessionManager.KEY_FOTO);
+
+        nama_profil.setText(nama);
+        bio_profil.setText(bio);
+
         //---------------- Image Single Popup --------------------------------------------------
         imageView = (CircleImageView) findViewById(R.id.pict_profile);
+        Picasso.with(getBaseContext()).load(avatar).resize(300,300).into(imageView);
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Dialog settingsDialog = new Dialog(profile.this);
-
-                LayoutInflater inflater = getLayoutInflater();
-                View newView = inflater.inflate(R.layout.activity_image, null);
-
-                settingsDialog.setContentView(newView);
-                settingsDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-                settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
-
-                ImageView iv = (ImageView) newView.findViewById(R.id.profile_img_popup);
-                Bitmap bm = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-                iv.setImageBitmap(bm);
-                settingsDialog.show();
-
+                startActivity(new Intent(profile.this, ambil_gambar.class));
             }
         });
-        getProfile();
+
+        imageView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (null != imageView.getDrawable()) {
+                    Dialog settingsDialog = new Dialog(profile.this);
+
+                    LayoutInflater inflater = getLayoutInflater();
+                    View newView = inflater.inflate(R.layout.activity_image, null);
+
+                    settingsDialog.setContentView(newView);
+                    settingsDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+                    settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
+
+                    ImageView iv = (ImageView) newView.findViewById(R.id.profile_img_popup);
+                    Bitmap bm = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                    iv.setImageBitmap(bm);
+
+                    settingsDialog.show();
+                    return false;
+                } else {
+                    Toast.makeText(activity, "Anda belum memiliki gambar", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+            }
+        });
 
         pager = (ViewPager) findViewById(R.id.pager);
         profile = (TextView) findViewById(R.id.profile);
@@ -149,11 +176,20 @@ public class profile extends BaseActivity implements View.OnClickListener {
                             JSONArray jsonArray = new JSONArray(response);
                             JSONObject jsonObject = jsonArray.getJSONObject(0);
 
+                            foto = jsonObject.getString("foto");
+
+                            if (!foto.equals("null")) {
+                                avatar ="http://hidepok.id/assets/images/avatar/" + foto;
+                                Picasso.with(getBaseContext()).load(avatar).resize(300,300).into(imageView);
+                            } else {
+                                imageView.setImageResource(R.drawable.profile);
+                            }
+
                             //ambil nilai dari db
                             nama_profil.setText(jsonObject.getString("nama"));
-                            if(!jsonObject.getString("bio").equals("null")){
+                            if (!jsonObject.getString("bio").equals("null")) {
                                 bio_profil.setText(jsonObject.getString("bio"));
-                            }else{
+                            } else {
                                 bio_profil.setText("Pengguna Hi Depok");
                             }
                         } catch (JSONException e) {

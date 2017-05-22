@@ -14,8 +14,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.Akses;
+import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
 
 import org.json.JSONArray;
@@ -34,9 +34,10 @@ import java.util.Map;
 
 public class myprofile extends Fragment {
     private TextView nama, tgl_lahir, tgl_join, email, no_telp, alamat;
+
     String detail_url = "http://hidepok.id/android/hidepok/getUserDetail.php";
-    SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
-    SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("d MMM yyyy");
+    SimpleDateFormat parse_string = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat format_tanggal = new SimpleDateFormat("d MMM yyyy");
     Date gabung, kelahiran;
 
     public static myprofile newInstance() {
@@ -59,6 +60,17 @@ public class myprofile extends Fragment {
         no_telp = (TextView) v.findViewById(R.id.notelpuser);
         alamat = (TextView) v.findViewById(R.id.alamatuser);
 
+        getProfile();
+        return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getProfile();
+    }
+
+    private void getProfile() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, detail_url,
                 new Response.Listener<String>() {
                     @Override
@@ -71,29 +83,28 @@ public class myprofile extends Fragment {
 
                             nama.setText(jsonObject.getString("nama"));
                             email.setText(jsonObject.getString("email"));
-
-                            gabung = df1.parse(jsonObject.getString("gabung"));
+                            gabung = parse_string.parse(jsonObject.getString("gabung"));
                             tgl_join.setText("Bergabung dengan Hi-Depok sejak " +
-                                    mSimpleDateFormat.format(gabung));
+                                    format_tanggal.format(gabung));
 
-                            if(!jsonObject.getString("kelahiran").equals("null") &&
-                                    !jsonObject.getString("tempat_kelahiran").equals("null")){
-                                kelahiran = df1.parse(jsonObject.getString("kelahiran"));
+                            if (!jsonObject.getString("kelahiran").equals("null") &&
+                                    !jsonObject.getString("tempat_kelahiran").equals("null")) {
+                                kelahiran = parse_string.parse(jsonObject.getString("kelahiran"));
                                 tgl_lahir.setText(jsonObject.getString("tempat_kelahiran") + ", "
-                                        + mSimpleDateFormat.format(kelahiran));
-                            }else{
+                                        + format_tanggal.format(kelahiran));
+                            } else {
                                 tgl_lahir.setText("Tempat dan tanggal lahir");
                             }
 
-                            if(!jsonObject.getString("no_telp").equals("null")){
+                            if (!jsonObject.getString("no_telp").equals("null")) {
                                 no_telp.setText(jsonObject.getString("no_telp"));
-                            } else{
+                            } else {
                                 no_telp.setText("Nomor telepon");
                             }
 
-                            if(!jsonObject.getString("alamat").equals("null")){
+                            if (!jsonObject.getString("alamat").equals("null")) {
                                 alamat.setText(jsonObject.getString("alamat"));
-                            }else{
+                            } else {
                                 alamat.setText("Alamat");
                             }
 
@@ -122,7 +133,5 @@ public class myprofile extends Fragment {
             }
         };
         Akses.getInstance(getContext()).addtoRequestQueue(stringRequest);
-
-        return v;
     }
 }

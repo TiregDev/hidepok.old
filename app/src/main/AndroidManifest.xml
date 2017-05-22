@@ -51,6 +51,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Profile.ambil_gambar"
+            android:label="@string/app_name"
+            android:theme="@style/Background_main">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Activity_Main.sikepok"
             android:theme="@style/Background">
             <intent-filter>

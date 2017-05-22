@@ -28,11 +28,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.R;
+import com.hi_depok.hi_depok.SessionManager;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -51,10 +53,13 @@ public class ambil_gambar extends AppCompatActivity implements View.OnClickListe
     private int PICK_IMAGE_REQUEST = 1;
     private int TAKE_IMAGE_REQUEST = 2;
 
-    private String UPLOAD_URL = "";
+    private String UPLOAD_URL = "http://hidepok.id/android/hidepok/upload.php";
     private File imageFile;
+    private SessionManager session;
     String filename;
     private String KEY_IMAGE = "image";
+    private String KEY_NAMA = "name";
+    private String KEY_ID = "id_user";
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -220,7 +225,8 @@ public class ambil_gambar extends AppCompatActivity implements View.OnClickListe
 
     private void uploadImage() {
         //Showing the progress dialog
-        final ProgressDialog loading = ProgressDialog.show(this, "Uploading...", "Please wait...", false, false);
+        final ProgressDialog loading = ProgressDialog.show(this, "Sedang diunggah...", "Tunggu sebentar...",
+                false, false);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, UPLOAD_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -248,13 +254,18 @@ public class ambil_gambar extends AppCompatActivity implements View.OnClickListe
                 //Converting Bitmap to String
                 String image = getStringImage();
 
-                //Getting Image Name
+                session = new SessionManager(ambil_gambar.this);
+                HashMap<String, String> user = session.getUserDetails();
+                String nama = user.get(SessionManager.KEY_USERNAME);
+                String id_user = user.get(SessionManager.KEY_ID_USER);
 
                 //Creating parameters
                 Map<String, String> params = new Hashtable<String, String>();
 
                 //Adding parameters
                 params.put(KEY_IMAGE, image);
+                params.put(KEY_NAMA, nama);
+                params.put(KEY_ID, id_user);
 
                 //returning parameters
                 return params;
