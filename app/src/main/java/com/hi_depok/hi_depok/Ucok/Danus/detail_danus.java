@@ -33,6 +33,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.Ucok.SIUMKM.GetDataAdapter_siumkm;
@@ -68,7 +69,6 @@ public class detail_danus extends BaseActivity {
     String JSON_ALAMAT_UKM = "alamat_ukm";
     String JSON_OWNER_UKM = "nama_owner_ukm";
     String JSON_KECAMATAN;
-    CircleImageView imageView;
     TextView list_title, deskripsi_ukm, alamat_ukm, barang, owner;
     Double kordinat1, kordinat2;
     String no_tlp, namaukm;
@@ -78,6 +78,7 @@ public class detail_danus extends BaseActivity {
     RequestQueue requestQueue ;
     RecyclerView.Adapter recyclerViewadapter;
     RecyclerView rView;
+    CircleImageView imageView;
 
     Date date = Calendar.getInstance().getTime();
     DateFormat formatdate = new SimpleDateFormat("dd/MM/yyyy");
@@ -100,7 +101,7 @@ public class detail_danus extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //---------------- Image Single Popup
-        final CircleImageView imageView = (CircleImageView) findViewById(R.id.list_avatar);
+        imageView = (CircleImageView) findViewById(R.id.list_avatar);
         list_title = (TextView) findViewById(R.id.list_title);
         deskripsi_ukm = (TextView) findViewById(R.id.deskripsi_ukm);
         alamat_ukm = (TextView) findViewById(R.id.alamat_ukm);
@@ -245,14 +246,13 @@ public class detail_danus extends BaseActivity {
             JSONObject json = null;
             try {
                 json = array.getJSONObject(i);
-                urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+json.getString(JSON_FOTO_BARANG);
-                //Picasso.with(this).load(urlPhoto).resize(300, 300).placeholder(R.drawable.image_placeholder).into(imageView);
-                String desc_owner = "Nama owner : "+json.getString(JSON_OWNER_UKM);
-                String desc_alamat = json.getString(JSON_ALAMAT_UKM)+", "+json.getString(JSON_KECAMATAN)+", Depok.";
-                String desc_barang = json.getString(JSON_NAMA_UKM)+" menjual "+json.getString(JSON_NAMA_BARANG);
-                list_title.setText(json.getString(JSON_NAMA_UKM));
-                deskripsi_ukm.setText(json.getString(JSON_DESC_UKM));
-                alamat_ukm.setText(desc_alamat);
+                urlPhoto = "http://hidepok.id/assets/images/photos/ucok/"+json.getString("foto_barang");
+                if(!json.getString("foto_barang").equals("null")){
+                    Glide.with(this).load(urlPhoto).placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(imageView);
+                }
+                list_title.setText(json.getString("nama_barang"));
+                deskripsi_ukm.setText(json.getString("deskripsi_ukm"));
+                alamat_ukm.setText(json.getString("alamat_ukm"));
 //                barang.setText(desc_barang);
 //                owner.setText(desc_owner);
                 no_tlp = json.getString(JSON_NO_TLP);
@@ -271,18 +271,18 @@ public class detail_danus extends BaseActivity {
                 dateAndTime.get(Calendar.MONTH),
                 dateAndTime.get(Calendar.DAY_OF_MONTH)).show();
     }
-    public void toMaps(View v){
-        Double myLatitude = -6.3656374;
-        Double myLongitude = 106.8237375;
-        String labelLocation = "Perpus UI";
+    public void toMaps(View v) {
+        Double myLatitude = kordinat1;
+        Double myLongitude = kordinat2;
+        String labelLocation = namaukm;
 
         String urlAddress = "http://maps.google.com/maps?q=" + myLatitude + "," + myLongitude + "(" + labelLocation + ")&iwloc=A&hl=es";
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlAddress));
         startActivity(intent);
     }
 
-    public void toCall(View v){
-        String PhoneNo="085695454139";
+    public void toCall(View v) {
+        String PhoneNo = no_tlp;
         Intent dial = new Intent();
         dial.setAction("android.intent.action.DIAL");
         dial.setData(Uri.parse("tel:" + PhoneNo));

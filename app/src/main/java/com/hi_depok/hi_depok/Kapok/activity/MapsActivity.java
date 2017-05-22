@@ -69,8 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String JSON_OPERASIONAL = "jam_operasi_tempat";
     String JSON_NOTLP = "no_telp_tempat";
     private GoogleMap mMap;
-    double latitude;
-    double longitude;
+    double latitude, longitude, lat, lng;
     private int PROXIMITY_RADIUS = 10000;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
@@ -126,6 +125,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 JSON_DATA_WEB_CALL();
             }
         });
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map2);
@@ -134,6 +134,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             showLocationSettings();
         }
+        JSON_DATA_WEB_CALL();
     }
     public void JSON_DATA_WEB_CALL() {
         jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_URL,
@@ -169,8 +170,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Log.d("onPostExecute","Entered into showing locations");
                 MarkerOptions markerOptions = new MarkerOptions();
                 String[] kordinat = placeKordinat.split(",");
-                double lat = Double.parseDouble(kordinat[0]);
-                double lng = Double.parseDouble(kordinat[1].trim());
+                if(placeKordinat.contains(",")) {
+                    lat = Double.parseDouble(kordinat[0]);
+                    lng = Double.parseDouble(kordinat[1].trim());
+                }
+                else{
+                    lat = 0.0;
+                    lng = 0.0;
+                }
                 LatLng latLng = new LatLng(lat, lng);
                 markerOptions.position(latLng);
                 markerOptions.title(placeName);

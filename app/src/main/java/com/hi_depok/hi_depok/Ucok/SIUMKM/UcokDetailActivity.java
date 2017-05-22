@@ -66,7 +66,7 @@ public class UcokDetailActivity extends BaseActivity {
     RequestQueue requestQueue;
     RecyclerView.Adapter recyclerViewadapter;
     RecyclerView rView;
-    ImageView image_slide;
+    ImageView image_slide, telpUKM, kordinatUKM;
     LinearLayout gambar;
 
     @Override
@@ -88,6 +88,8 @@ public class UcokDetailActivity extends BaseActivity {
         alamat_ukm = (TextView) findViewById(R.id.alamat_ukm);
         barang = (TextView) findViewById(R.id.barang);
         owner = (TextView) findViewById(R.id.owner);
+        telpUKM = (ImageView) findViewById(R.id.call);
+        kordinatUKM = (ImageView) findViewById(R.id.maps);
         //---------------- Image Single Popup --------------------------------------------------
         imageView = (CircleImageView) findViewById(R.id.list_avatar);
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -181,6 +183,24 @@ public class UcokDetailActivity extends BaseActivity {
                 kordinat1 = json.getDouble(JSON_KORDINAT_1);
                 kordinat2 = json.getDouble(JSON_KORDINAT_2);
                 namaukm = json.getString(JSON_NAMA_UKM);
+//                telpUKM.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//
+//                        Intent dial = new Intent();
+//                        dial.setAction("android.intent.action.DIAL");
+//                        dial.setData(Uri.parse("tel:" + no_tlp));
+//                        startActivity(dial);
+//                    }
+//                });
+//                kordinatUKM.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        String urlAddress = "http://maps.google.com/maps?q=" + kordinat1 + "," + kordinat2 + "(" + namaukm + ")&iwloc=A&hl=es";
+//                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlAddress));
+//                        startActivity(intent);
+//                    }
+//                });
             } catch (JSONException e) {
                 e.printStackTrace();
             }
