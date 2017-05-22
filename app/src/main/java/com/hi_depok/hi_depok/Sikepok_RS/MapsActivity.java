@@ -149,7 +149,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     lat = 0.0;
                     lng = 0.0;
                 }
-;
+//                double lat = Double.parseDouble(placeKordinatLat);
+//                double lng = Double.parseDouble(placeKordinatLon);
                 LatLng latLng = new LatLng(lat, lng);
                 markerOptions.position(latLng);
                 markerOptions.title(placeName);

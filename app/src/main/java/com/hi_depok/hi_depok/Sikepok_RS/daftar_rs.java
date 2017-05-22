@@ -226,6 +226,7 @@ public class daftar_rs extends BaseActivity {
                     latitudeA = 0.0;
                     longitudeA = 0.0;
                 }
+
 //                double latitudeA = Double.parseDouble(json.getString(JSON_LAT));
 //                double longitudeA = Double.parseDouble(json.getString(JSON_LONG));
 
