@@ -107,13 +107,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         setContentView(R.layout.fokopok_activity_main);
 
 
-        if(getIntent().getExtras().getString("getRoom")==null){
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-        }else{
-            CHAT_REFERENCE = "Room" + getIntent().getExtras().getString("getRoom");
-        }
+        CHAT_REFERENCE = "Room " + getIntent().getExtras().getString("getNamaRoom");
 
         if (!Util.verificaConexao(this)){
             Util.initToast(this,"Hidupkan internet anda!");
@@ -136,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         }
 
-        getSupportActionBar().setTitle("Room Komunitas");
+        getSupportActionBar().setTitle("Chat Komunitas " + getIntent().getExtras().getString("getNamaRoom"));
 
 
     }
@@ -342,7 +336,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Get Photo From"), IMAGE_GALLERY_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, "Ambil Foto Dari"), IMAGE_GALLERY_REQUEST);
     }
 
     /**
@@ -408,8 +402,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                             Log.w(TAG, "signInWithCredential", task.getException());
                             Util.initToast(getBaseContext(),"Authentication failed");
                         } else {
-                            startActivity(new Intent(getBaseContext(), MainActivity.class));
+                            Intent intent = getIntent();
                             finish();
+                            startActivity(intent);
                         }
                     }
                 });

@@ -51,7 +51,6 @@ public class danus_activity extends BaseActivity {
     RecyclerView rView;
     List<DataModel> dataAdapter;
     DataModel data;
-    SessionManager session;
 
     EditText formMessage1, formMessage2;
     String login_url = "http://hidepok.id/android/ucok/ucok_dss.php";
@@ -73,8 +72,10 @@ public class danus_activity extends BaseActivity {
         rView.setLayoutManager(lLayout);
         rView.setHasFixedSize(true);
         dataAdapter = new ArrayList<>();
-        session = new SessionManager(this);
-        JSON_URL = "http://hidepok.id/android/ucok/ucok_riwayat_usaha.php?id_user=" + session.getUserDetails().get(SessionManager.KEY_ID_USER);
+        SessionManager session = new SessionManager(danus_activity.this);
+        HashMap<String, String> user = session.getUserDetails();
+        String id_user = user.get(SessionManager.KEY_ID_USER);
+        JSON_URL = "http://hidepok.id/android/ucok/ucok_riwayat_usaha.php?id_user=" + id_user;
         getDataFromJSON(JSON_URL);
 
     }

@@ -1,10 +1,16 @@
 package com.hi_depok.hi_depok.Fokopok;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -22,6 +28,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
+import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Adapter_Komentar;
 import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.Komentar;
@@ -37,7 +44,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class detail_post_fokopok extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
+public class detail_post_fokopok extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener{
     TextView namaKomunitas, timeTxt, title, jml_like, jml_com;
     ImageView gambar_komunitas, gambar_event, likeimg, comimg, btnKirim, statimg, shareimg;
     EditText etKomentar;
@@ -54,7 +61,15 @@ public class detail_post_fokopok extends AppCompatActivity implements SwipeRefre
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_komentar);
-
+        super.onCreateDrawer();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        }
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         session = new SessionManager(this);
         HashMap<String, String> user = session.getUserDetails();
         final String id_user_komentar = user.get(SessionManager.KEY_ID_USER);
@@ -278,5 +293,24 @@ public class detail_post_fokopok extends AppCompatActivity implements SwipeRefre
     @Override
     public void onRefresh() {
         detail_artikel(id_artikel);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+//            case R.id.action_new_msg:
+//                // todo: goto back activity from here
+//
+//                startActivity(new Intent(getBaseContext(), message.class));
+//                return true;
+            case android.R.id.home:
+                // todo: goto back activity from here
+
+                detail_post_fokopok.this.finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

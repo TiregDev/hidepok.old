@@ -66,7 +66,8 @@ public class KomunitasAdapter extends RecyclerView.Adapter<KomunitasAdapter.View
 
         holder.name.setText(nama);
         Glide.with(context).load("http://hidepok.id/assets/images/photos/fokopok/" + foto).placeholder(R.drawable.image_placeholder).into(holder.avatar);
-        holder.itemView.setTag(id);
+        holder.itemView.setTag(nama);
+
 
 
     }
@@ -93,9 +94,8 @@ public class KomunitasAdapter extends RecyclerView.Adapter<KomunitasAdapter.View
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, MainActivity.class);
-                    String hal = (String) itemView.getTag();
-                    intent.putExtra("getRoom", hal);
-                    Log.d("JSONAdapter", "get page: " + hal);
+                    String namaRoom = (String) itemView.getTag();
+                    intent.putExtra("getNamaRoom", namaRoom);
 
                     context.startActivity(intent);
                 }

@@ -80,7 +80,7 @@ public class kadepok_volunteer_form extends BaseActivity {
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btn_volunteer = (Button)findViewById(R.id.btn_volunteer);
 //        btn_volunteer.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -109,13 +109,18 @@ public class kadepok_volunteer_form extends BaseActivity {
     //mengirim sms
     protected void sendSMS()
     {
-        if (panti.getSelectedItem().toString().equals("Panti Kasih Ibu")){
+        if (panti.getSelectedItem().toString().equals("Panti Riyadush Solihun")){
             panti_terpilih = "085715720688";
-        } else if (panti.getSelectedItem().toString().toUpperCase().equals("Pantianak")){
+        } else if (panti.getSelectedItem().toString().equals("Panti Tubagus Pangeling")){
             panti_terpilih = "085776410906";
-        } else if (panti.getSelectedItem().toString().toUpperCase().equals("Pantia Kurban")){
+        } else if (panti.getSelectedItem().toString().equals("Panti Uswatun Hasanah")){
+            panti_terpilih = "085776410906";
+        } else if (panti.getSelectedItem().toString().equals("Panti Madani")){
+            panti_terpilih = "085776410906";
+        } else if (panti.getSelectedItem().toString().equals("Panti Darussalam")){
             panti_terpilih = "085776410906";
         }
+
         String number=panti_terpilih;
 
         String part1 = volounter.getText().toString();
@@ -123,7 +128,7 @@ public class kadepok_volunteer_form extends BaseActivity {
         String part3 = telepon.getText().toString();
         String part4 = keahlian.getText().toString();
 
-        String message = "Ada vounter Om nih datanya: \n" + part1 + "#" + part2 + "#" + part3 + "#" + part4 + "#";
+        String message = "Ada volunteer yang mau daftar, datanya: \n" + part1 + "#" + part2 + "#" + part3 + "#" + part4 + "#";
         try {
             SmsManager manager = SmsManager.getDefault();
             manager.sendTextMessage(number, null, message,null,null);

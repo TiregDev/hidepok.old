@@ -11,9 +11,11 @@
     </string-array>
     <string-array name="panti">
         <item name="">-Pilih Panti-</item>
-        <item name="">Panti Kasih Ibu</item>
-        <item name="">Pantianak</item>
-        <item name="">Pantia Kurban</item>
+        <item name="">Panti Riyadush Solihun</item>
+        <item name="">Panti Tubagus Pangeling</item>
+        <item name="">Panti Uswatun Hasanah</item>
+        <item name="">Panti Madani</item>
+        <item name="">Panti Darussalam</item>
     </string-array>
     <string-array name="place_desc">
         <item>The Palais Garnier which locates in Paris was built from 1861 for

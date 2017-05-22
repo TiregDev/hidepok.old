@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -63,6 +64,7 @@ public class TempatSehatFragment extends Fragment {
     SearchView searchView;
     double latitudeA, longitudeA, latitudeB, longitudeB;
     Utils util = new Utils();
+    SwipeRefreshLayout swipe;
 
     public static TempatSehatFragment newInstance(String title, String location) {
         TempatSehatFragment fragment = new TempatSehatFragment();
@@ -92,6 +94,8 @@ public class TempatSehatFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -100,15 +104,22 @@ public class TempatSehatFragment extends Fragment {
         rView.setHasFixedSize(true);
         rView.setLayoutManager(new LinearLayoutManager(getContext()));
         dataAdapter = new ArrayList<>();
+//        View v = inflater.inflate(R.layout.sikepokpanic_menu, container, false);
+//        swipe = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh_layout_komentar);
+//        swipe.setOnRefreshListener(this);
+        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.3/sikepokpanic_json.php?kategori=" + getTitle();
 
         return rView;
     }
 
+
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/sikepok/1.3/sikepokpanic_json.php?kategori=" + getTitle();
+    public void onStart() {
+        super.onStart();
+        dataAdapter.clear();
+//        swipe.setRefreshing(true);
         JSON_DATA_WEB_CALL(GET_JSON_DATA_HTTP_URL);
-        super.onActivityCreated(savedInstanceState);
+
     }
 
     @Override
@@ -225,13 +236,15 @@ public class TempatSehatFragment extends Fragment {
                             }
                         });
                         recyclerViewadapter = new JSONAdapter(dataAdapter, getContext());
+                        recyclerViewadapter.notifyDataSetChanged();
                         rView.setAdapter(recyclerViewadapter);
+//                        swipe.setRefreshing(false);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+//                        swipe.setRefreshing(false);
                     }
                 });
 

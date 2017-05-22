@@ -93,22 +93,22 @@ public class kapok_detail extends BaseActivity {
         GET_JSON_DATA_HTTP_URL = "http://hidepok.id/android/kapok/kapok_json.php?id=" + getIntent().getExtras().getString("getID");
 
 
-        TextView lengkap = (TextView) findViewById(R.id.ulasan);
-        lengkap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(kapok_detail.this, activity_view_ulasan.class));
-            }
-        });
+//        TextView lengkap = (TextView) findViewById(R.id.ulasan);
+//        lengkap.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(kapok_detail.this, activity_view_ulasan.class));
+//            }
+//        });
         //recycle ulasan
         List<ItemObjectViewUlasan> rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(kapok_detail.this);
 
-        RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
-        rView.setLayoutManager(lLayout);
-
-        CustomAdapterViewUlasan rcAdapter = new CustomAdapterViewUlasan(kapok_detail.this, rowListItem);
-        rView.setAdapter(rcAdapter);
+//        RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
+//        rView.setLayoutManager(lLayout);
+//
+//        CustomAdapterViewUlasan rcAdapter = new CustomAdapterViewUlasan(kapok_detail.this, rowListItem);
+//        rView.setAdapter(rcAdapter);
         JSON_DATA_WEB_CALL();
 
         //buat popup

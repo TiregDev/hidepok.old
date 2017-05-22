@@ -23,19 +23,10 @@
                 android:text="Panti asuhan Darul Ilmi memiliki 55 anak"
                 android:textColor="@color/white" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
-                app:font="@string/fontReguler"
-                android:id="@+id/jk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/jumlah_anak"
-                android:text="Dengan 40 Laki-laki dan 15 Perempuan"
-                android:textColor="@color/white" />
-
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:layout_below="@id/jk"
+                android:layout_below="@id/jumlah_anak"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:scrollbars="none">

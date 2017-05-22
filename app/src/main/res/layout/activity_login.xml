@@ -64,7 +64,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:alpha="0.7"
-                        android:hint="Nama Username"
+                        android:hint="Nama Pengguna"
                         android:inputType="text"
                         android:maxLines="1"
                         android:paddingEnd="5dp"
