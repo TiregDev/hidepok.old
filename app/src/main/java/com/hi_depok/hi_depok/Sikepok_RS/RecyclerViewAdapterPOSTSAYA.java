@@ -183,7 +183,9 @@ public class RecyclerViewAdapterPOSTSAYA extends RecyclerView.Adapter<RecyclerVi
                         @Override
                         public void onResponse(String response) {
                             Toast.makeText(RecyclerViewAdapterPOSTSAYA.this.context, response, Toast.LENGTH_SHORT).show();
-                            context.startActivity(new Intent(RecyclerViewAdapterPOSTSAYA.this.context, post_saya.class));
+                            Intent next = new Intent(RecyclerViewAdapterPOSTSAYA.this.context, post_saya.class);
+                            next.putExtra("yang_dicari","");
+                            context.startActivity(next);
 //                            finish();
                         }
                     }, new Response.ErrorListener() {

@@ -167,7 +167,9 @@ public class forum extends BaseActivity{
                                 public void onResponse(String response) {
                                     dialog.dismiss();
                                     Toast.makeText(forum.this, response, Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(forum.this, post_saya.class));
+                                    Intent next = new Intent(forum.this, post_saya.class);
+                                    next.putExtra("yang_dicari","");
+                                    startActivity(next);
                                     finish();
 
                                 }

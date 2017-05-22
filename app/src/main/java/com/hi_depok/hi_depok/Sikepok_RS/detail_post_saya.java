@@ -280,7 +280,9 @@ public class detail_post_saya extends BaseActivity {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(detail_post_saya.this, response, Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(detail_post_saya.this, post_saya.class));
+                        Intent next = new Intent(detail_post_saya.this, post_saya.class);
+                        next.putExtra("yang_dicari","");
+                        startActivity(next);
                         finish();
                     }
                 }, new Response.ErrorListener() {
