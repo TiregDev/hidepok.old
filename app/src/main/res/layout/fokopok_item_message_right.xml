@@ -27,7 +27,7 @@
         app:cmv_arrowGravity="end"
         app:cmv_arrowMargin="3dp"
         app:cmv_arrowPosition="right"
-        app:cmv_backgroundColor="@color/colorAccent"
+        app:cmv_backgroundColor="@color/colorPrimary"
         app:cmv_backgroundColorPressed="#FFBABABA"
         app:cmv_contentPadding="10dp"
         app:cmv_cornerRadius="3dp"

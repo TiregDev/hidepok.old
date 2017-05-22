@@ -21,6 +21,7 @@ import android.widget.ImageView;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -104,19 +105,42 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fokopok_activity_main);
-        CHAT_REFERENCE = "Room" + getIntent().getExtras().getString("getRoom");
+
+
+        if(getIntent().getExtras().getString("getRoom")==null){
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+        }else{
+            CHAT_REFERENCE = "Room" + getIntent().getExtras().getString("getRoom");
+        }
+
         if (!Util.verificaConexao(this)){
             Util.initToast(this,"Hidupkan internet anda!");
             finish();
         }else{
             bindViews();
-            verificaUsuarioLogado();
-            mGoogleApiClient = new GoogleApiClient.Builder(this)
-                    .enableAutoManage(this, this)
-                    .addApi(Auth.GOOGLE_SIGN_IN_API)
+
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.default_web_client_id))
+                    .requestEmail()
                     .build();
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .enableAutoManage(this,this)
+                    .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                    .build();
+
+            // Initialize FirebaseAuth
+            mFirebaseAuth = FirebaseAuth.getInstance();
+            verificaUsuarioLogado();
+
         }
+
+        getSupportActionBar().setTitle("Room Komunitas");
+
+
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

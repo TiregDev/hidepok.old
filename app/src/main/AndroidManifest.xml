@@ -271,7 +271,7 @@
             android:label="FAQ" />
         <activity
             android:name=".Fokopok.firebase.MainActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.WithActionBar" />
 
         <activity
             android:name=".Fokopok.firebase.view.LoginActivity"
