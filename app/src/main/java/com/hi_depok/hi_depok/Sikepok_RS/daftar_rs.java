@@ -51,6 +51,7 @@ import java.util.List;
 
 public class daftar_rs extends BaseActivity {
     private SearchView searchView;
+    double latitudeA,longitudeA;
 
     public static final String PATOKAN = "patokan";
     String GET_JSON_DATA_HTTP_URL;
@@ -217,8 +218,16 @@ public class daftar_rs extends BaseActivity {
                 dataFromJSON.setEmail(json.getString(JSON_EMAIL));
                 dataFromJSON.setId_partner(json.getString(JSON_ID_PARTNER));
 
-                double latitudeA = Double.parseDouble(json.getString(JSON_LAT));
-                double longitudeA = Double.parseDouble(json.getString(JSON_LONG));
+                if(!json.getString(JSON_LAT).equals("null") && !json.getString(JSON_LONG).equals("null")) {
+                    latitudeA = Double.parseDouble(json.getString(JSON_LAT));
+                    longitudeA = Double.parseDouble(json.getString(JSON_LONG));
+                }
+                else{
+                    latitudeA = 0.0;
+                    longitudeA = 0.0;
+                }
+//                double latitudeA = Double.parseDouble(json.getString(JSON_LAT));
+//                double longitudeA = Double.parseDouble(json.getString(JSON_LONG));
 
                 double latitudeB = getIntent().getExtras().getDouble("getLat");
                 double longitudeB = getIntent().getExtras().getDouble("getLong");

@@ -52,7 +52,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LocationListener {
 
     private GoogleMap mMap;
-    double latitude;
+    double latitude, lat, lng;
     double longitude;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
@@ -141,8 +141,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 Log.d("onPostExecute","Entered into showing locations");
                 MarkerOptions markerOptions = new MarkerOptions();
-                double lat = Double.parseDouble(placeKordinatLat);
-                double lng = Double.parseDouble(placeKordinatLon);
+                if(!placeKordinatLat.equals("null") && !placeKordinatLon.equals("null")) {
+                    lat = Double.parseDouble(placeKordinatLat);
+                    lng = Double.parseDouble(placeKordinatLon);
+                }
+                else{
+                    lat = 0.0;
+                    lng = 0.0;
+                }
+;
                 LatLng latLng = new LatLng(lat, lng);
                 markerOptions.position(latLng);
                 markerOptions.title(placeName);
