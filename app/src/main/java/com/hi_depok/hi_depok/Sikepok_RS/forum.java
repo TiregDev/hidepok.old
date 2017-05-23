@@ -171,7 +171,6 @@ public class forum extends BaseActivity{
                                     next.putExtra("yang_dicari","");
                                     startActivity(next);
                                     finish();
-
                                 }
                             }, new Response.ErrorListener() {
                         @Override

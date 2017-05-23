@@ -220,6 +220,7 @@ public class diskusi_terpopuler extends Fragment {
                     return false;
                 }
 
+
                 @Override
                 public boolean onQueryTextChange(String newText) {
                     // use this method for auto complete search process

@@ -314,6 +314,7 @@ public class detail_post_saya extends BaseActivity {
         STRWaktu = sdf_waktu.format(dateAndTime.getTime());
     }
 
+
     //parsing JSON
     public void JSON_DATA_WEB_CALL(){
         jsonArrayRequest = new JsonArrayRequest(GET_JSON_DATA_HTTP_URL,

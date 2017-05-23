@@ -451,6 +451,7 @@ public class detail_post extends BaseActivity {
 
         }
 
+
         return super.onCreateOptionsMenu(menu);
     }
     @Override

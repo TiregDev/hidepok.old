@@ -108,6 +108,7 @@ public class diskusi_terbaru extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View  v = inflater.inflate(R.layout.sikepokrs_diskusi_terbaru, null);
 
+
 //        //r view db
         rView = (RecyclerView) v.findViewById(R.id.recyclerviewpost);
 
