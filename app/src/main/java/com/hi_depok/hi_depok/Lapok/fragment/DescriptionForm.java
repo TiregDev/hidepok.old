@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -47,6 +48,9 @@ public class DescriptionForm extends AppCompatActivity {
     SimpleDateFormat sdf_waktu = new SimpleDateFormat("HH:mm:ss");
     String judul, deskripsi, tanggal, waktu, alamat;
     String deskripsi_url = "http://hidepok.id/android/lapok/lapok_form_pelaporan.php";
+
+    private static final int REQUEST_TIMEOUT = 30000;
+    private static final int REQUEST_MAX_RETRY = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +149,7 @@ public class DescriptionForm extends AppCompatActivity {
                             return params;
                         }
                     };
+                    stringRequest.setRetryPolicy(new DefaultRetryPolicy(REQUEST_TIMEOUT, REQUEST_MAX_RETRY, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                     Akses.getInstance(DescriptionForm.this).addtoRequestQueue(stringRequest);
                 }
             }

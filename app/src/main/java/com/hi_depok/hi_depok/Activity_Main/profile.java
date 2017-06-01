@@ -32,6 +32,8 @@ import com.hi_depok.hi_depok.Profile.fragment.myprofile;
 import com.hi_depok.hi_depok.Profile.setprofile;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -44,6 +46,8 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class profile extends BaseActivity implements View.OnClickListener {
+
+    private static final int KEY_GETPICTURE = 1001;
 
     ViewPager pager;
     ProfilePager adapter;
@@ -81,7 +85,7 @@ public class profile extends BaseActivity implements View.OnClickListener {
 
         //---------------- Image Single Popup --------------------------------------------------
         imageView = (CircleImageView) findViewById(R.id.pict_profile);
-        Picasso.with(getBaseContext()).load(avatar).resize(300,300).into(imageView);
+        Picasso.with(getBaseContext()).load(avatar).memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE).resize(300,300).into(imageView);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,6 +169,7 @@ public class profile extends BaseActivity implements View.OnClickListener {
     protected void onRestart() {
         super.onRestart();
         getProfile();
+        finish();
     }
 
     private void getProfile() {

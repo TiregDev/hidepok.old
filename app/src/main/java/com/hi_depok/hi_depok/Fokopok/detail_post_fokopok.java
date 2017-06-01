@@ -2,10 +2,9 @@ package com.hi_depok.hi_depok.Fokopok;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -30,9 +29,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 import com.hi_depok.hi_depok.Adapter_Komentar;
 import com.hi_depok.hi_depok.Akses;
-import com.hi_depok.hi_depok.Kadepok.activity.KadepokDetailActivity;
 import com.hi_depok.hi_depok.Komentar;
-import com.hi_depok.hi_depok.Lapok.mDetail.DetailActivity;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
 import com.squareup.picasso.Picasso;
@@ -58,6 +55,7 @@ public class detail_post_fokopok extends AppCompatActivity implements SwipeRefre
     Adapter_Komentar adapter;
     SwipeRefreshLayout swipe;
     String id_artikel;
+    String kejadian = "";
     String detail_url = "http://hidepok.id/android/fokopok/fokopok_artikel_detail.php";
     String url = "http://hidepok.id/android/fokopok/fokopok_komentar.php?id=";
     String insert = "http://hidepok.id/android/fokopok/fokopok_insert.php";
@@ -75,6 +73,7 @@ public class detail_post_fokopok extends AppCompatActivity implements SwipeRefre
         ListView listView = (ListView) findViewById(R.id.listKomentar);
         adapter = new Adapter_Komentar(this, R.layout.lapok_isi_komentar, mList);
         listView.setAdapter(adapter);
+        ViewCompat.setNestedScrollingEnabled(listView, true);
 
         swipe = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout_komentar);
         swipe.setOnRefreshListener(this);
@@ -92,13 +91,13 @@ public class detail_post_fokopok extends AppCompatActivity implements SwipeRefre
         statimg = (ImageView) findViewById(R.id.status_post_detail);
         shareimg = (ImageView) findViewById(R.id.share_button_detail);
         comimg = (ImageView) findViewById(R.id.comment_button_detail);
+        imageView = (CircleImageView) findViewById(R.id.imageArtist_detail);
 
         statimg.setVisibility(View.GONE);
         shareimg.setVisibility(View.GONE);
 
         //---------------- Image Single Popup --------------------------------------------------
-        imageView = (CircleImageView) findViewById(R.id.imageArtist_detail);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        gambar_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Dialog settingsDialog = new Dialog(detail_post_fokopok.this);
@@ -111,8 +110,7 @@ public class detail_post_fokopok extends AppCompatActivity implements SwipeRefre
                 settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
 
                 ImageView iv = (ImageView) newView.findViewById(R.id.profile_img_popup);
-                Bitmap bm = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-                iv.setImageBitmap(bm);
+                Glide.with(detail_post_fokopok.this).load(kejadian).placeholder(R.drawable.image_placeholder).into(iv);
                 settingsDialog.show();
             }
         });
@@ -225,6 +223,8 @@ public class detail_post_fokopok extends AppCompatActivity implements SwipeRefre
                             timeTxt.setText(json.getString("waktu_artikel"));
                             jml_like.setText(json.getString("suka"));
                             jml_com.setText(json.getString("komentar"));
+                            kejadian = "http://hidepok.id/assets/images/photos/fokopok/" +
+                                    json.getString("foto_artikel");
 
                             if (!json.getString("user_like").equals("null")) {
                                 String[] array = json.getString("user_like").split(", ");
@@ -239,8 +239,7 @@ public class detail_post_fokopok extends AppCompatActivity implements SwipeRefre
                                 likeimg.setImageResource(R.drawable.like);
                             }
 
-                            Glide.with(detail_post_fokopok.this).load("http://hidepok.id/assets/images/photos/fokopok/" +
-                                    json.getString("foto_artikel"))
+                            Glide.with(detail_post_fokopok.this).load(kejadian)
                                     .placeholder(R.drawable.image_placeholder).thumbnail(0.3f).into(gambar_event);
                             Picasso.with(detail_post_fokopok.this).load("http://hidepok.id/assets/images/photos/fokopok/" +
                                     json.getString("foto_artikel")).resize(300,300).into(imageView);

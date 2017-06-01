@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'keystore_hi-depok'
+            keyPassword 'ti6prikitiew'
+            storeFile file('keystore_hi-depok.jks')
+            storePassword 'ti6prikitiew'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     dataBinding {
@@ -10,14 +18,15 @@ android {
         applicationId "com.hi_depok.hi_depok"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 4
-        versionName "1.1.2"
+        versionCode 5
+        versionName "1.1.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/2'] } }

@@ -3,13 +3,11 @@ package com.hi_depok.hi_depok.Lapok.mDetail;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -33,15 +31,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.hi_depok.hi_depok.Activity_Main.BaseActivity;
 import com.hi_depok.hi_depok.Adapter_Komentar;
 import com.hi_depok.hi_depok.Akses;
 import com.hi_depok.hi_depok.Komentar;
-import com.hi_depok.hi_depok.Lapok.Utility;
 import com.hi_depok.hi_depok.R;
 import com.hi_depok.hi_depok.SessionManager;
-import com.hi_depok.hi_depok.Ucok.SIUMKM.UcokDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -71,8 +66,8 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
     String detail_url = "http://hidepok.id/android/lapok/lapok_getContent_detail.php";
     String url = "http://hidepok.id/android/lapok/lapok_komentar.php?id=";
     String insert = "http://hidepok.id/android/lapok/lapok_insert.php";
-    NotificationCompat.Builder mBuilder;
     CircleImageView imageView;
+    String kejadian = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,28 +83,6 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //---------------- Image Single Popup --------------------------------------------------
-        imageView = (CircleImageView) findViewById(R.id.imageArtist_detail);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Dialog settingsDialog = new Dialog(DetailActivity.this);
-
-                LayoutInflater inflater = getLayoutInflater();
-                View newView = inflater.inflate(R.layout.activity_image, null);
-
-                settingsDialog.setContentView(newView);
-                settingsDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-                settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
-
-                ImageView iv = (ImageView) newView.findViewById(R.id.profile_img_popup);
-                Bitmap bm = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-                iv.setImageBitmap(bm);
-                settingsDialog.show();
-
-            }
-        });
-
         Intent i = this.getIntent();
         final String id_post = (String) i.getExtras().get("ID_POST_DETAIL");
 
@@ -120,8 +93,8 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
         swipe.setOnRefreshListener(this);
 
         listView.setAdapter(adapter);
-
-        Utility.setListViewHeightBasedOnChildren(listView);
+        ViewCompat.setNestedScrollingEnabled(listView, true);
+//        Utility.setListViewHeightBasedOnChildren(listView);
 
         content_detail(id_post);
 
@@ -150,8 +123,8 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
                 settingsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.alpha(0)));
 
                 ImageView iv = (ImageView) newView.findViewById(R.id.profile_img_popup);
-                Bitmap bm = ((GlideBitmapDrawable) kej.getDrawable()).getBitmap();
-                iv.setImageBitmap(bm);
+
+                Glide.with(DetailActivity.this).load(kejadian).placeholder(R.drawable.image_placeholder).into(iv);
 
                 settingsDialog.show();
             }
@@ -290,7 +263,7 @@ public class DetailActivity extends BaseActivity implements SwipeRefreshLayout.O
                             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                             DateFormat df1 = new SimpleDateFormat("HH:mm:ss");
                             Date startDate, startTime;
-                            String avatar, kejadian, waktu, tanggal;
+                            String avatar, waktu, tanggal;
 
                             tanggal = objDetail.getString("tanggal");
                             waktu = objDetail.getString("waktu");

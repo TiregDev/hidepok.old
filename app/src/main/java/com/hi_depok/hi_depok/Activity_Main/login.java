@@ -304,9 +304,7 @@ public class login extends AppCompatActivity implements GoogleApiClient.OnConnec
     }
 
     private void updateUI(Boolean isLogin){
-        if(isLogin){
-
-        }else{
+        if(!isLogin){
             Toast.makeText(this, "Coba lagi . . .", Toast.LENGTH_SHORT).show();
         }
     }

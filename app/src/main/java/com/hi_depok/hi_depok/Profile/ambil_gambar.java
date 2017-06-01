@@ -163,7 +163,7 @@ public class ambil_gambar extends AppCompatActivity implements View.OnClickListe
                 //Getting the Bitmap from Gallery
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 //Setting the Bitmap to ImageView
-                imageView.setImageBitmap(bitmap);
+                imageView.setImageBitmap(getResizedBitmap(bitmap, 500, 500));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -178,8 +178,6 @@ public class ambil_gambar extends AppCompatActivity implements View.OnClickListe
     }
 
     public static Bitmap lessResolution (String filePath, int width, int height) {
-        int reqHeight = height;
-        int reqWidth = width;
         BitmapFactory.Options options = new BitmapFactory.Options();
 
         // First decode with inJustDecodeBounds=true to check dimensions
@@ -187,12 +185,27 @@ public class ambil_gambar extends AppCompatActivity implements View.OnClickListe
         BitmapFactory.decodeFile(filePath, options);
 
         // Calculate inSampleSize
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        options.inSampleSize = calculateInSampleSize(options, width, height);
 
         // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;
 
         return BitmapFactory.decodeFile(filePath, options);
+    }
+
+    public Bitmap getResizedBitmap(Bitmap image, int widthResize, int heightResize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = widthResize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = heightResize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
     private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {

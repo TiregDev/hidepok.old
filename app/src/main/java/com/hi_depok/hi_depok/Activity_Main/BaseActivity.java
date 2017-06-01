@@ -3,7 +3,10 @@ package com.hi_depok.hi_depok.Activity_Main;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -27,6 +30,10 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.util.DrawerUIUtils;
 import com.mikepenz.materialize.util.UIUtils;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.util.HashMap;
 
@@ -157,7 +164,8 @@ public class BaseActivity extends AppCompatActivity {
 
         // Create the AccountHeader
 
-        HashMap<String, String> user = session.getUserDetails();
+        final HashMap<String, String> user = session.getUserDetails();
+
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.bgnav2)
@@ -165,7 +173,7 @@ public class BaseActivity extends AppCompatActivity {
                         new ProfileDrawerItem()
                                 .withName(user.get(SessionManager.KEY_NAME))
                                 .withEmail(user.get(SessionManager.KEY_EMAIL))
-                                .withIcon(getResources().getDrawable(R.drawable.profile))
+                                .withIcon(Uri.parse(user.get(SessionManager.KEY_FOTO)))
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
@@ -174,6 +182,18 @@ public class BaseActivity extends AppCompatActivity {
                     }
                 })
                 .build();
+
+//        DrawerImageLoader.init(new AbstractDrawerImageLoader() {
+//            @Override
+//            public void set(ImageView imageView, Uri uri, Drawable placeholder) {
+//                Picasso.with(getBaseContext()).load(user.get(SessionManager.KEY_FOTO)).memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE).resize(300,300).into(imageView);
+//            }
+//
+//            @Override
+//            public void cancel(ImageView imageView) {
+//                Picasso.with(imageView.getContext()).cancelRequest(imageView);
+//            }
+//        });
 
         result = new DrawerBuilder()
                 .withActivity(this)
@@ -281,6 +301,32 @@ public class BaseActivity extends AppCompatActivity {
                 return crossfadeDrawerLayout.isCrossfaded();
             }
         });
+    }
+
+    private Bitmap getBitmapFromPicasso(String url) {
+        final Bitmap[] btp = {null};
+        Picasso.with(this)
+                .load(url)
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .resize(300, 300)
+                .into(new Target() {
+                    @Override
+                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                        btp[0] = bitmap;
+                    }
+
+                    @Override
+                    public void onBitmapFailed(Drawable errorDrawable) {
+
+                    }
+
+                    @Override
+                    public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                    }
+                });
+        return btp[0];
     }
 
     @Override
